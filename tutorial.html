@@ -1,0 +1,546 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial &mdash; COLMAP 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="COLMAP 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Database Format" href="database.html"/>
+        <link rel="prev" title="Installation" href="install.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> COLMAP
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#structure-from-motion">Structure-from-Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#preface">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-structure">Data Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-detection-and-extraction">Feature Detection and Extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-matching-and-geometric-verification">Feature Matching and Geometric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structure-and-motion-reconstruction">Structure and motion reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exporting-results">Exporting results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#database-management">Database Management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">COLMAP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tutorial.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial">
+<span id="id1"></span><h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="structure-from-motion">
+<h2>Structure-from-Motion<a class="headerlink" href="#structure-from-motion" title="Permalink to this headline">¶</a></h2>
+<p>Structure-from-Motion is the process of reconstructing 3D structure from its
+projections into a series of images. The input is a set of overlapping images of
+the same object, taken from different viewpoints. The output is a 3-D
+reconstruction of the object, and the reconstructed intrinsic and extrinsic
+camera parameters of all images. Typically, Structure-from-Motion systems divide
+this process into three stages:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Feature detection and extraction</li>
+<li>Feature matching and geometric verification</li>
+<li>Structure and motion reconstruction</li>
+</ol>
+</div></blockquote>
+<p>COLMAP reflects these stages in different modules, that can be combined
+depending on the application. More information on Structure-from-Motion in
+general and the algorithms in COLMAP can be found in <a class="reference internal" href="bibliography.html#schoenberger16" id="id2">[schoenberger16]</a>.</p>
+<p>If you have control over the picture capture process, please follow these
+guidelines for optimal reconstruction results:</p>
+<ul class="simple">
+<li>Capture images with <strong>good texture</strong>. Avoid completely texture-less images
+(e.g., a white wall or empty desk). If the scene does not contain enough
+texture itself, you could place additional background objects, such as
+posters, etc.</li>
+<li>Capture images at <strong>similar illumination</strong> conditions. Avoid high dynamic
+range scenes (e.g., pictures against the sun with shadows or pictures
+through doors/windows). Avoid specularities on shiny surfaces.</li>
+<li>Capture images with <strong>high visual overlap</strong>. Make sure that each object is
+seen in at least 3 images &#8211; the more images the better.</li>
+<li>Capture images from <strong>different viewpoints</strong>. Do not take images from the
+same location by only rotating the camera, e.g., make a few steps after each
+shot. At the same time, try to have enough images from a relatively similar
+viewpoint.</li>
+</ul>
+</div>
+<div class="section" id="preface">
+<h2>Preface<a class="headerlink" href="#preface" title="Permalink to this headline">¶</a></h2>
+<p>COLMAP requires only few steps to do a standard reconstruction for a general
+user. For more experienced users, the program exposes many different parameters,
+only some of which are intuitive to a general user. The program should work
+without the need to modify any parameters. The defaults are chosen as a tradeoff
+between reconstruction robustness/quality and speed. If in doubt what setting to
+choose, stick to the defaults. The source code contains more documentation about
+all parameters.</p>
+<p>COLMAP is research software and in rare cases it may exit ungracefully if some
+constraints are not fulfilled. In this case, the program prints a traceback to
+stdout. To see this traceback or more debug information, it is recommended to
+run the executables (including the GUI) from the command-line, where you can
+define various levels of logging verbosity.</p>
+</div>
+<div class="section" id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
+<p>The term <strong>camera</strong> is associated with the physical object of a camera using the
+same zoom-factor and lens. A camera defines the intrinsic projection model in
+COLMAP. A single camera can take multiple images with the same resolution,
+intrinsic parameters, and distortion characteristics. The term <strong>image</strong> is
+associated with a bitmap file, e.g., a JPEG or PNG file on disk. COLMAP detects
+<strong>keypoints</strong> in each each image whose appearance is described by numerical
+<strong>descriptors</strong>. Pure appearance-based correspondences between
+keypoints/descriptors are defined by <strong>matches</strong>, while <strong>inlier matches</strong> are
+geometrically verified and used for the reconstruction procedure.</p>
+</div>
+<div class="section" id="data-structure">
+<h2>Data Structure<a class="headerlink" href="#data-structure" title="Permalink to this headline">¶</a></h2>
+<p>COLMAP assumes that all input images are in one input directory with potentially
+nested sub-directories. It recursively considers all images stored in this
+directory, and it supports various different image formats (see <a class="reference external" href="http://freeimage.sourceforge.net/documentation.html">FreeImage</a>). Other files are
+automatically ignored. If high performance is a requirement, then you should
+separate any files that are not images. Images are identified uniquely by their
+relative file path. For lather processing, such as image undistortion or dense
+reconstruction, the relative folder structure should be preserved. COLMAP does
+not modify the input images or directory and all extracted data is stored in a
+single, self-contained SQLite database file (see <a class="reference internal" href="database.html"><em>Database Format</em></a>).</p>
+<p>The first step is to create a new project by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">New</span> <span class="pre">project</span></code>. In
+this dialog, you must select where to store the database and the folder that
+contains the images. For convenience, you can save the entire project settings
+to a configuration file by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">project</span></code>. The project
+configuration stores the absolute path information of the database and image
+folder in addition to any other parameter settings. If you decide to move the
+database or image folder, you must change the paths accordingly by creating a
+new project. Alternatively, the resulting <cite>.ini</cite> configuration file can be
+directly modified in a text editor of your choice. To reopen an existing
+project, you can simply open the configuration file by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Open</span>
+<span class="pre">project</span></code>. Note that all COLMAP executables can be started from the command-line
+by either specifying individual settings as command-line arguments or by
+providing the path to the project configuration file.</p>
+<p>An example folder structure could look like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>/path/to/project/...
++── images
+│   +── image1.jpg
+│   +── image2.jpg
+│   +── ...
+│   +── imageN.jpg
++── database.db
++── project.ini
+</pre></div>
+</div>
+<p>In this example, you would select <cite>/path/to/project/images</cite> as the image folder
+path and <cite>/path/to/project/database.db</cite> as the database file path.</p>
+</div>
+<div class="section" id="feature-detection-and-extraction">
+<h2>Feature Detection and Extraction<a class="headerlink" href="#feature-detection-and-extraction" title="Permalink to this headline">¶</a></h2>
+<p>In the first step, feature detection/extraction finds sparse feature points in
+the image and describes their appearance using a numerical descriptor. COLMAP
+imports images and performs feature detection/extraction in one step in order to
+only load images from disk once.</p>
+<p>Next, choose <code class="docutils literal"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Extract</span> <span class="pre">features</span></code>. In this dialog, you must first
+decide on the employed intrinsic camera model. You can either automatically
+extract focal length information from the embedded EXIF information or manually
+specify intrinsic parameters, e.g., as obtained in a lab calibration. If an
+image has partial EXIF information, COLMAP tries to find the missing camera
+specifications in a large database of camera models automatically. If all your
+images were captured by the same physical camera with identical zoom factor, it
+is recommended to share intrinsics between all images. Note that the program
+will exit ungracefully if the same camera model is shared among all images but
+not all images have the same size or EXIF focal length. If you have several
+groups of images that share the same intrinsic camera parameters, you can easily
+modify the camera models at a later point (see <a class="reference internal" href="#database-management"><span>Database Management</span></a>). If in doubt what to choose in this step, simply stick
+to the default parameters.</p>
+<p>You can either detect and extract new features from the images or import
+existing features from text files. COLMAP extracts <a class="reference internal" href="bibliography.html#lowe04" id="id3">[lowe04]</a> features either on
+the GPU or the CPU. The GPU version requires an attached display, while the CPU
+version is recommended for use on a server. In general, the GPU version is
+favorable as it has a customized feature detection mode that often produces
+higher quality features in the case of high contrast images. If you import
+existing features, every image must have a text file next to it (e.g.,
+<cite>/path/to/image1.jpg</cite> and <cite>/path/to/image1.jpg.txt</cite>) in the following format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>NUM_FEATURES 128
+X Y SCALE ORIENTATION D_1 D_2 D_3 ... D_128
+...
+X Y SCALE ORIENTATION D_1 D_2 D_3 ... D_128
+</pre></div>
+</div>
+<p>where <cite>X, Y, SCALE, ORIENTATION</cite> are floating point numbers and <cite>D_1...D_128</cite>
+values in the range <cite>0...255</cite>. The file should have <cite>NUM_FEATURES</cite> lines with
+one line per feature. Note that by convention the upper left corner of an image
+has coordinate <cite>(0, 0)</cite> and the center of the upper left most pixel has
+coordinate <cite>(0.5, 0.5)</cite>. If you must  import features for large image
+collections, it is much more efficient to directly access the database with your
+favorite scripting language (see <a class="reference internal" href="database.html#database-format"><span>Database Format</span></a>).</p>
+<p>If you are done setting all options, choose <code class="docutils literal"><span class="pre">Extract</span></code> and wait for the
+extraction to finish or cancel. If you cancel during the extraction process, the
+next time you start extracting images for the same project, COLMAP automatically
+continues where it left off. This also allows you to add images to an existing
+project/reconstruction. In this case, be sure to verify the camera parameters
+when using shared intrinsics.</p>
+<p>All extracted data will be stored in the database file and can be
+reviewed/managed in the database management tool (see <a class="reference internal" href="#database-management"><span>Database Management</span></a>) or, for experts, directly modified using SQLite (see
+<a class="reference internal" href="database.html#database-format"><span>Database Format</span></a>).</p>
+</div>
+<div class="section" id="feature-matching-and-geometric-verification">
+<h2>Feature Matching and Geometric Verification<a class="headerlink" href="#feature-matching-and-geometric-verification" title="Permalink to this headline">¶</a></h2>
+<p>In the second step, feature matching and geometric verification finds
+correspondences between the feature points in different images.</p>
+<p>Please, choose <code class="docutils literal"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Match</span> <span class="pre">features</span></code> and select on of the provided
+matching modes, that are intended for different input scenarios:</p>
+<ul>
+<li><p class="first"><strong>Exhaustive Matching</strong>: If the number of images in your dataset is
+relatively low (up to several hundreds), this matching mode should be fast
+enough and leads to the best reconstruction results. Here, every image is
+matched against every other image, while the block size determines how many
+images are loaded from disk into memory at the same time. The preemptive
+option filters image pairs that are not likely to match <a class="reference internal" href="bibliography.html#wu13" id="id4">[wu13]</a>.
+Typically though, vocabulary tree matching yields better results than
+preemptive matching <a class="reference internal" href="bibliography.html#schoenberger15" id="id5">[schoenberger15]</a>.</p>
+</li>
+<li><p class="first"><strong>Sequential Matching</strong>: This mode is useful if the images are acquired in
+sequential order, e.g., by a video camera. In this case, consecutive frames
+have visual overlap and there is no need to match all image pairs
+exhaustively. Instead, consecutively captured images are matched against
+each other. This matching mode has built-in loop detection based on a
+vocabulary tree, where every N-th image (<cite>loop_detection_period</cite>) is matched
+against its visually most similar images (<cite>loop_detection_num_images</cite>). Note
+that image file names must be ordered sequentially (e.g., <cite>image0001.jpg</cite>,
+<cite>image0002.jpg</cite>, etc.). You can verify the correct order in the database
+management tool (see <a class="reference internal" href="database.html#database-format"><span>Database Format</span></a>). Note that
+loop detection requires a pre-trained vocabulary tree, that can be downloaded
+from the project website.</p>
+</li>
+<li><p class="first"><strong>Vocabulary Tree Matching</strong>: In this matching mode, every image is matched
+against its visual nearest neighbors using a vocabulary tree. This is the
+recommended matching mode for large image collections (several thousands).
+This requires a pre-trained vocabulary tree, that can be downloaded from
+the project website.</p>
+</li>
+<li><p class="first"><strong>Spatial Matching</strong>: This matching mode matches every image against its
+spatial nearest neighbors. Spatial locations can be manually set in the
+database management. By default, COLMAP also extracts GPS information from
+EXIF and uses it for spatial nearest neighbor search. If accurate prior
+location information is available, this is the recommended matching mode.</p>
+</li>
+<li><p class="first"><strong>Custom Matching</strong>: This mode allows to specify individual image pairs fpr
+matching or to import individual feature matches. To specify image pairs, you
+have to provide a text file with one image pair per line:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>image1.jpg image2.jpg
+image1.jpg image3.jpg
+...
+</pre></div>
+</div>
+<p>where <cite>image1.jpg</cite> is the relative path in the image folder. You have two
+options to import individual feature matches. Either raw feature matches,
+which are not geometrically verified or already geometrically verified feature
+matches. In both cases, the expected format is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>image1.jpg image2.jpg
+0 1
+1 2
+3 4
+&lt;empty-line&gt;
+image1.jpg image3.jpg
+0 1
+1 2
+3 4
+4 5
+&lt;empty-line&gt;
+...
+</pre></div>
+</div>
+<p>where <cite>image1.jpg</cite> is the relative path in the image folder and the pairs of
+numbers are zero-based feature indices in the respective images. If you must
+import many matches for large image collections, it is more efficient to
+directly access the database with a scripting language of your choice.</p>
+</li>
+</ul>
+<p>If you are done setting all options, choose <code class="docutils literal"><span class="pre">Match</span></code> and wait for the matching
+to finish or cancel in between. Note that this step can take a significant
+amount of time depending on the number of images, the number of features per
+image, and the chosen matching mode. Expected times for exhaustive matching are
+from a few minutes for tens of images to a few hours for hundreds of images to
+days or weeks for thousands of images. If you cancel the matching process or
+import new images after matching, COLMAP only matches image pairs that have not
+been matched previously. The overhead of skipping already matched image pairs is
+low. This also enables to match additional images imported after an initial
+matching and it enables to combine different matching modes for the same
+dataset.</p>
+<p>All extracted data will be stored in the database file and can be
+reviewed/managed in the database management tool (see <a class="reference internal" href="#database-management"><span>Database Management</span></a>) or, for experts, directly modified using SQLite (see
+<a class="reference internal" href="database.html#database-format"><span>Database Format</span></a>).</p>
+<p>Note that feature matching requires a GPU and that the display performance of
+your computer might degrade significantly during the matching process. If your
+system has multiple CUDA-enabled GPUs, you can select specific GPUs with the
+<cite>gpu_index</cite> option.</p>
+</div>
+<div class="section" id="structure-and-motion-reconstruction">
+<h2>Structure and motion reconstruction<a class="headerlink" href="#structure-and-motion-reconstruction" title="Permalink to this headline">¶</a></h2>
+<p>After producing the scene graph in the previous two steps, you can start the
+incremental reconstruction process by choosing <code class="docutils literal"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Start</span></code>.
+COLMAP first loads all extracted data from the database into memory and seeds
+the reconstruction from an initial image pair. Then, the scene is incrementally
+extended by registering new images and triangulating new points. The results are
+visualized in &#8220;real-time&#8221; during this reconstruction process. COLMAP attempts to
+reconstruct multiple models if not all images are registered into the same
+model. The different models can be selected from the drop-down menu in the
+toolbar. If all your images use the <cite>SIMPLE_RADIAL</cite> camera model (default)
+without shared intrinsics, you can use PBA <a class="reference internal" href="bibliography.html#wu11" id="id6">[wu11]</a> for fast bundle adjustment,
+which can be activated in the reconstruction options under the bundle adjustment
+section (<cite>use_pba=true</cite>).</p>
+<p>Ideally, the reconstruction works fine and all images are registered. If this is
+not the case, it is recommended to:</p>
+<ul class="simple">
+<li>Perform additional matching. For best results, use exhaustive matching,
+increase the number of nearest neighbors in vocabulary tree matching, or
+increase the overlap in sequential matching, etc.</li>
+<li>Manually choose an initial image pair, if COLMAP fails to initialize. Choose
+<code class="docutils literal"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Reconstruction</span> <span class="pre">options</span> <span class="pre">&gt;</span> <span class="pre">Init</span></code> and set images from the
+database management tool that have enough matches from different viewpoints.</li>
+</ul>
+</div>
+<div class="section" id="exporting-results">
+<h2>Exporting results<a class="headerlink" href="#exporting-results" title="Permalink to this headline">¶</a></h2>
+<p>COLMAP provides several export options for further processing. For full
+flexibility, it is recommended to export the reconstruction in COLMAP&#8217;s data
+format by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span></code> to export the currently viewed model or
+<code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">all</span> <span class="pre">models</span></code> to export all reconstructed models. The model is
+exported in the selected folder using separate text files for the reconstructed
+cameras, images, and points. When exporting in COLMAP&#8217;s data format, you can re-
+import the reconstruction for later visualization, image undistortion, or to
+continue an existing reconstruction from where it left off. To import a model,
+choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span></code> and select the export folder path. Alternatively, you
+can also export the model in various other formats, such as Bundler, VisualSfM
+<a class="footnote-reference" href="#f1" id="id7">[1]</a>, PLY, or VRML by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">as...</span></code>. COLMAP can visualize
+plain PLY point cloud files with RGB information by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span>
+<span class="pre">From...</span></code>.</p>
+<p>For post-processing by dense reconstruction software, such as CMVS/PMVS
+<a class="reference internal" href="bibliography.html#furukawa10" id="id8">[furukawa10]</a> or CMP-MVS <a class="reference internal" href="bibliography.html#jancosek11" id="id9">[jancosek11]</a>, please choose <code class="docutils literal"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Undistort</span>
+<span class="pre">images</span></code> and select the appropriate format. To run CMVS and PMVS2, please run
+the following commands:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>./path/to/cmvs /path/to/undistortion/folder/pmvs/
+./path/to/genOption /path/to/undistortion/folder/pmvs/
+./path/to/pmvs2 /path/to/undistortion/folder/pmvs/
+</pre></div>
+</div>
+<p>where <cite>/path/to/undistortion/folder</cite> is the folder selected in the undistortion
+dialog. Make sure not to forget the trailing slash in
+<cite>/path/to/undistortion/folder/pmvs/</cite> in the above command-line arguments.</p>
+</div>
+<div class="section" id="database-management">
+<span id="id10"></span><h2>Database Management<a class="headerlink" href="#database-management" title="Permalink to this headline">¶</a></h2>
+<p>You can review and manage the import cameras, images, and feature matches in the
+database management tool. Choose <code class="docutils literal"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Manage</span> <span class="pre">database</span></code>. In the
+opening dialog, you can see the list of imported images and cameras. You can
+view the features and matches for each image by clicking <code class="docutils literal"><span class="pre">Show</span> <span class="pre">image</span></code> and
+<code class="docutils literal"><span class="pre">Show</span> <span class="pre">matches</span></code>. Note that any changes to the database are only effective after
+clicking <code class="docutils literal"><span class="pre">Save</span></code>.</p>
+<p>To share intrinsic camera parameters between arbitrary groups of images, select
+a single or multiple images, choose <code class="docutils literal"><span class="pre">Set</span> <span class="pre">camera</span></code> and set the <cite>camera_id</cite>,
+which corresponds to the unique <cite>camera_id</cite> column in the cameras table. You can
+also add new cameras with specific parameters. By setting the
+<cite>prior_focal_length</cite> flag to 0 or 1, you can give a hint whether the
+reconstruction algorithm should trust the focal length value. In case of a prior
+lab calibration, you want to set this value to 1. Without prior knowledge about
+the focal length, it is recommended to set this value to <cite>1.25 *
+max(width_in_px, height_in_px)</cite>.</p>
+<p>The database management tool has only limited functionality and, for full
+control over the data, you must directly modify the SQLite database (see
+<a class="reference internal" href="database.html#database-format"><span>Database Format</span></a>). By accessing the database directly,
+you can use COLMAP only for feature extraction and matching or you can import
+your own features and matches to only use COLMAP&#8217;s incremental reconstruction
+algorithm.</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[1]</a></td><td>VisualSfM&#8217;s projection model applies the distortion to the measurements
+and COLMAP to the projection, hence the exported NVM file is not fully
+compatible with VisualSfM.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="database.html" class="btn btn-neutral float-right" title="Database Format" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral" title="Installation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Johannes L. Schoenberger.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
