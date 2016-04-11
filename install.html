@@ -138,14 +138,16 @@
             
   <div class="section" id="installation">
 <span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>You can either download one of the pre-built binaries from the project website
-or build the source code manually. It builds on all major platforms with minimal
-effort: Linux, Mac, and Windows. First, checkout the latest source code:</p>
+<p>You can either download one of the pre-built binaries from
+<a class="reference external" href="http://people.inf.ethz.ch/jschoenb/colmap/">http://people.inf.ethz.ch/jschoenb/colmap/</a> or build the source code manually. It
+builds on all major platforms (Linux, Mac, Windows) with minimal effort. First,
+checkout the latest source code:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>git clone https://github.com/colmap/colmap
 </pre></div>
 </div>
 <div class="section" id="linux">
 <h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
+<p><em>Recommended dependencies:</em> CUDA.</p>
 <p>Dependencies from default Ubuntu 14.04 repositories:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>sudo apt-get install \
     cmake \
@@ -180,11 +182,10 @@ cmake ..
 make -j
 </pre></div>
 </div>
-<p>External dependencies: Ceres-Solver .</p>
-<p><em>Recommended dependencies:</em> CUDA.</p>
 </div>
 <div class="section" id="mac">
 <h2>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h2>
+<p><em>Recommended dependencies:</em> CUDA.</p>
 <p>Dependencies from <a class="reference external" href="http://brew.sh/">Homebrew</a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>brew tap homebrew/science
 brew install \
@@ -201,8 +202,7 @@ brew install \
 </pre></div>
 </div>
 <p>Create <cite>LocalConfig.cmake</cite> in COLMAP base directory with:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>message(STATUS &quot;NOTE: Using LocalConfig.cmake to override CMake settings in the GUI&quot;)
-set(Qt5_CMAKE_DIR &quot;/usr/local/opt/qt5/lib/cmake&quot;)
+<div class="highlight-python"><div class="highlight"><pre><span></span>set(Qt5_CMAKE_DIR &quot;/usr/local/opt/qt5/lib/cmake&quot;)
 set(Qt5Core_DIR ${Qt5_CMAKE_DIR}/Qt5Core)
 set(Qt5OpenGL_DIR ${Qt5_CMAKE_DIR}/Qt5OpenGL)
 </pre></div>
@@ -214,7 +214,6 @@ cmake ..
 make -j
 </pre></div>
 </div>
-<p><em>Recommended dependencies:</em> CUDA.</p>
 </div>
 <div class="section" id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
@@ -222,6 +221,7 @@ make -j
 process of configuring CMake less painful, please have a look at
 <cite>LocalConfigExample.config</cite>. MSVC12 (Microsoft Visual Studio 2013) and newer are
 confirmed to compile COLMAP without any issues.</p>
+<p><em>Recommended dependencies:</em> CUDA.</p>
 </div>
 <div class="section" id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>

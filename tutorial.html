@@ -93,6 +93,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#structure-and-motion-reconstruction">Structure and motion reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#exporting-results">Exporting results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#database-management">Database Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graphical-and-command-line-interface">Graphical and Command-line Interface</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
@@ -321,13 +322,13 @@ that image file names must be ordered sequentially (e.g., <cite>image0001.jpg</c
 <cite>image0002.jpg</cite>, etc.). You can verify the correct order in the database
 management tool (see <a class="reference internal" href="database.html#database-format"><span>Database Format</span></a>). Note that
 loop detection requires a pre-trained vocabulary tree, that can be downloaded
-from the project website.</p>
+from <a class="reference external" href="http://people.inf.ethz.ch/jschoenb/colmap/">http://people.inf.ethz.ch/jschoenb/colmap/</a>.</p>
 </li>
 <li><p class="first"><strong>Vocabulary Tree Matching</strong>: In this matching mode, every image is matched
 against its visual nearest neighbors using a vocabulary tree. This is the
 recommended matching mode for large image collections (several thousands).
 This requires a pre-trained vocabulary tree, that can be downloaded from
-the project website.</p>
+<a class="reference external" href="http://people.inf.ethz.ch/jschoenb/colmap/">http://people.inf.ethz.ch/jschoenb/colmap/</a>.</p>
 </li>
 <li><p class="first"><strong>Spatial Matching</strong>: This matching mode matches every image against its
 spatial nearest neighbors. Spatial locations can be manually set in the
@@ -335,7 +336,7 @@ database management. By default, COLMAP also extracts GPS information from
 EXIF and uses it for spatial nearest neighbor search. If accurate prior
 location information is available, this is the recommended matching mode.</p>
 </li>
-<li><p class="first"><strong>Custom Matching</strong>: This mode allows to specify individual image pairs fpr
+<li><p class="first"><strong>Custom Matching</strong>: This mode allows to specify individual image pairs for
 matching or to import individual feature matches. To specify image pairs, you
 have to provide a text file with one image pair per line:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>image1.jpg image2.jpg
@@ -462,6 +463,15 @@ control over the data, you must directly modify the SQLite database (see
 you can use COLMAP only for feature extraction and matching or you can import
 your own features and matches to only use COLMAP&#8217;s incremental reconstruction
 algorithm.</p>
+</div>
+<div class="section" id="graphical-and-command-line-interface">
+<h2>Graphical and Command-line Interface<a class="headerlink" href="#graphical-and-command-line-interface" title="Permalink to this headline">¶</a></h2>
+<p>Most of COLMAP&#8217;s features are accessible from the graphical and the command-line
+interface. All binaries accept a <code class="docutils literal"><span class="pre">./bin</span> <span class="pre">-h</span></code> (help) argument to list the
+available options. You can provide the options directly as command-line
+arguments or you can provide a <cite>.ini</cite> project configuration file containing the
+options as the <code class="docutils literal"><span class="pre">./bin</span> <span class="pre">--project_path</span></code> argument. To start the GUI application,
+please execute <cite>src/exe/colmap</cite>.</p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
