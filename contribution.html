@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; COLMAP 1.0 documentation</title>
+  <title>Contribution &mdash; COLMAP 1.0 documentation</title>
   
 
   
@@ -31,7 +30,9 @@
   
 
   
-    <link rel="top" title="COLMAP 1.0 documentation" href="index.html"/> 
+    <link rel="top" title="COLMAP 1.0 documentation" href="index.html"/>
+        <link rel="next" title="License" href="license.html"/>
+        <link rel="prev" title="Graphical User Interface" href="gui.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -80,12 +81,12 @@
           
             
             
-                <ul>
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Contribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
 </ul>
@@ -118,9 +119,11 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li></li>
+    <li>Contribution</li>
       <li class="wy-breadcrumbs-aside">
         
+          
+            <a href="_sources/contribution.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -130,17 +133,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="contribution">
+<h1>Contribution<a class="headerlink" href="#contribution" title="Permalink to this headline">¶</a></h1>
+<p>Contributions (bug reports, bug fixes, improvements, etc.) are very welcome and
+should be submitted in the form of new issues and/or pull requests on GitHub.</p>
+<p>Please, adhere to the Google coding style guide:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>http://google-styleguide.googlecode.com/svn/trunk/cppguide.html
+</pre></div>
+</div>
+<p>by using the provided &#8221;.clang-format&#8221; file.</p>
+<p>Document functions, methods, classes, etc. with inline documentation strings
+describing the API, using the following format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>// Short description.
+//
+// Longer description with a few sentences and multiple lines.
+//
+// @param parameter1            Description for parameter 1.
+// @param parameter2            Description for parameter 2.
+//
+// @return                      Description of optional return value.
+</pre></div>
+</div>
+<p>Add unit tests for all newly added code and make sure that algorithmic
+&#8220;improvements&#8221; generalize and actually improve the results of the pipeline on a
+variety of datasets.</p>
 </div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="license.html" class="btn btn-neutral float-right" title="License" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gui.html" class="btn btn-neutral" title="Graphical User Interface" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

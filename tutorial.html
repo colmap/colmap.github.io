@@ -90,13 +90,16 @@
 <li class="toctree-l2"><a class="reference internal" href="#data-structure">Data Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#feature-detection-and-extraction">Feature Detection and Extraction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#feature-matching-and-geometric-verification">Feature Matching and Geometric Verification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#structure-and-motion-reconstruction">Structure and motion reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#incremental-3d-reconstruction">Incremental 3D Reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#exporting-results">Exporting results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#database-management">Database Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#graphical-and-command-line-interface">Graphical and Command-line Interface</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -152,13 +155,11 @@ the same object, taken from different viewpoints. The output is a 3-D
 reconstruction of the object, and the reconstructed intrinsic and extrinsic
 camera parameters of all images. Typically, Structure-from-Motion systems divide
 this process into three stages:</p>
-<blockquote>
-<div><ol class="arabic simple">
+<ol class="arabic simple">
 <li>Feature detection and extraction</li>
 <li>Feature matching and geometric verification</li>
 <li>Structure and motion reconstruction</li>
 </ol>
-</div></blockquote>
 <p>COLMAP reflects these stages in different modules, that can be combined
 depending on the application. More information on Structure-from-Motion in
 general and the algorithms in COLMAP can be found in <a class="reference internal" href="bibliography.html#schoenberger16" id="id2">[schoenberger16]</a>.</p>
@@ -202,7 +203,7 @@ same zoom-factor and lens. A camera defines the intrinsic projection model in
 COLMAP. A single camera can take multiple images with the same resolution,
 intrinsic parameters, and distortion characteristics. The term <strong>image</strong> is
 associated with a bitmap file, e.g., a JPEG or PNG file on disk. COLMAP detects
-<strong>keypoints</strong> in each each image whose appearance is described by numerical
+<strong>keypoints</strong> in each image whose appearance is described by numerical
 <strong>descriptors</strong>. Pure appearance-based correspondences between
 keypoints/descriptors are defined by <strong>matches</strong>, while <strong>inlier matches</strong> are
 geometrically verified and used for the reconstruction procedure.</p>
@@ -218,19 +219,22 @@ relative file path. For lather processing, such as image undistortion or dense
 reconstruction, the relative folder structure should be preserved. COLMAP does
 not modify the input images or directory and all extracted data is stored in a
 single, self-contained SQLite database file (see <a class="reference internal" href="database.html"><em>Database Format</em></a>).</p>
-<p>The first step is to create a new project by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">New</span> <span class="pre">project</span></code>. In
-this dialog, you must select where to store the database and the folder that
-contains the images. For convenience, you can save the entire project settings
-to a configuration file by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">project</span></code>. The project
-configuration stores the absolute path information of the database and image
-folder in addition to any other parameter settings. If you decide to move the
-database or image folder, you must change the paths accordingly by creating a
-new project. Alternatively, the resulting <cite>.ini</cite> configuration file can be
-directly modified in a text editor of your choice. To reopen an existing
+<p>The first step is to start the graphical user interface of COLMAP by running the
+pre-built binaries (Windows: <cite>COLMAP.bat</cite>, Mac: <cite>COLMAP.app</cite>) or by executing
+<code class="docutils literal"><span class="pre">./src/exe/colmap</span></code>. Next, create a new project by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">New</span>
+<span class="pre">project</span></code>. In this dialog, you must select where to store the database and the
+folder that contains the input images. For convenience, you can save the entire
+project settings to a configuration file by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">project</span></code>.
+The project configuration stores the absolute path information of the database
+and image folder in addition to any other parameter settings. If you decide to
+move the database or image folder, you must change the paths accordingly by
+creating a new project. Alternatively, the resulting <cite>.ini</cite> configuration file
+can be directly modified in a text editor of your choice. To reopen an existing
 project, you can simply open the configuration file by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Open</span>
-<span class="pre">project</span></code>. Note that all COLMAP executables can be started from the command-line
-by either specifying individual settings as command-line arguments or by
-providing the path to the project configuration file.</p>
+<span class="pre">project</span></code> and all parameter settings should be recovered. Note that all COLMAP
+executables can be started from the command-line by either specifying individual
+settings as command-line arguments or by providing the path to the project
+configuration file (see <a class="reference internal" href="#interface"><span>Interface</span></a>).</p>
 <p>An example folder structure could look like this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>/path/to/project/...
 +── images
@@ -243,7 +247,8 @@ providing the path to the project configuration file.</p>
 </pre></div>
 </div>
 <p>In this example, you would select <cite>/path/to/project/images</cite> as the image folder
-path and <cite>/path/to/project/database.db</cite> as the database file path.</p>
+path, <cite>/path/to/project/database.db</cite> as the database file path, and save the
+project configuration to <cite>/path/to/project/project.ini</cite>.</p>
 </div>
 <div class="section" id="feature-detection-and-extraction">
 <h2>Feature Detection and Extraction<a class="headerlink" href="#feature-detection-and-extraction" title="Permalink to this headline">¶</a></h2>
@@ -262,15 +267,15 @@ is recommended to share intrinsics between all images. Note that the program
 will exit ungracefully if the same camera model is shared among all images but
 not all images have the same size or EXIF focal length. If you have several
 groups of images that share the same intrinsic camera parameters, you can easily
-modify the camera models at a later point (see <a class="reference internal" href="#database-management"><span>Database Management</span></a>). If in doubt what to choose in this step, simply stick
+modify the camera models at a later point as well (see <a class="reference internal" href="#database-management"><span>Database Management</span></a>). If in doubt what to choose in this step, simply stick
 to the default parameters.</p>
 <p>You can either detect and extract new features from the images or import
-existing features from text files. COLMAP extracts <a class="reference internal" href="bibliography.html#lowe04" id="id3">[lowe04]</a> features either on
-the GPU or the CPU. The GPU version requires an attached display, while the CPU
-version is recommended for use on a server. In general, the GPU version is
-favorable as it has a customized feature detection mode that often produces
-higher quality features in the case of high contrast images. If you import
-existing features, every image must have a text file next to it (e.g.,
+existing features from text files. COLMAP extracts SIFT <a class="reference internal" href="bibliography.html#lowe04" id="id3">[lowe04]</a> features
+either on the GPU or the CPU. The GPU version requires an attached display,
+while the CPU version is recommended for use on a server. In general, the GPU
+version is favorable as it has a customized feature detection mode that often
+produces higher quality features in the case of high contrast images. If you
+import existing features, every image must have a text file next to it (e.g.,
 <cite>/path/to/image1.jpg</cite> and <cite>/path/to/image1.jpg.txt</cite>) in the following format:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>NUM_FEATURES 128
 X Y SCALE ORIENTATION D_1 D_2 D_3 ... D_128
@@ -299,7 +304,7 @@ reviewed/managed in the database management tool (see <a class="reference intern
 <h2>Feature Matching and Geometric Verification<a class="headerlink" href="#feature-matching-and-geometric-verification" title="Permalink to this headline">¶</a></h2>
 <p>In the second step, feature matching and geometric verification finds
 correspondences between the feature points in different images.</p>
-<p>Please, choose <code class="docutils literal"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Match</span> <span class="pre">features</span></code> and select on of the provided
+<p>Please, choose <code class="docutils literal"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Match</span> <span class="pre">features</span></code> and select one of the provided
 matching modes, that are intended for different input scenarios:</p>
 <ul>
 <li><p class="first"><strong>Exhaustive Matching</strong>: If the number of images in your dataset is
@@ -387,8 +392,8 @@ your computer might degrade significantly during the matching process. If your
 system has multiple CUDA-enabled GPUs, you can select specific GPUs with the
 <cite>gpu_index</cite> option.</p>
 </div>
-<div class="section" id="structure-and-motion-reconstruction">
-<h2>Structure and motion reconstruction<a class="headerlink" href="#structure-and-motion-reconstruction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="incremental-3d-reconstruction">
+<h2>Incremental 3D Reconstruction<a class="headerlink" href="#incremental-3d-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>After producing the scene graph in the previous two steps, you can start the
 incremental reconstruction process by choosing <code class="docutils literal"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Start</span></code>.
 COLMAP first loads all extracted data from the database into memory and seeds
@@ -421,12 +426,12 @@ format by choosing <code class="docutils literal"><span class="pre">File</span> 
 exported in the selected folder using separate text files for the reconstructed
 cameras, images, and points. When exporting in COLMAP&#8217;s data format, you can re-
 import the reconstruction for later visualization, image undistortion, or to
-continue an existing reconstruction from where it left off. To import a model,
-choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span></code> and select the export folder path. Alternatively, you
-can also export the model in various other formats, such as Bundler, VisualSfM
-<a class="footnote-reference" href="#f1" id="id7">[1]</a>, PLY, or VRML by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">as...</span></code>. COLMAP can visualize
-plain PLY point cloud files with RGB information by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span>
-<span class="pre">From...</span></code>.</p>
+continue an existing reconstruction from where it left off (e.g., after
+importing and matching new images). To import a model, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span></code>
+and select the export folder path. Alternatively, you can also export the model
+in various other formats, such as Bundler, VisualSfM <a class="footnote-reference" href="#f1" id="id7">[1]</a>, PLY, or VRML by
+choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">as...</span></code>. COLMAP can visualize plain PLY point cloud
+files with RGB information by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">From...</span></code>.</p>
 <p>For post-processing by dense reconstruction software, such as CMVS/PMVS
 <a class="reference internal" href="bibliography.html#furukawa10" id="id8">[furukawa10]</a> or CMP-MVS <a class="reference internal" href="bibliography.html#jancosek11" id="id9">[jancosek11]</a>, please choose <code class="docutils literal"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Undistort</span>
 <span class="pre">images</span></code> and select the appropriate format. To run CMVS and PMVS2, please run
@@ -439,15 +444,22 @@ the following commands:</p>
 <p>where <cite>/path/to/undistortion/folder</cite> is the folder selected in the undistortion
 dialog. Make sure not to forget the trailing slash in
 <cite>/path/to/undistortion/folder/pmvs/</cite> in the above command-line arguments.</p>
+<p>There is a number of external software packages that support COLMAP output:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.di.ens.fr/pmvs/">CMVS/PMVS</a> <a class="reference internal" href="bibliography.html#furukawa10" id="id10">[furukawa10]</a></li>
+<li><a class="reference external" href="http://ptak.felk.cvut.cz/sfmservice/websfm.pl">CMP-MVS</a> <a class="reference internal" href="bibliography.html#jancosek11" id="id11">[jancosek11]</a></li>
+<li><a class="reference external" href="https://github.com/manhofer/Line3Dpp">Line3D++</a> <a class="reference internal" href="bibliography.html#hofer16" id="id12">[hofer16]</a>.</li>
+</ul>
 </div>
 <div class="section" id="database-management">
-<span id="id10"></span><h2>Database Management<a class="headerlink" href="#database-management" title="Permalink to this headline">¶</a></h2>
-<p>You can review and manage the import cameras, images, and feature matches in the
-database management tool. Choose <code class="docutils literal"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Manage</span> <span class="pre">database</span></code>. In the
+<span id="id13"></span><h2>Database Management<a class="headerlink" href="#database-management" title="Permalink to this headline">¶</a></h2>
+<p>You can review and manage the imported cameras, images, and feature matches in
+the database management tool. Choose <code class="docutils literal"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Manage</span> <span class="pre">database</span></code>. In the
 opening dialog, you can see the list of imported images and cameras. You can
 view the features and matches for each image by clicking <code class="docutils literal"><span class="pre">Show</span> <span class="pre">image</span></code> and
-<code class="docutils literal"><span class="pre">Show</span> <span class="pre">matches</span></code>. Note that any changes to the database are only effective after
-clicking <code class="docutils literal"><span class="pre">Save</span></code>.</p>
+<code class="docutils literal"><span class="pre">Show</span> <span class="pre">matches</span></code>. Individual entries in the database tables can be modified by
+double clicking specific cells. Note that any changes to the database are only
+effective after clicking <code class="docutils literal"><span class="pre">Save</span></code>.</p>
 <p>To share intrinsic camera parameters between arbitrary groups of images, select
 a single or multiple images, choose <code class="docutils literal"><span class="pre">Set</span> <span class="pre">camera</span></code> and set the <cite>camera_id</cite>,
 which corresponds to the unique <cite>camera_id</cite> column in the cameras table. You can
@@ -465,13 +477,15 @@ your own features and matches to only use COLMAP&#8217;s incremental reconstruct
 algorithm.</p>
 </div>
 <div class="section" id="graphical-and-command-line-interface">
-<h2>Graphical and Command-line Interface<a class="headerlink" href="#graphical-and-command-line-interface" title="Permalink to this headline">¶</a></h2>
-<p>Most of COLMAP&#8217;s features are accessible from the graphical and the command-line
-interface. All binaries accept a <code class="docutils literal"><span class="pre">./bin</span> <span class="pre">-h</span></code> (help) argument to list the
-available options. You can provide the options directly as command-line
+<span id="interface"></span><h2>Graphical and Command-line Interface<a class="headerlink" href="#graphical-and-command-line-interface" title="Permalink to this headline">¶</a></h2>
+<p>Most of COLMAP&#8217;s features are accessible from both the graphical and the
+command-line interface. All binaries accept a <code class="docutils literal"><span class="pre">./bin</span> <span class="pre">-h</span></code> (help) argument to
+list the available options. You can provide the options directly as command-line
 arguments or you can provide a <cite>.ini</cite> project configuration file containing the
-options as the <code class="docutils literal"><span class="pre">./bin</span> <span class="pre">--project_path</span></code> argument. To start the GUI application,
-please execute <cite>src/exe/colmap</cite>.</p>
+options as the <code class="docutils literal"><span class="pre">./bin</span> <span class="pre">--project_path</span> <span class="pre">path/to/project.ini</span></code> argument. To start
+the GUI application, please execute <code class="docutils literal"><span class="pre">./src/exe/colmap</span></code> or directly specify a
+project configuration as <code class="docutils literal"><span class="pre">./src/exe/colmap</span> <span class="pre">--project_path</span> <span class="pre">path/to/project.ini</span></code>
+to avoid tedious selection in the GUI.</p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
