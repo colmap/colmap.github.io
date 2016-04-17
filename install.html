@@ -82,7 +82,7 @@
             
             
                 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Installation</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mac">Mac</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
@@ -92,6 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
@@ -117,7 +118,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -145,44 +146,44 @@
 <a class="reference external" href="http://people.inf.ethz.ch/jschoenb/colmap/">http://people.inf.ethz.ch/jschoenb/colmap/</a> or build the source code manually. It
 builds on all major platforms (Linux, Mac, Windows) with minimal effort. First,
 checkout the latest source code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>git clone https://github.com/colmap/colmap
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">colmap</span>
 </pre></div>
 </div>
 <div class="section" id="linux">
 <h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
 <p><em>Recommended dependencies:</em> CUDA.</p>
 <p>Dependencies from default Ubuntu 14.04 repositories:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>sudo apt-get install \
-    cmake \
-    build-essential \
-    libboost-all-dev \
-    libeigen3-dev \
-    libfreeimage-dev \
-    libgoogle-glog-dev \
-    libgflags-dev \
-    libglew-dev \
-    freeglut3-dev \
-    qt5-default \
-    libxmu-dev \
-    libxi-dev
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> \
+    <span class="n">cmake</span> \
+    <span class="n">build</span><span class="o">-</span><span class="n">essential</span> \
+    <span class="n">libboost</span><span class="o">-</span><span class="nb">all</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libeigen3</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libfreeimage</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libgoogle</span><span class="o">-</span><span class="n">glog</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libgflags</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libglew</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">freeglut3</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">qt5</span><span class="o">-</span><span class="n">default</span> \
+    <span class="n">libxmu</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libxi</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
 <p>Install <a class="reference external" href="http://ceres-solver.org/">Ceres Solver</a>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>sudo apt-get install libatlas-base-dev libsuitesparse-dev
-git clone https://ceres-solver.googlesource.com/ceres-solver
-cd ceres-solver
-mkdir build
-cd build
-cmake ..
-make -j
-sudo make install
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libatlas</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">dev</span> <span class="n">libsuitesparse</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ceres</span><span class="o">-</span><span class="n">solver</span><span class="o">.</span><span class="n">googlesource</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ceres</span><span class="o">-</span><span class="n">solver</span>
+<span class="n">cd</span> <span class="n">ceres</span><span class="o">-</span><span class="n">solver</span>
+<span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">..</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>Configure and compile COLMAP:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>cd path/to/colmap
-mkdir build
-cmake ..
-make -j
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span>
+<span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">..</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j</span>
 </pre></div>
 </div>
 </div>
@@ -190,31 +191,31 @@ make -j
 <h2>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h2>
 <p><em>Recommended dependencies:</em> CUDA.</p>
 <p>Dependencies from <a class="reference external" href="http://brew.sh/">Homebrew</a>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>brew tap homebrew/science
-brew install \
-    cmake \
-    boost \
-    eigen \
-    freeimage \
-    glog \
-    gflags \
-    suite-sparse \
-    ceres-solver \
-    qt5 \
-    glew
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">tap</span> <span class="n">homebrew</span><span class="o">/</span><span class="n">science</span>
+<span class="n">brew</span> <span class="n">install</span> \
+    <span class="n">cmake</span> \
+    <span class="n">boost</span> \
+    <span class="n">eigen</span> \
+    <span class="n">freeimage</span> \
+    <span class="n">glog</span> \
+    <span class="n">gflags</span> \
+    <span class="n">suite</span><span class="o">-</span><span class="n">sparse</span> \
+    <span class="n">ceres</span><span class="o">-</span><span class="n">solver</span> \
+    <span class="n">qt5</span> \
+    <span class="n">glew</span>
 </pre></div>
 </div>
 <p>Create <cite>LocalConfig.cmake</cite> in COLMAP base directory with:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>set(Qt5_CMAKE_DIR &quot;/usr/local/opt/qt5/lib/cmake&quot;)
+<div class="highlight-default"><div class="highlight"><pre><span></span>set(Qt5_CMAKE_DIR &quot;/usr/local/opt/qt5/lib/cmake&quot;)
 set(Qt5Core_DIR ${Qt5_CMAKE_DIR}/Qt5Core)
 set(Qt5OpenGL_DIR ${Qt5_CMAKE_DIR}/Qt5OpenGL)
 </pre></div>
 </div>
 <p>Configure and compile COLMAP:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>cd path/to/colmap
-mkdir build
-cmake ..
-make -j
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span>
+<span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">..</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j</span>
 </pre></div>
 </div>
 </div>
@@ -229,16 +230,16 @@ confirmed to compile COLMAP without any issues.</p>
 <div class="section" id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
 <p>You need Python and Sphinx to build the HTML documentation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>cd path/to/colmap/doc
-sudo apt-get install python
-pip install sphinx
-make html
-open _build/html/index.html
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">doc</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span>
+<span class="n">make</span> <span class="n">html</span>
+<span class="nb">open</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
 <p>Alternatively, you can build the documentation as PDF, EPUB, etc.:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>make latexpdf
-open _build/pdf/COLMAP.pdf
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">latexpdf</span>
+<span class="nb">open</span> <span class="n">_build</span><span class="o">/</span><span class="n">pdf</span><span class="o">/</span><span class="n">COLMAP</span><span class="o">.</span><span class="n">pdf</span>
 </pre></div>
 </div>
 </div>

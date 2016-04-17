@@ -84,13 +84,14 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Database Format</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Database Format</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#cameras-and-images">Cameras and Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#keypoints-and-descriptors">Keypoints and Descriptors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matches">Matches</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
@@ -116,7 +117,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -192,7 +193,7 @@ verification in the <cite>inlier_matches</cite> table. COLMAP uses only the data
 <cite>inlier_matches</cite> for reconstruction. Every entry in the two tables stores the
 feature matches between two unique images, where the <cite>pair_id</cite> is the row-major,
 linear index in the upper-triangular match matrix, generated as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">image_ids_to_pair_id</span><span class="p">(</span><span class="n">image_id1</span><span class="p">,</span> <span class="n">image_id2</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">image_ids_to_pair_id</span><span class="p">(</span><span class="n">image_id1</span><span class="p">,</span> <span class="n">image_id2</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">image_id1</span> <span class="o">&gt;</span> <span class="n">image_id2</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">2147483647</span> <span class="o">*</span> <span class="n">image_id2</span> <span class="o">+</span> <span class="n">image_id1</span>
     <span class="k">else</span><span class="p">:</span>
@@ -200,7 +201,7 @@ linear index in the upper-triangular match matrix, generated as follows:</p>
 </pre></div>
 </div>
 <p>and image identifiers can be uniquely determined from the <cite>pair_id</cite> as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pair_id_to_image_ids</span><span class="p">(</span><span class="n">pair_id</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pair_id_to_image_ids</span><span class="p">(</span><span class="n">pair_id</span><span class="p">):</span>
     <span class="n">image_id2</span> <span class="o">=</span> <span class="n">pair_id</span> <span class="o">%</span> <span class="mi">2147483647</span>
     <span class="n">image_id1</span> <span class="o">=</span> <span class="p">(</span><span class="n">pair_id</span> <span class="o">-</span> <span class="n">image_id2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2147483647</span>
     <span class="k">return</span> <span class="n">image_id1</span><span class="p">,</span> <span class="n">image_id2</span>

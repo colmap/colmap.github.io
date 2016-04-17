@@ -83,7 +83,7 @@
             
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Tutorial</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#structure-from-motion">Structure-from-Motion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#preface">Preface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#terminology">Terminology</a></li>
@@ -98,6 +98,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
@@ -123,7 +124,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -218,7 +219,7 @@ separate any files that are not images. Images are identified uniquely by their
 relative file path. For lather processing, such as image undistortion or dense
 reconstruction, the relative folder structure should be preserved. COLMAP does
 not modify the input images or directory and all extracted data is stored in a
-single, self-contained SQLite database file (see <a class="reference internal" href="database.html"><em>Database Format</em></a>).</p>
+single, self-contained SQLite database file (see <a class="reference internal" href="database.html"><span class="doc">Database Format</span></a>).</p>
 <p>The first step is to start the graphical user interface of COLMAP by running the
 pre-built binaries (Windows: <cite>COLMAP.bat</cite>, Mac: <cite>COLMAP.app</cite>) or by executing
 <code class="docutils literal"><span class="pre">./src/exe/colmap</span></code>. Next, create a new project by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">New</span>
@@ -234,9 +235,9 @@ project, you can simply open the configuration file by choosing <code class="doc
 <span class="pre">project</span></code> and all parameter settings should be recovered. Note that all COLMAP
 executables can be started from the command-line by either specifying individual
 settings as command-line arguments or by providing the path to the project
-configuration file (see <a class="reference internal" href="#interface"><span>Interface</span></a>).</p>
+configuration file (see <a class="reference internal" href="#interface"><span class="std std-ref">Interface</span></a>).</p>
 <p>An example folder structure could look like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>/path/to/project/...
+<div class="highlight-default"><div class="highlight"><pre><span></span>/path/to/project/...
 +── images
 │   +── image1.jpg
 │   +── image2.jpg
@@ -267,7 +268,7 @@ is recommended to share intrinsics between all images. Note that the program
 will exit ungracefully if the same camera model is shared among all images but
 not all images have the same size or EXIF focal length. If you have several
 groups of images that share the same intrinsic camera parameters, you can easily
-modify the camera models at a later point as well (see <a class="reference internal" href="#database-management"><span>Database Management</span></a>). If in doubt what to choose in this step, simply stick
+modify the camera models at a later point as well (see <a class="reference internal" href="#database-management"><span class="std std-ref">Database Management</span></a>). If in doubt what to choose in this step, simply stick
 to the default parameters.</p>
 <p>You can either detect and extract new features from the images or import
 existing features from text files. COLMAP extracts SIFT <a class="reference internal" href="bibliography.html#lowe04" id="id3">[lowe04]</a> features
@@ -277,10 +278,10 @@ version is favorable as it has a customized feature detection mode that often
 produces higher quality features in the case of high contrast images. If you
 import existing features, every image must have a text file next to it (e.g.,
 <cite>/path/to/image1.jpg</cite> and <cite>/path/to/image1.jpg.txt</cite>) in the following format:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>NUM_FEATURES 128
-X Y SCALE ORIENTATION D_1 D_2 D_3 ... D_128
-...
-X Y SCALE ORIENTATION D_1 D_2 D_3 ... D_128
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NUM_FEATURES</span> <span class="mi">128</span>
+<span class="n">X</span> <span class="n">Y</span> <span class="n">SCALE</span> <span class="n">ORIENTATION</span> <span class="n">D_1</span> <span class="n">D_2</span> <span class="n">D_3</span> <span class="o">...</span> <span class="n">D_128</span>
+<span class="o">...</span>
+<span class="n">X</span> <span class="n">Y</span> <span class="n">SCALE</span> <span class="n">ORIENTATION</span> <span class="n">D_1</span> <span class="n">D_2</span> <span class="n">D_3</span> <span class="o">...</span> <span class="n">D_128</span>
 </pre></div>
 </div>
 <p>where <cite>X, Y, SCALE, ORIENTATION</cite> are floating point numbers and <cite>D_1...D_128</cite>
@@ -289,7 +290,7 @@ one line per feature. Note that by convention the upper left corner of an image
 has coordinate <cite>(0, 0)</cite> and the center of the upper left most pixel has
 coordinate <cite>(0.5, 0.5)</cite>. If you must  import features for large image
 collections, it is much more efficient to directly access the database with your
-favorite scripting language (see <a class="reference internal" href="database.html#database-format"><span>Database Format</span></a>).</p>
+favorite scripting language (see <a class="reference internal" href="database.html#database-format"><span class="std std-ref">Database Format</span></a>).</p>
 <p>If you are done setting all options, choose <code class="docutils literal"><span class="pre">Extract</span></code> and wait for the
 extraction to finish or cancel. If you cancel during the extraction process, the
 next time you start extracting images for the same project, COLMAP automatically
@@ -297,8 +298,8 @@ continues where it left off. This also allows you to add images to an existing
 project/reconstruction. In this case, be sure to verify the camera parameters
 when using shared intrinsics.</p>
 <p>All extracted data will be stored in the database file and can be
-reviewed/managed in the database management tool (see <a class="reference internal" href="#database-management"><span>Database Management</span></a>) or, for experts, directly modified using SQLite (see
-<a class="reference internal" href="database.html#database-format"><span>Database Format</span></a>).</p>
+reviewed/managed in the database management tool (see <a class="reference internal" href="#database-management"><span class="std std-ref">Database Management</span></a>) or, for experts, directly modified using SQLite (see
+<a class="reference internal" href="database.html#database-format"><span class="std std-ref">Database Format</span></a>).</p>
 </div>
 <div class="section" id="feature-matching-and-geometric-verification">
 <h2>Feature Matching and Geometric Verification<a class="headerlink" href="#feature-matching-and-geometric-verification" title="Permalink to this headline">¶</a></h2>
@@ -325,7 +326,7 @@ vocabulary tree, where every N-th image (<cite>loop_detection_period</cite>) is 
 against its visually most similar images (<cite>loop_detection_num_images</cite>). Note
 that image file names must be ordered sequentially (e.g., <cite>image0001.jpg</cite>,
 <cite>image0002.jpg</cite>, etc.). You can verify the correct order in the database
-management tool (see <a class="reference internal" href="database.html#database-format"><span>Database Format</span></a>). Note that
+management tool (see <a class="reference internal" href="database.html#database-format"><span class="std std-ref">Database Format</span></a>). Note that
 loop detection requires a pre-trained vocabulary tree, that can be downloaded
 from <a class="reference external" href="http://people.inf.ethz.ch/jschoenb/colmap/">http://people.inf.ethz.ch/jschoenb/colmap/</a>.</p>
 </li>
@@ -344,27 +345,27 @@ location information is available, this is the recommended matching mode.</p>
 <li><p class="first"><strong>Custom Matching</strong>: This mode allows to specify individual image pairs for
 matching or to import individual feature matches. To specify image pairs, you
 have to provide a text file with one image pair per line:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>image1.jpg image2.jpg
-image1.jpg image3.jpg
-...
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">image1</span><span class="o">.</span><span class="n">jpg</span> <span class="n">image2</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">image1</span><span class="o">.</span><span class="n">jpg</span> <span class="n">image3</span><span class="o">.</span><span class="n">jpg</span>
+<span class="o">...</span>
 </pre></div>
 </div>
 <p>where <cite>image1.jpg</cite> is the relative path in the image folder. You have two
 options to import individual feature matches. Either raw feature matches,
 which are not geometrically verified or already geometrically verified feature
 matches. In both cases, the expected format is:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>image1.jpg image2.jpg
-0 1
-1 2
-3 4
-&lt;empty-line&gt;
-image1.jpg image3.jpg
-0 1
-1 2
-3 4
-4 5
-&lt;empty-line&gt;
-...
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">image1</span><span class="o">.</span><span class="n">jpg</span> <span class="n">image2</span><span class="o">.</span><span class="n">jpg</span>
+<span class="mi">0</span> <span class="mi">1</span>
+<span class="mi">1</span> <span class="mi">2</span>
+<span class="mi">3</span> <span class="mi">4</span>
+<span class="o">&lt;</span><span class="n">empty</span><span class="o">-</span><span class="n">line</span><span class="o">&gt;</span>
+<span class="n">image1</span><span class="o">.</span><span class="n">jpg</span> <span class="n">image3</span><span class="o">.</span><span class="n">jpg</span>
+<span class="mi">0</span> <span class="mi">1</span>
+<span class="mi">1</span> <span class="mi">2</span>
+<span class="mi">3</span> <span class="mi">4</span>
+<span class="mi">4</span> <span class="mi">5</span>
+<span class="o">&lt;</span><span class="n">empty</span><span class="o">-</span><span class="n">line</span><span class="o">&gt;</span>
+<span class="o">...</span>
 </pre></div>
 </div>
 <p>where <cite>image1.jpg</cite> is the relative path in the image folder and the pairs of
@@ -385,8 +386,8 @@ low. This also enables to match additional images imported after an initial
 matching and it enables to combine different matching modes for the same
 dataset.</p>
 <p>All extracted data will be stored in the database file and can be
-reviewed/managed in the database management tool (see <a class="reference internal" href="#database-management"><span>Database Management</span></a>) or, for experts, directly modified using SQLite (see
-<a class="reference internal" href="database.html#database-format"><span>Database Format</span></a>).</p>
+reviewed/managed in the database management tool (see <a class="reference internal" href="#database-management"><span class="std std-ref">Database Management</span></a>) or, for experts, directly modified using SQLite (see
+<a class="reference internal" href="database.html#database-format"><span class="std std-ref">Database Format</span></a>).</p>
 <p>Note that feature matching requires a GPU and that the display performance of
 your computer might degrade significantly during the matching process. If your
 system has multiple CUDA-enabled GPUs, you can select specific GPUs with the
@@ -436,9 +437,9 @@ files with RGB information by choosing <code class="docutils literal"><span clas
 <a class="reference internal" href="bibliography.html#furukawa10" id="id8">[furukawa10]</a> or CMP-MVS <a class="reference internal" href="bibliography.html#jancosek11" id="id9">[jancosek11]</a>, please choose <code class="docutils literal"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Undistort</span>
 <span class="pre">images</span></code> and select the appropriate format. To run CMVS and PMVS2, please run
 the following commands:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>./path/to/cmvs /path/to/undistortion/folder/pmvs/
-./path/to/genOption /path/to/undistortion/folder/pmvs/
-./path/to/pmvs2 /path/to/undistortion/folder/pmvs/
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">cmvs</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">undistortion</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">pmvs</span><span class="o">/</span>
+<span class="o">./</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">genOption</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">undistortion</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">pmvs</span><span class="o">/</span>
+<span class="o">./</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">pmvs2</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">undistortion</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">pmvs</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>where <cite>/path/to/undistortion/folder</cite> is the folder selected in the undistortion
@@ -471,7 +472,7 @@ the focal length, it is recommended to set this value to <cite>1.25 *
 max(width_in_px, height_in_px)</cite>.</p>
 <p>The database management tool has only limited functionality and, for full
 control over the data, you must directly modify the SQLite database (see
-<a class="reference internal" href="database.html#database-format"><span>Database Format</span></a>). By accessing the database directly,
+<a class="reference internal" href="database.html#database-format"><span class="std std-ref">Database Format</span></a>). By accessing the database directly,
 you can use COLMAP only for feature extraction and matching or you can import
 your own features and matches to only use COLMAP&#8217;s incremental reconstruction
 algorithm.</p>

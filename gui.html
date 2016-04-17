@@ -31,7 +31,7 @@
 
   
     <link rel="top" title="COLMAP 1.0 documentation" href="index.html"/>
-        <link rel="next" title="Contribution" href="contribution.html"/>
+        <link rel="next" title="Frequently Asked Questions" href="faq.html"/>
         <link rel="prev" title="Database Format" href="database.html"/> 
 
   
@@ -85,13 +85,14 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Graphical User Interface</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Graphical User Interface</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#model-viewer-controls">Model Viewer Controls</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#render-options">Render Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-screenshots">Create Screenshots</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-screencast">Create Screencast</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
@@ -117,7 +118,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -185,7 +186,7 @@ trajectory in the viewer, which is rendered in light blue. Choose <code class="d
 <span class="pre">movie</span></code>, if you are done creating the trajectory. The output directory then
 contains the individual frames of the video capture, which can be assembled to a
 movie using <a class="reference external" href="https://www.ffmpeg.org/">FFMPEG</a> with the following command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>ffmpeg -i frame%06d.png -r 30 -vf scale=1680:1050 movie.mp4
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ffmpeg</span> <span class="o">-</span><span class="n">i</span> <span class="n">frame</span><span class="o">%</span><span class="mi">06</span><span class="n">d</span><span class="o">.</span><span class="n">png</span> <span class="o">-</span><span class="n">r</span> <span class="mi">30</span> <span class="o">-</span><span class="n">vf</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1680</span><span class="p">:</span><span class="mi">1050</span> <span class="n">movie</span><span class="o">.</span><span class="n">mp4</span>
 </pre></div>
 </div>
 </div>
@@ -198,7 +199,7 @@ movie using <a class="reference external" href="https://www.ffmpeg.org/">FFMPEG<
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="contribution.html" class="btn btn-neutral float-right" title="Contribution" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="faq.html" class="btn btn-neutral float-right" title="Frequently Asked Questions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="database.html" class="btn btn-neutral" title="Database Format" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
