@@ -435,16 +435,22 @@ choosing <code class="docutils literal"><span class="pre">File</span> <span clas
 files with RGB information by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">From...</span></code>.</p>
 <p>For post-processing by dense reconstruction software, such as CMVS/PMVS
 <a class="reference internal" href="bibliography.html#furukawa10" id="id8">[furukawa10]</a> or CMP-MVS <a class="reference internal" href="bibliography.html#jancosek11" id="id9">[jancosek11]</a>, please choose <code class="docutils literal"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Undistort</span>
-<span class="pre">images</span></code> and select the appropriate format. To run CMVS and PMVS2, please run
-the following commands:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">cmvs</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">undistortion</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">pmvs</span><span class="o">/</span>
-<span class="o">./</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">genOption</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">undistortion</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">pmvs</span><span class="o">/</span>
-<span class="o">./</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">pmvs2</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">undistortion</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">pmvs</span><span class="o">/</span>
+<span class="pre">images</span></code> and select the appropriate format. To run PMVS2, please execute the
+following commands:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">pmvs2</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">undistortion</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">pmvs</span><span class="o">/</span> <span class="n">option</span><span class="o">-</span><span class="nb">all</span>
 </pre></div>
 </div>
 <p>where <cite>/path/to/undistortion/folder</cite> is the folder selected in the undistortion
 dialog. Make sure not to forget the trailing slash in
 <cite>/path/to/undistortion/folder/pmvs/</cite> in the above command-line arguments.</p>
+<p>For large datasets, you probably want to first run CMVS to cluster the scene
+into more manageable parts and then run PMVS2:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">./</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">cmvs</span><span class="o">-</span><span class="n">pmvs</span><span class="o">-</span><span class="n">binaries</span>
+<span class="o">./</span><span class="n">cmvs</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">undistortion</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">pmvs</span><span class="o">/</span>
+<span class="o">./</span><span class="n">genOption</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">undistortion</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">pmvs</span><span class="o">/</span>
+<span class="n">sh</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">undistortion</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">pmvs</span><span class="o">/</span><span class="n">pmvs</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
 <p>There is a number of external software packages that support COLMAP output:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://www.di.ens.fr/pmvs/">CMVS/PMVS</a> <a class="reference internal" href="bibliography.html#furukawa10" id="id10">[furukawa10]</a></li>
