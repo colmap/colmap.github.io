@@ -31,7 +31,7 @@
 
   
     <link rel="top" title="COLMAP 1.0 documentation" href="index.html"/>
-        <link rel="next" title="Contribution" href="contribution.html"/>
+        <link rel="next" title="Datasets" href="datasets.html"/>
         <link rel="prev" title="Graphical User Interface" href="gui.html"/> 
 
   
@@ -91,8 +91,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#share-intrinsics">Share intrinsics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fix-intrinsics">Fix intrinsics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#principal-point-refinement">Principal point refinement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#increase-number-of-3d-points">Increase number of 3D points</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
@@ -215,6 +217,15 @@ can try to refine the principal point in global bundle adjustment, especially
 when sharing intrinsic parameters between multiple images. Please, refer to
 <a class="reference internal" href="#faq-fix-intrinsics"><span class="std std-ref">Fix intrinsics</span></a> for more information.</p>
 </div>
+<div class="section" id="increase-number-of-3d-points">
+<h2>Increase number of 3D points<a class="headerlink" href="#increase-number-of-3d-points" title="Permalink to this headline">¶</a></h2>
+<p>By default, COLMAP ignores two-view feature tracks in triangulation, resulting
+in fewer 3D points than possible. Triangulation of two-view tracks can in rare
+cases improve the stability of sparse image collections by providing additional
+constraints in bundle adjustment. To also triangulate two-view tracks, unselect
+the option <code class="docutils literal"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Reconstruction</span> <span class="pre">options</span> <span class="pre">&gt;</span> <span class="pre">Triangulation</span> <span class="pre">&gt;</span>
+<span class="pre">ignore_two_view_tracks</span></code>.</p>
+</div>
 </div>
 
 
@@ -224,7 +235,7 @@ when sharing intrinsic parameters between multiple images. Please, refer to
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="contribution.html" class="btn btn-neutral float-right" title="Contribution" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="datasets.html" class="btn btn-neutral float-right" title="Datasets" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="gui.html" class="btn btn-neutral" title="Graphical User Interface" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
