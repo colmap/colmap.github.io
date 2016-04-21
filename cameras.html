@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; COLMAP 1.0 documentation</title>
+  <title>Camera Models &mdash; COLMAP 1.0 documentation</title>
   
 
   
@@ -31,7 +30,9 @@
   
 
   
-    <link rel="top" title="COLMAP 1.0 documentation" href="index.html"/> 
+    <link rel="top" title="COLMAP 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Output Format" href="format.html"/>
+        <link rel="prev" title="Database Format" href="database.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -80,11 +81,11 @@
           
             
             
-                <ul>
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Camera Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
@@ -114,7 +115,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -122,9 +123,11 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li></li>
+    <li>Camera Models</li>
       <li class="wy-breadcrumbs-aside">
         
+          
+            <a href="_sources/cameras.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -134,17 +137,62 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="camera-models">
+<h1>Camera Models<a class="headerlink" href="#camera-models" title="Permalink to this headline">¶</a></h1>
+<p>COLMAP implements different camera models of varying complexity. If no intrinsic
+parameters are known a priori, it is generally best to use the simplest camera
+model that is complex enough to model the distortion effects:</p>
+<ul class="simple">
+<li><em>SimplePinholeCameraModel</em>, <em>PinholeCameraModel</em>: Use these camera models, if
+your images are undistorted a priori. Note that even in the case of
+undistorted images, COLMAP could try to improve the intrinsics with a more
+complex camera model.</li>
+<li><em>SimpleRadialCameraModel</em>, <em>RadialCameraModel</em>: This should be the camera
+model of choice, if the intrinsics are unknown and every image has a different
+camera calibration, e.g., in the case of Internet photos. Both models are
+simplified versions of the <em>OpenCVCameraModel</em> only modeling radial distortion
+effects with one and two parameters, respectively.</li>
+<li><em>OpenCVCameraModel</em>, <em>FullOpenCVCameraModel</em>: Use these camera models, if you
+know the calibration parameters a priori. You can also try to let COLMAP
+estimate the parameters, if you share the intrinsics for multiple images. Note
+that the automatic estimation of parameters will most likely fail, if every
+image has a separate set of intrinsic parameters.</li>
+<li><em>OpenCVFisheyeCameraModel</em>: Use this camera model for fisheye lenses and note
+that all other models are not really capable of modeling the distortion
+effects of fisheye lenses.</li>
+</ul>
+<p>You can inspect the estimated intrinsic parameters by double-clicking specific
+images in the model viewer or by exporting the model and opening the
+<cite>cameras.txt</cite> file.</p>
+<p>To achieve optimal reconstruction results, you might have to try different
+camera models for your problem. Generally, when the reconstruction fails and the
+estimated focal length values / distortion coefficients are grossly wrong, it is
+a sign of using a too complex camera model. Contrary, if COLMAP uses many
+iterative local and global bundle adjustments, it is a sign of using a too
+simple camera model that is not able to fully model the distortion effects.</p>
+<p>You can also share intrinsics between multiple
+images to obtain more reliable results
+(see <a class="reference internal" href="faq.html#faq-share-intrinsics"><span class="std std-ref">Share intrinsic camera parameters</span></a>) or you can
+fix the intrinsic parameters during the reconstruction
+(see <a class="reference internal" href="faq.html#faq-fix-intrinsics"><span class="std std-ref">Fix intrinsic camera parameters</span></a>).</p>
+<p>Please, refer to the camera models header file for information on the parameters
+of the different camera models:
+<a class="reference external" href="https://github.com/colmap/colmap/blob/master/src/base/camera_models.h">https://github.com/colmap/colmap/blob/master/src/base/camera_models.h</a></p>
 </div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="format.html" class="btn btn-neutral float-right" title="Output Format" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="database.html" class="btn btn-neutral" title="Database Format" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

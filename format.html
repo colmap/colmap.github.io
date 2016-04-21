@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Output Format &mdash; COLMAP 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="COLMAP 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Datasets" href="datasets.html"/>
+        <link rel="prev" title="Camera Models" href="cameras.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> COLMAP
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Output Format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cameras-txt">cameras.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#images-txt">images.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#points3d-txt">points3D.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">COLMAP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Output Format</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/format.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="output-format">
+<h1>Output Format<a class="headerlink" href="#output-format" title="Permalink to this headline">¶</a></h1>
+<p>COLMAP exports three text files for every reconstructed model: <cite>cameras.txt</cite>,
+<cite>images.txt</cite>, and <cite>points3D.txt</cite>. Comments start with a leading &#8220;#&#8221; character.</p>
+<p>To export the currently selected model in the GUI, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span>
+<span class="pre">model</span></code>. To export all reconstructed models in the current dataset, choose
+<code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">all</span> <span class="pre">models</span></code>. The selected folder then contains the three files,
+and for convenience, the current project configuration for importing the model
+to COLMAP. To import the exported models, e.g. for visualization or to resume
+the reconstruction, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">model</span></code> and select the folder
+containing the <cite>cameras.txt</cite>, <cite>images.txt</cite>, and <cite>points3D.txt</cite> files.</p>
+<p>Note that the unique identifiers of cameras (<cite>CAMERA_ID</cite>), images (<cite>IMAGE_ID</cite>),
+and 3D points (<cite>POINT3D_ID</cite>) are unordered and are most likely not contiguous.</p>
+<div class="section" id="cameras-txt">
+<h2>cameras.txt<a class="headerlink" href="#cameras-txt" title="Permalink to this headline">¶</a></h2>
+<p>This file contains the intrinsic parameters of all reconstructed cameras in the
+dataset using one line per camera, e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Camera list with one line of data per camera:</span>
+<span class="c1">#   CAMERA_ID, MODEL, WIDTH, HEIGHT, PARAMS[]</span>
+<span class="c1"># Number of cameras: 3</span>
+<span class="mi">1</span> <span class="n">SIMPLE_PINHOLE</span> <span class="mi">3072</span> <span class="mi">2304</span> <span class="mf">2559.81</span> <span class="mi">1536</span> <span class="mi">1152</span>
+<span class="mi">2</span> <span class="n">PINHOLE</span> <span class="mi">3072</span> <span class="mi">2304</span> <span class="mf">2560.56</span> <span class="mf">2560.56</span> <span class="mi">1536</span> <span class="mi">1152</span>
+<span class="mi">3</span> <span class="n">SIMPLE_RADIAL</span> <span class="mi">3072</span> <span class="mi">2304</span> <span class="mf">2559.69</span> <span class="mi">1536</span> <span class="mi">1152</span> <span class="o">-</span><span class="mf">0.0218531</span>
+</pre></div>
+</div>
+<p>Here, the dataset contains 3 cameras based using different distortion models and
+they have the same sensor dimensions (width: 3072, height: 2304). The length of
+parameters is variable and depends on the camera model. For the first camera,
+there are 3 parameters with a single focal length of 2559.81 pixels and a
+principal point at pixel location <cite>(1536, 1152)</cite>. The intrinsic parameters of a
+camera can be shared by multiple images, which refer to cameras using the unique
+identifier <cite>CAMERA_ID</cite>.</p>
+</div>
+<div class="section" id="images-txt">
+<h2>images.txt<a class="headerlink" href="#images-txt" title="Permalink to this headline">¶</a></h2>
+<p>This file contains the pose and keypoints of all reconstructed images in the
+dataset using two lines per image, e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Image list with two lines of data per image:</span>
+<span class="c1">#   IMAGE_ID, QW, QX, QY, QZ, TX, TY, TZ, CAMERA_ID, NAME</span>
+<span class="c1">#   POINTS2D[] as (X, Y, POINT3D_ID)</span>
+<span class="c1"># Number of images: 2, mean observations per image: 2</span>
+<span class="mi">1</span> <span class="mf">0.851773</span> <span class="mf">0.0165051</span> <span class="mf">0.503764</span> <span class="o">-</span><span class="mf">0.142941</span> <span class="o">-</span><span class="mf">0.737434</span> <span class="mf">1.02973</span> <span class="mf">3.74354</span> <span class="mi">1</span> <span class="n">P1180141</span><span class="o">.</span><span class="n">JPG</span>
+<span class="mf">2362.39</span> <span class="mf">248.498</span> <span class="mi">58396</span> <span class="mf">1784.7</span> <span class="mf">268.254</span> <span class="mi">59027</span> <span class="mf">1784.7</span> <span class="mf">268.254</span> <span class="o">-</span><span class="mi">1</span>
+<span class="mi">2</span> <span class="mf">0.851773</span> <span class="mf">0.0165051</span> <span class="mf">0.503764</span> <span class="o">-</span><span class="mf">0.142941</span> <span class="o">-</span><span class="mf">0.737434</span> <span class="mf">1.02973</span> <span class="mf">3.74354</span> <span class="mi">1</span> <span class="n">P1180142</span><span class="o">.</span><span class="n">JPG</span>
+<span class="mf">1190.83</span> <span class="mf">663.957</span> <span class="mi">23056</span> <span class="mf">1258.77</span> <span class="mf">640.354</span> <span class="mi">59070</span>
+</pre></div>
+</div>
+<p>Here, there first two lines define the information of the first image, and so
+on. The reconstructed pose of an image is specified as the projection from world
+to image coordinate system using a quaternion (QW, QX, QY, QZ) and a translation
+vector (TX, TY, TZ). Both images use the same camera model and share intrinsics
+(<cite>CAMERA_ID = 1</cite>). The image name is relative to the selected base image folder
+of the project. The first image has 3 keypoints and the second image has 2
+keypoints, while the location of the keypoints is specified in pixel
+coordinates. Both images observe 2 3D points and note that the last keypoint of
+the first image does not observe a 3D point in the reconstruction as the 3D
+point identifier is -1.</p>
+</div>
+<div class="section" id="points3d-txt">
+<h2>points3D.txt<a class="headerlink" href="#points3d-txt" title="Permalink to this headline">¶</a></h2>
+<p>This file contains the information of all reconstructed 3D points in the
+dataset using one line per point, e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 3D point list with one line of data per point:</span>
+<span class="c1">#   POINT3D_ID, X, Y, Z, R, G, B, ERROR, TRACK[] as (IMAGE_ID, POINT2D_IDX)</span>
+<span class="c1"># Number of points: 3, mean track length: 3.3334</span>
+<span class="mi">63390</span> <span class="mf">1.67241</span> <span class="mf">0.292931</span> <span class="mf">0.609726</span> <span class="mi">115</span> <span class="mi">121</span> <span class="mi">122</span> <span class="mf">1.33927</span> <span class="mi">16</span> <span class="mi">6542</span> <span class="mi">15</span> <span class="mi">7345</span> <span class="mi">6</span> <span class="mi">6714</span> <span class="mi">14</span> <span class="mi">7227</span>
+<span class="mi">63376</span> <span class="mf">2.01848</span> <span class="mf">0.108877</span> <span class="o">-</span><span class="mf">0.0260841</span> <span class="mi">102</span> <span class="mi">209</span> <span class="mi">250</span> <span class="mf">1.73449</span> <span class="mi">16</span> <span class="mi">6519</span> <span class="mi">15</span> <span class="mi">7322</span> <span class="mi">14</span> <span class="mi">7212</span> <span class="mi">8</span> <span class="mi">3991</span>
+<span class="mi">63371</span> <span class="mf">1.71102</span> <span class="mf">0.28566</span> <span class="mf">0.53475</span> <span class="mi">245</span> <span class="mi">251</span> <span class="mi">249</span> <span class="mf">0.612829</span> <span class="mi">118</span> <span class="mi">4140</span> <span class="mi">117</span> <span class="mi">4473</span>
+</pre></div>
+</div>
+<p>Here, there are three reconstructed 3D points, where <cite>POINT2D_IDX</cite> defines the
+zero-based index of the keypoint in the <cite>images.txt</cite> file. The error is given in
+pixels of reprojection error and is only updated after global bundle adjustment.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="datasets.html" class="btn btn-neutral float-right" title="Datasets" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cameras.html" class="btn btn-neutral" title="Camera Models" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Johannes L. Schoenberger.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
