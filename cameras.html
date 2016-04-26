@@ -157,9 +157,11 @@ know the calibration parameters a priori. You can also try to let COLMAP
 estimate the parameters, if you share the intrinsics for multiple images. Note
 that the automatic estimation of parameters will most likely fail, if every
 image has a separate set of intrinsic parameters.</li>
-<li><em>OpenCVFisheyeCameraModel</em>: Use this camera model for fisheye lenses and note
-that all other models are not really capable of modeling the distortion
-effects of fisheye lenses.</li>
+<li><em>SimpleRadialFisheyeCameraModel</em>, <em>RadialFisheyeCameraModel</em>,
+<em>OpenCVFisheyeCameraModel</em>, <em>FOVCameraModel</em>: Use these camera models for
+fisheye lenses and note that all other models are not really capable of
+modeling the distortion effects of fisheye lenses. The <em>FOVCameraModel</em> is
+used by Google Project Tango (make sure to not initialize <cite>omega</cite> to zero).</li>
 </ul>
 <p>You can inspect the estimated intrinsic parameters by double-clicking specific
 images in the model viewer or by exporting the model and opening the
