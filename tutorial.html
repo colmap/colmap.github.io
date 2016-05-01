@@ -413,9 +413,9 @@ section (<cite>use_pba=true</cite>).</p>
 <p>Ideally, the reconstruction works fine and all images are registered. If this is
 not the case, it is recommended to:</p>
 <ul class="simple">
-<li>Perform additional matching. For best results, use exhaustive matching,
-increase the number of nearest neighbors in vocabulary tree matching, or
-increase the overlap in sequential matching, etc.</li>
+<li>Perform additional matching. For best results, use exhaustive matching, enable
+guided matching, increase the number of nearest neighbors in vocabulary tree
+matching, or increase the overlap in sequential matching, etc.</li>
 <li>Manually choose an initial image pair, if COLMAP fails to initialize. Choose
 <code class="docutils literal"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Reconstruction</span> <span class="pre">options</span> <span class="pre">&gt;</span> <span class="pre">Init</span></code> and set images from the
 database management tool that have enough matches from different viewpoints.</li>
