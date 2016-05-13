@@ -317,7 +317,7 @@ enough and leads to the best reconstruction results. Here, every image is
 matched against every other image, while the block size determines how many
 images are loaded from disk into memory at the same time. The preemptive
 option filters image pairs that are not likely to match <a class="reference internal" href="bibliography.html#wu13" id="id4">[wu13]</a>.
-Typically though, vocabulary tree matching yields better results than
+Typically though, vocabulary tree matching yields much better results than
 preemptive matching <a class="reference internal" href="bibliography.html#schoenberger15" id="id5">[schoenberger15]</a>.</p>
 </li>
 <li><p class="first"><strong>Sequential Matching</strong>: This mode is useful if the images are acquired in
@@ -403,13 +403,14 @@ incremental reconstruction process by choosing <code class="docutils literal"><s
 COLMAP first loads all extracted data from the database into memory and seeds
 the reconstruction from an initial image pair. Then, the scene is incrementally
 extended by registering new images and triangulating new points. The results are
-visualized in &#8220;real-time&#8221; during this reconstruction process. COLMAP attempts to
-reconstruct multiple models if not all images are registered into the same
-model. The different models can be selected from the drop-down menu in the
-toolbar. If all your images use the <cite>SIMPLE_RADIAL</cite> camera model (default)
-without shared intrinsics, you can use PBA <a class="reference internal" href="bibliography.html#wu11" id="id6">[wu11]</a> for fast bundle adjustment,
-which can be activated in the reconstruction options under the bundle adjustment
-section (<cite>use_pba=true</cite>).</p>
+visualized in &#8220;real-time&#8221; during this reconstruction process. Refer to the
+<a class="reference internal" href="gui.html#gui"><span class="std std-ref">Graphical User Interface</span></a> section for more details about the
+available controls. COLMAP attempts to reconstruct multiple models if not all
+images are registered into the same model. The different models can be selected
+from the drop-down menu in the toolbar. If all your images use the
+<cite>SIMPLE_RADIAL</cite> camera model (default) without shared intrinsics, you can use
+PBA <a class="reference internal" href="bibliography.html#wu11" id="id6">[wu11]</a> for fast bundle adjustment, which can be activated in the
+reconstruction options under the bundle adjustment section (<cite>use_pba=true</cite>).</p>
 <p>Ideally, the reconstruction works fine and all images are registered. If this is
 not the case, it is recommended to:</p>
 <ul class="simple">
@@ -495,7 +496,8 @@ arguments or you can provide a <cite>.ini</cite> project configuration file cont
 options as the <code class="docutils literal"><span class="pre">./bin</span> <span class="pre">--project_path</span> <span class="pre">path/to/project.ini</span></code> argument. To start
 the GUI application, please execute <code class="docutils literal"><span class="pre">./src/exe/colmap</span></code> or directly specify a
 project configuration as <code class="docutils literal"><span class="pre">./src/exe/colmap</span> <span class="pre">--project_path</span> <span class="pre">path/to/project.ini</span></code>
-to avoid tedious selection in the GUI.</p>
+to avoid tedious selection in the GUI. The <a class="reference internal" href="gui.html#gui"><span class="std std-ref">Graphical User Interface</span></a>
+section provides more details about the available controls.</p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
