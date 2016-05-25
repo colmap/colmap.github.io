@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Command-line Interface &mdash; COLMAP 1.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="COLMAP 1.1 documentation" href="index.html"/>
+        <link rel="next" title="Frequently Asked Questions" href="faq.html"/>
+        <link rel="prev" title="Graphical User Interface" href="gui.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> COLMAP
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Command-line Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#executables">Executables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">COLMAP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Command-line Interface</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/cli.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="command-line-interface">
+<span id="cli"></span><h1>Command-line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h1>
+<p>The command-line interface provides access to most of COLMAP&#8217;s functionality for
+automated scripting. Each core functionality uses a different executable inside
+the <code class="docutils literal"><span class="pre">./src/exe/*</span></code> folder.</p>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Assume you stored the images of your project in the following folder structure:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>/path/to/project/...
++── images
+│   +── image1.jpg
+│   +── image2.jpg
+│   +── ...
+│   +── imageN.jpg
+</pre></div>
+</div>
+<p>Then, an exemplary sequence of commands to reconstruct the scene would be:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">feature_extractor</span> \
+    <span class="o">--</span><span class="n">General</span><span class="o">.</span><span class="n">database_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">db</span> \
+    <span class="o">--</span><span class="n">General</span><span class="o">.</span><span class="n">image_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">images</span>
+
+<span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">exhaustive_matcher</span> \
+    <span class="o">--</span><span class="n">General</span><span class="o">.</span><span class="n">database_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">db</span>
+
+<span class="n">mkdir</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">results</span>
+
+<span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">mapper</span> \
+    <span class="o">--</span><span class="n">General</span><span class="o">.</span><span class="n">database_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">db</span> \
+    <span class="o">--</span><span class="n">General</span><span class="o">.</span><span class="n">image_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">images</span> \
+    <span class="o">--</span><span class="n">export_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="executables">
+<h2>Executables<a class="headerlink" href="#executables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">colmap</span></code>: The graphical user interface, see
+<a class="reference internal" href="gui.html#gui"><span class="std std-ref">Graphical User Interface</span></a> for more information.</li>
+<li><code class="docutils literal"><span class="pre">feature_extractor</span></code>, <code class="docutils literal"><span class="pre">feature_importer</span></code>: Perform feature extraction or
+import features for a set of images.</li>
+<li><code class="docutils literal"><span class="pre">exhaustive_matcher</span></code>, <code class="docutils literal"><span class="pre">vocab_tree_matcher</span></code>, <code class="docutils literal"><span class="pre">sequential_matcher</span></code>,
+<code class="docutils literal"><span class="pre">spatial_matcher</span></code>, <code class="docutils literal"><span class="pre">matches_importer</span></code>: Perform feature matching after
+performing feature extraction.</li>
+<li><code class="docutils literal"><span class="pre">mapper</span></code>: 3D reconstruction / mapping of the dataset after performing
+feature extraction and matching.</li>
+<li><code class="docutils literal"><span class="pre">image_undistorter</span></code>: Undistort images and/or export them to external dense
+reconstruction software, such as CMVS/PMVS.</li>
+<li><code class="docutils literal"><span class="pre">image_registrator</span></code>: Register new images in the database against an existing
+model, e.g., when extracting features and matching newly added images in a
+database after running <code class="docutils literal"><span class="pre">mapper</span></code>. Note that no bundle adjustment or
+triangulation is performed.</li>
+<li><code class="docutils literal"><span class="pre">database_creator</span></code>: Create an empty COLMAP SQLite database with the
+necessary database schema information.</li>
+<li><code class="docutils literal"><span class="pre">model_converter</span></code>: Convert the COLMAP export format to another format,
+such as PLY or NVM.</li>
+<li><code class="docutils literal"><span class="pre">vocab_tree_builder</span></code>: Create a vocabulary tree from a database with
+extracted images. This is an offline procedure and can be run once, while the
+same vocabulary tree can be reused for other datasets. Note that, as a rule of
+thumb, you should use at least 10-100 times more features than visual words.
+Pre-trained trees can be downloaded from
+<a class="reference external" href="http://people.inf.ethz.ch/jschoenb/colmap/">http://people.inf.ethz.ch/jschoenb/colmap/</a>.
+This is useful if you want to build a custom tree with a different trade-off
+in terms of precision/recall vs. speed.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="faq.html" class="btn btn-neutral float-right" title="Frequently Asked Questions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gui.html" class="btn btn-neutral" title="Graphical User Interface" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Johannes L. Schoenberger.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

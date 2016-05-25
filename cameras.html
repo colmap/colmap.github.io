@@ -89,6 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -143,24 +144,24 @@
 parameters are known a priori, it is generally best to use the simplest camera
 model that is complex enough to model the distortion effects:</p>
 <ul class="simple">
-<li><em>SimplePinholeCameraModel</em>, <em>PinholeCameraModel</em>: Use these camera models, if
-your images are undistorted a priori. Note that even in the case of
+<li><code class="docutils literal"><span class="pre">SimplePinholeCameraModel</span></code>, <code class="docutils literal"><span class="pre">PinholeCameraModel</span></code>: Use these camera models,
+if your images are undistorted a priori. Note that even in the case of
 undistorted images, COLMAP could try to improve the intrinsics with a more
 complex camera model.</li>
-<li><em>SimpleRadialCameraModel</em>, <em>RadialCameraModel</em>: This should be the camera
+<li><code class="docutils literal"><span class="pre">SimpleRadialCameraModel</span></code>, <code class="docutils literal"><span class="pre">RadialCameraModel</span></code>: This should be the camera
 model of choice, if the intrinsics are unknown and every image has a different
 camera calibration, e.g., in the case of Internet photos. Both models are
-simplified versions of the <em>OpenCVCameraModel</em> only modeling radial distortion
+simplified versions of the <code class="docutils literal"><span class="pre">OpenCVCameraModel</span></code> only modeling radial distortion
 effects with one and two parameters, respectively.</li>
-<li><em>OpenCVCameraModel</em>, <em>FullOpenCVCameraModel</em>: Use these camera models, if you
-know the calibration parameters a priori. You can also try to let COLMAP
+<li><code class="docutils literal"><span class="pre">OpenCVCameraModel</span></code>, <code class="docutils literal"><span class="pre">FullOpenCVCameraModel</span></code>: Use these camera models, if
+you know the calibration parameters a priori. You can also try to let COLMAP
 estimate the parameters, if you share the intrinsics for multiple images. Note
 that the automatic estimation of parameters will most likely fail, if every
 image has a separate set of intrinsic parameters.</li>
-<li><em>SimpleRadialFisheyeCameraModel</em>, <em>RadialFisheyeCameraModel</em>,
-<em>OpenCVFisheyeCameraModel</em>, <em>FOVCameraModel</em>: Use these camera models for
+<li><code class="docutils literal"><span class="pre">SimpleRadialFisheyeCameraModel</span></code>, <code class="docutils literal"><span class="pre">RadialFisheyeCameraModel</span></code>,
+<code class="docutils literal"><span class="pre">OpenCVFisheyeCameraModel</span></code>, <code class="docutils literal"><span class="pre">FOVCameraModel</span></code>: Use these camera models for
 fisheye lenses and note that all other models are not really capable of
-modeling the distortion effects of fisheye lenses. The <em>FOVCameraModel</em> is
+modeling the distortion effects of fisheye lenses. The <code class="docutils literal"><span class="pre">FOVCameraModel</span></code> is
 used by Google Project Tango (make sure to not initialize <cite>omega</cite> to zero).</li>
 </ul>
 <p>You can inspect the estimated intrinsic parameters by double-clicking specific
