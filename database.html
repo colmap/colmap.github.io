@@ -172,6 +172,9 @@ uses cameras that are referenced by images, all other cameras are ignored.</p>
 <p>The <code class="docutils literal"><span class="pre">name</span></code> column in the images table is the unique relative path in the image
 folder. As such, the database file and image folder can be moved to different
 locations, as long as the relative folder structure is preserved.</p>
+<p>When manually inserting images and cameras into the database, make sure
+that all identifiers are positive and non-zero, i.e. <code class="docutils literal"><span class="pre">image_id</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>
+and <code class="docutils literal"><span class="pre">camera_id</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p>
 </div>
 <div class="section" id="keypoints-and-descriptors">
 <h2>Keypoints and Descriptors<a class="headerlink" href="#keypoints-and-descriptors" title="Permalink to this headline">¶</a></h2>
