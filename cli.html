@@ -91,6 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Command-line Interface</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#help">Help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#executables">Executables</a></li>
 </ul>
 </li>
@@ -159,21 +160,56 @@ the <code class="docutils literal"><span class="pre">./src/exe/*</span></code> f
 </pre></div>
 </div>
 <p>Then, an exemplary sequence of commands to reconstruct the scene would be:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">feature_extractor</span> \
-    <span class="o">--</span><span class="n">General</span><span class="o">.</span><span class="n">database_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">db</span> \
-    <span class="o">--</span><span class="n">General</span><span class="o">.</span><span class="n">image_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">images</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./src/exe/feature_extractor \
+    --General.database_path /path/to/project/database.db \
+    --General.image_path /path/to/project/images
 
-<span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">exhaustive_matcher</span> \
-    <span class="o">--</span><span class="n">General</span><span class="o">.</span><span class="n">database_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">db</span>
+$ ./src/exe/exhaustive_matcher \
+    --General.database_path /path/to/project/database.db
 
-<span class="n">mkdir</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">results</span>
+$ mkdir /path/to/project/results
 
-<span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">mapper</span> \
-    <span class="o">--</span><span class="n">General</span><span class="o">.</span><span class="n">database_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">db</span> \
-    <span class="o">--</span><span class="n">General</span><span class="o">.</span><span class="n">image_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">images</span> \
-    <span class="o">--</span><span class="n">export_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">results</span>
+$ ./src/exe/mapper \
+    --General.database_path /path/to/project/database.db \
+    --General.image_path /path/to/project/images \
+    --export_path /path/to/project/results
 </pre></div>
 </div>
+</div>
+<div class="section" id="help">
+<h2>Help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
+<p>All executables have a &#8220;-h,&#8211;help&#8221; command-line argument to show the usage and
+the available options, e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./src/exe/feature_extractor -h
+
+  -h [ --help ]                     Configuration can either be specified
+                                    via command_line or by defining the
+                                    parameters in a .ini project_file (see
+                                    `--project_path`).
+  --project_path arg
+  --General.debug_log_to_stderr arg (=0)
+  --General.debug_log_level arg (=2)
+  --General.database_path arg
+  --General.image_path arg
+  --ExtractionOptions.camera_model arg (=SIMPLE_RADIAL)
+  --ExtractionOptions.single_camera arg (=0)
+  --ExtractionOptions.camera_params arg
+  --ExtractionOptions.default_focal_length_factor arg (=1.2)
+  --ExtractionOptions.sift_options_max_image_size arg (=3200)
+  --ExtractionOptions.sift_options_max_num_features arg (=8192)
+  --ExtractionOptions.sift_options_first_octave arg (=-1)
+  --ExtractionOptions.sift_options_octave_resolution arg (=3)
+  --ExtractionOptions.sift_options_peak_threshold arg (=0.0066666666666666671)
+  --ExtractionOptions.sift_options_edge_threshold arg (=10)
+  --ExtractionOptions.sift_options_max_num_orientations arg (=2)
+  --ExtractionOptions.sift_options_upright arg (=0)
+  --ExtractionOptions.cpu_options_batch_size_factor arg (=3)
+  --ExtractionOptions.cpu_options_num_threads arg (=-1)
+  --use_gpu arg (=1)
+</pre></div>
+</div>
+<p>The available options can either be provided directly from the command-line or
+through a <cite>.ini</cite> file provided to <code class="docutils literal"><span class="pre">--project_path</span></code>.</p>
 </div>
 <div class="section" id="executables">
 <h2>Executables<a class="headerlink" href="#executables" title="Permalink to this headline">¶</a></h2>
