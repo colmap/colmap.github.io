@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Output Format &mdash; COLMAP 1.1 documentation</title>
+  <title>Output Format &mdash; COLMAP 2.0 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="COLMAP 1.1 documentation" href="index.html"/>
+    <link rel="top" title="COLMAP 2.0 documentation" href="index.html"/>
         <link rel="next" title="Datasets" href="datasets.html"/>
         <link rel="prev" title="Camera Models" href="cameras.html"/> 
 
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                1.1
+                2.0
               </div>
             
           
@@ -87,9 +87,17 @@
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Output Format</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#cameras-txt">cameras.txt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#images-txt">images.txt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#points3d-txt">points3D.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sparse-reconstruction">Sparse Reconstruction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cameras-txt">cameras.txt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#images-txt">images.txt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#points3d-txt">points3D.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dense-reconstruction">Dense Reconstruction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#depth-and-normal-maps">Depth and Normal Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#consistency-graphs">Consistency Graphs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
@@ -145,6 +153,8 @@
             
   <div class="section" id="output-format">
 <h1>Output Format<a class="headerlink" href="#output-format" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sparse-reconstruction">
+<h2>Sparse Reconstruction<a class="headerlink" href="#sparse-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>COLMAP exports three text files for every reconstructed model: <cite>cameras.txt</cite>,
 <cite>images.txt</cite>, and <cite>points3D.txt</cite>. Comments start with a leading &#8220;#&#8221; character.</p>
 <p>To export the currently selected model in the GUI, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span>
@@ -157,7 +167,7 @@ containing the <cite>cameras.txt</cite>, <cite>images.txt</cite>, and <cite>poin
 <p>Note that the unique identifiers of cameras (<cite>CAMERA_ID</cite>), images (<cite>IMAGE_ID</cite>),
 and 3D points (<cite>POINT3D_ID</cite>) are unordered and are most likely not contiguous.</p>
 <div class="section" id="cameras-txt">
-<h2>cameras.txt<a class="headerlink" href="#cameras-txt" title="Permalink to this headline">¶</a></h2>
+<h3>cameras.txt<a class="headerlink" href="#cameras-txt" title="Permalink to this headline">¶</a></h3>
 <p>This file contains the intrinsic parameters of all reconstructed cameras in the
 dataset using one line per camera, e.g.:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Camera list with one line of data per camera:</span>
@@ -177,7 +187,7 @@ camera can be shared by multiple images, which refer to cameras using the unique
 identifier <cite>CAMERA_ID</cite>.</p>
 </div>
 <div class="section" id="images-txt">
-<h2>images.txt<a class="headerlink" href="#images-txt" title="Permalink to this headline">¶</a></h2>
+<h3>images.txt<a class="headerlink" href="#images-txt" title="Permalink to this headline">¶</a></h3>
 <p>This file contains the pose and keypoints of all reconstructed images in the
 dataset using two lines per image, e.g.:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Image list with two lines of data per image:</span>
@@ -202,7 +212,7 @@ the first image does not observe a 3D point in the reconstruction as the 3D
 point identifier is -1.</p>
 </div>
 <div class="section" id="points3d-txt">
-<h2>points3D.txt<a class="headerlink" href="#points3d-txt" title="Permalink to this headline">¶</a></h2>
+<h3>points3D.txt<a class="headerlink" href="#points3d-txt" title="Permalink to this headline">¶</a></h3>
 <p>This file contains the information of all reconstructed 3D points in the
 dataset using one line per point, e.g.:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 3D point list with one line of data per point:</span>
@@ -216,6 +226,55 @@ dataset using one line per point, e.g.:</p>
 <p>Here, there are three reconstructed 3D points, where <cite>POINT2D_IDX</cite> defines the
 zero-based index of the keypoint in the <cite>images.txt</cite> file. The error is given in
 pixels of reprojection error and is only updated after global bundle adjustment.</p>
+</div>
+</div>
+<div class="section" id="dense-reconstruction">
+<h2>Dense Reconstruction<a class="headerlink" href="#dense-reconstruction" title="Permalink to this headline">¶</a></h2>
+<p>COLMAP uses the following workspace folder structure:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>+── dense
+│   +── consistency_graphs
+│   │   +── image1.jpg.photometric.bin
+│   │   +── image2.jpg.photometric.bin
+│   │   +── ...
+│   +── depth_maps
+│   │   +── image1.jpg.photometric.bin
+│   │   +── image2.jpg.photometric.bin
+│   │   +── ...
+│   +── fusion.cfg
+│   +── normal_maps
+│   │   +── image1.jpg.photometric.bin
+│   │   +── image2.jpg.photometric.bin
+│   │   +── ...
+│   +── patch-match.cfg
++── dense-reconstruction.sh
++── fused2.ply
++── images
+│   +── image1.jpg
+│   +── image2.jpg
++── fused.ply
++── meshed.ply
++── sparse
+    +── cameras.txt
+    +── images.txt
+    +── points3D.txt
+</pre></div>
+</div>
+<div class="section" id="depth-and-normal-maps">
+<h3>Depth and Normal Maps<a class="headerlink" href="#depth-and-normal-maps" title="Permalink to this headline">¶</a></h3>
+<p>The depth maps are stored as mixed text and binary files. The text header
+defines the dimensions of the image in the format <code class="docutils literal"><span class="pre">with&amp;height&amp;channels&amp;</span></code>
+followed by row-major <cite>float32</cite> binary data. For depth maps <code class="docutils literal"><span class="pre">channels=1</span></code> and
+for normal maps <code class="docutils literal"><span class="pre">channels=3</span></code>.</p>
+</div>
+<div class="section" id="consistency-graphs">
+<h3>Consistency Graphs<a class="headerlink" href="#consistency-graphs" title="Permalink to this headline">¶</a></h3>
+<p>The consistency graph defines, for all pixels in an image, the source images a
+pixel is consistent with. the graph is stored as a continuous list of <cite>int32</cite>
+values in the format <code class="docutils literal"><span class="pre">&lt;row&gt;&lt;col&gt;&lt;N&gt;&lt;image_idx1&gt;...&lt;image_idxN&gt;</span></code>, where <code class="docutils literal"><span class="pre">(row,</span>
+<span class="pre">col)</span></code>  defines the location of the pixel in the image followed by a list of
+<code class="docutils literal"><span class="pre">N</span></code> image indices. The indices are specified w.r.t. the ordering in the
+<code class="docutils literal"><span class="pre">images.txt</span></code> file.</p>
+</div>
 </div>
 </div>
 
@@ -260,7 +319,7 @@ pixels of reprojection error and is only updated after global bundle adjustment.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.1',
+            VERSION:'2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
