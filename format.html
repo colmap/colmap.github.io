@@ -231,7 +231,15 @@ pixels of reprojection error and is only updated after global bundle adjustment.
 <div class="section" id="dense-reconstruction">
 <h2>Dense Reconstruction<a class="headerlink" href="#dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>COLMAP uses the following workspace folder structure:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>+── dense
+<div class="highlight-default"><div class="highlight"><pre><span></span>+── images
+│   +── image1.jpg
+│   +── image2.jpg
+│   +── ...
++── sparse
+│   +── cameras.txt
+│   +── images.txt
+│   +── points3D.txt
++── stereo
 │   +── consistency_graphs
 │   │   +── image1.jpg.photometric.bin
 │   │   +── image2.jpg.photometric.bin
@@ -240,25 +248,22 @@ pixels of reprojection error and is only updated after global bundle adjustment.
 │   │   +── image1.jpg.photometric.bin
 │   │   +── image2.jpg.photometric.bin
 │   │   +── ...
-│   +── fusion.cfg
 │   +── normal_maps
 │   │   +── image1.jpg.photometric.bin
 │   │   +── image2.jpg.photometric.bin
 │   │   +── ...
 │   +── patch-match.cfg
+│   +── fusion.cfg
 +── dense-reconstruction.sh
-+── fused2.ply
-+── images
-│   +── image1.jpg
-│   +── image2.jpg
 +── fused.ply
 +── meshed.ply
-+── sparse
-    +── cameras.txt
-    +── images.txt
-    +── points3D.txt
 </pre></div>
 </div>
+<p>Here, the <cite>images</cite> folder contains the undistorted images, the <cite>sparse</cite> folder
+contains the sparse reconstruction with undistorted cameras, the <cite>stereo</cite> folder
+contains the stereo reconstruction results, <cite>fused.ply</cite> and <cite>meshed.ply</cite> are the
+results of the fusion and meshing procedure, and <cite>dense-reconstruction.sh</cite>
+contains example command-line usage to perform the dense reconstruction.</p>
 <div class="section" id="depth-and-normal-maps">
 <h3>Depth and Normal Maps<a class="headerlink" href="#depth-and-normal-maps" title="Permalink to this headline">¶</a></h3>
 <p>The depth maps are stored as mixed text and binary files. The text header

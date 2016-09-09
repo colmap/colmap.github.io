@@ -91,7 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#data-structure">Data Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#feature-detection-and-extraction">Feature Detection and Extraction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#feature-matching-and-geometric-verification">Feature Matching and Geometric Verification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#incremental-sparse-reconstruction">Incremental Sparse Reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sparse-reconstruction">Sparse Reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#importing-and-exporting">Importing and Exporting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dense-reconstruction">Dense Reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#database-management">Database Management</a></li>
@@ -160,7 +160,7 @@ Structure-from-Motion. This output then serves as the input to Multi-View Stereo
 to recover a dense representation of the scene.</p>
 <div class="section" id="structure-from-motion">
 <h2>Structure-from-Motion<a class="headerlink" href="#structure-from-motion" title="Permalink to this headline">¶</a></h2>
-<div class="align-center figure" id="id16">
+<div class="align-center figure" id="id17">
 <img alt="Incremental Structure-from-Motion pipeline" src="_images/incremental-sfm.png" />
 <p class="caption"><span class="caption-text">COLMAP&#8217;s incremental Structure-from-Motion pipeline.</span></p>
 </div>
@@ -417,8 +417,8 @@ your computer might degrade significantly during the matching process. If your
 system has multiple CUDA-enabled GPUs, you can select specific GPUs with the
 <cite>gpu_index</cite> option.</p>
 </div>
-<div class="section" id="incremental-sparse-reconstruction">
-<h2>Incremental Sparse Reconstruction<a class="headerlink" href="#incremental-sparse-reconstruction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sparse-reconstruction">
+<h2>Sparse Reconstruction<a class="headerlink" href="#sparse-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>After producing the scene graph in the previous two steps, you can start the
 incremental reconstruction process by choosing <code class="docutils literal"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Start</span></code>.
 COLMAP first loads all extracted data from the database into memory and seeds
@@ -461,12 +461,12 @@ files with RGB information by choosing <code class="docutils literal"><span clas
 </div>
 <div class="section" id="dense-reconstruction">
 <h2>Dense Reconstruction<a class="headerlink" href="#dense-reconstruction" title="Permalink to this headline">¶</a></h2>
-<p>After recovering a sparse representation of the scene and the camera poses of
-the input images, MVS can now recover denser scene geometry. COLMAP has an
+<p>After reconstructing a sparse representation of the scene and the camera poses
+of the input images, MVS can now recover denser scene geometry. COLMAP has an
 integrated dense reconstruction pipeline to produce depth and normal maps for
 all registered images, to fuse the depth and normal maps into a dense point
-cloud with normal information, and to finally reconstruct a dense surface from
-the fused point cloud.</p>
+cloud with normal information, and to finally estimate a dense surface from the
+fused point cloud using Poisson reconstruction <a class="reference internal" href="bibliography.html#kazhdan2013" id="id10">[kazhdan2013]</a>.</p>
 <p>To get started, import your sparse 3D model into COLMAP (or select the
 reconstructed model after finishing the previous sparse reconstruction steps).
 Then, choose <code class="docutils literal"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Multi-view</span> <span class="pre">stereo</span></code> and select an empty or
@@ -479,12 +479,19 @@ freeze due to heavy compute load and, if your GPU does not have enough memory,
 the reconstruction process might ungracefully crash. Please, refer to the
 <a class="reference internal" href="faq.html#faq-dense-memory-usage"><span class="std std-ref">FAQ</span></a> for information on how to reduce the memory
 usage. Note that the reconstructed normals of the point cloud cannot be directly
-visualized in COLMAP, but e.g. using Meshlab and <code class="docutils literal"><span class="pre">Render</span> <span class="pre">&gt;</span> <span class="pre">Show</span>
-<span class="pre">Normal/Curvature</span></code>. Similarly, the reconstructed dense surface must be
-visualized with external software.</p>
+visualized in COLMAP, but e.g. in Meshlab by enabling <code class="docutils literal"><span class="pre">Render</span> <span class="pre">&gt;</span> <span class="pre">Show</span>
+<span class="pre">Normal/Curvature</span></code>. Similarly, the reconstructed dense surface mesh model must
+be visualized with external software.</p>
+<p>By default, COLMAP only computes photometrically consistent depth and normal
+maps as a trade-off between reconstruction quality and speed. For highest
+reconstruction quality, you can compute both photometrically and geometrically
+consistent depth and normal maps: first, perform stereo processing and
+disable the <code class="docutils literal"><span class="pre">filter</span></code> option. After processing all images (before fusion and
+meshing), you must re-run stereo processing and enable both the <code class="docutils literal"><span class="pre">filter</span></code> and
+<code class="docutils literal"><span class="pre">geom_consistency</span></code> options. Finally, perform the fusion and meshing steps.</p>
 <p>In addition to the internal dense reconstruction functionality, COLMAP exports
-to several other dense reconstruction software, such as CMVS/PMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id10">[furukawa10]</a>
-or CMP-MVS <a class="reference internal" href="bibliography.html#jancosek11" id="id11">[jancosek11]</a>. Please choose <code class="docutils literal"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Undistort</span> <span class="pre">images</span></code> and select
+to several other dense reconstruction libraries, such as CMVS/PMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id11">[furukawa10]</a>
+or CMP-MVS <a class="reference internal" href="bibliography.html#jancosek11" id="id12">[jancosek11]</a>. Please choose <code class="docutils literal"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Undistort</span> <span class="pre">images</span></code> and select
 the appropriate format. To run PMVS2, execute the following commands:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">pmvs2</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">undistortion</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">pmvs</span><span class="o">/</span> <span class="n">option</span><span class="o">-</span><span class="nb">all</span>
 </pre></div>
@@ -502,13 +509,13 @@ into more manageable parts and then run PMVS2:</p>
 </div>
 <p>There is a number of external software packages that support COLMAP&#8217;s output:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://www.di.ens.fr/pmvs/">CMVS/PMVS</a> <a class="reference internal" href="bibliography.html#furukawa10" id="id12">[furukawa10]</a></li>
-<li><a class="reference external" href="http://ptak.felk.cvut.cz/sfmservice/websfm.pl">CMP-MVS</a> <a class="reference internal" href="bibliography.html#jancosek11" id="id13">[jancosek11]</a></li>
-<li><a class="reference external" href="https://github.com/manhofer/Line3Dpp">Line3D++</a> <a class="reference internal" href="bibliography.html#hofer16" id="id14">[hofer16]</a>.</li>
+<li><a class="reference external" href="http://www.di.ens.fr/pmvs/">CMVS/PMVS</a> <a class="reference internal" href="bibliography.html#furukawa10" id="id13">[furukawa10]</a></li>
+<li><a class="reference external" href="http://ptak.felk.cvut.cz/sfmservice/websfm.pl">CMP-MVS</a> <a class="reference internal" href="bibliography.html#jancosek11" id="id14">[jancosek11]</a></li>
+<li><a class="reference external" href="https://github.com/manhofer/Line3Dpp">Line3D++</a> <a class="reference internal" href="bibliography.html#hofer16" id="id15">[hofer16]</a>.</li>
 </ul>
 </div>
 <div class="section" id="database-management">
-<span id="id15"></span><h2>Database Management<a class="headerlink" href="#database-management" title="Permalink to this headline">¶</a></h2>
+<span id="id16"></span><h2>Database Management<a class="headerlink" href="#database-management" title="Permalink to this headline">¶</a></h2>
 <p>You can review and manage the imported cameras, images, and feature matches in
 the database management tool. Choose <code class="docutils literal"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Manage</span> <span class="pre">database</span></code>. In the
 opening dialog, you can see the list of imported images and cameras. You can
