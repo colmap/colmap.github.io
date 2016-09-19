@@ -476,12 +476,12 @@ compute the depth and normal maps using <code class="docutils literal"><span cla
 and normals maps to a point cloud, followed by a final, optional point cloud
 <code class="docutils literal"><span class="pre">meshing</span></code> step. During the stereo reconstruction process, the display might
 freeze due to heavy compute load and, if your GPU does not have enough memory,
-the reconstruction process might ungracefully crash. Please, refer to the
-<a class="reference internal" href="faq.html#faq-dense-memory-usage"><span class="std std-ref">FAQ</span></a> for information on how to reduce the memory
-usage. Note that the reconstructed normals of the point cloud cannot be directly
-visualized in COLMAP, but e.g. in Meshlab by enabling <code class="docutils literal"><span class="pre">Render</span> <span class="pre">&gt;</span> <span class="pre">Show</span>
-<span class="pre">Normal/Curvature</span></code>. Similarly, the reconstructed dense surface mesh model must
-be visualized with external software.</p>
+the reconstruction process might ungracefully crash. Please, refer to the FAQ
+(<a class="reference internal" href="faq.html#faq-dense-timeout"><span class="std std-ref">freeze</span></a> and <a class="reference internal" href="faq.html#faq-dense-memory"><span class="std std-ref">memory</span></a>) for
+information on how to avoid these problems. Note that the reconstructed normals
+of the point cloud cannot be directly visualized in COLMAP, but e.g. in Meshlab
+by enabling <code class="docutils literal"><span class="pre">Render</span> <span class="pre">&gt;</span> <span class="pre">Show</span> <span class="pre">Normal/Curvature</span></code>. Similarly, the reconstructed
+dense surface mesh model must be visualized with external software.</p>
 <p>By default, COLMAP only computes photometrically consistent depth and normal
 maps as a trade-off between reconstruction quality and speed. For highest
 reconstruction quality, you can compute both photometrically and geometrically
