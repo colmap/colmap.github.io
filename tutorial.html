@@ -428,10 +428,13 @@ visualized in &#8220;real-time&#8221; during this reconstruction process. Refer 
 <a class="reference internal" href="gui.html#gui"><span class="std std-ref">Graphical User Interface</span></a> section for more details about the
 available controls. COLMAP attempts to reconstruct multiple models if not all
 images are registered into the same model. The different models can be selected
-from the drop-down menu in the toolbar. If all your images use the
-<cite>SIMPLE_RADIAL</cite> camera model (default) without shared intrinsics, you can use
-PBA <a class="reference internal" href="bibliography.html#wu11" id="id8">[wu11]</a> for fast bundle adjustment, which can be activated in the
-reconstruction options under the bundle adjustment section (<cite>use_pba=true</cite>).</p>
+from the drop-down menu in the toolbar. If the different models have common
+registered images, you can use the <code class="docutils literal"><span class="pre">model_converter</span></code> executable to merge them
+into a single reconstruction (see <a class="reference internal" href="faq.html#faq-merge-models"><span class="std std-ref">FAQ</span></a> for details). If
+all your images use the <cite>SIMPLE_RADIAL</cite> camera model (default) without shared
+intrinsics, you can use PBA <a class="reference internal" href="bibliography.html#wu11" id="id8">[wu11]</a> for fast bundle adjustment, which can be
+activated in the reconstruction options under the bundle adjustment section
+(<cite>use_pba=true</cite>).</p>
 <p>Ideally, the reconstruction works fine and all images are registered. If this is
 not the case, it is recommended to:</p>
 <ul class="simple">

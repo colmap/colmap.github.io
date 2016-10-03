@@ -95,6 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#fix-intrinsics">Fix intrinsics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#principal-point-refinement">Principal point refinement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#increase-number-of-3d-points">Increase number of 3D points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#merge-disconnected-models">Merge disconnected models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reduce-memory-usage-during-dense-reconstruction">Reduce memory usage during dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction">Fix GPU freezes and timeouts during dense reconstruction</a></li>
 </ul>
@@ -190,6 +191,25 @@ cases improve the stability of sparse image collections by providing additional
 constraints in bundle adjustment. To also triangulate two-view tracks, unselect
 the option <code class="docutils literal"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Reconstruction</span> <span class="pre">options</span> <span class="pre">&gt;</span> <span class="pre">Triangulation</span> <span class="pre">&gt;</span>
 <span class="pre">ignore_two_view_tracks</span></code>.</p>
+</div>
+<div class="section" id="merge-disconnected-models">
+<span id="faq-merge-models"></span><h2>Merge disconnected models<a class="headerlink" href="#merge-disconnected-models" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes COLMAP fails to reconstruct all images into the same model and hence
+produces multiple sub-models. If those sub-models have common registered images,
+they can be merged into a single model as post-processing step:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">model_merger</span> \
+    <span class="o">--</span><span class="n">input_path1</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="n">model1</span> \
+    <span class="o">--</span><span class="n">input_path2</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="n">model2</span> \
+    <span class="o">--</span><span class="n">output_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">merged</span><span class="o">-</span><span class="n">model</span>
+</pre></div>
+</div>
+<p>To improve the quality of the alignment between the two sub-models, it is
+recommended to run another global bundle adjustment after the merge:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">bundle_adjuster</span> \
+    <span class="o">--</span><span class="n">input_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">merged</span><span class="o">-</span><span class="n">model</span> \
+    <span class="o">--</span><span class="n">output_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">refined</span><span class="o">-</span><span class="n">merged</span><span class="o">-</span><span class="n">model</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="reduce-memory-usage-during-dense-reconstruction">
 <span id="faq-dense-memory"></span><h2>Reduce memory usage during dense reconstruction<a class="headerlink" href="#reduce-memory-usage-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
