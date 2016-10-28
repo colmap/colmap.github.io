@@ -99,6 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#principal-point-refinement">Principal point refinement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#increase-number-of-3d-points">Increase number of 3D points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#merge-disconnected-models">Merge disconnected models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geo-register-models">Geo-register models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reduce-memory-usage-during-dense-reconstruction">Reduce memory usage during dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction">Fix GPU freezes and timeouts during dense reconstruction</a></li>
 </ul>
@@ -211,6 +212,29 @@ recommended to run another global bundle adjustment after the merge:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">bundle_adjuster</span> \
     <span class="o">--</span><span class="n">input_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">merged</span><span class="o">-</span><span class="n">model</span> \
     <span class="o">--</span><span class="n">output_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">refined</span><span class="o">-</span><span class="n">merged</span><span class="o">-</span><span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="geo-register-models">
+<h2>Geo-register models<a class="headerlink" href="#geo-register-models" title="Permalink to this headline">¶</a></h2>
+<p>Geo-registration of models is possible by providing the 3D locations for the
+camera centers of a subset or all registered images. The 3D similarity
+transformation between the reconstructed model and the target coordinate frame
+of the geo-registration is determined from these correspondences.</p>
+<p>The geo-registered 3D coordinates of the camera centers for images must be
+specified in a text-file with the following format:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">image_name1</span><span class="o">.</span><span class="n">jpg</span> <span class="n">X1</span> <span class="n">Y1</span> <span class="n">Z1</span>
+<span class="n">image_name2</span><span class="o">.</span><span class="n">jpg</span> <span class="n">X2</span> <span class="n">Y2</span> <span class="n">Z2</span>
+<span class="n">image_name3</span><span class="o">.</span><span class="n">jpg</span> <span class="n">X3</span> <span class="n">Y3</span> <span class="n">Z3</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Note that at least 3 images must be specified to estimate a 3D similarity
+transformation. Then, the model can be geo-registered using:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">model_merger</span> \
+    <span class="o">--</span><span class="n">input_path2</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">model</span> \
+    <span class="o">--</span><span class="n">output_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">geo</span><span class="o">-</span><span class="n">registered</span><span class="o">-</span><span class="n">model</span> \
+    <span class="o">--</span><span class="n">ref_images_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">file</span>
 </pre></div>
 </div>
 </div>
