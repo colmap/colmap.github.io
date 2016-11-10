@@ -478,7 +478,7 @@ reconstructed model after finishing the previous sparse reconstruction steps).
 Then, choose <code class="docutils literal"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Multi-view</span> <span class="pre">stereo</span></code> and select an empty or
 existing workspace folder, which is used for the output and of all dense
 reconstruction results. The first step is to <code class="docutils literal"><span class="pre">undistort</span></code> the images, second to
-compute the depth and normal maps using <code class="docutils literal"><span class="pre">Stereo</span></code>, third to <code class="docutils literal"><span class="pre">fuse</span></code> the depth
+compute the depth and normal maps using <code class="docutils literal"><span class="pre">stereo</span></code>, third to <code class="docutils literal"><span class="pre">fuse</span></code> the depth
 and normals maps to a point cloud, followed by a final, optional point cloud
 <code class="docutils literal"><span class="pre">meshing</span></code> step. During the stereo reconstruction process, the display might
 freeze due to heavy compute load and, if your GPU does not have enough memory,

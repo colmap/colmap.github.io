@@ -163,19 +163,56 @@ the <code class="docutils literal"><span class="pre">./src/exe/*</span></code> f
 </pre></div>
 </div>
 <p>Then, an exemplary sequence of commands to reconstruct the scene would be:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./src/exe/feature_extractor \
-    --General.database_path /path/to/project/database.db \
-    --General.image_path /path/to/project/images
+<div class="highlight-default"><div class="highlight"><pre><span></span># The project folder must contain a folder &quot;images&quot; with all the images.
+PROJECT_PATH=/path/to/project
+
+$ ./src/exe/feature_extractor \
+   --General.database_path $PROJECT_PATH/database.db \
+   --General.image_path $PROJECT_PATH/images
 
 $ ./src/exe/exhaustive_matcher \
-    --General.database_path /path/to/project/database.db
+   --General.database_path $PROJECT_PATH/database.db
 
-$ mkdir /path/to/project/results
+$ mkdir $PROJECT_PATH/sparse
 
 $ ./src/exe/mapper \
-    --General.database_path /path/to/project/database.db \
-    --General.image_path /path/to/project/images \
-    --export_path /path/to/project/results
+    --General.database_path $PROJECT_PATH/database.db \
+    --General.image_path $PROJECT_PATH/images \
+    --export_path $PROJECT_PATH/sparse
+
+$ mkdir $PROJECT_PATH/dense
+
+$ ./src/exe/image_undistorter \
+    --General.image_path $PROJECT_PATH/images \
+    --input_path $PROJECT_PATH/sparse \
+    --output_path $PROJECT_PATH/dense \
+    --output_type COLMAP \
+    --max_image_size 2000
+
+$ ./src/exe/dense_mapper \
+    --workspace_path $PROJECT_PATH/dense \
+    --workspace_format COLMAP \
+    --DenseMapperOptions.max_image_size 0 \
+    --DenseMapperOptions.patch_match_filter false \
+    --DenseMapperOptions.patch_match_geom_consistency false \
+    --DenseMapperOptions.patch_match_num_iterations 4
+
+$ ./exe/dense_mapper \
+    --workspace_path $PROJECT_PATH/dense \
+    --workspace_format COLMAP \
+    --DenseMapperOptions.max_image_size 0 \
+    --DenseMapperOptions.patch_match_filter true \
+    --DenseMapperOptions.patch_match_geom_consistency true
+
+$ ./exe/dense_fuser \
+    --workspace_path $PROJECT_PATH/dense \
+    --workspace_format COLMAP \
+    --input_type geometric \
+    --output_path $PROJECT_PATH/dense/point-cloud.ply
+
+$ ./src/exe/dense_mesher \
+    --input_path $PROJECT_PATH/dense/point-cloud.ply \
+    --output_path $PROJECT_PATH/dense/mesh.ply
 </pre></div>
 </div>
 </div>
@@ -228,6 +265,8 @@ performing feature extraction.</li>
 performing feature extraction and matching.</li>
 <li><code class="docutils literal"><span class="pre">image_undistorter</span></code>: Undistort images and/or export them for MVS or to
 external dense reconstruction software, such as CMVS/PMVS.</li>
+<li><code class="docutils literal"><span class="pre">image_rectifier</span></code>: Stereo rectify cameras and undistort images for stereo
+disparity estimation.</li>
 <li><code class="docutils literal"><span class="pre">dense_mapper</span></code>: Dense 3D reconstruction / mapping using MVS after running
 the <code class="docutils literal"><span class="pre">image_undistorter</span></code> to initialize the workspace.</li>
 <li><code class="docutils literal"><span class="pre">dense_fuser</span></code>: Fusion of MVS depth and normal maps to a colored point cloud.</li>
