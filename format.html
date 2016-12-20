@@ -169,6 +169,9 @@ the reconstruction, choose <code class="docutils literal"><span class="pre">File
 containing the <cite>cameras.txt</cite>, <cite>images.txt</cite>, and <cite>points3D.txt</cite> files.</p>
 <p>Note that the unique identifiers of cameras (<cite>CAMERA_ID</cite>), images (<cite>IMAGE_ID</cite>),
 and 3D points (<cite>POINT3D_ID</cite>) are unordered and are most likely not contiguous.</p>
+<p>There are two source files to conveniently read the sparse reconstructions using
+Python (<code class="docutils literal"><span class="pre">scripts/python/read_model.py</span></code>) and Matlab
+(<code class="docutils literal"><span class="pre">scripts/matlab/read_model.m</span></code>).</p>
 <div class="section" id="cameras-txt">
 <h3>cameras.txt<a class="headerlink" href="#cameras-txt" title="Permalink to this headline">¶</a></h3>
 <p>This file contains the intrinsic parameters of all reconstructed cameras in the
@@ -272,7 +275,9 @@ contains example command-line usage to perform the dense reconstruction.</p>
 <p>The depth maps are stored as mixed text and binary files. The text header
 defines the dimensions of the image in the format <code class="docutils literal"><span class="pre">with&amp;height&amp;channels&amp;</span></code>
 followed by row-major <cite>float32</cite> binary data. For depth maps <code class="docutils literal"><span class="pre">channels=1</span></code> and
-for normal maps <code class="docutils literal"><span class="pre">channels=3</span></code>.</p>
+for normal maps <code class="docutils literal"><span class="pre">channels=3</span></code>. The depth and normal maps can be conveniently
+read with Matlab using the functions in <code class="docutils literal"><span class="pre">scripts/matlab/read_depth_map.m</span></code> and
+<code class="docutils literal"><span class="pre">scripts/matlab/read_normal_map.m</span></code>.</p>
 </div>
 <div class="section" id="consistency-graphs">
 <h3>Consistency Graphs<a class="headerlink" href="#consistency-graphs" title="Permalink to this headline">¶</a></h3>
