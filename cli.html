@@ -184,7 +184,7 @@ $ mkdir $PROJECT_PATH/dense
 
 $ ./src/exe/image_undistorter \
     --General.image_path $PROJECT_PATH/images \
-    --input_path $PROJECT_PATH/sparse \
+    --input_path $PROJECT_PATH/sparse/0 \
     --output_path $PROJECT_PATH/dense \
     --output_type COLMAP \
     --max_image_size 2000
@@ -215,6 +215,10 @@ $ ./src/exe/dense_mesher \
     --output_path $PROJECT_PATH/dense/mesh.ply
 </pre></div>
 </div>
+<p>If you want to run COLMAP on a computer (e.g., cluster or cloud service) without
+an attached display, you should run the <code class="docutils literal"><span class="pre">feature_extractor</span></code> with the option
+<code class="docutils literal"><span class="pre">--use_gpu</span> <span class="pre">false</span></code> and the <code class="docutils literal"><span class="pre">*_matcher</span></code> with <code class="docutils literal"><span class="pre">--gpu_index</span> <span class="pre">0</span></code> if a CUDA
+device is available or with <code class="docutils literal"><span class="pre">--use_gpu</span> <span class="pre">false</span></code> for CPU-based matching.</p>
 </div>
 <div class="section" id="help">
 <h2>Help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
