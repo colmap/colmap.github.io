@@ -495,9 +495,10 @@ consistent depth and normal maps: first, perform stereo processing and
 disable the <code class="docutils literal"><span class="pre">filter</span></code> option. After processing all images (before fusion and
 meshing), you must re-run stereo processing and enable both the <code class="docutils literal"><span class="pre">filter</span></code> and
 <code class="docutils literal"><span class="pre">geom_consistency</span></code> options. Finally, perform the fusion and meshing steps.</p>
-<p>In addition to the internal dense reconstruction functionality, COLMAP exports
-to several other dense reconstruction libraries, such as CMVS/PMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id11">[furukawa10]</a>
-or CMP-MVS <a class="reference internal" href="bibliography.html#jancosek11" id="id12">[jancosek11]</a>. Please choose <code class="docutils literal"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Undistort</span> <span class="pre">images</span></code> and select
+<p>Note that COLMAP requires a CUDA-enabled GPU, so in addition to the internal
+dense reconstruction functionality, COLMAP exports to several other dense
+reconstruction libraries, such as CMVS/PMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id11">[furukawa10]</a> or
+CMP-MVS <a class="reference internal" href="bibliography.html#jancosek11" id="id12">[jancosek11]</a>. Please choose <code class="docutils literal"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Undistort</span> <span class="pre">images</span></code> and select
 the appropriate format. To run PMVS2, execute the following commands:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">pmvs2</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">undistortion</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">pmvs</span><span class="o">/</span> <span class="n">option</span><span class="o">-</span><span class="nb">all</span>
 </pre></div>
