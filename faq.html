@@ -250,7 +250,10 @@ your sparse reconstruction into more manageable clusters of images using e.g.
 CMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id1">[furukawa10]</a>. Otherwise, the fusion procedure might run out of memory, as
 the implementation requires all depth and normal maps to be loaded at the same
 time. Note that, for this use case, COLMAP&#8217;s dense reconstruction pipeline also
-supports the PMVS/CMVS folder structure when executed from the command-line.</p>
+supports the PMVS/CMVS folder structure when executed from the command-line.
+Please, refer to the workspace folder for example shell scripts. To reduce the
+number of images using CMVS, you must modify the shell scripts accordingly. For
+example, <code class="docutils literal"><span class="pre">cmvs</span> <span class="pre">pmvs/</span> <span class="pre">30</span></code> to limit each cluster to 30 images.</p>
 </div>
 <div class="section" id="fix-gpu-freezes-and-timeouts-during-dense-reconstruction">
 <span id="faq-dense-timeout"></span><h2>Fix GPU freezes and timeouts during dense reconstruction<a class="headerlink" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
