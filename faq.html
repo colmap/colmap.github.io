@@ -102,6 +102,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#geo-registration">Geo-registration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#manhattan-world-alignment">Manhattan world alignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reduce-memory-usage-during-dense-reconstruction">Reduce memory usage during dense reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manual-specification-of-source-images-during-dense-reconstruction">Manual specification of source images during dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction">Fix GPU freezes and timeouts during dense reconstruction</a></li>
 </ul>
 </li>
@@ -250,7 +251,7 @@ vanishing point detection in the images. Please, refer to the
 <div class="section" id="reduce-memory-usage-during-dense-reconstruction">
 <span id="faq-dense-memory"></span><h2>Reduce memory usage during dense reconstruction<a class="headerlink" href="#reduce-memory-usage-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>You can either reduce the maximum image resolution by setting the option
-<code class="docutils literal"><span class="pre">max_image_size</span></code> or reduce the number of sources images in the
+<code class="docutils literal"><span class="pre">max_image_size</span></code> or reduce the number of source images in the
 <code class="docutils literal"><span class="pre">stereo/patch-match.cfg</span></code> file from e.g. <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">30</span></code> to <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">10</span></code>
 file. Note that enabling the <code class="docutils literal"><span class="pre">geom_consistency</span></code> option increases the required
 GPU memory.</p>
@@ -263,6 +264,23 @@ supports the PMVS/CMVS folder structure when executed from the command-line.
 Please, refer to the workspace folder for example shell scripts. To reduce the
 number of images using CMVS, you must modify the shell scripts accordingly. For
 example, <code class="docutils literal"><span class="pre">cmvs</span> <span class="pre">pmvs/</span> <span class="pre">30</span></code> to limit each cluster to 30 images.</p>
+</div>
+<div class="section" id="manual-specification-of-source-images-during-dense-reconstruction">
+<h2>Manual specification of source images during dense reconstruction<a class="headerlink" href="#manual-specification-of-source-images-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
+<p>You can change the number of source images in the <code class="docutils literal"><span class="pre">stereo/patch-match.cfg</span></code>
+file from e.g. <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">30</span></code> to <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">10</span></code> file. This selects the images
+with the most visual overlap automatically as source images. Alternatively, you
+can manually specify images with their name, for example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">image1</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">image2</span><span class="o">.</span><span class="n">jpg</span> <span class="n">image3</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">image2</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">image1</span><span class="o">.</span><span class="n">jpg</span> <span class="n">image3</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">image3</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">image1</span><span class="o">.</span><span class="n">jpg</span> <span class="n">image2</span><span class="o">.</span><span class="n">jpg</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal"><span class="pre">image2.jpg</span></code> and <code class="docutils literal"><span class="pre">image3.jpg</span></code> are used as source images for
+<code class="docutils literal"><span class="pre">image1.jpg</span></code>, etc.</p>
 </div>
 <div class="section" id="fix-gpu-freezes-and-timeouts-during-dense-reconstruction">
 <span id="faq-dense-timeout"></span><h2>Fix GPU freezes and timeouts during dense reconstruction<a class="headerlink" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
