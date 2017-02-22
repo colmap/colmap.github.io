@@ -100,6 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#increase-number-of-3d-points">Increase number of 3D points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#merge-disconnected-models">Merge disconnected models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#geo-registration">Geo-registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manhattan-world-alignment">Manhattan world alignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reduce-memory-usage-during-dense-reconstruction">Reduce memory usage during dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction">Fix GPU freezes and timeouts during dense reconstruction</a></li>
 </ul>
@@ -237,6 +238,14 @@ transformation. Then, the model can be geo-registered using:</p>
     <span class="o">--</span><span class="n">ref_images_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">file</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="manhattan-world-alignment">
+<h2>Manhattan world alignment<a class="headerlink" href="#manhattan-world-alignment" title="Permalink to this headline">¶</a></h2>
+<p>COLMAP has functionality to align the coordinate axes of a reconstruction using
+a Manhattan world assumption, i.e. COLMAP can automatically determine the
+gravity axis and the major horizontal axis of the Manhattan world through
+vanishing point detection in the images. Please, refer to the
+<code class="docutils literal"><span class="pre">model_orientation_aligner</span></code> for more details.</p>
 </div>
 <div class="section" id="reduce-memory-usage-during-dense-reconstruction">
 <span id="faq-dense-memory"></span><h2>Reduce memory usage during dense reconstruction<a class="headerlink" href="#reduce-memory-usage-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
