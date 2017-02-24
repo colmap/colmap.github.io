@@ -216,9 +216,11 @@ $ ./src/exe/dense_mesher \
 </pre></div>
 </div>
 <p>If you want to run COLMAP on a computer (e.g., cluster or cloud service) without
-an attached display, you should run the <code class="docutils literal"><span class="pre">feature_extractor</span></code> with the option
-<code class="docutils literal"><span class="pre">--use_gpu</span> <span class="pre">false</span></code> and the <code class="docutils literal"><span class="pre">*_matcher</span></code> with <code class="docutils literal"><span class="pre">--gpu_index</span> <span class="pre">0</span></code> if a CUDA
-device is available or with <code class="docutils literal"><span class="pre">--use_gpu</span> <span class="pre">false</span></code> for CPU-based matching.</p>
+an attached display, you should run the <code class="docutils literal"><span class="pre">feature_extractor</span></code> and set the
+<code class="docutils literal"><span class="pre">--ExtractionOptions.gpu_index</span> <span class="pre">0</span></code> explicitly if a CUDA device is available or
+with the option <code class="docutils literal"><span class="pre">--use_gpu</span> <span class="pre">false</span></code>. Then, you should run the <code class="docutils literal"><span class="pre">*_matcher</span></code> with
+<code class="docutils literal"><span class="pre">--gpu_index</span> <span class="pre">0</span></code> if a CUDA device is available or with <code class="docutils literal"><span class="pre">--use_gpu</span> <span class="pre">false</span></code> for
+CPU-based feature matching.</p>
 </div>
 <div class="section" id="help">
 <h2>Help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>

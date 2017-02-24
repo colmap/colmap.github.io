@@ -251,10 +251,9 @@ vanishing point detection in the images. Please, refer to the
 <div class="section" id="reduce-memory-usage-during-dense-reconstruction">
 <span id="faq-dense-memory"></span><h2>Reduce memory usage during dense reconstruction<a class="headerlink" href="#reduce-memory-usage-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>You can either reduce the maximum image resolution by setting the option
-<code class="docutils literal"><span class="pre">max_image_size</span></code> or reduce the number of source images in the
-<code class="docutils literal"><span class="pre">stereo/patch-match.cfg</span></code> file from e.g. <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">30</span></code> to <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">10</span></code>
-file. Note that enabling the <code class="docutils literal"><span class="pre">geom_consistency</span></code> option increases the required
-GPU memory.</p>
+<code class="docutils literal"><span class="pre">max_image_size</span></code> or reduce the number of source images in the <code class="docutils literal"><span class="pre">stereo/patch-</span>
+<span class="pre">match.cfg</span></code> file from e.g. <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">30</span></code> to <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">10</span></code>. Note that
+enabling the <code class="docutils literal"><span class="pre">geom_consistency</span></code> option increases the required GPU memory.</p>
 <p>For large-scale reconstructions of several thousands of images, you should split
 your sparse reconstruction into more manageable clusters of images using e.g.
 CMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id1">[furukawa10]</a>. Otherwise, the fusion procedure might run out of memory, as
@@ -268,7 +267,7 @@ example, <code class="docutils literal"><span class="pre">cmvs</span> <span clas
 <div class="section" id="manual-specification-of-source-images-during-dense-reconstruction">
 <h2>Manual specification of source images during dense reconstruction<a class="headerlink" href="#manual-specification-of-source-images-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>You can change the number of source images in the <code class="docutils literal"><span class="pre">stereo/patch-match.cfg</span></code>
-file from e.g. <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">30</span></code> to <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">10</span></code> file. This selects the images
+file from e.g. <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">30</span></code> to <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">10</span></code>. This selects the images
 with the most visual overlap automatically as source images. Alternatively, you
 can manually specify images with their name, for example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">image1</span><span class="o">.</span><span class="n">jpg</span>
