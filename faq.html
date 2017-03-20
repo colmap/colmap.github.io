@@ -103,6 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#manhattan-world-alignment">Manhattan world alignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reduce-memory-usage-during-dense-reconstruction">Reduce memory usage during dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#manual-specification-of-source-images-during-dense-reconstruction">Manual specification of source images during dense reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-gpu-support-in-dense-reconstruction">Multi-GPU support in dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction">Fix GPU freezes and timeouts during dense reconstruction</a></li>
 </ul>
 </li>
@@ -252,7 +253,7 @@ vanishing point detection in the images. Please, refer to the
 <span id="faq-dense-memory"></span><h2>Reduce memory usage during dense reconstruction<a class="headerlink" href="#reduce-memory-usage-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>You can either reduce the maximum image resolution by setting the option
 <code class="docutils literal"><span class="pre">max_image_size</span></code> or reduce the number of source images in the <code class="docutils literal"><span class="pre">stereo/patch-</span>
-<span class="pre">match.cfg</span></code> file from e.g. <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">30</span></code> to <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">10</span></code>. Note that
+<span class="pre">match.cfg</span></code> file from e.g. <code class="docutils literal"><span class="pre">__auto__,</span> <span class="pre">30</span></code> to <code class="docutils literal"><span class="pre">__auto__,</span> <span class="pre">10</span></code>. Note that
 enabling the <code class="docutils literal"><span class="pre">geom_consistency</span></code> option increases the required GPU memory.</p>
 <p>For large-scale reconstructions of several thousands of images, you should split
 your sparse reconstruction into more manageable clusters of images using e.g.
@@ -267,19 +268,26 @@ example, <code class="docutils literal"><span class="pre">cmvs</span> <span clas
 <div class="section" id="manual-specification-of-source-images-during-dense-reconstruction">
 <h2>Manual specification of source images during dense reconstruction<a class="headerlink" href="#manual-specification-of-source-images-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>You can change the number of source images in the <code class="docutils literal"><span class="pre">stereo/patch-match.cfg</span></code>
-file from e.g. <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">30</span></code> to <code class="docutils literal"><span class="pre">__auto__</span> <span class="pre">10</span></code>. This selects the images
+file from e.g. <code class="docutils literal"><span class="pre">__auto__,</span> <span class="pre">30</span></code> to <code class="docutils literal"><span class="pre">__auto__,</span> <span class="pre">10</span></code>. This selects the images
 with the most visual overlap automatically as source images. Alternatively, you
 can manually specify images with their name, for example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">image1</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">image2</span><span class="o">.</span><span class="n">jpg</span> <span class="n">image3</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">image2</span><span class="o">.</span><span class="n">jpg</span><span class="p">,</span> <span class="n">image3</span><span class="o">.</span><span class="n">jpg</span>
 <span class="n">image2</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">image1</span><span class="o">.</span><span class="n">jpg</span> <span class="n">image3</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">image1</span><span class="o">.</span><span class="n">jpg</span><span class="p">,</span> <span class="n">image3</span><span class="o">.</span><span class="n">jpg</span>
 <span class="n">image3</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">image1</span><span class="o">.</span><span class="n">jpg</span> <span class="n">image2</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">image1</span><span class="o">.</span><span class="n">jpg</span><span class="p">,</span> <span class="n">image2</span><span class="o">.</span><span class="n">jpg</span>
 </pre></div>
 </div>
 <p>Here, <code class="docutils literal"><span class="pre">image2.jpg</span></code> and <code class="docutils literal"><span class="pre">image3.jpg</span></code> are used as source images for
 <code class="docutils literal"><span class="pre">image1.jpg</span></code>, etc.</p>
+</div>
+<div class="section" id="multi-gpu-support-in-dense-reconstruction">
+<h2>Multi-GPU support in dense reconstruction<a class="headerlink" href="#multi-gpu-support-in-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
+<p>You can run dense reconstruction on multiple GPUs by specifying multiple indices
+for CUDA-enabled GPUs, e.g.,
+<code class="docutils literal"><span class="pre">--DenseMapperOptions.patch_match_gpu_index=0,1,2,3</span></code> runs the dense
+reconstruction on 4 GPUs in parallel.</p>
 </div>
 <div class="section" id="fix-gpu-freezes-and-timeouts-during-dense-reconstruction">
 <span id="faq-dense-timeout"></span><h2>Fix GPU freezes and timeouts during dense reconstruction<a class="headerlink" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
