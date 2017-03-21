@@ -97,7 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#share-intrinsics">Share intrinsics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fix-intrinsics">Fix intrinsics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#principal-point-refinement">Principal point refinement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#increase-number-of-3d-points">Increase number of 3D points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#increase-number-of-sparse-3d-points">Increase number of sparse 3D points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#merge-disconnected-models">Merge disconnected models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#geo-registration">Geo-registration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#manhattan-world-alignment">Manhattan world alignment</a></li>
@@ -191,14 +191,15 @@ can try to refine the principal point in global bundle adjustment, especially
 when sharing intrinsic parameters between multiple images. Please, refer to
 <a class="reference internal" href="#faq-fix-intrinsics"><span class="std std-ref">Fix intrinsics</span></a> for more information.</p>
 </div>
-<div class="section" id="increase-number-of-3d-points">
-<h2>Increase number of 3D points<a class="headerlink" href="#increase-number-of-3d-points" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="increase-number-of-sparse-3d-points">
+<h2>Increase number of sparse 3D points<a class="headerlink" href="#increase-number-of-sparse-3d-points" title="Permalink to this headline">¶</a></h2>
 <p>By default, COLMAP ignores two-view feature tracks in triangulation, resulting
 in fewer 3D points than possible. Triangulation of two-view tracks can in rare
 cases improve the stability of sparse image collections by providing additional
 constraints in bundle adjustment. To also triangulate two-view tracks, unselect
 the option <code class="docutils literal"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Reconstruction</span> <span class="pre">options</span> <span class="pre">&gt;</span> <span class="pre">Triangulation</span> <span class="pre">&gt;</span>
-<span class="pre">ignore_two_view_tracks</span></code>.</p>
+<span class="pre">ignore_two_view_tracks</span></code>. If your images are taken from far distance with
+respect to the scene, you can try to reduce the minimum triangulation angle.</p>
 </div>
 <div class="section" id="merge-disconnected-models">
 <span id="faq-merge-models"></span><h2>Merge disconnected models<a class="headerlink" href="#merge-disconnected-models" title="Permalink to this headline">¶</a></h2>
