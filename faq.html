@@ -101,6 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#merge-disconnected-models">Merge disconnected models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#geo-registration">Geo-registration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#manhattan-world-alignment">Manhattan world alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction">Trading off completeness and accuracy in dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reduce-memory-usage-during-dense-reconstruction">Reduce memory usage during dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#manual-specification-of-source-images-during-dense-reconstruction">Manual specification of source images during dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#multi-gpu-support-in-dense-reconstruction">Multi-GPU support in dense reconstruction</a></li>
@@ -248,6 +249,16 @@ a Manhattan world assumption, i.e. COLMAP can automatically determine the
 gravity axis and the major horizontal axis of the Manhattan world through
 vanishing point detection in the images. Please, refer to the
 <code class="docutils literal"><span class="pre">model_orientation_aligner</span></code> for more details.</p>
+</div>
+<div class="section" id="trading-off-completeness-and-accuracy-in-dense-reconstruction">
+<h2>Trading off completeness and accuracy in dense reconstruction<a class="headerlink" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
+<p>If the dense point cloud contains too many outliers and too much noise, try to
+increase the value of option <code class="docutils literal"><span class="pre">--DenseMapperOptions.fusion_min_num_pixels</span></code>.</p>
+<p>If the reconstructed dense surface mesh model contains no surface or there are
+too many outlier surfaces, you should reduce the value of option
+<code class="docutils literal"><span class="pre">--DenseMapperOptions.poisson_trim</span></code> to decrease the surface are and vice versa
+to increase it. Also consider to try the reduce the outliers or increase the
+completeness in the fusion stage, as described above.</p>
 </div>
 <div class="section" id="reduce-memory-usage-during-dense-reconstruction">
 <span id="faq-dense-memory"></span><h2>Reduce memory usage during dense reconstruction<a class="headerlink" href="#reduce-memory-usage-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
