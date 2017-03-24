@@ -101,6 +101,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#merge-disconnected-models">Merge disconnected models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#geo-registration">Geo-registration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#manhattan-world-alignment">Manhattan world alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#register-localize-new-images-into-an-existing-reconstruction">Register/localize new images into an existing reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-gpu-support-in-feature-matching">Multi-GPU support in feature matching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction">Trading off completeness and accuracy in dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reduce-memory-usage-during-dense-reconstruction">Reduce memory usage during dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#manual-specification-of-source-images-during-dense-reconstruction">Manual specification of source images during dense reconstruction</a></li>
@@ -250,6 +252,36 @@ a Manhattan world assumption, i.e. COLMAP can automatically determine the
 gravity axis and the major horizontal axis of the Manhattan world through
 vanishing point detection in the images. Please, refer to the
 <code class="docutils literal"><span class="pre">model_orientation_aligner</span></code> for more details.</p>
+</div>
+<div class="section" id="register-localize-new-images-into-an-existing-reconstruction">
+<h2>Register/localize new images into an existing reconstruction<a class="headerlink" href="#register-localize-new-images-into-an-existing-reconstruction" title="Permalink to this headline">¶</a></h2>
+<p>If you have an existing reconstruction of images and want to register/localize
+new images within this reconstruction, you can follow these steps:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>./src/exe/feature_extractor \
+    --General.database_path $PROJECT_PATH/database.db \
+    --General.image_path $PROJECT_PATH/images \
+    --image_list_path /path/to/image-list.txt
+
+./src/exe/vocab_tree_matcher \
+    --General.database_path $PROJECT_PATH/database.db \
+    --VocabTreeMatchOptions.vocab_tree_path /path/to/vocab-tree.bin \
+    --VocabTreeMatchOptions.match_list_path /path/to/image-list.txt
+
+./src/exe/image_registrator \
+    --General.database_path $PROJECT_PATH/database.db \
+    --General.image_path $PROJECT_PATH/images \
+    --import_path /path/to/existing-model \
+    --export_path /path/to/model-with-new-images
+</pre></div>
+</div>
+<p>Note that this first extracts features for the new images, then matches them to
+the existing images in the database, and finally registers them into the model.</p>
+</div>
+<div class="section" id="multi-gpu-support-in-feature-matching">
+<h2>Multi-GPU support in feature matching<a class="headerlink" href="#multi-gpu-support-in-feature-matching" title="Permalink to this headline">¶</a></h2>
+<p>You can run feature matching on multiple GPUs by specifying multiple indices for
+CUDA-enabled GPUs, e.g., <code class="docutils literal"><span class="pre">--MatchOptions.gpu_index=0,1,2,3</span></code> runs the dense
+reconstruction on 4 GPUs in parallel.</p>
 </div>
 <div class="section" id="trading-off-completeness-and-accuracy-in-dense-reconstruction">
 <h2>Trading off completeness and accuracy in dense reconstruction<a class="headerlink" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
