@@ -162,11 +162,11 @@ estimate the parameters, if you share the intrinsics for multiple images. Note
 that the automatic estimation of parameters will most likely fail, if every
 image has a separate set of intrinsic parameters.</li>
 <li><code class="docutils literal"><span class="pre">SimpleRadialFisheyeCameraModel</span></code>, <code class="docutils literal"><span class="pre">RadialFisheyeCameraModel</span></code>,
-<code class="docutils literal"><span class="pre">OpenCVFisheyeCameraModel</span></code>, <code class="docutils literal"><span class="pre">FOVCameraModel</span></code>, <code class="docutils literal"><span class="pre">THIN_PRISM_FISHEYE</span></code>:
-Use these camera models for fisheye lenses and note that all other models are
-not really capable of modeling the distortion effects of fisheye lenses.
-The <code class="docutils literal"><span class="pre">FOVCameraModel</span></code> is used by Google Project Tango
-(make sure to not initialize <cite>omega</cite> to zero).</li>
+<code class="docutils literal"><span class="pre">OpenCVFisheyeCameraModel</span></code>, <code class="docutils literal"><span class="pre">FOVCameraModel</span></code>,
+<code class="docutils literal"><span class="pre">ThinPrismFisheyeCameraModel</span></code>: Use these camera models for fisheye lenses
+and note that all other models are not really capable of modeling the
+distortion effects of fisheye lenses. The <code class="docutils literal"><span class="pre">FOVCameraModel</span></code> is used by
+Google Project Tango (make sure to not initialize <cite>omega</cite> to zero).</li>
 </ul>
 <p>You can inspect the estimated intrinsic parameters by double-clicking specific
 images in the model viewer or by exporting the model and opening the
