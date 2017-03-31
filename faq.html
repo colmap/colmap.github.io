@@ -280,8 +280,9 @@ the existing images in the database, and finally registers them into the model.<
 <div class="section" id="multi-gpu-support-in-feature-matching">
 <h2>Multi-GPU support in feature matching<a class="headerlink" href="#multi-gpu-support-in-feature-matching" title="Permalink to this headline">¶</a></h2>
 <p>You can run feature matching on multiple GPUs by specifying multiple indices for
-CUDA-enabled GPUs, e.g., <code class="docutils literal"><span class="pre">--MatchOptions.gpu_index=0,1,2,3</span></code> runs the dense
-reconstruction on 4 GPUs in parallel.</p>
+CUDA-enabled GPUs, e.g., <code class="docutils literal"><span class="pre">--MatchOptions.gpu_index=0,1,2,3</span></code> runs the feature
+matching on 4 GPUs in parallel. By default, COLMAP runs feature matching on all
+CUDA-enabled GPUs.</p>
 </div>
 <div class="section" id="trading-off-completeness-and-accuracy-in-dense-reconstruction">
 <h2>Trading off completeness and accuracy in dense reconstruction<a class="headerlink" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
@@ -331,7 +332,8 @@ can manually specify images with their name, for example:</p>
 <p>You can run dense reconstruction on multiple GPUs by specifying multiple indices
 for CUDA-enabled GPUs, e.g.,
 <code class="docutils literal"><span class="pre">--DenseMapperOptions.patch_match_gpu_index=0,1,2,3</span></code> runs the dense
-reconstruction on 4 GPUs in parallel.</p>
+reconstruction on 4 GPUs in parallel. By default, COLMAP runs dense
+reconstruction on all CUDA-enabled GPUs.</p>
 </div>
 <div class="section" id="fix-gpu-freezes-and-timeouts-during-dense-reconstruction">
 <span id="faq-dense-timeout"></span><h2>Fix GPU freezes and timeouts during dense reconstruction<a class="headerlink" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
