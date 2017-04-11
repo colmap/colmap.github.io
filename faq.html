@@ -103,6 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#manhattan-world-alignment">Manhattan world alignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#register-localize-new-images-into-an-existing-reconstruction">Register/localize new images into an existing reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#multi-gpu-support-in-feature-matching">Multi-GPU support in feature matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-matching-fails-due-to-illegal-memory-access">Feature matching fails due to illegal memory access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction">Trading off completeness and accuracy in dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reduce-memory-usage-during-dense-reconstruction">Reduce memory usage during dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#manual-specification-of-source-images-during-dense-reconstruction">Manual specification of source images during dense reconstruction</a></li>
@@ -283,6 +284,19 @@ the existing images in the database, and finally registers them into the model.<
 CUDA-enabled GPUs, e.g., <code class="docutils literal"><span class="pre">--MatchOptions.gpu_index=0,1,2,3</span></code> runs the feature
 matching on 4 GPUs in parallel. By default, COLMAP runs feature matching on all
 CUDA-enabled GPUs.</p>
+</div>
+<div class="section" id="feature-matching-fails-due-to-illegal-memory-access">
+<h2>Feature matching fails due to illegal memory access<a class="headerlink" href="#feature-matching-fails-due-to-illegal-memory-access" title="Permalink to this headline">¶</a></h2>
+<p>If you encounter the following error message:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MultiplyDescriptor</span><span class="p">:</span> <span class="n">an</span> <span class="n">illegal</span> <span class="n">memory</span> <span class="n">access</span> <span class="n">was</span> <span class="n">encountered</span>
+</pre></div>
+</div>
+<p>during feature matching, your GPU runs out of memory. Try decreasing the option
+<code class="docutils literal"><span class="pre">--MatchOptions.max_num_matches</span></code> until the error disappears. Note that this
+might lead to inferior feature matching results, since the lower-scale input
+features will be clamped in order to fit them into GPU memory. Alternatively,
+you could change to CPU-based feature matching, but this can become very slow,
+or you use a GPU with more memory.</p>
 </div>
 <div class="section" id="trading-off-completeness-and-accuracy-in-dense-reconstruction">
 <h2>Trading off completeness and accuracy in dense reconstruction<a class="headerlink" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
