@@ -25,23 +25,23 @@ Then, an exemplary sequence of commands to reconstruct the scene would be::
     PROJECT_PATH=/path/to/project
 
     $ ./src/exe/feature_extractor \
-       --General.database_path $PROJECT_PATH/database.db \
-       --General.image_path $PROJECT_PATH/images
+       --database_path $PROJECT_PATH/database.db \
+       --image_path $PROJECT_PATH/images
 
     $ ./src/exe/exhaustive_matcher \
-       --General.database_path $PROJECT_PATH/database.db
+       --database_path $PROJECT_PATH/database.db
 
     $ mkdir $PROJECT_PATH/sparse
 
     $ ./src/exe/mapper \
-        --General.database_path $PROJECT_PATH/database.db \
-        --General.image_path $PROJECT_PATH/images \
+        --database_path $PROJECT_PATH/database.db \
+        --image_path $PROJECT_PATH/images \
         --export_path $PROJECT_PATH/sparse
 
     $ mkdir $PROJECT_PATH/dense
 
     $ ./src/exe/image_undistorter \
-        --General.image_path $PROJECT_PATH/images \
+        --image_path $PROJECT_PATH/images \
         --input_path $PROJECT_PATH/sparse \
         --output_path $PROJECT_PATH/dense \
         --output_type COLMAP \
@@ -88,8 +88,8 @@ the available options, e.g.::
       --project_path arg
       --General.debug_log_to_stderr arg (=0)
       --General.debug_log_level arg (=2)
-      --General.database_path arg
-      --General.image_path arg
+      --database_path arg
+      --image_path arg
       --ExtractionOptions.camera_model arg (=SIMPLE_RADIAL)
       --ExtractionOptions.single_camera arg (=0)
       --ExtractionOptions.camera_params arg

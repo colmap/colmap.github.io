@@ -259,18 +259,18 @@ vanishing point detection in the images. Please, refer to the
 <p>If you have an existing reconstruction of images and want to register/localize
 new images within this reconstruction, you can follow these steps:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>./src/exe/feature_extractor \
-    --General.database_path $PROJECT_PATH/database.db \
-    --General.image_path $PROJECT_PATH/images \
+    --database_path $PROJECT_PATH/database.db \
+    --image_path $PROJECT_PATH/images \
     --image_list_path /path/to/image-list.txt
 
 ./src/exe/vocab_tree_matcher \
-    --General.database_path $PROJECT_PATH/database.db \
-    --VocabTreeMatchOptions.vocab_tree_path /path/to/vocab-tree.bin \
-    --VocabTreeMatchOptions.match_list_path /path/to/image-list.txt
+    --database_path $PROJECT_PATH/database.db \
+    --VocabTreeMatching.vocab_tree_path /path/to/vocab-tree.bin \
+    --VocabTreeMatching.match_list_path /path/to/image-list.txt
 
 ./src/exe/image_registrator \
-    --General.database_path $PROJECT_PATH/database.db \
-    --General.image_path $PROJECT_PATH/images \
+    --database_path $PROJECT_PATH/database.db \
+    --image_path $PROJECT_PATH/images \
     --import_path /path/to/existing-model \
     --export_path /path/to/model-with-new-images
 </pre></div>
@@ -281,7 +281,7 @@ the existing images in the database, and finally registers them into the model.<
 <div class="section" id="multi-gpu-support-in-feature-matching">
 <h2>Multi-GPU support in feature matching<a class="headerlink" href="#multi-gpu-support-in-feature-matching" title="Permalink to this headline">¶</a></h2>
 <p>You can run feature matching on multiple GPUs by specifying multiple indices for
-CUDA-enabled GPUs, e.g., <code class="docutils literal"><span class="pre">--MatchOptions.gpu_index=0,1,2,3</span></code> runs the feature
+CUDA-enabled GPUs, e.g., <code class="docutils literal"><span class="pre">--SiftMatching.gpu_index=0,1,2,3</span></code> runs the feature
 matching on 4 GPUs in parallel. By default, COLMAP runs feature matching on all
 CUDA-enabled GPUs.</p>
 </div>
@@ -292,7 +292,7 @@ CUDA-enabled GPUs.</p>
 </pre></div>
 </div>
 <p>during feature matching, your GPU runs out of memory. Try decreasing the option
-<code class="docutils literal"><span class="pre">--MatchOptions.max_num_matches</span></code> until the error disappears. Note that this
+<code class="docutils literal"><span class="pre">--SiftMatching.max_num_matches</span></code> until the error disappears. Note that this
 might lead to inferior feature matching results, since the lower-scale input
 features will be clamped in order to fit them into GPU memory. Alternatively,
 you could change to CPU-based feature matching, but this can become very slow,
@@ -301,12 +301,12 @@ or you use a GPU with more memory.</p>
 <div class="section" id="trading-off-completeness-and-accuracy-in-dense-reconstruction">
 <h2>Trading off completeness and accuracy in dense reconstruction<a class="headerlink" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>If the dense point cloud contains too many outliers and too much noise, try to
-increase the value of option <code class="docutils literal"><span class="pre">--DenseMapperOptions.fusion_min_num_pixels</span></code>.</p>
+increase the value of option <code class="docutils literal"><span class="pre">--DenseFusion.min_num_pixels</span></code>.</p>
 <p>If the reconstructed dense surface mesh model contains no surface or there are
 too many outlier surfaces, you should reduce the value of option
-<code class="docutils literal"><span class="pre">--DenseMapperOptions.poisson_trim</span></code> to decrease the surface are and vice versa
-to increase it. Also consider to try the reduce the outliers or increase the
-completeness in the fusion stage, as described above.</p>
+<code class="docutils literal"><span class="pre">--DenseMeshing.trim</span></code> to decrease the surface are and vice versa to increase
+it. Also consider to try the reduce the outliers or increase the completeness in
+the fusion stage, as described above.</p>
 </div>
 <div class="section" id="reduce-memory-usage-during-dense-reconstruction">
 <span id="faq-dense-memory"></span><h2>Reduce memory usage during dense reconstruction<a class="headerlink" href="#reduce-memory-usage-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
@@ -316,8 +316,8 @@ the number of source images in the <code class="docutils literal"><span class="p
 <code class="docutils literal"><span class="pre">__auto__,</span> <span class="pre">30</span></code> to <code class="docutils literal"><span class="pre">__auto__,</span> <span class="pre">10</span></code>. Note that enabling the
 <code class="docutils literal"><span class="pre">geom_consistency</span></code> option increases the required GPU memory.</p>
 <p>If you run out of CPU memory during stereo fusion, you can reduce the
-<code class="docutils literal"><span class="pre">--DenseMapperOptions.fusion_cache_size</span></code>. Note that a too low value might lead
-to very slow fusion and heavy load on the hard disk.</p>
+<code class="docutils literal"><span class="pre">--DenseFusion.cache_size</span></code>. Note that a too low value might lead to very slow
+fusion and heavy load on the hard disk.</p>
 <p>For large-scale reconstructions of several thousands of images, you should
 consider splitting your sparse reconstruction into more manageable clusters of
 images using e.g. CMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id1">[furukawa10]</a>. Note that, for this use case, COLMAP&#8217;s
@@ -349,8 +349,7 @@ can manually specify images with their name, for example:</p>
 <div class="section" id="multi-gpu-support-in-dense-reconstruction">
 <h2>Multi-GPU support in dense reconstruction<a class="headerlink" href="#multi-gpu-support-in-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>You can run dense reconstruction on multiple GPUs by specifying multiple indices
-for CUDA-enabled GPUs, e.g.,
-<code class="docutils literal"><span class="pre">--DenseMapperOptions.patch_match_gpu_index=0,1,2,3</span></code> runs the dense
+for CUDA-enabled GPUs, e.g., <code class="docutils literal"><span class="pre">--DenseStereo.gpu_index=0,1,2,3</span></code> runs the dense
 reconstruction on 4 GPUs in parallel. By default, COLMAP runs dense
 reconstruction on all CUDA-enabled GPUs.</p>
 </div>
@@ -377,7 +376,7 @@ command-line. Under Ubuntu, you could first stop X using:</p>
 </pre></div>
 </div>
 <p>And then run the dense reconstruction code from the command-line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">dense_mapper</span> <span class="o">...</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">dense_stereo</span> <span class="o">...</span>
 </pre></div>
 </div>
 <p>Finally, you can restart your desktop environment with the following command:</p>
