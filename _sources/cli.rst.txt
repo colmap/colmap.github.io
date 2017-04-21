@@ -137,6 +137,9 @@ Executables
 - ``colmap``: The graphical user interface, see
   :ref:`Graphical User Interface <gui>` for more information.
 
+- ``automatic_reconstruction``: Automatically reconstruct sparse and dense model
+  for a set of input images.
+
 - ``feature_extractor``, ``feature_importer``: Perform feature extraction or
   import features for a set of images.
 
