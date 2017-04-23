@@ -48,14 +48,14 @@ Download
 --------
 
 Executables and other resources can be downloaded from
-http://people.inf.ethz.ch/jschoenb/colmap/.
+https://demuc.de/colmap/.
 
 
 Getting Started
 ---------------
 
 1. Download the `pre-built binaries
-   <http://people.inf.ethz.ch/jschoenb/colmap/>`_ or build the library manually
+   <https://demuc.de/colmap/>`_ or build the library manually
    (see :ref:`Installation <installation>`).
 2. Download one of the provided datasets (see :ref:`Datasets <datasets>`)
    or use your own images.
@@ -97,6 +97,6 @@ Acknowledgments
 ---------------
 
 The library was written by `Johannes L. Schönberger
-<http://people.inf.ethz.ch/jschoenb/>`_. Funding was provided by his PhD advisor
+<https://demuc.de/>`_. Funding was provided by his PhD advisor
 `Jan-Michael Frahm <http://frahm.web.unc.edu/>`_ through the grants NSF No.
 IIS-1349074, No. CNS-1405847, and the MITRE Corp.
