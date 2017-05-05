@@ -307,8 +307,10 @@ the existing images in the database, and finally registers them into the model.<
 <h2>Multi-GPU support in feature matching<a class="headerlink" href="#multi-gpu-support-in-feature-matching" title="Permalink to this headline">¶</a></h2>
 <p>You can run feature matching on multiple GPUs by specifying multiple indices for
 CUDA-enabled GPUs, e.g., <code class="docutils literal"><span class="pre">--SiftMatching.gpu_index=0,1,2,3</span></code> runs the feature
-matching on 4 GPUs in parallel. By default, COLMAP runs feature matching on all
-CUDA-enabled GPUs.</p>
+matching on 4 GPUs in parallel. You can also run multiple feature matching
+threads on the same GPU by specifying the same GPU index twice, e.g.,
+<code class="docutils literal"><span class="pre">--SiftMatching.gpu_index=0,0,1,1,2,3</span></code>. By default, COLMAP runs one feature
+matching thread per CUDA-enabled GPU.</p>
 </div>
 <div class="section" id="feature-matching-fails-due-to-illegal-memory-access">
 <h2>Feature matching fails due to illegal memory access<a class="headerlink" href="#feature-matching-fails-due-to-illegal-memory-access" title="Permalink to this headline">¶</a></h2>
@@ -375,8 +377,10 @@ can manually specify images with their name, for example:</p>
 <h2>Multi-GPU support in dense reconstruction<a class="headerlink" href="#multi-gpu-support-in-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>You can run dense reconstruction on multiple GPUs by specifying multiple indices
 for CUDA-enabled GPUs, e.g., <code class="docutils literal"><span class="pre">--DenseStereo.gpu_index=0,1,2,3</span></code> runs the dense
-reconstruction on 4 GPUs in parallel. By default, COLMAP runs dense
-reconstruction on all CUDA-enabled GPUs.</p>
+reconstruction on 4 GPUs in parallel. You can also run multiple dense
+reconstruction threads on the same GPU by specifying the same GPU index twice,
+e.g., <code class="docutils literal"><span class="pre">--SiftMatching.gpu_index=0,0,1,1,2,3</span></code>. By default, COLMAP runs one
+dense reconstruction thread per CUDA-enabled GPU.</p>
 </div>
 <div class="section" id="fix-gpu-freezes-and-timeouts-during-dense-reconstruction">
 <span id="faq-dense-timeout"></span><h2>Fix GPU freezes and timeouts during dense reconstruction<a class="headerlink" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
