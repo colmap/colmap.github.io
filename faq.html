@@ -200,7 +200,7 @@ principal point) automatically during the reconstruction. Usually, if there are
 enough images in the dataset and you share the intrinsics between multiple
 images, the estimated intrinsic camera parameters in SfM should be better than
 parameters manually obtained with a calibration pattern.</p>
-<p>However, sometimes COLMAP&#8217;s self-calibration routine might converge in
+<p>However, sometimes COLMAP’s self-calibration routine might converge in
 degenerate parameters, especially in case of the more complex camera models with
 many distortion parameters. If you know the calibration parameters a priori, you
 can fix different parameter groups during the reconstruction. Choose
@@ -347,7 +347,7 @@ the number of source images in the <code class="docutils literal"><span class="p
 low value might lead to very slow processing and heavy load on the hard disk.</p>
 <p>For large-scale reconstructions of several thousands of images, you should
 consider splitting your sparse reconstruction into more manageable clusters of
-images using e.g. CMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id1">[furukawa10]</a>. Note that, for this use case, COLMAP&#8217;s
+images using e.g. CMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id1">[furukawa10]</a>. Note that, for this use case, COLMAP’s
 dense reconstruction pipeline also supports the PMVS/CMVS folder structure when
 executed from the command-line. Please, refer to the workspace folder for
 example shell scripts. To change the number of images using CMVS, you must
@@ -393,7 +393,7 @@ the following.</p>
 <p>By default, the Windows operating system detects response problems from the GPU,
 and recovers to a functional desktop by resetting the card and aborting the
 stereo reconstruction process. The solution is to increase the so-called
-&#8220;Timeout Detection &amp; Recovery&#8221; (TDR) delay to a larger value. Please, refer to
+“Timeout Detection &amp; Recovery” (TDR) delay to a larger value. Please, refer to
 the <a class="reference external" href="https://goo.gl/UWKVs6">NVIDIA Nsight documentation</a> or to the <a class="reference external" href="http://www.microsoft.com/whdc/device/display/wddm_timeout.mspx">Microsoft
 documentation</a>
 on how to increase the delay time under Windows.</p>

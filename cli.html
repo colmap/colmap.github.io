@@ -173,7 +173,7 @@
             
   <div class="section" id="command-line-interface">
 <span id="cli"></span><h1>Command-line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h1>
-<p>The command-line interface provides access to most of COLMAP&#8217;s functionality for
+<p>The command-line interface provides access to most of COLMAP’s functionality for
 automated scripting. Each core functionality uses a different executable inside
 the <code class="docutils literal"><span class="pre">./src/exe/*</span></code> folder.</p>
 <div class="section" id="example">
@@ -226,19 +226,10 @@ $ ./src/exe/image_undistorter \
     --output_type COLMAP \
     --max_image_size 2000
 
-$ ./src/exe/dense_stereo \
-    --workspace_path $PROJECT_PATH/dense \
-    --workspace_format COLMAP \
-    --DenseStereo.max_image_size 0 \
-    --DenseStereo.filter false \
-    --DenseStereo.geom_consistency false \
-    --DenseStereo.num_iterations 4
-
 $ ./exe/dense_stereo \
     --workspace_path $PROJECT_PATH/dense \
     --workspace_format COLMAP \
     --DenseStereo.max_image_size 0 \
-    --DenseStereo.filter true \
     --DenseStereo.geom_consistency true
 
 $ ./exe/dense_fuser \
@@ -261,7 +252,7 @@ CPU-based feature matching.</p>
 </div>
 <div class="section" id="help">
 <h2>Help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
-<p>All executables have a &#8220;-h,&#8211;help&#8221; command-line argument to show the usage and
+<p>All executables have a “-h,–help” command-line argument to show the usage and
 the available options, e.g.:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ ./src/exe/feature_extractor -h
 
