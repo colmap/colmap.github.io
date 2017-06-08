@@ -240,7 +240,8 @@ latest source code:</p>
     <span class="n">glew</span>
 </pre></div>
 </div>
-<p>Create <cite>LocalConfig.cmake</cite> in COLMAP base directory with:</p>
+<p>Create the file <code class="docutils literal"><span class="pre">LocalConfig.cmake</span></code> in the COLMAP base directory and then
+insert the following lines into it:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>set(Qt5_CMAKE_DIR &quot;/usr/local/opt/qt5/lib/cmake&quot;)
 set(Qt5Core_DIR ${Qt5_CMAKE_DIR}/Qt5Core)
 set(Qt5OpenGL_DIR ${Qt5_CMAKE_DIR}/Qt5OpenGL)
