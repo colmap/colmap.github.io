@@ -393,9 +393,9 @@ from <a class="reference external" href="https://demuc.de/colmap/">https://demuc
 </li>
 <li><p class="first"><strong>Vocabulary Tree Matching</strong>: In this matching mode <a class="reference internal" href="bibliography.html#schoenberger16vote" id="id6">[schoenberger16vote]</a>,
 every image is matched against its visual nearest neighbors using a vocabulary
-tree with spatial re-ranking. This is the recommended matching mode for large
-image collections (several thousands). This requires a pre-trained vocabulary
-tree, that can be downloaded from <a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>.</p>
+tree. This is the recommended matching mode for large image collections
+(several thousands). This requires a pre-trained vocabulary tree, that can be
+downloaded from <a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>.</p>
 </li>
 <li><p class="first"><strong>Spatial Matching</strong>: This matching mode matches every image against its
 spatial nearest neighbors. Spatial locations can be manually set in the
@@ -493,17 +493,16 @@ database management tool that have enough matches from different viewpoints.</li
 <p>COLMAP provides several export options for further processing. For full
 flexibility, it is recommended to export the reconstruction in COLMAP’s data
 format by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span></code> to export the currently viewed model or
-<code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">all</span></code> to export all reconstructed models. The model is exported
-in the selected folder using separate text files for the reconstructed cameras,
-images, and points. When exporting in COLMAP’s data format, you can re- import
-the reconstruction for later visualization, image undistortion, or to continue
-an existing reconstruction from where it left off (e.g., after importing and
-matching new images). To import a model, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span></code> and select the
-export folder path. Alternatively, you can also export the model in various
-other formats, such as Bundler, VisualSfM <a class="footnote-reference" href="#f1" id="id9">[1]</a>, PLY, or VRML by choosing
-<code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">as...</span></code>. COLMAP can visualize plain PLY point cloud files with
-RGB information by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">From...</span></code>. Further information about
-the format of the exported models can be found <a class="reference internal" href="format.html#output-format"><span class="std std-ref">here</span></a>.</p>
+<code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">all</span> <span class="pre">models</span></code> to export all reconstructed models. The model is
+exported in the selected folder using separate text files for the reconstructed
+cameras, images, and points. When exporting in COLMAP’s data format, you can re-
+import the reconstruction for later visualization, image undistortion, or to
+continue an existing reconstruction from where it left off (e.g., after
+importing and matching new images). To import a model, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span></code>
+and select the export folder path. Alternatively, you can also export the model
+in various other formats, such as Bundler, VisualSfM <a class="footnote-reference" href="#f1" id="id9">[1]</a>, PLY, or VRML by
+choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">as...</span></code>. COLMAP can visualize plain PLY point cloud
+files with RGB information by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">From...</span></code>.</p>
 </div>
 <div class="section" id="dense-reconstruction">
 <h2>Dense Reconstruction<a class="headerlink" href="#dense-reconstruction" title="Permalink to this headline">¶</a></h2>
