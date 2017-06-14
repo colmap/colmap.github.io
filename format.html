@@ -96,10 +96,15 @@
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Output Format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#binary-file-format">Binary File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#indices-and-identifiers">Indices and Identifiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sparse-reconstruction">Sparse Reconstruction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#cameras-txt">cameras.txt</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#images-txt">images.txt</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#points3d-txt">points3D.txt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text-format">Text Format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cameras-txt">cameras.txt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#images-txt">images.txt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#points3d-txt">points3D.txt</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#dense-reconstruction">Dense Reconstruction</a><ul>
@@ -180,27 +185,58 @@
            <div itemprop="articleBody">
             
   <div class="section" id="output-format">
-<h1>Output Format<a class="headerlink" href="#output-format" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Output Format<a class="headerlink" href="#output-format" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="binary-file-format">
+<h2>Binary File Format<a class="headerlink" href="#binary-file-format" title="Permalink to this headline">¶</a></h2>
+<p>Note that all binary data is stored using little endian byte ordering. All x86
+processors are little endian and thus no special care has to be taken when
+reading COLMAP binary data on most platforms.</p>
+</div>
+<div class="section" id="indices-and-identifiers">
+<h2>Indices and Identifiers<a class="headerlink" href="#indices-and-identifiers" title="Permalink to this headline">¶</a></h2>
+<p>Any variable name ending with <code class="docutils literal"><span class="pre">*_idx</span></code> should be considered as an ordered,
+contiguous zero-based index. In general, any variable name ending with <code class="docutils literal"><span class="pre">*_id</span></code>
+should be considered as an unordered, non-contiguous identifier.</p>
+<p>For example, the unique identifiers of cameras (<cite>CAMERA_ID</cite>), images
+(<cite>IMAGE_ID</cite>), and 3D points (<cite>POINT3D_ID</cite>) are unordered and are most likely not
+contiguous. This also means that the maximum <cite>POINT3D_ID</cite> does not necessarily
+correspond to the number 3D points, since some <cite>POINT3D_ID</cite>’s are missing due to
+filtering during the reconstruction, etc.</p>
+</div>
 <div class="section" id="sparse-reconstruction">
 <h2>Sparse Reconstruction<a class="headerlink" href="#sparse-reconstruction" title="Permalink to this headline">¶</a></h2>
+<p>By default, COLMAP uses a binary file format (machine-readable, fast) for
+storing sparse models. In addition, COLMAP provides the option to store the
+sparse models as text files (human-readable, slow). In both cases, the
+information is split into three files for the information about <cite>cameras</cite>,
+<cite>images</cite>, and <cite>points</cite>. Any directory containing those three files constitutes a
+sparse model. The binary files have the file extension <cite>.bin</cite> and the text files
+the file extension <cite>.txt</cite>. Note that when loading a model from a directory which
+contains both binary and text files, COLMAP prefers the binary format.</p>
+<p>To export the currently selected model in the GUI, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span></code>. To
+export all reconstructed models in the current dataset, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span>
+<span class="pre">all</span></code>. The selected folder then contains the three files, and for convenience,
+the current project configuration for importing the model to COLMAP. To import
+the exported models, e.g., for visualization or to resume the reconstruction,
+choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span></code> and select the folder containing the <cite>cameras</cite>,
+<cite>images</cite>, and <cite>points3D</cite> files.</p>
+<p>To convert between the binary and text format in the GUI, you can load the model
+using <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span></code> and then export the model in the desired output format
+using <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span></code>. In addition, you can export sparse models to other
+formats, such as VisualSfM’s NVM, Bundler files, PLY, VRML, etc., using <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span>
+<span class="pre">Export</span> <span class="pre">As...</span></code>. To convert between various formats from the CLI, use the
+<code class="docutils literal"><span class="pre">model_converter</span></code> executable.</p>
+<div class="section" id="text-format">
+<h3>Text Format<a class="headerlink" href="#text-format" title="Permalink to this headline">¶</a></h3>
 <p>COLMAP exports the following three text files for every reconstructed model:
 <cite>cameras.txt</cite>, <cite>images.txt</cite>, and <cite>points3D.txt</cite>. Comments start with a leading
 “#” character and are ignored. The first comment lines briefly describe the
 format of the text files, as described in more detailed on this page.</p>
-<p>To export the currently selected model in the GUI, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span>
-<span class="pre">model</span></code>. To export all reconstructed models in the current dataset, choose
-<code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">all</span> <span class="pre">models</span></code>. The selected folder then contains the three files,
-and for convenience, the current project configuration for importing the model
-to COLMAP. To import the exported models, e.g. for visualization or to resume
-the reconstruction, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">model</span></code> and select the folder
-containing the <cite>cameras.txt</cite>, <cite>images.txt</cite>, and <cite>points3D.txt</cite> files.</p>
-<p>Note that the unique identifiers of cameras (<cite>CAMERA_ID</cite>), images (<cite>IMAGE_ID</cite>),
-and 3D points (<cite>POINT3D_ID</cite>) are unordered and are most likely not contiguous.</p>
 <p>There are two source files to conveniently read the sparse reconstructions using
 Python (<code class="docutils literal"><span class="pre">scripts/python/read_model.py</span></code>) and Matlab
 (<code class="docutils literal"><span class="pre">scripts/matlab/read_model.m</span></code>).</p>
 <div class="section" id="cameras-txt">
-<h3>cameras.txt<a class="headerlink" href="#cameras-txt" title="Permalink to this headline">¶</a></h3>
+<h4>cameras.txt<a class="headerlink" href="#cameras-txt" title="Permalink to this headline">¶</a></h4>
 <p>This file contains the intrinsic parameters of all reconstructed cameras in the
 dataset using one line per camera, e.g.:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Camera list with one line of data per camera:</span>
@@ -220,7 +256,7 @@ camera can be shared by multiple images, which refer to cameras using the unique
 identifier <cite>CAMERA_ID</cite>.</p>
 </div>
 <div class="section" id="images-txt">
-<h3>images.txt<a class="headerlink" href="#images-txt" title="Permalink to this headline">¶</a></h3>
+<h4>images.txt<a class="headerlink" href="#images-txt" title="Permalink to this headline">¶</a></h4>
 <p>This file contains the pose and keypoints of all reconstructed images in the
 dataset using two lines per image, e.g.:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Image list with two lines of data per image:</span>
@@ -249,7 +285,7 @@ the first image does not observe a 3D point in the reconstruction as the 3D
 point identifier is -1.</p>
 </div>
 <div class="section" id="points3d-txt">
-<h3>points3D.txt<a class="headerlink" href="#points3d-txt" title="Permalink to this headline">¶</a></h3>
+<h4>points3D.txt<a class="headerlink" href="#points3d-txt" title="Permalink to this headline">¶</a></h4>
 <p>This file contains the information of all reconstructed 3D points in the
 dataset using one line per point, e.g.:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 3D point list with one line of data per point:</span>
@@ -263,6 +299,7 @@ dataset using one line per point, e.g.:</p>
 <p>Here, there are three reconstructed 3D points, where <cite>POINT2D_IDX</cite> defines the
 zero-based index of the keypoint in the <cite>images.txt</cite> file. The error is given in
 pixels of reprojection error and is only updated after global bundle adjustment.</p>
+</div>
 </div>
 </div>
 <div class="section" id="dense-reconstruction">

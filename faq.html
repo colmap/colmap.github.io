@@ -298,12 +298,37 @@ new images within this reconstruction, you can follow these steps:</p>
     --image_path $PROJECT_PATH/images \
     --import_path /path/to/existing-model \
     --export_path /path/to/model-with-new-images
+
+./src/exe/bundle_adjuster \
+    --input_path /path/to/model-with-new-images \
+    --output_path /path/to/model-with-new-images
 </pre></div>
 </div>
 <p>Note that this first extracts features for the new images, then matches them to
 the existing images in the database, and finally registers them into the model.
 The image list text file contains a list of images to extract and match,
-specified as one image file name per line.</p>
+specified as one image file name per line. The bundle adjustment is optional.</p>
+<p>If you need a more accurate image registration with triangulation, then you
+should restart or continue the reconstruction process rather than just
+registering the images to the model. Instead of running the
+<code class="docutils literal"><span class="pre">image_registrator</span></code>, you should run the <code class="docutils literal"><span class="pre">mapper</span></code> to continue the
+reconstruction process from the existing model:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>./src/exe/mapper \
+    --database_path $PROJECT_PATH/database.db \
+    --image_path $PROJECT_PATH/images \
+    --import_path /path/to/existing-model \
+    --export_path /path/to/model-with-new-images
+</pre></div>
+</div>
+<p>Or, alternatively, you can start the reconstruction from scratch:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>./src/exe/mapper \
+    --database_path $PROJECT_PATH/database.db \
+    --image_path $PROJECT_PATH/images \
+    --export_path /path/to/model-with-new-images
+</pre></div>
+</div>
+<p>Note that dense reconstruction must be re-run from scratch after adding new
+images, as the coordinate frame of the model is changed.</p>
 </div>
 <div class="section" id="multi-gpu-support-in-feature-matching">
 <h2>Multi-GPU support in feature matching<a class="headerlink" href="#multi-gpu-support-in-feature-matching" title="Permalink to this headline">¶</a></h2>
@@ -391,9 +416,10 @@ dense reconstruction thread per CUDA-enabled GPU.</p>
 <p>The stereo reconstruction pipeline runs on the GPU using CUDA and puts the GPU
 under heavy load. You might experience a display freeze or even a program crash
 during the reconstruction. As a solution to this problem, you could use a
-secondary GPU in your system, that is not connected to your display.
-Alternatively, you can increase the GPU timeouts of your system, as detailed in
-the following.</p>
+secondary GPU in your system, that is not connected to your display by setting
+the GPU indices explicitly (usually index 0 corresponds to the card that the
+display is attached to). Alternatively, you can increase the GPU timeouts of
+your system, as detailed in the following.</p>
 <p>By default, the Windows operating system detects response problems from the GPU,
 and recovers to a functional desktop by resetting the card and aborting the
 stereo reconstruction process. The solution is to increase the so-called
