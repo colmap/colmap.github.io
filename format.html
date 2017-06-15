@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Output Format &mdash; COLMAP 3.0 documentation</title>
+  <title>Output Format &mdash; COLMAP 3.1 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="COLMAP 3.0 documentation" href="index.html"/>
+    <link rel="top" title="COLMAP 3.1 documentation" href="index.html"/>
         <link rel="next" title="Datasets" href="datasets.html"/>
         <link rel="prev" title="Camera Models" href="cameras.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                3.0
+                3.1
               </div>
             
           
@@ -328,16 +328,18 @@ pixels of reprojection error and is only updated after global bundle adjustment.
 │   │   +── ...
 │   +── patch-match.cfg
 │   +── fusion.cfg
-+── dense-reconstruction.sh
 +── fused.ply
 +── meshed.ply
++── run-colmap-geometric.sh
++── run-colmap-photometric.sh
 </pre></div>
 </div>
 <p>Here, the <cite>images</cite> folder contains the undistorted images, the <cite>sparse</cite> folder
 contains the sparse reconstruction with undistorted cameras, the <cite>stereo</cite> folder
-contains the stereo reconstruction results, <cite>fused.ply</cite> and <cite>meshed.ply</cite> are the
-results of the fusion and meshing procedure, and <cite>dense-reconstruction.sh</cite>
-contains example command-line usage to perform the dense reconstruction.</p>
+contains the stereo reconstruction results, <cite>point-cloud.ply</cite> and <cite>mesh.ply</cite> are
+the results of the fusion and meshing procedure, and <cite>run-colmap-geometric.sh</cite>
+and <cite>run-colmap-photometric.sh</cite> contain example command-line usage to perform
+the dense reconstruction.</p>
 <div class="section" id="depth-and-normal-maps">
 <h3>Depth and Normal Maps<a class="headerlink" href="#depth-and-normal-maps" title="Permalink to this headline">¶</a></h3>
 <p>The depth maps are stored as mixed text and binary files. The text header
@@ -404,7 +406,7 @@ The indices are specified w.r.t. the ordering in the <code class="docutils liter
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.0',
+            VERSION:'3.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
