@@ -92,9 +92,17 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mac">Mac</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pre-built-binaries">Pre-built Binaries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mac">Mac</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#build-from-source">Build from Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Mac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Windows</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
 </ul>
 </li>
@@ -175,15 +183,37 @@
   <div class="section" id="installation">
 <span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <p>You can either download one of the pre-built binaries from
-<a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a> or build the source code manually. It builds on all
-major platforms (Linux, Mac, Windows) with minimal effort. First, checkout the
-latest source code:</p>
+<a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a> or build the source code manually.</p>
+<div class="section" id="pre-built-binaries">
+<h2>Pre-built Binaries<a class="headerlink" href="#pre-built-binaries" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p>For convenience, the pre-built binaries for Windows contain both the graphical
+and command-line interface executables. To start the COLMAP GUI, you can simply
+run the <code class="docutils literal"><span class="pre">COLMAP.bat</span></code> batch script. The command-line executables are located in
+the <code class="docutils literal"><span class="pre">bin</span></code> folder and can be run from the Windows command shell <code class="docutils literal"><span class="pre">cmd.exe</span></code>.</p>
+</div>
+<div class="section" id="mac">
+<h3>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h3>
+<p>The pre-built binaries for Mac only contains the GUI version of COLMAP, since it
+is very easy to compile COLMAP yourself. COLMAP is shipped as an unsigned
+application, i.e., you have to right-click the application and select <em>Open</em>
+and then accept to trust the application. In the future, you can then simply
+double-click the application to open COLMAP.</p>
+</div>
+</div>
+<div class="section" id="build-from-source">
+<h2>Build from Source<a class="headerlink" href="#build-from-source" title="Permalink to this headline">¶</a></h2>
+<p>COLMAP builds on all major platforms (Linux, Mac, Windows) with little effort.
+First, checkout the latest source code:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">colmap</span>
 </pre></div>
 </div>
-<p>Then follow the build instructions for your platform as detailed below.</p>
+<p>The latest stable version lives in the <code class="docutils literal"><span class="pre">master</span></code> branch and the latest
+development version lives in the <code class="docutils literal"><span class="pre">dev</span></code> branch. , follow the build
+instructions for your platform as detailed below.</p>
 <div class="section" id="linux">
-<h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
 <p><em>Recommended dependencies:</em> CUDA.</p>
 <p>Dependencies from default Ubuntu 14.04/16.04 repositories:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> \
@@ -196,10 +226,7 @@ latest source code:</p>
     <span class="n">libgoogle</span><span class="o">-</span><span class="n">glog</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libgflags</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libglew</span><span class="o">-</span><span class="n">dev</span> \
-    <span class="n">freeglut3</span><span class="o">-</span><span class="n">dev</span> \
-    <span class="n">qt5</span><span class="o">-</span><span class="n">default</span> \
-    <span class="n">libxmu</span><span class="o">-</span><span class="n">dev</span> \
-    <span class="n">libxi</span><span class="o">-</span><span class="n">dev</span>
+    <span class="n">qt5</span><span class="o">-</span><span class="n">default</span>
 </pre></div>
 </div>
 <p>Install <a class="reference external" href="http://ceres-solver.org/">Ceres Solver</a>:</p>
@@ -208,7 +235,7 @@ latest source code:</p>
 <span class="n">cd</span> <span class="n">ceres</span><span class="o">-</span><span class="n">solver</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">..</span>
+<span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">DBUILD_TESTING</span><span class="o">=</span><span class="n">OFF</span> <span class="o">-</span><span class="n">DBUILD_EXAMPLES</span><span class="o">=</span><span class="n">OFF</span>
 <span class="n">make</span> <span class="o">-</span><span class="n">j</span>
 <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
@@ -222,8 +249,8 @@ latest source code:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="mac">
-<h2>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>Mac<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p><em>Recommended dependencies:</em> CUDA.</p>
 <p>Dependencies from <a class="reference external" href="http://brew.sh/">Homebrew</a>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">tap</span> <span class="n">homebrew</span><span class="o">/</span><span class="n">science</span>
@@ -256,13 +283,14 @@ set(Qt5OpenGL_DIR ${Qt5_CMAKE_DIR}/Qt5OpenGL)
 </pre></div>
 </div>
 </div>
-<div class="section" id="windows">
-<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Windows<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>On Windows you have to install the above dependencies manually. To make the
 process of configuring CMake less painful, please have a look at
-<cite>LocalConfigExample.config</cite>. MSVC12 (Microsoft Visual Studio 2013) and newer are
-confirmed to compile COLMAP without any issues.</p>
+<code class="docutils literal"><span class="pre">LocalConfigExample.config</span></code>. MSVC12 (Microsoft Visual Studio 2013) and newer
+are confirmed to compile COLMAP without any issues.</p>
 <p><em>Recommended dependencies:</em> CUDA.</p>
+</div>
 </div>
 <div class="section" id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
