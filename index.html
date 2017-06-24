@@ -219,11 +219,12 @@ authors, as specified in the source code.</p>
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>Download the <a class="reference external" href="https://demuc.de/colmap/">pre-built binaries</a> or build the
-library manually (see <a class="reference internal" href="install.html#installation"><span class="std std-ref">Installation</span></a>).</li>
+library manually from <a class="reference external" href="https://github.com/colmap/colmap">source</a>
+(see <a class="reference internal" href="install.html#installation"><span class="std std-ref">Installation</span></a>).</li>
 <li>Download one of the provided datasets (see <a class="reference internal" href="datasets.html#datasets"><span class="std std-ref">Datasets</span></a>)
 or use your own images.</li>
 <li>Use the <strong>automatic reconstruction</strong> to easily build models
-with a single click or command.</li>
+with a single click (see <a class="reference internal" href="tutorial.html#quick-start"><span class="std std-ref">Quickstart</span></a>).</li>
 <li>Watch the short introductory video at
 <a class="reference external" href="https://www.youtube.com/watch?v=P-EC0DzeVEU">YouTube</a> or read the
 <a class="reference internal" href="tutorial.html#tutorial"><span class="std std-ref">Tutorial</span></a> for more details.</li>
@@ -235,89 +236,12 @@ with a single click or command.</li>
 (<a class="reference external" href="mailto:colmap&#37;&#52;&#48;googlegroups&#46;com">colmap<span>&#64;</span>googlegroups<span>&#46;</span>com</a>) for questions and the <a class="reference external" href="https://github.com/colmap/colmap">GitHub issue tracker</a> for bug reports, feature
 requests/additions, etc.</p>
 </div>
-<div class="section" id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#pre-built-binaries">Pre-built Binaries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#build-from-source">Build from Source</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#documentation">Documentation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#quickstart">Quickstart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#structure-from-motion">Structure-from-Motion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#multi-view-stereo">Multi-View Stereo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#preface">Preface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#terminology">Terminology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#data-structure">Data Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#feature-detection-and-extraction">Feature Detection and Extraction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#feature-matching-and-geometric-verification">Feature Matching and Geometric Verification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#sparse-reconstruction">Sparse Reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#importing-and-exporting">Importing and Exporting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#dense-reconstruction">Dense Reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#database-management">Database Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#graphical-and-command-line-interface">Graphical and Command-line Interface</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="database.html#cameras-and-images">Cameras and Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="database.html#keypoints-and-descriptors">Keypoints and Descriptors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="database.html#matches">Matches</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="format.html#binary-file-format">Binary File Format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="format.html#indices-and-identifiers">Indices and Identifiers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="format.html#sparse-reconstruction">Sparse Reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="format.html#dense-reconstruction">Dense Reconstruction</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gui.html#model-viewer-controls">Model Viewer Controls</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui.html#render-options">Render Options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui.html#create-screenshots">Create Screenshots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui.html#create-screencast">Create Screencast</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cli.html#example">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cli.html#help">Help</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cli.html#executables">Executables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cli.html#visualization">Visualization</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#share-intrinsics">Share intrinsics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#fix-intrinsics">Fix intrinsics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#principal-point-refinement">Principal point refinement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#increase-number-of-sparse-3d-points">Increase number of sparse 3D points</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#merge-disconnected-models">Merge disconnected models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#geo-registration">Geo-registration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#manhattan-world-alignment">Manhattan world alignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#register-localize-new-images-into-an-existing-reconstruction">Register/localize new images into an existing reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#multi-gpu-support-in-feature-matching">Multi-GPU support in feature matching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#feature-matching-fails-due-to-illegal-memory-access">Feature matching fails due to illegal memory access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#trading-off-completeness-and-accuracy-in-dense-reconstruction">Trading off completeness and accuracy in dense reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#reduce-memory-usage-during-dense-reconstruction">Reduce memory usage during dense reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#manual-specification-of-source-images-during-dense-reconstruction">Manual specification of source images during dense reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#multi-gpu-support-in-dense-reconstruction">Multi-GPU support in dense reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#fix-gpu-freezes-and-timeouts-during-dense-reconstruction">Fix GPU freezes and timeouts during dense reconstruction</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
-</ul>
-</div>
-</div>
 <div class="section" id="acknowledgments">
 <h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permalink to this headline">¶</a></h2>
 <p>The library was written by <a class="reference external" href="https://demuc.de/">Johannes L. Schönberger</a>.
 Funding was provided by his PhD advisors <a class="reference external" href="http://frahm.web.unc.edu/">Jan-Michael Frahm</a> and <a class="reference external" href="https://www.inf.ethz.ch/personal/marc.pollefeys/">Marc Pollefeys</a>.</p>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
