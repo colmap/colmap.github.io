@@ -213,19 +213,20 @@ information is split into three files for the information about <cite>cameras</c
 sparse model. The binary files have the file extension <cite>.bin</cite> and the text files
 the file extension <cite>.txt</cite>. Note that when loading a model from a directory which
 contains both binary and text files, COLMAP prefers the binary format.</p>
-<p>To export the currently selected model in the GUI, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span></code>. To
-export all reconstructed models in the current dataset, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span>
-<span class="pre">all</span></code>. The selected folder then contains the three files, and for convenience,
-the current project configuration for importing the model to COLMAP. To import
-the exported models, e.g., for visualization or to resume the reconstruction,
-choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span></code> and select the folder containing the <cite>cameras</cite>,
-<cite>images</cite>, and <cite>points3D</cite> files.</p>
+<p>To export the currently selected model in the GUI, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span>
+<span class="pre">model</span></code>. To export all reconstructed models in the current dataset, choose
+<code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">all</span></code>. The selected folder then contains the three files, and
+for convenience, the current project configuration for importing the model to
+COLMAP. To import the exported models, e.g., for visualization or to resume the
+reconstruction, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">model</span></code> and select the folder containing
+the <cite>cameras</cite>, <cite>images</cite>, and <cite>points3D</cite> files.</p>
 <p>To convert between the binary and text format in the GUI, you can load the model
-using <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span></code> and then export the model in the desired output format
-using <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span></code>. In addition, you can export sparse models to other
-formats, such as VisualSfM’s NVM, Bundler files, PLY, VRML, etc., using <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span>
-<span class="pre">Export</span> <span class="pre">As...</span></code>. To convert between various formats from the CLI, use the
-<code class="docutils literal"><span class="pre">model_converter</span></code> executable.</p>
+using <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">model</span></code> and then export the model in the desired output
+format using <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">model</span></code> (binary) or <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">model</span> <span class="pre">as</span> <span class="pre">text</span></code>
+(text). In addition, you can export sparse models to other formats, such as
+VisualSfM’s NVM, Bundler files, PLY, VRML, etc., using <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">as...</span></code>.
+To convert between various formats from the CLI, use the <code class="docutils literal"><span class="pre">model_converter</span></code>
+executable.</p>
 <div class="section" id="text-format">
 <h3>Text Format<a class="headerlink" href="#text-format" title="Permalink to this headline">¶</a></h3>
 <p>COLMAP exports the following three text files for every reconstructed model:
