@@ -191,12 +191,14 @@
 <p>For convenience, the pre-built binaries for Windows contain both the graphical
 and command-line interface executables. To start the COLMAP GUI, you can simply
 run the <code class="docutils literal"><span class="pre">COLMAP.bat</span></code> batch script. The command-line executables are located in
-the <code class="docutils literal"><span class="pre">bin</span></code> folder and can be run from the Windows command shell <code class="docutils literal"><span class="pre">cmd.exe</span></code>.</p>
+the <code class="docutils literal"><span class="pre">bin</span></code> folder and can be run from the Windows command shell <code class="docutils literal"><span class="pre">cmd.exe</span></code>.
+Note that you must set the relative path to the pre-built libraries in the
+<code class="docutils literal"><span class="pre">lib</span></code> directory accordingly using the command <code class="docutils literal"><span class="pre">set</span> <span class="pre">PATH=%CD%\lib;%PATH%</span></code>.</p>
 </div>
 <div class="section" id="mac">
 <h3>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h3>
-<p>The pre-built binaries for Mac only contains the GUI version of COLMAP, since it
-is very easy to compile COLMAP yourself. COLMAP is shipped as an unsigned
+<p>The pre-built binaries for Mac only contain the GUI version of COLMAP, since it
+is very easy to compile COLMAP on Mac. COLMAP is shipped as an unsigned
 application, i.e., you have to right-click the application and select <em>Open</em>
 and then accept to trust the application. In the future, you can then simply
 double-click the application to open COLMAP.</p>
