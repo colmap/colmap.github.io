@@ -108,7 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#geo-registration">Geo-registration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#manhattan-world-alignment">Manhattan world alignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#register-localize-new-images-into-an-existing-reconstruction">Register/localize new images into an existing reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#multi-gpu-support-in-feature-matching">Multi-GPU support in feature matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-gpu-support-in-feature-extraction-matching">Multi-GPU support in feature extraction/matching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#feature-matching-fails-due-to-illegal-memory-access">Feature matching fails due to illegal memory access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction">Trading off completeness and accuracy in dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reduce-memory-usage-during-dense-reconstruction">Reduce memory usage during dense reconstruction</a></li>
@@ -330,14 +330,16 @@ reconstruction process from the existing model:</p>
 <p>Note that dense reconstruction must be re-run from scratch after adding new
 images, as the coordinate frame of the model is changed.</p>
 </div>
-<div class="section" id="multi-gpu-support-in-feature-matching">
-<h2>Multi-GPU support in feature matching<a class="headerlink" href="#multi-gpu-support-in-feature-matching" title="Permalink to this headline">¶</a></h2>
-<p>You can run feature matching on multiple GPUs by specifying multiple indices for
-CUDA-enabled GPUs, e.g., <code class="docutils literal"><span class="pre">--SiftMatching.gpu_index=0,1,2,3</span></code> runs the feature
-matching on 4 GPUs in parallel. You can also run multiple feature matching
-threads on the same GPU by specifying the same GPU index twice, e.g.,
+<div class="section" id="multi-gpu-support-in-feature-extraction-matching">
+<h2>Multi-GPU support in feature extraction/matching<a class="headerlink" href="#multi-gpu-support-in-feature-extraction-matching" title="Permalink to this headline">¶</a></h2>
+<p>You can run feature extraction/matching on multiple GPUs by specifying multiple
+indices for CUDA-enabled GPUs, e.g., <code class="docutils literal"><span class="pre">--SiftExtraction.gpu_index=0,1,2,3</span></code> and
+<code class="docutils literal"><span class="pre">--SiftMatching.gpu_index=0,1,2,3</span></code> runs the feature extraction/matching on 4
+GPUs in parallel. You can also run multiple feature extraction/matching threads
+on the same GPU by specifying the same GPU index twice, e.g.,
 <code class="docutils literal"><span class="pre">--SiftMatching.gpu_index=0,0,1,1,2,3</span></code>. By default, COLMAP runs one feature
-matching thread per CUDA-enabled GPU.</p>
+extraction/matching thread per CUDA-enabled GPU and this usually gives the best
+performance as compared to running multiple threads on the same GPU.</p>
 </div>
 <div class="section" id="feature-matching-fails-due-to-illegal-memory-access">
 <h2>Feature matching fails due to illegal memory access<a class="headerlink" href="#feature-matching-fails-due-to-illegal-memory-access" title="Permalink to this headline">¶</a></h2>
