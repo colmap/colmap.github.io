@@ -227,15 +227,15 @@ format using <code class="docutils literal"><span class="pre">File</span> <span 
 VisualSfM’s NVM, Bundler files, PLY, VRML, etc., using <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">as...</span></code>.
 To convert between various formats from the CLI, use the <code class="docutils literal"><span class="pre">model_converter</span></code>
 executable.</p>
+<p>There are two source files to conveniently read the sparse reconstructions using
+Python (<code class="docutils literal"><span class="pre">scripts/python/read_model.py</span></code> supporting binary and text) and Matlab
+(<code class="docutils literal"><span class="pre">scripts/matlab/read_model.m</span></code> supporting text).</p>
 <div class="section" id="text-format">
 <h3>Text Format<a class="headerlink" href="#text-format" title="Permalink to this headline">¶</a></h3>
 <p>COLMAP exports the following three text files for every reconstructed model:
 <cite>cameras.txt</cite>, <cite>images.txt</cite>, and <cite>points3D.txt</cite>. Comments start with a leading
 “#” character and are ignored. The first comment lines briefly describe the
 format of the text files, as described in more detailed on this page.</p>
-<p>There are two source files to conveniently read the sparse reconstructions using
-Python (<code class="docutils literal"><span class="pre">scripts/python/read_model.py</span></code>) and Matlab
-(<code class="docutils literal"><span class="pre">scripts/matlab/read_model.m</span></code>).</p>
 <div class="section" id="cameras-txt">
 <h4>cameras.txt<a class="headerlink" href="#cameras-txt" title="Permalink to this headline">¶</a></h4>
 <p>This file contains the intrinsic parameters of all reconstructed cameras in the
