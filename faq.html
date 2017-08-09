@@ -108,6 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#geo-registration">Geo-registration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#manhattan-world-alignment">Manhattan world alignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#register-localize-new-images-into-an-existing-reconstruction">Register/localize new images into an existing reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#available-functionality-without-gpu-cuda">Available functionality without GPU/CUDA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#multi-gpu-support-in-feature-extraction-matching">Multi-GPU support in feature extraction/matching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#feature-matching-fails-due-to-illegal-memory-access">Feature matching fails due to illegal memory access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction">Trading off completeness and accuracy in dense reconstruction</a></li>
@@ -329,6 +330,18 @@ reconstruction process from the existing model:</p>
 </div>
 <p>Note that dense reconstruction must be re-run from scratch after adding new
 images, as the coordinate frame of the model is changed.</p>
+</div>
+<div class="section" id="available-functionality-without-gpu-cuda">
+<h2>Available functionality without GPU/CUDA<a class="headerlink" href="#available-functionality-without-gpu-cuda" title="Permalink to this headline">¶</a></h2>
+<p>If you do not have a CUDA-enabled GPU but some other GPU, you can use all COLMAP
+functionality except the dense reconstruction part. However, you can use
+external dense reconstruction software as an alternative, as described in the
+<a class="reference internal" href="tutorial.html#dense-reconstruction"><span class="std std-ref">Tutorial</span></a>. If you have a GPU with low compute power
+or you want to execute COLMAP on a machine without an attached display and
+without CUDA support, you can run all steps on the CPU by specifying the
+appropriate options (e.g., <code class="docutils literal"><span class="pre">--SiftExtraction.use_gpu=false</span></code> for the feature
+extraction step). But not that this might result in a significant slow-down of
+the reconstruction pipeline.</p>
 </div>
 <div class="section" id="multi-gpu-support-in-feature-extraction-matching">
 <h2>Multi-GPU support in feature extraction/matching<a class="headerlink" href="#multi-gpu-support-in-feature-extraction-matching" title="Permalink to this headline">¶</a></h2>

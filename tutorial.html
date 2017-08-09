@@ -229,7 +229,7 @@ technology in COLMAP.</p>
 </div>
 <div class="section" id="structure-from-motion">
 <h2>Structure-from-Motion<a class="headerlink" href="#structure-from-motion" title="Permalink to this headline">¶</a></h2>
-<div class="align-center figure" id="id19">
+<div class="align-center figure" id="id20">
 <img alt="Incremental Structure-from-Motion pipeline" src="_images/incremental-sfm.png" />
 <p class="caption"><span class="caption-text">COLMAP’s incremental Structure-from-Motion pipeline.</span></p>
 </div>
@@ -548,13 +548,13 @@ RGB information by choosing <code class="docutils literal"><span class="pre">Fil
 the format of the exported models can be found <a class="reference internal" href="format.html#output-format"><span class="std std-ref">here</span></a>.</p>
 </div>
 <div class="section" id="dense-reconstruction">
-<h2>Dense Reconstruction<a class="headerlink" href="#dense-reconstruction" title="Permalink to this headline">¶</a></h2>
+<span id="id11"></span><h2>Dense Reconstruction<a class="headerlink" href="#dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>After reconstructing a sparse representation of the scene and the camera poses
 of the input images, MVS can now recover denser scene geometry. COLMAP has an
 integrated dense reconstruction pipeline to produce depth and normal maps for
 all registered images, to fuse the depth and normal maps into a dense point
 cloud with normal information, and to finally estimate a dense surface from the
-fused point cloud using Poisson reconstruction <a class="reference internal" href="bibliography.html#kazhdan2013" id="id11">[kazhdan2013]</a>.</p>
+fused point cloud using Poisson reconstruction <a class="reference internal" href="bibliography.html#kazhdan2013" id="id12">[kazhdan2013]</a>.</p>
 <p>To get started, import your sparse 3D model into COLMAP (or select the
 reconstructed model after finishing the previous sparse reconstruction steps).
 Then, choose <code class="docutils literal"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Multi-view</span> <span class="pre">stereo</span></code> and select an empty or
@@ -572,8 +572,8 @@ by enabling <code class="docutils literal"><span class="pre">Render</span> <span
 dense surface mesh model must be visualized with external software.</p>
 <p>Note that COLMAP requires a CUDA-enabled GPU, so in addition to the internal
 dense reconstruction functionality, COLMAP exports to several other dense
-reconstruction libraries, such as CMVS/PMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id12">[furukawa10]</a> or CMP-MVS
-<a class="reference internal" href="bibliography.html#jancosek11" id="id13">[jancosek11]</a>. Please choose <code class="docutils literal"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Undistort</span> <span class="pre">images</span></code> and select the
+reconstruction libraries, such as CMVS/PMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id13">[furukawa10]</a> or CMP-MVS
+<a class="reference internal" href="bibliography.html#jancosek11" id="id14">[jancosek11]</a>. Please choose <code class="docutils literal"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Undistort</span> <span class="pre">images</span></code> and select the
 appropriate format. The output folders contain the reconstruction and the
 undistorted images. In addition, the folders contain sample shell scripts to
 perform the dense reconstruction. To run PMVS2, execute the following commands:</p>
@@ -589,13 +589,13 @@ sample shell scripts in the undistortion output folder on how to run CMVS in
 combination with COLMAP or PMVS2. Moreover, there are a number of external
 libraries that support COLMAP’s output:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://www.di.ens.fr/pmvs/">CMVS/PMVS</a> <a class="reference internal" href="bibliography.html#furukawa10" id="id14">[furukawa10]</a></li>
-<li><a class="reference external" href="http://ptak.felk.cvut.cz/sfmservice/websfm.pl">CMP-MVS</a> <a class="reference internal" href="bibliography.html#jancosek11" id="id15">[jancosek11]</a></li>
-<li><a class="reference external" href="https://github.com/manhofer/Line3Dpp">Line3D++</a> <a class="reference internal" href="bibliography.html#hofer16" id="id16">[hofer16]</a>.</li>
+<li><a class="reference external" href="http://www.di.ens.fr/pmvs/">CMVS/PMVS</a> <a class="reference internal" href="bibliography.html#furukawa10" id="id15">[furukawa10]</a></li>
+<li><a class="reference external" href="http://ptak.felk.cvut.cz/sfmservice/websfm.pl">CMP-MVS</a> <a class="reference internal" href="bibliography.html#jancosek11" id="id16">[jancosek11]</a></li>
+<li><a class="reference external" href="https://github.com/manhofer/Line3Dpp">Line3D++</a> <a class="reference internal" href="bibliography.html#hofer16" id="id17">[hofer16]</a>.</li>
 </ul>
 </div>
 <div class="section" id="database-management">
-<span id="id17"></span><h2>Database Management<a class="headerlink" href="#database-management" title="Permalink to this headline">¶</a></h2>
+<span id="id18"></span><h2>Database Management<a class="headerlink" href="#database-management" title="Permalink to this headline">¶</a></h2>
 <p>You can review and manage the imported cameras, images, and feature matches in
 the database management tool. Choose <code class="docutils literal"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Manage</span> <span class="pre">database</span></code>. In the
 opening dialog, you can see the list of imported images and cameras. You can
@@ -635,7 +635,7 @@ available controls.</p>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id10">[1]</a></td><td>VisualSfM’s <a class="reference internal" href="bibliography.html#wu13" id="id18">[wu13]</a> projection model applies the distortion to the
+<tr><td class="label"><a class="fn-backref" href="#id10">[1]</a></td><td>VisualSfM’s <a class="reference internal" href="bibliography.html#wu13" id="id19">[wu13]</a> projection model applies the distortion to the
 measurements and COLMAP to the projection, hence the exported NVM file is
 not fully compatible with VisualSfM.</td></tr>
 </tbody>
