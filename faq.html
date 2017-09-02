@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Frequently Asked Questions &mdash; COLMAP 3.1 documentation</title>
+  <title>Frequently Asked Questions &mdash; COLMAP 3.2 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="COLMAP 3.1 documentation" href="index.html"/>
+    <link rel="top" title="COLMAP 3.2 documentation" href="index.html"/>
         <link rel="next" title="Contribution" href="contribution.html"/>
         <link rel="prev" title="Command-line Interface" href="cli.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                3.1
+                3.2
               </div>
             
           
@@ -350,9 +350,8 @@ the reconstruction pipeline.</p>
 <p>You can run feature extraction/matching on multiple GPUs by specifying multiple
 indices for CUDA-enabled GPUs, e.g., <code class="docutils literal"><span class="pre">--SiftExtraction.gpu_index=0,1,2,3</span></code> and
 <code class="docutils literal"><span class="pre">--SiftMatching.gpu_index=0,1,2,3</span></code> runs the feature extraction/matching on 4
-GPUs in parallel. You can also run multiple feature extraction/matching threads
-on the same GPU by specifying the same GPU index twice, e.g.,
-<code class="docutils literal"><span class="pre">--SiftMatching.gpu_index=0,0,1,1,2,3</span></code>. By default, COLMAP runs one feature
+GPUs in parallel. Note that you can only run one thread per GPU and this
+typically also gives the best performance. By default, COLMAP runs one feature
 extraction/matching thread per CUDA-enabled GPU and this usually gives the best
 performance as compared to running multiple threads on the same GPU.</p>
 </div>
@@ -418,7 +417,9 @@ use CMVS to partition your scene into multiple clusters,
 as described <a class="reference internal" href="#faq-dense-memory"><span class="std std-ref">here</span></a>.</li>
 </ul>
 <p>Note that apart from upgrading your hardware, the proposed changes might degrade
-the quality of the dense reconstruction results.</p>
+the quality of the dense reconstruction results. When cancelling the stereo
+reconstruction process and restarting it later, the previous progress is not
+lost and any already processed views will be skipped.</p>
 </div>
 <div class="section" id="reduce-memory-usage-during-dense-reconstruction">
 <span id="faq-dense-memory"></span><h2>Reduce memory usage during dense reconstruction<a class="headerlink" href="#reduce-memory-usage-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
@@ -553,7 +554,7 @@ command-line. Under Ubuntu, you could first stop X using:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.1',
+            VERSION:'3.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
