@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Output Format &mdash; COLMAP 3.2 documentation</title>
+  <title>Output Format &mdash; COLMAP 3.3 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="COLMAP 3.2 documentation" href="index.html"/>
+    <link rel="top" title="COLMAP 3.3 documentation" href="index.html"/>
         <link rel="next" title="Datasets" href="datasets.html"/>
         <link rel="prev" title="Camera Models" href="cameras.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                3.2
+                3.3
               </div>
             
           
@@ -347,7 +347,8 @@ the dense reconstruction.</p>
 defines the dimensions of the image in the format <code class="docutils literal"><span class="pre">with&amp;height&amp;channels&amp;</span></code>
 followed by row-major <cite>float32</cite> binary data. For depth maps <code class="docutils literal"><span class="pre">channels=1</span></code> and
 for normal maps <code class="docutils literal"><span class="pre">channels=3</span></code>. The depth and normal maps can be conveniently
-read with Matlab using the functions in <code class="docutils literal"><span class="pre">scripts/matlab/read_depth_map.m</span></code> and
+read with Python using the functions in <code class="docutils literal"><span class="pre">scripts/python/read_dense.py</span></code> and
+with Matlab using the functions in <code class="docutils literal"><span class="pre">scripts/matlab/read_depth_map.m</span></code> and
 <code class="docutils literal"><span class="pre">scripts/matlab/read_normal_map.m</span></code>.</p>
 </div>
 <div class="section" id="consistency-graphs">
@@ -407,7 +408,7 @@ The indices are specified w.r.t. the ordering in the <code class="docutils liter
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.2',
+            VERSION:'3.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
