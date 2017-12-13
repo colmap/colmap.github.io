@@ -277,7 +277,9 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
 </div>
 <p>Create the file <code class="docutils literal"><span class="pre">LocalConfig.cmake</span></code> in the COLMAP base directory and then
 insert the following lines into it:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>set(Qt5_CMAKE_DIR &quot;/usr/local/opt/qt5/lib/cmake&quot;)
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+set(EIGEN3_INCLUDE_DIRS &quot;/usr/local/include/eigen3&quot;)
+set(Qt5_CMAKE_DIR &quot;/usr/local/opt/qt5/lib/cmake&quot;)
 set(Qt5Core_DIR ${Qt5_CMAKE_DIR}/Qt5Core)
 set(Qt5OpenGL_DIR ${Qt5_CMAKE_DIR}/Qt5OpenGL)
 </pre></div>
