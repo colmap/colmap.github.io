@@ -209,9 +209,12 @@ and <code class="docutils literal"><span class="pre">camera_id</span> <span clas
 <p>The detected keypoints are stored as row-major <cite>float32</cite> binary blobs, where the
 first two columns are the X and Y locations in the image, respectively. COLMAP
 uses the convention that the upper left image corner has coordinate <cite>(0, 0)</cite> and
-the center of the upper left most pixel has coordinate <cite>(0.5, 0.5)</cite>. The third
-column is the scale and the fourth column the orientation of the feature. COLMAP
-uses the scale to order features in preemptive matching.</p>
+the center of the upper left most pixel has coordinate <cite>(0.5, 0.5)</cite>. If the
+keypoints have 4 columns, then the feature geometry is a similarity and the
+third column is the scale and the fourth column the orientation of the feature
+(according to SIFT conventions). If the keypoints have 6 columns, then the
+feature geometry is an affinity and the last 4 columns encode its affine shape
+(see <code class="docutils literal"><span class="pre">src/feature/types.h</span></code> for details).</p>
 <p>The extracted descriptors are stored as row-major <cite>uint8</cite> binary blobs, where
 each row describes the feature appearance of the corresponding entry in the
 keypoints table. Note that COLMAP only supports 128-D descriptors for now, i.e.
@@ -219,7 +222,10 @@ the <cite>cols</cite> column must be 128.</p>
 <p>In both tables, the <cite>rows</cite> table specifies the number of detected features per
 image, while <cite>rows=0</cite> means that an image has no features. For feature matching
 and geometric verification, every image must have a corresponding keypoints and
-descriptors entry.</p>
+descriptors entry. Note that only vocabulary tree matching with fast spatial
+verification requires meaningful values for the local feature geometry, i.e.,
+only X and Y must be provided and the other keypoint columns can be set to zero.
+The rest of the reconstruction pipeline only uses the keypoint locations.</p>
 </div>
 <div class="section" id="matches">
 <h2>Matches<a class="headerlink" href="#matches" title="Permalink to this headline">¶</a></h2>

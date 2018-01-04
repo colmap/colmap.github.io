@@ -175,8 +175,9 @@
   <div class="section" id="command-line-interface">
 <span id="cli"></span><h1>Command-line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h1>
 <p>The command-line interface provides access to most of COLMAP’s functionality for
-automated scripting. Each core functionality uses a different executable inside
-the <code class="docutils literal"><span class="pre">./src/exe/*</span></code> folder.</p>
+automated scripting. Each core functionality uses a different executable that
+is accessible through <code class="docutils literal"><span class="pre">colmap</span> <span class="pre">COMMAND</span></code> if you installed COLMAP or inside
+the <code class="docutils literal"><span class="pre">src/exe/*</span></code> folder if you run COLMAP from the build folder.</p>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>Assume you stored the images of your project in the following folder structure:</p>
@@ -192,7 +193,7 @@ the <code class="docutils literal"><span class="pre">./src/exe/*</span></code> f
 <div class="highlight-default"><div class="highlight"><pre><span></span># The project folder must contain a folder &quot;images&quot; with all the images.
 $ PROJECT_PATH=/path/to/project
 
-$ ./src/exe/automatic_reconstructor \
+$ colmap automatic_reconstructor \
     --workspace_path $PROJECT_PATH \
     --image_path $PROJECT_PATH/images
 </pre></div>
@@ -204,41 +205,41 @@ steps, an exemplary sequence of commands to reconstruct the scene would be:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span># The project folder must contain a folder &quot;images&quot; with all the images.
 $ PROJECT_PATH=/path/to/project
 
-$ ./src/exe/feature_extractor \
+$ colmap feature_extractor \
    --database_path $PROJECT_PATH/database.db \
    --image_path $PROJECT_PATH/images
 
-$ ./src/exe/exhaustive_matcher \
+$ colmap exhaustive_matcher \
    --database_path $PROJECT_PATH/database.db
 
 $ mkdir $PROJECT_PATH/sparse
 
-$ ./src/exe/mapper \
+$ colmap mapper \
     --database_path $PROJECT_PATH/database.db \
     --image_path $PROJECT_PATH/images \
     --export_path $PROJECT_PATH/sparse
 
 $ mkdir $PROJECT_PATH/dense
 
-$ ./src/exe/image_undistorter \
+$ colmap image_undistorter \
     --image_path $PROJECT_PATH/images \
     --input_path $PROJECT_PATH/sparse/0 \
     --output_path $PROJECT_PATH/dense \
     --output_type COLMAP \
     --max_image_size 2000
 
-$ ./exe/dense_stereo \
+$ colmap dense_stereo \
     --workspace_path $PROJECT_PATH/dense \
     --workspace_format COLMAP \
     --DenseStereo.geom_consistency true
 
-$ ./exe/dense_fuser \
+$ colmap dense_fuser \
     --workspace_path $PROJECT_PATH/dense \
     --workspace_format COLMAP \
     --input_type geometric \
     --output_path $PROJECT_PATH/dense/fused.ply
 
-$ ./src/exe/dense_mesher \
+$ colmap dense_mesher \
     --input_path $PROJECT_PATH/dense/fused.ply \
     --output_path $PROJECT_PATH/dense/meshed.ply
 </pre></div>
@@ -254,7 +255,7 @@ CPU-based feature matching.</p>
 <h2>Help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
 <p>All executables have a “-h,–help” command-line argument to show the usage and
 the available options, e.g.:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./src/exe/feature_extractor -h
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ colmap feature_extractor -h
 
     Options can either be specified via command-line or by defining
     them in a .ini project file passed to `--project_path`.
