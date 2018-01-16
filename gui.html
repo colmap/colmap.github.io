@@ -174,13 +174,15 @@
             
   <div class="section" id="graphical-user-interface">
 <span id="gui"></span><h1>Graphical User Interface<a class="headerlink" href="#graphical-user-interface" title="Permalink to this headline">¶</a></h1>
-<p>The graphical user interface of COLMAP provides access to most of its
+<p>The graphical user interface of COLMAP provides access to most of the available
 functionality and visualizes the reconstruction process in “real-time”. To start
-the GUI, please run the pre-built binaries (Windows: <cite>COLMAP.bat</cite>, Mac:
+the GUI, you can run the pre-built packages (Windows: <cite>COLMAP.bat</cite>, Mac:
 <cite>COLMAP.app</cite>), execute <code class="docutils literal"><span class="pre">colmap</span> <span class="pre">gui</span></code> if you installed COLMAP or execute
-<code class="docutils literal"><span class="pre">./src/exe/colmap</span></code> from the build folder. The GUI application requires an
-attached display with OpenGL 3.2 support. Registered images are visualized in
-red and points in their average point color extracted from the images.</p>
+<code class="docutils literal"><span class="pre">./src/exe/colmap</span> <span class="pre">gui</span></code> from the CMake build folder. The GUI application
+requires an attached display with at least OpenGL 3.2 support. Registered images
+are visualized in red and reconstructed points in their average point color
+extracted from the images. The viewer can also visualize dense point clouds
+produced from Multi-View Stereo.</p>
 <div class="section" id="model-viewer-controls">
 <h2>Model Viewer Controls<a class="headerlink" href="#model-viewer-controls" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">

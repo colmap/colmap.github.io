@@ -101,7 +101,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Command-line Interface</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#help">Help</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#executables">Executables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#visualization">Visualization</a></li>
 </ul>
 </li>
@@ -174,11 +174,12 @@
             
   <div class="section" id="command-line-interface">
 <span id="cli"></span><h1>Command-line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h1>
-<p>The command-line interface provides access to most of COLMAP’s functionality for
-automated scripting. Each core functionality uses a different executable that is
-accessible through <code class="docutils literal"><span class="pre">colmap</span> <span class="pre">[command]</span></code> if you installed COLMAP (execute
-<code class="docutils literal"><span class="pre">colmap</span> <span class="pre">-h</span></code> to list the available commands) or inside the <code class="docutils literal"><span class="pre">src/exe/*</span></code> folder
-if you run COLMAP from the CMake build folder.</p>
+<p>The command-line interface provides access to all of COLMAP’s functionality for
+automated scripting. Each core functionality is implemented as a command to the
+<code class="docutils literal"><span class="pre">colmap</span></code> executable. Run <code class="docutils literal"><span class="pre">colmap</span> <span class="pre">-h</span></code> to list the available commands (or
+<code class="docutils literal"><span class="pre">COLMAP.bat</span> <span class="pre">-h</span></code> under Windows). Note that if you run COLMAP from the CMake
+build folder, the executable is located at <code class="docutils literal"><span class="pre">./src/exe/colmap</span></code>. To start the
+graphical user interface, run <code class="docutils literal"><span class="pre">colmap</span> <span class="pre">gui</span></code>.</p>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>Assume you stored the images of your project in the following folder structure:</p>
@@ -192,11 +193,11 @@ if you run COLMAP from the CMake build folder.</p>
 </div>
 <p>The command for the automatic reconstruction tools would be:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span># The project folder must contain a folder &quot;images&quot; with all the images.
-$ PROJECT_PATH=/path/to/project
+$ DATASET_PATH=/path/to/project
 
 $ colmap automatic_reconstructor \
-    --workspace_path $PROJECT_PATH \
-    --image_path $PROJECT_PATH/images
+    --workspace_path $DATASET_PATH \
+    --image_path $DATASET_PATH/images
 </pre></div>
 </div>
 <p>Note that any executable lists all available options using the command-line
@@ -204,53 +205,52 @@ argument <code class="docutils literal"><span class="pre">--help</span></code>. 
 case you need more control over the parameters of the individual reconstruction
 steps, an exemplary sequence of commands to reconstruct the scene would be:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span># The project folder must contain a folder &quot;images&quot; with all the images.
-$ PROJECT_PATH=/path/to/project
+$ DATASET_PATH=/path/to/dataset
 
 $ colmap feature_extractor \
-   --database_path $PROJECT_PATH/database.db \
-   --image_path $PROJECT_PATH/images
+   --database_path $DATASET_PATH/database.db \
+   --image_path $DATASET_PATH/images
 
 $ colmap exhaustive_matcher \
-   --database_path $PROJECT_PATH/database.db
+   --database_path $DATASET_PATH/database.db
 
-$ mkdir $PROJECT_PATH/sparse
+$ mkdir $DATASET_PATH/sparse
 
 $ colmap mapper \
-    --database_path $PROJECT_PATH/database.db \
-    --image_path $PROJECT_PATH/images \
-    --export_path $PROJECT_PATH/sparse
+    --database_path $DATASET_PATH/database.db \
+    --image_path $DATASET_PATH/images \
+    --export_path $DATASET_PATH/sparse
 
-$ mkdir $PROJECT_PATH/dense
+$ mkdir $DATASET_PATH/dense
 
 $ colmap image_undistorter \
-    --image_path $PROJECT_PATH/images \
-    --input_path $PROJECT_PATH/sparse/0 \
-    --output_path $PROJECT_PATH/dense \
+    --image_path $DATASET_PATH/images \
+    --input_path $DATASET_PATH/sparse/0 \
+    --output_path $DATASET_PATH/dense \
     --output_type COLMAP \
     --max_image_size 2000
 
 $ colmap dense_stereo \
-    --workspace_path $PROJECT_PATH/dense \
+    --workspace_path $DATASET_PATH/dense \
     --workspace_format COLMAP \
     --DenseStereo.geom_consistency true
 
 $ colmap dense_fuser \
-    --workspace_path $PROJECT_PATH/dense \
+    --workspace_path $DATASET_PATH/dense \
     --workspace_format COLMAP \
     --input_type geometric \
-    --output_path $PROJECT_PATH/dense/fused.ply
+    --output_path $DATASET_PATH/dense/fused.ply
 
 $ colmap dense_mesher \
-    --input_path $PROJECT_PATH/dense/fused.ply \
-    --output_path $PROJECT_PATH/dense/meshed.ply
+    --input_path $DATASET_PATH/dense/fused.ply \
+    --output_path $DATASET_PATH/dense/meshed.ply
 </pre></div>
 </div>
 <p>If you want to run COLMAP on a computer (e.g., cluster or cloud service) without
-an attached display, you should run the <code class="docutils literal"><span class="pre">feature_extractor</span></code> and set the
-<code class="docutils literal"><span class="pre">--SiftGPUExtraction.index</span> <span class="pre">0</span></code> explicitly if a CUDA device is available or with
-the option <code class="docutils literal"><span class="pre">--use_gpu</span> <span class="pre">false</span></code>. Then, you should run the <code class="docutils literal"><span class="pre">*_matcher</span></code> with
-<code class="docutils literal"><span class="pre">--SiftMatching.use_gpu</span> <span class="pre">true</span></code> if a CUDA device is available or with <code class="docutils literal"><span class="pre">--SiftMatching.use_gpu</span> <span class="pre">false</span></code> for
-CPU-based feature matching.</p>
+an attached display, COLMAP automatically switches to use CUDA if supported. If
+no CUDA enabled device is available, you can manually select to use CPU-based
+feature extraction and matching by setting the respective
+<code class="docutils literal"><span class="pre">--SiftExtraction.use_gpu</span> <span class="pre">0</span></code> and <code class="docutils literal"><span class="pre">--SiftMatching.use_gpu</span> <span class="pre">0</span></code> options.</p>
 </div>
 <div class="section" id="help">
 <h2>Help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
@@ -289,10 +289,12 @@ the available options, e.g.:</p>
 <p>The available options can either be provided directly from the command-line or
 through a <cite>.ini</cite> file provided to <code class="docutils literal"><span class="pre">--project_path</span></code>.</p>
 </div>
-<div class="section" id="executables">
-<h2>Executables<a class="headerlink" href="#executables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
+<p>The following list briefly documents the functionality of each command, that is
+available as <code class="docutils literal"><span class="pre">colmap</span> <span class="pre">[command]</span></code>:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">colmap</span></code>: The graphical user interface, see
+<li><code class="docutils literal"><span class="pre">gui</span></code>: The graphical user interface, see
 <a class="reference internal" href="gui.html#gui"><span class="std std-ref">Graphical User Interface</span></a> for more information.</li>
 <li><code class="docutils literal"><span class="pre">automatic_reconstruction</span></code>: Automatically reconstruct sparse and dense model
 for a set of input images.</li>
@@ -340,6 +342,7 @@ thumb, you should use at least 10-100 times more features than visual words.
 Pre-trained trees can be downloaded from <a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>.
 This is useful if you want to build a custom tree with a different trade-off
 in terms of precision/recall vs. speed.</li>
+<li><code class="docutils literal"><span class="pre">vocab_tree_retriever</span></code>: Perform vocabulary tree based image retrieval.</li>
 </ul>
 </div>
 <div class="section" id="visualization">

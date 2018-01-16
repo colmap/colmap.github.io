@@ -1,6 +1,18 @@
 Frequently Asked Questions
 ==========================
 
+Extending COLMAP
+----------------
+
+If you need to simply analyze the produced sparse or dense reconstructions from
+COLMAP, you can load the sparse models in Python and Matlab using the provided
+scripts in ``scripts/python`` and ``scripts/matlab``.
+
+If you want to write a C/C++ executable that builds on top of COLMAP, the
+easiest approach is to start from the ``src/tools/example.cc`` code template and
+implement the desired functionality in a new binary.
+
+
 .. _faq-share-intrinsics:
 
 Share intrinsics
@@ -362,6 +374,14 @@ using the following Windows Registry entries::
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers]
     "TdrLevel"=dword:00000001
     "TdrDelay"=dword:00000120
+
+To set the registry entries, execute the following commands using administrator
+privileges (e.g., in ``cmd.exe`` or ``powershell.exe``)::
+
+    reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers /v TdrLevel /t REG_DWORD /d 00000001
+    reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers /v TdrDelay /t REG_DWORD /d 00000120
+
+and restart your machine afterwards to make the changes effective.
 
 The X window system under Linux/Unix has a similar feature and detects response
 problems of the GPU. The easiest solution to avoid timeout problems under the X

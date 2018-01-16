@@ -319,20 +319,20 @@ not modify the input images or directory and all extracted data is stored in a
 single, self-contained SQLite database file (see <a class="reference internal" href="database.html"><span class="doc">Database Format</span></a>).</p>
 <p>The first step is to start the graphical user interface of COLMAP by running the
 pre-built binaries (Windows: <cite>COLMAP.bat</cite>, Mac: <cite>COLMAP.app</cite>) or by executing
-<code class="docutils literal"><span class="pre">./src/exe/colmap</span></code>. Next, create a new project by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">New</span>
-<span class="pre">project</span></code>. In this dialog, you must select where to store the database and the
-folder that contains the input images. For convenience, you can save the entire
-project settings to a configuration file by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">project</span></code>.
-The project configuration stores the absolute path information of the database
-and image folder in addition to any other parameter settings. If you decide to
-move the database or image folder, you must change the paths accordingly by
-creating a new project. Alternatively, the resulting <cite>.ini</cite> configuration file
-can be directly modified in a text editor of your choice. To reopen an existing
-project, you can simply open the configuration file by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Open</span>
-<span class="pre">project</span></code> and all parameter settings should be recovered. Note that all COLMAP
-executables can be started from the command-line by either specifying individual
-settings as command-line arguments or by providing the path to the project
-configuration file (see <a class="reference internal" href="#interface"><span class="std std-ref">Interface</span></a>).</p>
+<code class="docutils literal"><span class="pre">./src/exe/colmap</span></code> from the CMake build folder. Next, create a new project by
+choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">New</span> <span class="pre">project</span></code>. In this dialog, you must select where to store
+the database and the folder that contains the input images. For convenience, you
+can save the entire project settings to a configuration file by choosing <code class="docutils literal"><span class="pre">File</span>
+<span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">project</span></code>. The project configuration stores the absolute path information
+of the database and image folder in addition to any other parameter settings. If
+you decide to move the database or image folder, you must change the paths
+accordingly by creating a new project. Alternatively, the resulting <cite>.ini</cite>
+configuration file can be directly modified in a text editor of your choice. To
+reopen an existing project, you can simply open the configuration file by
+choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Open</span> <span class="pre">project</span></code> and all parameter settings should be recovered.
+Note that all COLMAP executables can be started from the command-line by either
+specifying individual settings as command-line arguments or by providing the
+path to the project configuration file (see <a class="reference internal" href="#interface"><span class="std std-ref">Interface</span></a>).</p>
 <p>An example folder structure could look like this:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>/path/to/project/...
 +── images
