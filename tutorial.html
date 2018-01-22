@@ -319,20 +319,21 @@ not modify the input images or directory and all extracted data is stored in a
 single, self-contained SQLite database file (see <a class="reference internal" href="database.html"><span class="doc">Database Format</span></a>).</p>
 <p>The first step is to start the graphical user interface of COLMAP by running the
 pre-built binaries (Windows: <cite>COLMAP.bat</cite>, Mac: <cite>COLMAP.app</cite>) or by executing
-<code class="docutils literal"><span class="pre">./src/exe/colmap</span></code> from the CMake build folder. Next, create a new project by
-choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">New</span> <span class="pre">project</span></code>. In this dialog, you must select where to store
-the database and the folder that contains the input images. For convenience, you
-can save the entire project settings to a configuration file by choosing <code class="docutils literal"><span class="pre">File</span>
-<span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">project</span></code>. The project configuration stores the absolute path information
-of the database and image folder in addition to any other parameter settings. If
-you decide to move the database or image folder, you must change the paths
-accordingly by creating a new project. Alternatively, the resulting <cite>.ini</cite>
-configuration file can be directly modified in a text editor of your choice. To
-reopen an existing project, you can simply open the configuration file by
-choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Open</span> <span class="pre">project</span></code> and all parameter settings should be recovered.
-Note that all COLMAP executables can be started from the command-line by either
-specifying individual settings as command-line arguments or by providing the
-path to the project configuration file (see <a class="reference internal" href="#interface"><span class="std std-ref">Interface</span></a>).</p>
+<code class="docutils literal"><span class="pre">./src/exe/colmap</span> <span class="pre">gui</span></code> from the CMake build folder. Next, create a new project
+by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">New</span> <span class="pre">project</span></code>. In this dialog, you must select where to
+store the database and the folder that contains the input images. For
+convenience, you can save the entire project settings to a configuration file by
+choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">project</span></code>. The project configuration stores the absolute
+path information of the database and image folder in addition to any other
+parameter settings. If you decide to move the database or image folder, you must
+change the paths accordingly by creating a new project. Alternatively, the
+resulting <cite>.ini</cite> configuration file can be directly modified in a text editor of
+your choice. To reopen an existing project, you can simply open the
+configuration file by choosing <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Open</span> <span class="pre">project</span></code> and all parameter
+settings should be recovered. Note that all COLMAP executables can be started
+from the command-line by either specifying individual settings as command-line
+arguments or by providing the path to the project configuration file (see
+<a class="reference internal" href="#interface"><span class="std std-ref">Interface</span></a>).</p>
 <p>An example folder structure could look like this:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>/path/to/project/...
 +── images
@@ -622,15 +623,17 @@ algorithm.</p>
 <div class="section" id="graphical-and-command-line-interface">
 <span id="interface"></span><h2>Graphical and Command-line Interface<a class="headerlink" href="#graphical-and-command-line-interface" title="Permalink to this headline">¶</a></h2>
 <p>Most of COLMAP’s features are accessible from both the graphical and the
-command-line interface. All binaries accept a <code class="docutils literal"><span class="pre">./bin</span> <span class="pre">-h</span></code> (help) argument to
-list the available options. You can provide the options directly as command-line
-arguments or you can provide a <cite>.ini</cite> project configuration file containing the
-options as the <code class="docutils literal"><span class="pre">./bin</span> <span class="pre">--project_path</span> <span class="pre">path/to/project.ini</span></code> argument. To start
-the GUI application, please execute <code class="docutils literal"><span class="pre">./src/exe/colmap</span></code> or directly specify a
-project configuration as <code class="docutils literal"><span class="pre">./src/exe/colmap</span> <span class="pre">--project_path</span> <span class="pre">path/to/project.ini</span></code>
-to avoid tedious selection in the GUI. The <a class="reference internal" href="gui.html#gui"><span class="std std-ref">Graphical User Interface</span></a>
-and <a class="reference internal" href="cli.html#cli"><span class="std std-ref">Command-line Interface</span></a> sections provide more details about the
-available controls.</p>
+command-line interface, which are both embedded in the same executable. You can
+provide the options directly as command-line arguments or you can provide a
+<cite>.ini</cite> project configuration file containing the options using the
+<code class="docutils literal"><span class="pre">--project_path</span> <span class="pre">path/to/project.ini</span></code> argument. To start the GUI application,
+please execute <code class="docutils literal"><span class="pre">colmap</span> <span class="pre">gui</span></code> or directly specify a project configuration as
+<code class="docutils literal"><span class="pre">colmap</span> <span class="pre">gui</span> <span class="pre">--project_path</span> <span class="pre">path/to/project.ini</span></code> to avoid tedious selection in
+the GUI. To list the different commands available from the command-line, execute
+<code class="docutils literal"><span class="pre">colmap</span> <span class="pre">help</span></code>. For example, to run feature extraction from the command-line,
+you must execute <code class="docutils literal"><span class="pre">colmap</span> <span class="pre">feature_extractor</span></code>. The <a class="reference internal" href="gui.html#gui"><span class="std std-ref">Graphical User
+Interface</span></a> and <a class="reference internal" href="cli.html#cli"><span class="std std-ref">Command- line Interface</span></a> sections provide more
+details about the available commands.</p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>

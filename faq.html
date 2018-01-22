@@ -247,7 +247,7 @@ respect to the scene, you can try to reduce the minimum triangulation angle.</p>
 <p>Sometimes COLMAP fails to reconstruct all images into the same model and hence
 produces multiple sub-models. If those sub-models have common registered images,
 they can be merged into a single model as post-processing step:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">model_merger</span> \
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="n">model_merger</span> \
     <span class="o">--</span><span class="n">input_path1</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="n">model1</span> \
     <span class="o">--</span><span class="n">input_path2</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="n">model2</span> \
     <span class="o">--</span><span class="n">output_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">merged</span><span class="o">-</span><span class="n">model</span>
@@ -255,7 +255,7 @@ they can be merged into a single model as post-processing step:</p>
 </div>
 <p>To improve the quality of the alignment between the two sub-models, it is
 recommended to run another global bundle adjustment after the merge:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">bundle_adjuster</span> \
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="n">bundle_adjuster</span> \
     <span class="o">--</span><span class="n">input_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">merged</span><span class="o">-</span><span class="n">model</span> \
     <span class="o">--</span><span class="n">output_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">refined</span><span class="o">-</span><span class="n">merged</span><span class="o">-</span><span class="n">model</span>
 </pre></div>
@@ -277,7 +277,7 @@ specified in a text-file with the following format:</p>
 </div>
 <p>Note that at least 3 images must be specified to estimate a 3D similarity
 transformation. Then, the model can be geo-registered using:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">model_aligner</span> \
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="n">model_aligner</span> \
     <span class="o">--</span><span class="n">input_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">model</span> \
     <span class="o">--</span><span class="n">output_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">geo</span><span class="o">-</span><span class="n">registered</span><span class="o">-</span><span class="n">model</span> \
     <span class="o">--</span><span class="n">ref_images_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">file</span>
@@ -296,23 +296,23 @@ vanishing point detection in the images. Please, refer to the
 <h2>Register/localize new images into an existing reconstruction<a class="headerlink" href="#register-localize-new-images-into-an-existing-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>If you have an existing reconstruction of images and want to register/localize
 new images within this reconstruction, you can follow these steps:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>./src/exe/feature_extractor \
+<div class="highlight-default"><div class="highlight"><pre><span></span>colmap feature_extractor \
     --database_path $PROJECT_PATH/database.db \
     --image_path $PROJECT_PATH/images \
     --image_list_path /path/to/image-list.txt
 
-./src/exe/vocab_tree_matcher \
+colmap vocab_tree_matcher \
     --database_path $PROJECT_PATH/database.db \
     --VocabTreeMatching.vocab_tree_path /path/to/vocab-tree.bin \
     --VocabTreeMatching.match_list_path /path/to/image-list.txt
 
-./src/exe/image_registrator \
+colmap image_registrator \
     --database_path $PROJECT_PATH/database.db \
     --image_path $PROJECT_PATH/images \
     --import_path /path/to/existing-model \
     --export_path /path/to/model-with-new-images
 
-./src/exe/bundle_adjuster \
+colmap bundle_adjuster \
     --input_path /path/to/model-with-new-images \
     --output_path /path/to/model-with-new-images
 </pre></div>
@@ -326,7 +326,7 @@ should restart or continue the reconstruction process rather than just
 registering the images to the model. Instead of running the
 <code class="docutils literal"><span class="pre">image_registrator</span></code>, you should run the <code class="docutils literal"><span class="pre">mapper</span></code> to continue the
 reconstruction process from the existing model:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>./src/exe/mapper \
+<div class="highlight-default"><div class="highlight"><pre><span></span>colmap mapper \
     --database_path $PROJECT_PATH/database.db \
     --image_path $PROJECT_PATH/images \
     --import_path /path/to/existing-model \
@@ -334,7 +334,7 @@ reconstruction process from the existing model:</p>
 </pre></div>
 </div>
 <p>Or, alternatively, you can start the reconstruction from scratch:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>./src/exe/mapper \
+<div class="highlight-default"><div class="highlight"><pre><span></span>colmap mapper \
     --database_path $PROJECT_PATH/database.db \
     --image_path $PROJECT_PATH/images \
     --export_path /path/to/model-with-new-images
@@ -520,7 +520,7 @@ command-line. Under Ubuntu, you could first stop X using:</p>
 </pre></div>
 </div>
 <p>And then run the dense reconstruction code from the command-line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">exe</span><span class="o">/</span><span class="n">dense_stereo</span> <span class="o">...</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="n">dense_stereo</span> <span class="o">...</span>
 </pre></div>
 </div>
 <p>Finally, you can restart your desktop environment with the following command:</p>
