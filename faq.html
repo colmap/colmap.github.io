@@ -105,6 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#fix-intrinsics">Fix intrinsics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#principal-point-refinement">Principal point refinement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#increase-number-of-sparse-3d-points">Increase number of sparse 3D points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reconstruct-sparse-dense-model-from-known-camera-poses">Reconstruct sparse/dense model from known camera poses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#merge-disconnected-models">Merge disconnected models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#geo-registration">Geo-registration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#manhattan-world-alignment">Manhattan world alignment</a></li>
@@ -242,6 +243,67 @@ constraints in bundle adjustment. To also triangulate two-view tracks, unselect
 the option <code class="docutils literal"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Reconstruction</span> <span class="pre">options</span> <span class="pre">&gt;</span> <span class="pre">Triangulation</span> <span class="pre">&gt;</span>
 <span class="pre">ignore_two_view_tracks</span></code>. If your images are taken from far distance with
 respect to the scene, you can try to reduce the minimum triangulation angle.</p>
+</div>
+<div class="section" id="reconstruct-sparse-dense-model-from-known-camera-poses">
+<h2>Reconstruct sparse/dense model from known camera poses<a class="headerlink" href="#reconstruct-sparse-dense-model-from-known-camera-poses" title="Permalink to this headline">¶</a></h2>
+<p>If the camera poses are known and you want to reconstruct a sparse or dense
+model of the scene, you must first manually construct a sparse model by
+creating a <code class="docutils literal"><span class="pre">cameras.txt</span></code> and <code class="docutils literal"><span class="pre">images.txt</span></code> file. The <code class="docutils literal"><span class="pre">points3D.txt</span></code> file
+can be empty and you can refer to <a class="reference internal" href="format.html#output-format"><span class="std std-ref">this article</span></a> for more
+information about the structure of a sparse model.</p>
+<p>To reconstruct a sparse model, you would have to recompute features from the
+images of the known camera poses as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>colmap feature_extractor \
+    --database_path $PROJECT_PATH/database.db \
+    --image_path $PROJECT_PATH/images
+
+colmap exhaustive_matcher \ # or alternatively any other matcher
+    --database_path $PROJECT_PATH/database.db
+
+colmap point_triangulator \
+    --database_path $PROJECT_PATH/database.db \
+    --image_path $PROJECT_PATH/images
+    --import_path path/to/manually/created/sparse/model \
+    --export_path path/to/triangulated/sparse/model
+</pre></div>
+</div>
+<p>Note that the sparse reconstruction step is not necessary in order to compute
+a dense model from known camera poses. Assuming you computed a sparse model
+from the known camera poses, you can compute a dense model as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>colmap image_undistorter \
+    --image_path $PROJECT_PATH/images \
+    --input_path path/to/triangulated/sparse/model \
+    --output_path path/to/dense/workspace
+
+colmap dense_stereo \
+    --workspace_path path/to/dense/workspace
+
+colmap dense_fuser \
+    --workspace_path path/to/dense/workspace \
+    --output_path path/to/dense/workspace/fused.ply
+</pre></div>
+</div>
+<p>Alternatively, you can also produce a dense model without a sparse model as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>colmap image_undistorter \
+    --image_path $PROJECT_PATH/images \
+    --input_path path/to/manually/created/sparse/model \
+    --output_path path/to/dense/workspace
+</pre></div>
+</div>
+<p>Since the sparse point cloud is used to automatically select neighboring images
+during the dense stereo stage, you have to manually specify the source images,
+as described <a class="reference internal" href="#faq-dense-manual-source"><span class="std std-ref">here</span></a>. The dense stereo stage
+now also requires a manual specification of the depth range:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>colmap dense_stereo \
+    --workspace_path path/to/dense/workspace \
+    --DenseStereo.depth_min $MIN_DEPTH \
+    --DenseStereo.depth_max $MAX_DEPTH
+
+colmap dense_fuser \
+    --workspace_path path/to/dense/workspace \
+    --output_path path/to/dense/workspace/fused.ply
+</pre></div>
+</div>
 </div>
 <div class="section" id="merge-disconnected-models">
 <span id="faq-merge-models"></span><h2>Merge disconnected models<a class="headerlink" href="#merge-disconnected-models" title="Permalink to this headline">¶</a></h2>
@@ -459,10 +521,11 @@ cluster to 500 images. If you want to use CMVS to prune redundant images but not
 to cluster the scene, you can simply set this number to a very large value.</p>
 </div>
 <div class="section" id="manual-specification-of-source-images-during-dense-reconstruction">
-<h2>Manual specification of source images during dense reconstruction<a class="headerlink" href="#manual-specification-of-source-images-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
+<span id="faq-dense-manual-source"></span><h2>Manual specification of source images during dense reconstruction<a class="headerlink" href="#manual-specification-of-source-images-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>You can change the number of source images in the <code class="docutils literal"><span class="pre">stereo/patch-match.cfg</span></code>
 file from e.g. <code class="docutils literal"><span class="pre">__auto__,</span> <span class="pre">30</span></code> to <code class="docutils literal"><span class="pre">__auto__,</span> <span class="pre">10</span></code>. This selects the images
-with the most visual overlap automatically as source images. Alternatively, you
+with the most visual overlap automatically as source images. You can also use
+all other images as source images, by specifying <code class="docutils literal"><span class="pre">__all__</span></code>. Alternatively, you
 can manually specify images with their name, for example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">image1</span><span class="o">.</span><span class="n">jpg</span>
 <span class="n">image2</span><span class="o">.</span><span class="n">jpg</span><span class="p">,</span> <span class="n">image3</span><span class="o">.</span><span class="n">jpg</span>
