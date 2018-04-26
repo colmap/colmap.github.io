@@ -196,11 +196,11 @@ which requires manual compilation, which is relatively easy on these platforms.<
 <h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
 <p>For convenience, the pre-built binaries for Windows contain both the graphical
 and command-line interface executables. To start the COLMAP GUI, you can simply
-double-click  the <code class="docutils literal"><span class="pre">COLMAP.bat</span></code> batch script or alternatively run it from the
+double-click  the <code class="docutils literal notranslate"><span class="pre">COLMAP.bat</span></code> batch script or alternatively run it from the
 Windows command shell or Powershell. The command-line interface is also
 accessible through this batch script, which automatically sets the necessary
-library paths. To list the available COLMAP commands, run <code class="docutils literal"><span class="pre">COLMAP.bat</span> <span class="pre">-h</span></code> in
-the command shell <code class="docutils literal"><span class="pre">cmd.exe</span></code> or in Powershell.</p>
+library paths. To list the available COLMAP commands, run <code class="docutils literal notranslate"><span class="pre">COLMAP.bat</span> <span class="pre">-h</span></code> in
+the command shell <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> or in Powershell.</p>
 </div>
 <div class="section" id="mac">
 <h3>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h3>
@@ -210,19 +210,19 @@ COLMAP is shipped as an unsigned application, i.e., when your first open the
 application, you have to right-click the application and select <em>Open</em> and then
 accept to trust the application. In the future, you can then simply double-click
 the application to open COLMAP. The command-line interface is accessible by
-running the packaged binary <code class="docutils literal"><span class="pre">COLMAP.app/Contents/MacOS/colmap</span></code>. To list the
-available COLMAP commands, run <code class="docutils literal"><span class="pre">COLMAP.app/Contents/MacOS/colmap</span> <span class="pre">-h</span></code>.</p>
+running the packaged binary <code class="docutils literal notranslate"><span class="pre">COLMAP.app/Contents/MacOS/colmap</span></code>. To list the
+available COLMAP commands, run <code class="docutils literal notranslate"><span class="pre">COLMAP.app/Contents/MacOS/colmap</span> <span class="pre">-h</span></code>.</p>
 </div>
 </div>
 <div class="section" id="build-from-source">
 <h2>Build from Source<a class="headerlink" href="#build-from-source" title="Permalink to this headline">¶</a></h2>
 <p>COLMAP builds on all major platforms (Linux, Mac, Windows) with little effort.
 First, checkout the latest source code:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">colmap</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">colmap</span>
 </pre></div>
 </div>
-<p>The latest stable version lives in the <code class="docutils literal"><span class="pre">master</span></code> branch and the latest
-development version lives in the <code class="docutils literal"><span class="pre">dev</span></code> branch.</p>
+<p>The latest stable version lives in the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch and the latest
+development version lives in the <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch.</p>
 <p>On Linux and Mac it is generally recommended to follow the installation
 instructions below, which use the system package managers to install the
 required dependencies. Alternatively, there is a Python build script that builds
@@ -232,7 +232,7 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
 <h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
 <p><em>Recommended dependencies:</em> CUDA.</p>
 <p>Dependencies from default Ubuntu repositories:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> \
     <span class="n">cmake</span> \
     <span class="n">build</span><span class="o">-</span><span class="n">essential</span> \
     <span class="n">libboost</span><span class="o">-</span><span class="nb">all</span><span class="o">-</span><span class="n">dev</span> \
@@ -247,7 +247,7 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
 </pre></div>
 </div>
 <p>Install <a class="reference external" href="http://ceres-solver.org/">Ceres Solver</a>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libatlas</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">dev</span> <span class="n">libsuitesparse</span><span class="o">-</span><span class="n">dev</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libatlas</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">dev</span> <span class="n">libsuitesparse</span><span class="o">-</span><span class="n">dev</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ceres</span><span class="o">-</span><span class="n">solver</span><span class="o">.</span><span class="n">googlesource</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ceres</span><span class="o">-</span><span class="n">solver</span>
 <span class="n">cd</span> <span class="n">ceres</span><span class="o">-</span><span class="n">solver</span>
 <span class="n">mkdir</span> <span class="n">build</span>
@@ -258,7 +258,7 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
 </pre></div>
 </div>
 <p>Configure and compile COLMAP:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
 <span class="n">cmake</span> <span class="o">..</span>
@@ -267,7 +267,7 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
 </pre></div>
 </div>
 <p>Run COLMAP:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="o">-</span><span class="n">h</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="o">-</span><span class="n">h</span>
 <span class="n">colmap</span> <span class="n">gui</span>
 </pre></div>
 </div>
@@ -276,7 +276,7 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
 <h3>Mac<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p><em>Recommended dependencies:</em> CUDA.</p>
 <p>Dependencies from <a class="reference external" href="http://brew.sh/">Homebrew</a>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">tap</span> <span class="n">homebrew</span><span class="o">/</span><span class="n">science</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">tap</span> <span class="n">homebrew</span><span class="o">/</span><span class="n">science</span>
 <span class="n">brew</span> <span class="n">install</span> \
     <span class="n">cmake</span> \
     <span class="n">boost</span> \
@@ -290,15 +290,15 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
     <span class="n">glew</span>
 </pre></div>
 </div>
-<p>Create the file <code class="docutils literal"><span class="pre">LocalConfig.cmake</span></code> in the COLMAP base directory and then
+<p>Create the file <code class="docutils literal notranslate"><span class="pre">LocalConfig.cmake</span></code> in the COLMAP base directory and then
 insert the following lines into it:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>set(Qt5_CMAKE_DIR &quot;/usr/local/opt/qt5/lib/cmake&quot;)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>set(Qt5_CMAKE_DIR &quot;/usr/local/opt/qt5/lib/cmake&quot;)
 set(Qt5Core_DIR ${Qt5_CMAKE_DIR}/Qt5Core)
 set(Qt5OpenGL_DIR ${Qt5_CMAKE_DIR}/Qt5OpenGL)
 </pre></div>
 </div>
 <p>Configure and compile COLMAP:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
 <span class="n">cmake</span> <span class="o">..</span>
@@ -306,7 +306,7 @@ set(Qt5OpenGL_DIR ${Qt5_CMAKE_DIR}/Qt5OpenGL)
 </pre></div>
 </div>
 <p>Run COLMAP:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="o">-</span><span class="n">h</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="o">-</span><span class="n">h</span>
 <span class="n">colmap</span> <span class="n">gui</span>
 </pre></div>
 </div>
@@ -318,7 +318,7 @@ set(Qt5OpenGL_DIR ${Qt5_CMAKE_DIR}/Qt5OpenGL)
 instructions in the next section.</p>
 <p>Alternatively, you can install the dependencies manually. To make the process of
 configuring CMake less painful, please have a look at
-<code class="docutils literal"><span class="pre">LocalConfigExample.config</span></code>. MSVC12 (Microsoft Visual Studio 2013) and newer
+<code class="docutils literal notranslate"><span class="pre">LocalConfigExample.config</span></code>. MSVC12 (Microsoft Visual Studio 2013) and newer
 are confirmed to compile COLMAP without any issues.</p>
 </div>
 <div class="section" id="build-script">
@@ -331,7 +331,7 @@ package managers for the dependencies (see above). However, if you are on a
 downloads the necessary dependencies automatically from the Internet. It assumes
 that CMake, Boost, Qt5, and CUDA (optional) are already installed on the system.
 E.g., under Windows you must specify the location of these libraries as:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">scripts</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">py</span> \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">scripts</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">py</span> \
     <span class="o">--</span><span class="n">build_path</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">build</span> \
     <span class="o">--</span><span class="n">colmap_path</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span> \
     <span class="o">--</span><span class="n">boost_path</span> <span class="s2">&quot;C:/local/boost_1_64_0/lib64-msvc-14.0&quot;</span> \
@@ -341,23 +341,23 @@ E.g., under Windows you must specify the location of these libraries as:</p>
 </div>
 <p>Note that under Windows you must use forward slashes for specifying the paths
 here. If you want to compile COLMAP using a specific Visual Studio version, you
-can for example specify <code class="docutils literal"><span class="pre">--cmake_generator</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">14&quot;</span></code> for Visual
+can for example specify <code class="docutils literal notranslate"><span class="pre">--cmake_generator</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">14&quot;</span></code> for Visual
 Studio 2015. If you want to open the COLMAP source code in Visual Studio, you
-can open the solution file in <code class="docutils literal"><span class="pre">path/to/colmap/build/colmap/build</span></code>.
+can open the solution file in <code class="docutils literal notranslate"><span class="pre">path/to/colmap/build/colmap/build</span></code>.
 If you use Homebrew under Mac, you can use the following command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">scripts</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">py</span> \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">scripts</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">py</span> \
     <span class="o">--</span><span class="n">build_path</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">build</span> \
     <span class="o">--</span><span class="n">colmap_path</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span> \
     <span class="o">--</span><span class="n">qt_path</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">qt</span><span class="o">/</span>
 </pre></div>
 </div>
-<p>To see the full list of command-line options, pass the <code class="docutils literal"><span class="pre">--help</span></code> argument.</p>
+<p>To see the full list of command-line options, pass the <code class="docutils literal notranslate"><span class="pre">--help</span></code> argument.</p>
 </div>
 </div>
 <div class="section" id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
 <p>You need Python and Sphinx to build the HTML documentation:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">doc</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">doc</span>
 <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span>
 <span class="n">make</span> <span class="n">html</span>
@@ -365,7 +365,7 @@ If you use Homebrew under Mac, you can use the following command:</p>
 </pre></div>
 </div>
 <p>Alternatively, you can build the documentation as PDF, EPUB, etc.:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">latexpdf</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">latexpdf</span>
 <span class="nb">open</span> <span class="n">_build</span><span class="o">/</span><span class="n">pdf</span><span class="o">/</span><span class="n">COLMAP</span><span class="o">.</span><span class="n">pdf</span>
 </pre></div>
 </div>
@@ -426,7 +426,7 @@ If you use Homebrew under Mac, you can use the following command:</p>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

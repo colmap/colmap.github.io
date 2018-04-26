@@ -178,8 +178,8 @@
 <p>The graphical user interface of COLMAP provides access to most of the available
 functionality and visualizes the reconstruction process in “real-time”. To start
 the GUI, you can run the pre-built packages (Windows: <cite>COLMAP.bat</cite>, Mac:
-<cite>COLMAP.app</cite>), execute <code class="docutils literal"><span class="pre">colmap</span> <span class="pre">gui</span></code> if you installed COLMAP or execute
-<code class="docutils literal"><span class="pre">./src/exe/colmap</span> <span class="pre">gui</span></code> from the CMake build folder. The GUI application
+<cite>COLMAP.app</cite>), execute <code class="docutils literal notranslate"><span class="pre">colmap</span> <span class="pre">gui</span></code> if you installed COLMAP or execute
+<code class="docutils literal notranslate"><span class="pre">./src/exe/colmap</span> <span class="pre">gui</span></code> from the CMake build folder. The GUI application
 requires an attached display with at least OpenGL 3.2 support. Registered images
 are visualized in red and reconstructed points in their average point color
 extracted from the images. The viewer can also visualize dense point clouds
@@ -199,35 +199,35 @@ The opening window shows the projected locations of the point in all images.</li
 <li><strong>Select camera</strong>: Double-left-click camera (change camera size if too small).
 The purple lines visualize images that see at least one common point with the
 selected image. The opening window shows a few statistics of the image.</li>
-<li><strong>Reset view</strong>: To reset all viewing settings, choose <code class="docutils literal"><span class="pre">Render</span> <span class="pre">&gt;</span> <span class="pre">Reset</span> <span class="pre">view</span></code>.</li>
+<li><strong>Reset view</strong>: To reset all viewing settings, choose <code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">&gt;</span> <span class="pre">Reset</span> <span class="pre">view</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="render-options">
 <h2>Render Options<a class="headerlink" href="#render-options" title="Permalink to this headline">¶</a></h2>
 <p>The model viewer allows you to render the model with different settings,
-projections, colormaps, etc. Please, choose <code class="docutils literal"><span class="pre">Render</span> <span class="pre">&gt;</span> <span class="pre">Render</span> <span class="pre">options</span></code>.</p>
+projections, colormaps, etc. Please, choose <code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">&gt;</span> <span class="pre">Render</span> <span class="pre">options</span></code>.</p>
 </div>
 <div class="section" id="create-screenshots">
 <h2>Create Screenshots<a class="headerlink" href="#create-screenshots" title="Permalink to this headline">¶</a></h2>
 <p>To create screenshots of the current viewpoint (without coordinate axes), choose
-<code class="docutils literal"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Grab</span> <span class="pre">image</span></code> and save the image in the format of your choice.</p>
+<code class="docutils literal notranslate"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Grab</span> <span class="pre">image</span></code> and save the image in the format of your choice.</p>
 </div>
 <div class="section" id="create-screencast">
 <h2>Create Screencast<a class="headerlink" href="#create-screencast" title="Permalink to this headline">¶</a></h2>
-<p>To create a video screen capture of the reconstructed model, choose <code class="docutils literal"><span class="pre">Extras</span> <span class="pre">&gt;</span>
+<p>To create a video screen capture of the reconstructed model, choose <code class="docutils literal notranslate"><span class="pre">Extras</span> <span class="pre">&gt;</span>
 <span class="pre">Grab</span> <span class="pre">movie</span></code>. This dialog allows you to set individual control viewpoints by
-choosing <code class="docutils literal"><span class="pre">Add</span></code>. COLMAP generates a fixed number of frames per second between
+choosing <code class="docutils literal notranslate"><span class="pre">Add</span></code>. COLMAP generates a fixed number of frames per second between
 each control viewpoint by smoothly interpolating the linear trajectory, and to
 interpolate the configured point and the camera sizes at the time of clicking
-<code class="docutils literal"><span class="pre">Add</span></code>. To change the number of frames between two viewpoints or to reorder
+<code class="docutils literal notranslate"><span class="pre">Add</span></code>. To change the number of frames between two viewpoints or to reorder
 individual viewpoints, modify the time of the viewpoint by double-clicking the
 respective cell in the table. Note that the video capture requires to set the
 perspective projection model in the render options. You can review the
-trajectory in the viewer, which is rendered in light blue. Choose <code class="docutils literal"><span class="pre">Assemble</span>
+trajectory in the viewer, which is rendered in light blue. Choose <code class="docutils literal notranslate"><span class="pre">Assemble</span>
 <span class="pre">movie</span></code>, if you are done creating the trajectory. The output directory then
 contains the individual frames of the video capture, which can be assembled to a
 movie using <a class="reference external" href="https://www.ffmpeg.org/">FFMPEG</a> with the following command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ffmpeg</span> <span class="o">-</span><span class="n">i</span> <span class="n">frame</span><span class="o">%</span><span class="mi">06</span><span class="n">d</span><span class="o">.</span><span class="n">png</span> <span class="o">-</span><span class="n">r</span> <span class="mi">30</span> <span class="o">-</span><span class="n">vf</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1680</span><span class="p">:</span><span class="mi">1050</span> <span class="n">movie</span><span class="o">.</span><span class="n">mp4</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ffmpeg</span> <span class="o">-</span><span class="n">i</span> <span class="n">frame</span><span class="o">%</span><span class="mi">06</span><span class="n">d</span><span class="o">.</span><span class="n">png</span> <span class="o">-</span><span class="n">r</span> <span class="mi">30</span> <span class="o">-</span><span class="n">vf</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1680</span><span class="p">:</span><span class="mi">1050</span> <span class="n">movie</span><span class="o">.</span><span class="n">mp4</span>
 </pre></div>
 </div>
 </div>
@@ -287,7 +287,7 @@ movie using <a class="reference external" href="https://www.ffmpeg.org/">FFMPEG<
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

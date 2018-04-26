@@ -176,8 +176,8 @@
 <span id="id1"></span><h1>Database Format<a class="headerlink" href="#database-format" title="Permalink to this headline">¶</a></h1>
 <p>COLMAP stores all extracted information in a single SQLite database file. The
 database can be accessed with the database management toolkit in the COLMAP GUI,
-the provided C++ database API (see <code class="docutils literal"><span class="pre">src/base/database.h</span></code>), or with a scripting
-language of your choice (see <code class="docutils literal"><span class="pre">scripts/python/*</span></code> for examples).</p>
+the provided C++ database API (see <code class="docutils literal notranslate"><span class="pre">src/base/database.h</span></code>), or with a scripting
+language of your choice (see <code class="docutils literal notranslate"><span class="pre">scripts/python/*</span></code> for examples).</p>
 <p>The database contains the following tables:</p>
 <ul class="simple">
 <li>cameras</li>
@@ -196,14 +196,14 @@ implications for Structure-from-Motion, since one camera shares the same
 intrinsic parameters (focal length, principal point, distortion, etc.), while
 every image has separate extrinsic parameters (orientation and location).</p>
 <p>The intrinsic parameters of cameras are stored as contiguous binary blobs in
-<cite>float64</cite>, ordered as specified in <code class="docutils literal"><span class="pre">src/base/camera_models.h</span></code>. COLMAP only
+<cite>float64</cite>, ordered as specified in <code class="docutils literal notranslate"><span class="pre">src/base/camera_models.h</span></code>. COLMAP only
 uses cameras that are referenced by images, all other cameras are ignored.</p>
-<p>The <code class="docutils literal"><span class="pre">name</span></code> column in the images table is the unique relative path in the image
+<p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> column in the images table is the unique relative path in the image
 folder. As such, the database file and image folder can be moved to different
 locations, as long as the relative folder structure is preserved.</p>
 <p>When manually inserting images and cameras into the database, make sure
-that all identifiers are positive and non-zero, i.e. <code class="docutils literal"><span class="pre">image_id</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>
-and <code class="docutils literal"><span class="pre">camera_id</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p>
+that all identifiers are positive and non-zero, i.e. <code class="docutils literal notranslate"><span class="pre">image_id</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>
+and <code class="docutils literal notranslate"><span class="pre">camera_id</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p>
 </div>
 <div class="section" id="keypoints-and-descriptors">
 <h2>Keypoints and Descriptors<a class="headerlink" href="#keypoints-and-descriptors" title="Permalink to this headline">¶</a></h2>
@@ -215,7 +215,7 @@ keypoints have 4 columns, then the feature geometry is a similarity and the
 third column is the scale and the fourth column the orientation of the feature
 (according to SIFT conventions). If the keypoints have 6 columns, then the
 feature geometry is an affinity and the last 4 columns encode its affine shape
-(see <code class="docutils literal"><span class="pre">src/feature/types.h</span></code> for details).</p>
+(see <code class="docutils literal notranslate"><span class="pre">src/feature/types.h</span></code> for details).</p>
 <p>The extracted descriptors are stored as row-major <cite>uint8</cite> binary blobs, where
 each row describes the feature appearance of the corresponding entry in the
 keypoints table. Note that COLMAP only supports 128-D descriptors for now, i.e.
@@ -235,7 +235,7 @@ verification in the <cite>inlier_matches</cite> table. COLMAP only uses the data
 <cite>inlier_matches</cite> for reconstruction. Every entry in the two tables stores the
 feature matches between two unique images, where the <cite>pair_id</cite> is the row-major,
 linear index in the upper-triangular match matrix, generated as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">image_ids_to_pair_id</span><span class="p">(</span><span class="n">image_id1</span><span class="p">,</span> <span class="n">image_id2</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">image_ids_to_pair_id</span><span class="p">(</span><span class="n">image_id1</span><span class="p">,</span> <span class="n">image_id2</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">image_id1</span> <span class="o">&gt;</span> <span class="n">image_id2</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">2147483647</span> <span class="o">*</span> <span class="n">image_id2</span> <span class="o">+</span> <span class="n">image_id1</span>
     <span class="k">else</span><span class="p">:</span>
@@ -243,7 +243,7 @@ linear index in the upper-triangular match matrix, generated as follows:</p>
 </pre></div>
 </div>
 <p>and image identifiers can be uniquely determined from the <cite>pair_id</cite> as:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pair_id_to_image_ids</span><span class="p">(</span><span class="n">pair_id</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pair_id_to_image_ids</span><span class="p">(</span><span class="n">pair_id</span><span class="p">):</span>
     <span class="n">image_id2</span> <span class="o">=</span> <span class="n">pair_id</span> <span class="o">%</span> <span class="mi">2147483647</span>
     <span class="n">image_id1</span> <span class="o">=</span> <span class="p">(</span><span class="n">pair_id</span> <span class="o">-</span> <span class="n">image_id2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2147483647</span>
     <span class="k">return</span> <span class="n">image_id1</span><span class="p">,</span> <span class="n">image_id2</span>
@@ -314,7 +314,7 @@ the <cite>rows</cite> column specifies the number of feature matches.</p>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

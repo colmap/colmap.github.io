@@ -118,6 +118,7 @@
 <li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
@@ -194,8 +195,8 @@ reading COLMAP binary data on most platforms.</p>
 </div>
 <div class="section" id="indices-and-identifiers">
 <h2>Indices and Identifiers<a class="headerlink" href="#indices-and-identifiers" title="Permalink to this headline">¶</a></h2>
-<p>Any variable name ending with <code class="docutils literal"><span class="pre">*_idx</span></code> should be considered as an ordered,
-contiguous zero-based index. In general, any variable name ending with <code class="docutils literal"><span class="pre">*_id</span></code>
+<p>Any variable name ending with <code class="docutils literal notranslate"><span class="pre">*_idx</span></code> should be considered as an ordered,
+contiguous zero-based index. In general, any variable name ending with <code class="docutils literal notranslate"><span class="pre">*_id</span></code>
 should be considered as an unordered, non-contiguous identifier.</p>
 <p>For example, the unique identifiers of cameras (<cite>CAMERA_ID</cite>), images
 (<cite>IMAGE_ID</cite>), and 3D points (<cite>POINT3D_ID</cite>) are unordered and are most likely not
@@ -213,23 +214,23 @@ information is split into three files for the information about <cite>cameras</c
 sparse model. The binary files have the file extension <cite>.bin</cite> and the text files
 the file extension <cite>.txt</cite>. Note that when loading a model from a directory which
 contains both binary and text files, COLMAP prefers the binary format.</p>
-<p>To export the currently selected model in the GUI, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span>
+<p>To export the currently selected model in the GUI, choose <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span>
 <span class="pre">model</span></code>. To export all reconstructed models in the current dataset, choose
-<code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">all</span></code>. The selected folder then contains the three files, and
+<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">all</span></code>. The selected folder then contains the three files, and
 for convenience, the current project configuration for importing the model to
 COLMAP. To import the exported models, e.g., for visualization or to resume the
-reconstruction, choose <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">model</span></code> and select the folder containing
+reconstruction, choose <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">model</span></code> and select the folder containing
 the <cite>cameras</cite>, <cite>images</cite>, and <cite>points3D</cite> files.</p>
 <p>To convert between the binary and text format in the GUI, you can load the model
-using <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">model</span></code> and then export the model in the desired output
-format using <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">model</span></code> (binary) or <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">model</span> <span class="pre">as</span> <span class="pre">text</span></code>
+using <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">model</span></code> and then export the model in the desired output
+format using <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">model</span></code> (binary) or <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">model</span> <span class="pre">as</span> <span class="pre">text</span></code>
 (text). In addition, you can export sparse models to other formats, such as
-VisualSfM’s NVM, Bundler files, PLY, VRML, etc., using <code class="docutils literal"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">as...</span></code>.
-To convert between various formats from the CLI, use the <code class="docutils literal"><span class="pre">model_converter</span></code>
+VisualSfM’s NVM, Bundler files, PLY, VRML, etc., using <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">as...</span></code>.
+To convert between various formats from the CLI, use the <code class="docutils literal notranslate"><span class="pre">model_converter</span></code>
 executable.</p>
 <p>There are two source files to conveniently read the sparse reconstructions using
-Python (<code class="docutils literal"><span class="pre">scripts/python/read_model.py</span></code> supporting binary and text) and Matlab
-(<code class="docutils literal"><span class="pre">scripts/matlab/read_model.m</span></code> supporting text).</p>
+Python (<code class="docutils literal notranslate"><span class="pre">scripts/python/read_model.py</span></code> supporting binary and text) and Matlab
+(<code class="docutils literal notranslate"><span class="pre">scripts/matlab/read_model.m</span></code> supporting text).</p>
 <div class="section" id="text-format">
 <h3>Text Format<a class="headerlink" href="#text-format" title="Permalink to this headline">¶</a></h3>
 <p>COLMAP exports the following three text files for every reconstructed model:
@@ -240,7 +241,7 @@ format of the text files, as described in more detailed on this page.</p>
 <h4>cameras.txt<a class="headerlink" href="#cameras-txt" title="Permalink to this headline">¶</a></h4>
 <p>This file contains the intrinsic parameters of all reconstructed cameras in the
 dataset using one line per camera, e.g.:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Camera list with one line of data per camera:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Camera list with one line of data per camera:</span>
 <span class="c1">#   CAMERA_ID, MODEL, WIDTH, HEIGHT, PARAMS[]</span>
 <span class="c1"># Number of cameras: 3</span>
 <span class="mi">1</span> <span class="n">SIMPLE_PINHOLE</span> <span class="mi">3072</span> <span class="mi">2304</span> <span class="mf">2559.81</span> <span class="mi">1536</span> <span class="mi">1152</span>
@@ -260,7 +261,7 @@ identifier <cite>CAMERA_ID</cite>.</p>
 <h4>images.txt<a class="headerlink" href="#images-txt" title="Permalink to this headline">¶</a></h4>
 <p>This file contains the pose and keypoints of all reconstructed images in the
 dataset using two lines per image, e.g.:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Image list with two lines of data per image:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Image list with two lines of data per image:</span>
 <span class="c1">#   IMAGE_ID, QW, QX, QY, QZ, TX, TY, TZ, CAMERA_ID, NAME</span>
 <span class="c1">#   POINTS2D[] as (X, Y, POINT3D_ID)</span>
 <span class="c1"># Number of images: 2, mean observations per image: 2</span>
@@ -275,9 +276,9 @@ The reconstructed pose of an image is specified as the projection from world to
 image coordinate system using a quaternion (QW, QX, QY, QZ) and a translation
 vector (TX, TY, TZ). The quaternion is defined using the Hamilton convention,
 which is, for example, also used by the Eigen library. The coordinates of the
-projection center are given by <code class="docutils literal"><span class="pre">-R^t</span> <span class="pre">*</span> <span class="pre">T</span></code>, where <code class="docutils literal"><span class="pre">R^t</span></code> is the
+projection center are given by <code class="docutils literal notranslate"><span class="pre">-R^t</span> <span class="pre">*</span> <span class="pre">T</span></code>, where <code class="docutils literal notranslate"><span class="pre">R^t</span></code> is the
 inverse/transpose of the 3x3 rotation matrix composed from the quaternion and
-<code class="docutils literal"><span class="pre">T</span></code> is the translation vector. Both images use the same camera model and share
+<code class="docutils literal notranslate"><span class="pre">T</span></code> is the translation vector. Both images use the same camera model and share
 intrinsics (<cite>CAMERA_ID = 1</cite>). The image name is relative to the selected base
 image folder of the project. The first image has 3 keypoints and the second
 image has 2 keypoints, while the location of the keypoints is specified in pixel
@@ -289,7 +290,7 @@ point identifier is -1.</p>
 <h4>points3D.txt<a class="headerlink" href="#points3d-txt" title="Permalink to this headline">¶</a></h4>
 <p>This file contains the information of all reconstructed 3D points in the
 dataset using one line per point, e.g.:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 3D point list with one line of data per point:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3D point list with one line of data per point:</span>
 <span class="c1">#   POINT3D_ID, X, Y, Z, R, G, B, ERROR, TRACK[] as (IMAGE_ID, POINT2D_IDX)</span>
 <span class="c1"># Number of points: 3, mean track length: 3.3334</span>
 <span class="mi">63390</span> <span class="mf">1.67241</span> <span class="mf">0.292931</span> <span class="mf">0.609726</span> <span class="mi">115</span> <span class="mi">121</span> <span class="mi">122</span> <span class="mf">1.33927</span> <span class="mi">16</span> <span class="mi">6542</span> <span class="mi">15</span> <span class="mi">7345</span> <span class="mi">6</span> <span class="mi">6714</span> <span class="mi">14</span> <span class="mi">7227</span>
@@ -306,7 +307,7 @@ pixels of reprojection error and is only updated after global bundle adjustment.
 <div class="section" id="dense-reconstruction">
 <h2>Dense Reconstruction<a class="headerlink" href="#dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>COLMAP uses the following workspace folder structure:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>+── images
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+── images
 │   +── image1.jpg
 │   +── image2.jpg
 │   +── ...
@@ -344,12 +345,12 @@ the dense reconstruction.</p>
 <div class="section" id="depth-and-normal-maps">
 <h3>Depth and Normal Maps<a class="headerlink" href="#depth-and-normal-maps" title="Permalink to this headline">¶</a></h3>
 <p>The depth maps are stored as mixed text and binary files. The text header
-defines the dimensions of the image in the format <code class="docutils literal"><span class="pre">with&amp;height&amp;channels&amp;</span></code>
-followed by row-major <cite>float32</cite> binary data. For depth maps <code class="docutils literal"><span class="pre">channels=1</span></code> and
-for normal maps <code class="docutils literal"><span class="pre">channels=3</span></code>. The depth and normal maps can be conveniently
-read with Python using the functions in <code class="docutils literal"><span class="pre">scripts/python/read_dense.py</span></code> and
-with Matlab using the functions in <code class="docutils literal"><span class="pre">scripts/matlab/read_depth_map.m</span></code> and
-<code class="docutils literal"><span class="pre">scripts/matlab/read_normal_map.m</span></code>.</p>
+defines the dimensions of the image in the format <code class="docutils literal notranslate"><span class="pre">with&amp;height&amp;channels&amp;</span></code>
+followed by row-major <cite>float32</cite> binary data. For depth maps <code class="docutils literal notranslate"><span class="pre">channels=1</span></code> and
+for normal maps <code class="docutils literal notranslate"><span class="pre">channels=3</span></code>. The depth and normal maps can be conveniently
+read with Python using the functions in <code class="docutils literal notranslate"><span class="pre">scripts/python/read_dense.py</span></code> and
+with Matlab using the functions in <code class="docutils literal notranslate"><span class="pre">scripts/matlab/read_depth_map.m</span></code> and
+<code class="docutils literal notranslate"><span class="pre">scripts/matlab/read_normal_map.m</span></code>.</p>
 </div>
 <div class="section" id="consistency-graphs">
 <h3>Consistency Graphs<a class="headerlink" href="#consistency-graphs" title="Permalink to this headline">¶</a></h3>
@@ -357,9 +358,9 @@ with Matlab using the functions in <code class="docutils literal"><span class="p
 pixel is consistent with. The graph is stored as a mixed text and binary file,
 while the text part is equivalent to the depth and normal maps and the binary
 part is a continuous list of <cite>int32</cite> values in the format
-<code class="docutils literal"><span class="pre">&lt;row&gt;&lt;col&gt;&lt;N&gt;&lt;image_idx1&gt;...&lt;image_idxN&gt;</span></code>. Here, <code class="docutils literal"><span class="pre">(row,</span> <span class="pre">col)</span></code>  defines the
-location of the pixel in the image followed by a list of <code class="docutils literal"><span class="pre">N</span></code> image indices.
-The indices are specified w.r.t. the ordering in the <code class="docutils literal"><span class="pre">images.txt</span></code> file.</p>
+<code class="docutils literal notranslate"><span class="pre">&lt;row&gt;&lt;col&gt;&lt;N&gt;&lt;image_idx1&gt;...&lt;image_idxN&gt;</span></code>. Here, <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>  defines the
+location of the pixel in the image followed by a list of <code class="docutils literal notranslate"><span class="pre">N</span></code> image indices.
+The indices are specified w.r.t. the ordering in the <code class="docutils literal notranslate"><span class="pre">images.txt</span></code> file.</p>
 </div>
 </div>
 </div>
@@ -418,7 +419,7 @@ The indices are specified w.r.t. the ordering in the <code class="docutils liter
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
