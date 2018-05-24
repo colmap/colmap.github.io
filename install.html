@@ -104,6 +104,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#build-script">Build Script</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#library">Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
 </ul>
 </li>
@@ -189,7 +190,11 @@ manually. Executables for Windows and Mac and other resources can be downloaded
 from <a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>. Executables for Linux/Unix/BSD are available at
 <a class="reference external" href="https://repology.org/metapackage/colmap/versions">https://repology.org/metapackage/colmap/versions</a>. Note that the COLMAP packages
 in the default repositories for Linux/Unix/BSD do not come with CUDA support,
-which requires manual compilation, which is relatively easy on these platforms.</p>
+which requires manual compilation but is relatively easy on these platforms.</p>
+<p>COLMAP can be used as an independent application through the command-line or
+graphical user interface. Alternatively, COLMAP is also built as a reusable
+library, i.e., you can include and link COLMAP against your own source code,
+as described further below.</p>
 <div class="section" id="pre-built-binaries">
 <h2>Pre-built Binaries<a class="headerlink" href="#pre-built-binaries" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="windows">
@@ -286,22 +291,15 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
     <span class="n">gflags</span> \
     <span class="n">suite</span><span class="o">-</span><span class="n">sparse</span> \
     <span class="n">ceres</span><span class="o">-</span><span class="n">solver</span> \
-    <span class="n">qt5</span> \
+    <span class="n">qt</span> \
     <span class="n">glew</span>
-</pre></div>
-</div>
-<p>Create the file <code class="docutils literal notranslate"><span class="pre">LocalConfig.cmake</span></code> in the COLMAP base directory and then
-insert the following lines into it:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>set(Qt5_CMAKE_DIR &quot;/usr/local/opt/qt5/lib/cmake&quot;)
-set(Qt5Core_DIR ${Qt5_CMAKE_DIR}/Qt5Core)
-set(Qt5OpenGL_DIR ${Qt5_CMAKE_DIR}/Qt5OpenGL)
 </pre></div>
 </div>
 <p>Configure and compile COLMAP:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">..</span>
+<span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">DQt5_DIR</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">qt</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="n">Qt5</span>
 <span class="n">make</span>
 </pre></div>
 </div>
@@ -316,10 +314,8 @@ set(Qt5OpenGL_DIR ${Qt5_CMAKE_DIR}/Qt5OpenGL)
 <p><em>Recommended dependencies:</em> CUDA.</p>
 <p>On Windows it is recommended to use the Python build script. Please follow the
 instructions in the next section.</p>
-<p>Alternatively, you can install the dependencies manually. To make the process of
-configuring CMake less painful, please have a look at
-<code class="docutils literal notranslate"><span class="pre">LocalConfigExample.config</span></code>. MSVC12 (Microsoft Visual Studio 2013) and newer
-are confirmed to compile COLMAP without any issues.</p>
+<p>Alternatively, you can install the dependencies manually. Microsoft Visual
+Studio 2013 and newer are confirmed to compile COLMAP without any issues.</p>
 </div>
 <div class="section" id="build-script">
 <h3>Build Script<a class="headerlink" href="#build-script" title="Permalink to this headline">¶</a></h3>
@@ -352,6 +348,54 @@ If you use Homebrew under Mac, you can use the following command:</p>
 </pre></div>
 </div>
 <p>To see the full list of command-line options, pass the <code class="docutils literal notranslate"><span class="pre">--help</span></code> argument.</p>
+</div>
+</div>
+<div class="section" id="library">
+<h2>Library<a class="headerlink" href="#library" title="Permalink to this headline">¶</a></h2>
+<p>If you want to include and link COLMAP against your own library, the easiest
+way is to use CMake as a build configuration tool. COLMAP automatically installs
+all headers to <code class="docutils literal notranslate"><span class="pre">${CMAKE_INSTALL_PREFIX}/include/colmap</span></code>, all libraries to
+<code class="docutils literal notranslate"><span class="pre">${CMAKE_INSTALL_PREFIX}/lib/colmap</span></code>, and the CMake configuration to
+<code class="docutils literal notranslate"><span class="pre">${CMAKE_INSTALL_PREFIX}/share/colmap</span></code>.</p>
+<p>For example, compiling your own source code against COLMAP is as simple as
+using the following <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cmake_minimum_required(VERSION 2.8.11)
+
+project(TestProject)
+
+find_package(COLMAP REQUIRED)
+# or: find_package(COLMAP 3.4 REQUIRED)
+
+include_directories(${COLMAP_INCLUDE_DIRS})
+link_directories(${COLMAP_LINK_DIRS})
+
+add_executable(test test.cc)
+target_link_libraries(test ${COLMAP_LIBRARIES})
+</pre></div>
+</div>
+<p>with the source code <code class="docutils literal notranslate"><span class="pre">test.cc</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;cstdlib&gt;</span>
+<span class="c1">#include &lt;iostream&gt;</span>
+
+<span class="c1">#include &lt;colmap/util/option_manager.h&gt;</span>
+<span class="c1">#include &lt;colmap/util/string.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">colmap</span><span class="p">::</span><span class="n">InitializeGlog</span><span class="p">(</span><span class="n">argv</span><span class="p">);</span>
+
+    <span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">input_path</span><span class="p">;</span>
+    <span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">output_path</span><span class="p">;</span>
+
+    <span class="n">colmap</span><span class="p">::</span><span class="n">OptionManager</span> <span class="n">options</span><span class="p">;</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">AddRequiredOption</span><span class="p">(</span><span class="s2">&quot;input_path&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">input_path</span><span class="p">);</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">AddRequiredOption</span><span class="p">(</span><span class="s2">&quot;output_path&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">output_path</span><span class="p">);</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+
+    <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">colmap</span><span class="p">::</span><span class="n">StringPrintf</span><span class="p">(</span><span class="s2">&quot;Hello </span><span class="si">%s</span><span class="s2">!&quot;</span><span class="p">,</span> <span class="s2">&quot;COLMAP&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">EXIT_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="documentation">
