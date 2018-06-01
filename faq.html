@@ -104,7 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#share-intrinsics">Share intrinsics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fix-intrinsics">Fix intrinsics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#principal-point-refinement">Principal point refinement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#increase-number-of-sparse-3d-points">Increase number of sparse 3D points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#increase-number-of-matches-sparse-3d-points">Increase number of matches / sparse 3D points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reconstruct-sparse-dense-model-from-known-camera-poses">Reconstruct sparse/dense model from known camera poses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#merge-disconnected-models">Merge disconnected models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#geo-registration">Geo-registration</a></li>
@@ -234,8 +234,13 @@ can try to refine the principal point in global bundle adjustment, especially
 when sharing intrinsic parameters between multiple images. Please, refer to
 <a class="reference internal" href="#faq-fix-intrinsics"><span class="std std-ref">Fix intrinsics</span></a> for more information.</p>
 </div>
-<div class="section" id="increase-number-of-sparse-3d-points">
-<h2>Increase number of sparse 3D points<a class="headerlink" href="#increase-number-of-sparse-3d-points" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="increase-number-of-matches-sparse-3d-points">
+<h2>Increase number of matches / sparse 3D points<a class="headerlink" href="#increase-number-of-matches-sparse-3d-points" title="Permalink to this headline">¶</a></h2>
+<p>To increase the number of matches, you should use the more discriminative
+DSP-SIFT features instead of plain SIFT and also estimate the affine feature
+shape using the options: <code class="docutils literal notranslate"><span class="pre">--SiftExtraction.estimate_affine_shape=true</span></code> and
+<code class="docutils literal notranslate"><span class="pre">--SiftExtraction.domain_size_pooling=true</span></code>. In addition, you should enable
+guided feature matching using: <code class="docutils literal notranslate"><span class="pre">--SiftMatching.guided_matching=true</span></code>.</p>
 <p>By default, COLMAP ignores two-view feature tracks in triangulation, resulting
 in fewer 3D points than possible. Triangulation of two-view tracks can in rare
 cases improve the stability of sparse image collections by providing additional
@@ -593,6 +598,8 @@ command-line. Under Ubuntu, you could first stop X using:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">lightdm</span> <span class="n">start</span>
 </pre></div>
 </div>
+<p>If the dense reconstruction still crashes after these changes, the reason is
+probably insufficient GPU memory, as discussed in a separate item in this list.</p>
 </div>
 </div>
 
