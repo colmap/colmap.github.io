@@ -362,6 +362,13 @@ import features for a set of images.</li>
 Perform feature matching after performing feature extraction.</li>
 <li><code class="docutils literal notranslate"><span class="pre">mapper</span></code>: Sparse 3D reconstruction / mapping of the dataset using SfM after
 performing feature extraction and matching.</li>
+<li><code class="docutils literal notranslate"><span class="pre">hierarchical_mapper</span></code>: Sparse 3D reconstruction / mapping of the dataset
+using hierarchical SfM after performing feature extraction and matching.
+This parallelizes the reconstruction process by partitioning the scene into
+overlapping submodels and then reconstructing each submodel independently.
+Finally, the overlapping submodels are merged into a single reconstruction.
+It is recommended to run a few rounds of point triangulation and bundle
+adjustment after this step.</li>
 <li><code class="docutils literal notranslate"><span class="pre">image_undistorter</span></code>: Undistort images and/or export them for MVS or to
 external dense reconstruction software, such as CMVS/PMVS.</li>
 <li><code class="docutils literal notranslate"><span class="pre">image_rectifier</span></code>: Stereo rectify cameras and undistort images for stereo
@@ -409,7 +416,7 @@ reconstruction pipelines, COLMAP offers you the following possibilities:</p>
 <ul class="simple">
 <li>The sparse point cloud obtained with the <code class="docutils literal notranslate"><span class="pre">mapper</span></code> can be visualized via the
 COLMAP GUI by importing the following files: choose <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">Model</span></code>
-and select the folder where the three files, <code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code>,“images.txt“,
+and select the folder where the three files, <code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code>,``images.txt``,
 and <code class="docutils literal notranslate"><span class="pre">points3d.txt</span></code> are located.</li>
 <li>The dense point cloud obtained with the <code class="docutils literal notranslate"><span class="pre">dense_fuser</span></code> can be visualized via
 the COLMAP GUI by importing <code class="docutils literal notranslate"><span class="pre">fused.ply</span></code>: choose
