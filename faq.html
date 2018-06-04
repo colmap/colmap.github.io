@@ -196,9 +196,12 @@
 <p>If you need to simply analyze the produced sparse or dense reconstructions from
 COLMAP, you can load the sparse models in Python and Matlab using the provided
 scripts in <code class="docutils literal notranslate"><span class="pre">scripts/python</span></code> and <code class="docutils literal notranslate"><span class="pre">scripts/matlab</span></code>.</p>
-<p>If you want to write a C/C++ executable that builds on top of COLMAP, the
-easiest approach is to start from the <code class="docutils literal notranslate"><span class="pre">src/tools/example.cc</span></code> code template and
-implement the desired functionality in a new binary.</p>
+<p>If you want to write a C/C++ executable that builds on top of COLMAP, there are
+two possible approaches. First, the COLMAP headers and library are installed
+to the <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> by default. Compiling against COLMAP as a
+library is described <a class="reference internal" href="install.html#installation-library"><span class="std std-ref">here</span></a>. Alternatively, you can
+start from the <code class="docutils literal notranslate"><span class="pre">src/tools/example.cc</span></code> code template and implement the desired
+functionality directly as a new binary within COLMAP.</p>
 </div>
 <div class="section" id="share-intrinsics">
 <span id="faq-share-intrinsics"></span><h2>Share intrinsics<a class="headerlink" href="#share-intrinsics" title="Permalink to this headline">¶</a></h2>
