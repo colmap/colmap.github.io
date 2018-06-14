@@ -256,14 +256,15 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
 </pre></div>
 </div>
 <p>Install <a class="reference external" href="http://ceres-solver.org/">Ceres Solver</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libatlas</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">dev</span> <span class="n">libsuitesparse</span><span class="o">-</span><span class="n">dev</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ceres</span><span class="o">-</span><span class="n">solver</span><span class="o">.</span><span class="n">googlesource</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ceres</span><span class="o">-</span><span class="n">solver</span>
-<span class="n">cd</span> <span class="n">ceres</span><span class="o">-</span><span class="n">solver</span>
-<span class="n">mkdir</span> <span class="n">build</span>
-<span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">DBUILD_TESTING</span><span class="o">=</span><span class="n">OFF</span> <span class="o">-</span><span class="n">DBUILD_EXAMPLES</span><span class="o">=</span><span class="n">OFF</span>
-<span class="n">make</span>
-<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo apt-get install libatlas-base-dev libsuitesparse-dev
+git clone https://ceres-solver.googlesource.com/ceres-solver
+cd ceres-solver
+git checkout $(git describe --tags) # Checkout the latest release
+mkdir build
+cd build
+cmake .. -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF
+make
+sudo make install
 </pre></div>
 </div>
 <p>Configure and compile COLMAP:</p>
@@ -305,6 +306,7 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
 <span class="n">cd</span> <span class="n">build</span>
 <span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">DQt5_DIR</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">qt</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="n">Qt5</span>
 <span class="n">make</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>Run COLMAP:</p>
