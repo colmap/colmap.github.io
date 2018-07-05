@@ -185,7 +185,7 @@ language of your choice (see <code class="docutils literal notranslate"><span cl
 <li>keypoints</li>
 <li>descriptors</li>
 <li>matches</li>
-<li>inlier_matches</li>
+<li>two_view_geometries</li>
 </ul>
 <p>To initialize an empty SQLite database file with the required schema, you can
 either create a new project in the GUI or execute <cite>src/exe/database_create.cc</cite>.</p>
@@ -231,10 +231,11 @@ The rest of the reconstruction pipeline only uses the keypoint locations.</p>
 <div class="section" id="matches">
 <h2>Matches<a class="headerlink" href="#matches" title="Permalink to this headline">¶</a></h2>
 <p>Feature matching stores its output in the <cite>matches</cite> table and geometric
-verification in the <cite>inlier_matches</cite> table. COLMAP only uses the data in
-<cite>inlier_matches</cite> for reconstruction. Every entry in the two tables stores the
-feature matches between two unique images, where the <cite>pair_id</cite> is the row-major,
-linear index in the upper-triangular match matrix, generated as follows:</p>
+verification in the <cite>two_view_geometries</cite> table. COLMAP only uses the data in
+<cite>two_view_geometries</cite> for reconstruction. Every entry in the two tables stores
+the feature matches between two unique images, where the <cite>pair_id</cite> is the
+row-major, linear index in the upper-triangular match matrix, generated as
+follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">image_ids_to_pair_id</span><span class="p">(</span><span class="n">image_id1</span><span class="p">,</span> <span class="n">image_id2</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">image_id1</span> <span class="o">&gt;</span> <span class="n">image_id2</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">2147483647</span> <span class="o">*</span> <span class="n">image_id2</span> <span class="o">+</span> <span class="n">image_id1</span>
@@ -257,6 +258,9 @@ integers), i.e. <cite>image_id</cite> must be smaller than 2147483647.</p>
 the left column are zero-based indices into the features of <cite>image_id1</cite> and the
 second column into the features of <cite>image_id2</cite>. The column <cite>cols</cite> must be 2 and
 the <cite>rows</cite> column specifies the number of feature matches.</p>
+<p>The F, E, H blobs in the <cite>two_view_geometries</cite> table are stored as 3x3 matrices
+in row-major <cite>float64</cite> format. The meaning of the <cite>config</cite> values are documented
+in the <cite>src/estimators/two_view_geometry.h</cite> source file.</p>
 </div>
 </div>
 
