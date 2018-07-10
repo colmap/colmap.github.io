@@ -115,6 +115,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#feature-matching-fails-due-to-illegal-memory-access">Feature matching fails due to illegal memory access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction">Trading off completeness and accuracy in dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#improving-dense-reconstruction-results-for-weakly-textured-surfaces">Improving dense reconstruction results for weakly textured surfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#surface-mesh-reconstruction">Surface mesh reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#speedup-dense-reconstruction">Speedup dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reduce-memory-usage-during-dense-reconstruction">Reduce memory usage during dense reconstruction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#manual-specification-of-source-images-during-dense-reconstruction">Manual specification of source images during dense reconstruction</a></li>
@@ -283,10 +284,10 @@ from the known camera poses, you can compute a dense model as follows:</p>
     --input_path path/to/triangulated/sparse/model \
     --output_path path/to/dense/workspace
 
-colmap dense_stereo \
+colmap patch_match_stereo \
     --workspace_path path/to/dense/workspace
 
-colmap dense_fuser \
+colmap stereo_fusion \
     --workspace_path path/to/dense/workspace \
     --output_path path/to/dense/workspace/fused.ply
 </pre></div>
@@ -302,12 +303,12 @@ colmap dense_fuser \
 during the dense stereo stage, you have to manually specify the source images,
 as described <a class="reference internal" href="#faq-dense-manual-source"><span class="std std-ref">here</span></a>. The dense stereo stage
 now also requires a manual specification of the depth range:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap dense_stereo \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap patch_match_stereo \
     --workspace_path path/to/dense/workspace \
     --DenseStereo.depth_min $MIN_DEPTH \
     --DenseStereo.depth_max $MAX_DEPTH
 
-colmap dense_fuser \
+colmap stereo_fusion \
     --workspace_path path/to/dense/workspace \
     --output_path path/to/dense/workspace/fused.ply
 </pre></div>
@@ -461,11 +462,11 @@ or you use a GPU with more memory.</p>
 <h2>Trading off completeness and accuracy in dense reconstruction<a class="headerlink" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>If the dense point cloud contains too many outliers and too much noise, try to
 increase the value of option <code class="docutils literal notranslate"><span class="pre">--DenseFusion.min_num_pixels</span></code>.</p>
-<p>If the reconstructed dense surface mesh model contains no surface or there are
-too many outlier surfaces, you should reduce the value of option
-<code class="docutils literal notranslate"><span class="pre">--DenseMeshing.trim</span></code> to decrease the surface are and vice versa to increase
-it. Also consider to try the reduce the outliers or increase the completeness in
-the fusion stage, as described above.</p>
+<p>If the reconstructed dense surface mesh model using Poisson reconstruction
+contains no surface or there are too many outlier surfaces, you should reduce
+the value of option <code class="docutils literal notranslate"><span class="pre">--DenseMeshing.trim</span></code> to decrease the surface are and vice
+versa to increase it. Also consider to try the reduce the outliers or increase
+the completeness in the fusion stage, as described above.</p>
 </div>
 <div class="section" id="improving-dense-reconstruction-results-for-weakly-textured-surfaces">
 <h2>Improving dense reconstruction results for weakly textured surfaces<a class="headerlink" href="#improving-dense-reconstruction-results-for-weakly-textured-surfaces" title="Permalink to this headline">¶</a></h2>
@@ -474,6 +475,22 @@ of the input images (<code class="docutils literal notranslate"><span class="pre
 radius (<code class="docutils literal notranslate"><span class="pre">--DenseStereo.window_radius</span></code>). You may also want to reduce the
 filtering threshold for the photometric consistency cost
 (<code class="docutils literal notranslate"><span class="pre">--DenseStereo.filter_min_ncc</span></code>).</p>
+</div>
+<div class="section" id="surface-mesh-reconstruction">
+<h2>Surface mesh reconstruction<a class="headerlink" href="#surface-mesh-reconstruction" title="Permalink to this headline">¶</a></h2>
+<p>COLMAP supports two types of surface reconstruction algorithms. Poisson surface
+reconstruction <a class="reference internal" href="bibliography.html#kazhdan2013" id="id1">[kazhdan2013]</a> and graph-cut based surface extraction from a
+Delaunay triangulation. Poisson surface reconstruction typically requires an
+outlier-free input point cloud and it often produces bad surfaces in the
+presence of outliers or large holes in the input data. The Delaunay
+triangulation based meshing algorithm is robust to outliers and in general more
+scalable to large datasets than the Poisson algorithm, but it usually produces
+less smooth surfaces. Furthermore, the Delaunay based meshing can be applied to
+sparse and dense reconstruction results.</p>
+<p>Note that the two algorithms can also be combined by first running the Delaunay
+meshing to robustly filter outliers from the sparse or dense point cloud and
+then, in the second step, performing Poisson surface reconstruction to obtain a
+smooth surface.</p>
 </div>
 <div class="section" id="speedup-dense-reconstruction">
 <h2>Speedup dense reconstruction<a class="headerlink" href="#speedup-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
@@ -518,7 +535,7 @@ gigabytes or you can reduce <code class="docutils literal notranslate"><span cla
 slow processing and heavy load on the hard disk.</p>
 <p>For large-scale reconstructions of several thousands of images, you should
 consider splitting your sparse reconstruction into more manageable clusters of
-images using e.g. CMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id1">[furukawa10]</a>. In addition, CMVS allows to prune
+images using e.g. CMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id2">[furukawa10]</a>. In addition, CMVS allows to prune
 redundant images observing the same scene elements. Note that, for this use
 case, COLMAP’s dense reconstruction pipeline also supports the PMVS/CMVS folder
 structure when executed from the command-line. Please, refer to the workspace
@@ -594,7 +611,7 @@ command-line. Under Ubuntu, you could first stop X using:</p>
 </pre></div>
 </div>
 <p>And then run the dense reconstruction code from the command-line:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="n">dense_stereo</span> <span class="o">...</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="n">patch_match_stereo</span> <span class="o">...</span>
 </pre></div>
 </div>
 <p>Finally, you can restart your desktop environment with the following command:</p>

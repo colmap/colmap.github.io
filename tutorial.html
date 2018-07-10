@@ -218,7 +218,8 @@ reconstruction tool, the folder would look similar to this:</p>
 │   │   +── sparse
 │   │   +── stereo
 │   │   +── fused.ply
-│   │   +── meshed.ply
+│   │   +── meshed-poisson.ply
+│   │   +── meshed-delaunay.ply
 │   +── ...
 +── database.db
 </pre></div>
@@ -561,7 +562,7 @@ of the input images, MVS can now recover denser scene geometry. COLMAP has an
 integrated dense reconstruction pipeline to produce depth and normal maps for
 all registered images, to fuse the depth and normal maps into a dense point
 cloud with normal information, and to finally estimate a dense surface from the
-fused point cloud using Poisson reconstruction <a class="reference internal" href="bibliography.html#kazhdan2013" id="id12">[kazhdan2013]</a>.</p>
+fused point cloud using Poisson <a class="reference internal" href="bibliography.html#kazhdan2013" id="id12">[kazhdan2013]</a> or Delaunay reconstruction.</p>
 <p>To get started, import your sparse 3D model into COLMAP (or select the
 reconstructed model after finishing the previous sparse reconstruction steps).
 Then, choose <code class="docutils literal notranslate"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Multi-view</span> <span class="pre">stereo</span></code> and select an empty or
