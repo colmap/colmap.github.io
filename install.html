@@ -363,7 +363,7 @@ If you use Homebrew under Mac, you can use the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">scripts</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">py</span> \
     <span class="o">--</span><span class="n">build_path</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">build</span> \
     <span class="o">--</span><span class="n">colmap_path</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span> \
-    <span class="o">--</span><span class="n">qt_path</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">qt</span><span class="o">/</span>
+    <span class="o">--</span><span class="n">qt_path</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">qt</span>
 </pre></div>
 </div>
 <p>To see the full list of command-line options, pass the <code class="docutils literal notranslate"><span class="pre">--help</span></code> argument.</p>
@@ -383,18 +383,18 @@ using the following <code class="docutils literal notranslate"><span class="pre"
 project(TestProject)
 
 find_package(COLMAP REQUIRED)
-# or: find_package(COLMAP 3.4 REQUIRED)
+# or to require a specific version: find_package(COLMAP 3.4 REQUIRED)
 
 set(CMAKE_CXX_FLAGS &quot;${CMAKE_CXX_FLAGS} -std=c++11&quot;)
 
 include_directories(${COLMAP_INCLUDE_DIRS})
 link_directories(${COLMAP_LINK_DIRS})
 
-add_executable(test test.cc)
-target_link_libraries(test ${COLMAP_LIBRARIES})
+add_executable(hello_world hello_world.cc)
+target_link_libraries(hello_world ${COLMAP_LIBRARIES})
 </pre></div>
 </div>
-<p>with the source code <code class="docutils literal notranslate"><span class="pre">test.cc</span></code>:</p>
+<p>with the source code <code class="docutils literal notranslate"><span class="pre">hello_world.cc</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;cstdlib&gt;</span>
 <span class="c1">#include &lt;iostream&gt;</span>
 
