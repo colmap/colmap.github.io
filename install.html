@@ -235,7 +235,7 @@ COLMAP and its dependencies locally. This script is useful under Windows and on
 a (cluster) system if you do not have root access under Linux or Mac.</p>
 <div class="section" id="linux">
 <h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
-<p><em>Recommended dependencies:</em> CUDA.</p>
+<p><em>Recommended dependencies:</em> CUDA (at least version 7.X)</p>
 <p>Dependencies from the default Ubuntu repositories:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> \
     <span class="n">cmake</span> \
@@ -253,7 +253,8 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
     <span class="n">libgflags</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libglew</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">qtbase5</span><span class="o">-</span><span class="n">dev</span> \
-    <span class="n">libqt5opengl5</span><span class="o">-</span><span class="n">dev</span>
+    <span class="n">libqt5opengl5</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libcgal</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
 <p>Install <a class="reference external" href="http://ceres-solver.org/">Ceres Solver</a>:</p>
@@ -291,7 +292,7 @@ employed GCC version due to compatiblity issues with CUDA, which can be done as:
 </div>
 <div class="section" id="id2">
 <h3>Mac<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p><em>Recommended dependencies:</em> CUDA.</p>
+<p><em>Recommended dependencies:</em> CUDA (at least version 7.X)</p>
 <p>Dependencies from <a class="reference external" href="http://brew.sh/">Homebrew</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">tap</span> <span class="n">homebrew</span><span class="o">/</span><span class="n">science</span>
 <span class="n">brew</span> <span class="n">install</span> \
@@ -304,7 +305,8 @@ employed GCC version due to compatiblity issues with CUDA, which can be done as:
     <span class="n">suite</span><span class="o">-</span><span class="n">sparse</span> \
     <span class="n">ceres</span><span class="o">-</span><span class="n">solver</span> \
     <span class="n">qt</span> \
-    <span class="n">glew</span>
+    <span class="n">glew</span> \
+    <span class="n">cgal</span>
 </pre></div>
 </div>
 <p>Configure and compile COLMAP:</p>
