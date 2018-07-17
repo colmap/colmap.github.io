@@ -538,7 +538,9 @@ consider splitting your sparse reconstruction into more manageable clusters of
 images using e.g. CMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id2">[furukawa10]</a>. In addition, CMVS allows to prune
 redundant images observing the same scene elements. Note that, for this use
 case, COLMAP’s dense reconstruction pipeline also supports the PMVS/CMVS folder
-structure when executed from the command-line. Please, refer to the workspace
+structure when executed from the command-line by setting the output type for the 
+  <code class="docutils literal notranslate"><span class="pre">image_undistorter</span></code> to 
+  <code class="docutils literal notranslate"><span class="pre">PMVS</span></code>. Please, refer to the workspace
 folder for example shell scripts. Since CMVS produces highly overlapping
 clusters, it is recommended to increase the default value of 100 images per
 cluster to as high as possible according to your available system resources and
