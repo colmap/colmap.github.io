@@ -238,6 +238,7 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
 <p><em>Recommended dependencies:</em> CUDA (at least version 7.X)</p>
 <p>Dependencies from the default Ubuntu repositories:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> \
+    <span class="n">git</span> \
     <span class="n">cmake</span> \
     <span class="n">build</span><span class="o">-</span><span class="n">essential</span> \
     <span class="n">libboost</span><span class="o">-</span><span class="n">program</span><span class="o">-</span><span class="n">options</span><span class="o">-</span><span class="n">dev</span> \
@@ -255,6 +256,11 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
     <span class="n">qtbase5</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libqt5opengl5</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libcgal</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>Under Ubuntu 16.04 the CMake configuration scripts of CGAL are broken and you
+must also install the CGAL Qt5 package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libcgal</span><span class="o">-</span><span class="n">qt5</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
 <p>Install <a class="reference external" href="http://ceres-solver.org/">Ceres Solver</a>:</p>
@@ -280,10 +286,11 @@ sudo make install
 <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
-<p>Under newer Ubuntu versions it might be necessary to explicitly select the
-employed GCC version due to compatiblity issues with CUDA, which can be done as:</p>
-<blockquote>
-<div>CC=/usr/bin/gcc-6 CXX=/usr/bin/g++-6 cmake ..</div></blockquote>
+<p>Under newer Ubuntu versions it might be necessary to explicitly select the used
+GCC version due to compatiblity issues with CUDA, which can be done as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CC</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="mi">6</span> <span class="n">CXX</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++-</span><span class="mi">6</span> <span class="n">cmake</span> <span class="o">..</span>
+</pre></div>
+</div>
 <p>Run COLMAP:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="o">-</span><span class="n">h</span>
 <span class="n">colmap</span> <span class="n">gui</span>
@@ -296,6 +303,7 @@ employed GCC version due to compatiblity issues with CUDA, which can be done as:
 <p>Dependencies from <a class="reference external" href="http://brew.sh/">Homebrew</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">tap</span> <span class="n">homebrew</span><span class="o">/</span><span class="n">science</span>
 <span class="n">brew</span> <span class="n">install</span> \
+    <span class="n">git</span> \
     <span class="n">cmake</span> \
     <span class="n">boost</span> \
     <span class="n">eigen</span> \
