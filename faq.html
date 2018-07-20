@@ -256,17 +256,26 @@ respect to the scene, you can try to reduce the minimum triangulation angle.</p>
 <div class="section" id="reconstruct-sparse-dense-model-from-known-camera-poses">
 <h2>Reconstruct sparse/dense model from known camera poses<a class="headerlink" href="#reconstruct-sparse-dense-model-from-known-camera-poses" title="Permalink to this headline">¶</a></h2>
 <p>If the camera poses are known and you want to reconstruct a sparse or dense
-model of the scene, you must first manually construct a sparse model by
-creating a <code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">images.txt</span></code> file. The <code class="docutils literal notranslate"><span class="pre">points3D.txt</span></code> file
-can be empty and you can refer to <a class="reference internal" href="format.html#output-format"><span class="std std-ref">this article</span></a> for more
-information about the structure of a sparse model.</p>
-<p>To reconstruct a sparse model, you would have to recompute features from the
+model of the scene, you must first manually construct a sparse model by creating
+a <code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">images.txt</span></code> file. The <code class="docutils literal notranslate"><span class="pre">points3D.txt</span></code> file should be
+empty while every other line in the <code class="docutils literal notranslate"><span class="pre">images.txt</span></code> should also be empty, since
+the sparse features are computed, as described below. You can refer to
+<a class="reference internal" href="format.html#output-format"><span class="std std-ref">this article</span></a> for more information about the structure of
+a sparse model.</p>
+<p>To reconstruct a sparse model, you first have to recompute features from the
 images of the known camera poses as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap feature_extractor \
     --database_path $PROJECT_PATH/database.db \
     --image_path $PROJECT_PATH/images
-
-colmap exhaustive_matcher \ # or alternatively any other matcher
+</pre></div>
+</div>
+<p>If your known camera intrinsics have large distortion coefficients, you should
+now manually copy the parameters from your <code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code> to the database, such
+that the matcher can leverage the intrinsics. Modifying the database is possible
+in many ways, but an easy option is to use the provided
+<code class="docutils literal notranslate"><span class="pre">scripts/python/database.py</span></code> script. Otherwise, you can skip this step and
+simply continue as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap exhaustive_matcher \ # or alternatively any other matcher
     --database_path $PROJECT_PATH/database.db
 
 colmap point_triangulator \
