@@ -470,12 +470,17 @@ or you use a GPU with more memory.</p>
 <div class="section" id="trading-off-completeness-and-accuracy-in-dense-reconstruction">
 <h2>Trading off completeness and accuracy in dense reconstruction<a class="headerlink" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>If the dense point cloud contains too many outliers and too much noise, try to
-increase the value of option <code class="docutils literal notranslate"><span class="pre">--DenseFusion.min_num_pixels</span></code>.</p>
+increase the value of option <code class="docutils literal notranslate"><span class="pre">--StereoFusion.min_num_pixels</span></code>.</p>
 <p>If the reconstructed dense surface mesh model using Poisson reconstruction
 contains no surface or there are too many outlier surfaces, you should reduce
-the value of option <code class="docutils literal notranslate"><span class="pre">--DenseMeshing.trim</span></code> to decrease the surface are and vice
-versa to increase it. Also consider to try the reduce the outliers or increase
-the completeness in the fusion stage, as described above.</p>
+the value of option <code class="docutils literal notranslate"><span class="pre">--PoissonMeshing.trim</span></code> to decrease the surface are and
+vice versa to increase it. Also consider to try the reduce the outliers or
+increase the completeness in the fusion stage, as described above.</p>
+<p>If the reconstructed dense surface mesh model using Delaunay reconstruction
+contains too noisy or incomplete surfaces, you should increase the
+<code class="docutils literal notranslate"><span class="pre">--DenaunayMeshing.quality_regularization</span></code> parameter to obtain a smoother
+surface. If the resolution of the mesh is too coarse, you should reduce the
+<code class="docutils literal notranslate"><span class="pre">--DelaunayMeshing.max_proj_dist</span></code> option to a lower value.</p>
 </div>
 <div class="section" id="improving-dense-reconstruction-results-for-weakly-textured-surfaces">
 <h2>Improving dense reconstruction results for weakly textured surfaces<a class="headerlink" href="#improving-dense-reconstruction-results-for-weakly-textured-surfaces" title="Permalink to this headline">¶</a></h2>
@@ -508,12 +513,12 @@ smooth surface.</p>
 <li>Put more GPUs in your system as the dense reconstruction can make use of
 multiple GPUs during the stereo reconstruction step. Put more RAM into your
 system and increase the <code class="docutils literal notranslate"><span class="pre">--DenseStereo.cache_size</span></code>,
-<code class="docutils literal notranslate"><span class="pre">--DenseFusion.cache_size</span></code> to the largest possible value in order to
+<code class="docutils literal notranslate"><span class="pre">--StereoFusion.cache_size</span></code> to the largest possible value in order to
 speed up the dense fusion step.</li>
 <li>Do not perform geometric dense stereo reconstruction
 <code class="docutils literal notranslate"><span class="pre">--DenseStereo.geom_consistency</span> <span class="pre">false</span></code>. Make sure to also enable
 <code class="docutils literal notranslate"><span class="pre">--DenseStereo.filter</span> <span class="pre">true</span></code> in this case.</li>
-<li>Reduce the <code class="docutils literal notranslate"><span class="pre">--DenseStereo.max_image_size</span></code>, <code class="docutils literal notranslate"><span class="pre">--DenseFusion.max_image_size</span></code>
+<li>Reduce the <code class="docutils literal notranslate"><span class="pre">--DenseStereo.max_image_size</span></code>, <code class="docutils literal notranslate"><span class="pre">--StereoFusion.max_image_size</span></code>
 values to perform dense reconstruction on a maximum image resolution.</li>
 <li>Reduce the number of source images per reference image to be considered, as
 described <a class="reference internal" href="#faq-dense-memory"><span class="std std-ref">here</span></a>.</li>
@@ -538,9 +543,9 @@ reduce the number of source images in the <code class="docutils literal notransl
 e.g. <code class="docutils literal notranslate"><span class="pre">__auto__,</span> <span class="pre">30</span></code> to <code class="docutils literal notranslate"><span class="pre">__auto__,</span> <span class="pre">10</span></code>. Note that enabling the
 <code class="docutils literal notranslate"><span class="pre">geom_consistency</span></code> option increases the required GPU memory.</p>
 <p>If you run out of CPU memory during stereo or fusion, you can reduce the
-<code class="docutils literal notranslate"><span class="pre">--DenseStereo.cache_size</span></code> or <code class="docutils literal notranslate"><span class="pre">--DenseFusion.cache_size</span></code> specified in
+<code class="docutils literal notranslate"><span class="pre">--DenseStereo.cache_size</span></code> or <code class="docutils literal notranslate"><span class="pre">--StereoFusion.cache_size</span></code> specified in
 gigabytes or you can reduce <code class="docutils literal notranslate"><span class="pre">--DenseStereo.max_image_size</span></code> or
-<code class="docutils literal notranslate"><span class="pre">--DenseFusion.max_image_size</span></code>. Note that a too low value might lead to very
+<code class="docutils literal notranslate"><span class="pre">--StereoFusion.max_image_size</span></code>. Note that a too low value might lead to very
 slow processing and heavy load on the hard disk.</p>
 <p>For large-scale reconstructions of several thousands of images, you should
 consider splitting your sparse reconstruction into more manageable clusters of
