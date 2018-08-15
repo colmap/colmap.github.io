@@ -465,7 +465,12 @@ performance as compared to running multiple threads on the same GPU.</p>
 might lead to inferior feature matching results, since the lower-scale input
 features will be clamped in order to fit them into GPU memory. Alternatively,
 you could change to CPU-based feature matching, but this can become very slow,
-or you use a GPU with more memory.</p>
+or better you buy a GPU with more memory.</p>
+<p>The maximum required GPU memory can be approximately estimated using the
+following formula: <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">*</span> <span class="pre">num_matches</span> <span class="pre">*</span> <span class="pre">num_matches</span> <span class="pre">+</span> <span class="pre">4</span> <span class="pre">*</span> <span class="pre">num_matches</span> <span class="pre">*</span> <span class="pre">256</span></code>.
+For example, if you set <code class="docutils literal notranslate"><span class="pre">--SiftMatching.max_num_matches</span> <span class="pre">10000</span></code>, the maximum
+required GPU memory will be around 400MB, which are only allocated if one of
+your images actually has that many features.</p>
 </div>
 <div class="section" id="trading-off-completeness-and-accuracy-in-dense-reconstruction">
 <h2>Trading off completeness and accuracy in dense reconstruction<a class="headerlink" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
