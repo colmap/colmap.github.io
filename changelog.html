@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Changelog &mdash; COLMAP 3.4 documentation</title>
+  <title>Changelog &mdash; COLMAP 3.5 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="COLMAP 3.4 documentation" href="index.html"/>
+    <link rel="top" title="COLMAP 3.5 documentation" href="index.html"/>
         <link rel="next" title="Contribution" href="contribution.html"/>
         <link rel="prev" title="Frequently Asked Questions" href="faq.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                3.4
+                3.5
               </div>
             
           
@@ -101,6 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#colmap-3-5-08-22-2018">COLMAP 3.5 (08/22/2018)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#colmap-3-4-01-29-2018">COLMAP 3.4 (01/29/2018)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#colmap-3-3-11-21-2017">COLMAP 3.3 (11/21/2017)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#colmap-3-2-9-2-2017">COLMAP 3.2 (9/2/2017)</a></li>
@@ -180,6 +181,25 @@
             
   <div class="section" id="changelog">
 <span id="id1"></span><h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="colmap-3-5-08-22-2018">
+<h2>COLMAP 3.5 (08/22/2018)<a class="headerlink" href="#colmap-3-5-08-22-2018" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>COLMAP is now released under the BSD license instead of the GPL</li>
+<li>COLMAP is now installed as a library, whose headers can be included and
+libraries linked against from other C/C++ code</li>
+<li>Add hierarchical mapper for parallelized reconstruction or large scenes</li>
+<li>Add sparse and dense Delaunay meshing algorithms, which reconstruct a
+watertight surface using a graph cut on the Delaunay triangulation of the
+reconstructed sparse or dense point cloud</li>
+<li>Improved robustness when merging different models</li>
+<li>Add COLMAP as a software entry under Linux desktop systems</li>
+<li>Add support to compile COLMAP on ARM platforms</li>
+<li>Add example Python script to read/write COLMAP database</li>
+<li>Add region of interest (ROI) cropping in image undistortion</li>
+<li>Several import bug fixes for spatial verification in image retrieval</li>
+<li>Add more extensive continuous integration across more compilation scenarios</li>
+</ul>
+</div>
 <div class="section" id="colmap-3-4-01-29-2018">
 <h2>COLMAP 3.4 (01/29/2018)<a class="headerlink" href="#colmap-3-4-01-29-2018" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -375,7 +395,7 @@ Project Tango (Thomas Schoeps).</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.4',
+            VERSION:'3.5',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

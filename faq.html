@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Frequently Asked Questions &mdash; COLMAP 3.4 documentation</title>
+  <title>Frequently Asked Questions &mdash; COLMAP 3.5 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="COLMAP 3.4 documentation" href="index.html"/>
+    <link rel="top" title="COLMAP 3.5 documentation" href="index.html"/>
         <link rel="next" title="Changelog" href="changelog.html"/>
         <link rel="prev" title="Command-line Interface" href="cli.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                3.4
+                3.5
               </div>
             
           
@@ -100,6 +100,7 @@
 <li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Frequently Asked Questions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adjusting-the-options-for-different-reconstruction-scenarios-and-output-quality">Adjusting the options for different reconstruction scenarios and output quality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#extending-colmap">Extending COLMAP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#share-intrinsics">Share intrinsics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fix-intrinsics">Fix intrinsics</a></li>
@@ -192,6 +193,17 @@
             
   <div class="section" id="frequently-asked-questions">
 <h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="adjusting-the-options-for-different-reconstruction-scenarios-and-output-quality">
+<h2>Adjusting the options for different reconstruction scenarios and output quality<a class="headerlink" href="#adjusting-the-options-for-different-reconstruction-scenarios-and-output-quality" title="Permalink to this headline">¶</a></h2>
+<p>COLMAP provides many options that can be tuned for different reconstruction
+scenarios and to trade off accuracy and completeness versus efficiency. The
+default options are set to for medium to high quality reconstruction of
+unstructured input data. There are several presets for different scenarios and
+quality levels, which can be set in the GUI as <code class="docutils literal notranslate"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Set</span> <span class="pre">options</span> <span class="pre">for</span> <span class="pre">...</span></code>.
+To use these presets from the command-line, you can save the current set of
+options as <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">project</span></code> after choosing the presets. The resulting
+project file can be opened with a text editor to view the different options.</p>
+</div>
 <div class="section" id="extending-colmap">
 <h2>Extending COLMAP<a class="headerlink" href="#extending-colmap" title="Permalink to this headline">¶</a></h2>
 <p>If you need to simply analyze the produced sparse or dense reconstructions from
@@ -500,12 +512,14 @@ filtering threshold for the photometric consistency cost
 <p>COLMAP supports two types of surface reconstruction algorithms. Poisson surface
 reconstruction <a class="reference internal" href="bibliography.html#kazhdan2013" id="id1">[kazhdan2013]</a> and graph-cut based surface extraction from a
 Delaunay triangulation. Poisson surface reconstruction typically requires an
-outlier-free input point cloud and it often produces bad surfaces in the
+almost outlier-free input point cloud and it often produces bad surfaces in the
 presence of outliers or large holes in the input data. The Delaunay
-triangulation based meshing algorithm is robust to outliers and in general more
-scalable to large datasets than the Poisson algorithm, but it usually produces
-less smooth surfaces. Furthermore, the Delaunay based meshing can be applied to
-sparse and dense reconstruction results.</p>
+triangulation based meshing algorithm is more robust to outliers and in general
+more scalable to large datasets than the Poisson algorithm, but it usually
+produces less smooth surfaces. Furthermore, the Delaunay based meshing can be
+applied to sparse and dense reconstruction results. To increase the smoothness
+of the surface as a post-processing step, you could use Laplacian smoothing, as
+e.g. implemented in Meshlab.</p>
 <p>Note that the two algorithms can also be combined by first running the Delaunay
 meshing to robustly filter outliers from the sparse or dense point cloud and
 then, in the second step, performing Poisson surface reconstruction to obtain a
@@ -688,7 +702,7 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.4',
+            VERSION:'3.5',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
