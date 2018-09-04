@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Changelog &mdash; COLMAP 3.5 documentation</title>
+  <title>Changelog &mdash; COLMAP 3.6 documentation</title>
   
 
   
@@ -24,27 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="COLMAP 3.5 documentation" href="index.html"/>
-        <link rel="next" title="Contribution" href="contribution.html"/>
-        <link rel="prev" title="Frequently Asked Questions" href="faq.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contribution" href="contribution.html" />
+    <link rel="prev" title="Frequently Asked Questions" href="faq.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -66,7 +58,7 @@
             
             
               <div class="version">
-                3.5
+                3.6
               </div>
             
           
@@ -127,7 +119,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">COLMAP</a>
@@ -135,9 +127,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -192,12 +185,14 @@ libraries linked against from other C/C++ code</li>
 watertight surface using a graph cut on the Delaunay triangulation of the
 reconstructed sparse or dense point cloud</li>
 <li>Improved robustness when merging different models</li>
+<li>Improved pre-trained vocabulary trees available for download</li>
 <li>Add COLMAP as a software entry under Linux desktop systems</li>
 <li>Add support to compile COLMAP on ARM platforms</li>
 <li>Add example Python script to read/write COLMAP database</li>
 <li>Add region of interest (ROI) cropping in image undistortion</li>
 <li>Several import bug fixes for spatial verification in image retrieval</li>
 <li>Add more extensive continuous integration across more compilation scenarios</li>
+<li>Many more bug fixes and improvements to code and documentation</li>
 </ul>
 </div>
 <div class="section" id="colmap-3-4-01-29-2018">
@@ -353,9 +348,7 @@ Project Tango (Thomas Schoeps).</li>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -377,7 +370,7 @@ Project Tango (Thomas Schoeps).</li>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -395,7 +388,8 @@ Project Tango (Thomas Schoeps).</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.5',
+            VERSION:'3.6',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -409,19 +403,13 @@ Project Tango (Thomas Schoeps).</li>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
