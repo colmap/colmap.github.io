@@ -24,19 +24,27 @@
 
   
 
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Frequently Asked Questions" href="faq.html" />
-    <link rel="prev" title="Graphical User Interface" href="gui.html" /> 
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="COLMAP 3.6 documentation" href="index.html"/>
+        <link rel="next" title="Frequently Asked Questions" href="faq.html"/>
+        <link rel="prev" title="Graphical User Interface" href="gui.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -113,7 +121,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">COLMAP</a>
@@ -121,10 +129,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -283,6 +290,7 @@ manually select to use CPU-based feature extraction and matching by setting the
       exhaustive_matcher
       feature_extractor
       feature_importer
+      image_deleter
       image_rectifier
       image_registrator
       image_undistorter
@@ -371,9 +379,11 @@ adjustment after this step.</li>
 external dense reconstruction software, such as CMVS/PMVS.</li>
 <li><code class="docutils literal notranslate"><span class="pre">image_rectifier</span></code>: Stereo rectify cameras and undistort images for stereo
 disparity estimation.</li>
-<li><code class="docutils literal notranslate"><span class="pre">patch_match_stereo</span></code>: Dense 3D reconstruction / mapping using MVS after running
-the <code class="docutils literal notranslate"><span class="pre">image_undistorter</span></code> to initialize the workspace.</li>
-<li><code class="docutils literal notranslate"><span class="pre">stereo_fusion</span></code>: Fusion of MVS depth and normal maps to a colored point cloud.</li>
+<li><code class="docutils literal notranslate"><span class="pre">image_deleter</span></code>: Delete individual images from a sparse reconstruction.</li>
+<li><code class="docutils literal notranslate"><span class="pre">patch_match_stereo</span></code>: Dense 3D reconstruction / mapping using MVS after
+running the <code class="docutils literal notranslate"><span class="pre">image_undistorter</span></code> to initialize the workspace.</li>
+<li><code class="docutils literal notranslate"><span class="pre">stereo_fusion</span></code>: Fusion of <code class="docutils literal notranslate"><span class="pre">patch_match_stereo</span></code> results into to a colored
+point cloud.</li>
 <li><code class="docutils literal notranslate"><span class="pre">poisson_mesher</span></code>: Meshing of the fused point cloud using Poisson
 surface reconstruction.</li>
 <li><code class="docutils literal notranslate"><span class="pre">delaunay_mesher</span></code>: Meshing of the reconstructed sparse or dense point cloud
@@ -384,6 +394,8 @@ database after running <code class="docutils literal notranslate"><span class="p
 triangulation is performed.</li>
 <li><code class="docutils literal notranslate"><span class="pre">point_triangulator</span></code>: Triangulate all observations of registered images in
 an existing model using the feature matches in a database.</li>
+<li><code class="docutils literal notranslate"><span class="pre">point_filtering</span></code>: Filter sparse points in model by enforcing criteria,
+such as minimum track length, maximum reprojection error, etc.</li>
 <li><code class="docutils literal notranslate"><span class="pre">bundle_adjuster</span></code>: Run global bundle adjustment on a reconstructed scene,
 e.g., when a refinement of the intrinsics is needed or
 after running the <code class="docutils literal notranslate"><span class="pre">image_registrator</span></code>.</li>
@@ -430,7 +442,9 @@ you can use an external viewer, such as Meshlab.</li>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -452,7 +466,7 @@ you can use an external viewer, such as Meshlab.</li>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -471,7 +485,6 @@ you can use an external viewer, such as Meshlab.</li>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'3.6',
-            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -485,13 +498,19 @@ you can use an external viewer, such as Meshlab.</li>
 
   
 
-  <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>
