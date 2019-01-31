@@ -24,27 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="COLMAP 3.6 documentation" href="index.html"/>
-        <link rel="next" title="Changelog" href="changelog.html"/>
-        <link rel="prev" title="Command-line Interface" href="cli.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Command-line Interface" href="cli.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -140,7 +132,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">COLMAP</a>
@@ -148,9 +140,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -270,12 +263,28 @@ respect to the scene, you can try to reduce the minimum triangulation angle.</p>
 <h2>Reconstruct sparse/dense model from known camera poses<a class="headerlink" href="#reconstruct-sparse-dense-model-from-known-camera-poses" title="Permalink to this headline">¶</a></h2>
 <p>If the camera poses are known and you want to reconstruct a sparse or dense
 model of the scene, you must first manually construct a sparse model by creating
-a <code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">images.txt</span></code> file. The <code class="docutils literal notranslate"><span class="pre">points3D.txt</span></code> file should be
-empty while every other line in the <code class="docutils literal notranslate"><span class="pre">images.txt</span></code> should also be empty, since
-the sparse features are computed, as described below. You can refer to
-<a class="reference internal" href="format.html#output-format"><span class="std std-ref">this article</span></a> for more information about the structure of
+a <code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">points3D.txt</span></code>, and <code class="docutils literal notranslate"><span class="pre">images.txt</span></code> under a new folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+── path/to/manually/created/sparse/model
+│   +── cameras.txt
+│   +── images.txt
+│   +── points3D.txt
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">points3D.txt</span></code> file should be empty while every other line in the <code class="docutils literal notranslate"><span class="pre">images.txt</span></code>
+should also be empty, since the sparse features are computed, as described below. You can
+refer to <a class="reference internal" href="format.html#output-format"><span class="std std-ref">this article</span></a> for more information about the structure of
 a sparse model.</p>
-<p>To reconstruct a sparse model, you first have to recompute features from the
+<p>Example of images.txt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mf">0.695104</span> <span class="mf">0.718385</span> <span class="o">-</span><span class="mf">0.024566</span> <span class="mf">0.012285</span> <span class="o">-</span><span class="mf">0.046895</span> <span class="mf">0.005253</span> <span class="o">-</span><span class="mf">0.199664</span> <span class="mi">1</span> <span class="n">image0001</span><span class="o">.</span><span class="n">png</span>
+<span class="c1"># Make sure every other line is left empty</span>
+<span class="mi">2</span> <span class="mf">0.696445</span> <span class="mf">0.717090</span> <span class="o">-</span><span class="mf">0.023185</span> <span class="mf">0.014441</span> <span class="o">-</span><span class="mf">0.041213</span> <span class="mf">0.001928</span> <span class="o">-</span><span class="mf">0.134851</span> <span class="mi">2</span> <span class="n">image0002</span><span class="o">.</span><span class="n">png</span>
+
+<span class="mi">3</span> <span class="mf">0.697457</span> <span class="mf">0.715925</span> <span class="o">-</span><span class="mf">0.025383</span> <span class="mf">0.018967</span> <span class="o">-</span><span class="mf">0.054056</span> <span class="mf">0.008579</span> <span class="o">-</span><span class="mf">0.378221</span> <span class="mi">1</span> <span class="n">image0003</span><span class="o">.</span><span class="n">png</span>
+
+<span class="mi">4</span> <span class="mf">0.698777</span> <span class="mf">0.714625</span> <span class="o">-</span><span class="mf">0.023996</span> <span class="mf">0.021129</span> <span class="o">-</span><span class="mf">0.048184</span> <span class="mf">0.004529</span> <span class="o">-</span><span class="mf">0.313427</span> <span class="mi">2</span> <span class="n">image0004</span><span class="o">.</span><span class="n">png</span>
+</pre></div>
+</div>
+<p>To reconstruct a sparse map, you first have to recompute features from the
 images of the known camera poses as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap feature_extractor \
     --database_path $PROJECT_PATH/database.db \
@@ -671,9 +680,7 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -691,11 +698,11 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Johannes L. Schoenberger.
+        &copy; Copyright 2019, Johannes L. Schoenberger.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -714,6 +721,7 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'3.6',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -723,23 +731,16 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
