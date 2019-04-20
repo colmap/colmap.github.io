@@ -17,34 +17,36 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Output Format" href="format.html" />
     <link rel="prev" title="Database Format" href="database.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -166,25 +168,25 @@
 parameters are known a priori, it is generally best to use the simplest camera
 model that is complex enough to model the distortion effects:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">SIMPLE_PINHOLE</span></code>, <code class="docutils literal notranslate"><span class="pre">PINHOLE</span></code>: Use these camera models,
+<li><p><code class="docutils literal notranslate"><span class="pre">SIMPLE_PINHOLE</span></code>, <code class="docutils literal notranslate"><span class="pre">PINHOLE</span></code>: Use these camera models,
 if your images are undistorted a priori. Note that even in the case of
 undistorted images, COLMAP could try to improve the intrinsics with a more
-complex camera model.</li>
-<li><code class="docutils literal notranslate"><span class="pre">SIMPLE_RADIAL</span></code>, <code class="docutils literal notranslate"><span class="pre">RADIAL</span></code>: This should be the camera model of choice,
+complex camera model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIMPLE_RADIAL</span></code>, <code class="docutils literal notranslate"><span class="pre">RADIAL</span></code>: This should be the camera model of choice,
 if the intrinsics are unknown and every image has a different camera
 calibration, e.g., in the case of Internet photos. Both models are simplified
 versions of the <code class="docutils literal notranslate"><span class="pre">OPENCV</span></code> model only modeling radial distortion
-effects with one and two parameters, respectively.</li>
-<li><code class="docutils literal notranslate"><span class="pre">OPENCV</span></code>, <code class="docutils literal notranslate"><span class="pre">FULL_OPENCV</span></code>: Use these camera models, if
+effects with one and two parameters, respectively.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OPENCV</span></code>, <code class="docutils literal notranslate"><span class="pre">FULL_OPENCV</span></code>: Use these camera models, if
 you know the calibration parameters a priori. You can also try to let COLMAP
 estimate the parameters, if you share the intrinsics for multiple images. Note
 that the automatic estimation of parameters will most likely fail, if every
-image has a separate set of intrinsic parameters.</li>
-<li><code class="docutils literal notranslate"><span class="pre">SIMPLE_RADIAL_FISHEYE</span></code>, <code class="docutils literal notranslate"><span class="pre">RADIAL_FISHEYE</span></code>, <code class="docutils literal notranslate"><span class="pre">OPENCV_FISHEYE</span></code>, <code class="docutils literal notranslate"><span class="pre">FOV</span></code>,
+image has a separate set of intrinsic parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIMPLE_RADIAL_FISHEYE</span></code>, <code class="docutils literal notranslate"><span class="pre">RADIAL_FISHEYE</span></code>, <code class="docutils literal notranslate"><span class="pre">OPENCV_FISHEYE</span></code>, <code class="docutils literal notranslate"><span class="pre">FOV</span></code>,
 <code class="docutils literal notranslate"><span class="pre">THIN_PRISM_FISHEYE</span></code>: Use these camera models for fisheye lenses
 and note that all other models are not really capable of modeling the
 distortion effects of fisheye lenses. The <code class="docutils literal notranslate"><span class="pre">FOV</span></code> model is used by
-Google Project Tango (make sure to not initialize <cite>omega</cite> to zero).</li>
+Google Project Tango (make sure to not initialize <cite>omega</cite> to zero).</p></li>
 </ul>
 <p>You can inspect the estimated intrinsic parameters by double-clicking specific
 images in the model viewer or by exporting the model and opening the
@@ -216,7 +218,7 @@ of the different camera models:
         <a href="format.html" class="btn btn-neutral float-right" title="Output Format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="database.html" class="btn btn-neutral" title="Database Format" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="database.html" class="btn btn-neutral float-left" title="Database Format" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -225,7 +227,7 @@ of the different camera models:
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Johannes L. Schoenberger.
+        &copy; Copyright 2019, Johannes L. Schoenberger
 
     </p>
   </div>
@@ -242,32 +244,16 @@ of the different camera models:
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'3.6',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

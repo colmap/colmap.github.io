@@ -17,34 +17,36 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Contribution" href="contribution.html" />
     <link rel="prev" title="Frequently Asked Questions" href="faq.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -177,171 +179,171 @@
 <div class="section" id="colmap-3-5-08-22-2018">
 <h2>COLMAP 3.5 (08/22/2018)<a class="headerlink" href="#colmap-3-5-08-22-2018" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>COLMAP is now released under the BSD license instead of the GPL</li>
-<li>COLMAP is now installed as a library, whose headers can be included and
-libraries linked against from other C/C++ code</li>
-<li>Add hierarchical mapper for parallelized reconstruction or large scenes</li>
-<li>Add sparse and dense Delaunay meshing algorithms, which reconstruct a
+<li><p>COLMAP is now released under the BSD license instead of the GPL</p></li>
+<li><p>COLMAP is now installed as a library, whose headers can be included and
+libraries linked against from other C/C++ code</p></li>
+<li><p>Add hierarchical mapper for parallelized reconstruction or large scenes</p></li>
+<li><p>Add sparse and dense Delaunay meshing algorithms, which reconstruct a
 watertight surface using a graph cut on the Delaunay triangulation of the
-reconstructed sparse or dense point cloud</li>
-<li>Improved robustness when merging different models</li>
-<li>Improved pre-trained vocabulary trees available for download</li>
-<li>Add COLMAP as a software entry under Linux desktop systems</li>
-<li>Add support to compile COLMAP on ARM platforms</li>
-<li>Add example Python script to read/write COLMAP database</li>
-<li>Add region of interest (ROI) cropping in image undistortion</li>
-<li>Several import bug fixes for spatial verification in image retrieval</li>
-<li>Add more extensive continuous integration across more compilation scenarios</li>
-<li>Many more bug fixes and improvements to code and documentation</li>
+reconstructed sparse or dense point cloud</p></li>
+<li><p>Improved robustness when merging different models</p></li>
+<li><p>Improved pre-trained vocabulary trees available for download</p></li>
+<li><p>Add COLMAP as a software entry under Linux desktop systems</p></li>
+<li><p>Add support to compile COLMAP on ARM platforms</p></li>
+<li><p>Add example Python script to read/write COLMAP database</p></li>
+<li><p>Add region of interest (ROI) cropping in image undistortion</p></li>
+<li><p>Several import bug fixes for spatial verification in image retrieval</p></li>
+<li><p>Add more extensive continuous integration across more compilation scenarios</p></li>
+<li><p>Many more bug fixes and improvements to code and documentation</p></li>
 </ul>
 </div>
 <div class="section" id="colmap-3-4-01-29-2018">
 <h2>COLMAP 3.4 (01/29/2018)<a class="headerlink" href="#colmap-3-4-01-29-2018" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Unified command-line interface: The functionality of previous executables have
+<li><p>Unified command-line interface: The functionality of previous executables have
 been merged into the <code class="docutils literal notranslate"><span class="pre">src/exe/colmap.cc</span></code> executable. The GUI can now be
 started using the command <code class="docutils literal notranslate"><span class="pre">colmap</span> <span class="pre">gui</span></code> and other commands are available
 as <code class="docutils literal notranslate"><span class="pre">colmap</span> <span class="pre">[command]</span></code>. For example, the feature extractor is now available
 as <code class="docutils literal notranslate"><span class="pre">colmap</span> <span class="pre">feature_extractor</span> <span class="pre">[args]</span></code> while all command-line arguments stay
 the same as before. This should result in much faster project compile times
 and smaller disk space usage of the program. More details about the new
-interface are documented at <a class="reference external" href="https://colmap.github.io/cli.html">https://colmap.github.io/cli.html</a></li>
-<li>More complete depth and normal maps with larger patch sizes</li>
-<li>Faster dense stereo computation by skipping rows/columns in patch match,
-improved random sampling in patch match, and faster bilateral NCC</li>
-<li>Better high DPI screen support for the graphical user interface</li>
-<li>Improved model viewer under Windows, which now requires Qt 5.4</li>
-<li>Save computed two-view geometries in database</li>
-<li>Images (keypoint/matches visualization, depth and normal maps) can now be
-saved from the graphical user interface</li>
-<li>Support for PMVS format without sparse bundler file</li>
-<li>Faster covariant feature detection</li>
-<li>Many more bug fixes and improvements</li>
+interface are documented at <a class="reference external" href="https://colmap.github.io/cli.html">https://colmap.github.io/cli.html</a></p></li>
+<li><p>More complete depth and normal maps with larger patch sizes</p></li>
+<li><p>Faster dense stereo computation by skipping rows/columns in patch match,
+improved random sampling in patch match, and faster bilateral NCC</p></li>
+<li><p>Better high DPI screen support for the graphical user interface</p></li>
+<li><p>Improved model viewer under Windows, which now requires Qt 5.4</p></li>
+<li><p>Save computed two-view geometries in database</p></li>
+<li><p>Images (keypoint/matches visualization, depth and normal maps) can now be
+saved from the graphical user interface</p></li>
+<li><p>Support for PMVS format without sparse bundler file</p></li>
+<li><p>Faster covariant feature detection</p></li>
+<li><p>Many more bug fixes and improvements</p></li>
 </ul>
 </div>
 <div class="section" id="colmap-3-3-11-21-2017">
 <h2>COLMAP 3.3 (11/21/2017)<a class="headerlink" href="#colmap-3-3-11-21-2017" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Add DSP (Domain Size Pooling) SIFT implementation. DSP-SIFT outperforms
+<li><p>Add DSP (Domain Size Pooling) SIFT implementation. DSP-SIFT outperforms
 standard SIFT in most cases, as shown in “Comparative Evaluation of
-Hand-Crafted and Learned Local Features”, Schoenberger et al., CVPR 2017</li>
-<li>Improved parameters dense reconstruction of smaller models</li>
-<li>Improved compile times due to various code optimizations</li>
-<li>Add option to specify camera model in automatic reconstruction</li>
-<li>Add new model orientation alignment based on upright image assumption</li>
-<li>Improved numerical stability for generalized absolute pose solver</li>
-<li>Support for image range specification in PMVS dense reconstruction format</li>
-<li>Support for older Python versions in automatic build script</li>
-<li>Fix OpenCV Fisheye camera model to exactly match OpenCV specifications</li>
+Hand-Crafted and Learned Local Features”, Schoenberger et al., CVPR 2017</p></li>
+<li><p>Improved parameters dense reconstruction of smaller models</p></li>
+<li><p>Improved compile times due to various code optimizations</p></li>
+<li><p>Add option to specify camera model in automatic reconstruction</p></li>
+<li><p>Add new model orientation alignment based on upright image assumption</p></li>
+<li><p>Improved numerical stability for generalized absolute pose solver</p></li>
+<li><p>Support for image range specification in PMVS dense reconstruction format</p></li>
+<li><p>Support for older Python versions in automatic build script</p></li>
+<li><p>Fix OpenCV Fisheye camera model to exactly match OpenCV specifications</p></li>
 </ul>
 </div>
 <div class="section" id="colmap-3-2-9-2-2017">
 <h2>COLMAP 3.2 (9/2/2017)<a class="headerlink" href="#colmap-3-2-9-2-2017" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Fully automatic cross-platform build script (Windows, Mac, Linux)</li>
-<li>Add multi-GPU feature extraction if multiple CUDA devices are available</li>
-<li>Configurable dimension and data type for vocabulary tree implementation</li>
-<li>Add new sequential matching mode for image sequences with high frame-rate</li>
-<li>Add generalized relative pose solver for multi-camera systems</li>
-<li>Add sparse least absolute deviation solver</li>
-<li>Add CPU/GPU options to automatic reconstruction tool</li>
-<li>Add continuous integration system under Windows, Mac, Linux through Github</li>
-<li>Many more bug fixes and improvements</li>
+<li><p>Fully automatic cross-platform build script (Windows, Mac, Linux)</p></li>
+<li><p>Add multi-GPU feature extraction if multiple CUDA devices are available</p></li>
+<li><p>Configurable dimension and data type for vocabulary tree implementation</p></li>
+<li><p>Add new sequential matching mode for image sequences with high frame-rate</p></li>
+<li><p>Add generalized relative pose solver for multi-camera systems</p></li>
+<li><p>Add sparse least absolute deviation solver</p></li>
+<li><p>Add CPU/GPU options to automatic reconstruction tool</p></li>
+<li><p>Add continuous integration system under Windows, Mac, Linux through Github</p></li>
+<li><p>Many more bug fixes and improvements</p></li>
 </ul>
 </div>
 <div class="section" id="colmap-3-1-6-15-2017">
 <h2>COLMAP 3.1 (6/15/2017)<a class="headerlink" href="#colmap-3-1-6-15-2017" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Add fast spatial verification to image retrieval module</li>
-<li>Add binary file format for sparse models by default. Old text format still
-fully compatible and possible conversion in GUI and CLI</li>
-<li>Add cross-platform little endian binary file reading and writing</li>
-<li>Faster and less memory hungry stereo fusion by computing consistency on demand
-and possible limitation of image size in fusion</li>
-<li>Simpler geometric stereo processing interface.
-Now geometric stereo output can be computed using a single pass</li>
-<li>Faster and multi-architecture CUDA compilation</li>
-<li>Add medium quality option in automatic reconstructor</li>
-<li>Many more bug fixes and improvements</li>
+<li><p>Add fast spatial verification to image retrieval module</p></li>
+<li><p>Add binary file format for sparse models by default. Old text format still
+fully compatible and possible conversion in GUI and CLI</p></li>
+<li><p>Add cross-platform little endian binary file reading and writing</p></li>
+<li><p>Faster and less memory hungry stereo fusion by computing consistency on demand
+and possible limitation of image size in fusion</p></li>
+<li><p>Simpler geometric stereo processing interface.
+Now geometric stereo output can be computed using a single pass</p></li>
+<li><p>Faster and multi-architecture CUDA compilation</p></li>
+<li><p>Add medium quality option in automatic reconstructor</p></li>
+<li><p>Many more bug fixes and improvements</p></li>
 </ul>
 </div>
 <div class="section" id="colmap-3-0-5-22-2017">
 <h2>COLMAP 3.0 (5/22/2017)<a class="headerlink" href="#colmap-3-0-5-22-2017" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Add automatic end-to-end reconstruction tool that automatically performs
-sparse and dense reconstruction on a given set of images</li>
-<li>Add multi-GPU dense stereo if multiple CUDA devices are available</li>
-<li>Add multi-GPU feature matching if multiple CUDA devices are available</li>
-<li>Add Manhattan-world / gravity alignment using line detection</li>
-<li>Add CUDA-based feature extraction useful for usage on clusters</li>
-<li>Add CPU-based feature matching for machines without GPU</li>
-<li>Add new THIN_PRISM_FISHEYE camera model with tangential/radial correction</li>
-<li>Add binary to triangulate existing/empty sparse reconstruction</li>
-<li>Add binary to print summary statistics about sparse reconstruction</li>
-<li>Add transitive feature matching to transitively complete match graph</li>
-<li>Improved scalability of dense reconstruction by using caching</li>
-<li>More stable GPU-based feature matching with informative warnings</li>
-<li>Faster vocabulary tree matching using dynamic scheduling in FLANN</li>
-<li>Faster spatial feature matching using linear index instead of kd-tree</li>
-<li>More stable camera undistortion using numerical Newton iteration</li>
-<li>Improved option parsing with some backwards incompatible option renaming</li>
-<li>Faster compile times by optimizing includes and CUDA flags</li>
-<li>More stable view selection for small baseline scenario in dense reconstruction</li>
-<li>Many more bug fixes and improvements</li>
+<li><p>Add automatic end-to-end reconstruction tool that automatically performs
+sparse and dense reconstruction on a given set of images</p></li>
+<li><p>Add multi-GPU dense stereo if multiple CUDA devices are available</p></li>
+<li><p>Add multi-GPU feature matching if multiple CUDA devices are available</p></li>
+<li><p>Add Manhattan-world / gravity alignment using line detection</p></li>
+<li><p>Add CUDA-based feature extraction useful for usage on clusters</p></li>
+<li><p>Add CPU-based feature matching for machines without GPU</p></li>
+<li><p>Add new THIN_PRISM_FISHEYE camera model with tangential/radial correction</p></li>
+<li><p>Add binary to triangulate existing/empty sparse reconstruction</p></li>
+<li><p>Add binary to print summary statistics about sparse reconstruction</p></li>
+<li><p>Add transitive feature matching to transitively complete match graph</p></li>
+<li><p>Improved scalability of dense reconstruction by using caching</p></li>
+<li><p>More stable GPU-based feature matching with informative warnings</p></li>
+<li><p>Faster vocabulary tree matching using dynamic scheduling in FLANN</p></li>
+<li><p>Faster spatial feature matching using linear index instead of kd-tree</p></li>
+<li><p>More stable camera undistortion using numerical Newton iteration</p></li>
+<li><p>Improved option parsing with some backwards incompatible option renaming</p></li>
+<li><p>Faster compile times by optimizing includes and CUDA flags</p></li>
+<li><p>More stable view selection for small baseline scenario in dense reconstruction</p></li>
+<li><p>Many more bug fixes and improvements</p></li>
 </ul>
 </div>
 <div class="section" id="colmap-2-1-12-7-2016">
 <h2>COLMAP 2.1 (12/7/2016)<a class="headerlink" href="#colmap-2-1-12-7-2016" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Support to only index and match specific images in vocabulary tree matching</li>
-<li>Support to perform image retrieval using vocabulary tree</li>
-<li>Several bug fixes and improvements for multi-view stereo module</li>
-<li>Improved Structure-from-Motion initialization strategy</li>
-<li>Support to only reconstruct the scene using specific images in the database</li>
-<li>Add support to merge two models using overlapping registered images</li>
-<li>Add support to geo-register/align models using known camera locations</li>
-<li>Support to only extract specific images in feature extraction module</li>
-<li>Support for snapshot model export during reconstruction</li>
-<li>Skip already undistorted images if they exist in output directory</li>
-<li>Support to limit the number of features in image retrieval for improved speed</li>
-<li>Miscellaneous bug fixes and improvements</li>
+<li><p>Support to only index and match specific images in vocabulary tree matching</p></li>
+<li><p>Support to perform image retrieval using vocabulary tree</p></li>
+<li><p>Several bug fixes and improvements for multi-view stereo module</p></li>
+<li><p>Improved Structure-from-Motion initialization strategy</p></li>
+<li><p>Support to only reconstruct the scene using specific images in the database</p></li>
+<li><p>Add support to merge two models using overlapping registered images</p></li>
+<li><p>Add support to geo-register/align models using known camera locations</p></li>
+<li><p>Support to only extract specific images in feature extraction module</p></li>
+<li><p>Support for snapshot model export during reconstruction</p></li>
+<li><p>Skip already undistorted images if they exist in output directory</p></li>
+<li><p>Support to limit the number of features in image retrieval for improved speed</p></li>
+<li><p>Miscellaneous bug fixes and improvements</p></li>
 </ul>
 </div>
 <div class="section" id="colmap-2-0-9-8-2016">
 <h2>COLMAP 2.0 (9/8/2016)<a class="headerlink" href="#colmap-2-0-9-8-2016" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Implementation of dense reconstruction pipeline</li>
-<li>Improved feature matching performance</li>
-<li>New bundle adjuster for rigidly mounted multi-camera systems</li>
-<li>New generalized absolute pose solver for multi-camera systems</li>
-<li>New executable to extract colors from all images</li>
-<li>Boost can now be linked in shared and static mode</li>
-<li>Various bug fixes and performance improvements</li>
+<li><p>Implementation of dense reconstruction pipeline</p></li>
+<li><p>Improved feature matching performance</p></li>
+<li><p>New bundle adjuster for rigidly mounted multi-camera systems</p></li>
+<li><p>New generalized absolute pose solver for multi-camera systems</p></li>
+<li><p>New executable to extract colors from all images</p></li>
+<li><p>Boost can now be linked in shared and static mode</p></li>
+<li><p>Various bug fixes and performance improvements</p></li>
 </ul>
 </div>
 <div class="section" id="colmap-1-1-5-19-2016">
 <h2>COLMAP 1.1 (5/19/2016)<a class="headerlink" href="#colmap-1-1-5-19-2016" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Implementation of state-of-the-art image retrieval system using Hamming
+<li><p>Implementation of state-of-the-art image retrieval system using Hamming
 embedding for vocabulary tree matching. This should lead to much improved
-matching results as compared to the previous implementation.</li>
-<li>Guided matching as an optional functionality.</li>
-<li>New demo datasets for download.</li>
-<li>Automatically switch to PBA if supported by the project.</li>
-<li>Implementation of EPNP solver for local pose optimization in RANSAC.</li>
-<li>Add option to extract upright SIFT features.</li>
-<li>Saving JPEGs in superb quality by default in export.</li>
-<li>Add option to clear matches and inlier matches in the project.</li>
-<li>New fisheye camera models, including the FOV camera model used by Google
-Project Tango (Thomas Schoeps).</li>
-<li>Extended documentation based on user feedback.</li>
-<li>Fixed typo in documentation (Thomas Schoeps).</li>
+matching results as compared to the previous implementation.</p></li>
+<li><p>Guided matching as an optional functionality.</p></li>
+<li><p>New demo datasets for download.</p></li>
+<li><p>Automatically switch to PBA if supported by the project.</p></li>
+<li><p>Implementation of EPNP solver for local pose optimization in RANSAC.</p></li>
+<li><p>Add option to extract upright SIFT features.</p></li>
+<li><p>Saving JPEGs in superb quality by default in export.</p></li>
+<li><p>Add option to clear matches and inlier matches in the project.</p></li>
+<li><p>New fisheye camera models, including the FOV camera model used by Google
+Project Tango (Thomas Schoeps).</p></li>
+<li><p>Extended documentation based on user feedback.</p></li>
+<li><p>Fixed typo in documentation (Thomas Schoeps).</p></li>
 </ul>
 </div>
 <div class="section" id="colmap-1-0-4-4-2016">
 <h2>COLMAP 1.0 (4/4/2016)<a class="headerlink" href="#colmap-1-0-4-4-2016" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Initial release of COLMAP.</li>
+<li><p>Initial release of COLMAP.</p></li>
 </ul>
 </div>
 </div>
@@ -357,7 +359,7 @@ Project Tango (Thomas Schoeps).</li>
         <a href="contribution.html" class="btn btn-neutral float-right" title="Contribution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="faq.html" class="btn btn-neutral" title="Frequently Asked Questions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="faq.html" class="btn btn-neutral float-left" title="Frequently Asked Questions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -366,7 +368,7 @@ Project Tango (Thomas Schoeps).</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Johannes L. Schoenberger.
+        &copy; Copyright 2019, Johannes L. Schoenberger
 
     </p>
   </div>
@@ -383,32 +385,16 @@ Project Tango (Thomas Schoeps).</li>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'3.6',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

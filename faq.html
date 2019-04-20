@@ -17,34 +17,36 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Changelog" href="changelog.html" />
     <link rel="prev" title="Command-line Interface" href="cli.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -338,8 +340,8 @@ as described <a class="reference internal" href="#faq-dense-manual-source"><span
 now also requires a manual specification of the depth range:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap patch_match_stereo \
     --workspace_path path/to/dense/workspace \
-    --DenseStereo.depth_min $MIN_DEPTH \
-    --DenseStereo.depth_max $MAX_DEPTH
+    --PatchMatchStereo.depth_min $MIN_DEPTH \
+    --PatchMatchStereo.depth_max $MAX_DEPTH
 
 colmap stereo_fusion \
     --workspace_path path/to/dense/workspace \
@@ -489,9 +491,9 @@ performance as compared to running multiple threads on the same GPU.</p>
 </div>
 <p>or the following:</p>
 <blockquote>
-<div><dl class="docutils">
-<dt>ERROR: Feature matching failed. This probably caused by insufficient GPU</dt>
-<dd>memory. Consider reducing the maximum number of features.</dd>
+<div><dl class="simple">
+<dt>ERROR: Feature matching failed. This probably caused by insufficient GPU</dt><dd><p>memory. Consider reducing the maximum number of features.</p>
+</dd>
 </dl>
 </div></blockquote>
 <p>during feature matching, your GPU runs out of memory. Try decreasing the option
@@ -524,15 +526,15 @@ surface. If the resolution of the mesh is too coarse, you should reduce the
 <div class="section" id="improving-dense-reconstruction-results-for-weakly-textured-surfaces">
 <h2>Improving dense reconstruction results for weakly textured surfaces<a class="headerlink" href="#improving-dense-reconstruction-results-for-weakly-textured-surfaces" title="Permalink to this headline">¶</a></h2>
 <p>For scenes with weakly textured surfaces it can help to have a high resolution
-of the input images (<code class="docutils literal notranslate"><span class="pre">--DenseStereo.max_image_size</span></code>) and a large patch window
-radius (<code class="docutils literal notranslate"><span class="pre">--DenseStereo.window_radius</span></code>). You may also want to reduce the
+of the input images (<code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.max_image_size</span></code>) and a large patch window
+radius (<code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.window_radius</span></code>). You may also want to reduce the
 filtering threshold for the photometric consistency cost
-(<code class="docutils literal notranslate"><span class="pre">--DenseStereo.filter_min_ncc</span></code>).</p>
+(<code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.filter_min_ncc</span></code>).</p>
 </div>
 <div class="section" id="surface-mesh-reconstruction">
 <h2>Surface mesh reconstruction<a class="headerlink" href="#surface-mesh-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>COLMAP supports two types of surface reconstruction algorithms. Poisson surface
-reconstruction <a class="reference internal" href="bibliography.html#kazhdan2013" id="id1">[kazhdan2013]</a> and graph-cut based surface extraction from a
+reconstruction <a class="reference internal" href="bibliography.html#kazhdan2013" id="id1"><span>[kazhdan2013]</span></a> and graph-cut based surface extraction from a
 Delaunay triangulation. Poisson surface reconstruction typically requires an
 almost outlier-free input point cloud and it often produces bad surfaces in the
 presence of outliers or large holes in the input data. The Delaunay
@@ -551,25 +553,25 @@ smooth surface.</p>
 <h2>Speedup dense reconstruction<a class="headerlink" href="#speedup-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>The dense reconstruction can be speeded up in multiple ways:</p>
 <ul class="simple">
-<li>Put more GPUs in your system as the dense reconstruction can make use of
+<li><p>Put more GPUs in your system as the dense reconstruction can make use of
 multiple GPUs during the stereo reconstruction step. Put more RAM into your
-system and increase the <code class="docutils literal notranslate"><span class="pre">--DenseStereo.cache_size</span></code>,
+system and increase the <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.cache_size</span></code>,
 <code class="docutils literal notranslate"><span class="pre">--StereoFusion.cache_size</span></code> to the largest possible value in order to
-speed up the dense fusion step.</li>
-<li>Do not perform geometric dense stereo reconstruction
-<code class="docutils literal notranslate"><span class="pre">--DenseStereo.geom_consistency</span> <span class="pre">false</span></code>. Make sure to also enable
-<code class="docutils literal notranslate"><span class="pre">--DenseStereo.filter</span> <span class="pre">true</span></code> in this case.</li>
-<li>Reduce the <code class="docutils literal notranslate"><span class="pre">--DenseStereo.max_image_size</span></code>, <code class="docutils literal notranslate"><span class="pre">--StereoFusion.max_image_size</span></code>
-values to perform dense reconstruction on a maximum image resolution.</li>
-<li>Reduce the number of source images per reference image to be considered, as
-described <a class="reference internal" href="#faq-dense-memory"><span class="std std-ref">here</span></a>.</li>
-<li>Increase the patch windows step <code class="docutils literal notranslate"><span class="pre">--DenseStereo.window_step</span></code> to 2.</li>
-<li>Reduce the patch window radius <code class="docutils literal notranslate"><span class="pre">--DenseStereo.window_radius</span></code>.</li>
-<li>Reduce the number of patch match iterations <code class="docutils literal notranslate"><span class="pre">--DenseStereo.num_iterations</span></code>.</li>
-<li>Reduce the number of sampled views <code class="docutils literal notranslate"><span class="pre">--DenseStereo.num_samples</span></code>.</li>
-<li>To speedup the dense stereo and fusion step for very large reconstructions,
+speed up the dense fusion step.</p></li>
+<li><p>Do not perform geometric dense stereo reconstruction
+<code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.geom_consistency</span> <span class="pre">false</span></code>. Make sure to also enable
+<code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.filter</span> <span class="pre">true</span></code> in this case.</p></li>
+<li><p>Reduce the <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.max_image_size</span></code>, <code class="docutils literal notranslate"><span class="pre">--StereoFusion.max_image_size</span></code>
+values to perform dense reconstruction on a maximum image resolution.</p></li>
+<li><p>Reduce the number of source images per reference image to be considered, as
+described <a class="reference internal" href="#faq-dense-memory"><span class="std std-ref">here</span></a>.</p></li>
+<li><p>Increase the patch windows step <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.window_step</span></code> to 2.</p></li>
+<li><p>Reduce the patch window radius <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.window_radius</span></code>.</p></li>
+<li><p>Reduce the number of patch match iterations <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.num_iterations</span></code>.</p></li>
+<li><p>Reduce the number of sampled views <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.num_samples</span></code>.</p></li>
+<li><p>To speedup the dense stereo and fusion step for very large reconstructions,
 you can use CMVS to partition your scene into multiple clusters and to prune
-redundant images, as described <a class="reference internal" href="#faq-dense-memory"><span class="std std-ref">here</span></a>.</li>
+redundant images, as described <a class="reference internal" href="#faq-dense-memory"><span class="std std-ref">here</span></a>.</p></li>
 </ul>
 <p>Note that apart from upgrading your hardware, the proposed changes might degrade
 the quality of the dense reconstruction results. When canceling the stereo
@@ -579,18 +581,18 @@ lost and any already processed views will be skipped.</p>
 <div class="section" id="reduce-memory-usage-during-dense-reconstruction">
 <span id="faq-dense-memory"></span><h2>Reduce memory usage during dense reconstruction<a class="headerlink" href="#reduce-memory-usage-during-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>If you run out of GPU memory during patch match stereo, you can either reduce
-the maximum image size by setting the option <code class="docutils literal notranslate"><span class="pre">--DenseStereo.max_image_size</span></code> or
+the maximum image size by setting the option <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.max_image_size</span></code> or
 reduce the number of source images in the <code class="docutils literal notranslate"><span class="pre">stereo/patch-match.cfg</span></code> file from
 e.g. <code class="docutils literal notranslate"><span class="pre">__auto__,</span> <span class="pre">30</span></code> to <code class="docutils literal notranslate"><span class="pre">__auto__,</span> <span class="pre">10</span></code>. Note that enabling the
 <code class="docutils literal notranslate"><span class="pre">geom_consistency</span></code> option increases the required GPU memory.</p>
 <p>If you run out of CPU memory during stereo or fusion, you can reduce the
-<code class="docutils literal notranslate"><span class="pre">--DenseStereo.cache_size</span></code> or <code class="docutils literal notranslate"><span class="pre">--StereoFusion.cache_size</span></code> specified in
-gigabytes or you can reduce <code class="docutils literal notranslate"><span class="pre">--DenseStereo.max_image_size</span></code> or
+<code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.cache_size</span></code> or <code class="docutils literal notranslate"><span class="pre">--StereoFusion.cache_size</span></code> specified in
+gigabytes or you can reduce <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.max_image_size</span></code> or
 <code class="docutils literal notranslate"><span class="pre">--StereoFusion.max_image_size</span></code>. Note that a too low value might lead to very
 slow processing and heavy load on the hard disk.</p>
 <p>For large-scale reconstructions of several thousands of images, you should
 consider splitting your sparse reconstruction into more manageable clusters of
-images using e.g. CMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id2">[furukawa10]</a>. In addition, CMVS allows to prune
+images using e.g. CMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id2"><span>[furukawa10]</span></a>. In addition, CMVS allows to prune
 redundant images observing the same scene elements. Note that, for this use
 case, COLMAP’s dense reconstruction pipeline also supports the PMVS/CMVS folder
 structure when executed from the command-line. Please, refer to the workspace
@@ -625,10 +627,10 @@ can manually specify images with their name, for example:</p>
 <div class="section" id="multi-gpu-support-in-dense-reconstruction">
 <h2>Multi-GPU support in dense reconstruction<a class="headerlink" href="#multi-gpu-support-in-dense-reconstruction" title="Permalink to this headline">¶</a></h2>
 <p>You can run dense reconstruction on multiple GPUs by specifying multiple indices
-for CUDA-enabled GPUs, e.g., <code class="docutils literal notranslate"><span class="pre">--DenseStereo.gpu_index=0,1,2,3</span></code> runs the dense
+for CUDA-enabled GPUs, e.g., <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.gpu_index=0,1,2,3</span></code> runs the dense
 reconstruction on 4 GPUs in parallel. You can also run multiple dense
 reconstruction threads on the same GPU by specifying the same GPU index twice,
-e.g., <code class="docutils literal notranslate"><span class="pre">--DenseStereo.gpu_index=0,0,1,1,2,3</span></code>. By default, COLMAP runs one
+e.g., <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.gpu_index=0,0,1,1,2,3</span></code>. By default, COLMAP runs one
 dense reconstruction thread per CUDA-enabled GPU.</p>
 </div>
 <div class="section" id="fix-gpu-freezes-and-timeouts-during-dense-reconstruction">
@@ -691,7 +693,7 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
         <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cli.html" class="btn btn-neutral" title="Command-line Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cli.html" class="btn btn-neutral float-left" title="Command-line Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -700,7 +702,7 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Johannes L. Schoenberger.
+        &copy; Copyright 2019, Johannes L. Schoenberger
 
     </p>
   </div>
@@ -717,32 +719,16 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'3.6',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

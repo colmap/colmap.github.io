@@ -17,34 +17,36 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Database Format" href="database.html" />
     <link rel="prev" title="Installation" href="install.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -182,7 +184,7 @@ the individual processing steps in COLMAP. If you are interested in a more
 general and mathematical introduction to the topic of image-based 3D
 reconstruction, please also refer to the <a class="reference external" href="https://demuc.de/tutorials/cvpr2017/">CVPR 2017 Tutorial on Large-scale 3D
 Modeling from Crowdsourced Data</a> and
-<a class="reference internal" href="bibliography.html#schoenberger-thesis" id="id2">[schoenberger_thesis]</a>.</p>
+<a class="reference internal" href="bibliography.html#schoenberger-thesis" id="id2"><span>[schoenberger_thesis]</span></a>.</p>
 <p>Image-based 3D reconstruction from images traditionally first recovers a sparse
 representation of the scene and the camera poses of the input images using
 Structure-from-Motion. This output then serves as the input to Multi-View Stereo
@@ -232,7 +234,7 @@ technology in COLMAP.</p>
 <h2>Structure-from-Motion<a class="headerlink" href="#structure-from-motion" title="Permalink to this headline">¶</a></h2>
 <div class="align-center figure" id="id21">
 <img alt="Incremental Structure-from-Motion pipeline" src="_images/incremental-sfm.png" />
-<p class="caption"><span class="caption-text">COLMAP’s incremental Structure-from-Motion pipeline.</span></p>
+<p class="caption"><span class="caption-text">COLMAP’s incremental Structure-from-Motion pipeline.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
 </div>
 <p>Structure-from-Motion (SfM) is the process of reconstructing 3D structure from
 its projections into a series of images. The input is a set of overlapping
@@ -241,32 +243,32 @@ reconstruction of the object, and the reconstructed intrinsic and extrinsic
 camera parameters of all images. Typically, Structure-from-Motion systems divide
 this process into three stages:</p>
 <ol class="arabic simple">
-<li>Feature detection and extraction</li>
-<li>Feature matching and geometric verification</li>
-<li>Structure and motion reconstruction</li>
+<li><p>Feature detection and extraction</p></li>
+<li><p>Feature matching and geometric verification</p></li>
+<li><p>Structure and motion reconstruction</p></li>
 </ol>
 <p>COLMAP reflects these stages in different modules, that can be combined
 depending on the application. More information on Structure-from-Motion in
-general and the algorithms in COLMAP can be found in <a class="reference internal" href="bibliography.html#schoenberger16sfm" id="id3">[schoenberger16sfm]</a> and
-<a class="reference internal" href="bibliography.html#schoenberger16mvs" id="id4">[schoenberger16mvs]</a>.</p>
+general and the algorithms in COLMAP can be found in <a class="reference internal" href="bibliography.html#schoenberger16sfm" id="id3"><span>[schoenberger16sfm]</span></a> and
+<a class="reference internal" href="bibliography.html#schoenberger16mvs" id="id4"><span>[schoenberger16mvs]</span></a>.</p>
 <p>If you have control over the picture capture process, please follow these
 guidelines for optimal reconstruction results:</p>
 <ul class="simple">
-<li>Capture images with <strong>good texture</strong>. Avoid completely texture-less images
+<li><p>Capture images with <strong>good texture</strong>. Avoid completely texture-less images
 (e.g., a white wall or empty desk). If the scene does not contain enough
 texture itself, you could place additional background objects, such as
-posters, etc.</li>
-<li>Capture images at <strong>similar illumination</strong> conditions. Avoid high dynamic
+posters, etc.</p></li>
+<li><p>Capture images at <strong>similar illumination</strong> conditions. Avoid high dynamic
 range scenes (e.g., pictures against the sun with shadows or pictures
-through doors/windows). Avoid specularities on shiny surfaces.</li>
-<li>Capture images with <strong>high visual overlap</strong>. Make sure that each object is
-seen in at least 3 images – the more images the better.</li>
-<li>Capture images from <strong>different viewpoints</strong>. Do not take images from the
+through doors/windows). Avoid specularities on shiny surfaces.</p></li>
+<li><p>Capture images with <strong>high visual overlap</strong>. Make sure that each object is
+seen in at least 3 images – the more images the better.</p></li>
+<li><p>Capture images from <strong>different viewpoints</strong>. Do not take images from the
 same location by only rotating the camera, e.g., make a few steps after each
 shot. At the same time, try to have enough images from a relatively similar
 viewpoint. Note that more images is not necessarily better and might lead to a
 slow reconstruction process. If you use a video as input, consider
-down-sampling the frame rate.</li>
+down-sampling the frame rate.</p></li>
 </ul>
 </div>
 <div class="section" id="multi-view-stereo">
@@ -275,9 +277,9 @@ down-sampling the frame rate.</li>
 information for every pixel in an image. Fusion of the depth and normal maps of
 multiple images in 3D then produces a dense point cloud of the scene. Using the
 depth and normal information of the fused point cloud, algorithms such as the
-(screened) Poisson surface reconstruction <a class="reference internal" href="bibliography.html#kazhdan2013" id="id5">[kazhdan2013]</a> can then recover the 3D
+(screened) Poisson surface reconstruction <a class="reference internal" href="bibliography.html#kazhdan2013" id="id5"><span>[kazhdan2013]</span></a> can then recover the 3D
 surface geometry of the scene. More information on Multi-View Stereo in general
-and the algorithms in COLMAP can be found in <a class="reference internal" href="bibliography.html#schoenberger16mvs" id="id6">[schoenberger16mvs]</a>.</p>
+and the algorithms in COLMAP can be found in <a class="reference internal" href="bibliography.html#schoenberger16mvs" id="id6"><span>[schoenberger16mvs]</span></a>.</p>
 </div>
 <div class="section" id="preface">
 <h2>Preface<a class="headerlink" href="#preface" title="Permalink to this headline">¶</a></h2>
@@ -370,7 +372,7 @@ groups of images that share the same intrinsic camera parameters, you can easily
 modify the camera models at a later point as well (see <a class="reference internal" href="#database-management"><span class="std std-ref">Database Management</span></a>). If in doubt what to choose in this step, simply stick
 to the default parameters.</p>
 <p>You can either detect and extract new features from the images or import
-existing features from text files. COLMAP extracts SIFT <a class="reference internal" href="bibliography.html#lowe04" id="id7">[lowe04]</a> features
+existing features from text files. COLMAP extracts SIFT <a class="reference internal" href="bibliography.html#lowe04" id="id7"><span>[lowe04]</span></a> features
 either on the GPU or the CPU. The GPU version requires an attached display,
 while the CPU version is recommended for use on a server. In general, the GPU
 version is favorable as it has a customized feature detection mode that often
@@ -416,13 +418,12 @@ correspondences between the feature points in different images.</p>
 <p>Please, choose <code class="docutils literal notranslate"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Match</span> <span class="pre">features</span></code> and select one of the provided
 matching modes, that are intended for different input scenarios:</p>
 <ul>
-<li><p class="first"><strong>Exhaustive Matching</strong>: If the number of images in your dataset is
+<li><p><strong>Exhaustive Matching</strong>: If the number of images in your dataset is
 relatively low (up to several hundreds), this matching mode should be fast
 enough and leads to the best reconstruction results. Here, every image is
 matched against every other image, while the block size determines how many
-images are loaded from disk into memory at the same time.</p>
-</li>
-<li><p class="first"><strong>Sequential Matching</strong>: This mode is useful if the images are acquired in
+images are loaded from disk into memory at the same time.</p></li>
+<li><p><strong>Sequential Matching</strong>: This mode is useful if the images are acquired in
 sequential order, e.g., by a video camera. In this case, consecutive frames
 have visual overlap and there is no need to match all image pairs
 exhaustively. Instead, consecutively captured images are matched against
@@ -433,26 +434,22 @@ that image file names must be ordered sequentially (e.g., <cite>image0001.jpg</c
 <cite>image0002.jpg</cite>, etc.). The order in the database is not relevant, since the
 images are explicitly ordered according to their file names. Note that loop
 detection requires a pre-trained vocabulary tree, that can be downloaded
-from <a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>.</p>
-</li>
-<li><p class="first"><strong>Vocabulary Tree Matching</strong>: In this matching mode <a class="reference internal" href="bibliography.html#schoenberger16vote" id="id8">[schoenberger16vote]</a>,
+from <a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>.</p></li>
+<li><p><strong>Vocabulary Tree Matching</strong>: In this matching mode <a class="reference internal" href="bibliography.html#schoenberger16vote" id="id8"><span>[schoenberger16vote]</span></a>,
 every image is matched against its visual nearest neighbors using a vocabulary
 tree with spatial re-ranking. This is the recommended matching mode for large
 image collections (several thousands). This requires a pre-trained vocabulary
-tree, that can be downloaded from <a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>.</p>
-</li>
-<li><p class="first"><strong>Spatial Matching</strong>: This matching mode matches every image against its
+tree, that can be downloaded from <a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>.</p></li>
+<li><p><strong>Spatial Matching</strong>: This matching mode matches every image against its
 spatial nearest neighbors. Spatial locations can be manually set in the
 database management. By default, COLMAP also extracts GPS information from
 EXIF and uses it for spatial nearest neighbor search. If accurate prior
-location information is available, this is the recommended matching mode.</p>
-</li>
-<li><p class="first"><strong>Transitive Matching</strong>: This matching mode uses the transitive relations of
+location information is available, this is the recommended matching mode.</p></li>
+<li><p><strong>Transitive Matching</strong>: This matching mode uses the transitive relations of
 already existing feature matches to produce a more complete matching graph.
 If an image A matches to an image B and B matches to C, then this matcher
-attempts to match A to C directly.</p>
-</li>
-<li><p class="first"><strong>Custom Matching</strong>: This mode allows to specify individual image pairs for
+attempts to match A to C directly.</p></li>
+<li><p><strong>Custom Matching</strong>: This mode allows to specify individual image pairs for
 matching or to import individual feature matches. To specify image pairs, you
 have to provide a text file with one image pair per line:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image1</span><span class="o">.</span><span class="n">jpg</span> <span class="n">image2</span><span class="o">.</span><span class="n">jpg</span>
@@ -518,18 +515,18 @@ from the drop-down menu in the toolbar. If the different models have common
 registered images, you can use the <code class="docutils literal notranslate"><span class="pre">model_converter</span></code> executable to merge them
 into a single reconstruction (see <a class="reference internal" href="faq.html#faq-merge-models"><span class="std std-ref">FAQ</span></a> for details). If
 all your images use the <cite>SIMPLE_RADIAL</cite> camera model (default) without shared
-intrinsics, you can use PBA <a class="reference internal" href="bibliography.html#wu11" id="id9">[wu11]</a> instead of Ceres Solver <a class="reference internal" href="bibliography.html#ceres" id="id10">[ceres]</a> for fast
+intrinsics, you can use PBA <a class="reference internal" href="bibliography.html#wu11" id="id9"><span>[wu11]</span></a> instead of Ceres Solver <a class="reference internal" href="bibliography.html#ceres" id="id10"><span>[ceres]</span></a> for fast
 bundle adjustment, which can be activated in the reconstruction options under
 the bundle adjustment section (<cite>use_pba=true</cite>).</p>
 <p>Ideally, the reconstruction works fine and all images are registered. If this is
 not the case, it is recommended to:</p>
 <ul class="simple">
-<li>Perform additional matching. For best results, use exhaustive matching, enable
+<li><p>Perform additional matching. For best results, use exhaustive matching, enable
 guided matching, increase the number of nearest neighbors in vocabulary tree
-matching, or increase the overlap in sequential matching, etc.</li>
-<li>Manually choose an initial image pair, if COLMAP fails to initialize. Choose
+matching, or increase the overlap in sequential matching, etc.</p></li>
+<li><p>Manually choose an initial image pair, if COLMAP fails to initialize. Choose
 <code class="docutils literal notranslate"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Reconstruction</span> <span class="pre">options</span> <span class="pre">&gt;</span> <span class="pre">Init</span></code> and set images from the
-database management tool that have enough matches from different viewpoints.</li>
+database management tool that have enough matches from different viewpoints.</p></li>
 </ul>
 </div>
 <div class="section" id="importing-and-exporting">
@@ -544,7 +541,7 @@ the reconstruction for later visualization, image undistortion, or to continue
 an existing reconstruction from where it left off (e.g., after importing and
 matching new images). To import a model, choose <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span></code> and select the
 export folder path. Alternatively, you can also export the model in various
-other formats, such as Bundler, VisualSfM <a class="footnote-reference" href="#f1" id="id11">[1]</a>, PLY, or VRML by choosing
+other formats, such as Bundler, VisualSfM <a class="footnote-reference brackets" href="#f1" id="id11">1</a>, PLY, or VRML by choosing
 <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">as...</span></code>. COLMAP can visualize plain PLY point cloud files with
 RGB information by choosing <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">From...</span></code>. Further information about
 the format of the exported models can be found <a class="reference internal" href="format.html#output-format"><span class="std std-ref">here</span></a>.</p>
@@ -556,7 +553,7 @@ of the input images, MVS can now recover denser scene geometry. COLMAP has an
 integrated dense reconstruction pipeline to produce depth and normal maps for
 all registered images, to fuse the depth and normal maps into a dense point
 cloud with normal information, and to finally estimate a dense surface from the
-fused point cloud using Poisson <a class="reference internal" href="bibliography.html#kazhdan2013" id="id13">[kazhdan2013]</a> or Delaunay reconstruction.</p>
+fused point cloud using Poisson <a class="reference internal" href="bibliography.html#kazhdan2013" id="id13"><span>[kazhdan2013]</span></a> or Delaunay reconstruction.</p>
 <p>To get started, import your sparse 3D model into COLMAP (or select the
 reconstructed model after finishing the previous sparse reconstruction steps).
 Then, choose <code class="docutils literal notranslate"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Multi-view</span> <span class="pre">stereo</span></code> and select an empty or
@@ -574,8 +571,8 @@ by enabling <code class="docutils literal notranslate"><span class="pre">Render<
 dense surface mesh model must be visualized with external software.</p>
 <p>Note that COLMAP requires a CUDA-enabled GPU, so in addition to the internal
 dense reconstruction functionality, COLMAP exports to several other dense
-reconstruction libraries, such as CMVS/PMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id14">[furukawa10]</a> or CMP-MVS
-<a class="reference internal" href="bibliography.html#jancosek11" id="id15">[jancosek11]</a>. Please choose <code class="docutils literal notranslate"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Undistort</span> <span class="pre">images</span></code> and select the
+reconstruction libraries, such as CMVS/PMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id14"><span>[furukawa10]</span></a> or CMP-MVS
+<a class="reference internal" href="bibliography.html#jancosek11" id="id15"><span>[jancosek11]</span></a>. Please choose <code class="docutils literal notranslate"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Undistort</span> <span class="pre">images</span></code> and select the
 appropriate format. The output folders contain the reconstruction and the
 undistorted images. In addition, the folders contain sample shell scripts to
 perform the dense reconstruction. To run PMVS2, execute the following commands:</p>
@@ -591,9 +588,9 @@ sample shell scripts in the undistortion output folder on how to run CMVS in
 combination with COLMAP or PMVS2. Moreover, there are a number of external
 libraries that support COLMAP’s output:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://www.di.ens.fr/pmvs/">CMVS/PMVS</a> <a class="reference internal" href="bibliography.html#furukawa10" id="id16">[furukawa10]</a></li>
-<li><a class="reference external" href="http://ptak.felk.cvut.cz/sfmservice/websfm.pl">CMP-MVS</a> <a class="reference internal" href="bibliography.html#jancosek11" id="id17">[jancosek11]</a></li>
-<li><a class="reference external" href="https://github.com/manhofer/Line3Dpp">Line3D++</a> <a class="reference internal" href="bibliography.html#hofer16" id="id18">[hofer16]</a>.</li>
+<li><p><a class="reference external" href="http://www.di.ens.fr/pmvs/">CMVS/PMVS</a> <a class="reference internal" href="bibliography.html#furukawa10" id="id16"><span>[furukawa10]</span></a></p></li>
+<li><p><a class="reference external" href="http://ptak.felk.cvut.cz/sfmservice/websfm.pl">CMP-MVS</a> <a class="reference internal" href="bibliography.html#jancosek11" id="id17"><span>[jancosek11]</span></a></p></li>
+<li><p><a class="reference external" href="https://github.com/manhofer/Line3Dpp">Line3D++</a> <a class="reference internal" href="bibliography.html#hofer16" id="id18"><span>[hofer16]</span></a>.</p></li>
 </ul>
 </div>
 <div class="section" id="database-management">
@@ -636,14 +633,13 @@ you must execute <code class="docutils literal notranslate"><span class="pre">co
 interface</span></a> and <a class="reference internal" href="cli.html#cli"><span class="std std-ref">command-line Interface</span></a> sections provide more
 details about the available commands.</p>
 <p class="rubric">Footnotes</p>
-<table class="docutils footnote" frame="void" id="f1" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id11">[1]</a></td><td>VisualSfM’s <a class="reference internal" href="bibliography.html#wu13" id="id20">[wu13]</a> projection model applies the distortion to the
+<dl class="footnote brackets">
+<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id11">1</a></span></dt>
+<dd><p>VisualSfM’s <a class="reference internal" href="bibliography.html#wu13" id="id20"><span>[wu13]</span></a> projection model applies the distortion to the
 measurements and COLMAP to the projection, hence the exported NVM file is
-not fully compatible with VisualSfM.</td></tr>
-</tbody>
-</table>
+not fully compatible with VisualSfM.</p>
+</dd>
+</dl>
 </div>
 </div>
 
@@ -658,7 +654,7 @@ not fully compatible with VisualSfM.</td></tr>
         <a href="database.html" class="btn btn-neutral float-right" title="Database Format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="install.html" class="btn btn-neutral" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -667,7 +663,7 @@ not fully compatible with VisualSfM.</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Johannes L. Schoenberger.
+        &copy; Copyright 2019, Johannes L. Schoenberger
 
     </p>
   </div>
@@ -684,32 +680,16 @@ not fully compatible with VisualSfM.</td></tr>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'3.6',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
