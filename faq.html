@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Frequently Asked Questions &mdash; COLMAP 3.6 documentation</title>
+  <title>Frequently Asked Questions &mdash; COLMAP 3.7 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                3.6
+                3.7
               </div>
             
           
@@ -288,6 +288,10 @@ a sparse model.</p>
 <span class="mi">4</span> <span class="mf">0.698777</span> <span class="mf">0.714625</span> <span class="o">-</span><span class="mf">0.023996</span> <span class="mf">0.021129</span> <span class="o">-</span><span class="mf">0.048184</span> <span class="mf">0.004529</span> <span class="o">-</span><span class="mf">0.313427</span> <span class="mi">2</span> <span class="n">image0004</span><span class="o">.</span><span class="n">png</span>
 </pre></div>
 </div>
+<p>Each image above must have the same <code class="docutils literal notranslate"><span class="pre">image_id</span></code> (first column) as in the database (next step).
+This database can be inspected either in the GUI (under <code class="docutils literal notranslate"><span class="pre">Database</span> <span class="pre">management</span> <span class="pre">&gt;</span> <span class="pre">Processing</span></code>),
+or, one can create a reconstruction with colmap and later export  it as text in order to see
+the images.txt file it creates.</p>
 <p>To reconstruct a sparse map, you first have to recompute features from the
 images of the known camera poses as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap feature_extractor \
@@ -701,7 +705,7 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Johannes L. Schoenberger
+        &copy; Copyright 2020, Johannes L. Schoenberger
 
     </p>
   </div>

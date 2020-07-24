@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; COLMAP 3.6 documentation</title>
+  <title>Installation &mdash; COLMAP 3.7 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                3.6
+                3.7
               </div>
             
           
@@ -266,7 +266,7 @@ git checkout $(git describe --tags) # Checkout the latest release
 mkdir build
 cd build
 cmake .. -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF
-make
+make -j
 sudo make install
 </pre></div>
 </div>
@@ -277,7 +277,7 @@ sudo make install
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
 <span class="n">cmake</span> <span class="o">..</span>
-<span class="n">make</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j</span>
 <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
@@ -460,7 +460,7 @@ target_link_libraries(hello_world ${COLMAP_LIBRARIES})
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Johannes L. Schoenberger
+        &copy; Copyright 2020, Johannes L. Schoenberger
 
     </p>
   </div>

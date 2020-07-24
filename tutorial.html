@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tutorial &mdash; COLMAP 3.6 documentation</title>
+  <title>Tutorial &mdash; COLMAP 3.7 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                3.6
+                3.7
               </div>
             
           
@@ -569,16 +569,15 @@ information on how to avoid these problems. Note that the reconstructed normals
 of the point cloud cannot be directly visualized in COLMAP, but e.g. in Meshlab
 by enabling <code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">&gt;</span> <span class="pre">Show</span> <span class="pre">Normal/Curvature</span></code>. Similarly, the reconstructed
 dense surface mesh model must be visualized with external software.</p>
-<p>Note that COLMAP requires a CUDA-enabled GPU, so in addition to the internal
-dense reconstruction functionality, COLMAP exports to several other dense
-reconstruction libraries, such as CMVS/PMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id14"><span>[furukawa10]</span></a> or CMP-MVS
-<a class="reference internal" href="bibliography.html#jancosek11" id="id15"><span>[jancosek11]</span></a>. Please choose <code class="docutils literal notranslate"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Undistort</span> <span class="pre">images</span></code> and select the
-appropriate format. The output folders contain the reconstruction and the
+<p>In addition to the internal dense reconstruction functionality, COLMAP exports
+to several other dense reconstruction libraries, such as CMVS/PMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id14"><span>[furukawa10]</span></a>
+or CMP-MVS <a class="reference internal" href="bibliography.html#jancosek11" id="id15"><span>[jancosek11]</span></a>. Please choose <code class="docutils literal notranslate"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Undistort</span> <span class="pre">images</span></code> and select
+the appropriate format. The output folders contain the reconstruction and the
 undistorted images. In addition, the folders contain sample shell scripts to
 perform the dense reconstruction. To run PMVS2, execute the following commands:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">pmvs2</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">undistortion</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">pmvs</span><span class="o">/</span> <span class="n">option</span><span class="o">-</span><span class="nb">all</span>
-</pre></div>
-</div>
+<blockquote>
+<div><p>./path/to/pmvs2 /path/to/undistortion/folder/pmvs/ option-all</p>
+</div></blockquote>
 <p>where <cite>/path/to/undistortion/folder</cite> is the folder selected in the undistortion
 dialog. Make sure not to forget the trailing slash in
 <cite>/path/to/undistortion/folder/pmvs/</cite> in the above command-line arguments.</p>
@@ -663,7 +662,7 @@ not fully compatible with VisualSfM.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Johannes L. Schoenberger
+        &copy; Copyright 2020, Johannes L. Schoenberger
 
     </p>
   </div>

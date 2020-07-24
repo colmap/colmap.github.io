@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Changelog &mdash; COLMAP 3.6 documentation</title>
+  <title>Changelog &mdash; COLMAP 3.7 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                3.6
+                3.7
               </div>
             
           
@@ -95,6 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#colmap-3-6-07-24-2020">COLMAP 3.6 (07/24/2020)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#colmap-3-5-08-22-2018">COLMAP 3.5 (08/22/2018)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#colmap-3-4-01-29-2018">COLMAP 3.4 (01/29/2018)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#colmap-3-3-11-21-2017">COLMAP 3.3 (11/21/2017)</a></li>
@@ -176,6 +177,31 @@
             
   <div class="section" id="changelog">
 <span id="id1"></span><h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="colmap-3-6-07-24-2020">
+<h2>COLMAP 3.6 (07/24/2020)<a class="headerlink" href="#colmap-3-6-07-24-2020" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Improved robustness and faster incremental reconstruction process</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">image_deleter</span></code> command to remove images from sparse model</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">image_filter</span></code> command to filter bad registrations from sparse model</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">point_filtering</span></code> command to filter sparse model point clouds</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">database_merger</span></code> command to merge two databases, which is
+useful to parallelize matching across different machines</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">image_undistorter_standalone</span></code> to enable undistorting images
+without a pre-existing full sparse model</p></li>
+<li><p>Improved undistortion for fisheye cameras and FOV camera model</p></li>
+<li><p>Support for masking input images in feature extraction stage</p></li>
+<li><p>Improved HiDPI support in GUI for high-resolution monitors</p></li>
+<li><p>Import sparse model when launching GUI from CLI</p></li>
+<li><p>Faster CPU-based matching using approximate NN search</p></li>
+<li><p>Support for bundle adjustment with fixed extrinsics</p></li>
+<li><p>Support for fixing existing images when continuing reconstruction</p></li>
+<li><p>Camera model colors in viewer can be customized</p></li>
+<li><p>Support for latest GPU architectures in CUDA build</p></li>
+<li><p>Support for writing sparse models in Python scripts</p></li>
+<li><p>Scripts for building and running COLMAP in Docker</p></li>
+<li><p>Many more bug fixes and improvements to code and documentation</p></li>
+</ul>
+</div>
 <div class="section" id="colmap-3-5-08-22-2018">
 <h2>COLMAP 3.5 (08/22/2018)<a class="headerlink" href="#colmap-3-5-08-22-2018" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -368,7 +394,7 @@ Project Tango (Thomas Schoeps).</p></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Johannes L. Schoenberger
+        &copy; Copyright 2020, Johannes L. Schoenberger
 
     </p>
   </div>

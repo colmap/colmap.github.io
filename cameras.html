@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Camera Models &mdash; COLMAP 3.6 documentation</title>
+  <title>Camera Models &mdash; COLMAP 3.7 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                3.6
+                3.7
               </div>
             
           
@@ -169,9 +169,9 @@ parameters are known a priori, it is generally best to use the simplest camera
 model that is complex enough to model the distortion effects:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SIMPLE_PINHOLE</span></code>, <code class="docutils literal notranslate"><span class="pre">PINHOLE</span></code>: Use these camera models,
-if your images are undistorted a priori. Note that even in the case of
-undistorted images, COLMAP could try to improve the intrinsics with a more
-complex camera model.</p></li>
+if your images are undistorted a priori. These use one and two focal length
+parameters, respectively. Note that even in the case of undistorted images,
+COLMAP could try to improve the intrinsics with a more complex camera model.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SIMPLE_RADIAL</span></code>, <code class="docutils literal notranslate"><span class="pre">RADIAL</span></code>: This should be the camera model of choice,
 if the intrinsics are unknown and every image has a different camera
 calibration, e.g., in the case of Internet photos. Both models are simplified
@@ -227,7 +227,7 @@ of the different camera models:
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Johannes L. Schoenberger
+        &copy; Copyright 2020, Johannes L. Schoenberger
 
     </p>
   </div>
