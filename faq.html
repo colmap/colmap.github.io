@@ -473,8 +473,13 @@ external dense reconstruction software as an alternative, as described in the
 or you want to execute COLMAP on a machine without an attached display and
 without CUDA support, you can run all steps on the CPU by specifying the
 appropriate options (e.g., <code class="docutils literal notranslate"><span class="pre">--SiftExtraction.use_gpu=false</span></code> for the feature
-extraction step). But not that this might result in a significant slow-down of
-the reconstruction pipeline.</p>
+extraction step). But note that this might result in a significant slow-down of
+the reconstruction pipeline. Please, also note that feature extraction on the
+CPU can consume excessive RAM for large images in the default settings, which
+might require manually reducing the maximum image size using
+<code class="docutils literal notranslate"><span class="pre">--SiftExtraction.max_image_size</span></code> and/or setting
+<code class="docutils literal notranslate"><span class="pre">--SiftExtraction.first_octave</span> <span class="pre">0</span></code> or by manually limiting the number of
+threads using <code class="docutils literal notranslate"><span class="pre">--SiftExtraction.num_threads</span></code>.</p>
 </div>
 <div class="section" id="multi-gpu-support-in-feature-extraction-matching">
 <h2>Multi-GPU support in feature extraction/matching<a class="headerlink" href="#multi-gpu-support-in-feature-extraction-matching" title="Permalink to this headline">¶</a></h2>
