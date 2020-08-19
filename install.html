@@ -334,12 +334,12 @@ GCC version due to compatiblity issues with CUDA, which can be done as:</p>
 <h3>Windows<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p><em>Recommended dependencies:</em> CUDA (at least version 7.X), Visual Studio 2019</p>
 <p>On Windows, the recommended way is to build COLMAP using vcpkg:</p>
-<blockquote>
-<div><p>git clone <a class="reference external" href="https://github.com/microsoft/vcpkg">https://github.com/microsoft/vcpkg</a>
-cd vcpkg
-.bootstrap-vcpkg.bat
-.vcpkg install colmap[cuda,tests]:x64-windows</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">microsoft</span><span class="o">/</span><span class="n">vcpkg</span>
+<span class="n">cd</span> <span class="n">vcpkg</span>
+<span class="o">.</span>\<span class="n">bootstrap</span><span class="o">-</span><span class="n">vcpkg</span><span class="o">.</span><span class="n">bat</span>
+<span class="o">.</span>\<span class="n">vcpkg</span> <span class="n">install</span> <span class="n">colmap</span><span class="p">[</span><span class="n">cuda</span><span class="p">,</span><span class="n">tests</span><span class="p">]:</span><span class="n">x64</span><span class="o">-</span><span class="n">windows</span>
+</pre></div>
+</div>
 <p>Please refer to the next section for more details.</p>
 </div>
 <div class="section" id="vcpkg">
@@ -348,22 +348,22 @@ cd vcpkg
 build COLMAP and all of its dependencies from scratch under different platforms.
 Note that VCPKG requires you to install CUDA manually in the standard way on
 your platform. To compile COLMAP using VCPKG, you run:</p>
-<blockquote>
-<div><p>git clone <a class="reference external" href="https://github.com/microsoft/vcpkg">https://github.com/microsoft/vcpkg</a>
-cd vcpkg
-./bootstrap-vcpkg.sh
-.vcpkg install colmap:x64-linux</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">microsoft</span><span class="o">/</span><span class="n">vcpkg</span>
+<span class="n">cd</span> <span class="n">vcpkg</span>
+<span class="o">./</span><span class="n">bootstrap</span><span class="o">-</span><span class="n">vcpkg</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">.</span>\<span class="n">vcpkg</span> <span class="n">install</span> <span class="n">colmap</span><span class="p">:</span><span class="n">x64</span><span class="o">-</span><span class="n">linux</span>
+</pre></div>
+</div>
 <p>VCPKG ships with support for various other platforms (e.g., x64-osx,
 x64-windows, etc.). To compile with CUDA support and to build all tests:</p>
-<blockquote>
-<div><p>.vcpkg install colmap[cuda,tests]:x64-linux</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span>\<span class="n">vcpkg</span> <span class="n">install</span> <span class="n">colmap</span><span class="p">[</span><span class="n">cuda</span><span class="p">,</span><span class="n">tests</span><span class="p">]:</span><span class="n">x64</span><span class="o">-</span><span class="n">linux</span>
+</pre></div>
+</div>
 <p>The above commands will build the latest release version of COLMAP. To compile
 the latest commit in the dev branch, you can use the following options:</p>
-<blockquote>
-<div><p>.vcpkg install colmap:x64-linux –head</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span>\<span class="n">vcpkg</span> <span class="n">install</span> <span class="n">colmap</span><span class="p">:</span><span class="n">x64</span><span class="o">-</span><span class="n">linux</span> <span class="o">--</span><span class="n">head</span>
+</pre></div>
+</div>
 <p>To modify the source code, you can further add <code class="docutils literal notranslate"><span class="pre">--editable</span> <span class="pre">--no-downloads</span></code>.</p>
 <p>Alternatively, you can also use the Python build script. Please follow the
 instructions in the next section, but VCPKG is now the recommended approach.</p>
