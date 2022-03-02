@@ -86,7 +86,8 @@ Dependencies from the default Ubuntu repositories::
         libglew-dev \
         qtbase5-dev \
         libqt5opengl5-dev \
-        libcgal-dev
+        libcgal-dev \
+        libmetis-dev
 
 Under Ubuntu 16.04/18.04 the CMake configuration scripts of CGAL are broken and
 you must also install the CGAL Qt5 package::
