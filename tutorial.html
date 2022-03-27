@@ -1,81 +1,36 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial &mdash; COLMAP 3.8 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Tutorial &mdash; COLMAP 3.7 documentation</title>
-  
-
-  
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="COLMAP 3.7 documentation" href="index.html"/>
-        <link rel="next" title="Database Format" href="database.html"/>
-        <link rel="prev" title="Installation" href="install.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Database Format" href="database.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-
-          
+        <div class="wy-side-nav-search" >
             <a href="index.html" class="icon icon-home"> COLMAP
-          
-
-          
           </a>
-
-          
-            
-            
               <div class="version">
-                3.7
+                3.8
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -83,17 +38,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
@@ -125,69 +70,32 @@
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">COLMAP</a>
-        
       </nav>
 
-
-      
       <div class="wy-nav-content">
         <div class="rst-content">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
       <li>Tutorial</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/tutorial.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="section" id="tutorial">
-<span id="id1"></span><h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline"></a></h1>
 <p>This tutorial covers the topic of image-based 3D reconstruction by demonstrating
 the individual processing steps in COLMAP. If you are interested in a more
 general and mathematical introduction to the topic of image-based 3D
@@ -199,7 +107,7 @@ representation of the scene and the camera poses of the input images using
 Structure-from-Motion. This output then serves as the input to Multi-View Stereo
 to recover a dense representation of the scene.</p>
 <div class="section" id="quickstart">
-<span id="quick-start"></span><h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<span id="quick-start"></span><h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline"></a></h2>
 <p>First, start the graphical user interface of COLMAP, as described <a class="reference internal" href="gui.html#gui"><span class="std std-ref">here</span></a>. COLMAP provides an automatic reconstruction tool that simply takes
 a folder of input images and produces a sparse and dense reconstruction in a
 workspace folder. Click <code class="docutils literal notranslate"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Automatic</span> <span class="pre">Reconstruction</span></code> in the GUI
@@ -240,10 +148,10 @@ reconstruction process/parameters or if you are interested in the underlying
 technology in COLMAP.</p>
 </div>
 <div class="section" id="structure-from-motion">
-<h2>Structure-from-Motion<a class="headerlink" href="#structure-from-motion" title="Permalink to this headline">¶</a></h2>
+<h2>Structure-from-Motion<a class="headerlink" href="#structure-from-motion" title="Permalink to this headline"></a></h2>
 <div class="align-center figure align-default" id="id21">
 <img alt="Incremental Structure-from-Motion pipeline" src="_images/incremental-sfm.png" />
-<p class="caption"><span class="caption-text">COLMAP’s incremental Structure-from-Motion pipeline.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">COLMAP’s incremental Structure-from-Motion pipeline.</span><a class="headerlink" href="#id21" title="Permalink to this image"></a></p>
 </div>
 <p>Structure-from-Motion (SfM) is the process of reconstructing 3D structure from
 its projections into a series of images. The input is a set of overlapping
@@ -281,7 +189,7 @@ down-sampling the frame rate.</p></li>
 </ul>
 </div>
 <div class="section" id="multi-view-stereo">
-<h2>Multi-View Stereo<a class="headerlink" href="#multi-view-stereo" title="Permalink to this headline">¶</a></h2>
+<h2>Multi-View Stereo<a class="headerlink" href="#multi-view-stereo" title="Permalink to this headline"></a></h2>
 <p>Multi-View Stereo (MVS) takes the output of SfM to compute depth and/or normal
 information for every pixel in an image. Fusion of the depth and normal maps of
 multiple images in 3D then produces a dense point cloud of the scene. Using the
@@ -291,7 +199,7 @@ surface geometry of the scene. More information on Multi-View Stereo in general
 and the algorithms in COLMAP can be found in <a class="reference internal" href="bibliography.html#schoenberger16mvs" id="id6"><span>[schoenberger16mvs]</span></a>.</p>
 </div>
 <div class="section" id="preface">
-<h2>Preface<a class="headerlink" href="#preface" title="Permalink to this headline">¶</a></h2>
+<h2>Preface<a class="headerlink" href="#preface" title="Permalink to this headline"></a></h2>
 <p>COLMAP requires only few steps to do a standard reconstruction for a general
 user. For more experienced users, the program exposes many different parameters,
 only some of which are intuitive to a beginner. The program should usually work
@@ -307,7 +215,7 @@ run the executables (including the GUI) from the command-line, where you can
 define various levels of logging verbosity.</p>
 </div>
 <div class="section" id="terminology">
-<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline"></a></h2>
 <p>The term <strong>camera</strong> is associated with the physical object of a camera using the
 same zoom-factor and lens. A camera defines the intrinsic projection model in
 COLMAP. A single camera can take multiple images with the same resolution,
@@ -319,7 +227,7 @@ keypoints/descriptors are defined by <strong>matches</strong>, while <strong>inl
 geometrically verified and used for the reconstruction procedure.</p>
 </div>
 <div class="section" id="data-structure">
-<h2>Data Structure<a class="headerlink" href="#data-structure" title="Permalink to this headline">¶</a></h2>
+<h2>Data Structure<a class="headerlink" href="#data-structure" title="Permalink to this headline"></a></h2>
 <p>COLMAP assumes that all input images are in one input directory with potentially
 nested sub-directories. It recursively considers all images stored in this
 directory, and it supports various different image formats (see <a class="reference external" href="http://freeimage.sourceforge.net/documentation.html">FreeImage</a>). Other files are
@@ -362,7 +270,7 @@ path, <cite>/path/to/project/database.db</cite> as the database file path, and s
 project configuration to <cite>/path/to/project/project.ini</cite>.</p>
 </div>
 <div class="section" id="feature-detection-and-extraction">
-<h2>Feature Detection and Extraction<a class="headerlink" href="#feature-detection-and-extraction" title="Permalink to this headline">¶</a></h2>
+<h2>Feature Detection and Extraction<a class="headerlink" href="#feature-detection-and-extraction" title="Permalink to this headline"></a></h2>
 <p>In the first step, feature detection/extraction finds sparse feature points in
 the image and describes their appearance using a numerical descriptor. COLMAP
 imports images and performs feature detection/extraction in one step in order to
@@ -421,7 +329,7 @@ reviewed/managed in the database management tool (see <a class="reference intern
 <a class="reference internal" href="database.html#database-format"><span class="std std-ref">Database Format</span></a>).</p>
 </div>
 <div class="section" id="feature-matching-and-geometric-verification">
-<h2>Feature Matching and Geometric Verification<a class="headerlink" href="#feature-matching-and-geometric-verification" title="Permalink to this headline">¶</a></h2>
+<h2>Feature Matching and Geometric Verification<a class="headerlink" href="#feature-matching-and-geometric-verification" title="Permalink to this headline"></a></h2>
 <p>In the second step, feature matching and geometric verification finds
 correspondences between the feature points in different images.</p>
 <p>Please, choose <code class="docutils literal notranslate"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Match</span> <span class="pre">features</span></code> and select one of the provided
@@ -510,7 +418,7 @@ system has multiple CUDA-enabled GPUs, you can select specific GPUs with the
 <cite>gpu_index</cite> option.</p>
 </div>
 <div class="section" id="sparse-reconstruction">
-<h2>Sparse Reconstruction<a class="headerlink" href="#sparse-reconstruction" title="Permalink to this headline">¶</a></h2>
+<h2>Sparse Reconstruction<a class="headerlink" href="#sparse-reconstruction" title="Permalink to this headline"></a></h2>
 <p>After producing the scene graph in the previous two steps, you can start the
 incremental reconstruction process by choosing <code class="docutils literal notranslate"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Start</span></code>.
 COLMAP first loads all extracted data from the database into memory and seeds
@@ -539,7 +447,7 @@ database management tool that have enough matches from different viewpoints.</p>
 </ul>
 </div>
 <div class="section" id="importing-and-exporting">
-<h2>Importing and Exporting<a class="headerlink" href="#importing-and-exporting" title="Permalink to this headline">¶</a></h2>
+<h2>Importing and Exporting<a class="headerlink" href="#importing-and-exporting" title="Permalink to this headline"></a></h2>
 <p>COLMAP provides several export options for further processing. For full
 flexibility, it is recommended to export the reconstruction in COLMAP’s data
 format by choosing <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span></code> to export the currently viewed model or
@@ -556,7 +464,7 @@ RGB information by choosing <code class="docutils literal notranslate"><span cla
 the format of the exported models can be found <a class="reference internal" href="format.html#output-format"><span class="std std-ref">here</span></a>.</p>
 </div>
 <div class="section" id="dense-reconstruction">
-<span id="id12"></span><h2>Dense Reconstruction<a class="headerlink" href="#dense-reconstruction" title="Permalink to this headline">¶</a></h2>
+<span id="id12"></span><h2>Dense Reconstruction<a class="headerlink" href="#dense-reconstruction" title="Permalink to this headline"></a></h2>
 <p>After reconstructing a sparse representation of the scene and the camera poses
 of the input images, MVS can now recover denser scene geometry. COLMAP has an
 integrated dense reconstruction pipeline to produce depth and normal maps for
@@ -602,7 +510,7 @@ libraries that support COLMAP’s output:</p>
 </ul>
 </div>
 <div class="section" id="database-management">
-<span id="id19"></span><h2>Database Management<a class="headerlink" href="#database-management" title="Permalink to this headline">¶</a></h2>
+<span id="id19"></span><h2>Database Management<a class="headerlink" href="#database-management" title="Permalink to this headline"></a></h2>
 <p>You can review and manage the imported cameras, images, and feature matches in
 the database management tool. Choose <code class="docutils literal notranslate"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Manage</span> <span class="pre">database</span></code>. In the
 opening dialog, you can see the list of imported images and cameras. You can
@@ -627,7 +535,7 @@ your own features and matches to only use COLMAP’s incremental reconstruction
 algorithm.</p>
 </div>
 <div class="section" id="graphical-and-command-line-interface">
-<span id="interface"></span><h2>Graphical and Command-line Interface<a class="headerlink" href="#graphical-and-command-line-interface" title="Permalink to this headline">¶</a></h2>
+<span id="interface"></span><h2>Graphical and Command-line Interface<a class="headerlink" href="#graphical-and-command-line-interface" title="Permalink to this headline"></a></h2>
 <p>Most of COLMAP’s features are accessible from both the graphical and the
 command-line interface, which are both embedded in the same executable. You can
 provide the options directly as command-line arguments or you can provide a
@@ -653,75 +561,33 @@ not fully compatible with VisualSfM.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="database.html" class="btn btn-neutral float-right" title="Database Format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="install.html" class="btn btn-neutral" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="database.html" class="btn btn-neutral float-right" title="Database Format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2020, Johannes L. Schoenberger.
-
-    </p>
+    <p>&#169; Copyright 2022, Johannes L. Schoenberger.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'3.7',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/documentation_options.js"></script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
