@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Camera Models &mdash; COLMAP 3.8 documentation</title>
+  <title>Camera Models &mdash; COLMAP 3.8-dev documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -13,7 +14,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,7 +32,7 @@
             <a href="index.html" class="icon icon-home"> COLMAP
           </a>
               <div class="version">
-                3.8
+                3.8-dev
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -68,8 +71,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Camera Models</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Camera Models</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/cameras.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -79,8 +82,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="camera-models">
-<h1>Camera Models<a class="headerlink" href="#camera-models" title="Permalink to this headline"></a></h1>
+  <section id="camera-models">
+<h1>Camera Models<a class="headerlink" href="#camera-models" title="Permalink to this heading"></a></h1>
 <p>COLMAP implements different camera models of varying complexity. If no intrinsic
 parameters are known a priori, it is generally best to use the simplest camera
 model that is complex enough to model the distortion effects:</p>
@@ -122,7 +125,7 @@ fix the intrinsic parameters during the reconstruction
 <p>Please, refer to the camera models header file for information on the parameters
 of the different camera models:
 <a class="reference external" href="https://github.com/colmap/colmap/blob/master/src/base/camera_models.h">https://github.com/colmap/colmap/blob/master/src/base/camera_models.h</a></p>
-</div>
+</section>
 
 
            </div>

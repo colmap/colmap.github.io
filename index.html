@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>COLMAP &mdash; COLMAP 3.8 documentation</title>
+  <title>COLMAP &mdash; COLMAP 3.8-dev documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -13,7 +14,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,7 +31,7 @@
             <a href="#" class="icon icon-home"> COLMAP
           </a>
               <div class="version">
-                3.8
+                3.8-dev
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -67,8 +70,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>COLMAP</li>
+      <li><a href="#" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">COLMAP</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -78,19 +81,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="colmap">
-<h1>COLMAP<a class="headerlink" href="#colmap" title="Permalink to this headline"></a></h1>
-<div class="align-center figure align-default" id="id1">
+  <section id="colmap">
+<h1>COLMAP<a class="headerlink" href="#colmap" title="Permalink to this heading"></a></h1>
+<figure class="align-center align-default" id="id1">
 <img alt="Sparse reconstruction of central Rome." src="_images/sparse.png" />
-<p class="caption"><span class="caption-text">Sparse model of central Rome using 21K photos produced by COLMAP’s SfM
+<figcaption>
+<p><span class="caption-text">Sparse model of central Rome using 21K photos produced by COLMAP’s SfM
 pipeline.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
-</div>
-<div class="align-center figure align-default" id="id2">
+</figcaption>
+</figure>
+<figure class="align-center align-default" id="id2">
 <img alt="Dense reconstruction of landmarks." src="_images/dense.png" />
-<p class="caption"><span class="caption-text">Dense models of several landmarks produced by COLMAP’s MVS pipeline.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
-</div>
-<div class="section" id="about">
-<h2>About<a class="headerlink" href="#about" title="Permalink to this headline"></a></h2>
+<figcaption>
+<p><span class="caption-text">Dense models of several landmarks produced by COLMAP’s MVS pipeline.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="about">
+<h2>About<a class="headerlink" href="#about" title="Permalink to this heading"></a></h2>
 <p>COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo
 (MVS) pipeline with a graphical and command-line interface. It offers a wide
 range of features for reconstruction of ordered and unordered image collections.
@@ -123,13 +130,13 @@ your research, please cite:</p>
 <p>The latest source code is available at <a class="reference external" href="https://github.com/colmap/colmap">GitHub</a>. COLMAP builds on top of existing works and
 when using specific algorithms within COLMAP, please also cite the original
 authors, as specified in the source code.</p>
-</div>
-<div class="section" id="download">
-<h2>Download<a class="headerlink" href="#download" title="Permalink to this headline"></a></h2>
+</section>
+<section id="download">
+<h2>Download<a class="headerlink" href="#download" title="Permalink to this heading"></a></h2>
 <p>Executables and other resources can be downloaded from <a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>.</p>
-</div>
-<div class="section" id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h2>
+</section>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Download the <a class="reference external" href="https://demuc.de/colmap/">pre-built binaries</a> or build the
 library manually from <a class="reference external" href="https://github.com/colmap/colmap">source</a>
@@ -139,21 +146,21 @@ or use your own images.</p></li>
 <li><p>Use the <strong>automatic reconstruction</strong> to easily build models
 with a single click (see <a class="reference internal" href="tutorial.html#quick-start"><span class="std std-ref">Quickstart</span></a>).</p></li>
 </ol>
-</div>
-<div class="section" id="support">
-<h2>Support<a class="headerlink" href="#support" title="Permalink to this headline"></a></h2>
+</section>
+<section id="support">
+<h2>Support<a class="headerlink" href="#support" title="Permalink to this heading"></a></h2>
 <p>Please, use the <a class="reference external" href="https://groups.google.com/forum/#!forum/colmap">Google Group</a>
 (<a class="reference external" href="mailto:colmap&#37;&#52;&#48;googlegroups&#46;com">colmap<span>&#64;</span>googlegroups<span>&#46;</span>com</a>) for questions and the <a class="reference external" href="https://github.com/colmap/colmap">GitHub issue tracker</a> for bug reports, feature
 requests/additions, etc.</p>
-</div>
-<div class="section" id="acknowledgments">
-<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permalink to this headline"></a></h2>
+</section>
+<section id="acknowledgments">
+<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permalink to this heading"></a></h2>
 <p>The library was written by <a class="reference external" href="https://demuc.de/">Johannes L. Schönberger</a>.
 Funding was provided by his PhD advisors <a class="reference external" href="http://frahm.web.unc.edu/">Jan-Michael Frahm</a> and <a class="reference external" href="https://people.inf.ethz.ch/pomarc/">Marc Pollefeys</a>.</p>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

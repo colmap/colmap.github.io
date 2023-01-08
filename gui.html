@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Graphical User Interface &mdash; COLMAP 3.8 documentation</title>
+  <title>Graphical User Interface &mdash; COLMAP 3.8-dev documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -13,7 +14,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,7 +32,7 @@
             <a href="index.html" class="icon icon-home"> COLMAP
           </a>
               <div class="version">
-                3.8
+                3.8-dev
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -74,8 +77,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Graphical User Interface</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Graphical User Interface</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/gui.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -85,8 +88,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="graphical-user-interface">
-<span id="gui"></span><h1>Graphical User Interface<a class="headerlink" href="#graphical-user-interface" title="Permalink to this headline"></a></h1>
+  <section id="graphical-user-interface">
+<span id="gui"></span><h1>Graphical User Interface<a class="headerlink" href="#graphical-user-interface" title="Permalink to this heading"></a></h1>
 <p>The graphical user interface of COLMAP provides access to most of the available
 functionality and visualizes the reconstruction process in “real-time”. To start
 the GUI, you can run the pre-built packages (Windows: <cite>COLMAP.bat</cite>, Mac:
@@ -96,8 +99,8 @@ requires an attached display with at least OpenGL 3.2 support. Registered images
 are visualized in red and reconstructed points in their average point color
 extracted from the images. The viewer can also visualize dense point clouds
 produced from Multi-View Stereo.</p>
-<div class="section" id="model-viewer-controls">
-<h2>Model Viewer Controls<a class="headerlink" href="#model-viewer-controls" title="Permalink to this headline"></a></h2>
+<section id="model-viewer-controls">
+<h2>Model Viewer Controls<a class="headerlink" href="#model-viewer-controls" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><strong>Rotate model</strong>: Left-click and drag.</p></li>
 <li><p><strong>Shift model</strong>: Right-click or &lt;CTRL&gt;-click (&lt;CMD&gt;-click) and drag.</p></li>
@@ -113,19 +116,19 @@ The purple lines visualize images that see at least one common point with the
 selected image. The opening window shows a few statistics of the image.</p></li>
 <li><p><strong>Reset view</strong>: To reset all viewing settings, choose <code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">&gt;</span> <span class="pre">Reset</span> <span class="pre">view</span></code>.</p></li>
 </ul>
-</div>
-<div class="section" id="render-options">
-<h2>Render Options<a class="headerlink" href="#render-options" title="Permalink to this headline"></a></h2>
+</section>
+<section id="render-options">
+<h2>Render Options<a class="headerlink" href="#render-options" title="Permalink to this heading"></a></h2>
 <p>The model viewer allows you to render the model with different settings,
 projections, colormaps, etc. Please, choose <code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">&gt;</span> <span class="pre">Render</span> <span class="pre">options</span></code>.</p>
-</div>
-<div class="section" id="create-screenshots">
-<h2>Create Screenshots<a class="headerlink" href="#create-screenshots" title="Permalink to this headline"></a></h2>
+</section>
+<section id="create-screenshots">
+<h2>Create Screenshots<a class="headerlink" href="#create-screenshots" title="Permalink to this heading"></a></h2>
 <p>To create screenshots of the current viewpoint (without coordinate axes), choose
 <code class="docutils literal notranslate"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Grab</span> <span class="pre">image</span></code> and save the image in the format of your choice.</p>
-</div>
-<div class="section" id="create-screencast">
-<h2>Create Screencast<a class="headerlink" href="#create-screencast" title="Permalink to this headline"></a></h2>
+</section>
+<section id="create-screencast">
+<h2>Create Screencast<a class="headerlink" href="#create-screencast" title="Permalink to this heading"></a></h2>
 <p>To create a video screen capture of the reconstructed model, choose <code class="docutils literal notranslate"><span class="pre">Extras</span> <span class="pre">&gt;</span>
 <span class="pre">Grab</span> <span class="pre">movie</span></code>. This dialog allows you to set individual control viewpoints by
 choosing <code class="docutils literal notranslate"><span class="pre">Add</span></code>. COLMAP generates a fixed number of frames per second between
@@ -142,8 +145,8 @@ movie using <a class="reference external" href="https://www.ffmpeg.org/">FFMPEG<
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ffmpeg</span> <span class="o">-</span><span class="n">i</span> <span class="n">frame</span><span class="o">%</span><span class="mi">06</span><span class="n">d</span><span class="o">.</span><span class="n">png</span> <span class="o">-</span><span class="n">r</span> <span class="mi">30</span> <span class="o">-</span><span class="n">vf</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1680</span><span class="p">:</span><span class="mi">1050</span> <span class="n">movie</span><span class="o">.</span><span class="n">mp4</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

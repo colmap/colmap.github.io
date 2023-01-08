@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; COLMAP 3.8 documentation</title>
+  <title>Installation &mdash; COLMAP 3.8-dev documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -13,7 +14,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,7 +32,7 @@
             <a href="index.html" class="icon icon-home"> COLMAP
           </a>
               <div class="version">
-                3.8
+                3.8-dev
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -86,8 +89,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Installation</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Installation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/install.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -97,8 +100,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="installation">
-<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+  <section id="installation">
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
 <p>You can either download one of the pre-built binaries or build the source code
 manually. Executables for Windows and Mac and other resources can be downloaded
 from <a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>. Executables for Linux/Unix/BSD are available at
@@ -109,10 +112,10 @@ which requires manual compilation but is relatively easy on these platforms.</p>
 graphical user interface. Alternatively, COLMAP is also built as a reusable
 library, i.e., you can include and link COLMAP against your own source code,
 as described further below.</p>
-<div class="section" id="pre-built-binaries">
-<h2>Pre-built Binaries<a class="headerlink" href="#pre-built-binaries" title="Permalink to this headline"></a></h2>
-<div class="section" id="windows">
-<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline"></a></h3>
+<section id="pre-built-binaries">
+<h2>Pre-built Binaries<a class="headerlink" href="#pre-built-binaries" title="Permalink to this heading"></a></h2>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h3>
 <p>For convenience, the pre-built binaries for Windows contain both the graphical
 and command-line interface executables. To start the COLMAP GUI, you can simply
 double-click  the <code class="docutils literal notranslate"><span class="pre">COLMAP.bat</span></code> batch script or alternatively run it from the
@@ -120,9 +123,9 @@ Windows command shell or Powershell. The command-line interface is also
 accessible through this batch script, which automatically sets the necessary
 library paths. To list the available COLMAP commands, run <code class="docutils literal notranslate"><span class="pre">COLMAP.bat</span> <span class="pre">-h</span></code> in
 the command shell <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> or in Powershell.</p>
-</div>
-<div class="section" id="mac">
-<h3>Mac<a class="headerlink" href="#mac" title="Permalink to this headline"></a></h3>
+</section>
+<section id="mac">
+<h3>Mac<a class="headerlink" href="#mac" title="Permalink to this heading"></a></h3>
 <p>The pre-built application package for Mac contains both the GUI and command-line
 version of COLMAP. To open the GUI, simply open the application and note that
 COLMAP is shipped as an unsigned application, i.e., when your first open the
@@ -131,10 +134,10 @@ accept to trust the application. In the future, you can then simply double-click
 the application to open COLMAP. The command-line interface is accessible by
 running the packaged binary <code class="docutils literal notranslate"><span class="pre">COLMAP.app/Contents/MacOS/colmap</span></code>. To list the
 available COLMAP commands, run <code class="docutils literal notranslate"><span class="pre">COLMAP.app/Contents/MacOS/colmap</span> <span class="pre">-h</span></code>.</p>
-</div>
-</div>
-<div class="section" id="build-from-source">
-<h2>Build from Source<a class="headerlink" href="#build-from-source" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+<section id="build-from-source">
+<h2>Build from Source<a class="headerlink" href="#build-from-source" title="Permalink to this heading"></a></h2>
 <p>COLMAP builds on all major platforms (Linux, Mac, Windows) with little effort.
 First, checkout the latest source code:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">colmap</span>
@@ -147,8 +150,8 @@ instructions below, which use the system package managers to install the
 required dependencies. Alternatively, there is a Python build script that builds
 COLMAP and its dependencies locally. This script is useful under Windows and on
 a (cluster) system if you do not have root access under Linux or Mac.</p>
-<div class="section" id="linux">
-<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline"></a></h3>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this heading"></a></h3>
 <p><em>Recommended dependencies:</em> CUDA (at least version 7.X)</p>
 <p>Dependencies from the default Ubuntu repositories:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> \
@@ -169,24 +172,8 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
     <span class="n">libglew</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">qtbase5</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libqt5opengl5</span><span class="o">-</span><span class="n">dev</span> \
-    <span class="n">libcgal</span><span class="o">-</span><span class="n">dev</span>
-</pre></div>
-</div>
-<p>Under Ubuntu 16.04/18.04 the CMake configuration scripts of CGAL are broken and
-you must also install the CGAL Qt5 package:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libcgal</span><span class="o">-</span><span class="n">qt5</span><span class="o">-</span><span class="n">dev</span>
-</pre></div>
-</div>
-<p>Install <a class="reference external" href="http://ceres-solver.org/">Ceres Solver</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo apt-get install libatlas-base-dev libsuitesparse-dev
-git clone https://ceres-solver.googlesource.com/ceres-solver
-cd ceres-solver
-git checkout $(git describe --tags) # Checkout the latest release
-mkdir build
-cd build
-cmake .. -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF
-make -j
-sudo make install
+    <span class="n">libcgal</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libceres</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
 <p>Configure and compile COLMAP:</p>
@@ -205,10 +192,30 @@ sudo make install
 <span class="n">colmap</span> <span class="n">gui</span>
 </pre></div>
 </div>
+<p>To compile with <strong>CUDA support</strong>, also install Ubuntu’s default CUDA package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> \
+    <span class="n">nvidia</span><span class="o">-</span><span class="n">cuda</span><span class="o">-</span><span class="n">toolkit</span> \
+    <span class="n">nvidia</span><span class="o">-</span><span class="n">cuda</span><span class="o">-</span><span class="n">toolkit</span><span class="o">-</span><span class="n">gcc</span>
+</pre></div>
 </div>
-<div class="section" id="id2">
-<h3>Mac<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
-<p><em>Recommended dependencies:</em> CUDA (at least version 7.X)</p>
+<p>Or, manually install latest CUDA from NVIDIA’s homepage.</p>
+<p>Under <strong>Ubuntu 16.04/18.04</strong>, the CMake configuration scripts of CGAL are broken and
+you must also install the CGAL Qt5 package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libcgal</span><span class="o">-</span><span class="n">qt5</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>Under <strong>Ubuntu 22.04</strong>, there is a problem when compiling with Ubuntu’s default CUDA
+package and GCC, and you must compile against GCC 10:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gcc</span><span class="o">-</span><span class="mi">10</span> <span class="n">g</span><span class="o">++-</span><span class="mi">10</span>
+<span class="n">export</span> <span class="n">CC</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="mi">10</span>
+<span class="n">export</span> <span class="n">CXX</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++-</span><span class="mi">10</span>
+<span class="n">export</span> <span class="n">CUDAHOSTCXX</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++-</span><span class="mi">10</span>
+<span class="c1"># ... and then run CMake against COLMAP&#39;s sources.</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Mac<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
 <p>Dependencies from <a class="reference external" href="http://brew.sh/">Homebrew</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> \
     <span class="n">git</span> \
@@ -232,26 +239,26 @@ sudo make install
 <span class="n">git</span> <span class="n">checkout</span> <span class="n">dev</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">DQt5_DIR</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">qt</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="n">Qt5</span>
+<span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">DQt5_DIR</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">qt</span><span class="o">@</span><span class="mi">5</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="n">Qt5</span>
 <span class="n">make</span>
 <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>If you have Qt 6 installed on your system as well, you might have to temporarily
 link your Qt 5 installation while configuring CMake:</p>
-<blockquote>
-<div><p>brew link qt5
-… cmake configuration
-brew unlink qt5</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">link</span> <span class="n">qt5</span>
+<span class="n">cmake</span> <span class="n">configuration</span> <span class="p">(</span><span class="kn">from</span> <span class="nn">previous</span> <span class="n">code</span> <span class="n">block</span><span class="p">)</span>
+<span class="n">brew</span> <span class="n">unlink</span> <span class="n">qt5</span>
+</pre></div>
+</div>
 <p>Run COLMAP:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="o">-</span><span class="n">h</span>
 <span class="n">colmap</span> <span class="n">gui</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id3">
-<h3>Windows<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id3">
+<h3>Windows<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <p><em>Recommended dependencies:</em> CUDA (at least version 7.X), Visual Studio 2019</p>
 <p>On Windows, the recommended way is to build COLMAP using vcpkg:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">microsoft</span><span class="o">/</span><span class="n">vcpkg</span>
@@ -265,9 +272,11 @@ brew unlink qt5</p>
 </pre></div>
 </div>
 <p>Please refer to the next section for more details.</p>
-</div>
-<div class="section" id="vcpkg">
-<h3>VCPKG<a class="headerlink" href="#vcpkg" title="Permalink to this headline"></a></h3>
+<p><strong>Visual Studio 2022</strong>  has some known compiler bugs that crash when
+compiling COLMAP’s source code.</p>
+</section>
+<section id="vcpkg">
+<h3>VCPKG<a class="headerlink" href="#vcpkg" title="Permalink to this heading"></a></h3>
 <p>COLMAP ships as part of the vcpkg distribution. This enables to conveniently
 build COLMAP and all of its dependencies from scratch under different platforms.
 Note that VCPKG requires you to install CUDA manually in the standard way on
@@ -300,9 +309,9 @@ vcpkg, first run <cite>./vcpkg integrate install</cite> and then configure COLMA
 </div>
 <p>Alternatively, you can also use the Python build script. Please follow the
 instructions in the next section, but VCPKG is now the recommended approach.</p>
-</div>
-<div class="section" id="build-script">
-<h3>Build Script<a class="headerlink" href="#build-script" title="Permalink to this headline"></a></h3>
+</section>
+<section id="build-script">
+<h3>Build Script<a class="headerlink" href="#build-script" title="Permalink to this heading"></a></h3>
 <p>Alternative to the above solutions, COLMAP also ships with an automated Python
 build script. Note that VCPKG is the preferred way to achieve the same now.
 The build script installs COLMAP and its dependencies locally
@@ -336,10 +345,10 @@ If you use Homebrew under Mac, you can use the following command:</p>
 </pre></div>
 </div>
 <p>To see the full list of command-line options, pass the <code class="docutils literal notranslate"><span class="pre">--help</span></code> argument.</p>
-</div>
-</div>
-<div class="section" id="library">
-<span id="installation-library"></span><h2>Library<a class="headerlink" href="#library" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+<section id="library">
+<span id="installation-library"></span><h2>Library<a class="headerlink" href="#library" title="Permalink to this heading"></a></h2>
 <p>If you want to include and link COLMAP against your own library, the easiest
 way is to use CMake as a build configuration tool. COLMAP automatically installs
 all headers to <code class="docutils literal notranslate"><span class="pre">${CMAKE_INSTALL_PREFIX}/include/colmap</span></code>, all libraries to
@@ -387,9 +396,9 @@ target_link_libraries(hello_world ${COLMAP_LIBRARIES})
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="addresssanitizer">
-<h2>AddressSanitizer<a class="headerlink" href="#addresssanitizer" title="Permalink to this headline"></a></h2>
+</section>
+<section id="addresssanitizer">
+<h2>AddressSanitizer<a class="headerlink" href="#addresssanitizer" title="Permalink to this heading"></a></h2>
 <p>If you want to build COLMAP with address sanitizer flags enabled, you need to
 use a recent compiler with ASan support. For example, you can manually install
 a recent clang version on your Ubuntu machine and invoke CMake as follows:</p>
@@ -401,9 +410,9 @@ a recent clang version on your Ubuntu machine and invoke CMake as follows:</p>
 </div>
 <p>Note that it is generally useful to combine ASan with debug symbols to get
 meaningful traces for reported issues.</p>
-</div>
-<div class="section" id="documentation">
-<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline"></a></h2>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading"></a></h2>
 <p>You need Python and Sphinx to build the HTML documentation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">doc</span>
 <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span>
@@ -417,8 +426,8 @@ meaningful traces for reported issues.</p>
 <span class="nb">open</span> <span class="n">_build</span><span class="o">/</span><span class="n">pdf</span><span class="o">/</span><span class="n">COLMAP</span><span class="o">.</span><span class="n">pdf</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
