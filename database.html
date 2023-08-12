@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Database Format &mdash; COLMAP 3.8-dev documentation</title>
+  <title>Database Format &mdash; COLMAP 3.9-dev documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -27,14 +28,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> COLMAP
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            COLMAP
           </a>
               <div class="version">
-                3.8-dev
+                3.9-dev
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -74,7 +79,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Database Format</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/database.rst.txt" rel="nofollow"> View page source</a>
@@ -86,10 +91,10 @@
            <div itemprop="articleBody">
              
   <section id="database-format">
-<span id="id1"></span><h1>Database Format<a class="headerlink" href="#database-format" title="Permalink to this headline"></a></h1>
+<span id="id1"></span><h1>Database Format<a class="headerlink" href="#database-format" title="Permalink to this heading"></a></h1>
 <p>COLMAP stores all extracted information in a single SQLite database file. The
 database can be accessed with the database management toolkit in the COLMAP GUI,
-the provided C++ database API (see <code class="docutils literal notranslate"><span class="pre">src/base/database.h</span></code>), or with a scripting
+the provided C++ database API (see <code class="docutils literal notranslate"><span class="pre">src/colmap/scene/database.h</span></code>), or with a scripting
 language of your choice (see <code class="docutils literal notranslate"><span class="pre">scripts/python/database.py</span></code>).</p>
 <p>The database contains the following tables:</p>
 <ul class="simple">
@@ -101,15 +106,15 @@ language of your choice (see <code class="docutils literal notranslate"><span cl
 <li><p>two_view_geometries</p></li>
 </ul>
 <p>To initialize an empty SQLite database file with the required schema, you can
-either create a new project in the GUI or execute <cite>src/exe/database_create.cc</cite>.</p>
+either create a new project in the GUI or execute <cite>src/colmap/exe/database_create.cc</cite>.</p>
 <section id="cameras-and-images">
-<h2>Cameras and Images<a class="headerlink" href="#cameras-and-images" title="Permalink to this headline"></a></h2>
+<h2>Cameras and Images<a class="headerlink" href="#cameras-and-images" title="Permalink to this heading"></a></h2>
 <p>The relation between cameras and images is 1-to-N. This has important
 implications for Structure-from-Motion, since one camera shares the same
 intrinsic parameters (focal length, principal point, distortion, etc.), while
 every image has separate extrinsic parameters (orientation and location).</p>
 <p>The intrinsic parameters of cameras are stored as contiguous binary blobs in
-<cite>float64</cite>, ordered as specified in <code class="docutils literal notranslate"><span class="pre">src/base/camera_models.h</span></code>. COLMAP only
+<cite>float64</cite>, ordered as specified in <code class="docutils literal notranslate"><span class="pre">src/colmap/camera/models.h</span></code>. COLMAP only
 uses cameras that are referenced by images, all other cameras are ignored.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> column in the images table is the unique relative path in the image
 folder. As such, the database file and image folder can be moved to different
@@ -119,7 +124,7 @@ that all identifiers are positive and non-zero, i.e. <code class="docutils liter
 and <code class="docutils literal notranslate"><span class="pre">camera_id</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p>
 </section>
 <section id="keypoints-and-descriptors">
-<h2>Keypoints and Descriptors<a class="headerlink" href="#keypoints-and-descriptors" title="Permalink to this headline"></a></h2>
+<h2>Keypoints and Descriptors<a class="headerlink" href="#keypoints-and-descriptors" title="Permalink to this heading"></a></h2>
 <p>The detected keypoints are stored as row-major <cite>float32</cite> binary blobs, where the
 first two columns are the X and Y locations in the image, respectively. COLMAP
 uses the convention that the upper left image corner has coordinate <cite>(0, 0)</cite> and
@@ -142,7 +147,7 @@ only X and Y must be provided and the other keypoint columns can be set to zero.
 The rest of the reconstruction pipeline only uses the keypoint locations.</p>
 </section>
 <section id="matches">
-<h2>Matches<a class="headerlink" href="#matches" title="Permalink to this headline"></a></h2>
+<h2>Matches<a class="headerlink" href="#matches" title="Permalink to this heading"></a></h2>
 <p>Feature matching stores its output in the <cite>matches</cite> table and geometric
 verification in the <cite>two_view_geometries</cite> table. COLMAP only uses the data in
 <cite>two_view_geometries</cite> for reconstruction. Every entry in the two tables stores
