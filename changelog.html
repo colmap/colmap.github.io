@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; COLMAP 3.9-dev documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-
-  
+  <title>Changelog &mdash; COLMAP 3.11-dev documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=f9dd27f5"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -37,7 +35,7 @@
             COLMAP
           </a>
               <div class="version">
-                3.9-dev
+                3.11-dev
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -58,6 +56,9 @@
 <li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#colmap-3-10-07-23-2024">COLMAP 3.10 (07/23/2024)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#colmap-3-9-1-01-08-2024">COLMAP 3.9.1 (01/08/2024)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#colmap-3-9-01-06-2024">COLMAP 3.9 (01/06/2024)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#colmap-3-8-01-31-2023">COLMAP 3.8 (01/31/2023)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#colmap-3-7-01-26-2022">COLMAP 3.7 (01/26/2022)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#colmap-3-6-07-24-2020">COLMAP 3.6 (07/24/2020)</a></li>
@@ -103,9 +104,281 @@
            <div itemprop="articleBody">
              
   <section id="changelog">
-<span id="id1"></span><h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading"></a></h1>
+<span id="id1"></span><h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading"></a></h1>
+<section id="colmap-3-10-07-23-2024">
+<h2>COLMAP 3.10 (07/23/2024)<a class="headerlink" href="#colmap-3-10-07-23-2024" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Add missing “include &lt;memory&gt;” needed for unique_ptr by &#64;Tobias-Fischer in <a class="reference external" href="https://github.com/colmap/colmap/pull/2338">https://github.com/colmap/colmap/pull/2338</a></p></li>
+<li><p>Support decoding multi-byte characters in Python script by &#64;jot-jt in <a class="reference external" href="https://github.com/colmap/colmap/pull/2344">https://github.com/colmap/colmap/pull/2344</a></p></li>
+<li><p>Split Dockerfile in two stages: builder and runtime. by &#64;pablospe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2347">https://github.com/colmap/colmap/pull/2347</a></p></li>
+<li><p>Dockerfile improvements by &#64;pablospe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2356">https://github.com/colmap/colmap/pull/2356</a></p></li>
+<li><p>Update VCPKG commit in Windows CI by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2365">https://github.com/colmap/colmap/pull/2365</a></p></li>
+<li><p>Simplify the creation of reprojection error cost functions by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2364">https://github.com/colmap/colmap/pull/2364</a></p></li>
+<li><p>Migrate pycolmap by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2367">https://github.com/colmap/colmap/pull/2367</a></p></li>
+<li><p>Rename master -&gt; main in pycolmap CI by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2370">https://github.com/colmap/colmap/pull/2370</a></p></li>
+<li><p>Bind SetPRNGSeed by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2369">https://github.com/colmap/colmap/pull/2369</a></p></li>
+<li><p>Encapsulate freeimage usage from pycolmap in colmap bitmap by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2372">https://github.com/colmap/colmap/pull/2372</a></p></li>
+<li><p>Re-generate version info on git changes by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2373">https://github.com/colmap/colmap/pull/2373</a></p></li>
+<li><p>Consolidate colmap/pycolmap readmes, updated acknowledgements, etc. by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2374">https://github.com/colmap/colmap/pull/2374</a></p></li>
+<li><p>Fix crashing pycolmap CI on Windows by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2383">https://github.com/colmap/colmap/pull/2383</a></p></li>
+<li><p>Add costs for pose graph optimization by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2378">https://github.com/colmap/colmap/pull/2378</a></p></li>
+<li><p>Switch to exception checks - v2 by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2376">https://github.com/colmap/colmap/pull/2376</a></p></li>
+<li><p>Cleanup checks in pycolmap by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2388">https://github.com/colmap/colmap/pull/2388</a></p></li>
+<li><p>Add RigReprojErrorConstantRigCostFunction by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2377">https://github.com/colmap/colmap/pull/2377</a></p></li>
+<li><p>Add cost functions to pycolmap by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2393">https://github.com/colmap/colmap/pull/2393</a></p></li>
+<li><p>Fix warning C4722 by &#64;whuaegeanse in <a class="reference external" href="https://github.com/colmap/colmap/pull/2391">https://github.com/colmap/colmap/pull/2391</a></p></li>
+<li><p>Move reconstruction IO utils to a new file by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2399">https://github.com/colmap/colmap/pull/2399</a></p></li>
+<li><p>Acquire the GIL before returning None by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2400">https://github.com/colmap/colmap/pull/2400</a></p></li>
+<li><p>Disentangle the controller from threading and integrate the new logic into IncrementalMapperController by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2392">https://github.com/colmap/colmap/pull/2392</a></p></li>
+<li><p>Simplify the low-level triangulation API by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2402">https://github.com/colmap/colmap/pull/2402</a></p></li>
+<li><p>Initialize glog in pycolmap only if not already done by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2405">https://github.com/colmap/colmap/pull/2405</a></p></li>
+<li><p>Adapt all the controllers to inherit from BaseController rather than Thread (except for feature extraction and matching) by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2406">https://github.com/colmap/colmap/pull/2406</a></p></li>
+<li><p>Update path to models.h in database docs by &#64;diffner in <a class="reference external" href="https://github.com/colmap/colmap/pull/2412">https://github.com/colmap/colmap/pull/2412</a></p></li>
+<li><p>Migrate Ubuntu CI pipelines from ADO to Github by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2411">https://github.com/colmap/colmap/pull/2411</a></p></li>
+<li><p>Build wheels for Python 3.12 by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2416">https://github.com/colmap/colmap/pull/2416</a></p></li>
+<li><p>Migrate MacOS CI pipeline from ADO to Github by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2418">https://github.com/colmap/colmap/pull/2418</a></p></li>
+<li><p>Improve bindings of Database by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2413">https://github.com/colmap/colmap/pull/2413</a></p></li>
+<li><p>Migrate Windows CI pipeline from ADO to Github by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2419">https://github.com/colmap/colmap/pull/2419</a></p></li>
+<li><p>Reduce logging during incremental mapping by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2420">https://github.com/colmap/colmap/pull/2420</a></p></li>
+<li><p>Migrate Docker CI from ADO to Github, remove ADO pipelines by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2422">https://github.com/colmap/colmap/pull/2422</a></p></li>
+<li><p>Simplify IncrementalMapperController by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2421">https://github.com/colmap/colmap/pull/2421</a></p></li>
+<li><p>Fix for glog 0.7.0 by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2428">https://github.com/colmap/colmap/pull/2428</a></p></li>
+<li><p>Fix typo by &#64;whuaegeanse in <a class="reference external" href="https://github.com/colmap/colmap/pull/2430">https://github.com/colmap/colmap/pull/2430</a></p></li>
+<li><p>Fix RunMapper by &#64;whuaegeanse in <a class="reference external" href="https://github.com/colmap/colmap/pull/2431">https://github.com/colmap/colmap/pull/2431</a></p></li>
+<li><p>Do triangulation in the IncrementalMapperController by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2429">https://github.com/colmap/colmap/pull/2429</a></p></li>
+<li><p>Only push a new Docker image on release by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2436">https://github.com/colmap/colmap/pull/2436</a></p></li>
+<li><p>model aligner with type “custom” does not update reconstruction by &#64;lpanaf in <a class="reference external" href="https://github.com/colmap/colmap/pull/2433">https://github.com/colmap/colmap/pull/2433</a></p></li>
+<li><p>Define vcpkg manifest by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2426">https://github.com/colmap/colmap/pull/2426</a></p></li>
+<li><p>Fix ordering of keyword arguments in pycolmap.rig_absolute_pose_estimation by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2440">https://github.com/colmap/colmap/pull/2440</a></p></li>
+<li><p>Reduce the build time of pycolmap by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2443">https://github.com/colmap/colmap/pull/2443</a></p></li>
+<li><p>Improve bindings of CorrespondenceGraph by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2476">https://github.com/colmap/colmap/pull/2476</a></p></li>
+<li><p>Bind Reconstruction::{SetUp,ImagePairStats} by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2477">https://github.com/colmap/colmap/pull/2477</a></p></li>
+<li><p>Add bindings for substeps of incremental mapper with a python example by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2478">https://github.com/colmap/colmap/pull/2478</a></p></li>
+<li><p>Debug crashing VCPKG-based CI builds by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2508">https://github.com/colmap/colmap/pull/2508</a></p></li>
+<li><p>Upgrade to pybind11 v2.12. Fix bind_map and reconstruction.points3D by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2502">https://github.com/colmap/colmap/pull/2502</a></p></li>
+<li><p>Minor fix on logging for the pycolmap customized runner by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2503">https://github.com/colmap/colmap/pull/2503</a></p></li>
+<li><p>Fix missing public link deps, break circular feature-scene dependency by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2497">https://github.com/colmap/colmap/pull/2497</a></p></li>
+<li><p>Avoid duplicate image allocation during undistortion by &#64;fseegraeber in <a class="reference external" href="https://github.com/colmap/colmap/pull/2520">https://github.com/colmap/colmap/pull/2520</a></p></li>
+<li><p>Fix reconstruction.points3D by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2523">https://github.com/colmap/colmap/pull/2523</a></p></li>
+<li><p>Fix ‘std::out_of_range’ error when using hierarchical_mapper by &#64;GrayMask in https://github.com/colmap/colmap/pull/2526</p></li>
+<li><p>Fix binding for std::vector&lt;Point2D&gt; by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2533">https://github.com/colmap/colmap/pull/2533</a></p></li>
+<li><p>Include pybind eigen header by &#64;tmnku in <a class="reference external" href="https://github.com/colmap/colmap/pull/2510">https://github.com/colmap/colmap/pull/2510</a></p></li>
+<li><p>Fix pycolmap python pipeline for multiple models by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2531">https://github.com/colmap/colmap/pull/2531</a></p></li>
+<li><p>make two view geometry writable by &#64;tmnku in <a class="reference external" href="https://github.com/colmap/colmap/pull/2540">https://github.com/colmap/colmap/pull/2540</a></p></li>
+<li><p>Customized python interface for bundle adjustment by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2509">https://github.com/colmap/colmap/pull/2509</a></p></li>
+<li><p>Fix typos by &#64;MaximSmolskiy in <a class="reference external" href="https://github.com/colmap/colmap/pull/2553">https://github.com/colmap/colmap/pull/2553</a></p></li>
+<li><p>Implicitly convert iterator to ListPoint2D by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2558">https://github.com/colmap/colmap/pull/2558</a></p></li>
+<li><p>Fix model_cropper not resetting image.num_points3D of cropped_rec by &#64;ArneSchulzTUBS in <a class="reference external" href="https://github.com/colmap/colmap/pull/2557">https://github.com/colmap/colmap/pull/2557</a></p></li>
+<li><p>Split pair generation and matching by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2573">https://github.com/colmap/colmap/pull/2573</a></p></li>
+<li><p>Add ObservationManager by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2575">https://github.com/colmap/colmap/pull/2575</a></p></li>
+<li><p>Log info about created feature extractor/matcher types by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2579">https://github.com/colmap/colmap/pull/2579</a></p></li>
+<li><p>LSD: making the AGPL dependency optional by &#64;zap150 in <a class="reference external" href="https://github.com/colmap/colmap/pull/2578">https://github.com/colmap/colmap/pull/2578</a></p></li>
+<li><p>Disable LSD when building pycolmap wheels by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2580">https://github.com/colmap/colmap/pull/2580</a></p></li>
+<li><p>Synthesize full two-view geometry and raw matches by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2595">https://github.com/colmap/colmap/pull/2595</a></p></li>
+<li><p>Support Adjoint matrix computation for Rigid3d by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2598">https://github.com/colmap/colmap/pull/2598</a></p></li>
+<li><p>Fix cost functions for pose graph optimization by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2601">https://github.com/colmap/colmap/pull/2601</a></p></li>
+<li><p>Fix python bundle adjustment example with pyceres by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2606">https://github.com/colmap/colmap/pull/2606</a></p></li>
+<li><p>Faster homography estimator by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2603">https://github.com/colmap/colmap/pull/2603</a></p></li>
+<li><p>Add function to find real cubic polynomial roots by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2609">https://github.com/colmap/colmap/pull/2609</a></p></li>
+<li><p>Align with the convention of ceres doc on SqrtInformation. by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2611">https://github.com/colmap/colmap/pull/2611</a></p></li>
+<li><p>Faster 7-point fundamental matrix estimator by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2612">https://github.com/colmap/colmap/pull/2612</a></p></li>
+<li><p>Faster 8-point fundamental matrix estimator by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2613">https://github.com/colmap/colmap/pull/2613</a></p></li>
+<li><p>Covariance estimation for bundle adjustment with Schur elimination by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2610">https://github.com/colmap/colmap/pull/2610</a></p></li>
+<li><p>Mac OS improvements by &#64;BSVogler in <a class="reference external" href="https://github.com/colmap/colmap/pull/2622">https://github.com/colmap/colmap/pull/2622</a></p></li>
+<li><p>Update cibuildwheel to 2.19.2 by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2632">https://github.com/colmap/colmap/pull/2632</a></p></li>
+<li><p>Faster essential matrix estimators by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2618">https://github.com/colmap/colmap/pull/2618</a></p></li>
+<li><p>Remove CamFromWorldPrior and create LocationPrior by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2620">https://github.com/colmap/colmap/pull/2620</a></p></li>
+<li><p>Add option to disable uninstall target, restore CI pipeline by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2634">https://github.com/colmap/colmap/pull/2634</a></p></li>
+<li><p>Faster covariance computation for small blocks by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2633">https://github.com/colmap/colmap/pull/2633</a></p></li>
+<li><p>Fix optimal point algorithm by &#64;morrishelle in <a class="reference external" href="https://github.com/colmap/colmap/pull/2640">https://github.com/colmap/colmap/pull/2640</a></p></li>
+<li><p>Add shell script helper for profiling by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2635">https://github.com/colmap/colmap/pull/2635</a></p></li>
+<li><p>Declare PosePrior::IsValid as const by &#64;ahojnnes in https://github.com/colmap/colmap/pull/2653</p></li>
+<li><p>Add CI build for Windows CUDA by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2651">https://github.com/colmap/colmap/pull/2651</a></p></li>
+<li><p>Publish windows binaries from CI by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2663">https://github.com/colmap/colmap/pull/2663</a></p></li>
+</ul>
+</section>
+<section id="colmap-3-9-1-01-08-2024">
+<h2>COLMAP 3.9.1 (01/08/2024)<a class="headerlink" href="#colmap-3-9-1-01-08-2024" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Version 3.9 changelog by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2325">https://github.com/colmap/colmap/pull/2325</a></p></li>
+<li><p>Fully encapsulate freeimage in bitmap library (#2332) by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2334">https://github.com/colmap/colmap/pull/2334</a></p></li>
+</ul>
+</section>
+<section id="colmap-3-9-01-06-2024">
+<h2>COLMAP 3.9 (01/06/2024)<a class="headerlink" href="#colmap-3-9-01-06-2024" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>clang format all code and require clang-format-14 by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1785">https://github.com/colmap/colmap/pull/1785</a></p></li>
+<li><p>Fix compilation for vcpkg windows build by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1791">https://github.com/colmap/colmap/pull/1791</a></p></li>
+<li><p>Increment version number to 3.9 by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1794">https://github.com/colmap/colmap/pull/1794</a></p></li>
+<li><p>Remove unnecessary /arch:sse2 flag for MSVC by &#64;ahojnnes in https://github.com/colmap/colmap/pull/1798</p></li>
+<li><p>Updated faq.rst by &#64;CGCooke in <a class="reference external" href="https://github.com/colmap/colmap/pull/1801">https://github.com/colmap/colmap/pull/1801</a></p></li>
+<li><p>Fixed mistake in code comment for OpenCV Fisheye camera by &#64;CGCooke in <a class="reference external" href="https://github.com/colmap/colmap/pull/1802">https://github.com/colmap/colmap/pull/1802</a></p></li>
+<li><p>Replace deprecated cudaThreadSynchronize with cudaDeviceSynchronize by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1806">https://github.com/colmap/colmap/pull/1806</a></p></li>
+<li><p>Replace deprecated Cuda texture references with texture objects by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1809">https://github.com/colmap/colmap/pull/1809</a></p></li>
+<li><p>Remove unused SIFT GPU cuda texture reference by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1823">https://github.com/colmap/colmap/pull/1823</a></p></li>
+<li><p>Upgrade SiftGPU to use CUDA texture objects by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1838">https://github.com/colmap/colmap/pull/1838</a></p></li>
+<li><p>Remove PBA as bundle adjustment backend to support CUDA 12+ by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1840">https://github.com/colmap/colmap/pull/1840</a></p></li>
+<li><p>Replace deprecated CUDA sature function call by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1841">https://github.com/colmap/colmap/pull/1841</a></p></li>
+<li><p>Avoid unnecessary mallocs during sampling by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1842">https://github.com/colmap/colmap/pull/1842</a></p></li>
+<li><p>Cleaned up docker readme and scripts by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1852">https://github.com/colmap/colmap/pull/1852</a></p></li>
+<li><p>add “Shared intrinsics per sub-folder” checkbox to automatic reconstruction window by &#64;kenshi84 in <a class="reference external" href="https://github.com/colmap/colmap/pull/1853">https://github.com/colmap/colmap/pull/1853</a></p></li>
+<li><p>Update vcpkg by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1925">https://github.com/colmap/colmap/pull/1925</a></p></li>
+<li><p>Log the name of the file that causes Mat::Read() to checkfail by &#64;SomeAlphabetGuy in <a class="reference external" href="https://github.com/colmap/colmap/pull/1923">https://github.com/colmap/colmap/pull/1923</a></p></li>
+<li><p>check Z_index correctly in ReadPly by &#64;countywest in <a class="reference external" href="https://github.com/colmap/colmap/pull/1896">https://github.com/colmap/colmap/pull/1896</a></p></li>
+<li><p>Don’t re-open files when reading and writing matrices by &#64;SomeAlphabetGuy in <a class="reference external" href="https://github.com/colmap/colmap/pull/1926">https://github.com/colmap/colmap/pull/1926</a></p></li>
+<li><p>Update vcpkg to latest commit by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1948">https://github.com/colmap/colmap/pull/1948</a></p></li>
+<li><p>Remove unnecessary custom Eigen aligned allocator macros by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1947">https://github.com/colmap/colmap/pull/1947</a></p></li>
+<li><p>Prefix internal sources/includes with colmap by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1949">https://github.com/colmap/colmap/pull/1949</a></p></li>
+<li><p>Simplify clang-format config and sort includes by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1950">https://github.com/colmap/colmap/pull/1950</a></p></li>
+<li><p>Handle possible overflow in median function by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1951">https://github.com/colmap/colmap/pull/1951</a></p></li>
+<li><p>Run ASan pipeline under Ubuntu 22.04 by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1952">https://github.com/colmap/colmap/pull/1952</a></p></li>
+<li><p>Fix Ceres version test by &#64;drkoller in <a class="reference external" href="https://github.com/colmap/colmap/pull/1954">https://github.com/colmap/colmap/pull/1954</a></p></li>
+<li><p>Fix deprecation warning for Qt font metrics width by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1958">https://github.com/colmap/colmap/pull/1958</a></p></li>
+<li><p>Setup clang-tidy and enable perf warnings by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1959">https://github.com/colmap/colmap/pull/1959</a></p></li>
+<li><p>VCPKG binary caching for windows CI by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1957">https://github.com/colmap/colmap/pull/1957</a></p></li>
+<li><p>Cosmetics for VS dev shell script by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1965">https://github.com/colmap/colmap/pull/1965</a></p></li>
+<li><p>Enable clang-tidy concurrency checks by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1967">https://github.com/colmap/colmap/pull/1967</a></p></li>
+<li><p>[Bug] fix finding shared points3D in FindLocalBundle by &#64;wesleyliwei in <a class="reference external" href="https://github.com/colmap/colmap/pull/1963">https://github.com/colmap/colmap/pull/1963</a></p></li>
+<li><p>Enable compiler caching in CI by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1972">https://github.com/colmap/colmap/pull/1972</a></p></li>
+<li><p>Set number of features for different quality levels by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1975">https://github.com/colmap/colmap/pull/1975</a></p></li>
+<li><p>Specify parameter name using inline comment by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1976">https://github.com/colmap/colmap/pull/1976</a></p></li>
+<li><p>Fix Windows CCache by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1977">https://github.com/colmap/colmap/pull/1977</a></p></li>
+<li><p>Add e2e tests in CI pipeline using ETH3D datasets by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1397">https://github.com/colmap/colmap/pull/1397</a></p></li>
+<li><p>[feature] print verbose information for model analyzer by &#64;wesleyliwei in <a class="reference external" href="https://github.com/colmap/colmap/pull/1978">https://github.com/colmap/colmap/pull/1978</a></p></li>
+<li><p>Add a missing include to compile with gcc13 by &#64;EstebanDugueperoux2 in <a class="reference external" href="https://github.com/colmap/colmap/pull/1984">https://github.com/colmap/colmap/pull/1984</a></p></li>
+<li><p>Speed up snapshot construct in RigBundleAdjuster by &#64;wesleyliwei in <a class="reference external" href="https://github.com/colmap/colmap/pull/1988">https://github.com/colmap/colmap/pull/1988</a></p></li>
+<li><p>Update outdated docker cuda image tag by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1992">https://github.com/colmap/colmap/pull/1992</a></p></li>
+<li><p>Add boulders ETH3D dataset to CI E2E tests by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1991">https://github.com/colmap/colmap/pull/1991</a></p></li>
+<li><p>Update executable paths in documentation by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1993">https://github.com/colmap/colmap/pull/1993</a></p></li>
+<li><p>Avoid unnecessary copy in ExtractTopScaleFeatures by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1994">https://github.com/colmap/colmap/pull/1994</a></p></li>
+<li><p>Move related code under new image library folder by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1995">https://github.com/colmap/colmap/pull/1995</a></p></li>
+<li><p>Move related code under new camera folder by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1996">https://github.com/colmap/colmap/pull/1996</a></p></li>
+<li><p>Added a virtual destructor to Sampler by &#64;SomeAlphabetGuy in <a class="reference external" href="https://github.com/colmap/colmap/pull/2000">https://github.com/colmap/colmap/pull/2000</a></p></li>
+<li><p>Add a few more clang-tidy checks by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2001">https://github.com/colmap/colmap/pull/2001</a></p></li>
+<li><p>Move related code to new geometry module by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2006">https://github.com/colmap/colmap/pull/2006</a></p></li>
+<li><p>Use #pragma once as include guard by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2007">https://github.com/colmap/colmap/pull/2007</a></p></li>
+<li><p>Add bugprone-* clang-tidy checks by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2010">https://github.com/colmap/colmap/pull/2010</a></p></li>
+<li><p>Avoid const params in declarations by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2011">https://github.com/colmap/colmap/pull/2011</a></p></li>
+<li><p>Set and require C++14 by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2012">https://github.com/colmap/colmap/pull/2012</a></p></li>
+<li><p>Cleanup math functions that are now part of eigen/stdlib by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2013">https://github.com/colmap/colmap/pull/2013</a></p></li>
+<li><p>Add clang-analyzer checks by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2014">https://github.com/colmap/colmap/pull/2014</a></p></li>
+<li><p>Replace CMake provided find_package scripts and modern CMake targets by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2016">https://github.com/colmap/colmap/pull/2016</a></p></li>
+<li><p>Switch from Boost unit tests to Gtest by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2017">https://github.com/colmap/colmap/pull/2017</a></p></li>
+<li><p>Fix ccache restore keys in pipeline caching by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2018">https://github.com/colmap/colmap/pull/2018</a></p></li>
+<li><p>Add missing cacheHitVar to fix ccache by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2020">https://github.com/colmap/colmap/pull/2020</a></p></li>
+<li><p>Add missing Boost::graph import by &#64;sarlinpe in https://github.com/colmap/colmap/pull/2021</p></li>
+<li><p>Compressed/flattened correspondence graph for faster triangulation / less memory by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2019">https://github.com/colmap/colmap/pull/2019</a></p></li>
+<li><p>Fix window ccache key by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2024">https://github.com/colmap/colmap/pull/2024</a></p></li>
+<li><p>Consistently use shared_ptr for shared pointers for SFM objects by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2023">https://github.com/colmap/colmap/pull/2023</a></p></li>
+<li><p>Remove check on Qt version by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2022">https://github.com/colmap/colmap/pull/2022</a></p></li>
+<li><p>Synthetics for E2E incremental mapper tests by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2025">https://github.com/colmap/colmap/pull/2025</a></p></li>
+<li><p>New math module by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2028">https://github.com/colmap/colmap/pull/2028</a></p></li>
+<li><p>Simplify similarity transform and more tests by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2030">https://github.com/colmap/colmap/pull/2030</a></p></li>
+<li><p>Extract reconstruction alignment functions into new file by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2032">https://github.com/colmap/colmap/pull/2032</a></p></li>
+<li><p>Add E2E hierarchical mapper tests by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2033">https://github.com/colmap/colmap/pull/2033</a></p></li>
+<li><p>Rename SimilarityTransform3 to Sim3d by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2034">https://github.com/colmap/colmap/pull/2034</a></p></li>
+<li><p>Add Rigid3d transform class by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2035">https://github.com/colmap/colmap/pull/2035</a></p></li>
+<li><p>Consolidate and simplify Rigid3d and Sim3d by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2037">https://github.com/colmap/colmap/pull/2037</a></p></li>
+<li><p>Some small improvements/cleanup for rigid3d/sim3d usage by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2041">https://github.com/colmap/colmap/pull/2041</a></p></li>
+<li><p>CamFromWorld replaces qvec/tvec by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2039">https://github.com/colmap/colmap/pull/2039</a></p></li>
+<li><p>Retry download of ETH3D datasets by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2043">https://github.com/colmap/colmap/pull/2043</a></p></li>
+<li><p>WorldToImage becomes CamToImg by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2044">https://github.com/colmap/colmap/pull/2044</a></p></li>
+<li><p>Camera models operate on camera rays by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2045">https://github.com/colmap/colmap/pull/2045</a></p></li>
+<li><p>Ignore directory .vs by &#64;whuaegeanse in <a class="reference external" href="https://github.com/colmap/colmap/pull/2046">https://github.com/colmap/colmap/pull/2046</a></p></li>
+<li><p>Use the reference of Rigid3d to reduce memory consumption by &#64;whuaegeanse in <a class="reference external" href="https://github.com/colmap/colmap/pull/2047">https://github.com/colmap/colmap/pull/2047</a></p></li>
+<li><p>Inline point to image projection by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2050">https://github.com/colmap/colmap/pull/2050</a></p></li>
+<li><p>Point2D becomes simpler pure data struct by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2051">https://github.com/colmap/colmap/pull/2051</a></p></li>
+<li><p>Use Eigen math for estimator utils by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2052">https://github.com/colmap/colmap/pull/2052</a></p></li>
+<li><p>Move cost functions under geometry module and rename by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2053">https://github.com/colmap/colmap/pull/2053</a></p></li>
+<li><p>Bundle adjuster is an estimator by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2054">https://github.com/colmap/colmap/pull/2054</a></p></li>
+<li><p>Remaining base targets move to new scene module by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2055">https://github.com/colmap/colmap/pull/2055</a></p></li>
+<li><p>Vote and verify improvements/speedup by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2056">https://github.com/colmap/colmap/pull/2056</a></p></li>
+<li><p>Generate version info in .cc file to reduce number of recompilations by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2057">https://github.com/colmap/colmap/pull/2057</a></p></li>
+<li><p>Option manager moves to controllers to disentangle circular deps by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2058">https://github.com/colmap/colmap/pull/2058</a></p></li>
+<li><p>Granular CMake modules and build targets by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2059">https://github.com/colmap/colmap/pull/2059</a></p></li>
+<li><p>Fix docker build by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2069">https://github.com/colmap/colmap/pull/2069</a></p></li>
+<li><p>Remove warnings about duplicated marco NOMINMAX by &#64;whuaegeanse in <a class="reference external" href="https://github.com/colmap/colmap/pull/2067">https://github.com/colmap/colmap/pull/2067</a></p></li>
+<li><p>lib folder becomes thirdparty folder by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2068">https://github.com/colmap/colmap/pull/2068</a></p></li>
+<li><p>Remove unnecessary checks in image pair conversion by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2074">https://github.com/colmap/colmap/pull/2074</a></p></li>
+<li><p>Replace flaky ETH3D terrace with courtyard dataset by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2075">https://github.com/colmap/colmap/pull/2075</a></p></li>
+<li><p>Synthesize chained match graph for more mapper tests by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2076">https://github.com/colmap/colmap/pull/2076</a></p></li>
+<li><p>Introduce abstract feature extractor by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2077">https://github.com/colmap/colmap/pull/2077</a></p></li>
+<li><p>Avoid unnecessary data copies in feature conversion utils by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2078">https://github.com/colmap/colmap/pull/2078</a></p></li>
+<li><p>Abstract feature matcher by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2082">https://github.com/colmap/colmap/pull/2082</a></p></li>
+<li><p>Encapsulate feature matching controller/worker implementations by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2085">https://github.com/colmap/colmap/pull/2085</a></p></li>
+<li><p>Some cosmetics for util/feature types by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2084">https://github.com/colmap/colmap/pull/2084</a></p></li>
+<li><p>Use std:: when cmath included by &#64;whuaegeanse in <a class="reference external" href="https://github.com/colmap/colmap/pull/2081">https://github.com/colmap/colmap/pull/2081</a></p></li>
+<li><p>Encapsulate feature extraction controller/worker implementations by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2086">https://github.com/colmap/colmap/pull/2086</a></p></li>
+<li><p>Reenable VS2022 CI pipeline by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/1689">https://github.com/colmap/colmap/pull/1689</a></p></li>
+<li><p>Consistent transform convention for CenterAndNormalizeImagePoints by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2092">https://github.com/colmap/colmap/pull/2092</a></p></li>
+<li><p>Retire Mac 11 CI build by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2094">https://github.com/colmap/colmap/pull/2094</a></p></li>
+<li><p>Add ReprojErrorConstantPoint3DCostFunction to speed up the RefineAbsolutePose function by &#64;whuaegeanse in <a class="reference external" href="https://github.com/colmap/colmap/pull/2089">https://github.com/colmap/colmap/pull/2089</a></p></li>
+<li><p>Numeric differentiation of camera model using partial piv LU by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2100">https://github.com/colmap/colmap/pull/2100</a></p></li>
+<li><p>cmake: add testing.cc to colmap_util only if TESTS_ENABLED=ON by &#64;NeroBurner in <a class="reference external" href="https://github.com/colmap/colmap/pull/2102">https://github.com/colmap/colmap/pull/2102</a></p></li>
+<li><p>Set CUDA_STANDARD to 14 by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2108">https://github.com/colmap/colmap/pull/2108</a></p></li>
+<li><p>Transform back to existing images positions after mapper processing if set fixed by &#64;ferreram in <a class="reference external" href="https://github.com/colmap/colmap/pull/2095">https://github.com/colmap/colmap/pull/2095</a></p></li>
+<li><p>Update documentation with new branch policy by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2110">https://github.com/colmap/colmap/pull/2110</a></p></li>
+<li><p>Update CMake find dependencies for vcpkg by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2116">https://github.com/colmap/colmap/pull/2116</a></p></li>
+<li><p>Decouple SIFT match from two view geometry options by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2118">https://github.com/colmap/colmap/pull/2118</a></p></li>
+<li><p>Fix docker build by &#64;vnmsklnk in <a class="reference external" href="https://github.com/colmap/colmap/pull/2122">https://github.com/colmap/colmap/pull/2122</a></p></li>
+<li><p>Trigger build pipeline on main branch by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2123">https://github.com/colmap/colmap/pull/2123</a></p></li>
+<li><p>Update Linux install documentation with new branch policy by &#64;joshuaoreilly in <a class="reference external" href="https://github.com/colmap/colmap/pull/2126">https://github.com/colmap/colmap/pull/2126</a></p></li>
+<li><p>Fix link in camera model documentation by &#64;CFretter in <a class="reference external" href="https://github.com/colmap/colmap/pull/2152">https://github.com/colmap/colmap/pull/2152</a></p></li>
+<li><p>[Bugfix] Fix GUI_ENABLED=OFF and skip SiftGPU if no GUI and no CUDA by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2151">https://github.com/colmap/colmap/pull/2151</a></p></li>
+<li><p>[Bugfix] Properly handle CGAL_ENABLED by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2149">https://github.com/colmap/colmap/pull/2149</a></p></li>
+<li><p>Refinement of intrinsics in the point_triangulator by &#64;tsattler in <a class="reference external" href="https://github.com/colmap/colmap/pull/2144">https://github.com/colmap/colmap/pull/2144</a></p></li>
+<li><p>Bugfix in handling COLMAP_GPU_ENABLED by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2163">https://github.com/colmap/colmap/pull/2163</a></p></li>
+<li><p>Expose exe as libs by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2165">https://github.com/colmap/colmap/pull/2165</a></p></li>
+<li><p>Add Sim3d::FromMatrix by &#64;sarlinpe in https://github.com/colmap/colmap/pull/2147</p></li>
+<li><p>Check code format in CI by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2171">https://github.com/colmap/colmap/pull/2171</a></p></li>
+<li><p>Clean up dependencies by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2173">https://github.com/colmap/colmap/pull/2173</a></p></li>
+<li><p>Move tests into anonymous namespaces by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2175">https://github.com/colmap/colmap/pull/2175</a></p></li>
+<li><p>Fix glew/qopengl conflict warning by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2176">https://github.com/colmap/colmap/pull/2176</a></p></li>
+<li><p>Update documentation with new link to GitHub discussions by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2177">https://github.com/colmap/colmap/pull/2177</a></p></li>
+<li><p>Restore GLEW include by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2178">https://github.com/colmap/colmap/pull/2178</a></p></li>
+<li><p>Align reconstructions via shared 3D points by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2169">https://github.com/colmap/colmap/pull/2169</a></p></li>
+<li><p>Add clang-tidy-cachein CI by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2182">https://github.com/colmap/colmap/pull/2182</a></p></li>
+<li><p>Disable GUI build in one CI config by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2181">https://github.com/colmap/colmap/pull/2181</a></p></li>
+<li><p>Show verbose ccache stats by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2183">https://github.com/colmap/colmap/pull/2183</a></p></li>
+<li><p>Add EstimateGeneralizedAbsolutePose by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2174">https://github.com/colmap/colmap/pull/2174</a></p></li>
+<li><p>Fix bug in ReconstructionManagerWidget::Update by &#64;whuaegeanse in https://github.com/colmap/colmap/pull/2186</p></li>
+<li><p>Fix missing retrieval dependency by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2189">https://github.com/colmap/colmap/pull/2189</a></p></li>
+<li><p>Removing clustering_options and mapper_options in Hierarchical Mapper Controller by &#64;Serenitysmk in <a class="reference external" href="https://github.com/colmap/colmap/pull/2193">https://github.com/colmap/colmap/pull/2193</a></p></li>
+<li><p>Publish docker image to docker hub by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2195">https://github.com/colmap/colmap/pull/2195</a></p></li>
+<li><p>Fix Cuda architecture in docker build by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2196">https://github.com/colmap/colmap/pull/2196</a></p></li>
+<li><p>Fix all-major cuda arch missing in CMake &lt; 3.23 by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2197">https://github.com/colmap/colmap/pull/2197</a></p></li>
+<li><p>Update triangulation.cc by &#64;RayShark0605 in <a class="reference external" href="https://github.com/colmap/colmap/pull/2205">https://github.com/colmap/colmap/pull/2205</a></p></li>
+<li><p>Update author and acknowledgements by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2207">https://github.com/colmap/colmap/pull/2207</a></p></li>
+<li><p>Code formatting for Python by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2208">https://github.com/colmap/colmap/pull/2208</a></p></li>
+<li><p>Retire outdated build script by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2217">https://github.com/colmap/colmap/pull/2217</a></p></li>
+<li><p>Remove mention of deprecated build script by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2220">https://github.com/colmap/colmap/pull/2220</a></p></li>
+<li><p>Improve word spelling by &#64;zchrissirhcz in <a class="reference external" href="https://github.com/colmap/colmap/pull/2235">https://github.com/colmap/colmap/pull/2235</a></p></li>
+<li><p>Stack allocate camera param idx arrays by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2234">https://github.com/colmap/colmap/pull/2234</a></p></li>
+<li><p>fix: typo in colmap/src/colmap/ui/project_widget.cc by &#64;varundhand in <a class="reference external" href="https://github.com/colmap/colmap/pull/2241">https://github.com/colmap/colmap/pull/2241</a></p></li>
+<li><p>Update reconstruction.cc by &#64;RayShark0605 in <a class="reference external" href="https://github.com/colmap/colmap/pull/2238">https://github.com/colmap/colmap/pull/2238</a></p></li>
+<li><p>Update to Docker CUDA 12.2.2 by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2244">https://github.com/colmap/colmap/pull/2244</a></p></li>
+<li><p>Stop setting C++ standard flags manually by &#64;AdrianBunk in <a class="reference external" href="https://github.com/colmap/colmap/pull/2251">https://github.com/colmap/colmap/pull/2251</a></p></li>
+<li><p>Setting clear_points to true per default in point_triangulator by &#64;tsattler in <a class="reference external" href="https://github.com/colmap/colmap/pull/2252">https://github.com/colmap/colmap/pull/2252</a></p></li>
+<li><p>Update cameras.rst to fix link to code by &#64;tsattler in <a class="reference external" href="https://github.com/colmap/colmap/pull/2246">https://github.com/colmap/colmap/pull/2246</a></p></li>
+<li><p>Fix matching of imported features without descriptors by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2269">https://github.com/colmap/colmap/pull/2269</a></p></li>
+<li><p>Consistent versioning between documentation and code by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2275">https://github.com/colmap/colmap/pull/2275</a></p></li>
+<li><p>Reduce mallocs for RANSAC estimator models by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2283">https://github.com/colmap/colmap/pull/2283</a></p></li>
+<li><p>Migrate to glog logging by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2172">https://github.com/colmap/colmap/pull/2172</a></p></li>
+<li><p>Turn Point3D into simple data struct by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2285">https://github.com/colmap/colmap/pull/2285</a></p></li>
+<li><p>Camera becomes simple data struct by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2286">https://github.com/colmap/colmap/pull/2286</a></p></li>
+<li><p>Recover custom Eigen std::vector allocator for Eigen &lt;3.4 support by &#64;ahojnnes in https://github.com/colmap/colmap/pull/2293</p></li>
+<li><p>Replace result_of with invoke_result_t by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2300">https://github.com/colmap/colmap/pull/2300</a></p></li>
+<li><p>Allow getters FocalLength{X,Y} for isotropic models by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2301">https://github.com/colmap/colmap/pull/2301</a></p></li>
+<li><p>Add missing Boost targets and cleanup includes by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2304">https://github.com/colmap/colmap/pull/2304</a></p></li>
+<li><p>Expose IncrementalMapperOptions::{mapper,triangulation} by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2308">https://github.com/colmap/colmap/pull/2308</a></p></li>
+<li><p>Update install instructions for Mac by &#64;Dawars in <a class="reference external" href="https://github.com/colmap/colmap/pull/2310">https://github.com/colmap/colmap/pull/2310</a></p></li>
+<li><p>Remove unused ceres reference in doc by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2315">https://github.com/colmap/colmap/pull/2315</a></p></li>
+<li><p>Fix typo by &#64;whuaegeanse in <a class="reference external" href="https://github.com/colmap/colmap/pull/2317">https://github.com/colmap/colmap/pull/2317</a></p></li>
+<li><p>Stable version 3.9 release by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2319">https://github.com/colmap/colmap/pull/2319</a></p></li>
+</ul>
+</section>
 <section id="colmap-3-8-01-31-2023">
-<h2>COLMAP 3.8 (01/31/2023)<a class="headerlink" href="#colmap-3-8-01-31-2023" title="Link to this heading"></a></h2>
+<h2>COLMAP 3.8 (01/31/2023)<a class="headerlink" href="#colmap-3-8-01-31-2023" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Updating geo-registration doc. by &#64;ferreram in <a class="reference external" href="https://github.com/colmap/colmap/pull/1410">https://github.com/colmap/colmap/pull/1410</a></p></li>
 <li><p>Adding user-specified option for reconstructing purely planar scene. … by &#64;ferreram in <a class="reference external" href="https://github.com/colmap/colmap/pull/1408">https://github.com/colmap/colmap/pull/1408</a></p></li>
@@ -173,7 +446,7 @@
 </ul>
 </section>
 <section id="colmap-3-7-01-26-2022">
-<h2>COLMAP 3.7 (01/26/2022)<a class="headerlink" href="#colmap-3-7-01-26-2022" title="Link to this heading"></a></h2>
+<h2>COLMAP 3.7 (01/26/2022)<a class="headerlink" href="#colmap-3-7-01-26-2022" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Allow to save fused point cloud in colmap format when using command line by &#64;boitumeloruf in <a class="reference external" href="https://github.com/colmap/colmap/pull/799">https://github.com/colmap/colmap/pull/799</a></p></li>
 <li><p>Fix typos in image.h by &#64;Pascal-So in <a class="reference external" href="https://github.com/colmap/colmap/pull/936">https://github.com/colmap/colmap/pull/936</a></p></li>
@@ -269,7 +542,7 @@
 </ul>
 </section>
 <section id="colmap-3-6-07-24-2020">
-<h2>COLMAP 3.6 (07/24/2020)<a class="headerlink" href="#colmap-3-6-07-24-2020" title="Link to this heading"></a></h2>
+<h2>COLMAP 3.6 (07/24/2020)<a class="headerlink" href="#colmap-3-6-07-24-2020" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Improved robustness and faster incremental reconstruction process</p></li>
 <li><p>Add <code class="docutils literal notranslate"><span class="pre">image_deleter</span></code> command to remove images from sparse model</p></li>
@@ -294,7 +567,7 @@ without a pre-existing full sparse model</p></li>
 </ul>
 </section>
 <section id="colmap-3-5-08-22-2018">
-<h2>COLMAP 3.5 (08/22/2018)<a class="headerlink" href="#colmap-3-5-08-22-2018" title="Link to this heading"></a></h2>
+<h2>COLMAP 3.5 (08/22/2018)<a class="headerlink" href="#colmap-3-5-08-22-2018" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>COLMAP is now released under the BSD license instead of the GPL</p></li>
 <li><p>COLMAP is now installed as a library, whose headers can be included and
@@ -315,7 +588,7 @@ reconstructed sparse or dense point cloud</p></li>
 </ul>
 </section>
 <section id="colmap-3-4-01-29-2018">
-<h2>COLMAP 3.4 (01/29/2018)<a class="headerlink" href="#colmap-3-4-01-29-2018" title="Link to this heading"></a></h2>
+<h2>COLMAP 3.4 (01/29/2018)<a class="headerlink" href="#colmap-3-4-01-29-2018" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Unified command-line interface: The functionality of previous executables have
 been merged into the <code class="docutils literal notranslate"><span class="pre">src/exe/colmap.cc</span></code> executable. The GUI can now be
@@ -339,7 +612,7 @@ saved from the graphical user interface</p></li>
 </ul>
 </section>
 <section id="colmap-3-3-11-21-2017">
-<h2>COLMAP 3.3 (11/21/2017)<a class="headerlink" href="#colmap-3-3-11-21-2017" title="Link to this heading"></a></h2>
+<h2>COLMAP 3.3 (11/21/2017)<a class="headerlink" href="#colmap-3-3-11-21-2017" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Add DSP (Domain Size Pooling) SIFT implementation. DSP-SIFT outperforms
 standard SIFT in most cases, as shown in “Comparative Evaluation of
@@ -355,7 +628,7 @@ Hand-Crafted and Learned Local Features”, Schoenberger et al., CVPR 2017</p></
 </ul>
 </section>
 <section id="colmap-3-2-9-2-2017">
-<h2>COLMAP 3.2 (9/2/2017)<a class="headerlink" href="#colmap-3-2-9-2-2017" title="Link to this heading"></a></h2>
+<h2>COLMAP 3.2 (9/2/2017)<a class="headerlink" href="#colmap-3-2-9-2-2017" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Fully automatic cross-platform build script (Windows, Mac, Linux)</p></li>
 <li><p>Add multi-GPU feature extraction if multiple CUDA devices are available</p></li>
@@ -369,7 +642,7 @@ Hand-Crafted and Learned Local Features”, Schoenberger et al., CVPR 2017</p></
 </ul>
 </section>
 <section id="colmap-3-1-6-15-2017">
-<h2>COLMAP 3.1 (6/15/2017)<a class="headerlink" href="#colmap-3-1-6-15-2017" title="Link to this heading"></a></h2>
+<h2>COLMAP 3.1 (6/15/2017)<a class="headerlink" href="#colmap-3-1-6-15-2017" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Add fast spatial verification to image retrieval module</p></li>
 <li><p>Add binary file format for sparse models by default. Old text format still
@@ -385,7 +658,7 @@ Now geometric stereo output can be computed using a single pass</p></li>
 </ul>
 </section>
 <section id="colmap-3-0-5-22-2017">
-<h2>COLMAP 3.0 (5/22/2017)<a class="headerlink" href="#colmap-3-0-5-22-2017" title="Link to this heading"></a></h2>
+<h2>COLMAP 3.0 (5/22/2017)<a class="headerlink" href="#colmap-3-0-5-22-2017" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Add automatic end-to-end reconstruction tool that automatically performs
 sparse and dense reconstruction on a given set of images</p></li>
@@ -410,7 +683,7 @@ sparse and dense reconstruction on a given set of images</p></li>
 </ul>
 </section>
 <section id="colmap-2-1-12-7-2016">
-<h2>COLMAP 2.1 (12/7/2016)<a class="headerlink" href="#colmap-2-1-12-7-2016" title="Link to this heading"></a></h2>
+<h2>COLMAP 2.1 (12/7/2016)<a class="headerlink" href="#colmap-2-1-12-7-2016" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Support to only index and match specific images in vocabulary tree matching</p></li>
 <li><p>Support to perform image retrieval using vocabulary tree</p></li>
@@ -427,7 +700,7 @@ sparse and dense reconstruction on a given set of images</p></li>
 </ul>
 </section>
 <section id="colmap-2-0-9-8-2016">
-<h2>COLMAP 2.0 (9/8/2016)<a class="headerlink" href="#colmap-2-0-9-8-2016" title="Link to this heading"></a></h2>
+<h2>COLMAP 2.0 (9/8/2016)<a class="headerlink" href="#colmap-2-0-9-8-2016" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Implementation of dense reconstruction pipeline</p></li>
 <li><p>Improved feature matching performance</p></li>
@@ -439,7 +712,7 @@ sparse and dense reconstruction on a given set of images</p></li>
 </ul>
 </section>
 <section id="colmap-1-1-5-19-2016">
-<h2>COLMAP 1.1 (5/19/2016)<a class="headerlink" href="#colmap-1-1-5-19-2016" title="Link to this heading"></a></h2>
+<h2>COLMAP 1.1 (5/19/2016)<a class="headerlink" href="#colmap-1-1-5-19-2016" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Implementation of state-of-the-art image retrieval system using Hamming
 embedding for vocabulary tree matching. This should lead to much improved
@@ -458,7 +731,7 @@ Project Tango (Thomas Schoeps).</p></li>
 </ul>
 </section>
 <section id="colmap-1-0-4-4-2016">
-<h2>COLMAP 1.0 (4/4/2016)<a class="headerlink" href="#colmap-1-0-4-4-2016" title="Link to this heading"></a></h2>
+<h2>COLMAP 1.0 (4/4/2016)<a class="headerlink" href="#colmap-1-0-4-4-2016" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Initial release of COLMAP.</p></li>
 </ul>

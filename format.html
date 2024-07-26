@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Output Format &mdash; COLMAP 3.9-dev documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-
-  
+  <title>Output Format &mdash; COLMAP 3.11-dev documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=f9dd27f5"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -37,7 +35,7 @@
             COLMAP
           </a>
               <div class="version">
-                3.9-dev
+                3.11-dev
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -106,15 +104,15 @@
            <div itemprop="articleBody">
              
   <section id="output-format">
-<span id="id1"></span><h1>Output Format<a class="headerlink" href="#output-format" title="Link to this heading"></a></h1>
+<span id="id1"></span><h1>Output Format<a class="headerlink" href="#output-format" title="Permalink to this heading"></a></h1>
 <section id="binary-file-format">
-<h2>Binary File Format<a class="headerlink" href="#binary-file-format" title="Link to this heading"></a></h2>
+<h2>Binary File Format<a class="headerlink" href="#binary-file-format" title="Permalink to this heading"></a></h2>
 <p>Note that all binary data is stored using little endian byte ordering. All x86
 processors are little endian and thus no special care has to be taken when
 reading COLMAP binary data on most platforms.</p>
 </section>
 <section id="indices-and-identifiers">
-<h2>Indices and Identifiers<a class="headerlink" href="#indices-and-identifiers" title="Link to this heading"></a></h2>
+<h2>Indices and Identifiers<a class="headerlink" href="#indices-and-identifiers" title="Permalink to this heading"></a></h2>
 <p>Any variable name ending with <code class="docutils literal notranslate"><span class="pre">*_idx</span></code> should be considered as an ordered,
 contiguous zero-based index. In general, any variable name ending with <code class="docutils literal notranslate"><span class="pre">*_id</span></code>
 should be considered as an unordered, non-contiguous identifier.</p>
@@ -125,7 +123,7 @@ correspond to the number 3D points, since some <cite>POINT3D_ID</cite>’s are m
 filtering during the reconstruction, etc.</p>
 </section>
 <section id="sparse-reconstruction">
-<h2>Sparse Reconstruction<a class="headerlink" href="#sparse-reconstruction" title="Link to this heading"></a></h2>
+<h2>Sparse Reconstruction<a class="headerlink" href="#sparse-reconstruction" title="Permalink to this heading"></a></h2>
 <p>By default, COLMAP uses a binary file format (machine-readable, fast) for
 storing sparse models. In addition, COLMAP provides the option to store the
 sparse models as text files (human-readable, slow). In both cases, the
@@ -152,13 +150,13 @@ executable.</p>
 Python (<code class="docutils literal notranslate"><span class="pre">scripts/python/read_write_model.py</span></code> supporting binary and text) and Matlab
 (<code class="docutils literal notranslate"><span class="pre">scripts/matlab/read_model.m</span></code> supporting text).</p>
 <section id="text-format">
-<h3>Text Format<a class="headerlink" href="#text-format" title="Link to this heading"></a></h3>
+<h3>Text Format<a class="headerlink" href="#text-format" title="Permalink to this heading"></a></h3>
 <p>COLMAP exports the following three text files for every reconstructed model:
 <cite>cameras.txt</cite>, <cite>images.txt</cite>, and <cite>points3D.txt</cite>. Comments start with a leading
 “#” character and are ignored. The first comment lines briefly describe the
 format of the text files, as described in more detailed on this page.</p>
 <section id="cameras-txt">
-<h4>cameras.txt<a class="headerlink" href="#cameras-txt" title="Link to this heading"></a></h4>
+<h4>cameras.txt<a class="headerlink" href="#cameras-txt" title="Permalink to this heading"></a></h4>
 <p>This file contains the intrinsic parameters of all reconstructed cameras in the
 dataset using one line per camera, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Camera list with one line of data per camera:</span>
@@ -178,7 +176,7 @@ camera can be shared by multiple images, which refer to cameras using the unique
 identifier <cite>CAMERA_ID</cite>.</p>
 </section>
 <section id="images-txt">
-<h4>images.txt<a class="headerlink" href="#images-txt" title="Link to this heading"></a></h4>
+<h4>images.txt<a class="headerlink" href="#images-txt" title="Permalink to this heading"></a></h4>
 <p>This file contains the pose and keypoints of all reconstructed images in the
 dataset using two lines per image, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Image list with two lines of data per image:</span>
@@ -210,7 +208,7 @@ the first image does not observe a 3D point in the reconstruction as the 3D
 point identifier is -1.</p>
 </section>
 <section id="points3d-txt">
-<h4>points3D.txt<a class="headerlink" href="#points3d-txt" title="Link to this heading"></a></h4>
+<h4>points3D.txt<a class="headerlink" href="#points3d-txt" title="Permalink to this heading"></a></h4>
 <p>This file contains the information of all reconstructed 3D points in the
 dataset using one line per point, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3D point list with one line of data per point:</span>
@@ -228,7 +226,7 @@ pixels of reprojection error and is only updated after global bundle adjustment.
 </section>
 </section>
 <section id="dense-reconstruction">
-<h2>Dense Reconstruction<a class="headerlink" href="#dense-reconstruction" title="Link to this heading"></a></h2>
+<h2>Dense Reconstruction<a class="headerlink" href="#dense-reconstruction" title="Permalink to this heading"></a></h2>
 <p>COLMAP uses the following workspace folder structure:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+── images
 │   +── image1.jpg
@@ -267,7 +265,7 @@ the results of the fusion and meshing procedure, and <cite>run-colmap-geometric.
 and <cite>run-colmap-photometric.sh</cite> contain example command-line usage to perform
 the dense reconstruction.</p>
 <section id="depth-and-normal-maps">
-<h3>Depth and Normal Maps<a class="headerlink" href="#depth-and-normal-maps" title="Link to this heading"></a></h3>
+<h3>Depth and Normal Maps<a class="headerlink" href="#depth-and-normal-maps" title="Permalink to this heading"></a></h3>
 <p>The depth maps are stored as mixed text and binary files. The text header
 defines the dimensions of the image in the format <code class="docutils literal notranslate"><span class="pre">with&amp;height&amp;channels&amp;</span></code>
 followed by row-major <cite>float32</cite> binary data. For depth maps <code class="docutils literal notranslate"><span class="pre">channels=1</span></code> and
@@ -277,7 +275,7 @@ with Matlab using the functions in <code class="docutils literal notranslate"><s
 <code class="docutils literal notranslate"><span class="pre">scripts/matlab/read_normal_map.m</span></code>.</p>
 </section>
 <section id="consistency-graphs">
-<h3>Consistency Graphs<a class="headerlink" href="#consistency-graphs" title="Link to this heading"></a></h3>
+<h3>Consistency Graphs<a class="headerlink" href="#consistency-graphs" title="Permalink to this heading"></a></h3>
 <p>The consistency graph defines, for all pixels in an image, the source images a
 pixel is consistent with. The graph is stored as a mixed text and binary file,
 while the text part is equivalent to the depth and normal maps and the binary
