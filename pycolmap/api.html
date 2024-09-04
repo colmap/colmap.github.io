@@ -761,7 +761,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.BundleAdjustmentOptions.solver_options">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solver_options</span></span><a class="headerlink" href="#pycolmap.BundleAdjustmentOptions.solver_options" title="Link to this definition"></a></dt>
-<dd><p>Ceres-Solver options. To be able to use this feature one needs to install pyceres and import it beforehand. (SolverOptions, default: &lt;pyceres.SolverOptions object at 0x7628f35563f0&gt;)</p>
+<dd><p>Ceres-Solver options. To be able to use this feature one needs to install pyceres and import it beforehand. (SolverOptions, default: &lt;pyceres.SolverOptions object at 0x7c113917b2f0&gt;)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -3755,7 +3755,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pycolmap.Reconstruction.extract_colors_for_image">
 <span class="sig-name descname"><span class="pre">extract_colors_for_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Reconstruction" title="pycolmap.Reconstruction"><span class="pre">pycolmap.Reconstruction</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pycolmap.Reconstruction.extract_colors_for_image" title="Link to this definition"></a></dt>
-<dd><p>Extract colors for 3D points of given image. Colors will be extracted only for 3D points which are completely black. True if image could be read at given path.</p>
+<dd><p>Extract colors for 3D points of given image. Colors will be extracted only for 3D points which are completely black. Return True if the image could be read at the given path.</p>
 </dd></dl>
 
 <dl class="py method">
