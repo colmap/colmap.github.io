@@ -6,7 +6,7 @@
   <title>Index &mdash; COLMAP 3.11.0.dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=22544140" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
 
   
   <!--[if lt IE 9]>
@@ -309,6 +309,8 @@
 </li>
       <li><a href="pycolmap/api.html#pycolmap.Camera">Camera (class in pycolmap)</a>
 </li>
+      <li><a href="pycolmap/api.html#pycolmap.Image.camera">camera (pycolmap.Image property)</a>
+</li>
       <li><a href="pycolmap/api.html#pycolmap.Reconstruction.camera">camera() (pycolmap.Reconstruction method)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.Camera.camera_id">camera_id (pycolmap.Camera property)</a>
@@ -371,18 +373,20 @@
         <li><a href="pycolmap/api.html#pycolmap.IncrementalTriangulator.clear_modified_points3D">(pycolmap.IncrementalTriangulator method)</a>
 </li>
       </ul></li>
+      <li><a href="pycolmap/api.html#pycolmap.Database.clear_pose_priors">clear_pose_priors() (pycolmap.Database method)</a>
+</li>
       <li><a href="pycolmap/api.html#pycolmap.Database.clear_two_view_geometries">clear_two_view_geometries() (pycolmap.Database method)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.Database.close">close() (pycolmap.Database method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/api.html#pycolmap.Point3D.color">color (pycolmap.Point3D property)</a>
 
       <ul>
         <li><a href="pycolmap/api.html#pycolmap.PoissonMeshingOptions.color">(pycolmap.PoissonMeshingOptions property)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/api.html#pycolmap.compare_reconstructions">compare_reconstructions() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.IncrementalTriangulator.complete_all_tracks">complete_all_tracks() (pycolmap.IncrementalTriangulator method)</a>
@@ -434,6 +438,8 @@
       <li><a href="pycolmap/api.html#pycolmap.BundleAdjustmentConfig.constant_point3D_ids">constant_point3D_ids (pycolmap.BundleAdjustmentConfig property)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.IncrementalTriangulatorOptions.continue_max_angle_error">continue_max_angle_error (pycolmap.IncrementalTriangulatorOptions property)</a>
+</li>
+      <li><a href="pycolmap/api.html#pycolmap.PosePrior.coordinate_system">coordinate_system (pycolmap.PosePrior property)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.CopyType.copy">copy (pycolmap.CopyType attribute)</a>
 </li>
@@ -595,35 +601,49 @@
 </li>
       <li><a href="pycolmap/api.html#pycolmap.estimate_two_view_geometry">estimate_two_view_geometry() (in module pycolmap)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/api.html#pycolmap.estimate_two_view_geometry_pose">estimate_two_view_geometry_pose() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.EstimateTriangulationOptions">EstimateTriangulationOptions (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.ExhaustiveMatchingOptions">ExhaustiveMatchingOptions (class in pycolmap)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/api.html#pycolmap.ExhaustivePairGenerator">ExhaustivePairGenerator (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.ImageReaderOptions.existing_camera_id">existing_camera_id (pycolmap.ImageReaderOptions property)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.IncrementalMapper.existing_image_ids">existing_image_ids (pycolmap.IncrementalMapper property)</a>
 </li>
-      <li><a href="pycolmap/api.html#pycolmap.DatabaseCache.exists_camera">exists_camera() (pycolmap.DatabaseCache method)</a>
+      <li><a href="pycolmap/api.html#pycolmap.Database.exists_camera">exists_camera() (pycolmap.Database method)</a>
 
       <ul>
+        <li><a href="pycolmap/api.html#pycolmap.DatabaseCache.exists_camera">(pycolmap.DatabaseCache method)</a>
+</li>
         <li><a href="pycolmap/api.html#pycolmap.Reconstruction.exists_camera">(pycolmap.Reconstruction method)</a>
 </li>
       </ul></li>
+      <li><a href="pycolmap/api.html#pycolmap.Database.exists_descriptors">exists_descriptors() (pycolmap.Database method)</a>
+</li>
       <li><a href="pycolmap/api.html#pycolmap.CorrespondenceGraph.exists_image">exists_image() (pycolmap.CorrespondenceGraph method)</a>
 
       <ul>
+        <li><a href="pycolmap/api.html#pycolmap.Database.exists_image">(pycolmap.Database method)</a>
+</li>
         <li><a href="pycolmap/api.html#pycolmap.DatabaseCache.exists_image">(pycolmap.DatabaseCache method)</a>
 </li>
         <li><a href="pycolmap/api.html#pycolmap.Reconstruction.exists_image">(pycolmap.Reconstruction method)</a>
 </li>
       </ul></li>
+      <li><a href="pycolmap/api.html#pycolmap.Database.exists_inlier_matches">exists_inlier_matches() (pycolmap.Database method)</a>
+</li>
+      <li><a href="pycolmap/api.html#pycolmap.Database.exists_keypoints">exists_keypoints() (pycolmap.Database method)</a>
+</li>
+      <li><a href="pycolmap/api.html#pycolmap.Database.exists_matches">exists_matches() (pycolmap.Database method)</a>
+</li>
       <li><a href="pycolmap/api.html#pycolmap.Reconstruction.exists_point3D">exists_point3D() (pycolmap.Reconstruction method)</a>
+</li>
+      <li><a href="pycolmap/api.html#pycolmap.Database.exists_pose_prior">exists_pose_prior() (pycolmap.Database method)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.Reconstruction.export_PLY">export_PLY() (pycolmap.Reconstruction method)</a>
 </li>
@@ -805,7 +825,9 @@
 </li>
       <li><a href="pycolmap/api.html#pycolmap.Camera.has_bogus_params">has_bogus_params() (pycolmap.Camera method)</a>
 </li>
-      <li><a href="pycolmap/api.html#pycolmap.Image.has_camera">has_camera() (pycolmap.Image method)</a>
+      <li><a href="pycolmap/api.html#pycolmap.Image.has_camera_id">has_camera_id() (pycolmap.Image method)</a>
+</li>
+      <li><a href="pycolmap/api.html#pycolmap.Image.has_camera_ptr">has_camera_ptr() (pycolmap.Image method)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.BundleAdjustmentConfig.has_constant_cam_intrinsics">has_constant_cam_intrinsics() (pycolmap.BundleAdjustmentConfig method)</a>
 </li>
@@ -1528,6 +1550,8 @@
 </li>
       <li><a href="pycolmap/api.html#pycolmap.Reconstruction.num_points3D">num_points3D() (pycolmap.Reconstruction method)</a>
 </li>
+      <li><a href="pycolmap/api.html#pycolmap.Database.num_pose_priors">num_pose_priors (pycolmap.Database property)</a>
+</li>
       <li><a href="pycolmap/api.html#pycolmap.Reconstruction.num_reg_images">num_reg_images() (pycolmap.Reconstruction method)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.IncrementalMapper.num_reg_images_per_camera">num_reg_images_per_camera (pycolmap.IncrementalMapper property)</a>
@@ -1658,10 +1682,10 @@
 </li>
       <li><a href="pycolmap/api.html#pycolmap.ObservationManager.point3D_visibility_score">point3D_visibility_score() (pycolmap.ObservationManager method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/cost_functions.html#pycolmap.cost_functions.Point3dAlignmentCost">Point3dAlignmentCost() (in module pycolmap.cost_functions)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/api.html#pycolmap.PoissonMeshingOptions.point_weight">point_weight (pycolmap.PoissonMeshingOptions property)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.Image.points2D">points2D (pycolmap.Image property)</a>
@@ -1679,6 +1703,8 @@
       <li><a href="pycolmap/api.html#pycolmap.PosePrior">PosePrior (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.PosePriorCoordinateSystem">PosePriorCoordinateSystem (class in pycolmap)</a>
+</li>
+      <li><a href="pycolmap/api.html#pycolmap.PosePrior.position">position (pycolmap.PosePrior property)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.Camera.principal_point_idxs">principal_point_idxs() (pycolmap.Camera method)</a>
 </li>
@@ -1701,6 +1727,8 @@
       <li><a href="pycolmap/api.html#pycolmap.BundleAdjuster.problem">problem (pycolmap.BundleAdjuster property)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.ImageAlignmentError.proj_center_error">proj_center_error (pycolmap.ImageAlignmentError property)</a>
+</li>
+      <li><a href="pycolmap/api.html#pycolmap.Image.project_point">project_point() (pycolmap.Image method)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.Image.projection_center">projection_center() (pycolmap.Image method)</a>
 </li>
@@ -1780,6 +1808,8 @@
 </li>
       <li><a href="pycolmap/api.html#pycolmap.Database.read_matches">read_matches() (pycolmap.Database method)</a>
 </li>
+      <li><a href="pycolmap/api.html#pycolmap.Database.read_pose_prior">read_pose_prior() (pycolmap.Database method)</a>
+</li>
       <li><a href="pycolmap/api.html#pycolmap.Reconstruction.read_text">read_text() (pycolmap.Reconstruction method)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.Database.read_two_view_geometries">read_two_view_geometries() (pycolmap.Database method)</a>
@@ -1850,6 +1880,8 @@
         <li><a href="pycolmap/api.html#pycolmap.Timer.reset">(pycolmap.Timer method)</a>
 </li>
       </ul></li>
+      <li><a href="pycolmap/api.html#pycolmap.Image.reset_camera_ptr">reset_camera_ptr() (pycolmap.Image method)</a>
+</li>
       <li><a href="pycolmap/api.html#pycolmap.Image.reset_point3D_for_point2D">reset_point3D_for_point2D() (pycolmap.Image method)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.EstimateTriangulationOptions.residual_type">residual_type (pycolmap.EstimateTriangulationOptions property)</a>
@@ -1878,11 +1910,9 @@
 </li>
       <li><a href="pycolmap/api.html#pycolmap.UndistortCameraOptions.roi_min_y">roi_min_y (pycolmap.UndistortCameraOptions property)</a>
 </li>
-      <li><a href="pycolmap/api.html#pycolmap.PosePrior.rotation">rotation (pycolmap.PosePrior property)</a>
+      <li><a href="pycolmap/api.html#pycolmap.Rigid3d.rotation">rotation (pycolmap.Rigid3d property)</a>
 
       <ul>
-        <li><a href="pycolmap/api.html#pycolmap.Rigid3d.rotation">(pycolmap.Rigid3d property)</a>
-</li>
         <li><a href="pycolmap/api.html#pycolmap.Sim3d.rotation">(pycolmap.Sim3d property)</a>
 </li>
       </ul></li>
@@ -2156,11 +2186,9 @@
 </li>
       <li><a href="pycolmap/api.html#pycolmap.Sim3d.transform_camera_world">transform_camera_world() (pycolmap.Sim3d method)</a>
 </li>
-      <li><a href="pycolmap/api.html#pycolmap.PosePrior.translation">translation (pycolmap.PosePrior property)</a>
+      <li><a href="pycolmap/api.html#pycolmap.Rigid3d.translation">translation (pycolmap.Rigid3d property)</a>
 
       <ul>
-        <li><a href="pycolmap/api.html#pycolmap.Rigid3d.translation">(pycolmap.Rigid3d property)</a>
-</li>
         <li><a href="pycolmap/api.html#pycolmap.Sim3d.translation">(pycolmap.Sim3d property)</a>
 </li>
       </ul></li>
@@ -2320,14 +2348,14 @@
 </li>
       <li><a href="pycolmap/api.html#pycolmap.PatchMatchOptions.window_step">window_step (pycolmap.PatchMatchOptions property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/api.html#pycolmap.Reconstruction.write">write() (pycolmap.Reconstruction method)</a>
 
       <ul>
         <li><a href="pycolmap/api.html#pycolmap.ReconstructionManager.write">(pycolmap.ReconstructionManager method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/api.html#pycolmap.Reconstruction.write_binary">write_binary() (pycolmap.Reconstruction method)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.Database.write_camera">write_camera() (pycolmap.Database method)</a>
@@ -2341,6 +2369,8 @@
       <li><a href="pycolmap/api.html#pycolmap.Database.write_keypoints">write_keypoints() (pycolmap.Database method)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.Database.write_matches">write_matches() (pycolmap.Database method)</a>
+</li>
+      <li><a href="pycolmap/api.html#pycolmap.Database.write_pose_prior">write_pose_prior() (pycolmap.Database method)</a>
 </li>
       <li><a href="pycolmap/api.html#pycolmap.Reconstruction.write_text">write_text() (pycolmap.Reconstruction method)</a>
 </li>
