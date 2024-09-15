@@ -109,7 +109,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.Normalization"><code class="docutils literal notranslate"><span class="pre">Normalization</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.ObservationManager"><code class="docutils literal notranslate"><span class="pre">ObservationManager</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.PairGenerator"><code class="docutils literal notranslate"><span class="pre">PairGenerator</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pycolmap.PatchMatchOptions"><code class="docutils literal notranslate"><span class="pre">PatchMatchOptions</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.Point2D"><code class="docutils literal notranslate"><span class="pre">Point2D</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.Point3D"><code class="docutils literal notranslate"><span class="pre">Point3D</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.PoissonMeshingOptions"><code class="docutils literal notranslate"><span class="pre">PoissonMeshingOptions</span></code></a></li>
@@ -141,12 +140,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.VocabTreeMatchingOptions"><code class="docutils literal notranslate"><span class="pre">VocabTreeMatchingOptions</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.VocabTreePairGenerator"><code class="docutils literal notranslate"><span class="pre">VocabTreePairGenerator</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.absolute_pose_estimation"><code class="docutils literal notranslate"><span class="pre">absolute_pose_estimation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycolmap.align_reconstruction_to_locations"><code class="docutils literal notranslate"><span class="pre">align_reconstruction_to_locations()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.align_reconstructions_via_points"><code class="docutils literal notranslate"><span class="pre">align_reconstructions_via_points()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.align_reconstructions_via_proj_centers"><code class="docutils literal notranslate"><span class="pre">align_reconstructions_via_proj_centers()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.align_reconstructions_via_reprojections"><code class="docutils literal notranslate"><span class="pre">align_reconstructions_via_reprojections()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pycolmap.align_reconstrution_to_locations"><code class="docutils literal notranslate"><span class="pre">align_reconstrution_to_locations()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.bundle_adjustment"><code class="docutils literal notranslate"><span class="pre">bundle_adjustment()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.compare_reconstructions"><code class="docutils literal notranslate"><span class="pre">compare_reconstructions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycolmap.dense_delaunay_meshing"><code class="docutils literal notranslate"><span class="pre">dense_delaunay_meshing()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.essential_matrix_estimation"><code class="docutils literal notranslate"><span class="pre">essential_matrix_estimation()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.estimate_calibrated_two_view_geometry"><code class="docutils literal notranslate"><span class="pre">estimate_calibrated_two_view_geometry()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.estimate_pose_covariance_from_ba"><code class="docutils literal notranslate"><span class="pre">estimate_pose_covariance_from_ba()</span></code></a></li>
@@ -167,11 +167,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.match_spatial"><code class="docutils literal notranslate"><span class="pre">match_spatial()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.match_vocabtree"><code class="docutils literal notranslate"><span class="pre">match_vocabtree()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.ostream"><code class="docutils literal notranslate"><span class="pre">ostream</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pycolmap.patch_match_stereo"><code class="docutils literal notranslate"><span class="pre">patch_match_stereo()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.poisson_meshing"><code class="docutils literal notranslate"><span class="pre">poisson_meshing()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.pose_refinement"><code class="docutils literal notranslate"><span class="pre">pose_refinement()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.rig_absolute_pose_estimation"><code class="docutils literal notranslate"><span class="pre">rig_absolute_pose_estimation()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.set_random_seed"><code class="docutils literal notranslate"><span class="pre">set_random_seed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycolmap.sparse_delaunay_meshing"><code class="docutils literal notranslate"><span class="pre">sparse_delaunay_meshing()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.squared_sampson_error"><code class="docutils literal notranslate"><span class="pre">squared_sampson_error()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.stereo_fusion"><code class="docutils literal notranslate"><span class="pre">stereo_fusion()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.triangulate_points"><code class="docutils literal notranslate"><span class="pre">triangulate_points()</span></code></a></li>
@@ -348,9 +348,9 @@
 <span class="sig-name descname"><span class="pre">set_up_problem</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.BundleAdjuster" title="pycolmap.BundleAdjuster"><span class="pre">pycolmap.BundleAdjuster</span></a></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">reconstruction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Reconstruction" title="pycolmap.Reconstruction"><span class="pre">pycolmap.Reconstruction</span></a></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">loss_function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyceres.LossFunction</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">pycolmap.BundleAdjuster</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">reconstruction:</span> <span class="pre">pycolmap.Reconstruction</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">loss_function:</span> <span class="pre">ceres::LossFunction</span></span></em>,</dd>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.BundleAdjuster.set_up_problem" title="Link to this definition"></a></dt>
@@ -361,12 +361,12 @@
 <span class="sig-name descname"><span class="pre">set_up_solver_options</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.BundleAdjuster" title="pycolmap.BundleAdjuster"><span class="pre">pycolmap.BundleAdjuster</span></a></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyceres.Problem</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">input_solver_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyceres.SolverOptions</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">pycolmap.BundleAdjuster</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">problem:</span> <span class="pre">ceres::Problem</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">input_solver_options:</span> <span class="pre">ceres::Solver::Options</span></span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyceres.SolverOptions</span></span></span><a class="headerlink" href="#pycolmap.BundleAdjuster.set_up_solver_options" title="Link to this definition"></a></dt>
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ceres::Solver::Options</span></span></span><a class="headerlink" href="#pycolmap.BundleAdjuster.set_up_solver_options" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -755,7 +755,7 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">BundleAdjustmentOptions</span></span><a class="headerlink" href="#pycolmap.BundleAdjustmentOptions" title="Link to this definition"></a></dt>
 <dd><dl class="py method">
 <dt class="sig sig-object py" id="pycolmap.BundleAdjustmentOptions.create_loss_function">
-<span class="sig-name descname"><span class="pre">create_loss_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.BundleAdjustmentOptions" title="pycolmap.BundleAdjustmentOptions"><span class="pre">pycolmap.BundleAdjustmentOptions</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyceres.LossFunction</span></span></span><a class="headerlink" href="#pycolmap.BundleAdjustmentOptions.create_loss_function" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">create_loss_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.BundleAdjustmentOptions" title="pycolmap.BundleAdjustmentOptions"><span class="pre">pycolmap.BundleAdjustmentOptions</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ceres::LossFunction</span></span></span><a class="headerlink" href="#pycolmap.BundleAdjustmentOptions.create_loss_function" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -850,7 +850,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.BundleAdjustmentOptions.solver_options">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solver_options</span></span><a class="headerlink" href="#pycolmap.BundleAdjustmentOptions.solver_options" title="Link to this definition"></a></dt>
-<dd><p>Options for the Ceres solver. Using this member requires having PyCeres installed. (SolverOptions, default: &lt;pyceres.SolverOptions object at 0x747e7750c3f0&gt;)</p>
+<dd><p>Options for the Ceres solver. Using this member requires having PyCeres installed.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -3784,170 +3784,6 @@ are part of a 3D point track. (int, default: 0)</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">PatchMatchOptions</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions" title="Link to this definition"></a></dt>
-<dd><dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.allow_missing_files">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">allow_missing_files</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.allow_missing_files" title="Link to this definition"></a></dt>
-<dd><p>Whether to tolerate missing images/maps in the problem setup (bool, default: False)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.cache_size">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cache_size</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.cache_size" title="Link to this definition"></a></dt>
-<dd><p>Cache size in gigabytes for patch match. (float, default: 32.0)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.depth_max">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">depth_max</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.depth_max" title="Link to this definition"></a></dt>
-<dd><p>(float, default: -1.0)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.depth_min">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">depth_min</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.depth_min" title="Link to this definition"></a></dt>
-<dd><p>(float, default: -1.0)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.filter">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">filter</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.filter" title="Link to this definition"></a></dt>
-<dd><p>Whether to enable filtering. (bool, default: True)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.filter_geom_consistency_max_cost">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">filter_geom_consistency_max_cost</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.filter_geom_consistency_max_cost" title="Link to this definition"></a></dt>
-<dd><p>Maximum forward-backward reprojection error for pixel to be geometrically consistent. (float, default: 1.0)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.filter_min_ncc">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">filter_min_ncc</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.filter_min_ncc" title="Link to this definition"></a></dt>
-<dd><p>Minimum NCC coefficient for pixel to be photo-consistent. (float, default: 0.10000000149011612)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.filter_min_num_consistent">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">filter_min_num_consistent</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.filter_min_num_consistent" title="Link to this definition"></a></dt>
-<dd><p>Minimum number of source images have to be consistent for pixel not to be filtered. (int, default: 2)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.filter_min_triangulation_angle">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">filter_min_triangulation_angle</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.filter_min_triangulation_angle" title="Link to this definition"></a></dt>
-<dd><p>Minimum triangulation angle to be stable. (float, default: 3.0)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.geom_consistency">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">geom_consistency</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.geom_consistency" title="Link to this definition"></a></dt>
-<dd><p>Whether to add a regularized geometric consistency term to the cost function. If true, the <cite>depth_maps</cite> and <cite>normal_maps</cite> must not be null. (bool, default: True)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.geom_consistency_max_cost">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">geom_consistency_max_cost</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.geom_consistency_max_cost" title="Link to this definition"></a></dt>
-<dd><p>Maximum geometric consistency cost in terms of the forward-backward reprojection error in pixels. (float, default: 3.0)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.geom_consistency_regularizer">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">geom_consistency_regularizer</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.geom_consistency_regularizer" title="Link to this definition"></a></dt>
-<dd><p>The relative weight of the geometric consistency term w.r.t. to the photo-consistency term. (float, default: 0.30000001192092896)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.gpu_index">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gpu_index</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.gpu_index" title="Link to this definition"></a></dt>
-<dd><p>Index of the GPU used for patch match. For multi-GPU usage, you should separate multiple GPU indices by comma, e.g., “0,1,2,3”. (str, default: -1)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.incident_angle_sigma">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">incident_angle_sigma</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.incident_angle_sigma" title="Link to this definition"></a></dt>
-<dd><p>Spread of the incident angle likelihood function. (float, default: 0.8999999761581421)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.max_image_size">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max_image_size</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.max_image_size" title="Link to this definition"></a></dt>
-<dd><p>Maximum image size in either dimension. (int, default: -1)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.mergedict">
-<span class="sig-name descname"><span class="pre">mergedict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.mergedict" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.min_triangulation_angle">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">min_triangulation_angle</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.min_triangulation_angle" title="Link to this definition"></a></dt>
-<dd><p>Minimum triangulation angle in degrees. (float, default: 1.0)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.ncc_sigma">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ncc_sigma</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.ncc_sigma" title="Link to this definition"></a></dt>
-<dd><p>Spread of the NCC likelihood function. (float, default: 0.6000000238418579)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.num_iterations">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_iterations</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.num_iterations" title="Link to this definition"></a></dt>
-<dd><p>Number of coordinate descent iterations. (int, default: 5)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.num_samples">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_samples</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.num_samples" title="Link to this definition"></a></dt>
-<dd><p>Number of random samples to draw in Monte Carlo sampling. (int, default: 15)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.sigma_color">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sigma_color</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.sigma_color" title="Link to this definition"></a></dt>
-<dd><p>Color sigma for bilaterally weighted NCC. (float, default: 0.20000000298023224)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.sigma_spatial">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sigma_spatial</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.sigma_spatial" title="Link to this definition"></a></dt>
-<dd><p>Spatial sigma for bilaterally weighted NCC. (float, default: -1.0)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.summary">
-<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.PatchMatchOptions" title="pycolmap.PatchMatchOptions"><span class="pre">pycolmap.PatchMatchOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.summary" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.todict">
-<span class="sig-name descname"><span class="pre">todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.PatchMatchOptions" title="pycolmap.PatchMatchOptions"><span class="pre">pycolmap.PatchMatchOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.todict" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.window_radius">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">window_radius</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.window_radius" title="Link to this definition"></a></dt>
-<dd><p>Half window size to compute NCC photo-consistency cost. (int, default: 5)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.window_step">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">window_step</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.window_step" title="Link to this definition"></a></dt>
-<dd><p>Number of pixels to skip when computing NCC. (int, default: 1)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.write_consistency_graph">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">write_consistency_graph</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.write_consistency_graph" title="Link to this definition"></a></dt>
-<dd><p>Whether to write the consistency graph. (bool, default: False)</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="pycolmap.Point2D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">Point2D</span></span><a class="headerlink" href="#pycolmap.Point2D" title="Link to this definition"></a></dt>
 <dd><dl class="py method">
@@ -5793,6 +5629,21 @@ are part of a 3D point track. (int, default: 0)</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="pycolmap.align_reconstruction_to_locations">
+<span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">align_reconstruction_to_locations</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Reconstruction" title="pycolmap.Reconstruction"><span class="pre">pycolmap.Reconstruction</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">image_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">locations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">[</span></span><span class="pre">m</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">min_common_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">ransac_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.RANSACOptions" title="pycolmap.RANSACOptions"><span class="pre">pycolmap.RANSACOptions</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pycolmap.Sim3d" title="pycolmap.Sim3d"><span class="pre">pycolmap.Sim3d</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.align_reconstruction_to_locations" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pycolmap.align_reconstructions_via_points">
 <span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">align_reconstructions_via_points</span></span><span class="sig-paren">(</span>
 
@@ -5835,21 +5686,6 @@ are part of a 3D point track. (int, default: 0)</p>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pycolmap.align_reconstrution_to_locations">
-<span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">align_reconstrution_to_locations</span></span><span class="sig-paren">(</span>
-
-<dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Reconstruction" title="pycolmap.Reconstruction"><span class="pre">pycolmap.Reconstruction</span></a></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">image_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">locations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">[</span></span><span class="pre">m</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">min_common_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">ransac_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.RANSACOptions" title="pycolmap.RANSACOptions"><span class="pre">pycolmap.RANSACOptions</span></a></span></em>,</dd>
-</dl>
-
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pycolmap.Sim3d" title="pycolmap.Sim3d"><span class="pre">pycolmap.Sim3d</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.align_reconstrution_to_locations" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="pycolmap.bundle_adjustment">
 <span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">bundle_adjustment</span></span><span class="sig-paren">(</span>
 
@@ -5877,6 +5713,20 @@ are part of a 3D point track. (int, default: 0)</p>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.compare_reconstructions" title="Link to this definition"></a></dt>
 <dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycolmap.dense_delaunay_meshing">
+<span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">dense_delaunay_meshing</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.DelaunayMeshingOptions" title="pycolmap.DelaunayMeshingOptions"><span class="pre">pycolmap.DelaunayMeshingOptions</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">DelaunayMeshingOptions()</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.dense_delaunay_meshing" title="Link to this definition"></a></dt>
+<dd><p>Delaunay meshing of dense COLMAP reconstructions.</p>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pycolmap.essential_matrix_estimation">
@@ -5915,9 +5765,9 @@ are part of a 3D point track. (int, default: 0)</p>
 <span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">estimate_pose_covariance_from_ba</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyceres.Problem</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">reconstruction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Reconstruction" title="pycolmap.Reconstruction"><span class="pre">pycolmap.Reconstruction</span></a></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">damping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-08</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">problem:</span> <span class="pre">ceres::Problem</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">reconstruction:</span> <span class="pre">pycolmap.Reconstruction</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">damping:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">1e-08</span></span></em>,</dd>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.estimate_pose_covariance_from_ba" title="Link to this definition"></a></dt>
@@ -5928,8 +5778,8 @@ are part of a 3D point track. (int, default: 0)</p>
 <span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">estimate_pose_covariance_from_ba_ceres_backend</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyceres.Problem</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">reconstruction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Reconstruction" title="pycolmap.Reconstruction"><span class="pre">pycolmap.Reconstruction</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">problem:</span> <span class="pre">ceres::Problem</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">reconstruction:</span> <span class="pre">pycolmap.Reconstruction</span></span></em>,</dd>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.estimate_pose_covariance_from_ba_ceres_backend" title="Link to this definition"></a></dt>
@@ -6279,22 +6129,6 @@ are part of a 3D point track. (int, default: 0)</p>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pycolmap.patch_match_stereo">
-<span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">patch_match_stereo</span></span><span class="sig-paren">(</span>
-
-<dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">workspace_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">workspace_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'COLMAP'</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">pmvs_option_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'option-all'</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.PatchMatchOptions" title="pycolmap.PatchMatchOptions"><span class="pre">pycolmap.PatchMatchOptions</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PatchMatchOptions()</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>,</dd>
-</dl>
-
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.patch_match_stereo" title="Link to this definition"></a></dt>
-<dd><p>Runs Patch-Match-Stereo (requires CUDA)</p>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="pycolmap.poisson_meshing">
 <span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">poisson_meshing</span></span><span class="sig-paren">(</span>
 
@@ -6348,6 +6182,20 @@ are part of a 3D point track. (int, default: 0)</p>
 <dt class="sig sig-object py" id="pycolmap.set_random_seed">
 <span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">set_random_seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.set_random_seed" title="Link to this definition"></a></dt>
 <dd><p>Initialize the PRNG with the given seed.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycolmap.sparse_delaunay_meshing">
+<span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">sparse_delaunay_meshing</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.DelaunayMeshingOptions" title="pycolmap.DelaunayMeshingOptions"><span class="pre">pycolmap.DelaunayMeshingOptions</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">DelaunayMeshingOptions()</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.sparse_delaunay_meshing" title="Link to this definition"></a></dt>
+<dd><p>Delaunay meshing of sparse COLMAP reconstructions.</p>
 </dd></dl>
 
 <dl class="py function">

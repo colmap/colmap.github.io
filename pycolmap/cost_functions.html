@@ -117,7 +117,7 @@
 <dd><em class="sig-param"><span class="n"><span class="pre">covariance_cam</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyceres.CostFunction</span></span></span><a class="headerlink" href="#pycolmap.cost_functions.AbsolutePoseErrorCost" title="Link to this definition"></a></dt>
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ceres::CostFunction</span></span></span><a class="headerlink" href="#pycolmap.cost_functions.AbsolutePoseErrorCost" title="Link to this definition"></a></dt>
 <dd><p>6-DoF error on the absolute pose.</p>
 </dd></dl>
 
@@ -130,7 +130,7 @@
 <dd><em class="sig-param"><span class="n"><span class="pre">covariance_j</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyceres.CostFunction</span></span></span><a class="headerlink" href="#pycolmap.cost_functions.MetricRelativePoseErrorCost" title="Link to this definition"></a></dt>
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ceres::CostFunction</span></span></span><a class="headerlink" href="#pycolmap.cost_functions.MetricRelativePoseErrorCost" title="Link to this definition"></a></dt>
 <dd><p>6-DoF error between two absolute poses based on their relative pose.</p>
 </dd></dl>
 
@@ -143,7 +143,7 @@
 <dd><em class="sig-param"><span class="n"><span class="pre">covariance_point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyceres.CostFunction</span></span></span><a class="headerlink" href="#pycolmap.cost_functions.Point3dAlignmentCost" title="Link to this definition"></a></dt>
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ceres::CostFunction</span></span></span><a class="headerlink" href="#pycolmap.cost_functions.Point3dAlignmentCost" title="Link to this definition"></a></dt>
 <dd><p>Error between 3D points transformed by a similarity transform.</p>
 </dd></dl>
 
@@ -152,27 +152,27 @@
 <span class="sig-prename descclassname"><span class="pre">pycolmap.cost_functions.</span></span><span class="sig-name descname"><span class="pre">ReprojErrorCost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.cost_functions.ReprojErrorCost" title="Link to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
-<li><p>ReprojErrorCost(camera_model_id: pycolmap.CameraModelId, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; pyceres.CostFunction</p></li>
+<li><p>ReprojErrorCost(camera_model_id: pycolmap.CameraModelId, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; ceres::CostFunction</p></li>
 </ol>
 <p>Reprojection error.</p>
 <ol class="arabic simple" start="2">
-<li><p>ReprojErrorCost(camera_model_id: pycolmap.CameraModelId, stddev: float, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; pyceres.CostFunction</p></li>
+<li><p>ReprojErrorCost(camera_model_id: pycolmap.CameraModelId, stddev: float, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; ceres::CostFunction</p></li>
 </ol>
 <p>Reprojection error with 2D detection noise.</p>
 <ol class="arabic simple" start="3">
-<li><p>ReprojErrorCost(camera_model_id: pycolmap.CameraModelId, cam_from_world: pycolmap.Rigid3d, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; pyceres.CostFunction</p></li>
+<li><p>ReprojErrorCost(camera_model_id: pycolmap.CameraModelId, cam_from_world: pycolmap.Rigid3d, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; ceres::CostFunction</p></li>
 </ol>
 <p>Reprojection error with constant camera pose.</p>
 <ol class="arabic simple" start="4">
-<li><p>ReprojErrorCost(camera_model_id: pycolmap.CameraModelId, stddev: float, cam_from_world: pycolmap.Rigid3d, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; pyceres.CostFunction</p></li>
+<li><p>ReprojErrorCost(camera_model_id: pycolmap.CameraModelId, stddev: float, cam_from_world: pycolmap.Rigid3d, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; ceres::CostFunction</p></li>
 </ol>
 <p>Reprojection error with constant camera pose and 2D detection noise.</p>
 <ol class="arabic simple" start="5">
-<li><p>ReprojErrorCost(camera_model_id: pycolmap.CameraModelId, point2D: numpy.ndarray[numpy.float64[2, 1]], point3D: numpy.ndarray[numpy.float64[3, 1]]) -&gt; pyceres.CostFunction</p></li>
+<li><p>ReprojErrorCost(camera_model_id: pycolmap.CameraModelId, point2D: numpy.ndarray[numpy.float64[2, 1]], point3D: numpy.ndarray[numpy.float64[3, 1]]) -&gt; ceres::CostFunction</p></li>
 </ol>
 <p>Reprojection error with constant 3D point.</p>
 <ol class="arabic simple" start="6">
-<li><p>ReprojErrorCost(camera_model_id: pycolmap.CameraModelId, stddev: float, point2D: numpy.ndarray[numpy.float64[2, 1]], point3D: numpy.ndarray[numpy.float64[3, 1]]) -&gt; pyceres.CostFunction</p></li>
+<li><p>ReprojErrorCost(camera_model_id: pycolmap.CameraModelId, stddev: float, point2D: numpy.ndarray[numpy.float64[2, 1]], point3D: numpy.ndarray[numpy.float64[3, 1]]) -&gt; ceres::CostFunction</p></li>
 </ol>
 <p>Reprojection error with constant 3D point and 2D detection noise.</p>
 </dd></dl>
@@ -182,19 +182,19 @@
 <span class="sig-prename descclassname"><span class="pre">pycolmap.cost_functions.</span></span><span class="sig-name descname"><span class="pre">RigReprojErrorCost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.cost_functions.RigReprojErrorCost" title="Link to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
-<li><p>RigReprojErrorCost(camera_model_id: pycolmap.CameraModelId, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; pyceres.CostFunction</p></li>
+<li><p>RigReprojErrorCost(camera_model_id: pycolmap.CameraModelId, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; ceres::CostFunction</p></li>
 </ol>
 <p>Reprojection error for camera rig.</p>
 <ol class="arabic simple" start="2">
-<li><p>RigReprojErrorCost(camera_model_id: pycolmap.CameraModelId, stddev: float, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; pyceres.CostFunction</p></li>
+<li><p>RigReprojErrorCost(camera_model_id: pycolmap.CameraModelId, stddev: float, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; ceres::CostFunction</p></li>
 </ol>
 <p>Reprojection error for camera rig with 2D detection noise.</p>
 <ol class="arabic simple" start="3">
-<li><p>RigReprojErrorCost(camera_model_id: pycolmap.CameraModelId, cam_from_rig: pycolmap.Rigid3d, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; pyceres.CostFunction</p></li>
+<li><p>RigReprojErrorCost(camera_model_id: pycolmap.CameraModelId, cam_from_rig: pycolmap.Rigid3d, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; ceres::CostFunction</p></li>
 </ol>
 <p>Reprojection error for camera rig with constant cam-from-rig pose.</p>
 <ol class="arabic simple" start="4">
-<li><p>RigReprojErrorCost(camera_model_id: pycolmap.CameraModelId, stddev: float, cam_from_rig: pycolmap.Rigid3d, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; pyceres.CostFunction</p></li>
+<li><p>RigReprojErrorCost(camera_model_id: pycolmap.CameraModelId, stddev: float, cam_from_rig: pycolmap.Rigid3d, point2D: numpy.ndarray[numpy.float64[2, 1]]) -&gt; ceres::CostFunction</p></li>
 </ol>
 <p>Reprojection error for camera rig with constant cam-from-rig pose and 2D detection noise.</p>
 </dd></dl>
@@ -208,7 +208,7 @@
 <dd><em class="sig-param"><span class="n"><span class="pre">point2D2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyceres.CostFunction</span></span></span><a class="headerlink" href="#pycolmap.cost_functions.SampsonErrorCost" title="Link to this definition"></a></dt>
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ceres::CostFunction</span></span></span><a class="headerlink" href="#pycolmap.cost_functions.SampsonErrorCost" title="Link to this definition"></a></dt>
 <dd><p>Sampson error for two-view geometry.</p>
 </dd></dl>
 
