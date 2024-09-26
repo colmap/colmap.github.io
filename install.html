@@ -56,7 +56,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#build-from-source">Build from Source</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debian-ubuntu">Debian/Ubuntu</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">Mac</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">Windows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vcpkg">VCPKG</a></li>
@@ -109,15 +109,16 @@
   <section id="installation">
 <span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
 <p>You can either download one of the pre-built binaries or build the source code
-manually. Executables for Windows and Mac and other resources can be downloaded
-from <a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>. Executables for Linux/Unix/BSD are available at
-<a class="reference external" href="https://repology.org/metapackage/colmap/versions">https://repology.org/metapackage/colmap/versions</a>. Note that the COLMAP packages
-in the default repositories for Linux/Unix/BSD do not come with CUDA support,
-which requires manual compilation but is relatively easy on these platforms.</p>
+manually. Pre-built binaries and other resources can be downloaded from
+<a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>. An overview of system packages for Linux/Unix/BSD
+distributions are available at <a class="reference external" href="https://repology.org/metapackage/colmap/versions">https://repology.org/metapackage/colmap/versions</a>.
+Note that the COLMAP packages in the default repositories for Linux/Unix/BSD do
+not come with CUDA support, which requires a manual build from source.</p>
 <p>COLMAP can be used as an independent application through the command-line or
 graphical user interface. Alternatively, COLMAP is also built as a reusable
-library, i.e., you can include and link COLMAP against your own source code,
-as described further below.</p>
+library, i.e., you can include and link COLMAP against your own C++ source code,
+as described further below. Furthermore, you can use most of COLMAP’s
+functionality with <a class="reference internal" href="pycolmap/index.html#pycolmap-index"><span class="std std-ref">PyCOLMAP</span></a> in Python.</p>
 <section id="pre-built-binaries">
 <h2>Pre-built Binaries<a class="headerlink" href="#pre-built-binaries" title="Link to this heading"></a></h2>
 <section id="windows">
@@ -128,12 +129,16 @@ double-click  the <code class="docutils literal notranslate"><span class="pre">C
 Windows command shell or Powershell. The command-line interface is also
 accessible through this batch script, which automatically sets the necessary
 library paths. To list the available COLMAP commands, run <code class="docutils literal notranslate"><span class="pre">COLMAP.bat</span> <span class="pre">-h</span></code> in
-the command shell <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> or in Powershell.</p>
+the command shell <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> or in Powershell. The first time you run COLMAP,
+Windows defender may prompt you with a security warning, because the binaries
+are not officially signed. The provided COLMAP binaries are automatically built
+from GitHub Actions CI machines. If you do not trust them, you can build from
+source as described below.</p>
 </section>
 <section id="mac">
 <h3>Mac<a class="headerlink" href="#mac" title="Link to this heading"></a></h3>
 <p>The pre-built application package for Mac contains both the GUI and command-line
-version of COLMAP. To open the GUI, simply open the application and note that
+version of COLMAP. To open the GUI, simply open the application. Note that
 COLMAP is shipped as an unsigned application, i.e., when your first open the
 application, you have to right-click the application and select <em>Open</em> and then
 accept to trust the application. In the future, you can then simply double-click
@@ -149,13 +154,14 @@ First, checkout the latest source code:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">colmap</span>
 </pre></div>
 </div>
-<p>On Linux and Mac it is generally recommended to follow the installation
-instructions below, which use the system package managers to install the
-required dependencies. Alternatively, there is a Python build script that builds
-COLMAP and its dependencies locally. This script is useful under Windows and on
-a (cluster) system if you do not have root access under Linux or Mac.</p>
-<section id="linux">
-<h3>Linux<a class="headerlink" href="#linux" title="Link to this heading"></a></h3>
+<p>Under Linux and Mac, it is generally recommended to follow the installation
+instructions below, which use the respective system package managers to install
+the required dependencies. Alternatively, the instructions for VCPKG can be used
+to compile the required dependencies from scratch on more exotic systems with
+limited system packages. The VCPKG approach is also the method of choice under
+Windows, compute clusters, or if you do not have root access under Linux or Mac.</p>
+<section id="debian-ubuntu">
+<h3>Debian/Ubuntu<a class="headerlink" href="#debian-ubuntu" title="Link to this heading"></a></h3>
 <p><em>Recommended dependencies:</em> CUDA (at least version 7.X)</p>
 <p>Dependencies from the default Ubuntu repositories:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> \
@@ -182,6 +188,16 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
     <span class="n">libceres</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
+<p>To compile with <strong>CUDA support</strong>, also install Ubuntu’s default CUDA package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> \
+    <span class="n">nvidia</span><span class="o">-</span><span class="n">cuda</span><span class="o">-</span><span class="n">toolkit</span> \
+    <span class="n">nvidia</span><span class="o">-</span><span class="n">cuda</span><span class="o">-</span><span class="n">toolkit</span><span class="o">-</span><span class="n">gcc</span>
+</pre></div>
+</div>
+<p>Or, manually install the latest CUDA from NVIDIA’s homepage. During CMake
+configuration, specify <cite>-DCMAKE_CUDA_ARCHITECTURES=native</cite>, if you want to run
+COLMAP only on your current machine (default), “all”/”all-major” to be able to
+distribute to other machines, or a specific CUDA architecture like “75”, etc.</p>
 <p>Configure and compile COLMAP:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">colmap</span><span class="o">.</span><span class="n">git</span>
 <span class="n">cd</span> <span class="n">colmap</span>
@@ -197,23 +213,13 @@ a (cluster) system if you do not have root access under Linux or Mac.</p>
 <span class="n">colmap</span> <span class="n">gui</span>
 </pre></div>
 </div>
-<p>To compile with <strong>CUDA support</strong>, also install Ubuntu’s default CUDA package:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> \
-    <span class="n">nvidia</span><span class="o">-</span><span class="n">cuda</span><span class="o">-</span><span class="n">toolkit</span> \
-    <span class="n">nvidia</span><span class="o">-</span><span class="n">cuda</span><span class="o">-</span><span class="n">toolkit</span><span class="o">-</span><span class="n">gcc</span>
-</pre></div>
-</div>
-<p>Or, manually install the latest CUDA from NVIDIA’s homepage. During CMake configuration
-specify <cite>CMAKE_CUDA_ARCHITECTURES</cite> as “native”, if you want to run COLMAP on your
-current machine only (default), “all”/”all-major” to be able to distribute to other
-machines, or a specific CUDA architecture like “75”, etc.</p>
 <p>Under <strong>Ubuntu 18.04</strong>, the CMake configuration scripts of CGAL are broken and
 you must also install the CGAL Qt5 package:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libcgal</span><span class="o">-</span><span class="n">qt5</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
-<p>Under <strong>Ubuntu 22.04</strong>, there is a problem when compiling with Ubuntu’s default CUDA
-package and GCC, and you must compile against GCC 10:</p>
+<p>Under <strong>Ubuntu 22.04</strong>, there is a problem when compiling with Ubuntu’s default
+CUDA package and GCC, and you must compile against GCC 10:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gcc</span><span class="o">-</span><span class="mi">10</span> <span class="n">g</span><span class="o">++-</span><span class="mi">10</span>
 <span class="n">export</span> <span class="n">CC</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="mi">10</span>
 <span class="n">export</span> <span class="n">CXX</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++-</span><span class="mi">10</span>
@@ -245,22 +251,17 @@ package and GCC, and you must compile against GCC 10:</p>
 <p>Configure and compile COLMAP:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">colmap</span><span class="o">.</span><span class="n">git</span>
 <span class="n">cd</span> <span class="n">colmap</span>
-<span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/opt/qt@5/bin:$PATH&quot;</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">GNinja</span> <span class="o">-</span><span class="n">DQt5_DIR</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">qt</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="n">Qt5</span>
+<span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">GNinja</span> <span class="o">-</span><span class="n">DCMAKE_PREFIX_PATH</span><span class="o">=</span><span class="s2">&quot;$(brew --prefix qt@5)&quot;</span>
 <span class="n">ninja</span>
 <span class="n">sudo</span> <span class="n">ninja</span> <span class="n">install</span>
 </pre></div>
 </div>
-<p>On Macs with ARM the brew paths are different so you need this</p>
-<blockquote>
-<div><p>cmake .. -GNinja -DCMAKE_PREFIX_PATH=”/opt/homebrew/opt/flann;/opt/homebrew/opt/metis;/opt/homebrew/opt/suite-sparse;/opt/homebrew/opt/qt&#64;5;/opt/homebrew/opt/freeimage”</p>
-</div></blockquote>
 <p>If you have Qt 6 installed on your system as well, you might have to temporarily
 link your Qt 5 installation while configuring CMake:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">link</span> <span class="n">qt5</span>
-<span class="n">cmake</span> <span class="n">configuration</span> <span class="p">(</span><span class="kn">from</span> <span class="nn">previous</span> <span class="n">code</span> <span class="n">block</span><span class="p">)</span>
+<span class="n">cmake</span> <span class="o">...</span> <span class="p">(</span><span class="kn">from</span> <span class="nn">previous</span> <span class="n">code</span> <span class="n">block</span><span class="p">)</span>
 <span class="n">brew</span> <span class="n">unlink</span> <span class="n">qt5</span>
 </pre></div>
 </div>
@@ -273,7 +274,7 @@ link your Qt 5 installation while configuring CMake:</p>
 <section id="id3">
 <h3>Windows<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p><em>Recommended dependencies:</em> CUDA (at least version 7.X), Visual Studio 2019</p>
-<p>On Windows, the recommended way is to build COLMAP using vcpkg:</p>
+<p>On Windows, the recommended way is to build COLMAP using VCPKG:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">microsoft</span><span class="o">/</span><span class="n">vcpkg</span>
 <span class="n">cd</span> <span class="n">vcpkg</span>
 <span class="o">.</span>\<span class="n">bootstrap</span><span class="o">-</span><span class="n">vcpkg</span><span class="o">.</span><span class="n">bat</span>
@@ -288,7 +289,7 @@ link your Qt 5 installation while configuring CMake:</p>
 </section>
 <section id="vcpkg">
 <h3>VCPKG<a class="headerlink" href="#vcpkg" title="Link to this heading"></a></h3>
-<p>COLMAP ships as part of the vcpkg distribution. This enables to conveniently
+<p>COLMAP ships as part of the VCPKG distribution. This enables to conveniently
 build COLMAP and all of its dependencies from scratch under different platforms.
 Note that VCPKG requires you to install CUDA manually in the standard way on
 your platform. To compile COLMAP using VCPKG, you run:</p>
