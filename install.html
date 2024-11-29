@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; COLMAP 3.11.0.dev0 documentation</title>
+  <title>Installation &mdash; COLMAP 3.12.0.dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=bf522350"></script>
+        <script src="_static/documentation_options.js?v=3a07dcc1"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -38,7 +38,7 @@
             COLMAP
           </a>
               <div class="version">
-                3.11.0.dev0
+                3.12.0.dev0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -52,13 +52,12 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#pre-built-binaries">Pre-built Binaries</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mac">Mac</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#build-from-source">Build from Source</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#debian-ubuntu">Debian/Ubuntu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Mac</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mac">Mac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Windows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vcpkg">VCPKG</a></li>
 </ul>
 </li>
@@ -110,10 +109,14 @@
 <span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
 <p>You can either download one of the pre-built binaries or build the source code
 manually. Pre-built binaries and other resources can be downloaded from
-<a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>. An overview of system packages for Linux/Unix/BSD
-distributions are available at <a class="reference external" href="https://repology.org/metapackage/colmap/versions">https://repology.org/metapackage/colmap/versions</a>.
-Note that the COLMAP packages in the default repositories for Linux/Unix/BSD do
-not come with CUDA support, which requires a manual build from source.</p>
+<a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>.</p>
+<p>An overview of system packages for Linux/Unix/BSD distributions are available at
+<a class="reference external" href="https://repology.org/metapackage/colmap/versions">https://repology.org/metapackage/colmap/versions</a>. Note that the COLMAP packages
+in the default repositories for Linux/Unix/BSD do not come with CUDA support,
+which requires a manual build from source, as explained further below.</p>
+<p>For Mac users, <a class="reference external" href="https://brew.sh">Homebrew</a> provides a formula for COLMAP with
+pre-compiled binaries or the option to build from source. After installing
+homebrew, installing COLMAP is as easy as running <cite>brew install colmap</cite>.</p>
 <p>COLMAP can be used as an independent application through the command-line or
 graphical user interface. Alternatively, COLMAP is also built as a reusable
 library, i.e., you can include and link COLMAP against your own C++ source code,
@@ -134,17 +137,6 @@ Windows defender may prompt you with a security warning, because the binaries
 are not officially signed. The provided COLMAP binaries are automatically built
 from GitHub Actions CI machines. If you do not trust them, you can build from
 source as described below.</p>
-</section>
-<section id="mac">
-<h3>Mac<a class="headerlink" href="#mac" title="Link to this heading"></a></h3>
-<p>The pre-built application package for Mac contains both the GUI and command-line
-version of COLMAP. To open the GUI, simply open the application. Note that
-COLMAP is shipped as an unsigned application, i.e., when your first open the
-application, you have to right-click the application and select <em>Open</em> and then
-accept to trust the application. In the future, you can then simply double-click
-the application to open COLMAP. The command-line interface is accessible by
-running the packaged binary <code class="docutils literal notranslate"><span class="pre">COLMAP.app/Contents/MacOS/colmap</span></code>. To list the
-available COLMAP commands, run <code class="docutils literal notranslate"><span class="pre">COLMAP.app/Contents/MacOS/colmap</span> <span class="pre">-h</span></code>.</p>
 </section>
 </section>
 <section id="build-from-source">
@@ -170,7 +162,6 @@ Windows, compute clusters, or if you do not have root access under Linux or Mac.
     <span class="n">ninja</span><span class="o">-</span><span class="n">build</span> \
     <span class="n">build</span><span class="o">-</span><span class="n">essential</span> \
     <span class="n">libboost</span><span class="o">-</span><span class="n">program</span><span class="o">-</span><span class="n">options</span><span class="o">-</span><span class="n">dev</span> \
-    <span class="n">libboost</span><span class="o">-</span><span class="n">filesystem</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libboost</span><span class="o">-</span><span class="n">graph</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libboost</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libeigen3</span><span class="o">-</span><span class="n">dev</span> \
@@ -228,8 +219,8 @@ CUDA package and GCC, and you must compile against GCC 10:</p>
 </pre></div>
 </div>
 </section>
-<section id="id2">
-<h3>Mac<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<section id="mac">
+<h3>Mac<a class="headerlink" href="#mac" title="Link to this heading"></a></h3>
 <p>Dependencies from <a class="reference external" href="http://brew.sh/">Homebrew</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> \
     <span class="n">cmake</span> \
@@ -271,8 +262,8 @@ link your Qt 5 installation while configuring CMake:</p>
 </pre></div>
 </div>
 </section>
-<section id="id3">
-<h3>Windows<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<section id="id2">
+<h3>Windows<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <p><em>Recommended dependencies:</em> CUDA (at least version 7.X), Visual Studio 2019</p>
 <p>On Windows, the recommended way is to build COLMAP using VCPKG:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">microsoft</span><span class="o">/</span><span class="n">vcpkg</span>

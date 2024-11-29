@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PyCOLMAP &mdash; COLMAP 3.11.0.dev0 documentation</title>
+  <title>PyCOLMAP &mdash; COLMAP 3.12.0.dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=4eec7147" />
@@ -16,7 +16,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=bf522350"></script>
+        <script src="../_static/documentation_options.js?v=3a07dcc1"></script>
         <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
@@ -38,7 +38,7 @@
             COLMAP
           </a>
               <div class="version">
-                3.11.0.dev0
+                3.12.0.dev0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -139,12 +139,14 @@ so either from PyPI or from source.</p>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.Device"><code class="docutils literal notranslate"><span class="pre">Device</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.logging"><code class="docutils literal notranslate"><span class="pre">logging</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.Timer"><code class="docutils literal notranslate"><span class="pre">Timer</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.homography_decomposition"><code class="docutils literal notranslate"><span class="pre">homography_decomposition()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.Rotation3d"><code class="docutils literal notranslate"><span class="pre">Rotation3d</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.Rigid3d"><code class="docutils literal notranslate"><span class="pre">Rigid3d</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.Sim3d"><code class="docutils literal notranslate"><span class="pre">Sim3d</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.PosePriorCoordinateSystem"><code class="docutils literal notranslate"><span class="pre">PosePriorCoordinateSystem</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.PosePrior"><code class="docutils literal notranslate"><span class="pre">PosePrior</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.pose_from_homography_matrix"><code class="docutils literal notranslate"><span class="pre">pose_from_homography_matrix()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.homography_decomposition"><code class="docutils literal notranslate"><span class="pre">homography_decomposition()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.essential_matrix_from_pose"><code class="docutils literal notranslate"><span class="pre">essential_matrix_from_pose()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.RANSACOptions"><code class="docutils literal notranslate"><span class="pre">RANSACOptions</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.Point2D"><code class="docutils literal notranslate"><span class="pre">Point2D</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.ListPoint2D"><code class="docutils literal notranslate"><span class="pre">ListPoint2D</span></code></a></li>
@@ -169,29 +171,43 @@ so either from PyPI or from source.</p>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.Database"><code class="docutils literal notranslate"><span class="pre">Database</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.DatabaseTransaction"><code class="docutils literal notranslate"><span class="pre">DatabaseTransaction</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.DatabaseCache"><code class="docutils literal notranslate"><span class="pre">DatabaseCache</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.SyntheticDatasetMatchConfig"><code class="docutils literal notranslate"><span class="pre">SyntheticDatasetMatchConfig</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.SyntheticDatasetOptions"><code class="docutils literal notranslate"><span class="pre">SyntheticDatasetOptions</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.synthesize_dataset"><code class="docutils literal notranslate"><span class="pre">synthesize_dataset()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.AbsolutePoseEstimationOptions"><code class="docutils literal notranslate"><span class="pre">AbsolutePoseEstimationOptions</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.AbsolutePoseRefinementOptions"><code class="docutils literal notranslate"><span class="pre">AbsolutePoseRefinementOptions</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_absolute_pose"><code class="docutils literal notranslate"><span class="pre">estimate_absolute_pose()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.refine_absolute_pose"><code class="docutils literal notranslate"><span class="pre">refine_absolute_pose()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_and_refine_absolute_pose"><code class="docutils literal notranslate"><span class="pre">estimate_and_refine_absolute_pose()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.absolute_pose_estimation"><code class="docutils literal notranslate"><span class="pre">absolute_pose_estimation()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.pose_refinement"><code class="docutils literal notranslate"><span class="pre">pose_refinement()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.ImageAlignmentError"><code class="docutils literal notranslate"><span class="pre">ImageAlignmentError</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.align_reconstructions_via_reprojections"><code class="docutils literal notranslate"><span class="pre">align_reconstructions_via_reprojections()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.align_reconstructions_via_proj_centers"><code class="docutils literal notranslate"><span class="pre">align_reconstructions_via_proj_centers()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.align_reconstructions_via_points"><code class="docutils literal notranslate"><span class="pre">align_reconstructions_via_points()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.align_reconstruction_to_locations"><code class="docutils literal notranslate"><span class="pre">align_reconstruction_to_locations()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.compare_reconstructions"><code class="docutils literal notranslate"><span class="pre">compare_reconstructions()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.BundleAdjustmentConfig"><code class="docutils literal notranslate"><span class="pre">BundleAdjustmentConfig</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.LossFunctionType"><code class="docutils literal notranslate"><span class="pre">LossFunctionType</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.BundleAdjustmentOptions"><code class="docutils literal notranslate"><span class="pre">BundleAdjustmentOptions</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.BundleAdjustmentConfig"><code class="docutils literal notranslate"><span class="pre">BundleAdjustmentConfig</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.PosePriorBundleAdjustmentOptions"><code class="docutils literal notranslate"><span class="pre">PosePriorBundleAdjustmentOptions</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.BundleAdjuster"><code class="docutils literal notranslate"><span class="pre">BundleAdjuster</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_pose_covariance_from_ba_ceres_backend"><code class="docutils literal notranslate"><span class="pre">estimate_pose_covariance_from_ba_ceres_backend()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_pose_covariance_from_ba"><code class="docutils literal notranslate"><span class="pre">estimate_pose_covariance_from_ba()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.BundleAdjustmentCovarianceEstimatorBase"><code class="docutils literal notranslate"><span class="pre">BundleAdjustmentCovarianceEstimatorBase</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.BundleAdjustmentCovarianceEstimatorCeresBackend"><code class="docutils literal notranslate"><span class="pre">BundleAdjustmentCovarianceEstimatorCeresBackend</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.BundleAdjustmentCovarianceEstimator"><code class="docutils literal notranslate"><span class="pre">BundleAdjustmentCovarianceEstimator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.create_default_bundle_adjuster"><code class="docutils literal notranslate"><span class="pre">create_default_bundle_adjuster()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.create_pose_prior_bundle_adjuster"><code class="docutils literal notranslate"><span class="pre">create_pose_prior_bundle_adjuster()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.BACovarianceOptionsParams"><code class="docutils literal notranslate"><span class="pre">BACovarianceOptionsParams</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.ExperimentalPoseParam"><code class="docutils literal notranslate"><span class="pre">ExperimentalPoseParam</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.BACovarianceOptions"><code class="docutils literal notranslate"><span class="pre">BACovarianceOptions</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.BACovariance"><code class="docutils literal notranslate"><span class="pre">BACovariance</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_ba_covariance"><code class="docutils literal notranslate"><span class="pre">estimate_ba_covariance()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_essential_matrix"><code class="docutils literal notranslate"><span class="pre">estimate_essential_matrix()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.essential_matrix_estimation"><code class="docutils literal notranslate"><span class="pre">essential_matrix_estimation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_fundamental_matrix"><code class="docutils literal notranslate"><span class="pre">estimate_fundamental_matrix()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.fundamental_matrix_estimation"><code class="docutils literal notranslate"><span class="pre">fundamental_matrix_estimation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_and_refine_generalized_absolute_pose"><code class="docutils literal notranslate"><span class="pre">estimate_and_refine_generalized_absolute_pose()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.rig_absolute_pose_estimation"><code class="docutils literal notranslate"><span class="pre">rig_absolute_pose_estimation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_homography_matrix"><code class="docutils literal notranslate"><span class="pre">estimate_homography_matrix()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.homography_matrix_estimation"><code class="docutils literal notranslate"><span class="pre">homography_matrix_estimation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_sim3d"><code class="docutils literal notranslate"><span class="pre">estimate_sim3d()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_sim3d_robust"><code class="docutils literal notranslate"><span class="pre">estimate_sim3d_robust()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.TriangulationResidualType"><code class="docutils literal notranslate"><span class="pre">TriangulationResidualType</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.EstimateTriangulationOptions"><code class="docutils literal notranslate"><span class="pre">EstimateTriangulationOptions</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_triangulation"><code class="docutils literal notranslate"><span class="pre">estimate_triangulation()</span></code></a></li>
@@ -199,6 +215,7 @@ so either from PyPI or from source.</p>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_calibrated_two_view_geometry"><code class="docutils literal notranslate"><span class="pre">estimate_calibrated_two_view_geometry()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_two_view_geometry"><code class="docutils literal notranslate"><span class="pre">estimate_two_view_geometry()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_two_view_geometry_pose"><code class="docutils literal notranslate"><span class="pre">estimate_two_view_geometry_pose()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.compute_squared_sampson_error"><code class="docutils literal notranslate"><span class="pre">compute_squared_sampson_error()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.squared_sampson_error"><code class="docutils literal notranslate"><span class="pre">squared_sampson_error()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.ImagePairStat"><code class="docutils literal notranslate"><span class="pre">ImagePairStat</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.ObservationManager"><code class="docutils literal notranslate"><span class="pre">ObservationManager</span></code></a></li>
@@ -215,6 +232,7 @@ so either from PyPI or from source.</p>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.Normalization"><code class="docutils literal notranslate"><span class="pre">Normalization</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.SiftExtractionOptions"><code class="docutils literal notranslate"><span class="pre">SiftExtractionOptions</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.Sift"><code class="docutils literal notranslate"><span class="pre">Sift</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.SiftMatchingOptions"><code class="docutils literal notranslate"><span class="pre">SiftMatchingOptions</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.CameraMode"><code class="docutils literal notranslate"><span class="pre">CameraMode</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.ImageReaderOptions"><code class="docutils literal notranslate"><span class="pre">ImageReaderOptions</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.CopyType"><code class="docutils literal notranslate"><span class="pre">CopyType</span></code></a></li>
@@ -223,7 +241,6 @@ so either from PyPI or from source.</p>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.infer_camera_from_image"><code class="docutils literal notranslate"><span class="pre">infer_camera_from_image()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.undistort_images"><code class="docutils literal notranslate"><span class="pre">undistort_images()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.extract_features"><code class="docutils literal notranslate"><span class="pre">extract_features()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.SiftMatchingOptions"><code class="docutils literal notranslate"><span class="pre">SiftMatchingOptions</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.ExhaustiveMatchingOptions"><code class="docutils literal notranslate"><span class="pre">ExhaustiveMatchingOptions</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.SpatialMatchingOptions"><code class="docutils literal notranslate"><span class="pre">SpatialMatchingOptions</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.VocabTreeMatchingOptions"><code class="docutils literal notranslate"><span class="pre">VocabTreeMatchingOptions</span></code></a></li>
@@ -258,10 +275,10 @@ so either from PyPI or from source.</p>
 <li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.ReprojErrorCost"><code class="docutils literal notranslate"><span class="pre">ReprojErrorCost()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.RigReprojErrorCost"><code class="docutils literal notranslate"><span class="pre">RigReprojErrorCost()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.SampsonErrorCost"><code class="docutils literal notranslate"><span class="pre">SampsonErrorCost()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.AbsolutePoseErrorCost"><code class="docutils literal notranslate"><span class="pre">AbsolutePoseErrorCost()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.MetricRelativePoseErrorCost"><code class="docutils literal notranslate"><span class="pre">MetricRelativePoseErrorCost()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.Point3dAlignmentCost"><code class="docutils literal notranslate"><span class="pre">Point3dAlignmentCost()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.PositionPriorErrorCost"><code class="docutils literal notranslate"><span class="pre">PositionPriorErrorCost()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.AbsolutePosePriorCost"><code class="docutils literal notranslate"><span class="pre">AbsolutePosePriorCost()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.AbsolutePosePositionPriorCost"><code class="docutils literal notranslate"><span class="pre">AbsolutePosePositionPriorCost()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.RelativePosePriorCost"><code class="docutils literal notranslate"><span class="pre">RelativePosePriorCost()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.Point3DAlignmentCost"><code class="docutils literal notranslate"><span class="pre">Point3DAlignmentCost()</span></code></a></li>
 </ul>
 </li>
 </ul>
