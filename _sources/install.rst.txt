@@ -223,7 +223,7 @@ vcpkg, first run `./vcpkg integrate install` (under Windows use pwsh and
     mkdir build
     cd build
     cmake .. -DCMAKE_TOOLCHAIN_FILE=path/to/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Release
-    cmake --build . --config release --target colmap --parallel 24
+    cmake --build . --config release --target ALL_BUILD --parallel 24
 
 
 .. _installation-library:
