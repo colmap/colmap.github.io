@@ -57,9 +57,13 @@
 <li class="toctree-l1"><a class="reference internal" href="pycolmap/index.html">PyCOLMAP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#colmap-3-11-1-12-06-2024">COLMAP 3.11.1 (12/06/2024)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bug-fixes">Bug Fixes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#colmap-3-11-11-28-2024">COLMAP 3.11 (11/28/2024)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#new-features">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#bug-fixes">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Bug Fixes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#breaking-changes">Breaking Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#full-change-list-sorted-temporally">Full Change List (sorted temporally)</a></li>
 </ul>
@@ -113,6 +117,17 @@
              
   <section id="changelog">
 <span id="id1"></span><h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading"></a></h1>
+<section id="colmap-3-11-1-12-06-2024">
+<h2>COLMAP 3.11.1 (12/06/2024)<a class="headerlink" href="#colmap-3-11-1-12-06-2024" title="Link to this heading"></a></h2>
+<section id="bug-fixes">
+<h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Fix typo in pycolmap function align_reconstruction_to_locations interface by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2961">https://github.com/colmap/colmap/pull/2961</a></p></li>
+<li><p>Add back some ceres bindings to use pycolmap bundle adjustment without pyceres by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2985">https://github.com/colmap/colmap/pull/2985</a></p></li>
+<li><p>Fix setting of RANSAC max error in pose prior BA alignment by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2993">https://github.com/colmap/colmap/pull/2993</a></p></li>
+</ul>
+</section>
+</section>
 <section id="colmap-3-11-11-28-2024">
 <h2>COLMAP 3.11 (11/28/2024)<a class="headerlink" href="#colmap-3-11-11-28-2024" title="Link to this heading"></a></h2>
 <section id="new-features">
@@ -129,8 +144,8 @@
 <li><p>Many more performance optimizations and other improvements. See full list of changes below.</p></li>
 </ul>
 </section>
-<section id="bug-fixes">
-<h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading"></a></h3>
+<section id="id2">
+<h3>Bug Fixes<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fixed non-deterministic behavior of CUDA SIFT feature extractor. Broken since 3.10 release.</p></li>
 <li><p>Fixed orientation detection of covariant/affine SIFT feature extractor. Broken since initial release.</p></li>
