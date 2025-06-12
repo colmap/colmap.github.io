@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -6,23 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tutorial &mdash; COLMAP 3.12.0.dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=3a07dcc1"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=3a07dcc1"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Database Format" href="database.html" />
+    <link rel="next" title="Key Concepts" href="concepts.html" />
     <link rel="prev" title="Installation" href="install.html" /> 
 </head>
 
@@ -37,9 +35,6 @@
           <a href="index.html" class="icon icon-home">
             COLMAP
           </a>
-              <div class="version">
-                3.12.0.dev0
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -66,8 +61,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#graphical-and-command-line-interface">Graphical and Command-line Interface</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rigs.html">Rig Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
@@ -131,7 +128,9 @@ reconstruction tool, the folder would look similar to this:</p>
 │   +── ...
 +── sparse
 │   +── 0
+│   │   +── rigs.bin
 │   │   +── cameras.bin
+│   │   +── frames.bin
 │   │   +── images.bin
 │   │   +── points3D.bin
 │   +── ...
@@ -355,15 +354,18 @@ images are loaded from disk into memory at the same time.</p></li>
 <li><p><strong>Sequential Matching</strong>: This mode is useful if the images are acquired in
 sequential order, e.g., by a video camera. In this case, consecutive frames
 have visual overlap and there is no need to match all image pairs
-exhaustively. Instead, consecutively captured images are matched against
-each other. This matching mode has built-in loop detection based on a
-vocabulary tree, where every N-th image (<cite>loop_detection_period</cite>) is matched
-against its visually most similar images (<cite>loop_detection_num_images</cite>). Note
-that image file names must be ordered sequentially (e.g., <cite>image0001.jpg</cite>,
+exhaustively. Instead, consecutively captured images are matched against each
+other. This matching mode has built-in loop detection based on a vocabulary
+tree, where every N-th image (<cite>loop_detection_period</cite>) is matched against its
+visually most similar images (<cite>loop_detection_num_images</cite>). Note that image
+file names must be ordered sequentially (e.g., <cite>image0001.jpg</cite>,
 <cite>image0002.jpg</cite>, etc.). The order in the database is not relevant, since the
 images are explicitly ordered according to their file names. Note that loop
-detection requires a pre-trained vocabulary tree, that can be downloaded
-from <a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>.</p></li>
+detection requires a pre-trained vocabulary tree. A default tree will be
+automatically downloaded and cached. More trees are available and can be
+downloaded from <a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>. In case rigs and frames are
+configured appropriately in the database, sequential matching will
+automatically match all images in consecutive frames against each other.</p></li>
 <li><p><strong>Vocabulary Tree Matching</strong>: In this matching mode <a class="reference internal" href="bibliography.html#schoenberger16vote" id="id8"><span>[schoenberger16vote]</span></a>,
 every image is matched against its visual nearest neighbors using a vocabulary
 tree with spatial re-ranking. This is the recommended matching mode for large
@@ -573,13 +575,13 @@ not fully compatible with VisualSfM.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="database.html" class="btn btn-neutral float-right" title="Database Format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="concepts.html" class="btn btn-neutral float-right" title="Key Concepts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Johannes L. Schoenberger.</p>
+    <p>&#169; Copyright 2025, Johannes L. Schoenberger.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Output Format &mdash; COLMAP 3.12.0.dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=3a07dcc1"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=3a07dcc1"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Datasets" href="datasets.html" />
-    <link rel="prev" title="Camera Models" href="cameras.html" /> 
+    <link rel="prev" title="Rig Support" href="rigs.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -37,9 +35,6 @@
           <a href="index.html" class="icon icon-home">
             COLMAP
           </a>
-              <div class="version">
-                3.12.0.dev0
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -51,14 +46,18 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rigs.html">Rig Support</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Output Format</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#binary-file-format">Binary File Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#indices-and-identifiers">Indices and Identifiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sparse-reconstruction">Sparse Reconstruction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#text-format">Text Format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rigs-txt">rigs.txt</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cameras-txt">cameras.txt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#frames-txt">frames.txt</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#images-txt">images.txt</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#points3d-txt">points3D.txt</a></li>
 </ul>
@@ -113,7 +112,9 @@
 <h2>Binary File Format<a class="headerlink" href="#binary-file-format" title="Link to this heading"></a></h2>
 <p>Note that all binary data is stored using little endian byte ordering. All x86
 processors are little endian and thus no special care has to be taken when
-reading COLMAP binary data on most platforms.</p>
+reading COLMAP binary data on most platforms. The data can be most conveniently
+parsed using the C++ reconstruction API under <cite>src/colmap/scene/reconstruction_io.h</cite>
+or using the Python API provided by pycolmap.</p>
 </section>
 <section id="indices-and-identifiers">
 <h2>Indices and Identifiers<a class="headerlink" href="#indices-and-identifiers" title="Link to this heading"></a></h2>
@@ -131,11 +132,18 @@ filtering during the reconstruction, etc.</p>
 <p>By default, COLMAP uses a binary file format (machine-readable, fast) for
 storing sparse models. In addition, COLMAP provides the option to store the
 sparse models as text files (human-readable, slow). In both cases, the
-information is split into three files for the information about <cite>cameras</cite>,
-<cite>images</cite>, and <cite>points</cite>. Any directory containing those three files constitutes a
-sparse model. The binary files have the file extension <cite>.bin</cite> and the text files
-the file extension <cite>.txt</cite>. Note that when loading a model from a directory which
-contains both binary and text files, COLMAP prefers the binary format.</p>
+information is split into multiples files for the information about <cite>rigs</cite>,
+<cite>cameras</cite>, <cite>frames</cite>, <cite>images</cite>, and <cite>points</cite>. Any directory containing these
+files constitutes a sparse model. The binary files have the file extension
+<cite>.bin</cite> and the text files the file extension <cite>.txt</cite>. Note that when loading a
+model from a directory which contains both binary and text files, COLMAP prefers
+the binary format.</p>
+<p>Note that older versions of COLMAP had no rig support and thus the <cite>rigs</cite> and
+<cite>frames</cite> files may be missing. The reconstruction I/O routines in COLMAP are
+fully backwards compatible in that models without these files can be read and
+trivial rigs and frames will be automatically initialized. Furthermore, newer
+output reconstructions’ <cite>cameras</cite> and <cite>images</cite> files are fully compatible with
+old outputs.</p>
 <p>To export the currently selected model in the GUI, choose <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span>
 <span class="pre">model</span></code>. To export all reconstructed models in the current dataset, choose
 <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">all</span></code>. The selected folder then contains the three files, and
@@ -156,9 +164,23 @@ Python (<code class="docutils literal notranslate"><span class="pre">scripts/pyt
 <section id="text-format">
 <h3>Text Format<a class="headerlink" href="#text-format" title="Link to this heading"></a></h3>
 <p>COLMAP exports the following three text files for every reconstructed model:
-<cite>cameras.txt</cite>, <cite>images.txt</cite>, and <cite>points3D.txt</cite>. Comments start with a leading
-“#” character and are ignored. The first comment lines briefly describe the
-format of the text files, as described in more detailed on this page.</p>
+<cite>rigs.txt</cite>, <cite>cameras.txt</cite>, <cite>frames.txt</cite>, <cite>images.txt</cite>, and <cite>points3D.txt</cite>.
+Comments start with a leading “#” character and are ignored. The first comment
+lines briefly describe the format of the text files, as described in more
+detailed on this page.</p>
+<section id="rigs-txt">
+<h4>rigs.txt<a class="headerlink" href="#rigs-txt" title="Link to this heading"></a></h4>
+<p>This file contains the configured rigs and sensors, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rig calib list with one line of data per calib:</span>
+<span class="c1">#   RIG_ID, NUM_SENSORS, REF_SENSOR_TYPE, REF_SENSOR_ID, SENSORS[] as (SENSOR_TYPE, SENSOR_ID, HAS_POSE, [QW, QX, QY, QZ, TX, TY, TZ])</span>
+<span class="c1"># Number of rigs: 1</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="n">CAMERA</span> <span class="mi">1</span> <span class="n">CAMERA</span> <span class="mi">2</span> <span class="mi">1</span> <span class="o">-</span><span class="mf">0.9999701516465348</span> <span class="o">-</span><span class="mf">0.0011120266840749639</span> <span class="o">-</span><span class="mf">0.0075347911527510894</span> <span class="mf">0.0012985125893421306</span> <span class="o">-</span><span class="mf">0.19316906391350164</span> <span class="mf">0.00085222218993398979</span> <span class="mf">0.0070758955539026785</span>
+<span class="mi">2</span> <span class="mi">1</span> <span class="n">CAMERA</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Here, the dataset contains two rigs: the first rig has two cameras and the second
+one has 1 camera.</p>
+</section>
 <section id="cameras-txt">
 <h4>cameras.txt<a class="headerlink" href="#cameras-txt" title="Link to this heading"></a></h4>
 <p>This file contains the intrinsic parameters of all reconstructed cameras in the
@@ -178,6 +200,20 @@ there are 3 parameters with a single focal length of 2559.81 pixels and a
 principal point at pixel location <cite>(1536, 1152)</cite>. The intrinsic parameters of a
 camera can be shared by multiple images, which refer to cameras using the unique
 identifier <cite>CAMERA_ID</cite>.</p>
+</section>
+<section id="frames-txt">
+<h4>frames.txt<a class="headerlink" href="#frames-txt" title="Link to this heading"></a></h4>
+<p>This file contains the frames, where a frame defines a specific
+instance of a rig with all or a subset of sensors exposed at the same time, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Frame list with one line of data per frame:</span>
+<span class="c1">#   FRAME_ID, RIG_ID, RIG_FROM_WORLD[QW, QX, QY, QZ, TX, TY, TZ], NUM_DATA_IDS, DATA_IDS[] as (SENSOR_TYPE, SENSOR_ID, DATA_ID)</span>
+<span class="c1"># Number of frames: 151</span>
+<span class="mi">1</span> <span class="mi">1</span> <span class="mf">0.99801363919752195</span> <span class="mf">0.040985139360073107</span> <span class="mf">0.041890917712361225</span> <span class="o">-</span><span class="mf">0.023111584553400576</span> <span class="o">-</span><span class="mf">5.2666546897987896</span> <span class="o">-</span><span class="mf">0.17120007823690631</span> <span class="mf">0.12300519697527648</span> <span class="mi">2</span> <span class="n">CAMERA</span> <span class="mi">1</span> <span class="mi">1</span> <span class="n">CAMERA</span> <span class="mi">2</span> <span class="mi">2</span>
+<span class="mi">2</span> <span class="mi">2</span> <span class="mf">0.99816472047267968</span> <span class="mf">0.037605501383281774</span> <span class="mf">0.043101511724657163</span> <span class="o">-</span><span class="mf">0.019881568259519072</span> <span class="o">-</span><span class="mf">5.1956060695789192</span> <span class="o">-</span><span class="mf">0.20794508616745555</span> <span class="mf">0.14967533910764824</span> <span class="mi">1</span> <span class="n">CAMERA</span> <span class="mi">3</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Here, the dataset contains two frames, where frame 1 is an instance of rig 1 and
+frame 2 an instance of rig 2.</p>
 </section>
 <section id="images-txt">
 <h4>images.txt<a class="headerlink" href="#images-txt" title="Link to this heading"></a></h4>
@@ -295,14 +331,14 @@ The indices are specified w.r.t. the ordering in the <code class="docutils liter
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cameras.html" class="btn btn-neutral float-left" title="Camera Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rigs.html" class="btn btn-neutral float-left" title="Rig Support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="datasets.html" class="btn btn-neutral float-right" title="Datasets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Johannes L. Schoenberger.</p>
+    <p>&#169; Copyright 2025, Johannes L. Schoenberger.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

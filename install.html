@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -6,19 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Installation &mdash; COLMAP 3.12.0.dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=3a07dcc1"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=3a07dcc1"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -37,9 +35,6 @@
           <a href="index.html" class="icon icon-home">
             COLMAP
           </a>
-              <div class="version">
-                3.12.0.dev0
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -52,6 +47,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#pre-built-binaries">Pre-built Binaries</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker">Docker</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#build-from-source">Build from Source</a><ul>
@@ -67,8 +63,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rigs.html">Rig Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
@@ -138,6 +136,12 @@ are not officially signed. The provided COLMAP binaries are automatically built
 from GitHub Actions CI machines. If you do not trust them, you can build from
 source as described below.</p>
 </section>
+<section id="docker">
+<h3>Docker<a class="headerlink" href="#docker" title="Link to this heading"></a></h3>
+<p>COLMAP provides a pre-built Docker image with CUDA support. For detailed
+instructions on how to build and run COLMAP using Docker, please refer to the
+<a class="reference external" href="https://github.com/colmap/colmap/tree/main/docker">Docker documentation</a>.</p>
+</section>
 </section>
 <section id="build-from-source">
 <h2>Build from Source<a class="headerlink" href="#build-from-source" title="Link to this heading"></a></h2>
@@ -165,7 +169,6 @@ Windows, compute clusters, or if you do not have root access under Linux or Mac.
     <span class="n">libboost</span><span class="o">-</span><span class="n">graph</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libboost</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libeigen3</span><span class="o">-</span><span class="n">dev</span> \
-    <span class="n">libflann</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libfreeimage</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libmetis</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libgoogle</span><span class="o">-</span><span class="n">glog</span><span class="o">-</span><span class="n">dev</span> \
@@ -176,9 +179,13 @@ Windows, compute clusters, or if you do not have root access under Linux or Mac.
     <span class="n">qtbase5</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libqt5opengl5</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libcgal</span><span class="o">-</span><span class="n">dev</span> \
-    <span class="n">libceres</span><span class="o">-</span><span class="n">dev</span>
+    <span class="n">libceres</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libcurl4</span><span class="o">-</span><span class="n">openssl</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libopenblas</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
+<p>Notice that compiling against OpenBLAS requires the OpenMP version
+under Debian/Ubuntu because of <a class="reference external" href="https://github.com/facebookresearch/faiss/wiki/Troubleshooting#surprising-faiss-openmp-and-openblas-interaction">this issue</a>.</p>
 <p>To compile with <strong>CUDA support</strong>, also install Ubuntu’s default CUDA package:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> \
     <span class="n">nvidia</span><span class="o">-</span><span class="n">cuda</span><span class="o">-</span><span class="n">toolkit</span> \
@@ -227,8 +234,9 @@ CUDA package and GCC, and you must compile against GCC 10:</p>
     <span class="n">ninja</span> \
     <span class="n">boost</span> \
     <span class="n">eigen</span> \
-    <span class="n">flann</span> \
     <span class="n">freeimage</span> \
+    <span class="n">curl</span> \
+    <span class="n">libomp</span> \
     <span class="n">metis</span> \
     <span class="n">glog</span> \
     <span class="n">googletest</span> \
@@ -237,6 +245,7 @@ CUDA package and GCC, and you must compile against GCC 10:</p>
     <span class="n">glew</span> \
     <span class="n">cgal</span> \
     <span class="n">sqlite3</span>
+<span class="n">brew</span> <span class="n">link</span> <span class="o">--</span><span class="n">force</span> <span class="n">libomp</span>
 </pre></div>
 </div>
 <p>Configure and compile COLMAP:</p>
@@ -244,7 +253,9 @@ CUDA package and GCC, and you must compile against GCC 10:</p>
 <span class="n">cd</span> <span class="n">colmap</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">GNinja</span> <span class="o">-</span><span class="n">DCMAKE_PREFIX_PATH</span><span class="o">=</span><span class="s2">&quot;$(brew --prefix qt@5)&quot;</span>
+<span class="n">cmake</span> <span class="o">..</span> \
+    <span class="o">-</span><span class="n">GNinja</span> \
+    <span class="o">-</span><span class="n">DQt5_DIR</span><span class="o">=</span><span class="s2">&quot;$(brew --prefix qt@5)/lib/cmake/Qt5&quot;</span>
 <span class="n">ninja</span>
 <span class="n">sudo</span> <span class="n">ninja</span> <span class="n">install</span>
 </pre></div>
@@ -349,7 +360,7 @@ using the following <code class="docutils literal notranslate"><span class="pre"
     <span class="n">options</span><span class="o">.</span><span class="n">AddRequiredOption</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">message</span><span class="p">);</span>
     <span class="n">options</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
 
-    <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">colmap</span><span class="p">::</span><span class="n">StringPrintf</span><span class="p">(</span><span class="s2">&quot;Hello </span><span class="si">%s</span><span class="s2">!&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">c_str</span><span class="p">())</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">colmap</span><span class="p">::</span><span class="n">StringPrintf</span><span class="p">(</span><span class="s2">&quot;Hello </span><span class="si">%s</span><span class="s2">!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">c_str</span><span class="p">());</span>
 
     <span class="k">return</span> <span class="n">EXIT_SUCCESS</span><span class="p">;</span>
 <span class="p">}</span>
@@ -409,7 +420,7 @@ meaningful traces for reported issues.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Johannes L. Schoenberger.</p>
+    <p>&#169; Copyright 2025, Johannes L. Schoenberger.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
