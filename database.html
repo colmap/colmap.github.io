@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Database Format &mdash; COLMAP 3.12.0.dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=3a07dcc1"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=3a07dcc1"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Camera Models" href="cameras.html" />
-    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
+    <link rel="prev" title="Key Concepts" href="concepts.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -37,9 +35,6 @@
           <a href="index.html" class="icon icon-home">
             COLMAP
           </a>
-              <div class="version">
-                3.12.0.dev0
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -51,13 +46,17 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Database Format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rigs-and-sensors">Rigs and Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rigs-and-frames">Rigs and Frames</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cameras-and-images">Cameras and Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#keypoints-and-descriptors">Keypoints and Descriptors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#matches">Matches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matches-and-two-view-geometries">Matches and two-view geometries</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rigs.html">Rig Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
@@ -98,11 +97,13 @@
 <span id="id1"></span><h1>Database Format<a class="headerlink" href="#database-format" title="Link to this heading"></a></h1>
 <p>COLMAP stores all extracted information in a single SQLite database file. The
 database can be accessed with the database management toolkit in the COLMAP GUI,
-the provided C++ database API (see <code class="docutils literal notranslate"><span class="pre">src/colmap/scene/database.h</span></code>), or with a scripting
-language of your choice (see <code class="docutils literal notranslate"><span class="pre">scripts/python/database.py</span></code>).</p>
+the provided C++ database API (see <code class="docutils literal notranslate"><span class="pre">src/colmap/scene/database.h</span></code>), or using
+Python with pycolmap.</p>
 <p>The database contains the following tables:</p>
 <ul class="simple">
+<li><p>rigs</p></li>
 <li><p>cameras</p></li>
+<li><p>frames</p></li>
 <li><p>images</p></li>
 <li><p>keypoints</p></li>
 <li><p>descriptors</p></li>
@@ -111,6 +112,17 @@ language of your choice (see <code class="docutils literal notranslate"><span cl
 </ul>
 <p>To initialize an empty SQLite database file with the required schema, you can
 either create a new project in the GUI or execute <cite>src/colmap/exe/database_create.cc</cite>.</p>
+<section id="rigs-and-sensors">
+<h2>Rigs and Sensors<a class="headerlink" href="#rigs-and-sensors" title="Link to this heading"></a></h2>
+<p>The relation between rigs and sensors (cameras, etc.) is 1-to-N with one sensor
+being chosen as the reference sensor to define the origin of the rig. Each sensor
+must only be part of one rig.</p>
+</section>
+<section id="rigs-and-frames">
+<h2>Rigs and Frames<a class="headerlink" href="#rigs-and-frames" title="Link to this heading"></a></h2>
+<p>The relation between rigs and frames is 1-to-N, where a frame defines a specific
+instance of the rig with all or a subset of sensors exposed at the same time.</p>
+</section>
 <section id="cameras-and-images">
 <h2>Cameras and Images<a class="headerlink" href="#cameras-and-images" title="Link to this heading"></a></h2>
 <p>The relation between cameras and images is 1-to-N. This has important
@@ -150,8 +162,8 @@ verification requires meaningful values for the local feature geometry, i.e.,
 only X and Y must be provided and the other keypoint columns can be set to zero.
 The rest of the reconstruction pipeline only uses the keypoint locations.</p>
 </section>
-<section id="matches">
-<h2>Matches<a class="headerlink" href="#matches" title="Link to this heading"></a></h2>
+<section id="matches-and-two-view-geometries">
+<h2>Matches and two-view geometries<a class="headerlink" href="#matches-and-two-view-geometries" title="Link to this heading"></a></h2>
 <p>Feature matching stores its output in the <cite>matches</cite> table and geometric
 verification in the <cite>two_view_geometries</cite> table. COLMAP only uses the data in
 <cite>two_view_geometries</cite> for reconstruction. Every entry in the two tables stores
@@ -190,14 +202,14 @@ in the <cite>src/estimators/two_view_geometry.h</cite> source file.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="tutorial.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="concepts.html" class="btn btn-neutral float-left" title="Key Concepts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="cameras.html" class="btn btn-neutral float-right" title="Camera Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Johannes L. Schoenberger.</p>
+    <p>&#169; Copyright 2025, Johannes L. Schoenberger.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

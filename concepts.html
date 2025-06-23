@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribution &mdash; COLMAP 3.12.0.dev0 documentation</title>
+  <title>Key Concepts &mdash; COLMAP 3.12.0.dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
@@ -20,8 +20,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="License" href="license.html" />
-    <link rel="prev" title="Changelog" href="changelog.html" /> 
+    <link rel="next" title="Database Format" href="database.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,7 +46,12 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Key Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sensors-and-measurements">Sensors and Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rigs">Rigs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#frames">Frames</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rigs.html">Rig Support</a></li>
@@ -57,7 +62,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pycolmap/index.html">PyCOLMAP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Contribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
 </ul>
@@ -76,9 +81,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Contribution</li>
+      <li class="breadcrumb-item active">Key Concepts</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/contribution.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/concepts.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -86,38 +91,59 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="contribution">
-<h1>Contribution<a class="headerlink" href="#contribution" title="Link to this heading"></a></h1>
-<p>Contributions (bug reports, bug fixes, improvements, etc.) are very welcome and
-should be submitted in the form of new issues and/or pull requests on GitHub.</p>
-<p>Please, adhere to the Google coding style guide:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">google</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">styleguide</span><span class="o">/</span><span class="n">cppguide</span><span class="o">.</span><span class="n">html</span>
-</pre></div>
-</div>
-<p>by using the provided “.clang-format” file.</p>
-<p>Document functions, methods, classes, etc. with inline documentation strings
-describing the API, using the following format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Short</span> <span class="n">description</span><span class="o">.</span>
-<span class="o">//</span>
-<span class="o">//</span> <span class="n">Longer</span> <span class="n">description</span> <span class="k">with</span> <span class="n">a</span> <span class="n">few</span> <span class="n">sentences</span> <span class="ow">and</span> <span class="n">multiple</span> <span class="n">lines</span><span class="o">.</span>
-<span class="o">//</span>
-<span class="o">//</span> <span class="nd">@param</span> <span class="n">parameter1</span>            <span class="n">Description</span> <span class="k">for</span> <span class="n">parameter</span> <span class="mf">1.</span>
-<span class="o">//</span> <span class="nd">@param</span> <span class="n">parameter2</span>            <span class="n">Description</span> <span class="k">for</span> <span class="n">parameter</span> <span class="mf">2.</span>
-<span class="o">//</span>
-<span class="o">//</span> <span class="nd">@return</span>                      <span class="n">Description</span> <span class="n">of</span> <span class="n">optional</span> <span class="k">return</span> <span class="n">value</span><span class="o">.</span>
-</pre></div>
-</div>
-<p>Add unit tests for all newly added code and make sure that algorithmic
-“improvements” generalize and actually improve the results of the pipeline on a
-variety of datasets.</p>
+  <section id="key-concepts">
+<span id="concepts"></span><h1>Key Concepts<a class="headerlink" href="#key-concepts" title="Link to this heading"></a></h1>
+<p>Starting from COLMAP 3.12, the concepts of rigs and frames have been introduced
+to enable a principled modeling of multi-sensor platforms as well as 360° panorama
+images. These concepts provide a structured framework to organize sensors and
+their measurements, enabling more flexible calibration and fusion of diverse
+data types (e.g., see <a class="reference internal" href="rigs.html#rig-support"><span class="std std-ref">Rig Support</span></a>).</p>
+<p>These additions are backward-compatible and do not affect the traditional, default usage
+of COLMAP for single-camera capture setups.</p>
+<section id="sensors-and-measurements">
+<span id="sensors"></span><h2>Sensors and Measurements<a class="headerlink" href="#sensors-and-measurements" title="Link to this heading"></a></h2>
+<p>A <strong>sensor</strong> is a device that captures data about the environment, producing
+measurements at specific timestamps. The most common sensor type is the camera,
+which captures images as its measurements. Other examples include IMUs
+(Inertial Measurement Units), which record acceleration and angular velocity,
+and GNSS receivers, which provide absolute position data.</p>
+<p>Currently, COLMAP supports only cameras and their image measurements, though the
+sensor concept is designed to extend to other types such as IMUs and GNSS for
+future support of multi-modal data fusion.</p>
+</section>
+<section id="rigs">
+<span id="id1"></span><h2>Rigs<a class="headerlink" href="#rigs" title="Link to this heading"></a></h2>
+<p>A <strong>rig</strong> models a platform composed of multiple sensors with fixed relative poses,
+enabling synchronized and consistent multi-sensor data collection. Examples
+include stereo camera setups, headworn AR/VR devices, and autonomous driving
+sensor suites. It can also be virtual — for example, a rig modeling multiple
+virtual cameras arranged to capture overlapping views used to create seamless
+360° panoramic images.</p>
+<p>In COLMAP, each sensor must be uniquely associated with exactly one rig. Each rig
+has a single reference sensor that defines its origin. For example, in a stereo
+camera rig, one camera is designated as the reference sensor with an identity
+<cite>sensor_from_rig</cite> pose, while the second camera’s pose is defined relative to
+this reference. In a single-camera setup, the camera itself serves as the sole
+reference sensor for its rig.</p>
+</section>
+<section id="frames">
+<span id="id2"></span><h2>Frames<a class="headerlink" href="#frames" title="Link to this heading"></a></h2>
+<p>A <strong>frame</strong> represents a rig captured at a single timestamp, containing measurements
+from one or more sensors within that rig. For example, if a rig consists of
+three sensors, a frame may include measurements from all three sensors, or only
+a subset, depending on availability. This concept allows association of multi-sensor
+data at specific points in time.</p>
+<p>For instance, in a stereo camera rig recording video, each frame corresponds to a
+set of two images—one from each camera—captured at the same moment.</p>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="changelog.html" class="btn btn-neutral float-left" title="Changelog" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="license.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="database.html" class="btn btn-neutral float-right" title="Database Format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
