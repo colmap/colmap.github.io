@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frequently Asked Questions &mdash; COLMAP 3.9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f9dd27f5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Command-line Interface" href="cli.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            COLMAP
+          </a>
+              <div class="version">
+                3.9
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Frequently Asked Questions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adjusting-the-options-for-different-reconstruction-scenarios-and-output-quality">Adjusting the options for different reconstruction scenarios and output quality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extending-colmap">Extending COLMAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#share-intrinsics">Share intrinsics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fix-intrinsics">Fix intrinsics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#principal-point-refinement">Principal point refinement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#increase-number-of-matches-sparse-3d-points">Increase number of matches / sparse 3D points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reconstruct-sparse-dense-model-from-known-camera-poses">Reconstruct sparse/dense model from known camera poses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#merge-disconnected-models">Merge disconnected models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geo-registration">Geo-registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manhattan-world-alignment">Manhattan world alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mask-image-regions">Mask image regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#register-localize-new-images-into-an-existing-reconstruction">Register/localize new images into an existing reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#available-functionality-without-gpu-cuda">Available functionality without GPU/CUDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-gpu-support-in-feature-extraction-matching">Multi-GPU support in feature extraction/matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-matching-fails-due-to-illegal-memory-access">Feature matching fails due to illegal memory access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction">Trading off completeness and accuracy in dense reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#improving-dense-reconstruction-results-for-weakly-textured-surfaces">Improving dense reconstruction results for weakly textured surfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#surface-mesh-reconstruction">Surface mesh reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#speedup-dense-reconstruction">Speedup dense reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reduce-memory-usage-during-dense-reconstruction">Reduce memory usage during dense reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manual-specification-of-source-images-during-dense-reconstruction">Manual specification of source images during dense reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-gpu-support-in-dense-reconstruction">Multi-GPU support in dense reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction">Fix GPU freezes and timeouts during dense reconstruction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">COLMAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Frequently Asked Questions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/faq.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="frequently-asked-questions">
+<h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Link to this heading"></a></h1>
+<section id="adjusting-the-options-for-different-reconstruction-scenarios-and-output-quality">
+<h2>Adjusting the options for different reconstruction scenarios and output quality<a class="headerlink" href="#adjusting-the-options-for-different-reconstruction-scenarios-and-output-quality" title="Link to this heading"></a></h2>
+<p>COLMAP provides many options that can be tuned for different reconstruction
+scenarios and to trade off accuracy and completeness versus efficiency. The
+default options are set to for medium to high quality reconstruction of
+unstructured input data. There are several presets for different scenarios and
+quality levels, which can be set in the GUI as <code class="docutils literal notranslate"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Set</span> <span class="pre">options</span> <span class="pre">for</span> <span class="pre">...</span></code>.
+To use these presets from the command-line, you can save the current set of
+options as <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">project</span></code> after choosing the presets. The resulting
+project file can be opened with a text editor to view the different options.
+Alternatively, you can generate the project file also from the command-line
+by running <code class="docutils literal notranslate"><span class="pre">colmap</span> <span class="pre">project_generator</span></code>.</p>
+</section>
+<section id="extending-colmap">
+<h2>Extending COLMAP<a class="headerlink" href="#extending-colmap" title="Link to this heading"></a></h2>
+<p>If you need to simply analyze the produced sparse or dense reconstructions from
+COLMAP, you can load the sparse models in Python and Matlab using the provided
+scripts in <code class="docutils literal notranslate"><span class="pre">scripts/python</span></code> and <code class="docutils literal notranslate"><span class="pre">scripts/matlab</span></code>.</p>
+<p>If you want to write a C/C++ executable that builds on top of COLMAP, there are
+two possible approaches. First, the COLMAP headers and library are installed
+to the <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> by default. Compiling against COLMAP as a
+library is described <a class="reference internal" href="install.html#installation-library"><span class="std std-ref">here</span></a>. Alternatively, you can
+start from the <code class="docutils literal notranslate"><span class="pre">src/tools/example.cc</span></code> code template and implement the desired
+functionality directly as a new binary within COLMAP.</p>
+</section>
+<section id="share-intrinsics">
+<span id="faq-share-intrinsics"></span><h2>Share intrinsics<a class="headerlink" href="#share-intrinsics" title="Link to this heading"></a></h2>
+<p>COLMAP supports shared intrinsics for arbitrary groups of images and camera
+models. Images share the same intrinsics, if they refer to the same camera, as
+specified by the <cite>camera_id</cite> property in the database. You can add new cameras
+and set shared intrinsics in the database management tool. Please, refer to
+<a class="reference internal" href="tutorial.html#database-management"><span class="std std-ref">Database Management</span></a> for more information.</p>
+</section>
+<section id="fix-intrinsics">
+<span id="faq-fix-intrinsics"></span><h2>Fix intrinsics<a class="headerlink" href="#fix-intrinsics" title="Link to this heading"></a></h2>
+<p>By default, COLMAP tries to refine the intrinsic camera parameters (except
+principal point) automatically during the reconstruction. Usually, if there are
+enough images in the dataset and you share the intrinsics between multiple
+images, the estimated intrinsic camera parameters in SfM should be better than
+parameters manually obtained with a calibration pattern.</p>
+<p>However, sometimes COLMAP’s self-calibration routine might converge in
+degenerate parameters, especially in case of the more complex camera models with
+many distortion parameters. If you know the calibration parameters a priori, you
+can fix different parameter groups during the reconstruction. Choose
+<code class="docutils literal notranslate"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Reconstruction</span> <span class="pre">options</span> <span class="pre">&gt;</span> <span class="pre">Bundle</span> <span class="pre">Adj.</span> <span class="pre">&gt;</span> <span class="pre">refine_*</span></code> and check
+which parameter group to refine or to keep constant. Even if you keep the
+parameters constant during the reconstruction, you can refine the parameters in
+a final global bundle adjustment by setting <code class="docutils literal notranslate"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Bundle</span> <span class="pre">adj.</span>
+<span class="pre">options</span> <span class="pre">&gt;</span> <span class="pre">refine_*</span></code> and then running <code class="docutils literal notranslate"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Bundle</span> <span class="pre">adjustment</span></code>.</p>
+</section>
+<section id="principal-point-refinement">
+<h2>Principal point refinement<a class="headerlink" href="#principal-point-refinement" title="Link to this heading"></a></h2>
+<p>By default, COLMAP keeps the principal point constant during the reconstruction,
+as principal point estimation is an ill-posed problem in general. Once all
+images are reconstructed, the problem is most often constrained enough that you
+can try to refine the principal point in global bundle adjustment, especially
+when sharing intrinsic parameters between multiple images. Please, refer to
+<a class="reference internal" href="#faq-fix-intrinsics"><span class="std std-ref">Fix intrinsics</span></a> for more information.</p>
+</section>
+<section id="increase-number-of-matches-sparse-3d-points">
+<h2>Increase number of matches / sparse 3D points<a class="headerlink" href="#increase-number-of-matches-sparse-3d-points" title="Link to this heading"></a></h2>
+<p>To increase the number of matches, you should use the more discriminative
+DSP-SIFT features instead of plain SIFT and also estimate the affine feature
+shape using the options: <code class="docutils literal notranslate"><span class="pre">--SiftExtraction.estimate_affine_shape=true</span></code> and
+<code class="docutils literal notranslate"><span class="pre">--SiftExtraction.domain_size_pooling=true</span></code>. In addition, you should enable
+guided feature matching using: <code class="docutils literal notranslate"><span class="pre">--SiftMatching.guided_matching=true</span></code>.</p>
+<p>By default, COLMAP ignores two-view feature tracks in triangulation, resulting
+in fewer 3D points than possible. Triangulation of two-view tracks can in rare
+cases improve the stability of sparse image collections by providing additional
+constraints in bundle adjustment. To also triangulate two-view tracks, unselect
+the option <code class="docutils literal notranslate"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Reconstruction</span> <span class="pre">options</span> <span class="pre">&gt;</span> <span class="pre">Triangulation</span> <span class="pre">&gt;</span>
+<span class="pre">ignore_two_view_tracks</span></code>. If your images are taken from far distance with
+respect to the scene, you can try to reduce the minimum triangulation angle.</p>
+</section>
+<section id="reconstruct-sparse-dense-model-from-known-camera-poses">
+<h2>Reconstruct sparse/dense model from known camera poses<a class="headerlink" href="#reconstruct-sparse-dense-model-from-known-camera-poses" title="Link to this heading"></a></h2>
+<p>If the camera poses are known and you want to reconstruct a sparse or dense
+model of the scene, you must first manually construct a sparse model by creating
+a <code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">points3D.txt</span></code>, and <code class="docutils literal notranslate"><span class="pre">images.txt</span></code> under a new folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+── path/to/manually/created/sparse/model
+│   +── cameras.txt
+│   +── images.txt
+│   +── points3D.txt
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">points3D.txt</span></code> file should be empty while every other line in the <code class="docutils literal notranslate"><span class="pre">images.txt</span></code>
+should also be empty, since the sparse features are computed, as described below. You can
+refer to <a class="reference internal" href="format.html#output-format"><span class="std std-ref">this article</span></a> for more information about the structure of
+a sparse model.</p>
+<p>Example of images.txt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mf">0.695104</span> <span class="mf">0.718385</span> <span class="o">-</span><span class="mf">0.024566</span> <span class="mf">0.012285</span> <span class="o">-</span><span class="mf">0.046895</span> <span class="mf">0.005253</span> <span class="o">-</span><span class="mf">0.199664</span> <span class="mi">1</span> <span class="n">image0001</span><span class="o">.</span><span class="n">png</span>
+<span class="c1"># Make sure every other line is left empty</span>
+<span class="mi">2</span> <span class="mf">0.696445</span> <span class="mf">0.717090</span> <span class="o">-</span><span class="mf">0.023185</span> <span class="mf">0.014441</span> <span class="o">-</span><span class="mf">0.041213</span> <span class="mf">0.001928</span> <span class="o">-</span><span class="mf">0.134851</span> <span class="mi">2</span> <span class="n">image0002</span><span class="o">.</span><span class="n">png</span>
+
+<span class="mi">3</span> <span class="mf">0.697457</span> <span class="mf">0.715925</span> <span class="o">-</span><span class="mf">0.025383</span> <span class="mf">0.018967</span> <span class="o">-</span><span class="mf">0.054056</span> <span class="mf">0.008579</span> <span class="o">-</span><span class="mf">0.378221</span> <span class="mi">1</span> <span class="n">image0003</span><span class="o">.</span><span class="n">png</span>
+
+<span class="mi">4</span> <span class="mf">0.698777</span> <span class="mf">0.714625</span> <span class="o">-</span><span class="mf">0.023996</span> <span class="mf">0.021129</span> <span class="o">-</span><span class="mf">0.048184</span> <span class="mf">0.004529</span> <span class="o">-</span><span class="mf">0.313427</span> <span class="mi">2</span> <span class="n">image0004</span><span class="o">.</span><span class="n">png</span>
+</pre></div>
+</div>
+<p>Each image above must have the same <code class="docutils literal notranslate"><span class="pre">image_id</span></code> (first column) as in the database (next step).
+This database can be inspected either in the GUI (under <code class="docutils literal notranslate"><span class="pre">Database</span> <span class="pre">management</span> <span class="pre">&gt;</span> <span class="pre">Processing</span></code>),
+or, one can create a reconstruction with colmap and later export  it as text in order to see
+the images.txt file it creates.</p>
+<p>To reconstruct a sparse map, you first have to recompute features from the
+images of the known camera poses as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap feature_extractor \
+    --database_path $PROJECT_PATH/database.db \
+    --image_path $PROJECT_PATH/images
+</pre></div>
+</div>
+<p>If your known camera intrinsics have large distortion coefficients, you should
+now manually copy the parameters from your <code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code> to the database, such
+that the matcher can leverage the intrinsics. Modifying the database is possible
+in many ways, but an easy option is to use the provided
+<code class="docutils literal notranslate"><span class="pre">scripts/python/database.py</span></code> script. Otherwise, you can skip this step and
+simply continue as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap exhaustive_matcher \ # or alternatively any other matcher
+    --database_path $PROJECT_PATH/database.db
+
+colmap point_triangulator \
+    --database_path $PROJECT_PATH/database.db \
+    --image_path $PROJECT_PATH/images
+    --input_path path/to/manually/created/sparse/model \
+    --output_path path/to/triangulated/sparse/model
+</pre></div>
+</div>
+<p>Note that the sparse reconstruction step is not necessary in order to compute
+a dense model from known camera poses. Assuming you computed a sparse model
+from the known camera poses, you can compute a dense model as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap image_undistorter \
+    --image_path $PROJECT_PATH/images \
+    --input_path path/to/triangulated/sparse/model \
+    --output_path path/to/dense/workspace
+
+colmap patch_match_stereo \
+    --workspace_path path/to/dense/workspace
+
+colmap stereo_fusion \
+    --workspace_path path/to/dense/workspace \
+    --output_path path/to/dense/workspace/fused.ply
+</pre></div>
+</div>
+<p>Alternatively, you can also produce a dense model without a sparse model as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap image_undistorter \
+    --image_path $PROJECT_PATH/images \
+    --input_path path/to/manually/created/sparse/model \
+    --output_path path/to/dense/workspace
+</pre></div>
+</div>
+<p>Since the sparse point cloud is used to automatically select neighboring images
+during the dense stereo stage, you have to manually specify the source images,
+as described <a class="reference internal" href="#faq-dense-manual-source"><span class="std std-ref">here</span></a>. The dense stereo stage
+now also requires a manual specification of the depth range:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap patch_match_stereo \
+    --workspace_path path/to/dense/workspace \
+    --PatchMatchStereo.depth_min $MIN_DEPTH \
+    --PatchMatchStereo.depth_max $MAX_DEPTH
+
+colmap stereo_fusion \
+    --workspace_path path/to/dense/workspace \
+    --output_path path/to/dense/workspace/fused.ply
+</pre></div>
+</div>
+</section>
+<section id="merge-disconnected-models">
+<span id="faq-merge-models"></span><h2>Merge disconnected models<a class="headerlink" href="#merge-disconnected-models" title="Link to this heading"></a></h2>
+<p>Sometimes COLMAP fails to reconstruct all images into the same model and hence
+produces multiple sub-models. If those sub-models have common registered images,
+they can be merged into a single model as post-processing step:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="n">model_merger</span> \
+    <span class="o">--</span><span class="n">input_path1</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="n">model1</span> \
+    <span class="o">--</span><span class="n">input_path2</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="n">model2</span> \
+    <span class="o">--</span><span class="n">output_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">merged</span><span class="o">-</span><span class="n">model</span>
+</pre></div>
+</div>
+<p>To improve the quality of the alignment between the two sub-models, it is
+recommended to run another global bundle adjustment after the merge:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="n">bundle_adjuster</span> \
+    <span class="o">--</span><span class="n">input_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">merged</span><span class="o">-</span><span class="n">model</span> \
+    <span class="o">--</span><span class="n">output_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">refined</span><span class="o">-</span><span class="n">merged</span><span class="o">-</span><span class="n">model</span>
+</pre></div>
+</div>
+</section>
+<section id="geo-registration">
+<h2>Geo-registration<a class="headerlink" href="#geo-registration" title="Link to this heading"></a></h2>
+<p>Geo-registration of models is possible by providing the 3D locations for the
+camera centers of a subset or all registered images. The 3D similarity
+transformation between the reconstructed model and the target coordinate frame
+of the geo-registration is determined from these correspondences.</p>
+<p>The geo-registered 3D coordinates can either be extracted from the database
+(tvec_prior field) or from a user specified text file.
+For text-files, the geo-registered 3D coordinates of the camera centers for
+images must be specified with the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image_name1</span><span class="o">.</span><span class="n">jpg</span> <span class="n">X1</span> <span class="n">Y1</span> <span class="n">Z1</span>
+<span class="n">image_name2</span><span class="o">.</span><span class="n">jpg</span> <span class="n">X2</span> <span class="n">Y2</span> <span class="n">Z2</span>
+<span class="n">image_name3</span><span class="o">.</span><span class="n">jpg</span> <span class="n">X3</span> <span class="n">Y3</span> <span class="n">Z3</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>The coordinates can be either GPS-based (lat/lon/alt) or cartesian-based (x/y/z).
+In case of GPS coordinates, a conversion will be performed to turn those into
+cartesian coordinates.  The conversion can be done from GPS to ECEF
+(Earth-Centered-Earth-Fixed) or to ENU (East-North-Up) coordinates. If ENU coordinates
+are used, the first image GPS coordinates will define the origin of the ENU frame.
+It is also possible to use ECEF coordinates for alignment and then rotate the aligned
+reconstruction into the ENU plane.</p>
+<p>Note that at least 3 images must be specified to estimate a 3D similarity
+transformation. Then, the model can be geo-registered using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="n">model_aligner</span> \
+    <span class="o">--</span><span class="n">input_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">model</span> \
+    <span class="o">--</span><span class="n">output_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">geo</span><span class="o">-</span><span class="n">registered</span><span class="o">-</span><span class="n">model</span> \
+    <span class="o">--</span><span class="n">ref_images_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">file</span> <span class="p">(</span><span class="ow">or</span> <span class="o">--</span><span class="n">database_path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">db</span><span class="p">)</span> \
+    <span class="o">--</span><span class="n">ref_is_gps</span> <span class="mi">1</span> \
+    <span class="o">--</span><span class="n">alignment_type</span> <span class="n">ecef</span> \
+    <span class="o">--</span><span class="n">robust_alignment</span> <span class="mi">1</span> \
+    <span class="o">--</span><span class="n">robust_alignment_max_error</span> <span class="mf">3.0</span> <span class="p">(</span><span class="n">where</span> <span class="mf">3.0</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">error</span> <span class="n">threshold</span> <span class="n">to</span> <span class="n">be</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">RANSAC</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By default, the robust_alignment flag is set to 1.  If this flag is set, a 3D similarity
+transformation will be estimated with a RANSAC estimator to be robust to potential outliers
+in the data.  In such case, it is required to provide the error threshold to be used in the
+RANSAC estimator.</p>
+</section>
+<section id="manhattan-world-alignment">
+<h2>Manhattan world alignment<a class="headerlink" href="#manhattan-world-alignment" title="Link to this heading"></a></h2>
+<p>COLMAP has functionality to align the coordinate axes of a reconstruction using
+a Manhattan world assumption, i.e. COLMAP can automatically determine the
+gravity axis and the major horizontal axis of the Manhattan world through
+vanishing point detection in the images. Please, refer to the
+<code class="docutils literal notranslate"><span class="pre">model_orientation_aligner</span></code> for more details.</p>
+</section>
+<section id="mask-image-regions">
+<h2>Mask image regions<a class="headerlink" href="#mask-image-regions" title="Link to this heading"></a></h2>
+<p>COLMAP supports masking of keypoints during feature extraction two different ways:</p>
+<p>1. Passing <code class="docutils literal notranslate"><span class="pre">mask_path</span></code> to a folder with image masks. For a given image, the corresponding
+mask must have the same sub-path below this root as the image has below
+<code class="docutils literal notranslate"><span class="pre">image_path</span></code>. The filename must be equal, aside from the added extension
+<code class="docutils literal notranslate"><span class="pre">.png</span></code>. For example, for an image <code class="docutils literal notranslate"><span class="pre">image_path/abc/012.jpg</span></code>, the mask would
+be <code class="docutils literal notranslate"><span class="pre">mask_path/abc/012.jpg.png</span></code>.</p>
+<ol class="arabic simple" start="2">
+<li><p>Passing <code class="docutils literal notranslate"><span class="pre">camera_mask_path</span></code> to a single mask image. This single mask is applied to all images.</p></li>
+</ol>
+<p>In both cases no features will be extracted in regions,
+where the mask image is black (pixel intensity value 0 in grayscale).</p>
+</section>
+<section id="register-localize-new-images-into-an-existing-reconstruction">
+<h2>Register/localize new images into an existing reconstruction<a class="headerlink" href="#register-localize-new-images-into-an-existing-reconstruction" title="Link to this heading"></a></h2>
+<p>If you have an existing reconstruction of images and want to register/localize
+new images within this reconstruction, you can follow these steps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap feature_extractor \
+    --database_path $PROJECT_PATH/database.db \
+    --image_path $PROJECT_PATH/images \
+    --image_list_path /path/to/image-list.txt
+
+colmap vocab_tree_matcher \
+    --database_path $PROJECT_PATH/database.db \
+    --VocabTreeMatching.vocab_tree_path /path/to/vocab-tree.bin \
+    --VocabTreeMatching.match_list_path /path/to/image-list.txt
+
+colmap image_registrator \
+    --database_path $PROJECT_PATH/database.db \
+    --input_path /path/to/existing-model \
+    --output_path /path/to/model-with-new-images
+
+colmap bundle_adjuster \
+    --input_path /path/to/model-with-new-images \
+    --output_path /path/to/model-with-new-images
+</pre></div>
+</div>
+<p>Note that this first extracts features for the new images, then matches them to
+the existing images in the database, and finally registers them into the model.
+The image list text file contains a list of images to extract and match,
+specified as one image file name per line. The bundle adjustment is optional.</p>
+<p>If you need a more accurate image registration with triangulation, then you
+should restart or continue the reconstruction process rather than just
+registering the images to the model. Instead of running the
+<code class="docutils literal notranslate"><span class="pre">image_registrator</span></code>, you should run the <code class="docutils literal notranslate"><span class="pre">mapper</span></code> to continue the
+reconstruction process from the existing model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap mapper \
+    --database_path $PROJECT_PATH/database.db \
+    --image_path $PROJECT_PATH/images \
+    --input_path /path/to/existing-model \
+    --output_path /path/to/model-with-new-images
+</pre></div>
+</div>
+<p>Or, alternatively, you can start the reconstruction from scratch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap mapper \
+    --database_path $PROJECT_PATH/database.db \
+    --image_path $PROJECT_PATH/images \
+    --output_path /path/to/model-with-new-images
+</pre></div>
+</div>
+<p>Note that dense reconstruction must be re-run from scratch after running the
+<code class="docutils literal notranslate"><span class="pre">mapper</span></code> or the <code class="docutils literal notranslate"><span class="pre">bundle_adjuster</span></code>, as the coordinate frame of the model can
+change during these steps.</p>
+</section>
+<section id="available-functionality-without-gpu-cuda">
+<h2>Available functionality without GPU/CUDA<a class="headerlink" href="#available-functionality-without-gpu-cuda" title="Link to this heading"></a></h2>
+<p>If you do not have a CUDA-enabled GPU but some other GPU, you can use all COLMAP
+functionality except the dense reconstruction part. However, you can use
+external dense reconstruction software as an alternative, as described in the
+<a class="reference internal" href="tutorial.html#dense-reconstruction"><span class="std std-ref">Tutorial</span></a>. If you have a GPU with low compute power
+or you want to execute COLMAP on a machine without an attached display and
+without CUDA support, you can run all steps on the CPU by specifying the
+appropriate options (e.g., <code class="docutils literal notranslate"><span class="pre">--SiftExtraction.use_gpu=false</span></code> for the feature
+extraction step). But note that this might result in a significant slow-down of
+the reconstruction pipeline. Please, also note that feature extraction on the
+CPU can consume excessive RAM for large images in the default settings, which
+might require manually reducing the maximum image size using
+<code class="docutils literal notranslate"><span class="pre">--SiftExtraction.max_image_size</span></code> and/or setting
+<code class="docutils literal notranslate"><span class="pre">--SiftExtraction.first_octave</span> <span class="pre">0</span></code> or by manually limiting the number of
+threads using <code class="docutils literal notranslate"><span class="pre">--SiftExtraction.num_threads</span></code>.</p>
+</section>
+<section id="multi-gpu-support-in-feature-extraction-matching">
+<h2>Multi-GPU support in feature extraction/matching<a class="headerlink" href="#multi-gpu-support-in-feature-extraction-matching" title="Link to this heading"></a></h2>
+<p>You can run feature extraction/matching on multiple GPUs by specifying multiple
+indices for CUDA-enabled GPUs, e.g., <code class="docutils literal notranslate"><span class="pre">--SiftExtraction.gpu_index=0,1,2,3</span></code> and
+<code class="docutils literal notranslate"><span class="pre">--SiftMatching.gpu_index=0,1,2,3</span></code> runs the feature extraction/matching on 4
+GPUs in parallel. Note that you can only run one thread per GPU and this
+typically also gives the best performance. By default, COLMAP runs one feature
+extraction/matching thread per CUDA-enabled GPU and this usually gives the best
+performance as compared to running multiple threads on the same GPU.</p>
+</section>
+<section id="feature-matching-fails-due-to-illegal-memory-access">
+<h2>Feature matching fails due to illegal memory access<a class="headerlink" href="#feature-matching-fails-due-to-illegal-memory-access" title="Link to this heading"></a></h2>
+<p>If you encounter the following error message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MultiplyDescriptor</span><span class="p">:</span> <span class="n">an</span> <span class="n">illegal</span> <span class="n">memory</span> <span class="n">access</span> <span class="n">was</span> <span class="n">encountered</span>
+</pre></div>
+</div>
+<p>or the following:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>ERROR: Feature matching failed. This probably caused by insufficient GPU</dt><dd><p>memory. Consider reducing the maximum number of features.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>during feature matching, your GPU runs out of memory. Try decreasing the option
+<code class="docutils literal notranslate"><span class="pre">--SiftMatching.max_num_matches</span></code> until the error disappears. Note that this
+might lead to inferior feature matching results, since the lower-scale input
+features will be clamped in order to fit them into GPU memory. Alternatively,
+you could change to CPU-based feature matching, but this can become very slow,
+or better you buy a GPU with more memory.</p>
+<p>The maximum required GPU memory can be approximately estimated using the
+following formula: <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">*</span> <span class="pre">num_matches</span> <span class="pre">*</span> <span class="pre">num_matches</span> <span class="pre">+</span> <span class="pre">4</span> <span class="pre">*</span> <span class="pre">num_matches</span> <span class="pre">*</span> <span class="pre">256</span></code>.
+For example, if you set <code class="docutils literal notranslate"><span class="pre">--SiftMatching.max_num_matches</span> <span class="pre">10000</span></code>, the maximum
+required GPU memory will be around 400MB, which are only allocated if one of
+your images actually has that many features.</p>
+</section>
+<section id="trading-off-completeness-and-accuracy-in-dense-reconstruction">
+<h2>Trading off completeness and accuracy in dense reconstruction<a class="headerlink" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction" title="Link to this heading"></a></h2>
+<p>If the dense point cloud contains too many outliers and too much noise, try to
+increase the value of option <code class="docutils literal notranslate"><span class="pre">--StereoFusion.min_num_pixels</span></code>.</p>
+<p>If the reconstructed dense surface mesh model using Poisson reconstruction
+contains no surface or there are too many outlier surfaces, you should reduce
+the value of option <code class="docutils literal notranslate"><span class="pre">--PoissonMeshing.trim</span></code> to decrease the surface are and
+vice versa to increase it. Also consider to try the reduce the outliers or
+increase the completeness in the fusion stage, as described above.</p>
+<p>If the reconstructed dense surface mesh model using Delaunay reconstruction
+contains too noisy or incomplete surfaces, you should increase the
+<code class="docutils literal notranslate"><span class="pre">--DenaunayMeshing.quality_regularization</span></code> parameter to obtain a smoother
+surface. If the resolution of the mesh is too coarse, you should reduce the
+<code class="docutils literal notranslate"><span class="pre">--DelaunayMeshing.max_proj_dist</span></code> option to a lower value.</p>
+</section>
+<section id="improving-dense-reconstruction-results-for-weakly-textured-surfaces">
+<h2>Improving dense reconstruction results for weakly textured surfaces<a class="headerlink" href="#improving-dense-reconstruction-results-for-weakly-textured-surfaces" title="Link to this heading"></a></h2>
+<p>For scenes with weakly textured surfaces it can help to have a high resolution
+of the input images (<code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.max_image_size</span></code>) and a large patch window
+radius (<code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.window_radius</span></code>). You may also want to reduce the
+filtering threshold for the photometric consistency cost
+(<code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.filter_min_ncc</span></code>).</p>
+</section>
+<section id="surface-mesh-reconstruction">
+<h2>Surface mesh reconstruction<a class="headerlink" href="#surface-mesh-reconstruction" title="Link to this heading"></a></h2>
+<p>COLMAP supports two types of surface reconstruction algorithms. Poisson surface
+reconstruction <a class="reference internal" href="bibliography.html#kazhdan2013" id="id1"><span>[kazhdan2013]</span></a> and graph-cut based surface extraction from a
+Delaunay triangulation. Poisson surface reconstruction typically requires an
+almost outlier-free input point cloud and it often produces bad surfaces in the
+presence of outliers or large holes in the input data. The Delaunay
+triangulation based meshing algorithm is more robust to outliers and in general
+more scalable to large datasets than the Poisson algorithm, but it usually
+produces less smooth surfaces. Furthermore, the Delaunay based meshing can be
+applied to sparse and dense reconstruction results. To increase the smoothness
+of the surface as a post-processing step, you could use Laplacian smoothing, as
+e.g. implemented in Meshlab.</p>
+<p>Note that the two algorithms can also be combined by first running the Delaunay
+meshing to robustly filter outliers from the sparse or dense point cloud and
+then, in the second step, performing Poisson surface reconstruction to obtain a
+smooth surface.</p>
+</section>
+<section id="speedup-dense-reconstruction">
+<h2>Speedup dense reconstruction<a class="headerlink" href="#speedup-dense-reconstruction" title="Link to this heading"></a></h2>
+<p>The dense reconstruction can be speeded up in multiple ways:</p>
+<ul class="simple">
+<li><p>Put more GPUs in your system as the dense reconstruction can make use of
+multiple GPUs during the stereo reconstruction step. Put more RAM into your
+system and increase the <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.cache_size</span></code>,
+<code class="docutils literal notranslate"><span class="pre">--StereoFusion.cache_size</span></code> to the largest possible value in order to
+speed up the dense fusion step.</p></li>
+<li><p>Do not perform geometric dense stereo reconstruction
+<code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.geom_consistency</span> <span class="pre">false</span></code>. Make sure to also enable
+<code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.filter</span> <span class="pre">true</span></code> in this case.</p></li>
+<li><p>Reduce the <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.max_image_size</span></code>, <code class="docutils literal notranslate"><span class="pre">--StereoFusion.max_image_size</span></code>
+values to perform dense reconstruction on a maximum image resolution.</p></li>
+<li><p>Reduce the number of source images per reference image to be considered, as
+described <a class="reference internal" href="#faq-dense-memory"><span class="std std-ref">here</span></a>.</p></li>
+<li><p>Increase the patch windows step <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.window_step</span></code> to 2.</p></li>
+<li><p>Reduce the patch window radius <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.window_radius</span></code>.</p></li>
+<li><p>Reduce the number of patch match iterations <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.num_iterations</span></code>.</p></li>
+<li><p>Reduce the number of sampled views <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.num_samples</span></code>.</p></li>
+<li><p>To speedup the dense stereo and fusion step for very large reconstructions,
+you can use CMVS to partition your scene into multiple clusters and to prune
+redundant images, as described <a class="reference internal" href="#faq-dense-memory"><span class="std std-ref">here</span></a>.</p></li>
+</ul>
+<p>Note that apart from upgrading your hardware, the proposed changes might degrade
+the quality of the dense reconstruction results. When canceling the stereo
+reconstruction process and restarting it later, the previous progress is not
+lost and any already processed views will be skipped.</p>
+</section>
+<section id="reduce-memory-usage-during-dense-reconstruction">
+<span id="faq-dense-memory"></span><h2>Reduce memory usage during dense reconstruction<a class="headerlink" href="#reduce-memory-usage-during-dense-reconstruction" title="Link to this heading"></a></h2>
+<p>If you run out of GPU memory during patch match stereo, you can either reduce
+the maximum image size by setting the option <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.max_image_size</span></code> or
+reduce the number of source images in the <code class="docutils literal notranslate"><span class="pre">stereo/patch-match.cfg</span></code> file from
+e.g. <code class="docutils literal notranslate"><span class="pre">__auto__,</span> <span class="pre">30</span></code> to <code class="docutils literal notranslate"><span class="pre">__auto__,</span> <span class="pre">10</span></code>. Note that enabling the
+<code class="docutils literal notranslate"><span class="pre">geom_consistency</span></code> option increases the required GPU memory.</p>
+<p>If you run out of CPU memory during stereo or fusion, you can reduce the
+<code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.cache_size</span></code> or <code class="docutils literal notranslate"><span class="pre">--StereoFusion.cache_size</span></code> specified in
+gigabytes or you can reduce <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.max_image_size</span></code> or
+<code class="docutils literal notranslate"><span class="pre">--StereoFusion.max_image_size</span></code>. Note that a too low value might lead to very
+slow processing and heavy load on the hard disk.</p>
+<p>For large-scale reconstructions of several thousands of images, you should
+consider splitting your sparse reconstruction into more manageable clusters of
+images using e.g. CMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id2"><span>[furukawa10]</span></a>. In addition, CMVS allows to prune
+redundant images observing the same scene elements. Note that, for this use
+case, COLMAP’s dense reconstruction pipeline also supports the PMVS/CMVS folder
+structure when executed from the command-line. Please, refer to the workspace
+folder for example shell scripts. Note that the example shell scripts for
+PMVS/CMVS are only generated, if the output type is set to PMVS. Since CMVS
+produces highly overlapping clusters, it is recommended to increase the default
+value of 100 images per cluster to as high as possible according to your
+available system resources and speed requirements. To change the number of
+images using CMVS, you must modify the shell scripts accordingly. For example,
+<code class="docutils literal notranslate"><span class="pre">cmvs</span> <span class="pre">pmvs/</span> <span class="pre">500</span></code> to limit each cluster to 500 images. If you want to use CMVS
+to prune redundant images but not to cluster the scene, you can simply set this
+number to a very large value.</p>
+</section>
+<section id="manual-specification-of-source-images-during-dense-reconstruction">
+<span id="faq-dense-manual-source"></span><h2>Manual specification of source images during dense reconstruction<a class="headerlink" href="#manual-specification-of-source-images-during-dense-reconstruction" title="Link to this heading"></a></h2>
+<p>You can change the number of source images in the <code class="docutils literal notranslate"><span class="pre">stereo/patch-match.cfg</span></code>
+file from e.g. <code class="docutils literal notranslate"><span class="pre">__auto__,</span> <span class="pre">30</span></code> to <code class="docutils literal notranslate"><span class="pre">__auto__,</span> <span class="pre">10</span></code>. This selects the images
+with the most visual overlap automatically as source images. You can also use
+all other images as source images, by specifying <code class="docutils literal notranslate"><span class="pre">__all__</span></code>. Alternatively, you
+can manually specify images with their name, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image1</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">image2</span><span class="o">.</span><span class="n">jpg</span><span class="p">,</span> <span class="n">image3</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">image2</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">image1</span><span class="o">.</span><span class="n">jpg</span><span class="p">,</span> <span class="n">image3</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">image3</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">image1</span><span class="o">.</span><span class="n">jpg</span><span class="p">,</span> <span class="n">image2</span><span class="o">.</span><span class="n">jpg</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">image2.jpg</span></code> and <code class="docutils literal notranslate"><span class="pre">image3.jpg</span></code> are used as source images for
+<code class="docutils literal notranslate"><span class="pre">image1.jpg</span></code>, etc.</p>
+</section>
+<section id="multi-gpu-support-in-dense-reconstruction">
+<h2>Multi-GPU support in dense reconstruction<a class="headerlink" href="#multi-gpu-support-in-dense-reconstruction" title="Link to this heading"></a></h2>
+<p>You can run dense reconstruction on multiple GPUs by specifying multiple indices
+for CUDA-enabled GPUs, e.g., <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.gpu_index=0,1,2,3</span></code> runs the dense
+reconstruction on 4 GPUs in parallel. You can also run multiple dense
+reconstruction threads on the same GPU by specifying the same GPU index twice,
+e.g., <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.gpu_index=0,0,1,1,2,3</span></code>. By default, COLMAP runs one
+dense reconstruction thread per CUDA-enabled GPU.</p>
+</section>
+<section id="fix-gpu-freezes-and-timeouts-during-dense-reconstruction">
+<span id="faq-dense-timeout"></span><h2>Fix GPU freezes and timeouts during dense reconstruction<a class="headerlink" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction" title="Link to this heading"></a></h2>
+<p>The stereo reconstruction pipeline runs on the GPU using CUDA and puts the GPU
+under heavy load. You might experience a display freeze or even a program crash
+during the reconstruction. As a solution to this problem, you could use a
+secondary GPU in your system, that is not connected to your display by setting
+the GPU indices explicitly (usually index 0 corresponds to the card that the
+display is attached to). Alternatively, you can increase the GPU timeouts of
+your system, as detailed in the following.</p>
+<p>By default, the Windows operating system detects response problems from the GPU,
+and recovers to a functional desktop by resetting the card and aborting the
+stereo reconstruction process. The solution is to increase the so-called
+“Timeout Detection &amp; Recovery” (TDR) delay to a larger value. Please, refer to
+the <a class="reference external" href="https://goo.gl/UWKVs6">NVIDIA Nsight documentation</a> or to the <a class="reference external" href="http://www.microsoft.com/whdc/device/display/wddm_timeout.mspx">Microsoft
+documentation</a>
+on how to increase the delay time under Windows. You can increase the delay
+using the following Windows Registry entries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">HKEY_LOCAL_MACHINE</span>\<span class="n">SYSTEM</span>\<span class="n">CurrentControlSet</span>\<span class="n">Control</span>\<span class="n">GraphicsDrivers</span><span class="p">]</span>
+<span class="s2">&quot;TdrLevel&quot;</span><span class="o">=</span><span class="n">dword</span><span class="p">:</span><span class="mi">00000001</span>
+<span class="s2">&quot;TdrDelay&quot;</span><span class="o">=</span><span class="n">dword</span><span class="p">:</span><span class="mi">00000120</span>
+</pre></div>
+</div>
+<p>To set the registry entries, execute the following commands using administrator
+privileges (e.g., in <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> or <code class="docutils literal notranslate"><span class="pre">powershell.exe</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span> <span class="n">add</span> <span class="n">HKEY_LOCAL_MACHINE</span>\<span class="n">SYSTEM</span>\<span class="n">CurrentControlSet</span>\<span class="n">Control</span>\<span class="n">GraphicsDrivers</span> <span class="o">/</span><span class="n">v</span> <span class="n">TdrLevel</span> <span class="o">/</span><span class="n">t</span> <span class="n">REG_DWORD</span> <span class="o">/</span><span class="n">d</span> <span class="mi">00000001</span>
+<span class="n">reg</span> <span class="n">add</span> <span class="n">HKEY_LOCAL_MACHINE</span>\<span class="n">SYSTEM</span>\<span class="n">CurrentControlSet</span>\<span class="n">Control</span>\<span class="n">GraphicsDrivers</span> <span class="o">/</span><span class="n">v</span> <span class="n">TdrDelay</span> <span class="o">/</span><span class="n">t</span> <span class="n">REG_DWORD</span> <span class="o">/</span><span class="n">d</span> <span class="mi">00000120</span>
+</pre></div>
+</div>
+<p>and restart your machine afterwards to make the changes effective.</p>
+<p>The X window system under Linux/Unix has a similar feature and detects response
+problems of the GPU. The easiest solution to avoid timeout problems under the X
+window system is to shut it down and run the stereo reconstruction from the
+command-line. Under Ubuntu, you could first stop X using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">lightdm</span> <span class="n">stop</span>
+</pre></div>
+</div>
+<p>And then run the dense reconstruction code from the command-line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="n">patch_match_stereo</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>Finally, you can restart your desktop environment with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">lightdm</span> <span class="n">start</span>
+</pre></div>
+</div>
+<p>If the dense reconstruction still crashes after these changes, the reason is
+probably insufficient GPU memory, as discussed in a separate item in this list.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cli.html" class="btn btn-neutral float-left" title="Command-line Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Johannes L. Schoenberger.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

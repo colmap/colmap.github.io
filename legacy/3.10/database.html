@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Database Format &mdash; COLMAP 3.10 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Camera Models" href="cameras.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            COLMAP
+          </a>
+              <div class="version">
+                3.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Database Format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cameras-and-images">Cameras and Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#keypoints-and-descriptors">Keypoints and Descriptors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matches">Matches</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">COLMAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Database Format</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/database.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="database-format">
+<span id="id1"></span><h1>Database Format<a class="headerlink" href="#database-format" title="Permalink to this heading"></a></h1>
+<p>COLMAP stores all extracted information in a single SQLite database file. The
+database can be accessed with the database management toolkit in the COLMAP GUI,
+the provided C++ database API (see <code class="docutils literal notranslate"><span class="pre">src/colmap/scene/database.h</span></code>), or with a scripting
+language of your choice (see <code class="docutils literal notranslate"><span class="pre">scripts/python/database.py</span></code>).</p>
+<p>The database contains the following tables:</p>
+<ul class="simple">
+<li><p>cameras</p></li>
+<li><p>images</p></li>
+<li><p>keypoints</p></li>
+<li><p>descriptors</p></li>
+<li><p>matches</p></li>
+<li><p>two_view_geometries</p></li>
+</ul>
+<p>To initialize an empty SQLite database file with the required schema, you can
+either create a new project in the GUI or execute <cite>src/colmap/exe/database_create.cc</cite>.</p>
+<section id="cameras-and-images">
+<h2>Cameras and Images<a class="headerlink" href="#cameras-and-images" title="Permalink to this heading"></a></h2>
+<p>The relation between cameras and images is 1-to-N. This has important
+implications for Structure-from-Motion, since one camera shares the same
+intrinsic parameters (focal length, principal point, distortion, etc.), while
+every image has separate extrinsic parameters (orientation and location).</p>
+<p>The intrinsic parameters of cameras are stored as contiguous binary blobs in
+<cite>float64</cite>, ordered as specified in <code class="docutils literal notranslate"><span class="pre">src/colmap/sensor/models.h</span></code>. COLMAP only
+uses cameras that are referenced by images, all other cameras are ignored.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> column in the images table is the unique relative path in the image
+folder. As such, the database file and image folder can be moved to different
+locations, as long as the relative folder structure is preserved.</p>
+<p>When manually inserting images and cameras into the database, make sure
+that all identifiers are positive and non-zero, i.e. <code class="docutils literal notranslate"><span class="pre">image_id</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>
+and <code class="docutils literal notranslate"><span class="pre">camera_id</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p>
+</section>
+<section id="keypoints-and-descriptors">
+<h2>Keypoints and Descriptors<a class="headerlink" href="#keypoints-and-descriptors" title="Permalink to this heading"></a></h2>
+<p>The detected keypoints are stored as row-major <cite>float32</cite> binary blobs, where the
+first two columns are the X and Y locations in the image, respectively. COLMAP
+uses the convention that the upper left image corner has coordinate <cite>(0, 0)</cite> and
+the center of the upper left most pixel has coordinate <cite>(0.5, 0.5)</cite>. If the
+keypoints have 4 columns, then the feature geometry is a similarity and the
+third column is the scale and the fourth column the orientation of the feature
+(according to SIFT conventions). If the keypoints have 6 columns, then the
+feature geometry is an affinity and the last 4 columns encode its affine shape
+(see <code class="docutils literal notranslate"><span class="pre">src/feature/types.h</span></code> for details).</p>
+<p>The extracted descriptors are stored as row-major <cite>uint8</cite> binary blobs, where
+each row describes the feature appearance of the corresponding entry in the
+keypoints table. Note that COLMAP only supports 128-D descriptors for now, i.e.
+the <cite>cols</cite> column must be 128.</p>
+<p>In both tables, the <cite>rows</cite> table specifies the number of detected features per
+image, while <cite>rows=0</cite> means that an image has no features. For feature matching
+and geometric verification, every image must have a corresponding keypoints and
+descriptors entry. Note that only vocabulary tree matching with fast spatial
+verification requires meaningful values for the local feature geometry, i.e.,
+only X and Y must be provided and the other keypoint columns can be set to zero.
+The rest of the reconstruction pipeline only uses the keypoint locations.</p>
+</section>
+<section id="matches">
+<h2>Matches<a class="headerlink" href="#matches" title="Permalink to this heading"></a></h2>
+<p>Feature matching stores its output in the <cite>matches</cite> table and geometric
+verification in the <cite>two_view_geometries</cite> table. COLMAP only uses the data in
+<cite>two_view_geometries</cite> for reconstruction. Every entry in the two tables stores
+the feature matches between two unique images, where the <cite>pair_id</cite> is the
+row-major, linear index in the upper-triangular match matrix, generated as
+follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">image_ids_to_pair_id</span><span class="p">(</span><span class="n">image_id1</span><span class="p">,</span> <span class="n">image_id2</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">image_id1</span> <span class="o">&gt;</span> <span class="n">image_id2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">2147483647</span> <span class="o">*</span> <span class="n">image_id2</span> <span class="o">+</span> <span class="n">image_id1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">2147483647</span> <span class="o">*</span> <span class="n">image_id1</span> <span class="o">+</span> <span class="n">image_id2</span>
+</pre></div>
+</div>
+<p>and image identifiers can be uniquely determined from the <cite>pair_id</cite> as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pair_id_to_image_ids</span><span class="p">(</span><span class="n">pair_id</span><span class="p">):</span>
+    <span class="n">image_id2</span> <span class="o">=</span> <span class="n">pair_id</span> <span class="o">%</span> <span class="mi">2147483647</span>
+    <span class="n">image_id1</span> <span class="o">=</span> <span class="p">(</span><span class="n">pair_id</span> <span class="o">-</span> <span class="n">image_id2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2147483647</span>
+    <span class="k">return</span> <span class="n">image_id1</span><span class="p">,</span> <span class="n">image_id2</span>
+</pre></div>
+</div>
+<p>The <cite>pair_id</cite> enables efficient database queries, as the matches tables may
+contain several hundred millions of entries. This scheme limits the maximum
+number of images in a database to 2147483647 (maximum value of signed 32-bit
+integers), i.e. <cite>image_id</cite> must be smaller than 2147483647.</p>
+<p>The binary blobs in the matches tables are row-major <cite>uint32</cite> matrices, where
+the left column are zero-based indices into the features of <cite>image_id1</cite> and the
+second column into the features of <cite>image_id2</cite>. The column <cite>cols</cite> must be 2 and
+the <cite>rows</cite> column specifies the number of feature matches.</p>
+<p>The F, E, H blobs in the <cite>two_view_geometries</cite> table are stored as 3x3 matrices
+in row-major <cite>float64</cite> format. The meaning of the <cite>config</cite> values are documented
+in the <cite>src/estimators/two_view_geometry.h</cite> source file.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cameras.html" class="btn btn-neutral float-right" title="Camera Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Johannes L. Schoenberger.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

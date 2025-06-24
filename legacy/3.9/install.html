@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation &mdash; COLMAP 3.9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f9dd27f5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial" href="tutorial.html" />
+    <link rel="prev" title="COLMAP" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            COLMAP
+          </a>
+              <div class="version">
+                3.9
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pre-built-binaries">Pre-built Binaries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mac">Mac</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#build-from-source">Build from Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Mac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vcpkg">VCPKG</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#library">Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#addresssanitizer">AddressSanitizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">COLMAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/install.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation">
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+<p>You can either download one of the pre-built binaries or build the source code
+manually. Executables for Windows and Mac and other resources can be downloaded
+from <a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>. Executables for Linux/Unix/BSD are available at
+<a class="reference external" href="https://repology.org/metapackage/colmap/versions">https://repology.org/metapackage/colmap/versions</a>. Note that the COLMAP packages
+in the default repositories for Linux/Unix/BSD do not come with CUDA support,
+which requires manual compilation but is relatively easy on these platforms.</p>
+<p>COLMAP can be used as an independent application through the command-line or
+graphical user interface. Alternatively, COLMAP is also built as a reusable
+library, i.e., you can include and link COLMAP against your own source code,
+as described further below.</p>
+<section id="pre-built-binaries">
+<h2>Pre-built Binaries<a class="headerlink" href="#pre-built-binaries" title="Link to this heading"></a></h2>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
+<p>For convenience, the pre-built binaries for Windows contain both the graphical
+and command-line interface executables. To start the COLMAP GUI, you can simply
+double-click  the <code class="docutils literal notranslate"><span class="pre">COLMAP.bat</span></code> batch script or alternatively run it from the
+Windows command shell or Powershell. The command-line interface is also
+accessible through this batch script, which automatically sets the necessary
+library paths. To list the available COLMAP commands, run <code class="docutils literal notranslate"><span class="pre">COLMAP.bat</span> <span class="pre">-h</span></code> in
+the command shell <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> or in Powershell.</p>
+</section>
+<section id="mac">
+<h3>Mac<a class="headerlink" href="#mac" title="Link to this heading"></a></h3>
+<p>The pre-built application package for Mac contains both the GUI and command-line
+version of COLMAP. To open the GUI, simply open the application and note that
+COLMAP is shipped as an unsigned application, i.e., when your first open the
+application, you have to right-click the application and select <em>Open</em> and then
+accept to trust the application. In the future, you can then simply double-click
+the application to open COLMAP. The command-line interface is accessible by
+running the packaged binary <code class="docutils literal notranslate"><span class="pre">COLMAP.app/Contents/MacOS/colmap</span></code>. To list the
+available COLMAP commands, run <code class="docutils literal notranslate"><span class="pre">COLMAP.app/Contents/MacOS/colmap</span> <span class="pre">-h</span></code>.</p>
+</section>
+</section>
+<section id="build-from-source">
+<h2>Build from Source<a class="headerlink" href="#build-from-source" title="Link to this heading"></a></h2>
+<p>COLMAP builds on all major platforms (Linux, Mac, Windows) with little effort.
+First, checkout the latest source code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">colmap</span>
+</pre></div>
+</div>
+<p>On Linux and Mac it is generally recommended to follow the installation
+instructions below, which use the system package managers to install the
+required dependencies. Alternatively, there is a Python build script that builds
+COLMAP and its dependencies locally. This script is useful under Windows and on
+a (cluster) system if you do not have root access under Linux or Mac.</p>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Link to this heading"></a></h3>
+<p><em>Recommended dependencies:</em> CUDA (at least version 7.X)</p>
+<p>Dependencies from the default Ubuntu repositories:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> \
+    <span class="n">git</span> \
+    <span class="n">cmake</span> \
+    <span class="n">ninja</span><span class="o">-</span><span class="n">build</span> \
+    <span class="n">build</span><span class="o">-</span><span class="n">essential</span> \
+    <span class="n">libboost</span><span class="o">-</span><span class="n">program</span><span class="o">-</span><span class="n">options</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libboost</span><span class="o">-</span><span class="n">filesystem</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libboost</span><span class="o">-</span><span class="n">graph</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libboost</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libeigen3</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libflann</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libfreeimage</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libmetis</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libgoogle</span><span class="o">-</span><span class="n">glog</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libgtest</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libsqlite3</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libglew</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">qtbase5</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libqt5opengl5</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libcgal</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libceres</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>Configure and compile COLMAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">colmap</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">colmap</span>
+<span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">GNinja</span>
+<span class="n">ninja</span>
+<span class="n">sudo</span> <span class="n">ninja</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Run COLMAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="o">-</span><span class="n">h</span>
+<span class="n">colmap</span> <span class="n">gui</span>
+</pre></div>
+</div>
+<p>To compile with <strong>CUDA support</strong>, also install Ubuntu’s default CUDA package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> \
+    <span class="n">nvidia</span><span class="o">-</span><span class="n">cuda</span><span class="o">-</span><span class="n">toolkit</span> \
+    <span class="n">nvidia</span><span class="o">-</span><span class="n">cuda</span><span class="o">-</span><span class="n">toolkit</span><span class="o">-</span><span class="n">gcc</span>
+</pre></div>
+</div>
+<p>Or, manually install latest CUDA from NVIDIA’s homepage. During CMake configuration
+specify <cite>CMAKE_CUDA_ARCHITECTURES</cite> as “native”, if you want to run COLMAP on your
+current machine only, “all”/”all-major” to be able to distribute to other machines,
+or a specific CUDA architecture like “75”, etc.</p>
+<p>Under <strong>Ubuntu 16.04/18.04</strong>, the CMake configuration scripts of CGAL are broken and
+you must also install the CGAL Qt5 package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libcgal</span><span class="o">-</span><span class="n">qt5</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>Under <strong>Ubuntu 22.04</strong>, there is a problem when compiling with Ubuntu’s default CUDA
+package and GCC, and you must compile against GCC 10:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gcc</span><span class="o">-</span><span class="mi">10</span> <span class="n">g</span><span class="o">++-</span><span class="mi">10</span>
+<span class="n">export</span> <span class="n">CC</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="mi">10</span>
+<span class="n">export</span> <span class="n">CXX</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++-</span><span class="mi">10</span>
+<span class="n">export</span> <span class="n">CUDAHOSTCXX</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++-</span><span class="mi">10</span>
+<span class="c1"># ... and then run CMake against COLMAP&#39;s sources.</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Mac<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>Dependencies from <a class="reference external" href="http://brew.sh/">Homebrew</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> \
+    <span class="n">cmake</span> \
+    <span class="n">ninja</span> \
+    <span class="n">boost</span> \
+    <span class="n">eigen</span> \
+    <span class="n">flann</span> \
+    <span class="n">freeimage</span> \
+    <span class="n">metis</span> \
+    <span class="n">glog</span> \
+    <span class="n">googletest</span> \
+    <span class="n">ceres</span><span class="o">-</span><span class="n">solver</span> \
+    <span class="n">qt5</span> \
+    <span class="n">glew</span> \
+    <span class="n">cgal</span> \
+    <span class="n">sqlite3</span>
+</pre></div>
+</div>
+<p>Configure and compile COLMAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">colmap</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">colmap</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/opt/qt@5/bin:$PATH&quot;</span>
+<span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">..</span>  <span class="o">-</span><span class="n">GNinja</span> <span class="o">-</span><span class="n">DQt5_DIR</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">qt</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="n">Qt5</span>
+<span class="n">ninja</span>
+<span class="n">sudo</span> <span class="n">ninja</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>If you have Qt 6 installed on your system as well, you might have to temporarily
+link your Qt 5 installation while configuring CMake:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">link</span> <span class="n">qt5</span>
+<span class="n">cmake</span> <span class="n">configuration</span> <span class="p">(</span><span class="kn">from</span> <span class="nn">previous</span> <span class="n">code</span> <span class="n">block</span><span class="p">)</span>
+<span class="n">brew</span> <span class="n">unlink</span> <span class="n">qt5</span>
+</pre></div>
+</div>
+<p>Run COLMAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="o">-</span><span class="n">h</span>
+<span class="n">colmap</span> <span class="n">gui</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>Windows<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p><em>Recommended dependencies:</em> CUDA (at least version 7.X), Visual Studio 2019</p>
+<p>On Windows, the recommended way is to build COLMAP using vcpkg:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">microsoft</span><span class="o">/</span><span class="n">vcpkg</span>
+<span class="n">cd</span> <span class="n">vcpkg</span>
+<span class="o">.</span>\<span class="n">bootstrap</span><span class="o">-</span><span class="n">vcpkg</span><span class="o">.</span><span class="n">bat</span>
+<span class="o">.</span>\<span class="n">vcpkg</span> <span class="n">install</span> <span class="n">colmap</span><span class="p">[</span><span class="n">cuda</span><span class="p">,</span><span class="n">tests</span><span class="p">]:</span><span class="n">x64</span><span class="o">-</span><span class="n">windows</span>
+</pre></div>
+</div>
+<p>To compile CUDA for multiple compute architectures, please use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span>\<span class="n">vcpkg</span> <span class="n">install</span> <span class="n">colmap</span><span class="p">[</span><span class="n">cuda</span><span class="o">-</span><span class="n">redist</span><span class="p">]:</span><span class="n">x64</span><span class="o">-</span><span class="n">windows</span>
+</pre></div>
+</div>
+<p>Please refer to the next section for more details.</p>
+<p><strong>Visual Studio 2022</strong>  has some known compiler bugs that crash when
+compiling COLMAP’s source code.</p>
+</section>
+<section id="vcpkg">
+<h3>VCPKG<a class="headerlink" href="#vcpkg" title="Link to this heading"></a></h3>
+<p>COLMAP ships as part of the vcpkg distribution. This enables to conveniently
+build COLMAP and all of its dependencies from scratch under different platforms.
+Note that VCPKG requires you to install CUDA manually in the standard way on
+your platform. To compile COLMAP using VCPKG, you run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">microsoft</span><span class="o">/</span><span class="n">vcpkg</span>
+<span class="n">cd</span> <span class="n">vcpkg</span>
+<span class="o">./</span><span class="n">bootstrap</span><span class="o">-</span><span class="n">vcpkg</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">./</span><span class="n">vcpkg</span> <span class="n">install</span> <span class="n">colmap</span><span class="p">:</span><span class="n">x64</span><span class="o">-</span><span class="n">linux</span>
+</pre></div>
+</div>
+<p>VCPKG ships with support for various other platforms (e.g., x64-osx,
+x64-windows, etc.). To compile with CUDA support and to build all tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">vcpkg</span> <span class="n">install</span> <span class="n">colmap</span><span class="p">[</span><span class="n">cuda</span><span class="p">,</span><span class="n">tests</span><span class="p">]:</span><span class="n">x64</span><span class="o">-</span><span class="n">linux</span>
+</pre></div>
+</div>
+<p>The above commands will build the latest release version of COLMAP. To compile
+the latest commit in the dev branch, you can use the following options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">vcpkg</span> <span class="n">install</span> <span class="n">colmap</span><span class="p">:</span><span class="n">x64</span><span class="o">-</span><span class="n">linux</span> <span class="o">--</span><span class="n">head</span>
+</pre></div>
+</div>
+<p>To modify the source code, you can further add <code class="docutils literal notranslate"><span class="pre">--editable</span> <span class="pre">--no-downloads</span></code>.
+Or, if you want to build from another folder and use the dependencies from
+vcpkg, first run <cite>./vcpkg integrate install</cite> and then configure COLMAP as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span>
+<span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">DCMAKE_TOOLCHAIN_FILE</span><span class="o">=</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">vcpkg</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">buildsystems</span><span class="o">/</span><span class="n">vcpkg</span><span class="o">.</span><span class="n">cmake</span>
+<span class="n">cmake</span> <span class="o">--</span><span class="n">build</span> <span class="o">.</span> <span class="o">--</span><span class="n">config</span> <span class="n">release</span> <span class="o">--</span><span class="n">target</span> <span class="n">colmap_main</span> <span class="o">--</span><span class="n">parallel</span> <span class="mi">24</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="library">
+<span id="installation-library"></span><h2>Library<a class="headerlink" href="#library" title="Link to this heading"></a></h2>
+<p>If you want to include and link COLMAP against your own library, the easiest way
+is to use CMake as a build configuration tool. After configuring the COLMAP
+build and running <cite>ninja/make install</cite>, COLMAP automatically installs all
+headers to <code class="docutils literal notranslate"><span class="pre">${CMAKE_INSTALL_PREFIX}/include/colmap</span></code>, all libraries to
+<code class="docutils literal notranslate"><span class="pre">${CMAKE_INSTALL_PREFIX}/lib/colmap</span></code>, and the CMake configuration to
+<code class="docutils literal notranslate"><span class="pre">${CMAKE_INSTALL_PREFIX}/share/colmap</span></code>.</p>
+<p>For example, compiling your own source code against COLMAP is as simple as
+using the following <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake_minimum_required</span><span class="p">(</span><span class="n">VERSION</span> <span class="mf">3.10</span><span class="p">)</span>
+
+<span class="n">project</span><span class="p">(</span><span class="n">SampleProject</span><span class="p">)</span>
+
+<span class="n">find_package</span><span class="p">(</span><span class="n">colmap</span> <span class="n">REQUIRED</span><span class="p">)</span>
+<span class="c1"># or to require a specific version: find_package(colmap 3.4 REQUIRED)</span>
+
+<span class="n">add_executable</span><span class="p">(</span><span class="n">hello_world</span> <span class="n">hello_world</span><span class="o">.</span><span class="n">cc</span><span class="p">)</span>
+<span class="n">target_link_libraries</span><span class="p">(</span><span class="n">hello_world</span> <span class="n">colmap</span><span class="p">::</span><span class="n">colmap</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>with the source code <code class="docutils literal notranslate"><span class="pre">hello_world.cc</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;cstdlib&gt;</span>
+<span class="c1">#include &lt;iostream&gt;</span>
+
+<span class="c1">#include &lt;colmap/controllers/option_manager.h&gt;</span>
+<span class="c1">#include &lt;colmap/util/string.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">colmap</span><span class="p">::</span><span class="n">InitializeGlog</span><span class="p">(</span><span class="n">argv</span><span class="p">);</span>
+
+    <span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">message</span><span class="p">;</span>
+    <span class="n">colmap</span><span class="p">::</span><span class="n">OptionManager</span> <span class="n">options</span><span class="p">;</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">AddRequiredOption</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">message</span><span class="p">);</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+
+    <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">colmap</span><span class="p">::</span><span class="n">StringPrintf</span><span class="p">(</span><span class="s2">&quot;Hello </span><span class="si">%s</span><span class="s2">!&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">c_str</span><span class="p">())</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">EXIT_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then compile and run your code as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mkdir build
+cd build
+export colmap_DIR=${CMAKE_INSTALL_PREFIX}/share/colmap
+cmake .. -GNinja
+ninja
+./hello_world --message &quot;world&quot;
+</pre></div>
+</div>
+<p>The sources of this example are stored under <code class="docutils literal notranslate"><span class="pre">doc/sample-project</span></code>.</p>
+</section>
+<section id="addresssanitizer">
+<h2>AddressSanitizer<a class="headerlink" href="#addresssanitizer" title="Link to this heading"></a></h2>
+<p>If you want to build COLMAP with address sanitizer flags enabled, you need to
+use a recent compiler with ASan support. For example, you can manually install
+a recent clang version on your Ubuntu machine and invoke CMake as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CC</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">clang</span> <span class="n">CXX</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">clang</span><span class="o">++</span> <span class="n">cmake</span> <span class="o">..</span> \
+    <span class="o">-</span><span class="n">DASAN_ENABLED</span><span class="o">=</span><span class="n">ON</span> \
+    <span class="o">-</span><span class="n">DTESTS_ENABLED</span><span class="o">=</span><span class="n">ON</span> \
+    <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">RelWithDebInfo</span>
+</pre></div>
+</div>
+<p>Note that it is generally useful to combine ASan with debug symbols to get
+meaningful traces for reported issues.</p>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
+<p>You need Python and Sphinx to build the HTML documentation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">doc</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span>
+<span class="n">make</span> <span class="n">html</span>
+<span class="nb">open</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>Alternatively, you can build the documentation as PDF, EPUB, etc.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">latexpdf</span>
+<span class="nb">open</span> <span class="n">_build</span><span class="o">/</span><span class="n">pdf</span><span class="o">/</span><span class="n">COLMAP</span><span class="o">.</span><span class="n">pdf</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="COLMAP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Johannes L. Schoenberger.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

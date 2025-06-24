@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graphical User Interface &mdash; COLMAP 3.9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f9dd27f5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Command-line Interface" href="cli.html" />
+    <link rel="prev" title="Datasets" href="datasets.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            COLMAP
+          </a>
+              <div class="version">
+                3.9
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Graphical User Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#model-viewer-controls">Model Viewer Controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#render-options">Render Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-screenshots">Create Screenshots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-screencast">Create Screencast</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">COLMAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Graphical User Interface</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/gui.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="graphical-user-interface">
+<span id="gui"></span><h1>Graphical User Interface<a class="headerlink" href="#graphical-user-interface" title="Link to this heading"></a></h1>
+<p>The graphical user interface of COLMAP provides access to most of the available
+functionality and visualizes the reconstruction process in “real-time”. To start
+the GUI, you can run the pre-built packages (Windows: <cite>COLMAP.bat</cite>, Mac:
+<cite>COLMAP.app</cite>), execute <code class="docutils literal notranslate"><span class="pre">colmap</span> <span class="pre">gui</span></code> if you installed COLMAP or execute
+<code class="docutils literal notranslate"><span class="pre">./src/colmap/exe/colmap</span> <span class="pre">gui</span></code> from the CMake build folder. The GUI application
+requires an attached display with at least OpenGL 3.2 support. Registered images
+are visualized in red and reconstructed points in their average point color
+extracted from the images. The viewer can also visualize dense point clouds
+produced from Multi-View Stereo.</p>
+<section id="model-viewer-controls">
+<h2>Model Viewer Controls<a class="headerlink" href="#model-viewer-controls" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Rotate model</strong>: Left-click and drag.</p></li>
+<li><p><strong>Shift model</strong>: Right-click or &lt;CTRL&gt;-click (&lt;CMD&gt;-click) and drag.</p></li>
+<li><p><strong>Zoom model</strong>: Scroll.</p></li>
+<li><p><strong>Change point size</strong>: &lt;CTRL&gt;-scroll (&lt;CMD&gt;-scroll).</p></li>
+<li><p><strong>Change camera size</strong>: &lt;ALT&gt;-scroll.</p></li>
+<li><p><strong>Adjust clipping plane</strong>: &lt;SHIFT&gt;-scroll.</p></li>
+<li><p><strong>Select point</strong>: Double-left-click point (change point size if too small).
+The green lines visualize the projections into the images that see the point.
+The opening window shows the projected locations of the point in all images.</p></li>
+<li><p><strong>Select camera</strong>: Double-left-click camera (change camera size if too small).
+The purple lines visualize images that see at least one common point with the
+selected image. The opening window shows a few statistics of the image.</p></li>
+<li><p><strong>Reset view</strong>: To reset all viewing settings, choose <code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">&gt;</span> <span class="pre">Reset</span> <span class="pre">view</span></code>.</p></li>
+</ul>
+</section>
+<section id="render-options">
+<h2>Render Options<a class="headerlink" href="#render-options" title="Link to this heading"></a></h2>
+<p>The model viewer allows you to render the model with different settings,
+projections, colormaps, etc. Please, choose <code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">&gt;</span> <span class="pre">Render</span> <span class="pre">options</span></code>.</p>
+</section>
+<section id="create-screenshots">
+<h2>Create Screenshots<a class="headerlink" href="#create-screenshots" title="Link to this heading"></a></h2>
+<p>To create screenshots of the current viewpoint (without coordinate axes), choose
+<code class="docutils literal notranslate"><span class="pre">Extras</span> <span class="pre">&gt;</span> <span class="pre">Grab</span> <span class="pre">image</span></code> and save the image in the format of your choice.</p>
+</section>
+<section id="create-screencast">
+<h2>Create Screencast<a class="headerlink" href="#create-screencast" title="Link to this heading"></a></h2>
+<p>To create a video screen capture of the reconstructed model, choose <code class="docutils literal notranslate"><span class="pre">Extras</span> <span class="pre">&gt;</span>
+<span class="pre">Grab</span> <span class="pre">movie</span></code>. This dialog allows you to set individual control viewpoints by
+choosing <code class="docutils literal notranslate"><span class="pre">Add</span></code>. COLMAP generates a fixed number of frames per second between
+each control viewpoint by smoothly interpolating the linear trajectory, and to
+interpolate the configured point and the camera sizes at the time of clicking
+<code class="docutils literal notranslate"><span class="pre">Add</span></code>. To change the number of frames between two viewpoints or to reorder
+individual viewpoints, modify the time of the viewpoint by double-clicking the
+respective cell in the table. Note that the video capture requires to set the
+perspective projection model in the render options. You can review the
+trajectory in the viewer, which is rendered in light blue. Choose <code class="docutils literal notranslate"><span class="pre">Assemble</span>
+<span class="pre">movie</span></code>, if you are done creating the trajectory. The output directory then
+contains the individual frames of the video capture, which can be assembled to a
+movie using <a class="reference external" href="https://www.ffmpeg.org/">FFMPEG</a> with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ffmpeg</span> <span class="o">-</span><span class="n">i</span> <span class="n">frame</span><span class="o">%</span><span class="mi">06</span><span class="n">d</span><span class="o">.</span><span class="n">png</span> <span class="o">-</span><span class="n">r</span> <span class="mi">30</span> <span class="o">-</span><span class="n">vf</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1680</span><span class="p">:</span><span class="mi">1050</span> <span class="n">movie</span><span class="o">.</span><span class="n">mp4</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="datasets.html" class="btn btn-neutral float-left" title="Datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cli.html" class="btn btn-neutral float-right" title="Command-line Interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Johannes L. Schoenberger.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
