@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -8,15 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pycolmap &mdash; COLMAP 3.12.0.dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=4eec7147" />
 
   
-      <script src="../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=3a07dcc1"></script>
-      <script src="../_static/doctools.js?v=9a2dae69"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=3a07dcc1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -35,6 +37,9 @@
           <a href="../index.html" class="icon icon-home">
             COLMAP
           </a>
+              <div class="version">
+                3.12.0.dev0
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -178,6 +183,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.compute_squared_sampson_error"><code class="docutils literal notranslate"><span class="pre">compute_squared_sampson_error()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.squared_sampson_error"><code class="docutils literal notranslate"><span class="pre">squared_sampson_error()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.FeatureKeypoint"><code class="docutils literal notranslate"><span class="pre">FeatureKeypoint</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycolmap.FeatureKeypoints"><code class="docutils literal notranslate"><span class="pre">FeatureKeypoints</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycolmap.FeatureMatch"><code class="docutils literal notranslate"><span class="pre">FeatureMatch</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycolmap.FeatureMatches"><code class="docutils literal notranslate"><span class="pre">FeatureMatches</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.Normalization"><code class="docutils literal notranslate"><span class="pre">Normalization</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.SiftExtractionOptions"><code class="docutils literal notranslate"><span class="pre">SiftExtractionOptions</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycolmap.Sift"><code class="docutils literal notranslate"><span class="pre">Sift</span></code></a></li>
@@ -245,6 +253,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contribution.html">Contribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../legacy.html">Legacy Documentations</a></li>
 </ul>
 
         </div>
@@ -5036,7 +5045,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">BACovariance</span></span><a class="headerlink" href="#pycolmap.BACovariance" title="Link to this definition"></a></dt>
 <dd><dl class="py method">
 <dt class="sig sig-object py" id="pycolmap.BACovariance.get_point_cov">
-<span class="sig-name descname"><span class="pre">get_point_cov</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.BACovariance" title="pycolmap.BACovariance"><span class="pre">pycolmap.BACovariance</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">[</span></span><span class="pre">m</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">n</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.BACovariance.get_point_cov" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_point_cov</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.BACovariance" title="pycolmap.BACovariance"><span class="pre">pycolmap.BACovariance</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">point3D_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">[</span></span><span class="pre">m</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">n</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.BACovariance.get_point_cov" title="Link to this definition"></a></dt>
 <dd><p>Covariance for 3D points, conditioned on all other variables set constant. If some dimensions are kept constant, the respective rows/columns are omitted. Returns null if 3D point not a variable in the problem.</p>
 </dd></dl>
 
@@ -5685,6 +5694,165 @@ are part of a 3D point track. (int, default: 0)</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.FeatureKeypoints">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">FeatureKeypoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.FeatureKeypoints" title="Link to this definition"></a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.FeatureKeypoints)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.FeatureKeypoints,</span> <span class="pre">arg0:</span> <span class="pre">list[pycolmap.FeatureKeypoint])</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<p>Copy constructor</p>
+<ol class="arabic simple" start="3">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.FeatureKeypoints,</span> <span class="pre">arg0:</span> <span class="pre">Iterable)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.FeatureKeypoints.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycolmap.FeatureKeypoint" title="pycolmap.FeatureKeypoint"><span class="pre">pycolmap.FeatureKeypoint</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.FeatureKeypoint" title="pycolmap.FeatureKeypoint"><span class="pre">pycolmap.FeatureKeypoint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.FeatureKeypoints.append" title="Link to this definition"></a></dt>
+<dd><p>Add an item to the end of the list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.FeatureKeypoints.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycolmap.FeatureKeypoint" title="pycolmap.FeatureKeypoint"><span class="pre">pycolmap.FeatureKeypoint</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.FeatureKeypoints.clear" title="Link to this definition"></a></dt>
+<dd><p>Clear the contents</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.FeatureKeypoints.extend">
+<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.FeatureKeypoints.extend" title="Link to this definition"></a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">extend(self:</span> <span class="pre">list[pycolmap.FeatureKeypoint],</span> <span class="pre">L:</span> <span class="pre">list[pycolmap.FeatureKeypoint])</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<p>Extend the list by appending all the items in the given list</p>
+<ol class="arabic simple" start="2">
+<li><p><code class="docutils literal notranslate"><span class="pre">extend(self:</span> <span class="pre">list[pycolmap.FeatureKeypoint],</span> <span class="pre">L:</span> <span class="pre">Iterable)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<p>Extend the list by appending all the items in the given list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.FeatureKeypoints.insert">
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycolmap.FeatureKeypoint" title="pycolmap.FeatureKeypoint"><span class="pre">pycolmap.FeatureKeypoint</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.FeatureKeypoint" title="pycolmap.FeatureKeypoint"><span class="pre">pycolmap.FeatureKeypoint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.FeatureKeypoints.insert" title="Link to this definition"></a></dt>
+<dd><p>Insert an item at a given position.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.FeatureKeypoints.pop">
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.FeatureKeypoints.pop" title="Link to this definition"></a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pop(self:</span> <span class="pre">list[pycolmap.FeatureKeypoint])</span> <span class="pre">→</span> <span class="pre">pycolmap.FeatureKeypoint</span></code></p></li>
+</ol>
+<p>Remove and return the last item</p>
+<ol class="arabic simple" start="2">
+<li><p><code class="docutils literal notranslate"><span class="pre">pop(self:</span> <span class="pre">list[pycolmap.FeatureKeypoint],</span> <span class="pre">i:</span> <span class="pre">int)</span> <span class="pre">→</span> <span class="pre">pycolmap.FeatureKeypoint</span></code></p></li>
+</ol>
+<p>Remove and return the item at index <code class="docutils literal notranslate"><span class="pre">i</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatch">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">FeatureMatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.FeatureMatch" title="Link to this definition"></a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.FeatureMatch)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.FeatureMatch,</span> <span class="pre">arg0:</span> <span class="pre">int,</span> <span class="pre">arg1:</span> <span class="pre">int)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.FeatureMatch,</span> <span class="pre">arg0:</span> <span class="pre">dict)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.FeatureMatch,</span> <span class="pre">**kwargs)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatch.point2D_idx1">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">point2D_idx1</span></span><a class="headerlink" href="#pycolmap.FeatureMatch.point2D_idx1" title="Link to this definition"></a></dt>
+<dd><p>(int, default: 4294967295)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatch.point2D_idx2">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">point2D_idx2</span></span><a class="headerlink" href="#pycolmap.FeatureMatch.point2D_idx2" title="Link to this definition"></a></dt>
+<dd><p>(int, default: 4294967295)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatch.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.FeatureMatch" title="pycolmap.FeatureMatch"><span class="pre">pycolmap.FeatureMatch</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pycolmap.FeatureMatch.summary" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatch.mergedict">
+<span class="sig-name descname"><span class="pre">mergedict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.FeatureMatch.mergedict" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatch.todict">
+<span class="sig-name descname"><span class="pre">todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.FeatureMatch" title="pycolmap.FeatureMatch"><span class="pre">pycolmap.FeatureMatch</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pycolmap.FeatureMatch.todict" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatches">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">FeatureMatches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.FeatureMatches" title="Link to this definition"></a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.FeatureMatches)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.FeatureMatches,</span> <span class="pre">arg0:</span> <span class="pre">list[pycolmap.FeatureMatch])</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<p>Copy constructor</p>
+<ol class="arabic simple" start="3">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.FeatureMatches,</span> <span class="pre">arg0:</span> <span class="pre">Iterable)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatches.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycolmap.FeatureMatch" title="pycolmap.FeatureMatch"><span class="pre">pycolmap.FeatureMatch</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.FeatureMatch" title="pycolmap.FeatureMatch"><span class="pre">pycolmap.FeatureMatch</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.FeatureMatches.append" title="Link to this definition"></a></dt>
+<dd><p>Add an item to the end of the list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatches.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycolmap.FeatureMatch" title="pycolmap.FeatureMatch"><span class="pre">pycolmap.FeatureMatch</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.FeatureMatches.clear" title="Link to this definition"></a></dt>
+<dd><p>Clear the contents</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatches.extend">
+<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.FeatureMatches.extend" title="Link to this definition"></a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">extend(self:</span> <span class="pre">list[pycolmap.FeatureMatch],</span> <span class="pre">L:</span> <span class="pre">list[pycolmap.FeatureMatch])</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<p>Extend the list by appending all the items in the given list</p>
+<ol class="arabic simple" start="2">
+<li><p><code class="docutils literal notranslate"><span class="pre">extend(self:</span> <span class="pre">list[pycolmap.FeatureMatch],</span> <span class="pre">L:</span> <span class="pre">Iterable)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<p>Extend the list by appending all the items in the given list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatches.insert">
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycolmap.FeatureMatch" title="pycolmap.FeatureMatch"><span class="pre">pycolmap.FeatureMatch</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.FeatureMatch" title="pycolmap.FeatureMatch"><span class="pre">pycolmap.FeatureMatch</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.FeatureMatches.insert" title="Link to this definition"></a></dt>
+<dd><p>Insert an item at a given position.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatches.pop">
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.FeatureMatches.pop" title="Link to this definition"></a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pop(self:</span> <span class="pre">list[pycolmap.FeatureMatch])</span> <span class="pre">→</span> <span class="pre">pycolmap.FeatureMatch</span></code></p></li>
+</ol>
+<p>Remove and return the last item</p>
+<ol class="arabic simple" start="2">
+<li><p><code class="docutils literal notranslate"><span class="pre">pop(self:</span> <span class="pre">list[pycolmap.FeatureMatch],</span> <span class="pre">i:</span> <span class="pre">int)</span> <span class="pre">→</span> <span class="pre">pycolmap.FeatureMatch</span></code></p></li>
+</ol>
+<p>Remove and return the item at index <code class="docutils literal notranslate"><span class="pre">i</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="pycolmap.Normalization">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">Normalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.Normalization" title="Link to this definition"></a></dt>
 <dd><p>Members:</p>
@@ -5730,6 +5898,12 @@ are part of a 3D point track. (int, default: 0)</p>
 <dt class="sig sig-object py" id="pycolmap.SiftExtractionOptions.num_threads">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_threads</span></span><a class="headerlink" href="#pycolmap.SiftExtractionOptions.num_threads" title="Link to this definition"></a></dt>
 <dd><p>Number of threads for feature matching and geometric verification. (int, default: -1)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.SiftExtractionOptions.use_gpu">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">use_gpu</span></span><a class="headerlink" href="#pycolmap.SiftExtractionOptions.use_gpu" title="Link to this definition"></a></dt>
+<dd><p>(bool, default: True)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -5902,6 +6076,12 @@ are part of a 3D point track. (int, default: 0)</p>
 <dt class="sig sig-object py" id="pycolmap.SiftMatchingOptions.num_threads">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_threads</span></span><a class="headerlink" href="#pycolmap.SiftMatchingOptions.num_threads" title="Link to this definition"></a></dt>
 <dd><p>(int, default: -1)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.SiftMatchingOptions.use_gpu">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">use_gpu</span></span><a class="headerlink" href="#pycolmap.SiftMatchingOptions.use_gpu" title="Link to this definition"></a></dt>
+<dd><p>(bool, default: True)</p>
 </dd></dl>
 
 <dl class="py property">
