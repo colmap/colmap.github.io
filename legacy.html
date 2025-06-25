@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Camera Models &mdash; COLMAP 3.12.0.dev | 1571fe00 (2025-06-25) documentation</title>
+  <title>Legacy Documentations &mdash; COLMAP 3.12.0.dev | 1571fe00 (2025-06-25) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
@@ -22,8 +22,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Rig Support" href="rigs.html" />
-    <link rel="prev" title="Database Format" href="database.html" /> 
+    <link rel="prev" title="Bibliography" href="bibliography.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,7 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Camera Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rigs.html">Rig Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
@@ -65,7 +64,13 @@
 <li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
-<li class="toctree-l1"><a class="reference internal" href="legacy.html">Legacy Documentations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Legacy Documentations</a><ul>
+<li class="toctree-l2"><a class="reference external" href="https://colmap.github.io/legacy/3.11/index.html">v3.11 (2024-11-28)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://colmap.github.io/legacy/3.10/index.html">v3.10 (2024-07-23)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://colmap.github.io/legacy/3.9/index.html">v3.9 (2024-01-06)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://colmap.github.io/legacy/3.8/index.html">v3.8 (2023-01-31)</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -82,9 +87,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Camera Models</li>
+      <li class="breadcrumb-item active">Legacy Documentations</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/cameras.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/legacy.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -92,57 +97,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="camera-models">
-<h1>Camera Models<a class="headerlink" href="#camera-models" title="Link to this heading"></a></h1>
-<p>COLMAP implements different camera models of varying complexity. If no intrinsic
-parameters are known a priori, it is generally best to use the simplest camera
-model that is complex enough to model the distortion effects:</p>
-<ul class="simple">
-<li><p><cite>SIMPLE_PINHOLE</cite>, <cite>PINHOLE</cite>: Use these camera models, if your images are
-undistorted a priori. These use one and two focal length parameters,
-respectively. Note that even in the case of undistorted images, COLMAP could
-try to improve the intrinsics with a more complex camera model.</p></li>
-<li><p><cite>SIMPLE_RADIAL</cite>, <cite>RADIAL</cite>: This should be the camera model of choice, if the
-intrinsics are unknown and every image has a different camera calibration,
-e.g., in the case of Internet photos. Both models are simplified versions of
-the <cite>OPENCV</cite> model only modeling radial distortion effects with one and two
-parameters, respectively.</p></li>
-<li><p><cite>OPENCV</cite>, <cite>FULL_OPENCV</cite>: Use these camera models, if you know the calibration
-parameters a priori. You can also try to let COLMAP estimate the parameters,
-if you share the intrinsics for multiple images. Note that the automatic
-estimation of parameters will most likely fail, if every image has a separate
-set of intrinsic parameters.</p></li>
-<li><p><cite>SIMPLE_RADIAL_FISHEYE</cite>, <cite>RADIAL_FISHEYE</cite>, <cite>OPENCV_FISHEYE</cite>, <cite>FOV</cite>,
-<cite>THIN_PRISM_FISHEYE</cite>, <cite>RAD_TAN_THIN_PRISM_FISHEYE</cite>: Use these camera models
-for fisheye lenses and note that all other models are not really capable of
-modeling the distortion effects of fisheye lenses. The <cite>FOV</cite> model is used by
-Google Project Tango (make sure to not initialize <cite>omega</cite> to zero).</p></li>
+  <section id="legacy-documentations">
+<h1>Legacy Documentations<a class="headerlink" href="#legacy-documentations" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://colmap.github.io/legacy/3.11/index.html">v3.11 (2024-11-28)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colmap.github.io/legacy/3.10/index.html">v3.10 (2024-07-23)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colmap.github.io/legacy/3.9/index.html">v3.9 (2024-01-06)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colmap.github.io/legacy/3.8/index.html">v3.8 (2023-01-31)</a></li>
 </ul>
-<p>You can inspect the estimated intrinsic parameters by double-clicking specific
-images in the model viewer or by exporting the model and opening the
-<cite>cameras.txt</cite> file.</p>
-<p>To achieve optimal reconstruction results, you might have to try different
-camera models for your problem. Generally, when the reconstruction fails and the
-estimated focal length values / distortion coefficients are grossly wrong, it is
-a sign of using a too complex camera model. Contrary, if COLMAP uses many
-iterative local and global bundle adjustments, it is a sign of using a too
-simple camera model that is not able to fully model the distortion effects.</p>
-<p>You can also share intrinsics between multiple
-images to obtain more reliable results
-(see <a class="reference internal" href="faq.html#faq-share-intrinsics"><span class="std std-ref">Share intrinsic camera parameters</span></a>) or you can
-fix the intrinsic parameters during the reconstruction
-(see <a class="reference internal" href="faq.html#faq-fix-intrinsics"><span class="std std-ref">Fix intrinsic camera parameters</span></a>).</p>
-<p>Please, refer to the camera models header file for information on the parameters
-of the different camera models:
-<a class="reference external" href="https://github.com/colmap/colmap/blob/main/src/colmap/sensor/models.h">https://github.com/colmap/colmap/blob/main/src/colmap/sensor/models.h</a></p>
+</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="database.html" class="btn btn-neutral float-left" title="Database Format" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="rigs.html" class="btn btn-neutral float-right" title="Rig Support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="bibliography.html" class="btn btn-neutral float-left" title="Bibliography" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
