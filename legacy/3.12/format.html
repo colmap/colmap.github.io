@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Output Format &mdash; COLMAP 3.12 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=46cb764e"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Datasets" href="datasets.html" />
+    <link rel="prev" title="Rig Support" href="rigs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            COLMAP
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rigs.html">Rig Support</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Output Format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#binary-file-format">Binary File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#indices-and-identifiers">Indices and Identifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sparse-reconstruction">Sparse Reconstruction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#text-format">Text Format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rigs-txt">rigs.txt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cameras-txt">cameras.txt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#frames-txt">frames.txt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#images-txt">images.txt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#points3d-txt">points3D.txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dense-reconstruction">Dense Reconstruction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#depth-and-normal-maps">Depth and Normal Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#consistency-graphs">Consistency Graphs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pycolmap/index.html">PyCOLMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legacy.html">Legacy Documentations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">COLMAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Output Format</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/format.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="output-format">
+<span id="id1"></span><h1>Output Format<a class="headerlink" href="#output-format" title="Link to this heading"></a></h1>
+<section id="binary-file-format">
+<h2>Binary File Format<a class="headerlink" href="#binary-file-format" title="Link to this heading"></a></h2>
+<p>Note that all binary data is stored using little endian byte ordering. All x86
+processors are little endian and thus no special care has to be taken when
+reading COLMAP binary data on most platforms. The data can be most conveniently
+parsed using the C++ reconstruction API under <code class="docutils literal notranslate"><span class="pre">src/colmap/scene/reconstruction_io.h</span></code>
+or using the Python API provided by pycolmap.</p>
+</section>
+<section id="indices-and-identifiers">
+<h2>Indices and Identifiers<a class="headerlink" href="#indices-and-identifiers" title="Link to this heading"></a></h2>
+<p>Any variable name ending with <code class="docutils literal notranslate"><span class="pre">*_idx</span></code> should be considered as an ordered,
+contiguous zero-based index. In general, any variable name ending with <code class="docutils literal notranslate"><span class="pre">*_id</span></code>
+should be considered as an unordered, non-contiguous identifier.</p>
+<p>For example, the unique identifiers of cameras (<code class="docutils literal notranslate"><span class="pre">CAMERA_ID</span></code>), images
+(<code class="docutils literal notranslate"><span class="pre">IMAGE_ID</span></code>), and 3D points (<code class="docutils literal notranslate"><span class="pre">POINT3D_ID</span></code>) are unordered and are most likely not
+contiguous. This also means that the maximum <code class="docutils literal notranslate"><span class="pre">POINT3D_ID</span></code> does not necessarily
+correspond to the number 3D points, since some <code class="docutils literal notranslate"><span class="pre">POINT3D_ID</span></code>’s are missing due to
+filtering during the reconstruction, etc.</p>
+</section>
+<section id="sparse-reconstruction">
+<h2>Sparse Reconstruction<a class="headerlink" href="#sparse-reconstruction" title="Link to this heading"></a></h2>
+<p>By default, COLMAP uses a binary file format (machine-readable, fast) for
+storing sparse models. In addition, COLMAP provides the option to store the
+sparse models as text files (human-readable, slow). In both cases, the
+information is split into multiples files for the information about <code class="docutils literal notranslate"><span class="pre">rigs</span></code>,
+<code class="docutils literal notranslate"><span class="pre">cameras</span></code>, <code class="docutils literal notranslate"><span class="pre">frames</span></code>, <code class="docutils literal notranslate"><span class="pre">images</span></code>, and <code class="docutils literal notranslate"><span class="pre">points</span></code>. Any directory containing these
+files constitutes a sparse model. The binary files have the file extension
+<code class="docutils literal notranslate"><span class="pre">.bin</span></code> and the text files the file extension <code class="docutils literal notranslate"><span class="pre">.txt</span></code>. Note that when loading a
+model from a directory which contains both binary and text files, COLMAP prefers
+the binary format.</p>
+<p>Note that older versions of COLMAP had no rig support and thus the <code class="docutils literal notranslate"><span class="pre">rigs</span></code> and
+<code class="docutils literal notranslate"><span class="pre">frames</span></code> files may be missing. The reconstruction I/O routines in COLMAP are
+fully backwards compatible in that models without these files can be read and
+trivial rigs and frames will be automatically initialized. Furthermore, newer
+output reconstructions’ <code class="docutils literal notranslate"><span class="pre">cameras</span></code> and <code class="docutils literal notranslate"><span class="pre">images</span></code> files are fully compatible with
+old outputs.</p>
+<p>To export the currently selected model in the GUI, choose <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span>
+<span class="pre">model</span></code>. To export all reconstructed models in the current dataset, choose
+<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">all</span></code>. The selected folder then contains the three files, and
+for convenience, the current project configuration for importing the model to
+COLMAP. To import the exported models, e.g., for visualization or to resume the
+reconstruction, choose <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">model</span></code> and select the folder containing
+the <code class="docutils literal notranslate"><span class="pre">cameras</span></code>, <code class="docutils literal notranslate"><span class="pre">images</span></code>, and <code class="docutils literal notranslate"><span class="pre">points3D</span></code> files.</p>
+<p>To convert between the binary and text format in the GUI, you can load the model
+using <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">model</span></code> and then export the model in the desired output
+format using <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">model</span></code> (binary) or <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">model</span> <span class="pre">as</span> <span class="pre">text</span></code>
+(text). In addition, you can export sparse models to other formats, such as
+VisualSfM’s NVM, Bundler files, PLY, VRML, etc., using <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">as...</span></code>.
+To convert between various formats from the CLI, use the <code class="docutils literal notranslate"><span class="pre">model_converter</span></code>
+executable.</p>
+<p>There are two source files to conveniently read the sparse reconstructions using
+Python (<code class="docutils literal notranslate"><span class="pre">scripts/python/read_write_model.py</span></code> supporting binary and text) and Matlab
+(<code class="docutils literal notranslate"><span class="pre">scripts/matlab/read_model.m</span></code> supporting text).</p>
+<section id="text-format">
+<h3>Text Format<a class="headerlink" href="#text-format" title="Link to this heading"></a></h3>
+<p>COLMAP exports the following three text files for every reconstructed model:
+<code class="docutils literal notranslate"><span class="pre">rigs.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">frames.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">images.txt</span></code>, and <code class="docutils literal notranslate"><span class="pre">points3D.txt</span></code>.
+Comments start with a leading “#” character and are ignored. The first comment
+lines briefly describe the format of the text files, as described in more
+detailed on this page.</p>
+<section id="rigs-txt">
+<h4>rigs.txt<a class="headerlink" href="#rigs-txt" title="Link to this heading"></a></h4>
+<p>This file contains the configured rigs and sensors, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rig calib list with one line of data per calib:</span>
+<span class="c1">#   RIG_ID, NUM_SENSORS, REF_SENSOR_TYPE, REF_SENSOR_ID, SENSORS[] as (SENSOR_TYPE, SENSOR_ID, HAS_POSE, [QW, QX, QY, QZ, TX, TY, TZ])</span>
+<span class="c1"># Number of rigs: 1</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="n">CAMERA</span> <span class="mi">1</span> <span class="n">CAMERA</span> <span class="mi">2</span> <span class="mi">1</span> <span class="o">-</span><span class="mf">0.9999701516465348</span> <span class="o">-</span><span class="mf">0.0011120266840749639</span> <span class="o">-</span><span class="mf">0.0075347911527510894</span> <span class="mf">0.0012985125893421306</span> <span class="o">-</span><span class="mf">0.19316906391350164</span> <span class="mf">0.00085222218993398979</span> <span class="mf">0.0070758955539026785</span>
+<span class="mi">2</span> <span class="mi">1</span> <span class="n">CAMERA</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Here, the dataset contains two rigs: the first rig has two cameras and the second
+one has 1 camera.</p>
+</section>
+<section id="cameras-txt">
+<h4>cameras.txt<a class="headerlink" href="#cameras-txt" title="Link to this heading"></a></h4>
+<p>This file contains the intrinsic parameters of all reconstructed cameras in the
+dataset using one line per camera, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Camera list with one line of data per camera:</span>
+<span class="c1">#   CAMERA_ID, MODEL, WIDTH, HEIGHT, PARAMS[]</span>
+<span class="c1"># Number of cameras: 3</span>
+<span class="mi">1</span> <span class="n">SIMPLE_PINHOLE</span> <span class="mi">3072</span> <span class="mi">2304</span> <span class="mf">2559.81</span> <span class="mi">1536</span> <span class="mi">1152</span>
+<span class="mi">2</span> <span class="n">PINHOLE</span> <span class="mi">3072</span> <span class="mi">2304</span> <span class="mf">2560.56</span> <span class="mf">2560.56</span> <span class="mi">1536</span> <span class="mi">1152</span>
+<span class="mi">3</span> <span class="n">SIMPLE_RADIAL</span> <span class="mi">3072</span> <span class="mi">2304</span> <span class="mf">2559.69</span> <span class="mi">1536</span> <span class="mi">1152</span> <span class="o">-</span><span class="mf">0.0218531</span>
+</pre></div>
+</div>
+<p>Here, the dataset contains 3 cameras based using different distortion models
+with the same sensor dimensions (width: 3072, height: 2304). The length of
+parameters is variable and depends on the camera model. For the first camera,
+there are 3 parameters with a single focal length of 2559.81 pixels and a
+principal point at pixel location <code class="docutils literal notranslate"><span class="pre">(1536,</span> <span class="pre">1152)</span></code>. The intrinsic parameters of a
+camera can be shared by multiple images, which refer to cameras using the unique
+identifier <code class="docutils literal notranslate"><span class="pre">CAMERA_ID</span></code>.</p>
+</section>
+<section id="frames-txt">
+<h4>frames.txt<a class="headerlink" href="#frames-txt" title="Link to this heading"></a></h4>
+<p>This file contains the frames, where a frame defines a specific
+instance of a rig with all or a subset of sensors exposed at the same time, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Frame list with one line of data per frame:</span>
+<span class="c1">#   FRAME_ID, RIG_ID, RIG_FROM_WORLD[QW, QX, QY, QZ, TX, TY, TZ], NUM_DATA_IDS, DATA_IDS[] as (SENSOR_TYPE, SENSOR_ID, DATA_ID)</span>
+<span class="c1"># Number of frames: 151</span>
+<span class="mi">1</span> <span class="mi">1</span> <span class="mf">0.99801363919752195</span> <span class="mf">0.040985139360073107</span> <span class="mf">0.041890917712361225</span> <span class="o">-</span><span class="mf">0.023111584553400576</span> <span class="o">-</span><span class="mf">5.2666546897987896</span> <span class="o">-</span><span class="mf">0.17120007823690631</span> <span class="mf">0.12300519697527648</span> <span class="mi">2</span> <span class="n">CAMERA</span> <span class="mi">1</span> <span class="mi">1</span> <span class="n">CAMERA</span> <span class="mi">2</span> <span class="mi">2</span>
+<span class="mi">2</span> <span class="mi">2</span> <span class="mf">0.99816472047267968</span> <span class="mf">0.037605501383281774</span> <span class="mf">0.043101511724657163</span> <span class="o">-</span><span class="mf">0.019881568259519072</span> <span class="o">-</span><span class="mf">5.1956060695789192</span> <span class="o">-</span><span class="mf">0.20794508616745555</span> <span class="mf">0.14967533910764824</span> <span class="mi">1</span> <span class="n">CAMERA</span> <span class="mi">3</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Here, the dataset contains two frames, where frame 1 is an instance of rig 1 and
+frame 2 an instance of rig 2.</p>
+</section>
+<section id="images-txt">
+<h4>images.txt<a class="headerlink" href="#images-txt" title="Link to this heading"></a></h4>
+<p>This file contains the pose and keypoints of all reconstructed images in the
+dataset using two lines per image, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Image list with two lines of data per image:</span>
+<span class="c1">#   IMAGE_ID, QW, QX, QY, QZ, TX, TY, TZ, CAMERA_ID, NAME</span>
+<span class="c1">#   POINTS2D[] as (X, Y, POINT3D_ID)</span>
+<span class="c1"># Number of images: 2, mean observations per image: 2</span>
+<span class="mi">1</span> <span class="mf">0.851773</span> <span class="mf">0.0165051</span> <span class="mf">0.503764</span> <span class="o">-</span><span class="mf">0.142941</span> <span class="o">-</span><span class="mf">0.737434</span> <span class="mf">1.02973</span> <span class="mf">3.74354</span> <span class="mi">1</span> <span class="n">P1180141</span><span class="o">.</span><span class="n">JPG</span>
+<span class="mf">2362.39</span> <span class="mf">248.498</span> <span class="mi">58396</span> <span class="mf">1784.7</span> <span class="mf">268.254</span> <span class="mi">59027</span> <span class="mf">1784.7</span> <span class="mf">268.254</span> <span class="o">-</span><span class="mi">1</span>
+<span class="mi">2</span> <span class="mf">0.851773</span> <span class="mf">0.0165051</span> <span class="mf">0.503764</span> <span class="o">-</span><span class="mf">0.142941</span> <span class="o">-</span><span class="mf">0.737434</span> <span class="mf">1.02973</span> <span class="mf">3.74354</span> <span class="mi">1</span> <span class="n">P1180142</span><span class="o">.</span><span class="n">JPG</span>
+<span class="mf">1190.83</span> <span class="mf">663.957</span> <span class="mi">23056</span> <span class="mf">1258.77</span> <span class="mf">640.354</span> <span class="mi">59070</span>
+</pre></div>
+</div>
+<p>Here, the first two lines define the information of the first image, and so on.
+The reconstructed pose of an image is specified as the projection from world to
+the camera coordinate system of an image using a quaternion <code class="docutils literal notranslate"><span class="pre">(QW,</span> <span class="pre">QX,</span> <span class="pre">QY,</span> <span class="pre">QZ)</span></code>
+and a translation vector <code class="docutils literal notranslate"><span class="pre">(TX,</span> <span class="pre">TY,</span> <span class="pre">TZ)</span></code>. The quaternion is defined using the
+Hamilton convention, which is, for example, also used by the Eigen library. The
+coordinates of the projection/camera center are given by <code class="docutils literal notranslate"><span class="pre">-R^t</span> <span class="pre">*</span> <span class="pre">T</span></code>, where
+<code class="docutils literal notranslate"><span class="pre">R^t</span></code> is the inverse/transpose of the 3x3 rotation matrix composed from the
+quaternion and <code class="docutils literal notranslate"><span class="pre">T</span></code> is the translation vector. The local camera coordinate
+system of an image is defined in a way that the X axis points to the right, the
+Y axis to the bottom, and the Z axis to the front as seen from the image.</p>
+<p>Both images in the example above use the same camera model and share intrinsics
+(<code class="docutils literal notranslate"><span class="pre">CAMERA_ID</span> <span class="pre">=</span> <span class="pre">1</span></code>). The image name is relative to the selected base image folder
+of the project. The first image has 3 keypoints and the second image has 2
+keypoints, while the location of the keypoints is specified in pixel
+coordinates. Both images observe 2 3D points and note that the last keypoint of
+the first image does not observe a 3D point in the reconstruction as the 3D
+point identifier is -1.</p>
+</section>
+<section id="points3d-txt">
+<h4>points3D.txt<a class="headerlink" href="#points3d-txt" title="Link to this heading"></a></h4>
+<p>This file contains the information of all reconstructed 3D points in the
+dataset using one line per point, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3D point list with one line of data per point:</span>
+<span class="c1">#   POINT3D_ID, X, Y, Z, R, G, B, ERROR, TRACK[] as (IMAGE_ID, POINT2D_IDX)</span>
+<span class="c1"># Number of points: 3, mean track length: 3.3334</span>
+<span class="mi">63390</span> <span class="mf">1.67241</span> <span class="mf">0.292931</span> <span class="mf">0.609726</span> <span class="mi">115</span> <span class="mi">121</span> <span class="mi">122</span> <span class="mf">1.33927</span> <span class="mi">16</span> <span class="mi">6542</span> <span class="mi">15</span> <span class="mi">7345</span> <span class="mi">6</span> <span class="mi">6714</span> <span class="mi">14</span> <span class="mi">7227</span>
+<span class="mi">63376</span> <span class="mf">2.01848</span> <span class="mf">0.108877</span> <span class="o">-</span><span class="mf">0.0260841</span> <span class="mi">102</span> <span class="mi">209</span> <span class="mi">250</span> <span class="mf">1.73449</span> <span class="mi">16</span> <span class="mi">6519</span> <span class="mi">15</span> <span class="mi">7322</span> <span class="mi">14</span> <span class="mi">7212</span> <span class="mi">8</span> <span class="mi">3991</span>
+<span class="mi">63371</span> <span class="mf">1.71102</span> <span class="mf">0.28566</span> <span class="mf">0.53475</span> <span class="mi">245</span> <span class="mi">251</span> <span class="mi">249</span> <span class="mf">0.612829</span> <span class="mi">118</span> <span class="mi">4140</span> <span class="mi">117</span> <span class="mi">4473</span>
+</pre></div>
+</div>
+<p>Here, there are three reconstructed 3D points, where <code class="docutils literal notranslate"><span class="pre">POINT2D_IDX</span></code> defines the
+zero-based index of the keypoint in the <code class="docutils literal notranslate"><span class="pre">images.txt</span></code> file. The error is given in
+pixels of reprojection error and is only updated after global bundle adjustment.</p>
+</section>
+</section>
+</section>
+<section id="dense-reconstruction">
+<h2>Dense Reconstruction<a class="headerlink" href="#dense-reconstruction" title="Link to this heading"></a></h2>
+<p>COLMAP uses the following workspace folder structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+── images
+│   +── image1.jpg
+│   +── image2.jpg
+│   +── ...
++── sparse
+│   +── cameras.txt
+│   +── images.txt
+│   +── points3D.txt
++── stereo
+│   +── consistency_graphs
+│   │   +── image1.jpg.photometric.bin
+│   │   +── image2.jpg.photometric.bin
+│   │   +── ...
+│   +── depth_maps
+│   │   +── image1.jpg.photometric.bin
+│   │   +── image2.jpg.photometric.bin
+│   │   +── ...
+│   +── normal_maps
+│   │   +── image1.jpg.photometric.bin
+│   │   +── image2.jpg.photometric.bin
+│   │   +── ...
+│   +── patch-match.cfg
+│   +── fusion.cfg
++── fused.ply
++── meshed-poisson.ply
++── meshed-delaunay.ply
++── run-colmap-geometric.sh
++── run-colmap-photometric.sh
+</pre></div>
+</div>
+<p>Here, the <code class="docutils literal notranslate"><span class="pre">images</span></code> folder contains the undistorted images, the <code class="docutils literal notranslate"><span class="pre">sparse</span></code> folder
+contains the sparse reconstruction with undistorted cameras, the <code class="docutils literal notranslate"><span class="pre">stereo</span></code> folder
+contains the stereo reconstruction results, <code class="docutils literal notranslate"><span class="pre">point-cloud.ply</span></code> and <code class="docutils literal notranslate"><span class="pre">mesh.ply</span></code> are
+the results of the fusion and meshing procedure, and <code class="docutils literal notranslate"><span class="pre">run-colmap-geometric.sh</span></code>
+and <code class="docutils literal notranslate"><span class="pre">run-colmap-photometric.sh</span></code> contain example command-line usage to perform
+the dense reconstruction.</p>
+<section id="depth-and-normal-maps">
+<h3>Depth and Normal Maps<a class="headerlink" href="#depth-and-normal-maps" title="Link to this heading"></a></h3>
+<p>The depth maps are stored as mixed text and binary files. The text header
+defines the dimensions of the image in the format <code class="docutils literal notranslate"><span class="pre">with&amp;height&amp;channels&amp;</span></code>
+followed by row-major <code class="docutils literal notranslate"><span class="pre">float32</span></code> binary data. For depth maps <code class="docutils literal notranslate"><span class="pre">channels=1</span></code> and
+for normal maps <code class="docutils literal notranslate"><span class="pre">channels=3</span></code>. The depth and normal maps can be conveniently
+read with Python using the functions in <code class="docutils literal notranslate"><span class="pre">scripts/python/read_dense.py</span></code> and
+with Matlab using the functions in <code class="docutils literal notranslate"><span class="pre">scripts/matlab/read_depth_map.m</span></code> and
+<code class="docutils literal notranslate"><span class="pre">scripts/matlab/read_normal_map.m</span></code>.</p>
+</section>
+<section id="consistency-graphs">
+<h3>Consistency Graphs<a class="headerlink" href="#consistency-graphs" title="Link to this heading"></a></h3>
+<p>The consistency graph defines, for all pixels in an image, the source images a
+pixel is consistent with. The graph is stored as a mixed text and binary file,
+while the text part is equivalent to the depth and normal maps and the binary
+part is a continuous list of <code class="docutils literal notranslate"><span class="pre">int32</span></code> values in the format
+<code class="docutils literal notranslate"><span class="pre">&lt;row&gt;&lt;col&gt;&lt;N&gt;&lt;image_idx1&gt;...&lt;image_idxN&gt;</span></code>. Here, <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>  defines the
+location of the pixel in the image followed by a list of <code class="docutils literal notranslate"><span class="pre">N</span></code> image indices.
+The indices are specified w.r.t. the ordering in the <code class="docutils literal notranslate"><span class="pre">images.txt</span></code> file.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rigs.html" class="btn btn-neutral float-left" title="Rig Support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="datasets.html" class="btn btn-neutral float-right" title="Datasets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Johannes L. Schoenberger.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
