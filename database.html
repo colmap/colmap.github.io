@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Database Format &mdash; COLMAP 3.12.0.dev | 1571fe00 (2025-06-25) documentation</title>
+  <title>Database Format &mdash; COLMAP 3.13.0.dev0 | a5332f46 (2025-07-05) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=5c1fd480"></script>
+        <script src="_static/documentation_options.js?v=253baf99"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -38,7 +38,7 @@
             COLMAP
           </a>
               <div class="version">
-                3.12.0.dev | 1571fe00 (2025-06-25)
+                3.13.0.dev0 | a5332f46 (2025-07-05)
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -117,7 +117,7 @@ Python with pycolmap.</p>
 <li><p>two_view_geometries</p></li>
 </ul>
 <p>To initialize an empty SQLite database file with the required schema, you can
-either create a new project in the GUI or execute <cite>src/colmap/exe/database_create.cc</cite>.</p>
+either create a new project in the GUI or execute <code class="docutils literal notranslate"><span class="pre">src/colmap/exe/database_create.cc</span></code>.</p>
 <section id="rigs-and-sensors">
 <h2>Rigs and Sensors<a class="headerlink" href="#rigs-and-sensors" title="Link to this heading"></a></h2>
 <p>The relation between rigs and sensors (cameras, etc.) is 1-to-N with one sensor
@@ -136,7 +136,7 @@ implications for Structure-from-Motion, since one camera shares the same
 intrinsic parameters (focal length, principal point, distortion, etc.), while
 every image has separate extrinsic parameters (orientation and location).</p>
 <p>The intrinsic parameters of cameras are stored as contiguous binary blobs in
-<cite>float64</cite>, ordered as specified in <code class="docutils literal notranslate"><span class="pre">src/colmap/sensor/models.h</span></code>. COLMAP only
+<code class="docutils literal notranslate"><span class="pre">float64</span></code>, ordered as specified in <code class="docutils literal notranslate"><span class="pre">src/colmap/sensor/models.h</span></code>. COLMAP only
 uses cameras that are referenced by images, all other cameras are ignored.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> column in the images table is the unique relative path in the image
 folder. As such, the database file and image folder can be moved to different
@@ -147,21 +147,21 @@ and <code class="docutils literal notranslate"><span class="pre">camera_id</span
 </section>
 <section id="keypoints-and-descriptors">
 <h2>Keypoints and Descriptors<a class="headerlink" href="#keypoints-and-descriptors" title="Link to this heading"></a></h2>
-<p>The detected keypoints are stored as row-major <cite>float32</cite> binary blobs, where the
+<p>The detected keypoints are stored as row-major <code class="docutils literal notranslate"><span class="pre">float32</span></code> binary blobs, where the
 first two columns are the X and Y locations in the image, respectively. COLMAP
-uses the convention that the upper left image corner has coordinate <cite>(0, 0)</cite> and
-the center of the upper left most pixel has coordinate <cite>(0.5, 0.5)</cite>. If the
+uses the convention that the upper left image corner has coordinate <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code> and
+the center of the upper left most pixel has coordinate <code class="docutils literal notranslate"><span class="pre">(0.5,</span> <span class="pre">0.5)</span></code>. If the
 keypoints have 4 columns, then the feature geometry is a similarity and the
 third column is the scale and the fourth column the orientation of the feature
 (according to SIFT conventions). If the keypoints have 6 columns, then the
 feature geometry is an affinity and the last 4 columns encode its affine shape
 (see <code class="docutils literal notranslate"><span class="pre">src/feature/types.h</span></code> for details).</p>
-<p>The extracted descriptors are stored as row-major <cite>uint8</cite> binary blobs, where
+<p>The extracted descriptors are stored as row-major <code class="docutils literal notranslate"><span class="pre">uint8</span></code> binary blobs, where
 each row describes the feature appearance of the corresponding entry in the
 keypoints table. Note that COLMAP only supports 128-D descriptors for now, i.e.
-the <cite>cols</cite> column must be 128.</p>
-<p>In both tables, the <cite>rows</cite> table specifies the number of detected features per
-image, while <cite>rows=0</cite> means that an image has no features. For feature matching
+the <code class="docutils literal notranslate"><span class="pre">cols</span></code> column must be 128.</p>
+<p>In both tables, the <code class="docutils literal notranslate"><span class="pre">rows</span></code> table specifies the number of detected features per
+image, while <code class="docutils literal notranslate"><span class="pre">rows=0</span></code> means that an image has no features. For feature matching
 and geometric verification, every image must have a corresponding keypoints and
 descriptors entry. Note that only vocabulary tree matching with fast spatial
 verification requires meaningful values for the local feature geometry, i.e.,
@@ -170,10 +170,10 @@ The rest of the reconstruction pipeline only uses the keypoint locations.</p>
 </section>
 <section id="matches-and-two-view-geometries">
 <h2>Matches and two-view geometries<a class="headerlink" href="#matches-and-two-view-geometries" title="Link to this heading"></a></h2>
-<p>Feature matching stores its output in the <cite>matches</cite> table and geometric
-verification in the <cite>two_view_geometries</cite> table. COLMAP only uses the data in
-<cite>two_view_geometries</cite> for reconstruction. Every entry in the two tables stores
-the feature matches between two unique images, where the <cite>pair_id</cite> is the
+<p>Feature matching stores its output in the <code class="docutils literal notranslate"><span class="pre">matches</span></code> table and geometric
+verification in the <code class="docutils literal notranslate"><span class="pre">two_view_geometries</span></code> table. COLMAP only uses the data in
+<code class="docutils literal notranslate"><span class="pre">two_view_geometries</span></code> for reconstruction. Every entry in the two tables stores
+the feature matches between two unique images, where the <code class="docutils literal notranslate"><span class="pre">pair_id</span></code> is the
 row-major, linear index in the upper-triangular match matrix, generated as
 follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">image_ids_to_pair_id</span><span class="p">(</span><span class="n">image_id1</span><span class="p">,</span> <span class="n">image_id2</span><span class="p">):</span>
@@ -183,24 +183,24 @@ follows:</p>
         <span class="k">return</span> <span class="mi">2147483647</span> <span class="o">*</span> <span class="n">image_id1</span> <span class="o">+</span> <span class="n">image_id2</span>
 </pre></div>
 </div>
-<p>and image identifiers can be uniquely determined from the <cite>pair_id</cite> as:</p>
+<p>and image identifiers can be uniquely determined from the <code class="docutils literal notranslate"><span class="pre">pair_id</span></code> as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pair_id_to_image_ids</span><span class="p">(</span><span class="n">pair_id</span><span class="p">):</span>
     <span class="n">image_id2</span> <span class="o">=</span> <span class="n">pair_id</span> <span class="o">%</span> <span class="mi">2147483647</span>
     <span class="n">image_id1</span> <span class="o">=</span> <span class="p">(</span><span class="n">pair_id</span> <span class="o">-</span> <span class="n">image_id2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2147483647</span>
     <span class="k">return</span> <span class="n">image_id1</span><span class="p">,</span> <span class="n">image_id2</span>
 </pre></div>
 </div>
-<p>The <cite>pair_id</cite> enables efficient database queries, as the matches tables may
+<p>The <code class="docutils literal notranslate"><span class="pre">pair_id</span></code> enables efficient database queries, as the matches tables may
 contain several hundred millions of entries. This scheme limits the maximum
 number of images in a database to 2147483647 (maximum value of signed 32-bit
-integers), i.e. <cite>image_id</cite> must be smaller than 2147483647.</p>
-<p>The binary blobs in the matches tables are row-major <cite>uint32</cite> matrices, where
-the left column are zero-based indices into the features of <cite>image_id1</cite> and the
-second column into the features of <cite>image_id2</cite>. The column <cite>cols</cite> must be 2 and
-the <cite>rows</cite> column specifies the number of feature matches.</p>
-<p>The F, E, H blobs in the <cite>two_view_geometries</cite> table are stored as 3x3 matrices
-in row-major <cite>float64</cite> format. The meaning of the <cite>config</cite> values are documented
-in the <cite>src/estimators/two_view_geometry.h</cite> source file.</p>
+integers), i.e. <code class="docutils literal notranslate"><span class="pre">image_id</span></code> must be smaller than 2147483647.</p>
+<p>The binary blobs in the matches tables are row-major <code class="docutils literal notranslate"><span class="pre">uint32</span></code> matrices, where
+the left column are zero-based indices into the features of <code class="docutils literal notranslate"><span class="pre">image_id1</span></code> and the
+second column into the features of <code class="docutils literal notranslate"><span class="pre">image_id2</span></code>. The column <code class="docutils literal notranslate"><span class="pre">cols</span></code> must be 2 and
+the <code class="docutils literal notranslate"><span class="pre">rows</span></code> column specifies the number of feature matches.</p>
+<p>The F, E, H blobs in the <code class="docutils literal notranslate"><span class="pre">two_view_geometries</span></code> table are stored as 3x3 matrices
+in row-major <code class="docutils literal notranslate"><span class="pre">float64</span></code> format. The meaning of the <code class="docutils literal notranslate"><span class="pre">config</span></code> values are documented
+in the <code class="docutils literal notranslate"><span class="pre">src/estimators/two_view_geometry.h</span></code> source file.</p>
 </section>
 </section>
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rig Support &mdash; COLMAP 3.12.0.dev | 1571fe00 (2025-06-25) documentation</title>
+  <title>Rig Support &mdash; COLMAP 3.13.0.dev0 | a5332f46 (2025-07-05) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=5c1fd480"></script>
+        <script src="_static/documentation_options.js?v=253baf99"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -38,7 +38,7 @@
             COLMAP
           </a>
               <div class="version">
-                3.12.0.dev | 1571fe00 (2025-06-25)
+                3.13.0.dev0 | a5332f46 (2025-07-05)
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -105,7 +105,7 @@ process. The sensors in a rig are assumed to have fixed relative poses between
 each other with one reference sensor defining the origin of the rig. A frame
 defines a specific instance of the rig with all or a subset of sensors exposed
 at the same time. For example, in a stereo camera rig, one camera would be
-defined as the reference sensor and have an identity <cite>sensor_from_rig</cite> pose,
+defined as the reference sensor and have an identity <code class="docutils literal notranslate"><span class="pre">sensor_from_rig</span></code> pose,
 whereas the second camera would be posed relative to the reference camera. Each
 frame would then usually be composed of two images as the measurements of both
 of the cameras at the same time.</p>
@@ -148,7 +148,7 @@ in the database with the desired rig configuration. This is done using:</p>
     --rig_config_path $DATASET_PATH/rig_config.json
 </pre></div>
 </div>
-<p>where the <cite>rig_config.json</cite> could look as follows, if the relative sensor poses
+<p>where the <code class="docutils literal notranslate"><span class="pre">rig_config.json</span></code> could look as follows, if the relative sensor poses
 in the rig are known a priori:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
   <span class="p">{</span>
@@ -190,17 +190,17 @@ in the rig are known a priori:</p>
 contains the full specification of rigs that we later feed as an input to
 downstream processing steps.</p>
 <p>With known calibrated camera parameters, each camera can optionally also have
-specified <cite>camera_model_name</cite> and <cite>camera_params</cite> fields.</p>
+specified <code class="docutils literal notranslate"><span class="pre">camera_model_name</span></code> and <code class="docutils literal notranslate"><span class="pre">camera_params</span></code> fields.</p>
 <p>For more fine-grain configuration of rigs and frames, the most convenient option
 is to manually configure the database using pycolmap by either using the
-<cite>apply_rig_config</cite> function or by individually adding the desired rig and frame
+<code class="docutils literal notranslate"><span class="pre">apply_rig_config</span></code> function or by individually adding the desired rig and frame
 objects to the reconstruction for the most flexibility.</p>
 <p>Next, we run standard feature matching. Note that it is important to configure
 the rigs before sequential feature matching, as images in consecutive frames will
 be automatically matched against each other.</p>
-<p>Finally, we can reconstruct the scene using the standard <cite>mapper</cite> command with
+<p>Finally, we can reconstruct the scene using the standard <code class="docutils literal notranslate"><span class="pre">mapper</span></code> command with
 the option of keeping the relative poses in the rig fixed using
-<cite>–Mapper.ba_refine_sensor_from_rig 0</cite>.</p>
+<code class="docutils literal notranslate"><span class="pre">--Mapper.ba_refine_sensor_from_rig</span> <span class="pre">0</span></code>.</p>
 </section>
 <section id="unknown-rig-sensor-poses">
 <h2>Unknown rig sensor poses<a class="headerlink" href="#unknown-rig-sensor-poses" title="Link to this heading"></a></h2>
@@ -208,7 +208,7 @@ the option of keeping the relative poses in the rig fixed using
 know that a specific set of sensors are rigidly mounted and exposed at the same
 time, one can attempt the following two-step reconstruction approach. Before
 starting, ensure to organize your images as detailed above and perform feature
-extraction with the <cite>–ImageReader.single_camera_per_folder 1</cite> option.</p>
+extraction with the <code class="docutils literal notranslate"><span class="pre">--ImageReader.single_camera_per_folder</span> <span class="pre">1</span></code> option.</p>
 <p>Next, reconstruct the scene without rig constraints by modeling each camera as
 its own rig (the default behavior of COLMAP without further configuration). Note
 that this can be a partial reconstruction from a subset of the full set of input
@@ -216,7 +216,7 @@ images. The only requirement is that each camera must have at least one
 registered image in the same frame with a registered image of the reference
 camera. If the reconstruction was successful and the relative poses between
 registered images look roughly correct, we can proceed with the next step.</p>
-<p>The <cite>rig_configurator</cite> can also work without <cite>cam_from_rig_*</cite> transformations.
+<p>The <code class="docutils literal notranslate"><span class="pre">rig_configurator</span></code> can also work without <code class="docutils literal notranslate"><span class="pre">cam_from_rig_*</span></code> transformations.
 By providing an existing (partial) reconstruction of the scene, it can compute
 the average relative rig sensor poses from all registered images:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap rig_configurator \
@@ -226,8 +226,8 @@ the average relative rig sensor poses from all registered images:</p>
     [ --output_path $DATASET_PATH/sparse-model-with-rigs-and-frames ]
 </pre></div>
 </div>
-<p>The provided <cite>rig_config.json</cite> must simply omit the respective
-<cite>cam_from_rig_rotation</cite> and <cite>cam_from_rig_translation</cite> fields.</p>
+<p>The provided <code class="docutils literal notranslate"><span class="pre">rig_config.json</span></code> must simply omit the respective
+<code class="docutils literal notranslate"><span class="pre">cam_from_rig_rotation</span></code> and <code class="docutils literal notranslate"><span class="pre">cam_from_rig_translation</span></code> fields.</p>
 <p>Now, we can either run rig bundle adjustment on the (optional) output
 reconstruction with configured rigs and frames:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap bundle_adjuster \
@@ -265,7 +265,7 @@ that we use to configure the sensor rig poses as well as camera models using:</p
     <span class="o">--</span><span class="n">input_path</span> <span class="n">terrains</span><span class="o">/</span><span class="n">rig_calibration_undistorted</span>
 </pre></div>
 </div>
-<p>with the <cite>rig_config.json</cite>:</p>
+<p>with the <code class="docutils literal notranslate"><span class="pre">rig_config.json</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
         <span class="s2">&quot;cameras&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -303,6 +303,7 @@ sensor rig poses and camera parameters fixed:</p>
     <span class="o">--</span><span class="n">Mapper</span><span class="o">.</span><span class="n">ba_refine_sensor_from_rig</span> <span class="mi">0</span> \
     <span class="o">--</span><span class="n">Mapper</span><span class="o">.</span><span class="n">ba_refine_focal_length</span> <span class="mi">0</span> \
     <span class="o">--</span><span class="n">Mapper</span><span class="o">.</span><span class="n">ba_refine_extra_params</span> <span class="mi">0</span> \
+    <span class="o">--</span><span class="n">image_path</span> <span class="n">terrains</span><span class="o">/</span><span class="n">images</span> \
     <span class="o">--</span><span class="n">output_path</span> <span class="n">terrains</span><span class="o">/</span><span class="n">sparse</span>
 </pre></div>
 </div>

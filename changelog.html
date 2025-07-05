@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; COLMAP 3.12.0.dev | 1571fe00 (2025-06-25) documentation</title>
+  <title>Changelog &mdash; COLMAP 3.13.0.dev0 | a5332f46 (2025-07-05) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=5c1fd480"></script>
+        <script src="_static/documentation_options.js?v=253baf99"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -38,7 +38,7 @@
             COLMAP
           </a>
               <div class="version">
-                3.12.0.dev | 1571fe00 (2025-06-25)
+                3.13.0.dev0 | a5332f46 (2025-07-05)
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -62,15 +62,22 @@
 <li class="toctree-l1"><a class="reference internal" href="pycolmap/index.html">PyCOLMAP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#colmap-3-11-1-12-06-2024">COLMAP 3.11.1 (12/06/2024)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#bug-fixes">Bug Fixes</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#colmap-3-11-11-28-2024">COLMAP 3.11 (11/28/2024)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#colmap-3-12-0-06-30-2025">COLMAP 3.12.0 (06/30/2025)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#new-features">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bug-fixes">Bug Fixes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#breaking-changes">Breaking Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#full-change-list-sorted-temporally">Full Change List (sorted temporally)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#colmap-3-11-1-12-06-2024">COLMAP 3.11.1 (12/06/2024)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Bug Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#colmap-3-11-0-11-28-2024">COLMAP 3.11.0 (11/28/2024)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Breaking Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Full Change List (sorted temporally)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#colmap-3-10-07-23-2024">COLMAP 3.10 (07/23/2024)</a></li>
@@ -123,10 +130,276 @@
              
   <section id="changelog">
 <span id="id1"></span><h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading"></a></h1>
-<section id="colmap-3-11-1-12-06-2024">
-<h2>COLMAP 3.11.1 (12/06/2024)<a class="headerlink" href="#colmap-3-11-1-12-06-2024" title="Link to this heading"></a></h2>
+<section id="colmap-3-12-0-06-30-2025">
+<h2>COLMAP 3.12.0 (06/30/2025)<a class="headerlink" href="#colmap-3-12-0-06-30-2025" title="Link to this heading"></a></h2>
+<section id="new-features">
+<h3>New Features<a class="headerlink" href="#new-features" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Support for modeling sensor rigs (and thus multi-camera rigs and panoramas).
+For more details and usage examples, see: <a class="reference external" href="https://colmap.github.io/rigs.html">https://colmap.github.io/rigs.html</a>.</p></li>
+<li><p>Automatic download and caching of vocabulary trees and other resources.</p></li>
+<li><p>Support for converting between LLA and UTM coordinates.</p></li>
+<li><p>Improved minimal solvers for affine transform and generalized absolute/relative pose.</p></li>
+<li><p>Improved absolute pose estimation by minimizing pixel error in image space.</p></li>
+<li><p>Replaced FLANN with faiss for fast approximate nearest neighbor search
+for improved speed in CPU-based feature matching and vocabulary tree-based image retrieval.</p></li>
+<li><p>Support for propagating relative pose covariance.</p></li>
+<li><p>Support visualization of models with arbitrary origin and scale (e.g., in GPS space).</p></li>
+<li><p>Reconstruction benchmark for ETH3D, IMC, BlendedMVS datasets.</p></li>
+<li><p>Measure and report code test coverage in CI.</p></li>
+</ul>
+</section>
 <section id="bug-fixes">
 <h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Fixed RANSAC stopping criterion, see <a class="reference external" href="https://arxiv.org/pdf/2503.07829">https://arxiv.org/pdf/2503.07829</a>.</p></li>
+<li><p>Fixed and improved two-view pose and triangulation angle estimation.</p></li>
+<li><p>Fix rare deadlock during vocab tree feature matching.</p></li>
+<li><p>For other bug fixes, see full list of changes below.</p></li>
+</ul>
+</section>
+<section id="breaking-changes">
+<h3>Breaking Changes<a class="headerlink" href="#breaking-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Serialization of reconstruction and database contains a new abstraction: rigs and frames.
+The reconstruction output contains two new files <cite>rigs.{bin,txt}</cite> and <cite>frames.{bin,txt}</cite>.
+The database contains new tables: <cite>rigs</cite>, <cite>rig_sensors</cite>, <cite>frames</cite>, <cite>frames_data</cite>.
+Reading from existing reconstructions and databases (without rigs/frames) is fully backwards
+compatible and vice versa reading new reconstructions (with rigs/frames) using old code is
+fully forwards compatible.</p></li>
+<li><p>Sensor poses (and thus image poses) are now composed as:
+<cite>sensor_from_world = sensor_from_rig * rig_from_world</cite>. Previously, <cite>image.cam_from_world</cite>
+returned a reference to the pose parameters. Now it returns a copy of the pose composition:
+<cite>image.cam_from_world() = image.frame.rig.sensor_from_rig(image.camera.sensor_id) * image.frame.rig_from_world</cite>
+with the underlying pose parameters stored in the rig and frame objects.</p></li>
+<li><p>Default bundle adjuster supports sensor rigs and thus rig bundle adjuster is deprecated.</p></li>
+<li><p>FLANN-based vocabulary trees are incompatible with faiss. New trees automatically
+downloaded, if no vocab_tree_path is provided, otherwise manual download and update required.</p></li>
+<li><p>Removed official support for Ubuntu 20.04, MacOS 13, and Visual Studio 2019.</p></li>
+</ul>
+</section>
+<section id="full-change-list-sorted-temporally">
+<h3>Full Change List (sorted temporally)<a class="headerlink" href="#full-change-list-sorted-temporally" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Cancel previous Github action runs upon push by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2998">https://github.com/colmap/colmap/pull/2998</a></p></li>
+<li><p>Fix ccache installation in pycolmap windows CI by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2997">https://github.com/colmap/colmap/pull/2997</a></p></li>
+<li><p>Use Azure blob storage as vcpkg binary cache by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2999">https://github.com/colmap/colmap/pull/2999</a></p></li>
+<li><p>Add missing openmp flags in retrieval for flann parallelization by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3018">https://github.com/colmap/colmap/pull/3018</a></p></li>
+<li><p>Separate read and write SAS tokens for vcpkg binary cache by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3027">https://github.com/colmap/colmap/pull/3027</a></p></li>
+<li><p>Define vcpkg binary cache source inline by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3028">https://github.com/colmap/colmap/pull/3028</a></p></li>
+<li><p>Fix conditional vcpkg binary cache config in bash by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3031">https://github.com/colmap/colmap/pull/3031</a></p></li>
+<li><p>Avoid absolute path for the include directory installation by &#64;jhacsonmeza in <a class="reference external" href="https://github.com/colmap/colmap/pull/3024">https://github.com/colmap/colmap/pull/3024</a></p></li>
+<li><p>Add conversion between LLA and UTM coords. by &#64;StonerLing in <a class="reference external" href="https://github.com/colmap/colmap/pull/3030">https://github.com/colmap/colmap/pull/3030</a></p></li>
+<li><p>Improve interface for ReadWriteBinaryBlob and add tests by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3033">https://github.com/colmap/colmap/pull/3033</a></p></li>
+<li><p>Add support for downloading files by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3022">https://github.com/colmap/colmap/pull/3022</a></p></li>
+<li><p>Add function to compute sha256 digest by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3035">https://github.com/colmap/colmap/pull/3035</a></p></li>
+<li><p>Automatically download and cache vocabulary tree by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3036">https://github.com/colmap/colmap/pull/3036</a></p></li>
+<li><p>Set vcpkg default features and synchronize to latest vcpkg by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3038">https://github.com/colmap/colmap/pull/3038</a></p></li>
+<li><p>Avoid unnecessary copy of input elements in Percentile/Median by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3039">https://github.com/colmap/colmap/pull/3039</a></p></li>
+<li><p>Abstract algorithm class IncrementalMapperImpl by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3040">https://github.com/colmap/colmap/pull/3040</a></p></li>
+<li><p>Perform linear interpolation in percentile computation by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3041">https://github.com/colmap/colmap/pull/3041</a></p></li>
+<li><p>Avoid dependent inputs in IncrementalMapperImpl by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3043">https://github.com/colmap/colmap/pull/3043</a></p></li>
+<li><p>Reorder destructors for better safety in EndReconstruction by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3046">https://github.com/colmap/colmap/pull/3046</a></p></li>
+<li><p>Improvements for reconstruction normalization / bbox / centroid by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3047">https://github.com/colmap/colmap/pull/3047</a></p></li>
+<li><p>Speedup affine transform minimal solver, create python bindings by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3049">https://github.com/colmap/colmap/pull/3049</a></p></li>
+<li><p>Fix compilation with DOWNLOAD_ENABLED=OFF by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3053">https://github.com/colmap/colmap/pull/3053</a></p></li>
+<li><p>Consistent interface/tests for rigid3d/sim3d/affine2d, pycolmap bindings for rigid3d by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3051">https://github.com/colmap/colmap/pull/3051</a></p></li>
+<li><p>Improve logging for errors in masking during feature extraction by &#64;Ambrosiussen in <a class="reference external" href="https://github.com/colmap/colmap/pull/3034">https://github.com/colmap/colmap/pull/3034</a></p></li>
+<li><p>Add copy constructor support for solver-related ceres bindings by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3059">https://github.com/colmap/colmap/pull/3059</a></p></li>
+<li><p>Minor fix on using pycolmap bundle adjuster with pyceres by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3060">https://github.com/colmap/colmap/pull/3060</a></p></li>
+<li><p>Re-enable interface support for covariance estimation from a Ceres::Problem instance by &#64;B1ueber2y in https://github.com/colmap/colmap/pull/3061</p></li>
+<li><p>Only cancel CI runs in PRs and not in main/release branches by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3063">https://github.com/colmap/colmap/pull/3063</a></p></li>
+<li><p>Add binding support for invalid values in pycolmap id types by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3072">https://github.com/colmap/colmap/pull/3072</a></p></li>
+<li><p>Fix custom quality level in ETH3D benchmark by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3076">https://github.com/colmap/colmap/pull/3076</a></p></li>
+<li><p>Set max_num_features automatically per quality level by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3077">https://github.com/colmap/colmap/pull/3077</a></p></li>
+<li><p>Make it possible to build the MVS doc even when CUDA is not installed by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3078">https://github.com/colmap/colmap/pull/3078</a></p></li>
+<li><p>Temporarily disable ccache in the pycolmap macOS CI by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3084">https://github.com/colmap/colmap/pull/3084</a></p></li>
+<li><p>Add option to specify image list in automatic reconstruction by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3074">https://github.com/colmap/colmap/pull/3074</a></p></li>
+<li><p>Only create OpenGL context in automatic reconstruction if necessary by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3075">https://github.com/colmap/colmap/pull/3075</a></p></li>
+<li><p>Remove unnecessary braces around initializer in pycolmap/covariance by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3080">https://github.com/colmap/colmap/pull/3080</a></p></li>
+<li><p>Remove temporary fixes for macOS CI by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/2954">https://github.com/colmap/colmap/pull/2954</a></p></li>
+<li><p>Reconstruction benchmark by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2714">https://github.com/colmap/colmap/pull/2714</a></p></li>
+<li><p>Re-enable ccache in pycolmap Mac CI by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3085">https://github.com/colmap/colmap/pull/3085</a></p></li>
+<li><p>Fix transitive completion in incremental triangulator by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3094">https://github.com/colmap/colmap/pull/3094</a></p></li>
+<li><p>Fix image deletion, hide point viewer widget after deletion by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3098">https://github.com/colmap/colmap/pull/3098</a></p></li>
+<li><p>Fix download functionality under Windows by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3099">https://github.com/colmap/colmap/pull/3099</a></p></li>
+<li><p>Add back detailed logs for covariance estimation by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3082">https://github.com/colmap/colmap/pull/3082</a></p></li>
+<li><p>Fix reprojection error in camera rig cost function by &#64;binbin-xu in <a class="reference external" href="https://github.com/colmap/colmap/pull/3106">https://github.com/colmap/colmap/pull/3106</a></p></li>
+<li><p>Install missing libcurl4 runtime library in dockerfile by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3122">https://github.com/colmap/colmap/pull/3122</a></p></li>
+<li><p>Expose incremental mapper pose prior options in pycolmap by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3123">https://github.com/colmap/colmap/pull/3123</a></p></li>
+<li><p>Remove year from copyright by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3124">https://github.com/colmap/colmap/pull/3124</a></p></li>
+<li><p>Use poselib for generalized absolute pose minimal solver by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3125">https://github.com/colmap/colmap/pull/3125</a></p></li>
+<li><p>Add code coverage reporting by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3126">https://github.com/colmap/colmap/pull/3126</a></p></li>
+<li><p>Fix synthetic prior generation when stddev=0 by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3128">https://github.com/colmap/colmap/pull/3128</a></p></li>
+<li><p>Create temporary colmap test directy under system test directory by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3129">https://github.com/colmap/colmap/pull/3129</a></p></li>
+<li><p>Minor: pyceres is no longer a must for running pycolmap bundle adjuster by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3130">https://github.com/colmap/colmap/pull/3130</a></p></li>
+<li><p>Fix cost functor convention for benchmarking by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3131">https://github.com/colmap/colmap/pull/3131</a></p></li>
+<li><p>Support enum from string conversion by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3132">https://github.com/colmap/colmap/pull/3132</a></p></li>
+<li><p>More robustly handle degenerate triangulation angles by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3135">https://github.com/colmap/colmap/pull/3135</a></p></li>
+<li><p>Minor: add missing empty namespace in alignment testing script by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3137">https://github.com/colmap/colmap/pull/3137</a></p></li>
+<li><p>Add frame impl for future rig support by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2698">https://github.com/colmap/colmap/pull/2698</a></p></li>
+<li><p>Rename RigCalibration to RigCalib by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3142">https://github.com/colmap/colmap/pull/3142</a></p></li>
+<li><p>Fix and improve two-view pose and triangulation angle estimation by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3146">https://github.com/colmap/colmap/pull/3146</a></p></li>
+<li><p>Fix covariance propagation of pose inverse by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3155">https://github.com/colmap/colmap/pull/3155</a></p></li>
+<li><p>[Spherical Camera Support] Change essential matrix estimation to use camera rays by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3159">https://github.com/colmap/colmap/pull/3159</a></p></li>
+<li><p>Improve incremental mapper initialization logic by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3161">https://github.com/colmap/colmap/pull/3161</a></p></li>
+<li><p>Improved RANSAC dependency injection by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3165">https://github.com/colmap/colmap/pull/3165</a></p></li>
+<li><p>Add docs on the left convention in COLMAP for covariance propagation. by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3167">https://github.com/colmap/colmap/pull/3167</a></p></li>
+<li><p>Add docker instruction link to docs by &#64;j3soon in <a class="reference external" href="https://github.com/colmap/colmap/pull/3169">https://github.com/colmap/colmap/pull/3169</a></p></li>
+<li><p>Compute absolute pose estimation error in image space by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3166">https://github.com/colmap/colmap/pull/3166</a></p></li>
+<li><p>Add support for propagating relative pose covariance. by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3168">https://github.com/colmap/colmap/pull/3168</a></p></li>
+<li><p>Avoid using namespace in pycolmap headers by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3173">https://github.com/colmap/colmap/pull/3173</a></p></li>
+<li><p>Fix naming of cross covariance and add relative pose covariance interface by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3170">https://github.com/colmap/colmap/pull/3170</a></p></li>
+<li><p>Camera models perform valid projection test by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3172">https://github.com/colmap/colmap/pull/3172</a></p></li>
+<li><p>Various improvements and extensions for pycolmap by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3176">https://github.com/colmap/colmap/pull/3176</a></p></li>
+<li><p>Fix pycolmap ci build for pull requests by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3178">https://github.com/colmap/colmap/pull/3178</a></p></li>
+<li><p>Change CamFromImg to return optional ray by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3180">https://github.com/colmap/colmap/pull/3180</a></p></li>
+<li><p>Triangulation operates on camera rays by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3184">https://github.com/colmap/colmap/pull/3184</a></p></li>
+<li><p>Python bindings for visual index by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3185">https://github.com/colmap/colmap/pull/3185</a></p></li>
+<li><p>Define bindings in the correct order by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3189">https://github.com/colmap/colmap/pull/3189</a></p></li>
+<li><p>Restore CamFromImg to return normalized camera coordinates instead of… by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3193">https://github.com/colmap/colmap/pull/3193</a></p></li>
+<li><p>Add Rig serialization support to reconstruction+database by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3143">https://github.com/colmap/colmap/pull/3143</a></p></li>
+<li><p>Pull changes from main branch by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3194">https://github.com/colmap/colmap/pull/3194</a></p></li>
+<li><p>Fix maybe-uninitialized warnings by &#64;papjuli in <a class="reference external" href="https://github.com/colmap/colmap/pull/3199">https://github.com/colmap/colmap/pull/3199</a></p></li>
+<li><p>Fix compilation errors with PoissonRecon by &#64;theartful in <a class="reference external" href="https://github.com/colmap/colmap/pull/3200">https://github.com/colmap/colmap/pull/3200</a></p></li>
+<li><p>Remove Ubuntu 20.04 from the CI by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3203">https://github.com/colmap/colmap/pull/3203</a></p></li>
+<li><p>Add support for frame serialization by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3202">https://github.com/colmap/colmap/pull/3202</a></p></li>
+<li><p>Handle non-trivial frames in bundle adjustment by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3214">https://github.com/colmap/colmap/pull/3214</a></p></li>
+<li><p>Update email address by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3223">https://github.com/colmap/colmap/pull/3223</a></p></li>
+<li><p>Change the root of the Python package by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3217">https://github.com/colmap/colmap/pull/3217</a></p></li>
+<li><p>Fix bug when toggling rendering by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3230">https://github.com/colmap/colmap/pull/3230</a></p></li>
+<li><p>Add convenience iterator for frame image ids by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3231">https://github.com/colmap/colmap/pull/3231</a></p></li>
+<li><p>Update feature/rig with main by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3241">https://github.com/colmap/colmap/pull/3241</a></p></li>
+<li><p>Update to latest vcpkg by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3243">https://github.com/colmap/colmap/pull/3243</a></p></li>
+<li><p>Update feature/rig branch with latest changes in main by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3244">https://github.com/colmap/colmap/pull/3244</a></p></li>
+<li><p>Fix incremental pycolmap build script by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3245">https://github.com/colmap/colmap/pull/3245</a></p></li>
+<li><p>Logically group image reader options by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3246">https://github.com/colmap/colmap/pull/3246</a></p></li>
+<li><p>Fix chained match synthesis by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3248">https://github.com/colmap/colmap/pull/3248</a></p></li>
+<li><p>Retire Reconstruction::IsImageRegistered in favor of existing Image::HasPose by &#64;ahojnnes in https://github.com/colmap/colmap/pull/3247</p></li>
+<li><p>Fix two-view geometry pose estimation for homography by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3250">https://github.com/colmap/colmap/pull/3250</a></p></li>
+<li><p>Fix uninitialized variable warnings by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3254">https://github.com/colmap/colmap/pull/3254</a></p></li>
+<li><p>Include Boost headers on build by &#64;jonahjnewton in <a class="reference external" href="https://github.com/colmap/colmap/pull/3257">https://github.com/colmap/colmap/pull/3257</a></p></li>
+<li><p>Pull latest changes from main to feature/rig by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3262">https://github.com/colmap/colmap/pull/3262</a></p></li>
+<li><p>Support rigs/frames in incremental mapper by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3238">https://github.com/colmap/colmap/pull/3238</a></p></li>
+<li><p>Rename FrameFromWorld to RigFromWorld pose by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3263">https://github.com/colmap/colmap/pull/3263</a></p></li>
+<li><p>Add pytest on the e2e python pipeline into CI. by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3266">https://github.com/colmap/colmap/pull/3266</a></p></li>
+<li><p>Fix broken python interfaces by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3267">https://github.com/colmap/colmap/pull/3267</a></p></li>
+<li><p>Use generalized absolute pose estimation for non-trivial frames by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3265">https://github.com/colmap/colmap/pull/3265</a></p></li>
+<li><p>Fix color extraction for rig frames by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3268">https://github.com/colmap/colmap/pull/3268</a></p></li>
+<li><p>Sequential matcher expands rig images by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3270">https://github.com/colmap/colmap/pull/3270</a></p></li>
+<li><p>Fix usage of deprecated pycolmap interfaces in pycolmap README. by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3272">https://github.com/colmap/colmap/pull/3272</a></p></li>
+<li><p>Improved code/docs and tests for rig configuration by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3275">https://github.com/colmap/colmap/pull/3275</a></p></li>
+<li><p>Update vcpkg to pull in fixes for ceres by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3276">https://github.com/colmap/colmap/pull/3276</a></p></li>
+<li><p>Rig bundle adjuster uses default bundle adjustment routine by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3281">https://github.com/colmap/colmap/pull/3281</a></p></li>
+<li><p>Cleanup legacy camera rig code by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3283">https://github.com/colmap/colmap/pull/3283</a></p></li>
+<li><p>Store rig sensors and frame data in separate database tables by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3285">https://github.com/colmap/colmap/pull/3285</a></p></li>
+<li><p>Configure trivial rigs and frames during feature extraction by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3287">https://github.com/colmap/colmap/pull/3287</a></p></li>
+<li><p>[Bugfix] Center 2D points by principal point for absolute pose estimation with unknown focal length by &#64;xjiangan in <a class="reference external" href="https://github.com/colmap/colmap/pull/3289">https://github.com/colmap/colmap/pull/3289</a></p></li>
+<li><p>Add bindings for rig configuration by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3291">https://github.com/colmap/colmap/pull/3291</a></p></li>
+<li><p>Documentation for rig support by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3290">https://github.com/colmap/colmap/pull/3290</a></p></li>
+<li><p>Fix documentation of rigs.txt by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3292">https://github.com/colmap/colmap/pull/3292</a></p></li>
+<li><p>Update feature/rig with latest changes in main by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3293">https://github.com/colmap/colmap/pull/3293</a></p></li>
+<li><p>Merge feature/rig branch into main by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3295">https://github.com/colmap/colmap/pull/3295</a></p></li>
+<li><p>improve clarity of the rig example by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3297">https://github.com/colmap/colmap/pull/3297</a></p></li>
+<li><p>Bind missing SequentialMatchingOptions.loop_detection_period by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3299">https://github.com/colmap/colmap/pull/3299</a></p></li>
+<li><p>cleanup legacy comments for base controller. by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3300">https://github.com/colmap/colmap/pull/3300</a></p></li>
+<li><p>Fix bug in grayscale Bitmap.to_array by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3301">https://github.com/colmap/colmap/pull/3301</a></p></li>
+<li><p>Handle errors in Bitmap.read by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3302">https://github.com/colmap/colmap/pull/3302</a></p></li>
+<li><p>Add an example script for SfM with 360 spherical images by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3304">https://github.com/colmap/colmap/pull/3304</a></p></li>
+<li><p>Recognize URIs for vocab_tree_path in GUI feature matching by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3305">https://github.com/colmap/colmap/pull/3305</a></p></li>
+<li><p>Deterministic behavior for Python pipeline tests by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3306">https://github.com/colmap/colmap/pull/3306</a></p></li>
+<li><p>Move colmap/ui/main_window.h include to implementation by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3307">https://github.com/colmap/colmap/pull/3307</a></p></li>
+<li><p>Add Python 3.13 to pycolmap build matrix by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3308">https://github.com/colmap/colmap/pull/3308</a></p></li>
+<li><p>Add missing SiftMatchingOptions::cpu_brute_force_matcher to pycolmap bindings by &#64;ahojnnes in https://github.com/colmap/colmap/pull/3309</p></li>
+<li><p>Augment pinhole renders with GPS EXIFs of the panos by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3310">https://github.com/colmap/colmap/pull/3310</a></p></li>
+<li><p>Add missing cpu_brute_force_matcher to option manager by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3315">https://github.com/colmap/colmap/pull/3315</a></p></li>
+<li><p>Bind GPSTransform and make GPSTransform::Ellipsoid an enum class by &#64;sarlinpe in https://github.com/colmap/colmap/pull/3311</p></li>
+<li><p>Update pose prior bundle adjuster to handle rigs by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3312">https://github.com/colmap/colmap/pull/3312</a></p></li>
+<li><p>Add support for running pose prior mapper from GUI by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3313">https://github.com/colmap/colmap/pull/3313</a></p></li>
+<li><p>Enable different matcher types and default to sequential in pano example by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3314">https://github.com/colmap/colmap/pull/3314</a></p></li>
+<li><p>Modularize reconstruction I/O formats into different libraries by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3317">https://github.com/colmap/colmap/pull/3317</a></p></li>
+<li><p>Fall back to P3P solver for panoramic generalized absolute pose by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3318">https://github.com/colmap/colmap/pull/3318</a></p></li>
+<li><p>Fix FLANN-based CPU feature matcher crash in pycolmap by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3320">https://github.com/colmap/colmap/pull/3320</a></p></li>
+<li><p>Update cibuildwheel to 2.23.2 by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3081">https://github.com/colmap/colmap/pull/3081</a></p></li>
+<li><p>Assume prior focal length for explicitly defined rig camera models by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3321">https://github.com/colmap/colmap/pull/3321</a></p></li>
+<li><p>Fix rig configuration with partial input reconstruction by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3322">https://github.com/colmap/colmap/pull/3322</a></p></li>
+<li><p>Use reference for image.camera and image.frame in pycolmap. by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3323">https://github.com/colmap/colmap/pull/3323</a></p></li>
+<li><p>Use reference for frame.rig in pycolmap. by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3324">https://github.com/colmap/colmap/pull/3324</a></p></li>
+<li><p>Cosmetic improvement on some geometry python bindings by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3325">https://github.com/colmap/colmap/pull/3325</a></p></li>
+<li><p>Add unit test for EstimateAbsolutePose by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3327">https://github.com/colmap/colmap/pull/3327</a></p></li>
+<li><p>Add gmock matchers for rigid3 and sim3 by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3328">https://github.com/colmap/colmap/pull/3328</a></p></li>
+<li><p>Add unit tests for absolute pose refinement by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3330">https://github.com/colmap/colmap/pull/3330</a></p></li>
+<li><p>Cosmetic cleanup for absolute pose tests by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3333">https://github.com/colmap/colmap/pull/3333</a></p></li>
+<li><p>Add generalized relative pose estimation and pose binding cleanups by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3334">https://github.com/colmap/colmap/pull/3334</a></p></li>
+<li><p>Turn camera parameter access debug checks into throwing checks by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3337">https://github.com/colmap/colmap/pull/3337</a></p></li>
+<li><p>Handle panoramic rigs in generalized relative pose estimation by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3338">https://github.com/colmap/colmap/pull/3338</a></p></li>
+<li><p>Cosmetic variable name improvements to match conventions by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3341">https://github.com/colmap/colmap/pull/3341</a></p></li>
+<li><p>Add unit test for relative pose estimation by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3342">https://github.com/colmap/colmap/pull/3342</a></p></li>
+<li><p>Avoid nested parallelization for vocab tree pairing by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3343">https://github.com/colmap/colmap/pull/3343</a></p></li>
+<li><p>Fix rigid3/sim3 matchers for older eigen versions by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3344">https://github.com/colmap/colmap/pull/3344</a></p></li>
+<li><p>Deterministic homography test by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3346">https://github.com/colmap/colmap/pull/3346</a></p></li>
+<li><p>Add missing return statement in PyEstimateGeneralizedRelativePose by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3349">https://github.com/colmap/colmap/pull/3349</a></p></li>
+<li><p>Fix runtime error in panorama_sfm.py with sequential matching by &#64;samuelm2 in <a class="reference external" href="https://github.com/colmap/colmap/pull/3351">https://github.com/colmap/colmap/pull/3351</a></p></li>
+<li><p>Fix race conditions in feature matcher cache by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3354">https://github.com/colmap/colmap/pull/3354</a></p></li>
+<li><p>Use shared lock in thread safe LRU cache by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3355">https://github.com/colmap/colmap/pull/3355</a></p></li>
+<li><p>Upgrade Jimver/cuda-toolkit GH actions task to 0.2.23 by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3358">https://github.com/colmap/colmap/pull/3358</a></p></li>
+<li><p>Upgrade to Ubuntu 24.04 / clang-18 in CI for ASan and ClangTidy builds by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3357">https://github.com/colmap/colmap/pull/3357</a></p></li>
+<li><p>Use add_compile_definitions instead of deprecated add_definitions by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3348">https://github.com/colmap/colmap/pull/3348</a></p></li>
+<li><p>Update Mac Github runners and fix pycolmap deployment targets by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3361">https://github.com/colmap/colmap/pull/3361</a></p></li>
+<li><p>Suppress CUDA warnings related constexpr host/device calls by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3362">https://github.com/colmap/colmap/pull/3362</a></p></li>
+<li><p>Update docker image to ubuntu 24.04 by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3363">https://github.com/colmap/colmap/pull/3363</a></p></li>
+<li><p>Fix benchmarking for rigs by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3364">https://github.com/colmap/colmap/pull/3364</a></p></li>
+<li><p>Add option to overwrite matches in benchmarking by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3365">https://github.com/colmap/colmap/pull/3365</a></p></li>
+<li><p>Replace flann with faiss by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3350">https://github.com/colmap/colmap/pull/3350</a></p></li>
+<li><p>Update docker with all major CUDA archs and updated boost version by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3369">https://github.com/colmap/colmap/pull/3369</a></p></li>
+<li><p>Retire remaining flann components and remove as dependency by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3370">https://github.com/colmap/colmap/pull/3370</a></p></li>
+<li><p>Update feature index to use float descriptors and distances by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3371">https://github.com/colmap/colmap/pull/3371</a></p></li>
+<li><p>Fix deadlock during feature matching by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3373">https://github.com/colmap/colmap/pull/3373</a></p></li>
+<li><p>Warn user when reading legacy flann index by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3372">https://github.com/colmap/colmap/pull/3372</a></p></li>
+<li><p>expose loading database into database cache from DatabaseCache::Create. by &#64;B1ueber2y in https://github.com/colmap/colmap/pull/3375</p></li>
+<li><p>minor: rename DatabaseCache::LoadDatabase to Load by &#64;B1ueber2y in https://github.com/colmap/colmap/pull/3376</p></li>
+<li><p>Fix typo by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3377">https://github.com/colmap/colmap/pull/3377</a></p></li>
+<li><p>Unit tests for image reader, remove redundant definition of database by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3383">https://github.com/colmap/colmap/pull/3383</a></p></li>
+<li><p>Fix trailing comma-separation when printing list contents by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3388">https://github.com/colmap/colmap/pull/3388</a></p></li>
+<li><p>Add missing VocabTreeMatching.num_threads in option manager by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3389">https://github.com/colmap/colmap/pull/3389</a></p></li>
+<li><p>Use OpenBLAS OpenMP version under Ubuntu to fix slow faiss by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3390">https://github.com/colmap/colmap/pull/3390</a></p></li>
+<li><p>Speedup database reads of rigs/frames with single SQL outer join query by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3387">https://github.com/colmap/colmap/pull/3387</a></p></li>
+<li><p>Introduce context manager to reset sqlite3 statements by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3392">https://github.com/colmap/colmap/pull/3392</a></p></li>
+<li><p>Add missing use_gpu options in pycolmap SIFT bindings by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3397">https://github.com/colmap/colmap/pull/3397</a></p></li>
+<li><p>Add FeatureMatch python bindings by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3398">https://github.com/colmap/colmap/pull/3398</a></p></li>
+<li><p>Add option to set log level in GUI by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3399">https://github.com/colmap/colmap/pull/3399</a></p></li>
+<li><p>Add docs to explain the concepts of rigs and frames. by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3395">https://github.com/colmap/colmap/pull/3395</a></p></li>
+<li><p>Allow png mask without double extension by &#64;MotivaCG in <a class="reference external" href="https://github.com/colmap/colmap/pull/3284">https://github.com/colmap/colmap/pull/3284</a></p></li>
+<li><p>Propagate macros to top-level CMakeLists.txt files by &#64;jhacsonmeza in <a class="reference external" href="https://github.com/colmap/colmap/pull/3396">https://github.com/colmap/colmap/pull/3396</a></p></li>
+<li><p>Add a missing function implementation by &#64;lpanaf in <a class="reference external" href="https://github.com/colmap/colmap/pull/3412">https://github.com/colmap/colmap/pull/3412</a></p></li>
+<li><p>Improved tests for reconstruction merging by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3413">https://github.com/colmap/colmap/pull/3413</a></p></li>
+<li><p>Use MKL as BLAS vendor for faiss by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3393">https://github.com/colmap/colmap/pull/3393</a></p></li>
+<li><p>Fix wrong doc for point covariance by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3416">https://github.com/colmap/colmap/pull/3416</a></p></li>
+<li><p>Add legacy docs from 3.8 to 3.11. by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3414">https://github.com/colmap/colmap/pull/3414</a></p></li>
+<li><p>Do not filter existing, fixed frames by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3403">https://github.com/colmap/colmap/pull/3403</a></p></li>
+<li><p>Tag commit id and date in the doc generation by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3417">https://github.com/colmap/colmap/pull/3417</a></p></li>
+<li><p>Return bad initial pair when number of triangulation is less than abs_pose_min_num_inliers by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/3418">https://github.com/colmap/colmap/pull/3418</a></p></li>
+<li><p>Add option to build with thread sanitizer flags by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3420">https://github.com/colmap/colmap/pull/3420</a></p></li>
+<li><p>Add option to build with undefined behavior sanitizer flags by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3421">https://github.com/colmap/colmap/pull/3421</a></p></li>
+<li><p>Fix the RANSAC stopping criterion by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3425">https://github.com/colmap/colmap/pull/3425</a></p></li>
+<li><p>Replace incorrect call to nonZeros by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3426">https://github.com/colmap/colmap/pull/3426</a></p></li>
+<li><p>Add deprecation warning for rig_bundle_adjuster by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3427">https://github.com/colmap/colmap/pull/3427</a></p></li>
+<li><p>Fix incorrect include in euclidean_transform.h by &#64;sarlinpe in <a class="reference external" href="https://github.com/colmap/colmap/pull/3428">https://github.com/colmap/colmap/pull/3428</a></p></li>
+<li><p>Add Frame::SetCamFromWorld in pycolmap and fix comment. by &#64;B1ueber2y in https://github.com/colmap/colmap/pull/3429</p></li>
+<li><p>Estimate essential matrix using camera rays instead of points by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3423">https://github.com/colmap/colmap/pull/3423</a></p></li>
+<li><p>Fix FilterPoints3DWithSmallTriangulationAngle to return number of filtered observations by &#64;whuaegeanse in <a class="reference external" href="https://github.com/colmap/colmap/pull/3424">https://github.com/colmap/colmap/pull/3424</a></p></li>
+<li><p>Update to latest vcpkg commit by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3430">https://github.com/colmap/colmap/pull/3430</a></p></li>
+<li><p>Initialize from non-trivial frame pairs using generalized relative pose by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3419">https://github.com/colmap/colmap/pull/3419</a></p></li>
+<li><p>Fix setup_ubuntu.sh for docker by &#64;MasahiroOgawa in <a class="reference external" href="https://github.com/colmap/colmap/pull/3432">https://github.com/colmap/colmap/pull/3432</a></p></li>
+<li><p>Support visualization of models with arbitrary origin and scale by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/3044">https://github.com/colmap/colmap/pull/3044</a></p></li>
+<li><p>Fix ReadPositionPriorData to return valid and numerically more stable Position prior data by &#64;whuaegeanse <a class="reference external" href="https://github.com/colmap/colmap/pull/3438">https://github.com/colmap/colmap/pull/3438</a></p></li>
+</ul>
+</section>
+</section>
+<section id="colmap-3-11-1-12-06-2024">
+<h2>COLMAP 3.11.1 (12/06/2024)<a class="headerlink" href="#colmap-3-11-1-12-06-2024" title="Link to this heading"></a></h2>
+<section id="id2">
+<h3>Bug Fixes<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fix typo in pycolmap function align_reconstruction_to_locations interface by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2961">https://github.com/colmap/colmap/pull/2961</a></p></li>
 <li><p>Add back some ceres bindings to use pycolmap bundle adjustment without pyceres by &#64;B1ueber2y in <a class="reference external" href="https://github.com/colmap/colmap/pull/2985">https://github.com/colmap/colmap/pull/2985</a></p></li>
@@ -134,10 +407,10 @@
 </ul>
 </section>
 </section>
-<section id="colmap-3-11-11-28-2024">
-<h2>COLMAP 3.11 (11/28/2024)<a class="headerlink" href="#colmap-3-11-11-28-2024" title="Link to this heading"></a></h2>
-<section id="new-features">
-<h3>New Features<a class="headerlink" href="#new-features" title="Link to this heading"></a></h3>
+<section id="colmap-3-11-0-11-28-2024">
+<h2>COLMAP 3.11.0 (11/28/2024)<a class="headerlink" href="#colmap-3-11-0-11-28-2024" title="Link to this heading"></a></h2>
+<section id="id3">
+<h3>New Features<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>New pose prior based incremental mapper that can leverage absolute pose priors from e.g. GPS measurements.</p></li>
 <li><p>New bundle adjustment covariance estimation functionality. Significantly faster and more robust than Ceres.</p></li>
@@ -150,8 +423,8 @@
 <li><p>Many more performance optimizations and other improvements. See full list of changes below.</p></li>
 </ul>
 </section>
-<section id="id2">
-<h3>Bug Fixes<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>Bug Fixes<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fixed non-deterministic behavior of CUDA SIFT feature extractor. Broken since 3.10 release.</p></li>
 <li><p>Fixed orientation detection of covariant/affine SIFT feature extractor. Broken since initial release.</p></li>
@@ -162,8 +435,8 @@
 <li><p>For other bug fixes, see full list of changes below.</p></li>
 </ul>
 </section>
-<section id="breaking-changes">
-<h3>Breaking Changes<a class="headerlink" href="#breaking-changes" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>Breaking Changes<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Dropped official support for Ubuntu 18.04, Visual Studio 2019.</p></li>
 <li><p>Upgrade to C++17 standard in C++ and C++14 in CUDA source code.</p></li>
@@ -192,8 +465,8 @@
 </li>
 </ul>
 </section>
-<section id="full-change-list-sorted-temporally">
-<h3>Full Change List (sorted temporally)<a class="headerlink" href="#full-change-list-sorted-temporally" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Full Change List (sorted temporally)<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Updates for pycolmap by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2672">https://github.com/colmap/colmap/pull/2672</a></p></li>
 <li><p>Trigger CI on release/* branches by &#64;ahojnnes in <a class="reference external" href="https://github.com/colmap/colmap/pull/2673">https://github.com/colmap/colmap/pull/2673</a></p></li>
