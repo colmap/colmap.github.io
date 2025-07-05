@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; COLMAP 3.12.0.dev | 1571fe00 (2025-06-25) documentation</title>
+  <title>Installation &mdash; COLMAP 3.13.0.dev0 | a5332f46 (2025-07-05) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=5c1fd480"></script>
+        <script src="_static/documentation_options.js?v=253baf99"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -38,7 +38,7 @@
             COLMAP
           </a>
               <div class="version">
-                3.12.0.dev | 1571fe00 (2025-06-25)
+                3.13.0.dev0 | a5332f46 (2025-07-05)
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -120,7 +120,7 @@ in the default repositories for Linux/Unix/BSD do not come with CUDA support,
 which requires a manual build from source, as explained further below.</p>
 <p>For Mac users, <a class="reference external" href="https://brew.sh">Homebrew</a> provides a formula for COLMAP with
 pre-compiled binaries or the option to build from source. After installing
-homebrew, installing COLMAP is as easy as running <cite>brew install colmap</cite>.</p>
+homebrew, installing COLMAP is as easy as running <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">colmap</span></code>.</p>
 <p>COLMAP can be used as an independent application through the command-line or
 graphical user interface. Alternatively, COLMAP is also built as a reusable
 library, i.e., you can include and link COLMAP against your own C++ source code,
@@ -197,7 +197,7 @@ Windows, compute clusters, or if you do not have root access under Linux or Mac.
 </pre></div>
 </div>
 <p>Or, manually install the latest CUDA from NVIDIA’s homepage. During CMake
-configuration, specify <cite>-DCMAKE_CUDA_ARCHITECTURES=native</cite>, if you want to run
+configuration, specify <code class="docutils literal notranslate"><span class="pre">-DCMAKE_CUDA_ARCHITECTURES=native</span></code>, if you want to run
 COLMAP only on your current machine (default), “all”/”all-major” to be able to
 distribute to other machines, or a specific CUDA architecture like “75”, etc.</p>
 <p>Configure and compile COLMAP:</p>
@@ -229,7 +229,7 @@ CUDA package and GCC, and you must compile against GCC 10:</p>
 <span class="c1"># ... and then run CMake against COLMAP&#39;s sources.</span>
 </pre></div>
 </div>
-<p>Notice that the <cite>BLA_VENDOR=Intel10_64lp</cite> option tells CMake to find Intel’s MKL
+<p>Notice that the <code class="docutils literal notranslate"><span class="pre">BLA_VENDOR=Intel10_64lp</span></code> option tells CMake to find Intel’s MKL
 implementation of BLAS. If you decide to compile against OpenBLAS instead of
 MKL, you must install and select the OpenMP version under Debian/Ubuntu because
 of <a class="reference external" href="https://github.com/facebookresearch/faiss/wiki/Troubleshooting#surprising-faiss-openmp-and-openblas-interaction">this issue</a>.</p>
@@ -321,8 +321,8 @@ the latest commit in the dev branch, you can use the following options:</p>
 </div>
 <p>To modify the source code, you can further add <code class="docutils literal notranslate"><span class="pre">--editable</span> <span class="pre">--no-downloads</span></code>.
 Or, if you want to build from another folder and use the dependencies from
-vcpkg, first run <cite>./vcpkg integrate install</cite> (under Windows use pwsh and
-<cite>./scripts/shell/enter_vs_dev_shell.ps1</cite>) and then configure COLMAP as:</p>
+vcpkg, first run <code class="docutils literal notranslate"><span class="pre">./vcpkg</span> <span class="pre">integrate</span> <span class="pre">install</span></code> (under Windows use pwsh and
+<code class="docutils literal notranslate"><span class="pre">./scripts/shell/enter_vs_dev_shell.ps1</span></code>) and then configure COLMAP as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
@@ -336,7 +336,7 @@ vcpkg, first run <cite>./vcpkg integrate install</cite> (under Windows use pwsh 
 <span id="installation-library"></span><h2>Library<a class="headerlink" href="#library" title="Link to this heading"></a></h2>
 <p>If you want to include and link COLMAP against your own library, the easiest way
 is to use CMake as a build configuration tool. After configuring the COLMAP
-build and running <cite>ninja/make install</cite>, COLMAP automatically installs all
+build and running <code class="docutils literal notranslate"><span class="pre">ninja/make</span> <span class="pre">install</span></code>, COLMAP automatically installs all
 headers to <code class="docutils literal notranslate"><span class="pre">${CMAKE_INSTALL_PREFIX}/include/colmap</span></code>, all libraries to
 <code class="docutils literal notranslate"><span class="pre">${CMAKE_INSTALL_PREFIX}/lib/colmap</span></code>, and the CMake configuration to
 <code class="docutils literal notranslate"><span class="pre">${CMAKE_INSTALL_PREFIX}/share/colmap</span></code>.</p>

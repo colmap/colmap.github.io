@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Camera Models &mdash; COLMAP 3.12.0.dev | 1571fe00 (2025-06-25) documentation</title>
+  <title>Camera Models &mdash; COLMAP 3.13.0.dev0 | a5332f46 (2025-07-05) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=5c1fd480"></script>
+        <script src="_static/documentation_options.js?v=253baf99"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -38,7 +38,7 @@
             COLMAP
           </a>
               <div class="version">
-                3.12.0.dev | 1571fe00 (2025-06-25)
+                3.13.0.dev0 | a5332f46 (2025-07-05)
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -98,29 +98,29 @@
 parameters are known a priori, it is generally best to use the simplest camera
 model that is complex enough to model the distortion effects:</p>
 <ul class="simple">
-<li><p><cite>SIMPLE_PINHOLE</cite>, <cite>PINHOLE</cite>: Use these camera models, if your images are
+<li><p><code class="docutils literal notranslate"><span class="pre">SIMPLE_PINHOLE</span></code>, <code class="docutils literal notranslate"><span class="pre">PINHOLE</span></code>: Use these camera models, if your images are
 undistorted a priori. These use one and two focal length parameters,
 respectively. Note that even in the case of undistorted images, COLMAP could
 try to improve the intrinsics with a more complex camera model.</p></li>
-<li><p><cite>SIMPLE_RADIAL</cite>, <cite>RADIAL</cite>: This should be the camera model of choice, if the
+<li><p><code class="docutils literal notranslate"><span class="pre">SIMPLE_RADIAL</span></code>, <code class="docutils literal notranslate"><span class="pre">RADIAL</span></code>: This should be the camera model of choice, if the
 intrinsics are unknown and every image has a different camera calibration,
 e.g., in the case of Internet photos. Both models are simplified versions of
-the <cite>OPENCV</cite> model only modeling radial distortion effects with one and two
+the <code class="docutils literal notranslate"><span class="pre">OPENCV</span></code> model only modeling radial distortion effects with one and two
 parameters, respectively.</p></li>
-<li><p><cite>OPENCV</cite>, <cite>FULL_OPENCV</cite>: Use these camera models, if you know the calibration
+<li><p><code class="docutils literal notranslate"><span class="pre">OPENCV</span></code>, <code class="docutils literal notranslate"><span class="pre">FULL_OPENCV</span></code>: Use these camera models, if you know the calibration
 parameters a priori. You can also try to let COLMAP estimate the parameters,
 if you share the intrinsics for multiple images. Note that the automatic
 estimation of parameters will most likely fail, if every image has a separate
 set of intrinsic parameters.</p></li>
-<li><p><cite>SIMPLE_RADIAL_FISHEYE</cite>, <cite>RADIAL_FISHEYE</cite>, <cite>OPENCV_FISHEYE</cite>, <cite>FOV</cite>,
-<cite>THIN_PRISM_FISHEYE</cite>, <cite>RAD_TAN_THIN_PRISM_FISHEYE</cite>: Use these camera models
+<li><p><code class="docutils literal notranslate"><span class="pre">SIMPLE_RADIAL_FISHEYE</span></code>, <code class="docutils literal notranslate"><span class="pre">RADIAL_FISHEYE</span></code>, <code class="docutils literal notranslate"><span class="pre">OPENCV_FISHEYE</span></code>, <code class="docutils literal notranslate"><span class="pre">FOV</span></code>,
+<code class="docutils literal notranslate"><span class="pre">THIN_PRISM_FISHEYE</span></code>, <code class="docutils literal notranslate"><span class="pre">RAD_TAN_THIN_PRISM_FISHEYE</span></code>: Use these camera models
 for fisheye lenses and note that all other models are not really capable of
-modeling the distortion effects of fisheye lenses. The <cite>FOV</cite> model is used by
-Google Project Tango (make sure to not initialize <cite>omega</cite> to zero).</p></li>
+modeling the distortion effects of fisheye lenses. The <code class="docutils literal notranslate"><span class="pre">FOV</span></code> model is used by
+Google Project Tango (make sure to not initialize <code class="docutils literal notranslate"><span class="pre">omega</span></code> to zero).</p></li>
 </ul>
 <p>You can inspect the estimated intrinsic parameters by double-clicking specific
 images in the model viewer or by exporting the model and opening the
-<cite>cameras.txt</cite> file.</p>
+<code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code> file.</p>
 <p>To achieve optimal reconstruction results, you might have to try different
 camera models for your problem. Generally, when the reconstruction fails and the
 estimated focal length values / distortion coefficients are grossly wrong, it is

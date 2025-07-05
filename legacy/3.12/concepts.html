@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Key Concepts &mdash; COLMAP 3.12 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=46cb764e"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Database Format" href="database.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            COLMAP
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Key Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sensors-and-measurements">Sensors and Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rigs">Rigs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#frames">Frames</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rigs.html">Rig Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pycolmap/index.html">PyCOLMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legacy.html">Legacy Documentations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">COLMAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Key Concepts</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/concepts.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="key-concepts">
+<span id="concepts"></span><h1>Key Concepts<a class="headerlink" href="#key-concepts" title="Link to this heading"></a></h1>
+<p>Starting from COLMAP 3.12, the concepts of rigs and frames have been introduced
+to enable a principled modeling of multi-sensor platforms as well as 360° panorama
+images. These concepts provide a structured framework to organize sensors and
+their measurements, enabling more flexible calibration and fusion of diverse
+data types (e.g., see <a class="reference internal" href="rigs.html#rig-support"><span class="std std-ref">Rig Support</span></a>).</p>
+<p>These additions are backward-compatible and do not affect the traditional, default usage
+of COLMAP for single-camera capture setups.</p>
+<section id="sensors-and-measurements">
+<span id="sensors"></span><h2>Sensors and Measurements<a class="headerlink" href="#sensors-and-measurements" title="Link to this heading"></a></h2>
+<p>A <strong>sensor</strong> is a device that captures data about the environment, producing
+measurements at specific timestamps. The most common sensor type is the camera,
+which captures images as its measurements. Other examples include IMUs
+(Inertial Measurement Units), which record acceleration and angular velocity,
+and GNSS receivers, which provide absolute position data.</p>
+<p>Currently, COLMAP supports only cameras and their image measurements, though the
+sensor concept is designed to extend to other types such as IMUs and GNSS for
+future support of multi-modal data fusion.</p>
+</section>
+<section id="rigs">
+<span id="id1"></span><h2>Rigs<a class="headerlink" href="#rigs" title="Link to this heading"></a></h2>
+<p>A <strong>rig</strong> models a platform composed of multiple sensors with fixed relative poses,
+enabling synchronized and consistent multi-sensor data collection. Examples
+include stereo camera setups, headworn AR/VR devices, and autonomous driving
+sensor suites. It can also be virtual — for example, a rig modeling multiple
+virtual cameras arranged to capture overlapping views used to create seamless
+360° panoramic images.</p>
+<p>In COLMAP, each sensor must be uniquely associated with exactly one rig. Each rig
+has a single reference sensor that defines its origin. For example, in a stereo
+camera rig, one camera is designated as the reference sensor with an identity
+<code class="docutils literal notranslate"><span class="pre">sensor_from_rig</span></code> pose, while the second camera’s pose is defined relative to
+this reference. In a single-camera setup, the camera itself serves as the sole
+reference sensor for its rig.</p>
+</section>
+<section id="frames">
+<span id="id2"></span><h2>Frames<a class="headerlink" href="#frames" title="Link to this heading"></a></h2>
+<p>A <strong>frame</strong> represents a rig captured at a single timestamp, containing measurements
+from one or more sensors within that rig. For example, if a rig consists of
+three sensors, a frame may include measurements from all three sensors, or only
+a subset, depending on availability. This concept allows association of multi-sensor
+data at specific points in time.</p>
+<p>For instance, in a stereo camera rig recording video, each frame corresponds to a
+set of two images—one from each camera—captured at the same moment.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="database.html" class="btn btn-neutral float-right" title="Database Format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Johannes L. Schoenberger.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

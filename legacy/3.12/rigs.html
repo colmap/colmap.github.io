@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rig Support &mdash; COLMAP 3.12 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=46cb764e"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Output Format" href="format.html" />
+    <link rel="prev" title="Camera Models" href="cameras.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            COLMAP
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Rig Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unknown-rig-sensor-poses">Unknown rig sensor poses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reconstruction-from-360-spherical-images">Reconstruction from 360° spherical images</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pycolmap/index.html">PyCOLMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legacy.html">Legacy Documentations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">COLMAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Rig Support</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/rigs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rig-support">
+<span id="id1"></span><h1>Rig Support<a class="headerlink" href="#rig-support" title="Link to this heading"></a></h1>
+<p>COLMAP has native support for modeling sensor rigs during the reconstruction
+process. The sensors in a rig are assumed to have fixed relative poses between
+each other with one reference sensor defining the origin of the rig. A frame
+defines a specific instance of the rig with all or a subset of sensors exposed
+at the same time. For example, in a stereo camera rig, one camera would be
+defined as the reference sensor and have an identity <code class="docutils literal notranslate"><span class="pre">sensor_from_rig</span></code> pose,
+whereas the second camera would be posed relative to the reference camera. Each
+frame would then usually be composed of two images as the measurements of both
+of the cameras at the same time.</p>
+<section id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Link to this heading"></a></h2>
+<p>By default, when running the standard reconstruction pipeline, each camera is
+modeled with a separate rig and thus each frame contains only a single image. To
+model rigs, the recommended workflow is to organize images by rigs and cameras
+in a folder structure as follows (ensure that images corresponding to the same
+frame have identical filenames across all folders):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rig1</span><span class="o">/</span>
+    <span class="n">camera1</span><span class="o">/</span>
+        <span class="n">image0001</span><span class="o">.</span><span class="n">jpg</span>
+        <span class="n">image0002</span><span class="o">.</span><span class="n">jpg</span>
+        <span class="o">...</span>
+    <span class="n">camera2</span><span class="o">/</span>
+        <span class="n">image0001</span><span class="o">.</span><span class="n">jpg</span> <span class="c1"># same frame as camera1/image0001.jpg</span>
+        <span class="n">image0002</span><span class="o">.</span><span class="n">jpg</span> <span class="c1"># same frame as camera1/image0002.jpg</span>
+        <span class="o">...</span>
+    <span class="o">...</span>
+<span class="n">rig2</span><span class="o">/</span>
+    <span class="n">camera1</span><span class="o">/</span>
+        <span class="o">...</span>
+    <span class="o">...</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>As a next step, we would first extract features using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap feature_extractor \
+    --image_path $DATASET_PATH/images \
+    --database_path $DATASET_PATH/database.db \
+    --ImageReader.single_camera_per_folder 1
+</pre></div>
+</div>
+<p>By default, the resulting database now contains a separate rig for each camera
+and a separate frame for each image. As such, we must adjust the relationships
+in the database with the desired rig configuration. This is done using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap rig_configurator \
+    --database_path $DATASET_PATH/database.db \
+    --rig_config_path $DATASET_PATH/rig_config.json
+</pre></div>
+</div>
+<p>where the <code class="docutils literal notranslate"><span class="pre">rig_config.json</span></code> could look as follows, if the relative sensor poses
+in the rig are known a priori:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;cameras&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;image_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;rig1/camera1/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ref_sensor&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;image_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;rig1/camera2/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cam_from_rig_rotation&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="mf">0.7071067811865475</span><span class="p">,</span>
+            <span class="mf">0.0</span><span class="p">,</span>
+            <span class="mf">0.7071067811865476</span><span class="p">,</span>
+            <span class="mf">0.0</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;cam_from_rig_translation&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="mi">0</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;cameras&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;image_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;rig2/camera1/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ref_sensor&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">},</span>
+      <span class="o">...</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Notice that this modifies the rig and frame configuration in the database, which
+contains the full specification of rigs that we later feed as an input to
+downstream processing steps.</p>
+<p>With known calibrated camera parameters, each camera can optionally also have
+specified <code class="docutils literal notranslate"><span class="pre">camera_model_name</span></code> and <code class="docutils literal notranslate"><span class="pre">camera_params</span></code> fields.</p>
+<p>For more fine-grain configuration of rigs and frames, the most convenient option
+is to manually configure the database using pycolmap by either using the
+<code class="docutils literal notranslate"><span class="pre">apply_rig_config</span></code> function or by individually adding the desired rig and frame
+objects to the reconstruction for the most flexibility.</p>
+<p>Next, we run standard feature matching. Note that it is important to configure
+the rigs before sequential feature matching, as images in consecutive frames will
+be automatically matched against each other.</p>
+<p>Finally, we can reconstruct the scene using the standard <code class="docutils literal notranslate"><span class="pre">mapper</span></code> command with
+the option of keeping the relative poses in the rig fixed using
+<code class="docutils literal notranslate"><span class="pre">--Mapper.ba_refine_sensor_from_rig</span> <span class="pre">0</span></code>.</p>
+</section>
+<section id="unknown-rig-sensor-poses">
+<h2>Unknown rig sensor poses<a class="headerlink" href="#unknown-rig-sensor-poses" title="Link to this heading"></a></h2>
+<p>If the relative poses of sensors in the rig are not known a priori and we only
+know that a specific set of sensors are rigidly mounted and exposed at the same
+time, one can attempt the following two-step reconstruction approach. Before
+starting, ensure to organize your images as detailed above and perform feature
+extraction with the <code class="docutils literal notranslate"><span class="pre">--ImageReader.single_camera_per_folder</span> <span class="pre">1</span></code> option.</p>
+<p>Next, reconstruct the scene without rig constraints by modeling each camera as
+its own rig (the default behavior of COLMAP without further configuration). Note
+that this can be a partial reconstruction from a subset of the full set of input
+images. The only requirement is that each camera must have at least one
+registered image in the same frame with a registered image of the reference
+camera. If the reconstruction was successful and the relative poses between
+registered images look roughly correct, we can proceed with the next step.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">rig_configurator</span></code> can also work without <code class="docutils literal notranslate"><span class="pre">cam_from_rig_*</span></code> transformations.
+By providing an existing (partial) reconstruction of the scene, it can compute
+the average relative rig sensor poses from all registered images:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap rig_configurator \
+    --database_path $DATASET_PATH/database.db \
+    --input_path $DATASET_PATH/sparse-model-without-rigs-and-frames \
+    --rig_config_path $DATASET_PATH/rig_config.json \
+    [ --output_path $DATASET_PATH/sparse-model-with-rigs-and-frames ]
+</pre></div>
+</div>
+<p>The provided <code class="docutils literal notranslate"><span class="pre">rig_config.json</span></code> must simply omit the respective
+<code class="docutils literal notranslate"><span class="pre">cam_from_rig_rotation</span></code> and <code class="docutils literal notranslate"><span class="pre">cam_from_rig_translation</span></code> fields.</p>
+<p>Now, we can either run rig bundle adjustment on the (optional) output
+reconstruction with configured rigs and frames:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap bundle_adjuster \
+    --input_path $DATASET_PATH/sparse-model-with-rigs-and-frames \
+    --output_path $DATASET_PATH/bundled-sparse-model-with-rigs-and-frames
+</pre></div>
+</div>
+<p>or alternatively start the reconstruction process from scratch with rig
+constraints, which may lead to more accurate reconstruction results:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap mapper
+    --image_path $DATASET_PATH/images \
+    --database_path $DATASET_PATH/database.db \
+    --output_path $DATASET_PATH/sparse-model-with-rigs-and-frames
+</pre></div>
+</div>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>The following example shows an end-to-end example for how to reconstruct one of
+the ETH3D rig datasets using COLMAP’s rig support:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">eth3d</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">terrains_rig_undistorted</span><span class="mf">.7</span><span class="n">z</span>
+<span class="mi">7</span><span class="n">zz</span> <span class="n">x</span> <span class="n">terrains_rig_undistorted</span><span class="mf">.7</span><span class="n">z</span>
+
+<span class="n">colmap</span> <span class="n">feature_extractor</span> \
+    <span class="o">--</span><span class="n">database_path</span> <span class="n">terrains</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">db</span> \
+    <span class="o">--</span><span class="n">image_path</span> <span class="n">terrains</span><span class="o">/</span><span class="n">images</span> \
+    <span class="o">--</span><span class="n">ImageReader</span><span class="o">.</span><span class="n">single_camera_per_folder</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>The ETH3D dataset conveniently comes with a groundtruth COLMAP reconstruction
+that we use to configure the sensor rig poses as well as camera models using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="n">rig_configurator</span> \
+    <span class="o">--</span><span class="n">database_path</span> <span class="n">terrains</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">db</span> \
+    <span class="o">--</span><span class="n">rig_config_path</span> <span class="n">terrains</span><span class="o">/</span><span class="n">rig_config</span><span class="o">.</span><span class="n">json</span> \
+    <span class="o">--</span><span class="n">input_path</span> <span class="n">terrains</span><span class="o">/</span><span class="n">rig_calibration_undistorted</span>
+</pre></div>
+</div>
+<p>with the <code class="docutils literal notranslate"><span class="pre">rig_config.json</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;cameras&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;image_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;images_rig_cam4_undistorted/&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ref_sensor&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;image_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;images_rig_cam5_undistorted/&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;image_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;images_rig_cam6_undistorted/&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;image_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;images_rig_cam7_undistorted/&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Notice that we do not specify the sensor poses, because we used an existing
+reconstruction (in this case, the groundtruth but it can also be a
+reconstruction without rig constraints, as explained in the previous section) to
+automatically infer the average rig extrinsics and camera parameters.</p>
+<p>Next, we sequentially match the frames, since they were captured as a video:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="n">sequential_matcher</span> <span class="o">--</span><span class="n">database_path</span> <span class="n">terrains</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">db</span>
+</pre></div>
+</div>
+<p>Finally, we reconstruct the scene using the mapper while keeping the groundtruth
+sensor rig poses and camera parameters fixed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="n">terrains</span><span class="o">/</span><span class="n">sparse</span>
+<span class="n">colmap</span> <span class="n">mapper</span> \
+    <span class="o">--</span><span class="n">database_path</span> <span class="n">terrains</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">db</span> \
+    <span class="o">--</span><span class="n">Mapper</span><span class="o">.</span><span class="n">ba_refine_sensor_from_rig</span> <span class="mi">0</span> \
+    <span class="o">--</span><span class="n">Mapper</span><span class="o">.</span><span class="n">ba_refine_focal_length</span> <span class="mi">0</span> \
+    <span class="o">--</span><span class="n">Mapper</span><span class="o">.</span><span class="n">ba_refine_extra_params</span> <span class="mi">0</span> \
+    <span class="o">--</span><span class="n">image_path</span> <span class="n">terrains</span><span class="o">/</span><span class="n">images</span> \
+    <span class="o">--</span><span class="n">output_path</span> <span class="n">terrains</span><span class="o">/</span><span class="n">sparse</span>
+</pre></div>
+</div>
+</section>
+<section id="reconstruction-from-360-spherical-images">
+<h2>Reconstruction from 360° spherical images<a class="headerlink" href="#reconstruction-from-360-spherical-images" title="Link to this heading"></a></h2>
+<p>COLMAP can handle collections of 360° panoramas by rendering virtual pinhole
+images (similar to a cubemap) and treating them as a camera rig. Since the rig
+extrinsics and camera intrinsics are known, the reconstruction process is more
+robust. We provide an example Python script to reconstruct a 360° collection:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">python</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">panorama_sfm</span><span class="o">.</span><span class="n">py</span> \
+    <span class="o">--</span><span class="n">input_image_path</span> <span class="n">image_directory</span> \
+    <span class="o">--</span><span class="n">output_path</span> <span class="n">output_directory</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cameras.html" class="btn btn-neutral float-left" title="Camera Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="format.html" class="btn btn-neutral float-right" title="Output Format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Johannes L. Schoenberger.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

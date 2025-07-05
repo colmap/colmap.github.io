@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tutorial &mdash; COLMAP 3.12.0.dev | 1571fe00 (2025-06-25) documentation</title>
+  <title>Tutorial &mdash; COLMAP 3.13.0.dev0 | a5332f46 (2025-07-05) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=5c1fd480"></script>
+        <script src="_static/documentation_options.js?v=253baf99"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -38,7 +38,7 @@
             COLMAP
           </a>
               <div class="version">
-                3.12.0.dev | 1571fe00 (2025-06-25)
+                3.13.0.dev0 | a5332f46 (2025-07-05)
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -255,7 +255,7 @@ reconstruction, the relative folder structure should be preserved. COLMAP does
 not modify the input images or directory and all extracted data is stored in a
 single, self-contained SQLite database file (see <a class="reference internal" href="database.html"><span class="doc">Database Format</span></a>).</p>
 <p>The first step is to start the graphical user interface of COLMAP by running the
-pre-built binaries (Windows: <cite>COLMAP.bat</cite>, Mac: <cite>COLMAP.app</cite>) or by executing
+pre-built binaries (Windows: <code class="docutils literal notranslate"><span class="pre">COLMAP.bat</span></code>, Mac: <code class="docutils literal notranslate"><span class="pre">COLMAP.app</span></code>) or by executing
 <code class="docutils literal notranslate"><span class="pre">./src/colmap/exe/colmap</span> <span class="pre">gui</span></code> from the CMake build folder. Next, create a new project
 by choosing <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">New</span> <span class="pre">project</span></code>. In this dialog, you must select where to
 store the database and the folder that contains the input images. For
@@ -264,7 +264,7 @@ choosing <code class="docutils literal notranslate"><span class="pre">File</span
 path information of the database and image folder in addition to any other
 parameter settings. If you decide to move the database or image folder, you must
 change the paths accordingly by creating a new project. Alternatively, the
-resulting <cite>.ini</cite> configuration file can be directly modified in a text editor of
+resulting <code class="docutils literal notranslate"><span class="pre">.ini</span></code> configuration file can be directly modified in a text editor of
 your choice. To reopen an existing project, you can simply open the
 configuration file by choosing <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Open</span> <span class="pre">project</span></code> and all parameter
 settings should be recovered. Note that all COLMAP executables can be started
@@ -282,9 +282,9 @@ arguments or by providing the path to the project configuration file (see
 +── project.ini
 </pre></div>
 </div>
-<p>In this example, you would select <cite>/path/to/project/images</cite> as the image folder
-path, <cite>/path/to/project/database.db</cite> as the database file path, and save the
-project configuration to <cite>/path/to/project/project.ini</cite>.</p>
+<p>In this example, you would select <code class="docutils literal notranslate"><span class="pre">/path/to/project/images</span></code> as the image folder
+path, <code class="docutils literal notranslate"><span class="pre">/path/to/project/database.db</span></code> as the database file path, and save the
+project configuration to <code class="docutils literal notranslate"><span class="pre">/path/to/project/project.ini</span></code>.</p>
 </section>
 <section id="feature-detection-and-extraction">
 <h2>Feature Detection and Extraction<a class="headerlink" href="#feature-detection-and-extraction" title="Link to this heading"></a></h2>
@@ -312,15 +312,15 @@ while the CPU version is recommended for use on a server. In general, the GPU
 version is favorable as it has a customized feature detection mode that often
 produces higher quality features in the case of high contrast images. If you
 import existing features, every image must have a text file next to it (e.g.,
-<cite>/path/to/image1.jpg</cite> and <cite>/path/to/image1.jpg.txt</cite>) in the following format:</p>
+<code class="docutils literal notranslate"><span class="pre">/path/to/image1.jpg</span></code> and <code class="docutils literal notranslate"><span class="pre">/path/to/image1.jpg.txt</span></code>) in the following format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NUM_FEATURES</span> <span class="mi">128</span>
 <span class="n">X</span> <span class="n">Y</span> <span class="n">SCALE</span> <span class="n">ORIENTATION</span> <span class="n">D_1</span> <span class="n">D_2</span> <span class="n">D_3</span> <span class="o">...</span> <span class="n">D_128</span>
 <span class="o">...</span>
 <span class="n">X</span> <span class="n">Y</span> <span class="n">SCALE</span> <span class="n">ORIENTATION</span> <span class="n">D_1</span> <span class="n">D_2</span> <span class="n">D_3</span> <span class="o">...</span> <span class="n">D_128</span>
 </pre></div>
 </div>
-<p>where <cite>X, Y, SCALE, ORIENTATION</cite> are floating point numbers and <cite>D_1…D_128</cite>
-values in the range <cite>0…255</cite>. The file should have <cite>NUM_FEATURES</cite> lines with
+<p>where <code class="docutils literal notranslate"><span class="pre">X,</span> <span class="pre">Y,</span> <span class="pre">SCALE,</span> <span class="pre">ORIENTATION</span></code> are floating point numbers and <code class="docutils literal notranslate"><span class="pre">D_1...D_128</span></code>
+values in the range <code class="docutils literal notranslate"><span class="pre">0...255</span></code>. The file should have <code class="docutils literal notranslate"><span class="pre">NUM_FEATURES</span></code> lines with
 one line per feature. For example, if an image has 4 features, then the text
 file should look something like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="mi">128</span>
@@ -330,8 +330,8 @@ file should look something like this:</p>
 <span class="mf">1.2</span> <span class="mf">2.3</span> <span class="mf">1.1</span> <span class="mf">0.3</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">2</span> <span class="o">...</span> <span class="mi">3</span>
 </pre></div>
 </div>
-<p>Note that by convention the upper left corner of an image has coordinate <cite>(0,
-0)</cite> and the center of the upper left most pixel has coordinate <cite>(0.5, 0.5)</cite>. If
+<p>Note that by convention the upper left corner of an image has coordinate <code class="docutils literal notranslate"><span class="pre">(0,</span>
+<span class="pre">0)</span></code> and the center of the upper left most pixel has coordinate <code class="docutils literal notranslate"><span class="pre">(0.5,</span> <span class="pre">0.5)</span></code>. If
 you must  import features for large image collections, it is much more efficient
 to directly access the database with your favorite scripting language (see
 <a class="reference internal" href="database.html#database-format"><span class="std std-ref">Database Format</span></a>).</p>
@@ -362,10 +362,10 @@ sequential order, e.g., by a video camera. In this case, consecutive frames
 have visual overlap and there is no need to match all image pairs
 exhaustively. Instead, consecutively captured images are matched against each
 other. This matching mode has built-in loop detection based on a vocabulary
-tree, where every N-th image (<cite>loop_detection_period</cite>) is matched against its
-visually most similar images (<cite>loop_detection_num_images</cite>). Note that image
-file names must be ordered sequentially (e.g., <cite>image0001.jpg</cite>,
-<cite>image0002.jpg</cite>, etc.). The order in the database is not relevant, since the
+tree, where every N-th image (<code class="docutils literal notranslate"><span class="pre">loop_detection_period</span></code>) is matched against its
+visually most similar images (<code class="docutils literal notranslate"><span class="pre">loop_detection_num_images</span></code>). Note that image
+file names must be ordered sequentially (e.g., <code class="docutils literal notranslate"><span class="pre">image0001.jpg</span></code>,
+<code class="docutils literal notranslate"><span class="pre">image0002.jpg</span></code>, etc.). The order in the database is not relevant, since the
 images are explicitly ordered according to their file names. Note that loop
 detection requires a pre-trained vocabulary tree. A default tree will be
 automatically downloaded and cached. More trees are available and can be
@@ -394,7 +394,7 @@ have to provide a text file with one image pair per line:</p>
 <span class="o">...</span>
 </pre></div>
 </div>
-<p>where <cite>image1.jpg</cite> is the relative path in the image folder. You have two
+<p>where <code class="docutils literal notranslate"><span class="pre">image1.jpg</span></code> is the relative path in the image folder. You have two
 options to import individual feature matches. Either raw feature matches,
 which are not geometrically verified or already geometrically verified feature
 matches. In both cases, the expected format is:</p>
@@ -412,7 +412,7 @@ matches. In both cases, the expected format is:</p>
 <span class="o">...</span>
 </pre></div>
 </div>
-<p>where <cite>image1.jpg</cite> is the relative path in the image folder and the pairs of
+<p>where <code class="docutils literal notranslate"><span class="pre">image1.jpg</span></code> is the relative path in the image folder and the pairs of
 numbers are zero-based feature indices in the respective images. If you must
 import many matches for large image collections, it is more efficient to
 directly access the database with a scripting language of your choice.</p>
@@ -435,7 +435,7 @@ reviewed/managed in the database management tool (see <a class="reference intern
 <p>Note that feature matching requires a GPU and that the display performance of
 your computer might degrade significantly during the matching process. If your
 system has multiple CUDA-enabled GPUs, you can select specific GPUs with the
-<cite>gpu_index</cite> option.</p>
+<code class="docutils literal notranslate"><span class="pre">gpu_index</span></code> option.</p>
 </section>
 <section id="sparse-reconstruction">
 <h2>Sparse Reconstruction<a class="headerlink" href="#sparse-reconstruction" title="Link to this heading"></a></h2>
@@ -511,9 +511,9 @@ perform the dense reconstruction. To run PMVS2, execute the following commands:<
 <blockquote>
 <div><p>./path/to/pmvs2 /path/to/undistortion/folder/pmvs/ option-all</p>
 </div></blockquote>
-<p>where <cite>/path/to/undistortion/folder</cite> is the folder selected in the undistortion
+<p>where <code class="docutils literal notranslate"><span class="pre">/path/to/undistortion/folder</span></code> is the folder selected in the undistortion
 dialog. Make sure not to forget the trailing slash in
-<cite>/path/to/undistortion/folder/pmvs/</cite> in the above command-line arguments.</p>
+<code class="docutils literal notranslate"><span class="pre">/path/to/undistortion/folder/pmvs/</span></code> in the above command-line arguments.</p>
 <p>For large datasets, you probably want to first run CMVS to cluster the scene
 into more manageable parts and then run COLMAP or PMVS2. Please, refer to the
 sample shell scripts in the undistortion output folder on how to run CMVS in
@@ -535,14 +535,14 @@ view the features and matches for each image by clicking <code class="docutils l
 modified by double clicking specific cells. Note that any changes to the
 database are only effective after clicking <code class="docutils literal notranslate"><span class="pre">Save</span></code>.</p>
 <p>To share intrinsic camera parameters between arbitrary groups of images, select
-a single or multiple images, choose <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">camera</span></code> and set the <cite>camera_id</cite>,
-which corresponds to the unique <cite>camera_id</cite> column in the cameras table. You can
+a single or multiple images, choose <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">camera</span></code> and set the <code class="docutils literal notranslate"><span class="pre">camera_id</span></code>,
+which corresponds to the unique <code class="docutils literal notranslate"><span class="pre">camera_id</span></code> column in the cameras table. You can
 also add new cameras with specific parameters. By setting the
-<cite>prior_focal_length</cite> flag to 0 or 1, you can give a hint whether the
+<code class="docutils literal notranslate"><span class="pre">prior_focal_length</span></code> flag to 0 or 1, you can give a hint whether the
 reconstruction algorithm should trust the focal length value. In case of a prior
 lab calibration, you want to set this value to 1. Without prior knowledge about
-the focal length, it is recommended to set this value to <cite>1.25 *
-max(width_in_px, height_in_px)</cite>.</p>
+the focal length, it is recommended to set this value to <code class="docutils literal notranslate"><span class="pre">1.25</span> <span class="pre">*</span>
+<span class="pre">max(width_in_px,</span> <span class="pre">height_in_px)</span></code>.</p>
 <p>The database management tool has only limited functionality and, for full
 control over the data, you must directly modify the SQLite database (see
 <a class="reference internal" href="database.html#database-format"><span class="std std-ref">Database Format</span></a>). By accessing the database directly,
@@ -555,7 +555,7 @@ algorithm.</p>
 <p>Most of COLMAP’s features are accessible from both the graphical and the
 command-line interface, which are both embedded in the same executable. You can
 provide the options directly as command-line arguments or you can provide a
-<cite>.ini</cite> project configuration file containing the options using the
+<code class="docutils literal notranslate"><span class="pre">.ini</span></code> project configuration file containing the options using the
 <code class="docutils literal notranslate"><span class="pre">--project_path</span> <span class="pre">path/to/project.ini</span></code> argument. To start the GUI application,
 please execute <code class="docutils literal notranslate"><span class="pre">colmap</span> <span class="pre">gui</span></code> or directly specify a project configuration as
 <code class="docutils literal notranslate"><span class="pre">colmap</span> <span class="pre">gui</span> <span class="pre">--project_path</span> <span class="pre">path/to/project.ini</span></code> to avoid tedious selection in
