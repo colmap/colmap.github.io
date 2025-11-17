@@ -4,8 +4,8 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Command-line Interface &mdash; COLMAP 3.13.0.dev0 | a5332f46 (2025-07-05) documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+  <title>Command-line Interface &mdash; COLMAP 3.14.0.dev0 | 5b9a079a (2025-11-14) documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
 
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=253baf99"></script>
+        <script src="_static/documentation_options.js?v=346d576f"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -38,7 +38,7 @@
             COLMAP
           </a>
               <div class="version">
-                3.13.0.dev0 | a5332f46 (2025-07-05)
+                3.14.0.dev0 | 5b9a079a (2025-11-14)
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -180,7 +180,7 @@ $ colmap delaunay_mesher \
 cluster or cloud service), COLMAP automatically switches to use CUDA if
 supported by your system. If no CUDA enabled device is available, you can
 manually select to use CPU-based feature extraction and matching by setting the
-<code class="docutils literal notranslate"><span class="pre">--SiftExtraction.use_gpu</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">--SiftMatching.use_gpu</span> <span class="pre">0</span></code> options.</p>
+<code class="docutils literal notranslate"><span class="pre">--FeatureExtraction.use_gpu</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">--FeatureMatching.use_gpu</span> <span class="pre">0</span></code> options.</p>
 </section>
 <section id="help">
 <h2>Help<a class="headerlink" href="#help" title="Link to this heading"></a></h2>
@@ -242,7 +242,6 @@ manually select to use CPU-based feature extraction and matching by setting the
       poisson_mesher
       project_generator
       rig_configurator
-      rig_bundle_adjuster
       sequential_matcher
       spatial_matcher
       stereo_fusion
@@ -259,32 +258,44 @@ the available options, e.g.:</p>
     Options can either be specified via command-line or by defining
     them in a .ini project file passed to ``--project_path``.
 
-      -h [ --help ]
-      --project_path arg
-      --database_path arg
-      --image_path arg
-      --image_list_path arg
-      --ImageReader.camera_model arg (=SIMPLE_RADIAL)
-      --ImageReader.single_camera arg (=0)
-      --ImageReader.camera_params arg
-      --ImageReader.default_focal_length_factor arg (=1.2)
-      --SiftExtraction.num_threads arg (=-1)
-      --SiftExtraction.use_gpu arg (=1)
-      --SiftExtraction.gpu_index arg (=-1)
-      --SiftExtraction.max_image_size arg (=3200)
-      --SiftExtraction.max_num_features arg (=8192)
-      --SiftExtraction.first_octave arg (=-1)
-      --SiftExtraction.num_octaves arg (=4)
-      --SiftExtraction.octave_resolution arg (=3)
-      --SiftExtraction.peak_threshold arg (=0.0066666666666666671)
-      --SiftExtraction.edge_threshold arg (=10)
-      --SiftExtraction.estimate_affine_shape arg (=0)
-      --SiftExtraction.max_num_orientations arg (=2)
-      --SiftExtraction.upright arg (=0)
-      --SiftExtraction.domain_size_pooling arg (=0)
-      --SiftExtraction.dsp_min_scale arg (=0.16666666666666666)
-      --SiftExtraction.dsp_max_scale arg (=3)
-      --SiftExtraction.dsp_num_scales arg (=10)
+        -h [ --help ]
+        --default_random_seed arg (=0)
+        --log_to_stderr arg (=1)
+        --log_level arg (=0)
+        --project_path arg
+        --database_path arg
+        --image_path arg
+        --camera_mode arg (=-1)
+        --image_list_path arg
+        --descriptor_normalization arg (=l1_root)
+                                              {&#39;l1_root&#39;, &#39;l2&#39;}
+        --ImageReader.mask_path arg
+        --ImageReader.camera_model arg (=SIMPLE_RADIAL)
+        --ImageReader.single_camera arg (=0)
+        --ImageReader.single_camera_per_folder arg (=0)
+        --ImageReader.single_camera_per_image arg (=0)
+        --ImageReader.existing_camera_id arg (=-1)
+        --ImageReader.camera_params arg
+        --ImageReader.default_focal_length_factor arg (=1.2)
+        --ImageReader.camera_mask_path arg
+        --FeatureExtraction.type arg (=SIFT)
+        --FeatureExtraction.max_image_size arg (=3200)
+        --FeatureExtraction.num_threads arg (=-1)
+        --FeatureExtraction.use_gpu arg (=1)
+        --FeatureExtraction.gpu_index arg (=-1)
+        --SiftExtraction.max_num_features arg (=8192)
+        --SiftExtraction.first_octave arg (=-1)
+        --SiftExtraction.num_octaves arg (=4)
+        --SiftExtraction.octave_resolution arg (=3)
+        --SiftExtraction.peak_threshold arg (=0.0066666666666666671)
+        --SiftExtraction.edge_threshold arg (=10)
+        --SiftExtraction.estimate_affine_shape arg (=0)
+        --SiftExtraction.max_num_orientations arg (=2)
+        --SiftExtraction.upright arg (=0)
+        --SiftExtraction.domain_size_pooling arg (=0)
+        --SiftExtraction.dsp_min_scale arg (=0.16666666666666666)
+        --SiftExtraction.dsp_max_scale arg (=3)
+        --SiftExtraction.dsp_num_scales arg (=10)
 </pre></div>
 </div>
 <p>The available options can either be provided directly from the command-line or
