@@ -900,7 +900,7 @@
   // Within an interpolation, evaluation, or escaping, remove HTML escaping
   // that had been previously added.
   var unescape = function(code) {
-    return code.replace(/\\\\/g, '\\').replace(/\\'/g, "'");
+    return code.replace(/\\'/g, "'").replace(/\\\\/g, '\\');
   };
 
   // JavaScript micro-templating, similar to John Resig's implementation.
