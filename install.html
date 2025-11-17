@@ -4,8 +4,8 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; COLMAP 3.13.0.dev0 | a5332f46 (2025-07-05) documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+  <title>Installation &mdash; COLMAP 3.14.0.dev0 | 5b9a079a (2025-11-14) documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
 
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=253baf99"></script>
+        <script src="_static/documentation_options.js?v=346d576f"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -38,7 +38,7 @@
             COLMAP
           </a>
               <div class="version">
-                3.13.0.dev0 | a5332f46 (2025-07-05)
+                3.14.0.dev0 | 5b9a079a (2025-11-14)
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -60,6 +60,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#mac">Mac</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">Windows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vcpkg">VCPKG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anaconda">Anaconda</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#library">Library</a></li>
@@ -182,12 +183,18 @@ Windows, compute clusters, or if you do not have root access under Linux or Mac.
     <span class="n">libgmock</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libsqlite3</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libglew</span><span class="o">-</span><span class="n">dev</span> \
-    <span class="n">qtbase5</span><span class="o">-</span><span class="n">dev</span> \
-    <span class="n">libqt5opengl5</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">qt6</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libqt6opengl6</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libqt6openglwidgets6</span> \
     <span class="n">libcgal</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libceres</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libcurl4</span><span class="o">-</span><span class="n">openssl</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libssl</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libmkl</span><span class="o">-</span><span class="n">full</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>Alternatively, you can also build against Qt 5 instead of Qt 6 using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qtbase5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libqt5opengl5</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
 <p>To compile with <strong>CUDA support</strong>, also install Ubuntu’s default CUDA package:</p>
@@ -213,11 +220,6 @@ distribute to other machines, or a specific CUDA architecture like “75”, etc
 <p>Run COLMAP:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="o">-</span><span class="n">h</span>
 <span class="n">colmap</span> <span class="n">gui</span>
-</pre></div>
-</div>
-<p>Under <strong>Ubuntu 18.04</strong>, the CMake configuration scripts of CGAL are broken and
-you must also install the CGAL Qt5 package:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libcgal</span><span class="o">-</span><span class="n">qt5</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
 <p>Under <strong>Ubuntu 22.04</strong>, there is a problem when compiling with Ubuntu’s default
@@ -249,7 +251,7 @@ of <a class="reference external" href="https://github.com/facebookresearch/faiss
     <span class="n">glog</span> \
     <span class="n">googletest</span> \
     <span class="n">ceres</span><span class="o">-</span><span class="n">solver</span> \
-    <span class="n">qt5</span> \
+    <span class="n">qt</span> \
     <span class="n">glew</span> \
     <span class="n">cgal</span> \
     <span class="n">sqlite3</span>
@@ -261,18 +263,15 @@ of <a class="reference external" href="https://github.com/facebookresearch/faiss
 <span class="n">cd</span> <span class="n">colmap</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">..</span> \
-    <span class="o">-</span><span class="n">GNinja</span> \
-    <span class="o">-</span><span class="n">DQt5_DIR</span><span class="o">=</span><span class="s2">&quot;$(brew --prefix qt@5)/lib/cmake/Qt5&quot;</span>
+<span class="n">cmake</span> <span class="o">-</span><span class="n">GNinja</span>
 <span class="n">ninja</span>
 <span class="n">sudo</span> <span class="n">ninja</span> <span class="n">install</span>
 </pre></div>
 </div>
-<p>If you have Qt 6 installed on your system as well, you might have to temporarily
+<p>If you have Qt 5 installed on your system as well, you might have to temporarily
 link your Qt 5 installation while configuring CMake:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">link</span> <span class="n">qt5</span>
-<span class="n">cmake</span> <span class="o">...</span> <span class="p">(</span><span class="kn">from</span> <span class="nn">previous</span> <span class="n">code</span> <span class="n">block</span><span class="p">)</span>
-<span class="n">brew</span> <span class="n">unlink</span> <span class="n">qt5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">unlink</span> <span class="n">qt</span> <span class="o">&amp;&amp;</span> <span class="n">brew</span> <span class="n">link</span> <span class="o">--</span><span class="n">force</span> <span class="n">qt</span>
+<span class="n">cmake</span> <span class="o">...</span>
 </pre></div>
 </div>
 <p>Run COLMAP:</p>
@@ -331,6 +330,44 @@ vcpkg, first run <code class="docutils literal notranslate"><span class="pre">./
 </pre></div>
 </div>
 </section>
+<section id="anaconda">
+<h3>Anaconda<a class="headerlink" href="#anaconda" title="Link to this heading"></a></h3>
+<p>Install miniconda and run the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">colmap</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.12</span>
+<span class="n">conda</span> <span class="n">config</span> <span class="o">--</span><span class="n">add</span> <span class="n">channels</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="n">conda</span> <span class="n">config</span> <span class="o">--</span><span class="nb">set</span> <span class="n">channel_priority</span> <span class="n">strict</span>
+<span class="n">conda</span> <span class="n">install</span> \
+    <span class="n">cmake</span> \
+    <span class="n">ninja</span> \
+    <span class="n">boost</span> \
+    <span class="n">ccache</span> \
+    <span class="n">eigen</span> \
+    <span class="n">freeimage</span> \
+    <span class="n">curl</span> \
+    <span class="n">metis</span> \
+    <span class="n">glog</span> \
+    <span class="n">gtest</span> \
+    <span class="n">ceres</span><span class="o">-</span><span class="n">solver</span> \
+    <span class="n">qt</span> \
+    <span class="n">glew</span> \
+    <span class="n">sqlite</span> \
+    <span class="n">glew</span> \
+    <span class="n">cgal</span><span class="o">-</span><span class="n">cpp</span> \
+    <span class="n">mesa</span><span class="o">-</span><span class="n">libgl</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="n">cos7</span><span class="o">-</span><span class="n">x86_64</span> \
+    <span class="n">cuda</span><span class="o">-</span><span class="n">compiler</span><span class="o">==</span><span class="mf">12.6.2</span> \
+    <span class="n">cuda</span><span class="o">-</span><span class="n">cudart</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">cuda</span><span class="o">-</span><span class="n">nvrtc</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libcurand</span><span class="o">-</span><span class="n">dev</span>
+
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">colmap</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">colmap</span>
+<span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">GNinja</span>
+<span class="n">ninja</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="library">
 <span id="installation-library"></span><h2>Library<a class="headerlink" href="#library" title="Link to this heading"></a></h2>
@@ -354,24 +391,26 @@ using the following <code class="docutils literal notranslate"><span class="pre"
 </pre></div>
 </div>
 <p>with the source code <code class="docutils literal notranslate"><span class="pre">hello_world.cc</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;cstdlib&gt;</span>
-<span class="c1">#include &lt;iostream&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#include &lt;cstdlib&gt;
+#include &lt;iostream&gt;
 
-<span class="c1">#include &lt;colmap/controllers/option_manager.h&gt;</span>
-<span class="c1">#include &lt;colmap/util/string.h&gt;</span>
+#include &lt;colmap/controllers/option_manager.h&gt;
+#include &lt;colmap/util/string.h&gt;
 
-<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">colmap</span><span class="p">::</span><span class="n">InitializeGlog</span><span class="p">(</span><span class="n">argv</span><span class="p">);</span>
+int main(int argc, char** argv) {
+    colmap::InitializeGlog(argv);
 
-    <span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">message</span><span class="p">;</span>
-    <span class="n">colmap</span><span class="p">::</span><span class="n">OptionManager</span> <span class="n">options</span><span class="p">;</span>
-    <span class="n">options</span><span class="o">.</span><span class="n">AddRequiredOption</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">message</span><span class="p">);</span>
-    <span class="n">options</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+    std::string message;
+    colmap::OptionManager options;
+    options.AddRequiredOption(&quot;message&quot;, &amp;message);
+    if (!options.Parse(argc, argv)) {
+        return EXIT_FAILURE;
+    }
 
-    <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">colmap</span><span class="p">::</span><span class="n">StringPrintf</span><span class="p">(</span><span class="s2">&quot;Hello </span><span class="si">%s</span><span class="s2">!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">c_str</span><span class="p">());</span>
+    std::cout &lt;&lt; colmap::StringPrintf(&quot;Hello %s!\n&quot;, message.c_str());
 
-    <span class="k">return</span> <span class="n">EXIT_SUCCESS</span><span class="p">;</span>
-<span class="p">}</span>
+    return EXIT_SUCCESS;
+}
 </pre></div>
 </div>
 <p>Then compile and run your code as:</p>

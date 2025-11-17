@@ -4,8 +4,8 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rig Support &mdash; COLMAP 3.13.0.dev0 | a5332f46 (2025-07-05) documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+  <title>Rig Support &mdash; COLMAP 3.14.0.dev0 | 5b9a079a (2025-11-14) documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
 
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=253baf99"></script>
+        <script src="_static/documentation_options.js?v=346d576f"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -38,7 +38,7 @@
             COLMAP
           </a>
               <div class="version">
-                3.13.0.dev0 | a5332f46 (2025-07-05)
+                3.14.0.dev0 | 5b9a079a (2025-11-14)
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -295,6 +295,10 @@ automatically infer the average rig extrinsics and camera parameters.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="n">sequential_matcher</span> <span class="o">--</span><span class="n">database_path</span> <span class="n">terrains</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">db</span>
 </pre></div>
 </div>
+<p>Depending on the accuracy of the provided sensor_from_rig poses, you can optionally
+enable the option <cite>–FeatureMatching.rig_verification 1</cite> or, if you know that the
+sensors within the same frame do not have visual overlap, you can enable the option
+<cite>–FeatureMatching.skip_image_pairs_in_same_frame 1</cite>.</p>
 <p>Finally, we reconstruct the scene using the mapper while keeping the groundtruth
 sensor rig poses and camera parameters fixed:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="n">terrains</span><span class="o">/</span><span class="n">sparse</span>
@@ -319,6 +323,9 @@ robust. We provide an example Python script to reconstruct a 360° collection:</
     <span class="o">--</span><span class="n">output_path</span> <span class="n">output_directory</span>
 </pre></div>
 </div>
+<p>Make sure to use the version of the script that corresponds to the version of
+COLMAP that you are using, as the script at HEAD is not guaranteed to be
+compatible.</p>
 </section>
 </section>
 
