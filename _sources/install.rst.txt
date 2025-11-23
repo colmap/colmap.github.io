@@ -186,6 +186,8 @@ Run COLMAP::
     colmap gui
 
 
+.. _windows-source:
+
 Windows
 -------
 
