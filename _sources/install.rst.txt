@@ -268,7 +268,8 @@ Install miniconda and run the following commands::
         cuda-compiler==12.6.2 \
         cuda-cudart-dev \
         cuda-nvrtc-dev \
-        libcurand-dev
+        libcurand-dev \
+        openimageio
 
     git clone https://github.com/colmap/colmap.git
     cd colmap
