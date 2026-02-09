@@ -1,24 +1,22 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; COLMAP 3.14.0.dev0 | 5b9a079a (2025-11-14) documentation</title>
+  <title>Installation &mdash; COLMAP 3.14.0.dev0 | 868aff92 (2026-02-09) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6631871d" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=346d576f"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e39e0d78"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -31,15 +29,12 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="index.html" class="icon icon-home">
-            COLMAP
-          </a>
-              <div class="version">
-                3.14.0.dev0 | 5b9a079a (2025-11-14)
-              </div>
+  <a href="index.html" class="icon icon-home">
+    COLMAP
+  </a>
+    <div class="version">
+      3.14.0.dev0 | 868aff92 (2026-02-09)
+    </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -47,6 +42,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
+
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
@@ -176,7 +172,8 @@ Windows, compute clusters, or if you do not have root access under Linux or Mac.
     <span class="n">libboost</span><span class="o">-</span><span class="n">graph</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libboost</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libeigen3</span><span class="o">-</span><span class="n">dev</span> \
-    <span class="n">libfreeimage</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libopenimageio</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">openimageio</span><span class="o">-</span><span class="n">tools</span> \
     <span class="n">libmetis</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libgoogle</span><span class="o">-</span><span class="n">glog</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libgtest</span><span class="o">-</span><span class="n">dev</span> \
@@ -188,9 +185,14 @@ Windows, compute clusters, or if you do not have root access under Linux or Mac.
     <span class="n">libqt6openglwidgets6</span> \
     <span class="n">libcgal</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libceres</span><span class="o">-</span><span class="n">dev</span> \
+    <span class="n">libsuitesparse</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libcurl4</span><span class="o">-</span><span class="n">openssl</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libssl</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libmkl</span><span class="o">-</span><span class="n">full</span><span class="o">-</span><span class="n">dev</span>
+<span class="c1"># Fix issue in Ubuntu&#39;s openimageio CMake config.</span>
+<span class="c1"># We don&#39;t depend on any of openimageio&#39;s OpenCV functionality,</span>
+<span class="c1"># but it still requires the OpenCV include directory to exist.</span>
+<span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">opencv4</span>
 </pre></div>
 </div>
 <p>Alternatively, you can also build against Qt 5 instead of Qt 6 using:</p>
@@ -244,13 +246,14 @@ of <a class="reference external" href="https://github.com/facebookresearch/faiss
     <span class="n">ninja</span> \
     <span class="n">boost</span> \
     <span class="n">eigen</span> \
-    <span class="n">freeimage</span> \
+    <span class="n">openimageio</span> \
     <span class="n">curl</span> \
     <span class="n">libomp</span> \
     <span class="n">metis</span> \
     <span class="n">glog</span> \
     <span class="n">googletest</span> \
     <span class="n">ceres</span><span class="o">-</span><span class="n">solver</span> \
+    <span class="n">suitesparse</span> \
     <span class="n">qt</span> \
     <span class="n">glew</span> \
     <span class="n">cgal</span> \
@@ -263,7 +266,7 @@ of <a class="reference external" href="https://github.com/facebookresearch/faiss
 <span class="n">cd</span> <span class="n">colmap</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">-</span><span class="n">GNinja</span>
+<span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">GNinja</span>
 <span class="n">ninja</span>
 <span class="n">sudo</span> <span class="n">ninja</span> <span class="n">install</span>
 </pre></div>
@@ -348,6 +351,7 @@ vcpkg, first run <code class="docutils literal notranslate"><span class="pre">./
     <span class="n">glog</span> \
     <span class="n">gtest</span> \
     <span class="n">ceres</span><span class="o">-</span><span class="n">solver</span> \
+    <span class="n">suitesparse</span> \
     <span class="n">qt</span> \
     <span class="n">glew</span> \
     <span class="n">sqlite</span> \
@@ -440,12 +444,13 @@ meaningful traces for reported issues.</p>
 </section>
 <section id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
-<p>You need Python and Sphinx to build the HTML documentation:</p>
+<ol class="arabic">
+<li><p>Install latest pycolmap for up-to-date pycolmap API documentation.</p></li>
+<li><p>Build the documentation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">doc</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
 <span class="n">make</span> <span class="n">html</span>
-<span class="nb">open</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="nb">open</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span> <span class="c1"># preview results</span>
 </pre></div>
 </div>
 <p>Alternatively, you can build the documentation as PDF, EPUB, etc.:</p>
@@ -453,6 +458,16 @@ meaningful traces for reported issues.</p>
 <span class="nb">open</span> <span class="n">_build</span><span class="o">/</span><span class="n">pdf</span><span class="o">/</span><span class="n">COLMAP</span><span class="o">.</span><span class="n">pdf</span>
 </pre></div>
 </div>
+</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li><p>Clone the website repository <a class="reference external" href="https://github.com/colmap/colmap.github.io">colmap/colmap.github.io</a>.</p></li>
+<li><p>Copy the contents of the generated files at <code class="docutils literal notranslate"><span class="pre">_build/html</span></code> to the cloned respository root.</p></li>
+<li><p>Create a pull request to the <a class="reference external" href="https://github.com/colmap/colmap.github.io">colmap/colmap.github.io</a>
+repository with the updated files.</p></li>
+<li><p>(Optional, if main release) Copy the previous release as legacy to the “legacy” folder,
+under a folder with the release number <a class="reference external" href="https://github.com/colmap/colmap.github.io/tree/master/legacy">see here</a>.</p></li>
+</ol>
 </section>
 </section>
 

@@ -1,24 +1,22 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>COLMAP &mdash; COLMAP 3.14.0.dev0 | 5b9a079a (2025-11-14) documentation</title>
+  <title>COLMAP &mdash; COLMAP 3.14.0.dev0 | 868aff92 (2026-02-09) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4eec7147" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6631871d" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=346d576f"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e39e0d78"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -30,15 +28,12 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="#" class="icon icon-home">
-            COLMAP
-          </a>
-              <div class="version">
-                3.14.0.dev0 | 5b9a079a (2025-11-14)
-              </div>
+  <a href="#" class="icon icon-home">
+    COLMAP
+  </a>
+    <div class="version">
+      3.14.0.dev0 | 868aff92 (2026-02-09)
+    </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -46,6 +41,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
+
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
@@ -111,32 +107,7 @@ pipeline.</span><a class="headerlink" href="#id2" title="Link to this image">
 <p>COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo
 (MVS) pipeline with a graphical and command-line interface. It offers a wide
 range of features for reconstruction of ordered and unordered image collections.
-The software is licensed under the new BSD license. If you use this project for
-your research, please cite:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@inproceedings</span><span class="p">{</span><span class="n">schoenberger2016sfm</span><span class="p">,</span>
-    <span class="n">author</span><span class="o">=</span><span class="p">{</span><span class="n">Sch</span>\<span class="s2">&quot;</span><span class="si">{o}</span><span class="s2">nberger, Johannes Lutz and Frahm, Jan-Michael},</span>
-    <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">Structure</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">Motion</span> <span class="n">Revisited</span><span class="p">},</span>
-    <span class="n">booktitle</span><span class="o">=</span><span class="p">{</span><span class="n">Conference</span> <span class="n">on</span> <span class="n">Computer</span> <span class="n">Vision</span> <span class="ow">and</span> <span class="n">Pattern</span> <span class="n">Recognition</span> <span class="p">(</span><span class="n">CVPR</span><span class="p">)},</span>
-    <span class="n">year</span><span class="o">=</span><span class="p">{</span><span class="mi">2016</span><span class="p">},</span>
-<span class="p">}</span>
-
-<span class="nd">@inproceedings</span><span class="p">{</span><span class="n">schoenberger2016mvs</span><span class="p">,</span>
-    <span class="n">author</span><span class="o">=</span><span class="p">{</span><span class="n">Sch</span>\<span class="s2">&quot;</span><span class="si">{o}</span><span class="s2">nberger, Johannes Lutz and Zheng, Enliang and Pollefeys, Marc and Frahm, Jan-Michael},</span>
-    <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">Pixelwise</span> <span class="n">View</span> <span class="n">Selection</span> <span class="k">for</span> <span class="n">Unstructured</span> <span class="n">Multi</span><span class="o">-</span><span class="n">View</span> <span class="n">Stereo</span><span class="p">},</span>
-    <span class="n">booktitle</span><span class="o">=</span><span class="p">{</span><span class="n">European</span> <span class="n">Conference</span> <span class="n">on</span> <span class="n">Computer</span> <span class="n">Vision</span> <span class="p">(</span><span class="n">ECCV</span><span class="p">)},</span>
-    <span class="n">year</span><span class="o">=</span><span class="p">{</span><span class="mi">2016</span><span class="p">},</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>If you use the image retrieval / vocabulary tree engine, please also cite:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@inproceedings</span><span class="p">{</span><span class="n">schoenberger2016vote</span><span class="p">,</span>
-    <span class="n">author</span><span class="o">=</span><span class="p">{</span><span class="n">Sch</span>\<span class="s2">&quot;</span><span class="si">{o}</span><span class="s2">nberger, Johannes Lutz and Price, True and Sattler, Torsten and Frahm, Jan-Michael and Pollefeys, Marc},</span>
-    <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">A</span> <span class="n">Vote</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">Verify</span> <span class="n">Strategy</span> <span class="k">for</span> <span class="n">Fast</span> <span class="n">Spatial</span> <span class="n">Verification</span> <span class="ow">in</span> <span class="n">Image</span> <span class="n">Retrieval</span><span class="p">},</span>
-    <span class="n">booktitle</span><span class="o">=</span><span class="p">{</span><span class="n">Asian</span> <span class="n">Conference</span> <span class="n">on</span> <span class="n">Computer</span> <span class="n">Vision</span> <span class="p">(</span><span class="n">ACCV</span><span class="p">)},</span>
-    <span class="n">year</span><span class="o">=</span><span class="p">{</span><span class="mi">2016</span><span class="p">},</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+The software is licensed under the new BSD license.</p>
 <p>The latest source code is available at <a class="reference external" href="https://github.com/colmap/colmap">GitHub</a>. COLMAP builds on top of existing works and
 when using specific algorithms within COLMAP, please also cite the original
 authors, as specified in the source code.</p>
@@ -162,6 +133,43 @@ with a single click (see <a class="reference internal" href="tutorial.html#quick
 <p>Please, use <a class="reference external" href="https://github.com/colmap/colmap/discussions">GitHub Discussions</a>
 for questions and the <a class="reference external" href="https://github.com/colmap/colmap">GitHub issue tracker</a>
 for bug reports, feature requests/additions, etc.</p>
+</section>
+<section id="citation">
+<h2>Citation<a class="headerlink" href="#citation" title="Link to this heading"></a></h2>
+<p>If you use this project for your research, please cite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@inproceedings</span><span class="p">{</span><span class="n">schoenberger2016sfm</span><span class="p">,</span>
+    <span class="n">author</span><span class="o">=</span><span class="p">{</span><span class="n">Sch</span>\<span class="s2">&quot;</span><span class="si">{o}</span><span class="s2">nberger, Johannes Lutz and Frahm, Jan-Michael},</span>
+    <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">Structure</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">Motion</span> <span class="n">Revisited</span><span class="p">},</span>
+    <span class="n">booktitle</span><span class="o">=</span><span class="p">{</span><span class="n">Conference</span> <span class="n">on</span> <span class="n">Computer</span> <span class="n">Vision</span> <span class="ow">and</span> <span class="n">Pattern</span> <span class="n">Recognition</span> <span class="p">(</span><span class="n">CVPR</span><span class="p">)},</span>
+    <span class="n">year</span><span class="o">=</span><span class="p">{</span><span class="mi">2016</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="nd">@inproceedings</span><span class="p">{</span><span class="n">schoenberger2016mvs</span><span class="p">,</span>
+    <span class="n">author</span><span class="o">=</span><span class="p">{</span><span class="n">Sch</span>\<span class="s2">&quot;</span><span class="si">{o}</span><span class="s2">nberger, Johannes Lutz and Zheng, Enliang and Pollefeys, Marc and Frahm, Jan-Michael},</span>
+    <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">Pixelwise</span> <span class="n">View</span> <span class="n">Selection</span> <span class="k">for</span> <span class="n">Unstructured</span> <span class="n">Multi</span><span class="o">-</span><span class="n">View</span> <span class="n">Stereo</span><span class="p">},</span>
+    <span class="n">booktitle</span><span class="o">=</span><span class="p">{</span><span class="n">European</span> <span class="n">Conference</span> <span class="n">on</span> <span class="n">Computer</span> <span class="n">Vision</span> <span class="p">(</span><span class="n">ECCV</span><span class="p">)},</span>
+    <span class="n">year</span><span class="o">=</span><span class="p">{</span><span class="mi">2016</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you use the global SfM pipeline (GLOMAP), please cite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@inproceedings</span><span class="p">{</span><span class="n">pan2024glomap</span><span class="p">,</span>
+    <span class="n">author</span><span class="o">=</span><span class="p">{</span><span class="n">Pan</span><span class="p">,</span> <span class="n">Linfei</span> <span class="ow">and</span> <span class="n">Barath</span><span class="p">,</span> <span class="n">Daniel</span> <span class="ow">and</span> <span class="n">Pollefeys</span><span class="p">,</span> <span class="n">Marc</span> <span class="ow">and</span> <span class="n">Sch</span>\<span class="s2">&quot;</span><span class="si">{o}</span><span class="s2">nberger, Johannes Lutz},</span>
+    <span class="n">title</span><span class="o">=</span><span class="p">{{</span><span class="n">Global</span> <span class="n">Structure</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">Motion</span> <span class="n">Revisited</span><span class="p">}},</span>
+    <span class="n">booktitle</span><span class="o">=</span><span class="p">{</span><span class="n">European</span> <span class="n">Conference</span> <span class="n">on</span> <span class="n">Computer</span> <span class="n">Vision</span> <span class="p">(</span><span class="n">ECCV</span><span class="p">)},</span>
+    <span class="n">year</span><span class="o">=</span><span class="p">{</span><span class="mi">2024</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you use the image retrieval / vocabulary tree engine, please cite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@inproceedings</span><span class="p">{</span><span class="n">schoenberger2016vote</span><span class="p">,</span>
+    <span class="n">author</span><span class="o">=</span><span class="p">{</span><span class="n">Sch</span>\<span class="s2">&quot;</span><span class="si">{o}</span><span class="s2">nberger, Johannes Lutz and Price, True and Sattler, Torsten and Frahm, Jan-Michael and Pollefeys, Marc},</span>
+    <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">A</span> <span class="n">Vote</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">Verify</span> <span class="n">Strategy</span> <span class="k">for</span> <span class="n">Fast</span> <span class="n">Spatial</span> <span class="n">Verification</span> <span class="ow">in</span> <span class="n">Image</span> <span class="n">Retrieval</span><span class="p">},</span>
+    <span class="n">booktitle</span><span class="o">=</span><span class="p">{</span><span class="n">Asian</span> <span class="n">Conference</span> <span class="n">on</span> <span class="n">Computer</span> <span class="n">Vision</span> <span class="p">(</span><span class="n">ACCV</span><span class="p">)},</span>
+    <span class="n">year</span><span class="o">=</span><span class="p">{</span><span class="mi">2016</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
 <section id="acknowledgments">
 <h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading"></a></h2>
