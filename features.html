@@ -1,0 +1,222 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feature Extraction and Matching &mdash; COLMAP 4.1.0.dev0 | 1b163c47 (2026-03-15) documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6631871d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=3daeb671"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Database Format" href="database.html" />
+    <link rel="prev" title="Key Concepts" href="concepts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="index.html" class="icon icon-home">
+    COLMAP
+  </a>
+    <div class="version">
+      4.1.0.dev0 | 1b163c47 (2026-03-15)
+    </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Feature Extraction and Matching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#feature-extractor-types">Feature Extractor Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-matcher-types">Feature Matcher Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compatible-extractor-and-matcher-types">Compatible Extractor and Matcher Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aliked-model-variants">ALIKED Model Variants</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rigs.html">Rig Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pycolmap/index.html">PyCOLMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legacy.html">Legacy Documentations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">COLMAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Feature Extraction and Matching</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/features.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="feature-extraction-and-matching">
+<span id="features"></span><h1>Feature Extraction and Matching<a class="headerlink" href="#feature-extraction-and-matching" title="Link to this heading"></a></h1>
+<p>COLMAP supports multiple feature extraction and matching algorithms. This page
+describes how to switch between them using the command-line interface or the
+graphical user interface.</p>
+<section id="feature-extractor-types">
+<h2>Feature Extractor Types<a class="headerlink" href="#feature-extractor-types" title="Link to this heading"></a></h2>
+<p>The following feature extractor types are available:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SIFT</span></code>: Scale-Invariant Feature Transform (default). The classic and most
+widely tested feature extractor. Produces 128-dimensional uint8 descriptors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALIKED</span></code>: A Lighter Keypoint and Descriptor Extractor. A learned feature
+extractor that produces floating-point descriptors. Requires ONNX support to
+be enabled at build time (<code class="docutils literal notranslate"><span class="pre">-DONNX_ENABLED=ON</span></code>).</p></li>
+</ul>
+<p>To select a feature extractor type via the command-line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ colmap feature_extractor \
+    --database_path $DATASET_PATH/database.db \
+    --image_path $DATASET_PATH/images \
+    --FeatureExtraction.type ALIKED_N16ROT \
+    --AlikedExtraction.max_num_features 2048
+</pre></div>
+</div>
+<p>For SIFT (the default), you can omit the type or explicitly set it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ colmap feature_extractor \
+    --database_path $DATASET_PATH/database.db \
+    --image_path $DATASET_PATH/images \
+    --FeatureExtraction.type SIFT \
+    --SiftExtraction.max_num_features 8192
+</pre></div>
+</div>
+<p>In the GUI, open <code class="docutils literal notranslate"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Feature</span> <span class="pre">extraction</span></code> and select the desired
+tab (SIFT, ALIKED, etc.) before clicking Extract.</p>
+</section>
+<section id="feature-matcher-types">
+<h2>Feature Matcher Types<a class="headerlink" href="#feature-matcher-types" title="Link to this heading"></a></h2>
+<p>The following feature matcher types are available:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SIFT_BRUTEFORCE</span></code>: Brute-force matching optimized for SIFT descriptors
+(default). Uses L2 distance with ratio test.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALIKED_BRUTEFORCE</span></code>: Brute-force matching for ALIKED descriptors. Uses
+cosine similarity. Requires ONNX support to be enabled at build time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIFT_LIGHTGLUE</span></code>: Neural network-based matching using the LightGlue model
+for SIFT descriptors. This typically produces more matches and higher inlier
+ratios than brute-force matching, especially for challenging image pairs with
+large viewpoint or illumination changes. Requires ONNX support to be enabled
+at build time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALIKED_LIGHTGLUE</span></code>: Neural network-based matching using the LightGlue model
+for ALIKED descriptors. Requires ONNX support to be enabled at build time.</p></li>
+</ul>
+<p>To select a feature matcher type via the command-line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ colmap exhaustive_matcher \
+    --database_path $DATASET_PATH/database.db \
+    --FeatureMatching.type ALIKED_BRUTEFORCE \
+    --AlikedMatching.min_cossim 0.85
+</pre></div>
+</div>
+<p>For SIFT matching (the default):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ colmap exhaustive_matcher \
+    --database_path $DATASET_PATH/database.db \
+    --FeatureMatching.type SIFT_BRUTEFORCE \
+    --SiftMatching.max_ratio 0.8
+</pre></div>
+</div>
+<p>In the GUI, open <code class="docutils literal notranslate"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Feature</span> <span class="pre">matching</span></code>, select any matching tab
+(Exhaustive, Sequential, etc.), and choose the matcher type from the “Type”
+dropdown in the shared options section.</p>
+</section>
+<section id="compatible-extractor-and-matcher-types">
+<h2>Compatible Extractor and Matcher Types<a class="headerlink" href="#compatible-extractor-and-matcher-types" title="Link to this heading"></a></h2>
+<p>The feature extractor and matcher types should be compatible:</p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">SIFT</span></code> extraction with <code class="docutils literal notranslate"><span class="pre">SIFT_BRUTEFORCE</span></code> or <code class="docutils literal notranslate"><span class="pre">SIFT_LIGHTGLUE</span></code> matching.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">ALIKED_*</span></code> extraction with <code class="docutils literal notranslate"><span class="pre">ALIKED_BRUTEFORCE</span></code> or <code class="docutils literal notranslate"><span class="pre">ALIKED_LIGHTGLUE</span></code> matching.</p></li>
+</ul>
+<p>Mixing incompatible types (e.g., SIFT features with ALIKED matcher) will
+result in a runtime error. Do not mix different feature extractor types
+(e.g., SIFT and ALIKED) in the same database.</p>
+</section>
+<section id="aliked-model-variants">
+<h2>ALIKED Model Variants<a class="headerlink" href="#aliked-model-variants" title="Link to this heading"></a></h2>
+<p>ALIKED requires an ONNX model file. Several model variants are available with
+different trade-offs between speed and accuracy:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">aliked-n16rot</span></code>: Faster and trained for some viewpoint invariance. 128-dim descriptors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aliked-n32</span></code>: More expensive but not explicitly trained for viewpoint invariance, 128-dim descriptors.</p></li>
+</ul>
+<p>Specify the model path using <code class="docutils literal notranslate"><span class="pre">--AlikedExtraction.*_model_path</span></code>. If the path is
+a URL, COLMAP will automatically download and cache the model. You can download
+different ALIKED models from the release page at <a class="reference external" href="https://github.com/colmap/colmap/releases/">https://github.com/colmap/colmap/releases/</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="concepts.html" class="btn btn-neutral float-left" title="Key Concepts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="database.html" class="btn btn-neutral float-right" title="Database Format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Johannes L. Schoenberger.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

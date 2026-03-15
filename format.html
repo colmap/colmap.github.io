@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Output Format &mdash; COLMAP 3.14.0.dev0 | 868aff92 (2026-02-09) documentation</title>
+  <title>Output Format &mdash; COLMAP 4.1.0.dev0 | 1b163c47 (2026-03-15) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6631871d" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=e39e0d78"></script>
+      <script src="_static/documentation_options.js?v=3daeb671"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
@@ -33,7 +33,7 @@
     COLMAP
   </a>
     <div class="version">
-      3.14.0.dev0 | 868aff92 (2026-02-09)
+      4.1.0.dev0 | 1b163c47 (2026-03-15)
     </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -48,6 +48,7 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Feature Extraction and Matching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rigs.html">Rig Support</a></li>
@@ -148,11 +149,11 @@ output reconstructions’ <code class="docutils literal notranslate"><span class
 old outputs.</p>
 <p>To export the currently selected model in the GUI, choose <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span>
 <span class="pre">model</span></code>. To export all reconstructed models in the current dataset, choose
-<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">all</span></code>. The selected folder then contains the three files, and
+<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">all</span></code>. The selected folder then contains the model files, and
 for convenience, the current project configuration for importing the model to
 COLMAP. To import the exported models, e.g., for visualization or to resume the
 reconstruction, choose <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">model</span></code> and select the folder containing
-the <code class="docutils literal notranslate"><span class="pre">cameras</span></code>, <code class="docutils literal notranslate"><span class="pre">images</span></code>, and <code class="docutils literal notranslate"><span class="pre">points3D</span></code> files.</p>
+the <code class="docutils literal notranslate"><span class="pre">rigs</span></code>, <code class="docutils literal notranslate"><span class="pre">cameras</span></code>, <code class="docutils literal notranslate"><span class="pre">frames</span></code>, <code class="docutils literal notranslate"><span class="pre">images</span></code>, and <code class="docutils literal notranslate"><span class="pre">points3D</span></code> files.</p>
 <p>To convert between the binary and text format in the GUI, you can load the model
 using <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">model</span></code> and then export the model in the desired output
 format using <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">model</span></code> (binary) or <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">model</span> <span class="pre">as</span> <span class="pre">text</span></code>
@@ -161,11 +162,10 @@ VisualSfM’s NVM, Bundler files, PLY, VRML, etc., using <code class="docutils l
 To convert between various formats from the CLI, use the <code class="docutils literal notranslate"><span class="pre">model_converter</span></code>
 executable.</p>
 <p>There are two source files to conveniently read the sparse reconstructions using
-Python (<code class="docutils literal notranslate"><span class="pre">scripts/python/read_write_model.py</span></code> supporting binary and text) and Matlab
-(<code class="docutils literal notranslate"><span class="pre">scripts/matlab/read_model.m</span></code> supporting text).</p>
+Python (pycolmap) and Matlab (<code class="docutils literal notranslate"><span class="pre">scripts/matlab/read_model.m</span></code> supporting text).</p>
 <section id="text-format">
 <h3>Text Format<a class="headerlink" href="#text-format" title="Link to this heading"></a></h3>
-<p>COLMAP exports the following three text files for every reconstructed model:
+<p>COLMAP exports the following text files for every reconstructed model:
 <code class="docutils literal notranslate"><span class="pre">rigs.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">frames.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">images.txt</span></code>, and <code class="docutils literal notranslate"><span class="pre">points3D.txt</span></code>.
 Comments start with a leading “#” character and are ignored. The first comment
 lines briefly describe the format of the text files, as described in more
@@ -195,7 +195,7 @@ dataset using one line per camera, e.g.:</p>
 <span class="mi">3</span> <span class="n">SIMPLE_RADIAL</span> <span class="mi">3072</span> <span class="mi">2304</span> <span class="mf">2559.69</span> <span class="mi">1536</span> <span class="mi">1152</span> <span class="o">-</span><span class="mf">0.0218531</span>
 </pre></div>
 </div>
-<p>Here, the dataset contains 3 cameras based using different distortion models
+<p>Here, the dataset contains 3 cameras based on different distortion models
 with the same sensor dimensions (width: 3072, height: 2304). The length of
 parameters is variable and depends on the camera model. For the first camera,
 there are 3 parameters with a single focal length of 2559.81 pixels and a
@@ -296,23 +296,29 @@ pixels of reprojection error and is only updated after global bundle adjustment.
 +── fused.ply
 +── meshed-poisson.ply
 +── meshed-delaunay.ply
++── textured
+│   +── mesh.ply
+│   +── texture.png
 +── run-colmap-geometric.sh
 +── run-colmap-photometric.sh
 </pre></div>
 </div>
 <p>Here, the <code class="docutils literal notranslate"><span class="pre">images</span></code> folder contains the undistorted images, the <code class="docutils literal notranslate"><span class="pre">sparse</span></code> folder
 contains the sparse reconstruction with undistorted cameras, the <code class="docutils literal notranslate"><span class="pre">stereo</span></code> folder
-contains the stereo reconstruction results, <code class="docutils literal notranslate"><span class="pre">point-cloud.ply</span></code> and <code class="docutils literal notranslate"><span class="pre">mesh.ply</span></code> are
-the results of the fusion and meshing procedure, and <code class="docutils literal notranslate"><span class="pre">run-colmap-geometric.sh</span></code>
-and <code class="docutils literal notranslate"><span class="pre">run-colmap-photometric.sh</span></code> contain example command-line usage to perform
-the dense reconstruction.</p>
+contains the stereo reconstruction results, <code class="docutils literal notranslate"><span class="pre">fused.ply</span></code>, <code class="docutils literal notranslate"><span class="pre">meshed-poisson.ply</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">meshed-delaunay.ply</span></code> are the results of the fusion and meshing procedure,
+the <code class="docutils literal notranslate"><span class="pre">textured</span></code> folder contains the textured mesh (<code class="docutils literal notranslate"><span class="pre">mesh.ply</span></code> with per-face UV
+coordinates and <code class="docutils literal notranslate"><span class="pre">texture.png</span></code> with the texture atlas) produced by
+<code class="docutils literal notranslate"><span class="pre">mesh_texturer</span></code>, and <code class="docutils literal notranslate"><span class="pre">run-colmap-geometric.sh</span></code> and
+<code class="docutils literal notranslate"><span class="pre">run-colmap-photometric.sh</span></code> contain example command-line usage to perform the
+dense reconstruction.</p>
 <section id="depth-and-normal-maps">
 <h3>Depth and Normal Maps<a class="headerlink" href="#depth-and-normal-maps" title="Link to this heading"></a></h3>
 <p>The depth maps are stored as mixed text and binary files. The text header
-defines the dimensions of the image in the format <code class="docutils literal notranslate"><span class="pre">with&amp;height&amp;channels&amp;</span></code>
+defines the dimensions of the image in the format <code class="docutils literal notranslate"><span class="pre">width&amp;height&amp;channels&amp;</span></code>
 followed by row-major <code class="docutils literal notranslate"><span class="pre">float32</span></code> binary data. For depth maps <code class="docutils literal notranslate"><span class="pre">channels=1</span></code> and
 for normal maps <code class="docutils literal notranslate"><span class="pre">channels=3</span></code>. The depth and normal maps can be conveniently
-read with Python using the functions in <code class="docutils literal notranslate"><span class="pre">scripts/python/read_dense.py</span></code> and
+read with Python using pycolmap and
 with Matlab using the functions in <code class="docutils literal notranslate"><span class="pre">scripts/matlab/read_depth_map.m</span></code> and
 <code class="docutils literal notranslate"><span class="pre">scripts/matlab/read_normal_map.m</span></code>.</p>
 </section>
