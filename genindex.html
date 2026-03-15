@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; COLMAP 3.14.0.dev0 | 868aff92 (2026-02-09) documentation</title>
+  <title>Index &mdash; COLMAP 4.1.0.dev0 | 1b163c47 (2026-03-15) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6631871d" />
@@ -13,7 +13,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=e39e0d78"></script>
+      <script src="_static/documentation_options.js?v=3daeb671"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
@@ -30,7 +30,7 @@
     COLMAP
   </a>
     <div class="version">
-      3.14.0.dev0 | 868aff92 (2026-02-09)
+      4.1.0.dev0 | 1b163c47 (2026-03-15)
     </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -45,6 +45,7 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Feature Extraction and Matching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rigs.html">Rig Support</a></li>
@@ -201,14 +202,14 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.Reconstruction.add_point3D">(pycolmap.Reconstruction method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Reconstruction.add_point3D_with_id">add_point3D_with_id() (pycolmap.Reconstruction method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.DatabaseCache.add_pose_prior">add_pose_prior() (pycolmap.DatabaseCache method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Rig.add_ref_sensor">add_ref_sensor() (pycolmap.Rig method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.DatabaseCache.add_rig">add_rig() (pycolmap.DatabaseCache method)</a>
 
       <ul>
@@ -242,6 +243,24 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.AlignedBox3d">AlignedBox3d (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.PosePriorBundleAdjustmentOptions.alignment_ransac">alignment_ransac (pycolmap.PosePriorBundleAdjustmentOptions property)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractionOptions.aliked">aliked (pycolmap.FeatureExtractionOptions property)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatchingOptions.aliked">(pycolmap.FeatureMatchingOptions property)</a>
+</li>
+      </ul></li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcherType.ALIKED_BRUTEFORCE">ALIKED_BRUTEFORCE (pycolmap.FeatureMatcherType attribute)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcherType.ALIKED_LIGHTGLUE">ALIKED_LIGHTGLUE (pycolmap.FeatureMatcherType attribute)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractorType.ALIKED_N16ROT">ALIKED_N16ROT (pycolmap.FeatureExtractorType attribute)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractorType.ALIKED_N32">ALIKED_N32 (pycolmap.FeatureExtractorType attribute)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedExtractionOptions">AlikedExtractionOptions (class in pycolmap)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedMatchingOptions">AlikedMatchingOptions (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BACovarianceOptionsParams.ALL">ALL (pycolmap.BACovarianceOptionsParams attribute)</a>
 </li>
@@ -329,12 +348,12 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentOptions.backend">backend (pycolmap.BundleAdjustmentOptions property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BACovariance">BACovariance (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BACovarianceOptions">BACovarianceOptions (class in pycolmap)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BACovarianceOptionsParams">BACovarianceOptionsParams (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineStatus.BAD_INITIAL_PAIR">BAD_INITIAL_PAIR (pycolmap.IncrementalPipelineStatus attribute)</a>
@@ -359,11 +378,17 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.ImportedPairingOptions.block_size">(pycolmap.ImportedPairingOptions property)</a>
 </li>
       </ul></li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.MeshSimplificationOptions.boundary_weight">boundary_weight (pycolmap.MeshSimplificationOptions property)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.StereoFusionOptions.bounding_box">bounding_box (pycolmap.StereoFusionOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BitmapRescaleFilter.BOX">BOX (pycolmap.BitmapRescaleFilter attribute)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentSummary.brief_report">brief_report() (pycolmap.BundleAdjustmentSummary method)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedMatchingOptions.brute_force">brute_force (pycolmap.AlikedMatchingOptions property)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.BruteForceONNXMatchingOptions">BruteForceONNXMatchingOptions (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.VisualIndex.build">build() (pycolmap.VisualIndex method)</a>
 </li>
@@ -501,9 +526,15 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Bitmap.channels">channels (pycolmap.Bitmap property)</a>
 </li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentOptions.check">check() (pycolmap.BundleAdjustmentOptions method)</a>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedExtractionOptions.check">check() (pycolmap.AlikedExtractionOptions method)</a>
 
       <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedMatchingOptions.check">(pycolmap.AlikedMatchingOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.BruteForceONNXMatchingOptions.check">(pycolmap.BruteForceONNXMatchingOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentOptions.check">(pycolmap.BundleAdjustmentOptions method)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.CeresBundleAdjustmentOptions.check">(pycolmap.CeresBundleAdjustmentOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.CeresPosePriorBundleAdjustmentOptions.check">(pycolmap.CeresPosePriorBundleAdjustmentOptions method)</a>
@@ -527,6 +558,10 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.check">(pycolmap.IncrementalPipelineOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalTriangulatorOptions.check">(pycolmap.IncrementalTriangulatorOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.LightGlueONNXMatchingOptions.check">(pycolmap.LightGlueONNXMatchingOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.MeshSimplificationOptions.check">(pycolmap.MeshSimplificationOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.PatchMatchOptions.check">(pycolmap.PatchMatchOptions method)</a>
 </li>
@@ -611,6 +646,10 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.PoissonMeshingOptions.color">(pycolmap.PoissonMeshingOptions property)</a>
 </li>
       </ul></li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.logging.colorlogtostderr">colorlogtostderr (pycolmap.logging attribute)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.logging.colorlogtostdout">colorlogtostdout (pycolmap.logging attribute)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.compare_reconstructions">compare_reconstructions() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalTriangulator.complete_all_tracks">complete_all_tracks() (pycolmap.IncrementalTriangulator method)</a>
@@ -738,6 +777,10 @@
       <ul>
         <li><a href="pycolmap/pycolmap.html#pycolmap.DatabaseCache.create">(pycolmap.DatabaseCache static method)</a>
 </li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractor.create">(pycolmap.FeatureExtractor static method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcher.create">(pycolmap.FeatureMatcher static method)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.VisualIndex.create">(pycolmap.VisualIndex static method)</a>
 </li>
       </ul></li>
@@ -765,8 +808,12 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Reconstruction.crop">crop() (pycolmap.Reconstruction method)</a>
 </li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.SiftMatchingOptions.cross_check">cross_check (pycolmap.SiftMatchingOptions property)</a>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.BruteForceONNXMatchingOptions.cross_check">cross_check (pycolmap.BruteForceONNXMatchingOptions property)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.SiftMatchingOptions.cross_check">(pycolmap.SiftMatchingOptions property)</a>
 </li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Device.cuda">cuda (pycolmap.Device attribute)</a>
 </li>
   </ul></td>
@@ -909,6 +956,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.PoseGraph.edges">edges (pycolmap.PoseGraph property)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractionOptions.eff_max_image_size">eff_max_image_size() (pycolmap.FeatureExtractionOptions method)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Timer.elapsed_hours">elapsed_hours() (pycolmap.Timer method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Timer.elapsed_micro_seconds">elapsed_micro_seconds() (pycolmap.Timer method)</a>
@@ -999,12 +1048,12 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_two_view_geometry">estimate_two_view_geometry() (in module pycolmap)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_two_view_geometry_pose">estimate_two_view_geometry_pose() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.EstimateTriangulationOptions">EstimateTriangulationOptions (class in pycolmap)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.SyntheticDatasetMatchConfig.EXHAUSTIVE">EXHAUSTIVE (pycolmap.SyntheticDatasetMatchConfig attribute)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.ExhaustivePairGenerator">ExhaustivePairGenerator (class in pycolmap)</a>
@@ -1020,6 +1069,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.Bitmap.exif_latitude">exif_latitude() (pycolmap.Bitmap method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Bitmap.exif_longitude">exif_longitude() (pycolmap.Bitmap method)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.Bitmap.exif_orientation">exif_orientation() (pycolmap.Bitmap method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.ImageReaderOptions.existing_camera_id">existing_camera_id (pycolmap.ImageReaderOptions property)</a>
 </li>
@@ -1091,8 +1142,12 @@
       </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Camera.extra_params_idxs">extra_params_idxs() (pycolmap.Camera method)</a>
 </li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.Sift.extract">extract() (pycolmap.Sift method)</a>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractor.extract">extract() (pycolmap.FeatureExtractor method)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.Sift.extract">(pycolmap.Sift method)</a>
 </li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.extract_colors">extract_colors (pycolmap.IncrementalPipelineOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Reconstruction.extract_colors_for_all_images">extract_colors_for_all_images() (pycolmap.Reconstruction method)</a>
@@ -1102,6 +1157,10 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.CorrespondenceGraph.extract_correspondences">extract_correspondences() (pycolmap.CorrespondenceGraph method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.extract_features">extract_features() (in module pycolmap)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractor.extract_from_float32_array">extract_from_float32_array() (pycolmap.FeatureExtractor method)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractor.extract_from_uint8_array">extract_from_uint8_array() (pycolmap.FeatureExtractor method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CorrespondenceGraph.extract_matches_between_images">extract_matches_between_images() (pycolmap.CorrespondenceGraph method)</a>
 </li>
@@ -1143,6 +1202,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractionOptions">FeatureExtractionOptions (class in pycolmap)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractor">FeatureExtractor (class in pycolmap)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractorType">FeatureExtractorType (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureKeypoint">FeatureKeypoint (class in pycolmap)</a>
@@ -1150,6 +1211,10 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureKeypoints">FeatureKeypoints (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatch">FeatureMatch (class in pycolmap)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcher">FeatureMatcher (class in pycolmap)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcherType">FeatureMatcherType (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatches">FeatureMatches (class in pycolmap)</a>
 </li>
@@ -1191,10 +1256,10 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometryOptions.filter_stationary_matches">filter_stationary_matches (pycolmap.TwoViewGeometryOptions property)</a>
 </li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.RotationEstimatorOptions.filter_unregistered">filter_unregistered (pycolmap.RotationEstimatorOptions property)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.RotationEstimatorOptions.filter_unregistered">filter_unregistered (pycolmap.RotationEstimatorOptions property)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalMapper.filtered_frames">filtered_frames (pycolmap.IncrementalMapper property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CorrespondenceGraph.finalize">finalize() (pycolmap.CorrespondenceGraph method)</a>
@@ -1277,6 +1342,10 @@
       </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Rotation3d.from_buffer">from_buffer() (pycolmap.Rotation3d static method)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureDescriptorsFloat.from_bytes">from_bytes() (pycolmap.FeatureDescriptorsFloat static method)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureDescriptors.from_float">from_float() (pycolmap.FeatureDescriptors static method)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureKeypoint.from_shape_parameters">from_shape_parameters() (pycolmap.FeatureKeypoint static method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CameraModelId.FULL_OPENCV">FULL_OPENCV (pycolmap.CameraModelId attribute)</a>
@@ -1331,14 +1400,18 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.get_mapper">get_mapper() (pycolmap.IncrementalPipelineOptions method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.MVSModel.get_max_overlapping_images">get_max_overlapping_images() (pycolmap.MVSModel method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.MVSModel.get_max_overlapping_images_from_pmvs">get_max_overlapping_images_from_pmvs() (pycolmap.MVSModel method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalMapper.get_modified_points3D">get_modified_points3D() (pycolmap.IncrementalMapper method)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalTriangulator.get_modified_points3D">(pycolmap.IncrementalTriangulator method)</a>
 </li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Image.get_observation_point2D_idxs">get_observation_point2D_idxs() (pycolmap.Image method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Image.get_observation_points2D">get_observation_points2D() (pycolmap.Image method)</a>
@@ -1631,6 +1704,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.interpolate_camera_poses">interpolate_camera_poses() (in module pycolmap)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.MeshSimplificationOptions.interpolate_colors">interpolate_colors (pycolmap.MeshSimplificationOptions property)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineStatus.INTERRUPTED">INTERRUPTED (pycolmap.IncrementalPipelineStatus attribute)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CameraModelId.INVALID">INVALID (pycolmap.CameraModelId attribute)</a>
@@ -1715,6 +1790,10 @@
 <h2 id="K">K</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.keypoints_from_matrix">keypoints_from_matrix() (in module pycolmap)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.keypoints_to_matrix">keypoints_to_matrix() (in module pycolmap)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CameraMap.keys">keys() (pycolmap.CameraMap method)</a>
 
       <ul>
@@ -1749,6 +1828,14 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Track.length">length() (pycolmap.Track method)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedMatchingOptions.lightglue">lightglue (pycolmap.AlikedMatchingOptions property)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.SiftMatchingOptions.lightglue">(pycolmap.SiftMatchingOptions property)</a>
+</li>
+      </ul></li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.LightGlueONNXMatchingOptions">LightGlueONNXMatchingOptions (class in pycolmap)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.DatabaseCache.load">load() (pycolmap.DatabaseCache method)</a>
 
       <ul>
@@ -1757,17 +1844,25 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.Reconstruction.load">(pycolmap.Reconstruction method)</a>
 </li>
       </ul></li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.DatabaseCacheOptions.load_all_images">load_all_images (pycolmap.DatabaseCacheOptions property)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.load_all_images">(pycolmap.IncrementalPipelineOptions property)</a>
+</li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.LocalBundleAdjustmentReport">LocalBundleAdjustmentReport (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.logging.log_dir">log_dir (pycolmap.logging attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.logging">logging (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.logging.Level">logging.Level (class in pycolmap)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.logging.logtostderr">logtostderr (pycolmap.logging attribute)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.logging.logtostdout">logtostdout (pycolmap.logging attribute)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.SequentialPairingOptions.loop_detection">loop_detection (pycolmap.SequentialPairingOptions property)</a>
 </li>
@@ -1811,9 +1906,15 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.StereoFusionOptions.mask_path">(pycolmap.StereoFusionOptions property)</a>
 </li>
       </ul></li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcher.match">match() (pycolmap.FeatureMatcher method)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.SyntheticDatasetOptions.match_config">match_config (pycolmap.SyntheticDatasetOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.match_exhaustive">match_exhaustive() (in module pycolmap)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcher.match_guided">match_guided() (pycolmap.FeatureMatcher method)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.match_image_pairs">match_image_pairs() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.ImportedPairingOptions.match_list_path">match_list_path (pycolmap.ImportedPairingOptions property)</a>
 
@@ -1828,6 +1929,10 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.match_spatial">match_spatial() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.match_vocabtree">match_vocabtree() (in module pycolmap)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.matches_from_matrix">matches_from_matrix() (in module pycolmap)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.matches_to_matrix">matches_to_matrix() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Rigid3d.matrix">matrix() (pycolmap.Rigid3d method)</a>
 
@@ -1849,8 +1954,12 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.SpatialPairingOptions.max_distance">(pycolmap.SpatialPairingOptions property)</a>
 </li>
       </ul></li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.RANSACOptions.max_error">max_error (pycolmap.RANSACOptions property)</a>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.MeshSimplificationOptions.max_error">max_error (pycolmap.MeshSimplificationOptions property)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.RANSACOptions.max_error">(pycolmap.RANSACOptions property)</a>
 </li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalMapperOptions.max_extra_param">max_extra_param (pycolmap.IncrementalMapperOptions property)</a>
 
       <ul>
@@ -1885,9 +1994,11 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.StereoFusionOptions.max_normal_error">max_normal_error (pycolmap.StereoFusionOptions property)</a>
 </li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.SiftExtractionOptions.max_num_features">max_num_features (pycolmap.SiftExtractionOptions property)</a>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedExtractionOptions.max_num_features">max_num_features (pycolmap.AlikedExtractionOptions property)</a>
 
       <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.SiftExtractionOptions.max_num_features">(pycolmap.SiftExtractionOptions property)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.VocabTreePairingOptions.max_num_features">(pycolmap.VocabTreePairingOptions property)</a>
 </li>
       </ul></li>
@@ -1923,8 +2034,12 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.DelaunayMeshingOptions.max_proj_dist">max_proj_dist (pycolmap.DelaunayMeshingOptions property)</a>
 </li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.SiftMatchingOptions.max_ratio">max_ratio (pycolmap.SiftMatchingOptions property)</a>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.BruteForceONNXMatchingOptions.max_ratio">max_ratio (pycolmap.BruteForceONNXMatchingOptions property)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.SiftMatchingOptions.max_ratio">(pycolmap.SiftMatchingOptions property)</a>
 </li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalMapperOptions.max_reg_trials">max_reg_trials (pycolmap.IncrementalMapperOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.StereoFusionOptions.max_reproj_error">max_reproj_error (pycolmap.StereoFusionOptions property)</a>
@@ -1974,7 +2089,13 @@
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.AlignedBox3d.mergedict">(pycolmap.AlignedBox3d method)</a>
 </li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedExtractionOptions.mergedict">(pycolmap.AlikedExtractionOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedMatchingOptions.mergedict">(pycolmap.AlikedMatchingOptions method)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.BACovarianceOptions.mergedict">(pycolmap.BACovarianceOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.BruteForceONNXMatchingOptions.mergedict">(pycolmap.BruteForceONNXMatchingOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentConfig.mergedict">(pycolmap.BundleAdjustmentConfig method)</a>
 </li>
@@ -2040,7 +2161,11 @@
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalTriangulatorOptions.mergedict">(pycolmap.IncrementalTriangulatorOptions method)</a>
 </li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.LightGlueONNXMatchingOptions.mergedict">(pycolmap.LightGlueONNXMatchingOptions method)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.LocalBundleAdjustmentReport.mergedict">(pycolmap.LocalBundleAdjustmentReport method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.MeshSimplificationOptions.mergedict">(pycolmap.MeshSimplificationOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.PatchMatchOptions.mergedict">(pycolmap.PatchMatchOptions method)</a>
 </li>
@@ -2111,9 +2236,13 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.MeshSimplificationOptions">MeshSimplificationOptions (class in pycolmap)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.AlignedBox3d.min">min (pycolmap.AlignedBox3d property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalTriangulatorOptions.min_angle">min_angle (pycolmap.IncrementalTriangulatorOptions property)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.BruteForceONNXMatchingOptions.min_cossim">min_cossim (pycolmap.BruteForceONNXMatchingOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometryOptions.min_E_F_inlier_ratio">min_E_F_inlier_ratio (pycolmap.TwoViewGeometryOptions property)</a>
 </li>
@@ -2163,6 +2292,12 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.UndistortCameraOptions.min_scale">min_scale (pycolmap.UndistortCameraOptions property)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedExtractionOptions.min_score">min_score (pycolmap.AlikedExtractionOptions property)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.LightGlueONNXMatchingOptions.min_score">(pycolmap.LightGlueONNXMatchingOptions property)</a>
+</li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentOptions.min_track_length">min_track_length (pycolmap.BundleAdjustmentOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.EstimateTriangulationOptions.min_tri_angle">min_tri_angle (pycolmap.EstimateTriangulationOptions property)</a>
@@ -2177,6 +2312,12 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Camera.model_name">model_name (pycolmap.Camera property)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.BruteForceONNXMatchingOptions.model_path">model_path (pycolmap.BruteForceONNXMatchingOptions property)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.LightGlueONNXMatchingOptions.model_path">(pycolmap.LightGlueONNXMatchingOptions property)</a>
+</li>
+      </ul></li>
       <li>
     module
 
@@ -2204,8 +2345,62 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.Image.name">name (pycolmap.Image property)</a>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedExtractionOptions.n16rot_model_path">n16rot_model_path (pycolmap.AlikedExtractionOptions property)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedExtractionOptions.n32_model_path">n32_model_path (pycolmap.AlikedExtractionOptions property)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.BACovarianceOptionsParams.name">name (pycolmap.BACovarianceOptionsParams property)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.BitmapRescaleFilter.name">(pycolmap.BitmapRescaleFilter property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentBackend.name">(pycolmap.BundleAdjustmentBackend property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentGauge.name">(pycolmap.BundleAdjustmentGauge property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentTerminationType.name">(pycolmap.BundleAdjustmentTerminationType property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.CameraMode.name">(pycolmap.CameraMode property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.CameraModelId.name">(pycolmap.CameraModelId property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.Device.name">(pycolmap.Device property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractorType.name">(pycolmap.FeatureExtractorType property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcherType.name">(pycolmap.FeatureMatcherType property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.FileCopyType.name">(pycolmap.FileCopyType property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.GPSTransfromEllipsoid.name">(pycolmap.GPSTransfromEllipsoid property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.Image.name">(pycolmap.Image property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.ImageSelectionMethod.name">(pycolmap.ImageSelectionMethod property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineCallback.name">(pycolmap.IncrementalPipelineCallback property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineStatus.name">(pycolmap.IncrementalPipelineStatus property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.logging.Level.name">(pycolmap.logging.Level property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.LossFunctionType.name">(pycolmap.LossFunctionType property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.Normalization.name">(pycolmap.Normalization property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.PosePriorCoordinateSystem.name">(pycolmap.PosePriorCoordinateSystem property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.RotationWeightType.name">(pycolmap.RotationWeightType property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.SensorType.name">(pycolmap.SensorType property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.SyntheticDatasetMatchConfig.name">(pycolmap.SyntheticDatasetMatchConfig property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.TriangulationResidualType.name">(pycolmap.TriangulationResidualType property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometryConfiguration.name">(pycolmap.TwoViewGeometryConfiguration property)</a>
+</li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.PatchMatchOptions.ncc_sigma">ncc_sigma (pycolmap.PatchMatchOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.PairGenerator.next">next() (pycolmap.PairGenerator method)</a>
@@ -2308,6 +2503,8 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.VisualIndex.num_images">(pycolmap.VisualIndex method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.VisualIndex.QueryOptions.num_images_after_verification">num_images_after_verification (pycolmap.VisualIndex.QueryOptions property)</a>
 
       <ul>
@@ -2328,8 +2525,6 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Database.num_matched_image_pairs">num_matched_image_pairs() (pycolmap.Database method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.PoseGraphEdge.num_matches">num_matches (pycolmap.PoseGraphEdge property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Database.num_matches">num_matches() (pycolmap.Database method)</a>
@@ -2417,7 +2612,13 @@
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.num_threads">(pycolmap.IncrementalPipelineOptions property)</a>
 </li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.MeshSimplificationOptions.num_threads">(pycolmap.MeshSimplificationOptions property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.PatchMatchOptions.num_threads">(pycolmap.PatchMatchOptions property)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.PoissonMeshingOptions.num_threads">(pycolmap.PoissonMeshingOptions property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.RANSACOptions.num_threads">(pycolmap.RANSACOptions property)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.SequentialPairingOptions.num_threads">(pycolmap.SequentialPairingOptions property)</a>
 </li>
@@ -2617,6 +2818,10 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.PosePrior.position">position (pycolmap.PosePrior property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.PosePrior.position_covariance">position_covariance (pycolmap.PosePrior property)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.AbsolutePoseRefinementOptions.position_prior_covariance">position_prior_covariance (pycolmap.AbsolutePoseRefinementOptions property)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.AbsolutePoseRefinementOptions.position_prior_in_world">position_prior_in_world (pycolmap.AbsolutePoseRefinementOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.VisualIndex.prepare">prepare() (pycolmap.VisualIndex method)</a>
 </li>
@@ -2848,12 +3053,12 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentOptions.refine_sensor_from_rig">refine_sensor_from_rig (pycolmap.BundleAdjustmentOptions property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Reconstruction.reg_frame_ids">reg_frame_ids() (pycolmap.Reconstruction method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Reconstruction.reg_image_ids">reg_image_ids() (pycolmap.Reconstruction method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.ObservationManager.register_frame">register_frame() (pycolmap.ObservationManager method)</a>
 
       <ul>
@@ -2885,6 +3090,10 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.TriangulationResidualType.REPROJECTION_ERROR">REPROJECTION_ERROR (pycolmap.TriangulationResidualType attribute)</a>
 </li>
       <li><a href="pycolmap/cost_functions.html#pycolmap.cost_functions.ReprojErrorCost">ReprojErrorCost() (in module pycolmap.cost_functions)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractionOptions.requires_opengl">requires_opengl() (pycolmap.FeatureExtractionOptions method)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractionOptions.requires_rgb">requires_rgb() (pycolmap.FeatureExtractionOptions method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Bitmap.rescale">rescale() (pycolmap.Bitmap method)</a>
 
@@ -2983,6 +3192,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.UndistortCameraOptions.roi_min_x">roi_min_x (pycolmap.UndistortCameraOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.UndistortCameraOptions.roi_min_y">roi_min_y (pycolmap.UndistortCameraOptions property)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.Bitmap.rot90">rot90() (pycolmap.Bitmap method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Rigid3d.rotation">rotation (pycolmap.Rigid3d property)</a>
 
@@ -3086,6 +3297,10 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatchingOptions.sift">sift (pycolmap.FeatureMatchingOptions property)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcherType.SIFT_BRUTEFORCE">SIFT_BRUTEFORCE (pycolmap.FeatureMatcherType attribute)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcherType.SIFT_LIGHTGLUE">SIFT_LIGHTGLUE (pycolmap.FeatureMatcherType attribute)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.SiftExtractionOptions">SiftExtractionOptions (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.SiftMatchingOptions">SiftMatchingOptions (class in pycolmap)</a>
@@ -3105,6 +3320,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.CameraModelId.SIMPLE_RADIAL">SIMPLE_RADIAL (pycolmap.CameraModelId attribute)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CameraModelId.SIMPLE_RADIAL_FISHEYE">SIMPLE_RADIAL_FISHEYE (pycolmap.CameraModelId attribute)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.simplify_mesh">simplify_mesh() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CameraMode.SINGLE">SINGLE (pycolmap.CameraMode attribute)</a>
 </li>
@@ -3161,7 +3378,13 @@
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.AlignedBox3d.summary">(pycolmap.AlignedBox3d method)</a>
 </li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedExtractionOptions.summary">(pycolmap.AlikedExtractionOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedMatchingOptions.summary">(pycolmap.AlikedMatchingOptions method)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.BACovarianceOptions.summary">(pycolmap.BACovarianceOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.BruteForceONNXMatchingOptions.summary">(pycolmap.BruteForceONNXMatchingOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentConfig.summary">(pycolmap.BundleAdjustmentConfig method)</a>
 </li>
@@ -3225,7 +3448,11 @@
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalTriangulatorOptions.summary">(pycolmap.IncrementalTriangulatorOptions method)</a>
 </li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.LightGlueONNXMatchingOptions.summary">(pycolmap.LightGlueONNXMatchingOptions method)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.LocalBundleAdjustmentReport.summary">(pycolmap.LocalBundleAdjustmentReport method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.MeshSimplificationOptions.summary">(pycolmap.MeshSimplificationOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.PatchMatchOptions.summary">(pycolmap.PatchMatchOptions method)</a>
 </li>
@@ -3318,6 +3545,8 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.MeshSimplificationOptions.target_face_ratio">target_face_ratio (pycolmap.MeshSimplificationOptions property)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Reconstruction.tear_down">tear_down() (pycolmap.Reconstruction method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentSummary.termination_type">termination_type (pycolmap.BundleAdjustmentSummary property)</a>
@@ -3344,6 +3573,10 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.NormalMap.to_bitmap">(pycolmap.NormalMap method)</a>
 </li>
       </ul></li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureDescriptorsFloat.to_bytes">to_bytes() (pycolmap.FeatureDescriptorsFloat method)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureDescriptors.to_float">to_float() (pycolmap.FeatureDescriptors method)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CorrespondenceRange.to_list">to_list() (pycolmap.CorrespondenceRange method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.AbsolutePoseEstimationOptions.todict">todict() (pycolmap.AbsolutePoseEstimationOptions method)</a>
@@ -3353,7 +3586,13 @@
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.AlignedBox3d.todict">(pycolmap.AlignedBox3d method)</a>
 </li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedExtractionOptions.todict">(pycolmap.AlikedExtractionOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.AlikedMatchingOptions.todict">(pycolmap.AlikedMatchingOptions method)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.BACovarianceOptions.todict">(pycolmap.BACovarianceOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.BruteForceONNXMatchingOptions.todict">(pycolmap.BruteForceONNXMatchingOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentConfig.todict">(pycolmap.BundleAdjustmentConfig method)</a>
 </li>
@@ -3419,7 +3658,11 @@
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalTriangulatorOptions.todict">(pycolmap.IncrementalTriangulatorOptions method)</a>
 </li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.LightGlueONNXMatchingOptions.todict">(pycolmap.LightGlueONNXMatchingOptions method)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.LocalBundleAdjustmentReport.todict">(pycolmap.LocalBundleAdjustmentReport method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.MeshSimplificationOptions.todict">(pycolmap.MeshSimplificationOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.PatchMatchOptions.todict">(pycolmap.PatchMatchOptions method)</a>
 </li>
@@ -3494,6 +3737,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Point3D.track">track (pycolmap.Point3D property)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.SyntheticDatasetOptions.track_length">track_length (pycolmap.SyntheticDatasetOptions property)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.TrackElement">TrackElement (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Reconstruction.transcribe_image_ids_to_database">transcribe_image_ids_to_database() (pycolmap.Reconstruction method)</a>
@@ -3547,6 +3792,10 @@
       <ul>
         <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureDescriptorsFloat.type">(pycolmap.FeatureDescriptorsFloat property)</a>
 </li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractionOptions.type">(pycolmap.FeatureExtractionOptions property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatchingOptions.type">(pycolmap.FeatureMatchingOptions property)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.sensor_t.type">(pycolmap.sensor_t property)</a>
 </li>
       </ul></li>
@@ -3561,6 +3810,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractorType.UNDEFINED">UNDEFINED (pycolmap.FeatureExtractorType attribute)</a>
 
       <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcherType.UNDEFINED">(pycolmap.FeatureMatcherType attribute)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.PosePriorCoordinateSystem.UNDEFINED">(pycolmap.PosePriorCoordinateSystem attribute)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometryConfiguration.UNDEFINED">(pycolmap.TwoViewGeometryConfiguration attribute)</a>
@@ -3618,6 +3869,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPositionerOptions.use_parameter_block_ordering">use_parameter_block_ordering (pycolmap.GlobalPositionerOptions property)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.AbsolutePoseRefinementOptions.use_position_prior">use_position_prior (pycolmap.AbsolutePoseRefinementOptions property)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.use_prior_position">use_prior_position (pycolmap.IncrementalPipelineOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.use_robust_loss_on_prior_position">use_robust_loss_on_prior_position (pycolmap.IncrementalPipelineOptions property)</a>
@@ -3656,6 +3909,8 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.Device.value">(pycolmap.Device property)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractorType.value">(pycolmap.FeatureExtractorType property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcherType.value">(pycolmap.FeatureMatcherType property)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.FileCopyType.value">(pycolmap.FileCopyType property)</a>
 </li>

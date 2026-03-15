@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; COLMAP 3.14.0.dev0 | 868aff92 (2026-02-09) documentation</title>
+  <title>Installation &mdash; COLMAP 4.1.0.dev0 | 1b163c47 (2026-03-15) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6631871d" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=e39e0d78"></script>
+      <script src="_static/documentation_options.js?v=3daeb671"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
@@ -33,7 +33,7 @@
     COLMAP
   </a>
     <div class="version">
-      3.14.0.dev0 | 868aff92 (2026-02-09)
+      4.1.0.dev0 | 1b163c47 (2026-03-15)
     </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -56,16 +56,18 @@
 <li class="toctree-l3"><a class="reference internal" href="#mac">Mac</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">Windows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vcpkg">VCPKG</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#anaconda">Anaconda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anaconda-mamba">Anaconda/Mamba</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#library">Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shared-libraries">Shared Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#addresssanitizer">AddressSanitizer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Feature Extraction and Matching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rigs.html">Rig Support</a></li>
@@ -161,7 +163,7 @@ limited system packages. The VCPKG approach is also the method of choice under
 Windows, compute clusters, or if you do not have root access under Linux or Mac.</p>
 <section id="debian-ubuntu">
 <h3>Debian/Ubuntu<a class="headerlink" href="#debian-ubuntu" title="Link to this heading"></a></h3>
-<p><em>Recommended dependencies:</em> CUDA (at least version 7.X)</p>
+<p><em>Recommended dependencies:</em> CUDA (at least version 11.X)</p>
 <p>Dependencies from the default Ubuntu repositories:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> \
     <span class="n">git</span> \
@@ -240,7 +242,7 @@ of <a class="reference external" href="https://github.com/facebookresearch/faiss
 </section>
 <section id="mac">
 <h3>Mac<a class="headerlink" href="#mac" title="Link to this heading"></a></h3>
-<p>Dependencies from <a class="reference external" href="http://brew.sh/">Homebrew</a>:</p>
+<p>Dependencies from <a class="reference external" href="https://brew.sh/">Homebrew</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> \
     <span class="n">cmake</span> \
     <span class="n">ninja</span> \
@@ -285,7 +287,7 @@ link your Qt 5 installation while configuring CMake:</p>
 </section>
 <section id="id2">
 <h3>Windows<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
-<p><em>Recommended dependencies:</em> CUDA (at least version 7.X), Visual Studio 2019</p>
+<p><em>Recommended dependencies:</em> CUDA (at least version 11.X), Visual Studio 2019 or newer</p>
 <p>On Windows, the recommended way is to build COLMAP using VCPKG:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">microsoft</span><span class="o">/</span><span class="n">vcpkg</span>
 <span class="n">cd</span> <span class="n">vcpkg</span>
@@ -333,9 +335,9 @@ vcpkg, first run <code class="docutils literal notranslate"><span class="pre">./
 </pre></div>
 </div>
 </section>
-<section id="anaconda">
-<h3>Anaconda<a class="headerlink" href="#anaconda" title="Link to this heading"></a></h3>
-<p>Install miniconda and run the following commands:</p>
+<section id="anaconda-mamba">
+<h3>Anaconda/Mamba<a class="headerlink" href="#anaconda-mamba" title="Link to this heading"></a></h3>
+<p>Install miniconda and run the following commands. You can replace <code class="docutils literal notranslate"><span class="pre">conda</span></code> with <code class="docutils literal notranslate"><span class="pre">mamba</span></code> for faster package installation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">colmap</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.12</span>
 <span class="n">conda</span> <span class="n">config</span> <span class="o">--</span><span class="n">add</span> <span class="n">channels</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
 <span class="n">conda</span> <span class="n">config</span> <span class="o">--</span><span class="nb">set</span> <span class="n">channel_priority</span> <span class="n">strict</span>
@@ -345,7 +347,7 @@ vcpkg, first run <code class="docutils literal notranslate"><span class="pre">./
     <span class="n">boost</span> \
     <span class="n">ccache</span> \
     <span class="n">eigen</span> \
-    <span class="n">freeimage</span> \
+    <span class="n">openimageio</span> \
     <span class="n">curl</span> \
     <span class="n">metis</span> \
     <span class="n">glog</span> \
@@ -355,7 +357,6 @@ vcpkg, first run <code class="docutils literal notranslate"><span class="pre">./
     <span class="n">qt</span> \
     <span class="n">glew</span> \
     <span class="n">sqlite</span> \
-    <span class="n">glew</span> \
     <span class="n">cgal</span><span class="o">-</span><span class="n">cpp</span> \
     <span class="n">mesa</span><span class="o">-</span><span class="n">libgl</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="n">cos7</span><span class="o">-</span><span class="n">x86_64</span> \
     <span class="n">cuda</span><span class="o">-</span><span class="n">compiler</span><span class="o">==</span><span class="mf">12.6.2</span> \
@@ -428,6 +429,29 @@ ninja
 </div>
 <p>The sources of this example are stored under <code class="docutils literal notranslate"><span class="pre">doc/sample-project</span></code>.</p>
 </section>
+<section id="shared-libraries">
+<h2>Shared Libraries<a class="headerlink" href="#shared-libraries" title="Link to this heading"></a></h2>
+<p>By default, COLMAP builds static libraries. To build shared/dynamic libraries
+instead, enable the <code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code> option:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">GNinja</span> <span class="o">-</span><span class="n">DBUILD_SHARED_LIBS</span><span class="o">=</span><span class="n">ON</span>
+</pre></div>
+</div>
+<p>Trade-offs compared to static libraries:</p>
+<ul class="simple">
+<li><p><strong>Faster incremental linking</strong>: Only the changed shared library needs to be
+re-linked during development, rather than all executables.</p></li>
+<li><p><strong>Reduced disk usage</strong>: Multiple executables share the same library files on
+disk and in memory.</p></li>
+<li><p><strong>No cross-library optimization</strong>: The compiler cannot inline or apply
+link-time optimization (LTO/IPO) across shared library boundaries, which
+reduces runtime performance.</p></li>
+<li><p><strong>Symbol resolution overhead</strong>: The dynamic linker resolves symbols at load
+time, adding minor startup cost and indirect call overhead.</p></li>
+</ul>
+<p>For development workflows, shared libraries can significantly speed up
+edit-compile-test cycles. For production or benchmarking, static libraries are
+recommended.</p>
+</section>
 <section id="addresssanitizer">
 <h2>AddressSanitizer<a class="headerlink" href="#addresssanitizer" title="Link to this heading"></a></h2>
 <p>If you want to build COLMAP with address sanitizer flags enabled, you need to
@@ -459,10 +483,8 @@ meaningful traces for reported issues.</p>
 </pre></div>
 </div>
 </li>
-</ol>
-<ol class="arabic simple" start="2">
 <li><p>Clone the website repository <a class="reference external" href="https://github.com/colmap/colmap.github.io">colmap/colmap.github.io</a>.</p></li>
-<li><p>Copy the contents of the generated files at <code class="docutils literal notranslate"><span class="pre">_build/html</span></code> to the cloned respository root.</p></li>
+<li><p>Copy the contents of the generated files at <code class="docutils literal notranslate"><span class="pre">_build/html</span></code> to the cloned repository root.</p></li>
 <li><p>Create a pull request to the <a class="reference external" href="https://github.com/colmap/colmap.github.io">colmap/colmap.github.io</a>
 repository with the updated files.</p></li>
 <li><p>(Optional, if main release) Copy the previous release as legacy to the “legacy” folder,

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Database Format &mdash; COLMAP 3.14.0.dev0 | 868aff92 (2026-02-09) documentation</title>
+  <title>Database Format &mdash; COLMAP 4.1.0.dev0 | 1b163c47 (2026-03-15) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6631871d" />
@@ -14,14 +14,14 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=e39e0d78"></script>
+      <script src="_static/documentation_options.js?v=3daeb671"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Camera Models" href="cameras.html" />
-    <link rel="prev" title="Key Concepts" href="concepts.html" /> 
+    <link rel="prev" title="Feature Extraction and Matching" href="features.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -33,7 +33,7 @@
     COLMAP
   </a>
     <div class="version">
-      3.14.0.dev0 | 868aff92 (2026-02-09)
+      4.1.0.dev0 | 1b163c47 (2026-03-15)
     </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -48,6 +48,7 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Feature Extraction and Matching</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Database Format</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#rigs-and-sensors">Rigs and Sensors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rigs-and-frames">Rigs and Frames</a></li>
@@ -113,7 +114,7 @@ Python with pycolmap.</p>
 <li><p>two_view_geometries</p></li>
 </ul>
 <p>To initialize an empty SQLite database file with the required schema, you can
-either create a new project in the GUI or execute <code class="docutils literal notranslate"><span class="pre">src/colmap/exe/database_create.cc</span></code>.</p>
+either create a new project in the GUI or run the <code class="docutils literal notranslate"><span class="pre">colmap</span> <span class="pre">database_creator</span></code> command.</p>
 <section id="rigs-and-sensors">
 <h2>Rigs and Sensors<a class="headerlink" href="#rigs-and-sensors" title="Link to this heading"></a></h2>
 <p>The relation between rigs and sensors (cameras, etc.) is 1-to-N with one sensor
@@ -151,11 +152,17 @@ keypoints have 4 columns, then the feature geometry is a similarity and the
 third column is the scale and the fourth column the orientation of the feature
 (according to SIFT conventions). If the keypoints have 6 columns, then the
 feature geometry is an affinity and the last 4 columns encode its affine shape
-(see <code class="docutils literal notranslate"><span class="pre">src/feature/types.h</span></code> for details).</p>
-<p>The extracted descriptors are stored as row-major <code class="docutils literal notranslate"><span class="pre">uint8</span></code> binary blobs, where
-each row describes the feature appearance of the corresponding entry in the
-keypoints table. Note that COLMAP only supports 128-D descriptors for now, i.e.
-the <code class="docutils literal notranslate"><span class="pre">cols</span></code> column must be 128.</p>
+(see <code class="docutils literal notranslate"><span class="pre">src/colmap/feature/types.h</span></code> for details).</p>
+<p>The extracted descriptors are stored as row-major binary blobs, where each row
+describes the feature appearance of the corresponding entry in the keypoints
+table. The data type and dimensionality depend on the feature extractor:</p>
+<ul class="simple">
+<li><p><strong>SIFT</strong>: <code class="docutils literal notranslate"><span class="pre">uint8</span></code> descriptors with 128 dimensions (128 bytes per feature).</p></li>
+<li><p><strong>ALIKED</strong>: <code class="docutils literal notranslate"><span class="pre">float32</span></code> descriptors with 128 dimensions (512 bytes per feature).</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">cols</span></code> column in the descriptors table specifies the number of bytes per
+descriptor row. For <code class="docutils literal notranslate"><span class="pre">uint8</span></code> descriptors, this equals the descriptor dimension.
+For <code class="docutils literal notranslate"><span class="pre">float32</span></code> descriptors, this equals <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">*</span> <span class="pre">dimension</span></code>.</p>
 <p>In both tables, the <code class="docutils literal notranslate"><span class="pre">rows</span></code> table specifies the number of detected features per
 image, while <code class="docutils literal notranslate"><span class="pre">rows=0</span></code> means that an image has no features. For feature matching
 and geometric verification, every image must have a corresponding keypoints and
@@ -196,7 +203,7 @@ second column into the features of <code class="docutils literal notranslate"><s
 the <code class="docutils literal notranslate"><span class="pre">rows</span></code> column specifies the number of feature matches.</p>
 <p>The F, E, H blobs in the <code class="docutils literal notranslate"><span class="pre">two_view_geometries</span></code> table are stored as 3x3 matrices
 in row-major <code class="docutils literal notranslate"><span class="pre">float64</span></code> format. The meaning of the <code class="docutils literal notranslate"><span class="pre">config</span></code> values are documented
-in the <code class="docutils literal notranslate"><span class="pre">src/estimators/two_view_geometry.h</span></code> source file.</p>
+in the <code class="docutils literal notranslate"><span class="pre">src/colmap/estimators/two_view_geometry.h</span></code> source file.</p>
 </section>
 </section>
 
@@ -204,7 +211,7 @@ in the <code class="docutils literal notranslate"><span class="pre">src/estimato
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="concepts.html" class="btn btn-neutral float-left" title="Key Concepts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="features.html" class="btn btn-neutral float-left" title="Feature Extraction and Matching" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="cameras.html" class="btn btn-neutral float-right" title="Camera Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

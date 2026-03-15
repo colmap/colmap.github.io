@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Command-line Interface &mdash; COLMAP 3.14.0.dev0 | 868aff92 (2026-02-09) documentation</title>
+  <title>Command-line Interface &mdash; COLMAP 4.1.0.dev0 | 1b163c47 (2026-03-15) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6631871d" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=e39e0d78"></script>
+      <script src="_static/documentation_options.js?v=3daeb671"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
@@ -33,7 +33,7 @@
     COLMAP
   </a>
     <div class="version">
-      3.14.0.dev0 | 868aff92 (2026-02-09)
+      4.1.0.dev0 | 1b163c47 (2026-03-15)
     </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -48,6 +48,7 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Feature Extraction and Matching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rigs.html">Rig Support</a></li>
@@ -136,14 +137,14 @@ $ colmap feature_extractor \
 $ colmap exhaustive_matcher \
    --database_path $DATASET_PATH/database.db
 
-$ mkdir $DATASET_PATH/sparse
+$ mkdir -p $DATASET_PATH/sparse
 
 $ colmap mapper \
     --database_path $DATASET_PATH/database.db \
     --image_path $DATASET_PATH/images \
     --output_path $DATASET_PATH/sparse
 
-$ mkdir $DATASET_PATH/dense
+$ mkdir -p $DATASET_PATH/dense
 
 $ colmap image_undistorter \
     --image_path $DATASET_PATH/images \
@@ -170,6 +171,48 @@ $ colmap poisson_mesher \
 $ colmap delaunay_mesher \
     --input_path $DATASET_PATH/dense \
     --output_path $DATASET_PATH/dense/meshed-delaunay.ply
+
+# Optionally simplify a dense mesh to reduce its size.
+$ colmap mesh_simplifier \
+    --input_path $DATASET_PATH/dense/meshed-poisson.ply \
+    --output_path $DATASET_PATH/dense/meshed-poisson-simplified.ply \
+    --MeshSimplification.target_face_ratio 0.25
+
+# Optionally texture a mesh using the undistorted images.
+$ colmap mesh_texturer \
+    --workspace_path $DATASET_PATH/dense \
+    --input_path $DATASET_PATH/dense/meshed-poisson.ply \
+    --output_path $DATASET_PATH/dense/textured
+</pre></div>
+</div>
+<p>To use the global SfM pipeline instead of the incremental mapper, replace the
+<code class="docutils literal notranslate"><span class="pre">mapper</span></code> step with <code class="docutils literal notranslate"><span class="pre">global_mapper</span></code>. The global mapper depends on good focal
+length priors, so if reliable intrinsics are not available (e.g., from EXIF or
+lab calibration), you should run <code class="docutils literal notranslate"><span class="pre">view_graph_calibrator</span></code> first. This step is
+optional but recommended to improve the quality of global SfM, as was always
+the default in <a class="reference external" href="https://github.com/colmap/glomap">GLOMAP</a>. Note that
+<code class="docutils literal notranslate"><span class="pre">view_graph_calibrator</span></code> modifies camera intrinsics and two-view geometries
+in the database in-place, so it is recommended to work on a copy of the
+database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ colmap feature_extractor \
+   --database_path $DATASET_PATH/database.db \
+   --image_path $DATASET_PATH/images
+
+$ colmap exhaustive_matcher \
+   --database_path $DATASET_PATH/database.db
+
+# Optional but often needed: calibrate intrinsics from the view graph.
+# This modifies the database in-place, so work on a copy.
+$ cp $DATASET_PATH/database.db $DATASET_PATH/database_global.db
+$ colmap view_graph_calibrator \
+    --database_path $DATASET_PATH/database_global.db
+
+$ mkdir -p $DATASET_PATH/sparse
+
+$ colmap global_mapper \
+    --database_path $DATASET_PATH/database_global.db \
+    --image_path $DATASET_PATH/images \
+    --output_path $DATASET_PATH/sparse
 </pre></div>
 </div>
 <p>If you want to run COLMAP on a computer without an attached display (e.g.,
@@ -213,6 +256,9 @@ manually select to use CPU-based feature extraction and matching by setting the
       exhaustive_matcher
       feature_extractor
       feature_importer
+      geometric_verifier
+      global_mapper
+      guided_geometric_verifier
       hierarchical_mapper
       image_deleter
       image_filterer
@@ -222,8 +268,11 @@ manually select to use CPU-based feature extraction and matching by setting the
       image_undistorter_standalone
       mapper
       matches_importer
+      mesh_simplifier
+      mesh_texturer
       model_aligner
       model_analyzer
+      model_clusterer
       model_comparer
       model_converter
       model_cropper
@@ -238,10 +287,12 @@ manually select to use CPU-based feature extraction and matching by setting the
       poisson_mesher
       project_generator
       rig_configurator
+      rotation_averager
       sequential_matcher
       spatial_matcher
       stereo_fusion
       transitive_matcher
+      view_graph_calibrator
       vocab_tree_builder
       vocab_tree_matcher
       vocab_tree_retriever
@@ -256,8 +307,12 @@ the available options, e.g.:</p>
 
         -h [ --help ]
         --default_random_seed arg (=0)
-        --log_to_stderr arg (=1)
+        --log_target arg (=stderr_and_file)
+                              {stderr, stdout, file, stderr_and_file}
+        --log_path arg
         --log_level arg (=0)
+        --log_severity arg (=0)    0:INFO, 1:WARNING, 2:ERROR, 3:FATAL
+        --log_color arg (=1)
         --project_path arg
         --database_path arg
         --image_path arg
@@ -305,16 +360,35 @@ available as <code class="docutils literal notranslate"><span class="pre">colmap
 <li><p><code class="docutils literal notranslate"><span class="pre">gui</span></code>: The graphical user interface, see
 <a class="reference internal" href="gui.html#gui"><span class="std std-ref">Graphical User Interface</span></a> for more information.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">automatic_reconstructor</span></code>: Automatically reconstruct sparse and dense model
-for a set of input images.</p></li>
+for a set of input images. Key options include <code class="docutils literal notranslate"><span class="pre">--quality</span></code> (LOW, MEDIUM,
+HIGH, EXTREME), <code class="docutils literal notranslate"><span class="pre">--data_type</span></code> (INDIVIDUAL, VIDEO, INTERNET) to tune settings
+for different capture scenarios, <code class="docutils literal notranslate"><span class="pre">--feature</span></code> (SIFT, ALIKED) to select the
+feature extraction algorithm, <code class="docutils literal notranslate"><span class="pre">--mapper</span></code> (INCREMENTAL, HIERARCHICAL, GLOBAL)
+to choose the SfM pipeline, and <code class="docutils literal notranslate"><span class="pre">--mesher</span></code> (POISSON, DELAUNAY) to select the
+surface reconstruction method.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">project_generator</span></code>: Generate project files at different quality settings.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">feature_extractor</span></code>, <code class="docutils literal notranslate"><span class="pre">feature_importer</span></code>: Perform feature extraction or
 import features for a set of images.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">exhaustive_matcher</span></code>, <code class="docutils literal notranslate"><span class="pre">vocab_tree_matcher</span></code>, <code class="docutils literal notranslate"><span class="pre">sequential_matcher</span></code>,
 <code class="docutils literal notranslate"><span class="pre">spatial_matcher</span></code>, <code class="docutils literal notranslate"><span class="pre">transitive_matcher</span></code>, <code class="docutils literal notranslate"><span class="pre">matches_importer</span></code>:
 Perform feature matching after performing feature extraction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geometric_verifier</span></code>: Run standalone geometric verification on existing
+feature matches in the database. This estimates two-view geometries
+(fundamental/essential matrices, homographies) for matched image pairs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">guided_geometric_verifier</span></code>: Run geometric verification guided by an
+existing sparse reconstruction. Uses the known relative camera poses to
+improve match verification results.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">mapper</span></code>: Sparse 3D reconstruction / mapping of the dataset using SfM after
 performing feature extraction and matching.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pose_prior_mapper</span></code> Sparse 3D reconstruction / mapping using pose priors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">global_mapper</span></code>: Sparse 3D reconstruction using the global SfM pipeline.
+Unlike the incremental <code class="docutils literal notranslate"><span class="pre">mapper</span></code>, the global approach solves for all camera
+poses simultaneously using rotation averaging and global positioning. This
+can be faster for large datasets but may be less robust to outliers.
+The global mapper depends on reasonably good focal length priors to perform
+well. Run <code class="docutils literal notranslate"><span class="pre">view_graph_calibrator</span></code> before <code class="docutils literal notranslate"><span class="pre">global_mapper</span></code> to calibrate
+camera intrinsics and estimate relative poses from the view graph, or provide
+camera calibrations manually.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pose_prior_mapper</span></code>: Sparse 3D reconstruction / mapping using pose priors.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hierarchical_mapper</span></code>: Sparse 3D reconstruction / mapping of the dataset
 using hierarchical SfM after performing feature extraction and matching.
 This parallelizes the reconstruction process by partitioning the scene into
@@ -336,6 +410,17 @@ point cloud.</p></li>
 surface reconstruction.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">delaunay_mesher</span></code>: Meshing of the reconstructed sparse or dense point cloud
 using a graph cut on the Delaunay triangulation and visibility voting.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh_simplifier</span></code>: Simplify a triangle mesh (PLY format) using Quadric Error
+Metric (QEM) decimation. This reduces the number of faces in a mesh while
+preserving its overall shape and appearance. Key options include
+<code class="docutils literal notranslate"><span class="pre">--MeshSimplification.target_face_ratio</span></code> to control the fraction of faces
+to retain (default 0.1), <code class="docutils literal notranslate"><span class="pre">--MeshSimplification.max_error</span></code> to set a maximum
+quadric error threshold (0 = disabled), and
+<code class="docutils literal notranslate"><span class="pre">--MeshSimplification.boundary_weight</span></code> to control boundary edge preservation
+(default 1000). Supports multi-threaded initialization via
+<code class="docutils literal notranslate"><span class="pre">--MeshSimplification.num_threads</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh_texturer</span></code>: Produce a texture atlas and UV coordinates for a triangle
+mesh using calibrated multi-view images.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">image_registrator</span></code>: Register new images in the database against an existing
 model, e.g., when extracting features and matching newly added images in a
 database after running <code class="docutils literal notranslate"><span class="pre">mapper</span></code>. Note that no bundle adjustment or
@@ -354,6 +439,9 @@ necessary database schema information.</p></li>
 cameras will not be merged and that the unique camera and image identifiers
 might change during the merging process.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">model_analyzer</span></code>: Print statistics about reconstructions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model_clusterer</span></code>: Split a reconstruction into smaller
+sub-model clusters. Useful for managing and processing large-scale
+reconstructions.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">model_aligner</span></code>: Align/geo-register model to coordinate system of given
 camera centers.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">model_orientation_aligner</span></code>: Align the coordinate axis of a model using a
@@ -379,6 +467,13 @@ Pre-trained trees can be downloaded from <a class="reference external" href="htt
 This is useful if you want to build a custom tree with a different trade-off
 in terms of precision/recall vs. speed.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">vocab_tree_retriever</span></code>: Perform vocabulary tree based image retrieval.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rotation_averager</span></code>: Run standalone rotation averaging on the view graph.
+Estimates global camera rotations from pairwise relative rotations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">view_graph_calibrator</span></code>: Calibrate camera intrinsics using the view graph.
+Estimates focal lengths and other intrinsic parameters from pairwise
+geometric relations. Should be run before <code class="docutils literal notranslate"><span class="pre">global_mapper</span></code>, if no good
+prior camera intrinsics are known, since the global mapper
+depends on reasonably good focal length priors to perform well.</p></li>
 </ul>
 </section>
 <section id="visualization">
@@ -387,15 +482,18 @@ in terms of precision/recall vs. speed.</p></li>
 reconstruction pipelines, COLMAP offers you the following possibilities:</p>
 <ul class="simple">
 <li><p>The sparse point cloud obtained with the <code class="docutils literal notranslate"><span class="pre">mapper</span></code> can be visualized via the
-COLMAP GUI by importing the following files: choose <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">Model</span></code>
-and select the folder where the three files, <code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">images.txt</span></code>,
-and <code class="docutils literal notranslate"><span class="pre">points3d.txt</span></code> are located.</p></li>
+COLMAP GUI by importing the model files: choose <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">Model</span></code>
+and select the folder containing the sparse model files (<code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code>,
+<code class="docutils literal notranslate"><span class="pre">images.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">points3D.txt</span></code>, etc.).</p></li>
 <li><p>The dense point cloud obtained with the <code class="docutils literal notranslate"><span class="pre">stereo_fusion</span></code> can be visualized
 via the COLMAP GUI by importing <code class="docutils literal notranslate"><span class="pre">fused.ply</span></code>: choose
 <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">Model</span> <span class="pre">from...</span></code> and then select the file <code class="docutils literal notranslate"><span class="pre">fused.ply</span></code>.</p></li>
 <li><p>The dense mesh model <code class="docutils literal notranslate"><span class="pre">meshed-*.ply</span></code> obtained with the <code class="docutils literal notranslate"><span class="pre">poisson_mesher</span></code> or
 the <code class="docutils literal notranslate"><span class="pre">delaunay_mesher</span></code> can currently not be visualized with COLMAP, instead
-you can use an external viewer, such as Meshlab.</p></li>
+you can use an external viewer, such as Meshlab. Use the <code class="docutils literal notranslate"><span class="pre">mesh_simplifier</span></code>
+command to reduce the mesh size for faster visualization or downstream
+processing. Use the <code class="docutils literal notranslate"><span class="pre">mesh_texturer</span></code> command to produce a textured mesh
+with a texture atlas that can be visualized in Meshlab or other 3D viewers.</p></li>
 </ul>
 </section>
 </section>
