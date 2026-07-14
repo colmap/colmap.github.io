@@ -1,129 +1,666 @@
 
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
-<head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frequently Asked Questions &mdash; COLMAP 4.2.0.dev0 | 5dfe576 (2026-07-14) documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6631871d" />
 
+<html lang="en" data-content_root="./" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Frequently Asked Questions &#8212; COLMAP</title>
   
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=9f5bab7c"></script>
-      <script src="_static/doctools.js?v=fd6eb6e6"></script>
-      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
-    <script src="_static/js/theme.js"></script>
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c4c8f65a" />
+    <link rel="stylesheet" type="text/css" href="_static/landing.css?v=66fc8d65" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="_static/documentation_options.js?v=7650677f"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'faq';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="_static/install_selector.js?v=94a4b0a5"></script>
+    <link rel="icon" href="_static/favicon.svg"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Changelog" href="changelog.html" />
-    <link rel="prev" title="Cost Functions" href="pycolmap/cost_functions.html" /> 
-</head>
+    <link rel="prev" title="Cost Functions" href="pycolmap/cost_functions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="4.2.0.dev0 | cfbe3e2 (2026-07-14)" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="auto">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-  <a href="index.html" class="icon icon-home">
-    COLMAP
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/colmap-logo.svg" class="logo__image only-light" alt=""/>
+    <img src="_static/colmap-logo-dark.svg" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">COLMAP</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="install.html">
+    Installation
   </a>
-    <div class="version">
-      4.2.0.dev0 | 5dfe576 (2026-07-14)
-    </div>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="features.html">Feature Extraction and Matching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="database.html">Database Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cameras.html">Camera Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rigs.html">Rig Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="format.html">Output Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical User Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pycolmap/index.html">PyCOLMAP</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Frequently Asked Questions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#adjusting-the-options-for-different-reconstruction-scenarios-and-output-quality">Adjusting the options for different reconstruction scenarios and output quality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#extending-colmap">Extending COLMAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#choosing-between-sift-and-aliked-features">Choosing between SIFT and ALIKED features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#choosing-the-right-camera-model">Choosing the right camera model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#choosing-between-incremental-global-and-hierarchical-sfm">Choosing between incremental, global, and hierarchical SfM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reconstruction-with-pose-priors-gps">Reconstruction with pose priors (GPS)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#share-intrinsics">Share intrinsics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#fix-intrinsics">Fix intrinsics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#principal-point-refinement">Principal point refinement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#increase-number-of-matches-sparse-3d-points">Increase number of matches / sparse 3D points</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reconstruct-sparse-dense-model-from-known-camera-poses">Reconstruct sparse/dense model from known camera poses</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#merge-disconnected-models">Merge disconnected models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#geo-registration">Geo-registration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#manhattan-world-alignment">Manhattan world alignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mask-image-regions">Mask image regions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#image-orientation-and-exif">Image orientation and EXIF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#register-localize-new-images-into-an-existing-reconstruction">Register/localize new images into an existing reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#available-functionality-without-gpu-cuda">Available functionality without GPU/CUDA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#multi-gpu-support-in-feature-extraction-matching">Multi-GPU support in feature extraction/matching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#feature-matching-fails-due-to-illegal-memory-access">Feature matching fails due to illegal memory access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#speedup-bundle-adjustment">Speedup bundle adjustment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction">Trading off completeness and accuracy in dense reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#improving-dense-reconstruction-results-for-weakly-textured-surfaces">Improving dense reconstruction results for weakly textured surfaces</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#surface-mesh-reconstruction">Surface mesh reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#speedup-dense-reconstruction">Speedup dense reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reduce-memory-usage-during-dense-reconstruction">Reduce memory usage during dense reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#manual-specification-of-source-images-during-dense-reconstruction">Manual specification of source images during dense reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#multi-gpu-support-in-dense-reconstruction">Multi-GPU support in dense reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction">Fix GPU freezes and timeouts during dense reconstruction</a></li>
-</ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
-<li class="toctree-l1"><a class="reference internal" href="legacy.html">Legacy Documentations</a></li>
-</ul>
 
-        </div>
-      </div>
-    </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">COLMAP</a>
-      </nav>
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorial.html">
+    Tutorial
+  </a>
+</li>
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Frequently Asked Questions</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/faq.rst.txt" rel="nofollow"> View page source</a>
-      </li>
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="concepts.html">
+    Key Concepts
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="features.html">
+    Feature Extraction and Matching
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="database.html">
+    Database Format
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="cameras.html">
+    Camera Models
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="rigs.html">
+    Rig Support
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="format.html">
+    Output Format
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="datasets.html">
+    Datasets
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="gui.html">
+    Graphical User Interface
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="cli.html">
+    Command-line Interface
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="pycolmap/index.html">
+    PyCOLMAP
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="#">
+    Frequently Asked Questions
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="changelog.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contribution.html">
+    Contribution
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="license.html">
+    License
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="bibliography.html">
+    Bibliography
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="legacy.html">
+    Legacy Documentations
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
   </ul>
-  <hr/>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/colmap/colmap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pycolmap/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hub.docker.com/r/colmap/colmap" title="Docker Hub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-docker fa-lg" aria-hidden="true"></i><span class="visually-hidden">Docker Hub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="install.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorial.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="concepts.html">
+    Key Concepts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="features.html">
+    Feature Extraction and Matching
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="database.html">
+    Database Format
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="cameras.html">
+    Camera Models
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="rigs.html">
+    Rig Support
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="format.html">
+    Output Format
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="datasets.html">
+    Datasets
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="gui.html">
+    Graphical User Interface
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="cli.html">
+    Command-line Interface
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="pycolmap/index.html">
+    PyCOLMAP
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Frequently Asked Questions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="changelog.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contribution.html">
+    Contribution
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="license.html">
+    License
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="bibliography.html">
+    Bibliography
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="legacy.html">
+    Legacy Documentations
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/colmap/colmap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pycolmap/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hub.docker.com/r/colmap/colmap" title="Docker Hub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-docker fa-lg" aria-hidden="true"></i><span class="visually-hidden">Docker Hub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Frequently Asked Questions</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="frequently-asked-questions">
-<h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Link to this heading"></a></h1>
+<h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Link to this heading">#</a></h1>
 <section id="adjusting-the-options-for-different-reconstruction-scenarios-and-output-quality">
-<h2>Adjusting the options for different reconstruction scenarios and output quality<a class="headerlink" href="#adjusting-the-options-for-different-reconstruction-scenarios-and-output-quality" title="Link to this heading"></a></h2>
+<h2>Adjusting the options for different reconstruction scenarios and output quality<a class="headerlink" href="#adjusting-the-options-for-different-reconstruction-scenarios-and-output-quality" title="Link to this heading">#</a></h2>
 <p>COLMAP provides many options that can be tuned for different reconstruction
 scenarios and to trade off accuracy and completeness versus efficiency. The
 default options are set for medium to high quality reconstruction of
@@ -136,7 +673,7 @@ Alternatively, you can generate the project file also from the command-line
 by running <code class="docutils literal notranslate"><span class="pre">colmap</span> <span class="pre">project_generator</span></code>.</p>
 </section>
 <section id="extending-colmap">
-<h2>Extending COLMAP<a class="headerlink" href="#extending-colmap" title="Link to this heading"></a></h2>
+<h2>Extending COLMAP<a class="headerlink" href="#extending-colmap" title="Link to this heading">#</a></h2>
 <p>If you need to simply analyze the produced sparse or dense reconstructions from
 COLMAP, you can load the sparse models using pycolmap in Python or the
 scripts in <code class="docutils literal notranslate"><span class="pre">scripts/matlab</span></code> for Matlab.</p>
@@ -148,7 +685,7 @@ start from the <code class="docutils literal notranslate"><span class="pre">src/
 functionality directly as a new binary within COLMAP.</p>
 </section>
 <section id="choosing-between-sift-and-aliked-features">
-<h2>Choosing between SIFT and ALIKED features<a class="headerlink" href="#choosing-between-sift-and-aliked-features" title="Link to this heading"></a></h2>
+<h2>Choosing between SIFT and ALIKED features<a class="headerlink" href="#choosing-between-sift-and-aliked-features" title="Link to this heading">#</a></h2>
 <p>COLMAP supports two feature extraction algorithms: SIFT (default) and ALIKED
 (requires ONNX support). Here are some guidelines for choosing between them:</p>
 <ul class="simple">
@@ -170,7 +707,7 @@ for details on available options.</p>
 database, as the descriptors are incompatible.</p>
 </section>
 <section id="choosing-the-right-camera-model">
-<span id="faq-choosing-camera-model"></span><h2>Choosing the right camera model<a class="headerlink" href="#choosing-the-right-camera-model" title="Link to this heading"></a></h2>
+<span id="faq-choosing-camera-model"></span><h2>Choosing the right camera model<a class="headerlink" href="#choosing-the-right-camera-model" title="Link to this heading">#</a></h2>
 <p>COLMAP supports many camera models with varying numbers of parameters (see
 <a class="reference internal" href="cameras.html"><span class="doc">Camera Models</span></a> for the full list). Choosing the right model depends on your
 lens type and reconstruction requirements:</p>
@@ -196,7 +733,7 @@ with <code class="docutils literal notranslate"><span class="pre">SIMPLE_RADIAL<
 statistics.</p>
 </section>
 <section id="choosing-between-incremental-global-and-hierarchical-sfm">
-<h2>Choosing between incremental, global, and hierarchical SfM<a class="headerlink" href="#choosing-between-incremental-global-and-hierarchical-sfm" title="Link to this heading"></a></h2>
+<h2>Choosing between incremental, global, and hierarchical SfM<a class="headerlink" href="#choosing-between-incremental-global-and-hierarchical-sfm" title="Link to this heading">#</a></h2>
 <p>COLMAP offers three SfM pipelines:</p>
 <ul class="simple">
 <li><p><strong>Incremental mapper</strong> (<code class="docutils literal notranslate"><span class="pre">mapper</span></code>, default): Reconstructs the scene by
@@ -223,7 +760,7 @@ becomes too slow but is usually less robust than the other two pipelines.</p></l
 <code class="docutils literal notranslate"><span class="pre">--mapper</span> <span class="pre">INCREMENTAL</span></code>, <code class="docutils literal notranslate"><span class="pre">--mapper</span> <span class="pre">GLOBAL</span></code>, or <code class="docutils literal notranslate"><span class="pre">--mapper</span> <span class="pre">HIERARCHICAL</span></code>.</p>
 </section>
 <section id="reconstruction-with-pose-priors-gps">
-<h2>Reconstruction with pose priors (GPS)<a class="headerlink" href="#reconstruction-with-pose-priors-gps" title="Link to this heading"></a></h2>
+<h2>Reconstruction with pose priors (GPS)<a class="headerlink" href="#reconstruction-with-pose-priors-gps" title="Link to this heading">#</a></h2>
 <p>If your images have GPS information in their EXIF metadata, COLMAP
 automatically extracts and stores it as pose priors in the database during
 feature extraction. These priors can then be used during reconstruction with
@@ -250,7 +787,7 @@ on the values of <code class="docutils literal notranslate"><span class="pre">--
 during mapping), see the <a class="reference internal" href="#geo-registration">Geo-registration</a> section.</p>
 </section>
 <section id="share-intrinsics">
-<span id="faq-share-intrinsics"></span><h2>Share intrinsics<a class="headerlink" href="#share-intrinsics" title="Link to this heading"></a></h2>
+<span id="faq-share-intrinsics"></span><h2>Share intrinsics<a class="headerlink" href="#share-intrinsics" title="Link to this heading">#</a></h2>
 <p>COLMAP supports shared intrinsics for arbitrary groups of images and camera
 models. Images share the same intrinsics, if they refer to the same camera, as
 specified by the <code class="docutils literal notranslate"><span class="pre">camera_id</span></code> property in the database. You can add new cameras
@@ -258,7 +795,7 @@ and set shared intrinsics in the database management tool. Please, refer to
 <a class="reference internal" href="tutorial.html#database-management"><span class="std std-ref">Database Management</span></a> for more information.</p>
 </section>
 <section id="fix-intrinsics">
-<span id="faq-fix-intrinsics"></span><h2>Fix intrinsics<a class="headerlink" href="#fix-intrinsics" title="Link to this heading"></a></h2>
+<span id="faq-fix-intrinsics"></span><h2>Fix intrinsics<a class="headerlink" href="#fix-intrinsics" title="Link to this heading">#</a></h2>
 <p>By default, COLMAP tries to refine the intrinsic camera parameters (except
 principal point) automatically during the reconstruction. Usually, if there are
 enough images in the dataset and you share the intrinsics between multiple
@@ -275,7 +812,7 @@ a final global bundle adjustment by setting <code class="docutils literal notran
 <span class="pre">options</span> <span class="pre">&gt;</span> <span class="pre">refine_*</span></code> and then running <code class="docutils literal notranslate"><span class="pre">Reconstruction</span> <span class="pre">&gt;</span> <span class="pre">Bundle</span> <span class="pre">adjustment</span></code>.</p>
 </section>
 <section id="principal-point-refinement">
-<h2>Principal point refinement<a class="headerlink" href="#principal-point-refinement" title="Link to this heading"></a></h2>
+<h2>Principal point refinement<a class="headerlink" href="#principal-point-refinement" title="Link to this heading">#</a></h2>
 <p>By default, COLMAP keeps the principal point constant during the reconstruction,
 as principal point estimation is an ill-posed problem in general. Once all
 images are reconstructed, the problem is most often constrained enough that you
@@ -284,7 +821,7 @@ when sharing intrinsic parameters between multiple images. Please, refer to
 <a class="reference internal" href="#faq-fix-intrinsics"><span class="std std-ref">Fix intrinsics</span></a> for more information.</p>
 </section>
 <section id="increase-number-of-matches-sparse-3d-points">
-<h2>Increase number of matches / sparse 3D points<a class="headerlink" href="#increase-number-of-matches-sparse-3d-points" title="Link to this heading"></a></h2>
+<h2>Increase number of matches / sparse 3D points<a class="headerlink" href="#increase-number-of-matches-sparse-3d-points" title="Link to this heading">#</a></h2>
 <p>To increase the number of matches, you should use the more discriminative
 DSP-SIFT features instead of plain SIFT and also estimate the affine feature
 shape using the options: <code class="docutils literal notranslate"><span class="pre">--SiftExtraction.estimate_affine_shape=true</span></code> and
@@ -299,7 +836,7 @@ the option <code class="docutils literal notranslate"><span class="pre">Reconstr
 respect to the scene, you can try to reduce the minimum triangulation angle.</p>
 </section>
 <section id="reconstruct-sparse-dense-model-from-known-camera-poses">
-<h2>Reconstruct sparse/dense model from known camera poses<a class="headerlink" href="#reconstruct-sparse-dense-model-from-known-camera-poses" title="Link to this heading"></a></h2>
+<h2>Reconstruct sparse/dense model from known camera poses<a class="headerlink" href="#reconstruct-sparse-dense-model-from-known-camera-poses" title="Link to this heading">#</a></h2>
 <p>If the camera poses are known and you want to reconstruct a sparse or dense
 model of the scene, you must first manually construct a sparse model by creating
 a <code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">points3D.txt</span></code>, and <code class="docutils literal notranslate"><span class="pre">images.txt</span></code> under a new folder:</p>
@@ -392,7 +929,7 @@ colmap stereo_fusion \
 </div>
 </section>
 <section id="merge-disconnected-models">
-<span id="faq-merge-models"></span><h2>Merge disconnected models<a class="headerlink" href="#merge-disconnected-models" title="Link to this heading"></a></h2>
+<span id="faq-merge-models"></span><h2>Merge disconnected models<a class="headerlink" href="#merge-disconnected-models" title="Link to this heading">#</a></h2>
 <p>Sometimes COLMAP fails to reconstruct all images into the same model and hence
 produces multiple sub-models. If those sub-models have common registered images,
 they can be merged into a single model as post-processing step:</p>
@@ -411,7 +948,7 @@ recommended to run another global bundle adjustment after the merge:</p>
 </div>
 </section>
 <section id="geo-registration">
-<h2>Geo-registration<a class="headerlink" href="#geo-registration" title="Link to this heading"></a></h2>
+<h2>Geo-registration<a class="headerlink" href="#geo-registration" title="Link to this heading">#</a></h2>
 <p>Geo-registration of models is possible by providing the 3D locations for the
 camera centers of a subset or all registered images. The 3D similarity
 transformation between the reconstructed model and the target coordinate frame
@@ -448,7 +985,7 @@ transformation. Then, the model can be geo-registered using:</p>
 in the data. It is required to provide the error threshold to be used in the RANSAC estimator.</p>
 </section>
 <section id="manhattan-world-alignment">
-<h2>Manhattan world alignment<a class="headerlink" href="#manhattan-world-alignment" title="Link to this heading"></a></h2>
+<h2>Manhattan world alignment<a class="headerlink" href="#manhattan-world-alignment" title="Link to this heading">#</a></h2>
 <p>COLMAP has functionality to align the coordinate axes of a reconstruction using
 a Manhattan world assumption, i.e. COLMAP can automatically determine the
 gravity axis and the major horizontal axis of the Manhattan world through
@@ -456,7 +993,7 @@ vanishing point detection in the images. Please, refer to the
 <code class="docutils literal notranslate"><span class="pre">model_orientation_aligner</span></code> for more details.</p>
 </section>
 <section id="mask-image-regions">
-<h2>Mask image regions<a class="headerlink" href="#mask-image-regions" title="Link to this heading"></a></h2>
+<h2>Mask image regions<a class="headerlink" href="#mask-image-regions" title="Link to this heading">#</a></h2>
 <p>COLMAP supports masking of keypoints during feature extraction two different ways:</p>
 <p>1. Passing <code class="docutils literal notranslate"><span class="pre">mask_path</span></code> to a folder with image masks. For a given image, the corresponding
 mask must have the same sub-path below this root as the image has below
@@ -470,7 +1007,7 @@ be <code class="docutils literal notranslate"><span class="pre">mask_path/abc/01
 where the mask image is black (pixel intensity value 0 in grayscale).</p>
 </section>
 <section id="image-orientation-and-exif">
-<h2>Image orientation and EXIF<a class="headerlink" href="#image-orientation-and-exif" title="Link to this heading"></a></h2>
+<h2>Image orientation and EXIF<a class="headerlink" href="#image-orientation-and-exif" title="Link to this heading">#</a></h2>
 <p>COLMAP automatically reads the EXIF orientation tag from images during feature
 extraction. The orientation is converted to a gravity direction vector in sensor
 coordinates, which is stored as part of the pose prior in the database. This
@@ -479,7 +1016,7 @@ robustness against image rotation. This is crucial for feature extractors/matche
 with limited orientation invariance, such as ALIKED and LightGlue.</p>
 </section>
 <section id="register-localize-new-images-into-an-existing-reconstruction">
-<h2>Register/localize new images into an existing reconstruction<a class="headerlink" href="#register-localize-new-images-into-an-existing-reconstruction" title="Link to this heading"></a></h2>
+<h2>Register/localize new images into an existing reconstruction<a class="headerlink" href="#register-localize-new-images-into-an-existing-reconstruction" title="Link to this heading">#</a></h2>
 <p>If you have an existing reconstruction of images and want to register/localize
 new images within this reconstruction, you can follow these steps:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap feature_extractor \
@@ -529,7 +1066,7 @@ reconstruction process from the existing model:</p>
 change during these steps.</p>
 </section>
 <section id="available-functionality-without-gpu-cuda">
-<h2>Available functionality without GPU/CUDA<a class="headerlink" href="#available-functionality-without-gpu-cuda" title="Link to this heading"></a></h2>
+<h2>Available functionality without GPU/CUDA<a class="headerlink" href="#available-functionality-without-gpu-cuda" title="Link to this heading">#</a></h2>
 <p>If you do not have a CUDA-enabled GPU but some other GPU, you can use all COLMAP
 functionality except the dense reconstruction part. However, you can use
 external dense reconstruction software as an alternative, as described in the
@@ -546,7 +1083,7 @@ might require manually reducing the maximum image size using
 threads using <code class="docutils literal notranslate"><span class="pre">--FeatureExtraction.num_threads</span></code>.</p>
 </section>
 <section id="multi-gpu-support-in-feature-extraction-matching">
-<h2>Multi-GPU support in feature extraction/matching<a class="headerlink" href="#multi-gpu-support-in-feature-extraction-matching" title="Link to this heading"></a></h2>
+<h2>Multi-GPU support in feature extraction/matching<a class="headerlink" href="#multi-gpu-support-in-feature-extraction-matching" title="Link to this heading">#</a></h2>
 <p>You can run feature extraction/matching on multiple GPUs by specifying multiple
 indices for CUDA-enabled GPUs, e.g., <code class="docutils literal notranslate"><span class="pre">--FeatureExtraction.gpu_index=0,1,2,3</span></code> and
 <code class="docutils literal notranslate"><span class="pre">--FeatureMatching.gpu_index=0,1,2,3</span></code> runs the feature extraction/matching on 4
@@ -556,7 +1093,7 @@ extraction/matching thread per CUDA-enabled GPU and this usually gives the best
 performance as compared to running multiple threads on the same GPU.</p>
 </section>
 <section id="feature-matching-fails-due-to-illegal-memory-access">
-<h2>Feature matching fails due to illegal memory access<a class="headerlink" href="#feature-matching-fails-due-to-illegal-memory-access" title="Link to this heading"></a></h2>
+<h2>Feature matching fails due to illegal memory access<a class="headerlink" href="#feature-matching-fails-due-to-illegal-memory-access" title="Link to this heading">#</a></h2>
 <p>If you encounter the following error message:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MultiplyDescriptor</span><span class="p">:</span> <span class="n">an</span> <span class="n">illegal</span> <span class="n">memory</span> <span class="n">access</span> <span class="n">was</span> <span class="n">encountered</span>
 </pre></div>
@@ -579,7 +1116,7 @@ required GPU memory will be around 400MB, which are only allocated if one of
 your images actually has that many features.</p>
 </section>
 <section id="speedup-bundle-adjustment">
-<span id="id1"></span><h2>Speedup bundle adjustment<a class="headerlink" href="#speedup-bundle-adjustment" title="Link to this heading"></a></h2>
+<span id="id1"></span><h2>Speedup bundle adjustment<a class="headerlink" href="#speedup-bundle-adjustment" title="Link to this heading">#</a></h2>
 <p>The following describes practical ways to reduce bundle adjustment runtime.</p>
 <ul>
 <li><p><strong>Reduce the problem size</strong></p>
@@ -667,7 +1204,7 @@ accuracy for runtime: <code class="docutils literal notranslate"><span class="pr
 </ul>
 </section>
 <section id="trading-off-completeness-and-accuracy-in-dense-reconstruction">
-<h2>Trading off completeness and accuracy in dense reconstruction<a class="headerlink" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction" title="Link to this heading"></a></h2>
+<h2>Trading off completeness and accuracy in dense reconstruction<a class="headerlink" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction" title="Link to this heading">#</a></h2>
 <p>If the dense point cloud contains too many outliers and too much noise, try to
 increase the value of option <code class="docutils literal notranslate"><span class="pre">--StereoFusion.min_num_pixels</span></code>.</p>
 <p>If the reconstructed dense surface mesh model using Poisson reconstruction
@@ -682,7 +1219,7 @@ surface. If the resolution of the mesh is too coarse, you should reduce the
 <code class="docutils literal notranslate"><span class="pre">--DelaunayMeshing.max_proj_dist</span></code> option to a lower value.</p>
 </section>
 <section id="improving-dense-reconstruction-results-for-weakly-textured-surfaces">
-<h2>Improving dense reconstruction results for weakly textured surfaces<a class="headerlink" href="#improving-dense-reconstruction-results-for-weakly-textured-surfaces" title="Link to this heading"></a></h2>
+<h2>Improving dense reconstruction results for weakly textured surfaces<a class="headerlink" href="#improving-dense-reconstruction-results-for-weakly-textured-surfaces" title="Link to this heading">#</a></h2>
 <p>For scenes with weakly textured surfaces it can help to have a high resolution
 of the input images (<code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.max_image_size</span></code>) and a large patch window
 radius (<code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.window_radius</span></code>). You may also want to reduce the
@@ -690,7 +1227,7 @@ filtering threshold for the photometric consistency cost
 (<code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.filter_min_ncc</span></code>).</p>
 </section>
 <section id="surface-mesh-reconstruction">
-<h2>Surface mesh reconstruction<a class="headerlink" href="#surface-mesh-reconstruction" title="Link to this heading"></a></h2>
+<h2>Surface mesh reconstruction<a class="headerlink" href="#surface-mesh-reconstruction" title="Link to this heading">#</a></h2>
 <p>COLMAP supports three surface reconstruction algorithms:</p>
 <ul class="simple">
 <li><p><strong>Poisson surface reconstruction</strong> <a class="reference internal" href="bibliography.html#kazhdan2013" id="id3"><span>[kazhdan2013]</span></a> typically requires an almost
@@ -719,7 +1256,7 @@ texture into an atlas with per-face UV coordinates. The command requires the
 undistorted workspace produced by <code class="docutils literal notranslate"><span class="pre">image_undistorter</span></code> as input.</p>
 </section>
 <section id="speedup-dense-reconstruction">
-<h2>Speedup dense reconstruction<a class="headerlink" href="#speedup-dense-reconstruction" title="Link to this heading"></a></h2>
+<h2>Speedup dense reconstruction<a class="headerlink" href="#speedup-dense-reconstruction" title="Link to this heading">#</a></h2>
 <p>The dense reconstruction can be speeded up in multiple ways:</p>
 <ul class="simple">
 <li><p>Put more GPUs in your system as the dense reconstruction can make use of
@@ -748,7 +1285,7 @@ reconstruction process and restarting it later, the previous progress is not
 lost and any already processed views will be skipped.</p>
 </section>
 <section id="reduce-memory-usage-during-dense-reconstruction">
-<span id="faq-dense-memory"></span><h2>Reduce memory usage during dense reconstruction<a class="headerlink" href="#reduce-memory-usage-during-dense-reconstruction" title="Link to this heading"></a></h2>
+<span id="faq-dense-memory"></span><h2>Reduce memory usage during dense reconstruction<a class="headerlink" href="#reduce-memory-usage-during-dense-reconstruction" title="Link to this heading">#</a></h2>
 <p>If you run out of GPU memory during patch match stereo, you can either reduce
 the maximum image size by setting the option <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.max_image_size</span></code> or
 reduce the number of source images in the <code class="docutils literal notranslate"><span class="pre">stereo/patch-match.cfg</span></code> file from
@@ -776,7 +1313,7 @@ to prune redundant images but not to cluster the scene, you can simply set this
 number to a very large value.</p>
 </section>
 <section id="manual-specification-of-source-images-during-dense-reconstruction">
-<span id="faq-dense-manual-source"></span><h2>Manual specification of source images during dense reconstruction<a class="headerlink" href="#manual-specification-of-source-images-during-dense-reconstruction" title="Link to this heading"></a></h2>
+<span id="faq-dense-manual-source"></span><h2>Manual specification of source images during dense reconstruction<a class="headerlink" href="#manual-specification-of-source-images-during-dense-reconstruction" title="Link to this heading">#</a></h2>
 <p>You can change the number of source images in the <code class="docutils literal notranslate"><span class="pre">stereo/patch-match.cfg</span></code>
 file from e.g. <code class="docutils literal notranslate"><span class="pre">__auto__,</span> <span class="pre">30</span></code> to <code class="docutils literal notranslate"><span class="pre">__auto__,</span> <span class="pre">10</span></code>. This selects the images
 with the most visual overlap automatically as source images. You can also use
@@ -794,7 +1331,7 @@ can manually specify images with their name, for example:</p>
 <code class="docutils literal notranslate"><span class="pre">image1.jpg</span></code>, etc.</p>
 </section>
 <section id="multi-gpu-support-in-dense-reconstruction">
-<h2>Multi-GPU support in dense reconstruction<a class="headerlink" href="#multi-gpu-support-in-dense-reconstruction" title="Link to this heading"></a></h2>
+<h2>Multi-GPU support in dense reconstruction<a class="headerlink" href="#multi-gpu-support-in-dense-reconstruction" title="Link to this heading">#</a></h2>
 <p>You can run dense reconstruction on multiple GPUs by specifying multiple indices
 for CUDA-enabled GPUs, e.g., <code class="docutils literal notranslate"><span class="pre">--PatchMatchStereo.gpu_index=0,1,2,3</span></code> runs the dense
 reconstruction on 4 GPUs in parallel. You can also run multiple dense
@@ -803,7 +1340,7 @@ e.g., <code class="docutils literal notranslate"><span class="pre">--PatchMatchS
 dense reconstruction thread per CUDA-enabled GPU.</p>
 </section>
 <section id="fix-gpu-freezes-and-timeouts-during-dense-reconstruction">
-<span id="faq-dense-timeout"></span><h2>Fix GPU freezes and timeouts during dense reconstruction<a class="headerlink" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction" title="Link to this heading"></a></h2>
+<span id="faq-dense-timeout"></span><h2>Fix GPU freezes and timeouts during dense reconstruction<a class="headerlink" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction" title="Link to this heading">#</a></h2>
 <p>The stereo reconstruction pipeline runs on the GPU using CUDA and puts the GPU
 under heavy load. You might experience a display freeze or even a program crash
 during the reconstruction. As a solution to this problem, you could use a
@@ -852,34 +1389,140 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
 </section>
 
 
-           </div>
-          </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="pycolmap/cost_functions.html" class="btn btn-neutral float-left" title="Cost Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2026, COLMAP Team.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
-        </div>
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pycolmap/cost_functions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Cost Functions</p>
       </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+    </a>
+    <a class="right-next"
+       href="changelog.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Changelog</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-</body>
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-the-options-for-different-reconstruction-scenarios-and-output-quality">Adjusting the options for different reconstruction scenarios and output quality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-colmap">Extending COLMAP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-between-sift-and-aliked-features">Choosing between SIFT and ALIKED features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-right-camera-model">Choosing the right camera model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-between-incremental-global-and-hierarchical-sfm">Choosing between incremental, global, and hierarchical SfM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstruction-with-pose-priors-gps">Reconstruction with pose priors (GPS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#share-intrinsics">Share intrinsics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-intrinsics">Fix intrinsics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-point-refinement">Principal point refinement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#increase-number-of-matches-sparse-3d-points">Increase number of matches / sparse 3D points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstruct-sparse-dense-model-from-known-camera-poses">Reconstruct sparse/dense model from known camera poses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-disconnected-models">Merge disconnected models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geo-registration">Geo-registration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manhattan-world-alignment">Manhattan world alignment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mask-image-regions">Mask image regions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-orientation-and-exif">Image orientation and EXIF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#register-localize-new-images-into-an-existing-reconstruction">Register/localize new images into an existing reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-functionality-without-gpu-cuda">Available functionality without GPU/CUDA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-gpu-support-in-feature-extraction-matching">Multi-GPU support in feature extraction/matching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-matching-fails-due-to-illegal-memory-access">Feature matching fails due to illegal memory access</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#speedup-bundle-adjustment">Speedup bundle adjustment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trading-off-completeness-and-accuracy-in-dense-reconstruction">Trading off completeness and accuracy in dense reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improving-dense-reconstruction-results-for-weakly-textured-surfaces">Improving dense reconstruction results for weakly textured surfaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-mesh-reconstruction">Surface mesh reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#speedup-dense-reconstruction">Speedup dense reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-memory-usage-during-dense-reconstruction">Reduce memory usage during dense reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-specification-of-source-images-during-dense-reconstruction">Manual specification of source images during dense reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-gpu-support-in-dense-reconstruction">Multi-GPU support in dense reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-gpu-freezes-and-timeouts-during-dense-reconstruction">Fix GPU freezes and timeouts during dense reconstruction</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="_sources/faq.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, COLMAP Team.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
 </html>
