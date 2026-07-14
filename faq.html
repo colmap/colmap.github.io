@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frequently Asked Questions &mdash; COLMAP 4.1.0.dev0 | 43dd3bb2 (2026-03-16) documentation</title>
+  <title>Frequently Asked Questions &mdash; COLMAP 4.2.0.dev0 | 5dfe576 (2026-07-14) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6631871d" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=f343b570"></script>
+      <script src="_static/documentation_options.js?v=9f5bab7c"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
@@ -33,7 +33,7 @@
     COLMAP
   </a>
     <div class="version">
-      4.1.0.dev0 | 43dd3bb2 (2026-03-16)
+      4.2.0.dev0 | 5dfe576 (2026-07-14)
     </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -201,7 +201,10 @@ statistics.</p>
 <ul class="simple">
 <li><p><strong>Incremental mapper</strong> (<code class="docutils literal notranslate"><span class="pre">mapper</span></code>, default): Reconstructs the scene by
 incrementally adding one image at a time. This is the most robust and
-well-tested pipeline, but can become slow for large image collections.</p></li>
+well-tested pipeline, but can become slow for large image collections, where
+repeated bundle adjustment is often the bottleneck. This can be accelerated
+substantially with the GPU-based Caspar backend (see
+<a class="reference internal" href="#speedup-bundle-adjustment"><span class="std std-ref">Speedup bundle adjustment</span></a>).</p></li>
 <li><p><strong>Global mapper</strong> (<code class="docutils literal notranslate"><span class="pre">global_mapper</span></code>): Solves for all camera poses
 simultaneously using rotation averaging and global positioning. This can be
 faster for large datasets with good matching graphs, but may be less robust
@@ -239,10 +242,10 @@ colmap pose_prior_mapper \
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">pose_prior_mapper</span></code> is essentially the incremental mapper with prior
-position constraints enabled. You can control the prior covariance (uncertainty)
-using <code class="docutils literal notranslate"><span class="pre">--prior_position_std_x</span></code>, <code class="docutils literal notranslate"><span class="pre">--prior_position_std_y</span></code>, and
-<code class="docutils literal notranslate"><span class="pre">--prior_position_std_z</span></code> (default: 1.0 meter each), or override all priors’
-covariance with <code class="docutils literal notranslate"><span class="pre">--overwrite_priors_covariance</span></code>.</p>
+position constraints enabled. You can override the priors covariance (uncertainty)
+using <code class="docutils literal notranslate"><span class="pre">--overwrite_priors_covariance</span></code>.  The new covariance will be built based
+on the values of <code class="docutils literal notranslate"><span class="pre">--prior_position_std_x</span></code>, <code class="docutils literal notranslate"><span class="pre">--prior_position_std_y</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">--prior_position_std_z</span></code> (default: 1.0 meter each).</p>
 <p>For geo-registration of an already reconstructed model (without using priors
 during mapping), see the <a class="reference internal" href="#geo-registration">Geo-registration</a> section.</p>
 </section>
@@ -576,7 +579,7 @@ required GPU memory will be around 400MB, which are only allocated if one of
 your images actually has that many features.</p>
 </section>
 <section id="speedup-bundle-adjustment">
-<h2>Speedup bundle adjustment<a class="headerlink" href="#speedup-bundle-adjustment" title="Link to this heading"></a></h2>
+<span id="id1"></span><h2>Speedup bundle adjustment<a class="headerlink" href="#speedup-bundle-adjustment" title="Link to this heading"></a></h2>
 <p>The following describes practical ways to reduce bundle adjustment runtime.</p>
 <ul>
 <li><p><strong>Reduce the problem size</strong></p>
@@ -617,6 +620,34 @@ Typical causes include:</p>
 <li><p>High image covisibility</p></li>
 <li><p>Shared camera intrinsics.</p></li>
 </ul>
+</li>
+<li><p><strong>Use the Caspar GPU bundle adjustment backend</strong></p>
+<p>COLMAP includes Caspar <a class="reference internal" href="bibliography.html#caspar" id="id2"><span>[caspar]</span></a>, an experimental GPU-accelerated bundle
+adjustment backend that can be one to two orders of magnitude faster than the
+Ceres CUDA solver for medium- to large-scale problems, leading to drastic
+speedups especially for the incremental mapper. Caspar requires CUDA and is
+disabled by default; it must be enabled at build time by configuring COLMAP
+with <code class="docutils literal notranslate"><span class="pre">-DCASPAR_ENABLED=ON</span></code>.</p>
+<p>Caspar is selected through the bundle adjustment <code class="docutils literal notranslate"><span class="pre">backend</span></code> option, which
+accepts <code class="docutils literal notranslate"><span class="pre">CERES</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">CASPAR</span></code>:</p>
+<ul class="simple">
+<li><p>Standalone <code class="docutils literal notranslate"><span class="pre">bundle_adjuster</span></code>: <code class="docutils literal notranslate"><span class="pre">--BundleAdjustment.backend</span> <span class="pre">CASPAR</span></code>.</p></li>
+<li><p>Incremental <code class="docutils literal notranslate"><span class="pre">mapper</span></code>: <code class="docutils literal notranslate"><span class="pre">--Mapper.ba_local_backend</span> <span class="pre">CASPAR</span></code> and/or
+<code class="docutils literal notranslate"><span class="pre">--Mapper.ba_global_backend</span> <span class="pre">CASPAR</span></code>. The GPU device is selected via
+<code class="docutils literal notranslate"><span class="pre">--Mapper.ba_gpu_index</span></code>.</p></li>
+</ul>
+<p>The solver behavior and GPU device of the standalone backend can be tuned via
+the <code class="docutils literal notranslate"><span class="pre">--BundleAdjustmentCaspar.*</span></code> options, e.g. <code class="docutils literal notranslate"><span class="pre">--BundleAdjustmentCaspar.gpu_index</span></code>
+(default <code class="docutils literal notranslate"><span class="pre">-1</span></code> auto-selects the best CUDA device).</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Caspar is experimental and currently supports only the
+<code class="docutils literal notranslate"><span class="pre">SIMPLE_RADIAL</span></code> and <code class="docutils literal notranslate"><span class="pre">PINHOLE</span></code> camera models; observations using other
+camera models are skipped. It does not support pose priors or refining
+<code class="docutils literal notranslate"><span class="pre">sensor_from_rig</span></code> for non-reference rig sensors, and requires
+<code class="docutils literal notranslate"><span class="pre">refine_focal_length</span></code> and <code class="docutils literal notranslate"><span class="pre">refine_extra_params</span></code> to be equal. The
+<code class="docutils literal notranslate"><span class="pre">global_mapper</span></code> does not expose a Caspar backend selector.</p>
+</div>
 </li>
 <li><p><strong>Additional practical tips</strong></p>
 <ul class="simple">
@@ -660,23 +691,29 @@ filtering threshold for the photometric consistency cost
 </section>
 <section id="surface-mesh-reconstruction">
 <h2>Surface mesh reconstruction<a class="headerlink" href="#surface-mesh-reconstruction" title="Link to this heading"></a></h2>
-<p>COLMAP supports two types of surface reconstruction algorithms. Poisson surface
-reconstruction <a class="reference internal" href="bibliography.html#kazhdan2013" id="id1"><span>[kazhdan2013]</span></a> and graph-cut based surface extraction from a
-Delaunay triangulation. Poisson surface reconstruction typically requires an
-almost outlier-free input point cloud and it often produces bad surfaces in the
-presence of outliers or large holes in the input data. The Delaunay
-triangulation based meshing algorithm is more robust to outliers and in general
-more scalable to large datasets than the Poisson algorithm, but it usually
-produces less smooth surfaces. Furthermore, the Delaunay based meshing can be
-applied to sparse and dense reconstruction results. To increase the smoothness
-of the surface as a post-processing step, you could use Laplacian smoothing, as
-e.g. implemented in Meshlab.</p>
-<p>Note that the two algorithms can also be combined by first running the Delaunay
-meshing to robustly filter outliers from the sparse or dense point cloud and
-then, in the second step, performing Poisson surface reconstruction to obtain a
-smooth surface.</p>
+<p>COLMAP supports three surface reconstruction algorithms:</p>
+<ul class="simple">
+<li><p><strong>Poisson surface reconstruction</strong> <a class="reference internal" href="bibliography.html#kazhdan2013" id="id3"><span>[kazhdan2013]</span></a> typically requires an almost
+outlier-free input point cloud and often produces bad surfaces in the presence
+of outliers or large holes in the input data.</p></li>
+<li><p><strong>Delaunay triangulation</strong> based meshing is more robust to outliers and in
+general more scalable to large datasets than the Poisson algorithm, but it
+usually produces less smooth surfaces. It can be applied to both sparse and
+dense reconstruction results.</p></li>
+<li><p><strong>Advancing front surface reconstruction</strong> <a class="reference internal" href="bibliography.html#cohen-steiner2004" id="id4"><span>[cohen-steiner2004]</span></a> incrementally
+grows a surface mesh from a Delaunay triangulation of the input points.
+It supports visibility-based filtering to remove faces that violate free-space
+constraints and block-wise parallel processing for large-scale scenes. It uses
+a float32 CGAL kernel for memory efficiency.</p></li>
+</ul>
+<p>To increase the smoothness of the surface as a post-processing step, you could
+use Laplacian smoothing, as e.g. implemented in Meshlab.</p>
+<p>Note that Poisson and Delaunay meshing can also be combined by first running the
+Delaunay meshing to robustly filter outliers from the sparse or dense point
+cloud and then, in the second step, performing Poisson surface reconstruction to
+obtain a smooth surface.</p>
 <p>After meshing, the <code class="docutils literal notranslate"><span class="pre">mesh_texturer</span></code> command can be used to produce a textured
-mesh with a texture atlas <a class="reference internal" href="bibliography.html#waechter2014" id="id2"><span>[waechter2014]</span></a>. This assigns each mesh face to the
+mesh with a texture atlas <a class="reference internal" href="bibliography.html#waechter2014" id="id5"><span>[waechter2014]</span></a>. This assigns each mesh face to the
 best-view camera image based on projected area and viewing angle, and bakes the
 texture into an atlas with per-face UV coordinates. The command requires the
 undistorted workspace produced by <code class="docutils literal notranslate"><span class="pre">image_undistorter</span></code> as input.</p>
@@ -724,7 +761,7 @@ gigabytes or you can reduce <code class="docutils literal notranslate"><span cla
 slow processing and heavy load on the hard disk.</p>
 <p>For large-scale reconstructions of several thousands of images, you should
 consider splitting your sparse reconstruction into more manageable clusters of
-images using e.g. CMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id3"><span>[furukawa10]</span></a>. In addition, CMVS allows to prune
+images using e.g. CMVS <a class="reference internal" href="bibliography.html#furukawa10" id="id6"><span>[furukawa10]</span></a>. In addition, CMVS allows to prune
 redundant images observing the same scene elements. Note that, for this use
 case, COLMAP’s dense reconstruction pipeline also supports the PMVS/CMVS folder
 structure when executed from the command-line. Please, refer to the workspace
@@ -825,7 +862,7 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Johannes L. Schoenberger.</p>
+    <p>&#169; Copyright 2026, COLMAP Team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

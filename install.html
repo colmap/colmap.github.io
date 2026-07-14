@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; COLMAP 4.1.0.dev0 | 43dd3bb2 (2026-03-16) documentation</title>
+  <title>Installation &mdash; COLMAP 4.2.0.dev0 | 5dfe576 (2026-07-14) documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6631871d" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=f343b570"></script>
+      <script src="_static/documentation_options.js?v=9f5bab7c"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
@@ -33,7 +33,7 @@
     COLMAP
   </a>
     <div class="version">
-      4.1.0.dev0 | 43dd3bb2 (2026-03-16)
+      4.2.0.dev0 | 5dfe576 (2026-07-14)
     </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -185,6 +185,7 @@ Windows, compute clusters, or if you do not have root access under Linux or Mac.
     <span class="n">qt6</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libqt6opengl6</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libqt6openglwidgets6</span> \
+    <span class="n">qt6</span><span class="o">-</span><span class="n">svg</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libcgal</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libceres</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libsuitesparse</span><span class="o">-</span><span class="n">dev</span> \
@@ -198,7 +199,7 @@ Windows, compute clusters, or if you do not have root access under Linux or Mac.
 </pre></div>
 </div>
 <p>Alternatively, you can also build against Qt 5 instead of Qt 6 using:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qtbase5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libqt5opengl5</span><span class="o">-</span><span class="n">dev</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qtbase5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libqt5opengl5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libqt5svg5</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
 <p>To compile with <strong>CUDA support</strong>, also install Ubuntu’s default CUDA package:</p>
@@ -220,6 +221,19 @@ distribute to other machines, or a specific CUDA architecture like “75”, etc
 <span class="n">ninja</span>
 <span class="n">sudo</span> <span class="n">ninja</span> <span class="n">install</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>COLMAP can use <code class="docutils literal notranslate"><span class="pre">boost::unordered</span></code> flat/node hash maps for the
+performance-critical scene and SfM containers, selected via
+<code class="docutils literal notranslate"><span class="pre">-DCOLMAP_HASH_MAP_BACKEND=BOOST|STD</span></code> (default: auto). Auto selects
+<code class="docutils literal notranslate"><span class="pre">BOOST</span></code> when Boost is recent enough (<code class="docutils literal notranslate"><span class="pre">boost::unordered_node_map</span></code> requires
+<strong>Boost &gt;= 1.84</strong>) and falls back to <code class="docutils literal notranslate"><span class="pre">STD</span></code> (<code class="docutils literal notranslate"><span class="pre">std::unordered_map</span></code>)
+otherwise. Ubuntu’s default Boost is older than 1.84, so apt-based builds use
+<code class="docutils literal notranslate"><span class="pre">STD</span></code>; to use the faster <code class="docutils literal notranslate"><span class="pre">BOOST</span></code> backend, build against a newer Boost
+(e.g. via vcpkg, which installs <code class="docutils literal notranslate"><span class="pre">boost-unordered</span></code> automatically) or install
+Boost &gt;= 1.84 manually. Explicitly requesting <code class="docutils literal notranslate"><span class="pre">-DCOLMAP_HASH_MAP_BACKEND=BOOST</span></code>
+with an older Boost is a configuration error.</p>
 </div>
 <p>Run COLMAP:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="o">-</span><span class="n">h</span>
@@ -483,13 +497,19 @@ meaningful traces for reported issues.</p>
 </pre></div>
 </div>
 </li>
-<li><p>Clone the website repository <a class="reference external" href="https://github.com/colmap/colmap.github.io">colmap/colmap.github.io</a>.</p></li>
-<li><p>Copy the contents of the generated files at <code class="docutils literal notranslate"><span class="pre">_build/html</span></code> to the cloned repository root.</p></li>
-<li><p>Create a pull request to the <a class="reference external" href="https://github.com/colmap/colmap.github.io">colmap/colmap.github.io</a>
-repository with the updated files.</p></li>
-<li><p>(Optional, if main release) Copy the previous release as legacy to the “legacy” folder,
-under a folder with the release number <a class="reference external" href="https://github.com/colmap/colmap.github.io/tree/master/legacy">see here</a>.</p></li>
 </ol>
+<p>Publishing to the website (<a class="reference external" href="https://colmap.github.io/">colmap.github.io</a>) is
+automated: whenever documentation-relevant files change on <code class="docutils literal notranslate"><span class="pre">main</span></code>, the CI
+pipeline builds these docs and pushes the result to the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch of the
+<a class="reference external" href="https://github.com/colmap/colmap.github.io">colmap/colmap.github.io</a>
+repository. Pull requests that touch the docs build them too and upload the
+generated HTML as a downloadable <code class="docutils literal notranslate"><span class="pre">docs-preview</span></code> artifact for review, without
+publishing. The manual steps above are therefore only needed to preview the docs
+locally.</p>
+<p>For a main release, still copy the previous release as legacy to the “legacy”
+folder in the website repository, under a folder with the release number
+(<a class="reference external" href="https://github.com/colmap/colmap.github.io/tree/master/legacy">see here</a>).
+The automated deploy preserves the existing <code class="docutils literal notranslate"><span class="pre">legacy</span></code> folder.</p>
 </section>
 </section>
 
@@ -504,7 +524,7 @@ under a folder with the release number <a class="reference external" href="https
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Johannes L. Schoenberger.</p>
+    <p>&#169; Copyright 2026, COLMAP Team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

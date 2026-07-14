@@ -92,6 +92,7 @@ Dependencies from the default Ubuntu repositories::
         qt6-base-dev \
         libqt6opengl6-dev \
         libqt6openglwidgets6 \
+        qt6-svg-dev \
         libcgal-dev \
         libceres-dev \
         libsuitesparse-dev \
@@ -105,7 +106,7 @@ Dependencies from the default Ubuntu repositories::
 
 Alternatively, you can also build against Qt 5 instead of Qt 6 using::
 
-    qtbase5-dev libqt5opengl5-dev
+    qtbase5-dev libqt5opengl5-dev libqt5svg5-dev
 
 To compile with **CUDA support**, also install Ubuntu's default CUDA package::
 
@@ -127,6 +128,19 @@ Configure and compile COLMAP::
     cmake .. -GNinja -DBLA_VENDOR=Intel10_64lp
     ninja
     sudo ninja install
+
+.. note::
+
+    COLMAP can use ``boost::unordered`` flat/node hash maps for the
+    performance-critical scene and SfM containers, selected via
+    ``-DCOLMAP_HASH_MAP_BACKEND=BOOST|STD`` (default: auto). Auto selects
+    ``BOOST`` when Boost is recent enough (``boost::unordered_node_map`` requires
+    **Boost >= 1.84**) and falls back to ``STD`` (``std::unordered_map``)
+    otherwise. Ubuntu's default Boost is older than 1.84, so apt-based builds use
+    ``STD``; to use the faster ``BOOST`` backend, build against a newer Boost
+    (e.g. via vcpkg, which installs ``boost-unordered`` automatically) or install
+    Boost >= 1.84 manually. Explicitly requesting ``-DCOLMAP_HASH_MAP_BACKEND=BOOST``
+    with an older Boost is a configuration error.
 
 Run COLMAP::
 
@@ -404,9 +418,16 @@ Documentation
         make latexpdf
         open _build/pdf/COLMAP.pdf
 
-3. Clone the website repository `colmap/colmap.github.io <https://github.com/colmap/colmap.github.io>`__.
-4. Copy the contents of the generated files at ``_build/html`` to the cloned repository root.
-5. Create a pull request to the `colmap/colmap.github.io <https://github.com/colmap/colmap.github.io>`__
-   repository with the updated files.
-6. (Optional, if main release) Copy the previous release as legacy to the "legacy" folder,
-   under a folder with the release number `see here <https://github.com/colmap/colmap.github.io/tree/master/legacy>`__.
+Publishing to the website (`colmap.github.io <https://colmap.github.io/>`__) is
+automated: whenever documentation-relevant files change on ``main``, the CI
+pipeline builds these docs and pushes the result to the ``master`` branch of the
+`colmap/colmap.github.io <https://github.com/colmap/colmap.github.io>`__
+repository. Pull requests that touch the docs build them too and upload the
+generated HTML as a downloadable ``docs-preview`` artifact for review, without
+publishing. The manual steps above are therefore only needed to preview the docs
+locally.
+
+For a main release, still copy the previous release as legacy to the "legacy"
+folder in the website repository, under a folder with the release number
+(`see here <https://github.com/colmap/colmap.github.io/tree/master/legacy>`__).
+The automated deploy preserves the existing ``legacy`` folder.
