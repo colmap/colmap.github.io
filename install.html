@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=cadb43fc"></script>
+    <script src="_static/documentation_options.js?v=81bbf7a2"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="COLMAP" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | 328d683 (2026-07-14)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 6617573 (2026-07-16)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -814,6 +814,71 @@ implementation of BLAS. If you decide to compile against OpenBLAS instead of
 MKL, you must install and select the OpenMP version under Debian/Ubuntu because
 of <a class="reference external" href="https://github.com/facebookresearch/faiss/wiki/Troubleshooting#surprising-faiss-openmp-and-openblas-interaction">this issue</a>.</p>
 </section>
+<section id="fedora">
+<h3>Fedora<a class="headerlink" href="#fedora" title="Link to this heading">#</a></h3>
+<p><em>Recommended dependencies:</em> CUDA (at least version 11.X)</p>
+<p>Dependencies from the default Fedora repositories:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> \
+    <span class="n">git</span> \
+    <span class="n">cmake</span> \
+    <span class="n">ninja</span><span class="o">-</span><span class="n">build</span> \
+    <span class="n">gcc</span><span class="o">-</span><span class="n">c</span><span class="o">++</span> \
+    <span class="n">boost</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">eigen3</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">OpenImageIO</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">OpenImageIO</span><span class="o">-</span><span class="n">utils</span> \
+    <span class="n">metis</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">glog</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">gtest</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">gmock</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">sqlite</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">glew</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">qt6</span><span class="o">-</span><span class="n">qtbase</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">qt6</span><span class="o">-</span><span class="n">qtsvg</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">CGAL</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">ceres</span><span class="o">-</span><span class="n">solver</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">suitesparse</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">suitesparse</span><span class="o">-</span><span class="n">static</span> \
+    <span class="n">libcurl</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">openssl</span><span class="o">-</span><span class="n">devel</span> \
+    <span class="n">openblas</span><span class="o">-</span><span class="n">devel</span>
+<span class="c1"># suitesparse-static is required even for a dynamic build, because Fedora&#39;s</span>
+<span class="c1"># SuiteSparse CMake config references the static targets file regardless of</span>
+<span class="c1"># link type. This can be dropped once Fedora ships SuiteSparse &gt;= 7.11.0 with</span>
+<span class="c1"># its separated static config.</span>
+</pre></div>
+</div>
+<p>Alternatively, you can also build against Qt 5 instead of Qt 6 using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qt5</span><span class="o">-</span><span class="n">qtbase</span><span class="o">-</span><span class="n">devel</span> <span class="n">qt5</span><span class="o">-</span><span class="n">qtsvg</span><span class="o">-</span><span class="n">devel</span>
+</pre></div>
+</div>
+<p>To compile with <strong>CUDA support</strong>, install the CUDA toolkit from NVIDIA’s official
+Fedora repository, which (unlike the plain <code class="docutils literal notranslate"><span class="pre">cuda</span></code> meta-package) preserves an
+existing NVIDIA driver. Replace <code class="docutils literal notranslate"><span class="pre">&lt;VERSION&gt;</span></code> with your Fedora release, e.g.
+<code class="docutils literal notranslate"><span class="pre">43</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">config</span><span class="o">-</span><span class="n">manager</span> <span class="n">addrepo</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">repofile</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">developer</span><span class="o">.</span><span class="n">download</span><span class="o">.</span><span class="n">nvidia</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">compute</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">fedora</span><span class="o">&lt;</span><span class="n">VERSION</span><span class="o">&gt;/</span><span class="n">x86_64</span><span class="o">/</span><span class="n">cuda</span><span class="o">-</span><span class="n">fedora</span><span class="o">&lt;</span><span class="n">VERSION</span><span class="o">&gt;.</span><span class="n">repo</span>
+<span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">cuda</span><span class="o">-</span><span class="n">toolkit</span>
+</pre></div>
+</div>
+<p>During CMake configuration, specify <code class="docutils literal notranslate"><span class="pre">-DCMAKE_CUDA_ARCHITECTURES=native</span></code>, if you
+want to run COLMAP only on your current machine (default), “all”/”all-major” to be
+able to distribute to other machines, or a specific CUDA architecture like “89”, etc.</p>
+<p>Configure and compile COLMAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">colmap</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">colmap</span>
+<span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">GNinja</span> <span class="o">-</span><span class="n">DCMAKE_CUDA_ARCHITECTURES</span><span class="o">=</span><span class="n">native</span>
+<span class="n">ninja</span>
+<span class="n">sudo</span> <span class="n">ninja</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Run COLMAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="o">-</span><span class="n">h</span>
+<span class="n">colmap</span> <span class="n">gui</span>
+</pre></div>
+</div>
+</section>
 <section id="mac">
 <h3>Mac<a class="headerlink" href="#mac" title="Link to this heading">#</a></h3>
 <p>Dependencies from <a class="reference external" href="https://brew.sh/">Homebrew</a>:</p>
@@ -1127,6 +1192,7 @@ The automated deploy preserves the existing <code class="docutils literal notran
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-from-source">Build from Source</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debian-ubuntu">Debian/Ubuntu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fedora">Fedora</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mac">Mac</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Windows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vcpkg">VCPKG</a></li>
@@ -1186,7 +1252,7 @@ The automated deploy preserves the existing <code class="docutils literal notran
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | 328d683 (2026-07-14)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 6617573 (2026-07-16)</p></div>
       
     </div>
   
