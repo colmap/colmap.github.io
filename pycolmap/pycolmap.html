@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=81bbf7a2"></script>
+    <script src="../_static/documentation_options.js?v=4a36156a"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -64,7 +64,7 @@
     <link rel="prev" title="PyCOLMAP" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | 6617573 (2026-07-16)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | bd7c30b (2026-07-17)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -6416,7 +6416,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pycolmap.read_rig_config">
 <span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">read_rig_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">os.PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycolmap.RigConfig" title="pycolmap.RigConfig"><span class="pre">pycolmap.RigConfig</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pycolmap.read_rig_config" title="Link to this definition">#</a></dt>
-<dd><p>Read the rig configuration from a .json file.</p>
+<dd><p>Read the rig configuration from a .json file. Rotations are expected in the order [w, x, y, z].</p>
 </dd></dl>
 
 <dl class="py function">
@@ -16027,7 +16027,7 @@ are part of a 3D point track. (int, default: 0)</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | 6617573 (2026-07-16)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | bd7c30b (2026-07-17)</p></div>
       
     </div>
   
