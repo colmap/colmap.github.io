@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=8a0d682a"></script>
+    <script src="../_static/documentation_options.js?v=3b2e256e"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -64,7 +64,7 @@
     <link rel="prev" title="PyCOLMAP" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | 66273ef (2026-07-18)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 71e762b (2026-07-20)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -3225,6 +3225,18 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.Camera.is_perspective_fisheye">
+<span class="sig-name descname"><span class="pre">is_perspective_fisheye</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Camera" title="pycolmap.Camera"><span class="pre">pycolmap.Camera</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pycolmap.Camera.is_perspective_fisheye" title="Link to this definition">#</a></dt>
+<dd><p>Whether the camera model is perspective and fisheye.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.Camera.is_perspective_pinhole">
+<span class="sig-name descname"><span class="pre">is_perspective_pinhole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Camera" title="pycolmap.Camera"><span class="pre">pycolmap.Camera</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pycolmap.Camera.is_perspective_pinhole" title="Link to this definition">#</a></dt>
+<dd><p>Whether the camera model is perspective and not fisheye.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pycolmap.Camera.cam_from_img">
 <span class="sig-name descname"><span class="pre">cam_from_img</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.Camera.cam_from_img" title="Link to this definition">#</a></dt>
 <dd><p>Overloaded function.</p>
@@ -3854,6 +3866,18 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.TwoViewGeometry.cam2_from_cam1">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">cam2_from_cam1</span></span><a class="headerlink" href="#pycolmap.TwoViewGeometry.cam2_from_cam1" title="Link to this definition">#</a></dt>
+<dd><p>(NoneType, default: None)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.TwoViewGeometry.camera1">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">camera1</span></span><a class="headerlink" href="#pycolmap.TwoViewGeometry.camera1" title="Link to this definition">#</a></dt>
+<dd><p>(NoneType, default: None)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.TwoViewGeometry.camera2">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">camera2</span></span><a class="headerlink" href="#pycolmap.TwoViewGeometry.camera2" title="Link to this definition">#</a></dt>
 <dd><p>(NoneType, default: None)</p>
 </dd></dl>
 
@@ -11322,7 +11346,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.IncrementalPipelineOptions.ba_local_max_num_iterations">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ba_local_max_num_iterations</span></span><a class="headerlink" href="#pycolmap.IncrementalPipelineOptions.ba_local_max_num_iterations" title="Link to this definition">#</a></dt>
-<dd><p>The maximum number of local bundle adjustment iterations. (int, default: 25)</p>
+<dd><p>The maximum number of local bundle adjustment iterations. If -1, the default of the configured bundle adjustment backend is used. (int, default: -1)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -11358,7 +11382,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.IncrementalPipelineOptions.ba_global_max_num_iterations">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ba_global_max_num_iterations</span></span><a class="headerlink" href="#pycolmap.IncrementalPipelineOptions.ba_global_max_num_iterations" title="Link to this definition">#</a></dt>
-<dd><p>The maximum number of global bundle adjustment iterations. (int, default: 50)</p>
+<dd><p>The maximum number of global bundle adjustment iterations. If -1, the default of the configured bundle adjustment backend is used. (int, default: -1)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -14319,6 +14343,8 @@ are part of a 3D point track. (int, default: 0)</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.Camera.is_undistorted"><code class="docutils literal notranslate"><span class="pre">Camera.is_undistorted()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.Camera.is_perspective"><code class="docutils literal notranslate"><span class="pre">Camera.is_perspective()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.Camera.is_spherical"><code class="docutils literal notranslate"><span class="pre">Camera.is_spherical()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.Camera.is_perspective_fisheye"><code class="docutils literal notranslate"><span class="pre">Camera.is_perspective_fisheye()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.Camera.is_perspective_pinhole"><code class="docutils literal notranslate"><span class="pre">Camera.is_perspective_pinhole()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.Camera.cam_from_img"><code class="docutils literal notranslate"><span class="pre">Camera.cam_from_img()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.Camera.cam_ray_from_img"><code class="docutils literal notranslate"><span class="pre">Camera.cam_ray_from_img()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.Camera.cam_from_img_threshold"><code class="docutils literal notranslate"><span class="pre">Camera.cam_from_img_threshold()</span></code></a></li>
@@ -14428,6 +14454,8 @@ are part of a 3D point track. (int, default: 0)</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.TwoViewGeometry.F"><code class="docutils literal notranslate"><span class="pre">TwoViewGeometry.F</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.TwoViewGeometry.H"><code class="docutils literal notranslate"><span class="pre">TwoViewGeometry.H</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.TwoViewGeometry.cam2_from_cam1"><code class="docutils literal notranslate"><span class="pre">TwoViewGeometry.cam2_from_cam1</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.TwoViewGeometry.camera1"><code class="docutils literal notranslate"><span class="pre">TwoViewGeometry.camera1</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.TwoViewGeometry.camera2"><code class="docutils literal notranslate"><span class="pre">TwoViewGeometry.camera2</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.TwoViewGeometry.inlier_matches"><code class="docutils literal notranslate"><span class="pre">TwoViewGeometry.inlier_matches</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.TwoViewGeometry.tri_angle"><code class="docutils literal notranslate"><span class="pre">TwoViewGeometry.tri_angle</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.TwoViewGeometry.invert"><code class="docutils literal notranslate"><span class="pre">TwoViewGeometry.invert()</span></code></a></li>
@@ -16027,7 +16055,7 @@ are part of a 3D point track. (int, default: 0)</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | 66273ef (2026-07-18)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 71e762b (2026-07-20)</p></div>
       
     </div>
   

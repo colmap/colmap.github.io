@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=8a0d682a"></script>
+    <script src="_static/documentation_options.js?v=3b2e256e"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="Key Concepts" href="concepts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | 66273ef (2026-07-18)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 71e762b (2026-07-20)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -759,6 +759,21 @@ different trade-offs between speed and accuracy:</p>
 a URL, COLMAP will automatically download and cache the model. You can download
 different ALIKED models from the release page at <a class="github reference external" href="https://github.com/colmap/colmap/releases/">colmap/colmap</a></p>
 </section>
+<section id="iterative-runs">
+<h2>Iterative Runs<a class="headerlink" href="#iterative-runs" title="Link to this heading">#</a></h2>
+<p>When re-running matching on an existing database, image pairs that already have
+a two-view geometry are skipped, so changing <code class="docutils literal notranslate"><span class="pre">--FeatureMatching.type</span></code> on such
+a database leaves previously matched pairs untouched. To force re-matching, first
+clear the existing results with <code class="docutils literal notranslate"><span class="pre">database_cleaner</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ colmap database_cleaner \
+    --database_path $DATASET_PATH/database.db \
+    --type two_view_geometries \
+    --type matches
+</pre></div>
+</div>
+<p>When re-extracting with a different <code class="docutils literal notranslate"><span class="pre">--FeatureExtraction.type</span></code>, use
+<code class="docutils literal notranslate"><span class="pre">--type</span> <span class="pre">features</span></code> to additionally clear the extracted keypoints and descriptors.</p>
+</section>
 </section>
 
 
@@ -812,6 +827,7 @@ different ALIKED models from the release page at <a class="github reference exte
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-matcher-types">Feature Matcher Types</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compatible-extractor-and-matcher-types">Compatible Extractor and Matcher Types</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aliked-model-variants">ALIKED Model Variants</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-runs">Iterative Runs</a></li>
 </ul>
   </nav></div>
 
@@ -861,7 +877,7 @@ different ALIKED models from the release page at <a class="github reference exte
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | 66273ef (2026-07-18)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 71e762b (2026-07-20)</p></div>
       
     </div>
   
