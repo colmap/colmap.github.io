@@ -42,7 +42,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c4c8f65a" />
-    <link rel="stylesheet" type="text/css" href="_static/landing.css?v=66fc8d65" />
+    <link rel="stylesheet" type="text/css" href="_static/landing.css?v=1fe38c8d" />
   
   <!-- So that users can add custom icons -->
   <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=3b2e256e"></script>
+    <script src="_static/documentation_options.js?v=7dfdcc52"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="Cost Functions" href="pycolmap/cost_functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | 71e762b (2026-07-20)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 4cc7c15 (2026-07-20)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -805,6 +805,39 @@ specified by the <code class="docutils literal notranslate"><span class="pre">ca
 and set shared intrinsics in the database management tool. Please, refer to
 <a class="reference internal" href="tutorial.html#database-management"><span class="std std-ref">Database Management</span></a> for more information.</p>
 </section>
+<section id="set-known-camera-intrinsics">
+<h2>Set known camera intrinsics<a class="headerlink" href="#set-known-camera-intrinsics" title="Link to this heading">#</a></h2>
+<p>If the camera calibration is known a priori, the recommended way to provide it
+is during feature extraction using the <code class="docutils literal notranslate"><span class="pre">ImageReader</span></code> options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>colmap feature_extractor \
+    --database_path $PROJECT_PATH/database.db \
+    --image_path $PROJECT_PATH/images \
+    --ImageReader.single_camera 1 \
+    --ImageReader.camera_model OPENCV \
+    --ImageReader.camera_params &quot;fx,fy,cx,cy,k1,k2,p1,p2&quot;
+</pre></div>
+</div>
+<p>The parameters must be provided as a comma-separated list in the order defined
+by the chosen camera model (see <a class="reference internal" href="cameras.html"><span class="doc">Camera Models</span></a>). In the GUI, the equivalent
+settings can be found under <code class="docutils literal notranslate"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Feature</span> <span class="pre">extraction</span> <span class="pre">&gt;</span> <span class="pre">Custom</span>
+<span class="pre">parameters</span></code>. Use <code class="docutils literal notranslate"><span class="pre">--ImageReader.single_camera</span> <span class="pre">1</span></code> if all images were captured
+by the same physical camera with identical settings, so that they share one
+camera in the database (see <a class="reference internal" href="#share-intrinsics">Share intrinsics</a>).</p>
+<p>To modify the intrinsics of an existing database, do not edit the SQLite tables
+by hand (the parameters are stored as binary blobs of doubles), but use
+pycolmap’s database API instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pycolmap</span>
+<span class="k">with</span> <span class="n">pycolmap</span><span class="o">.</span><span class="n">Database</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;path/to/database.db&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+    <span class="n">camera</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">read_camera</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">]</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">has_prior_focal_length</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">update_camera</span><span class="p">(</span><span class="n">camera</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the provided parameters are still refined during bundle adjustment by
+default. To keep them fixed during the reconstruction, see
+<a class="reference internal" href="#faq-fix-intrinsics"><span class="std std-ref">Fix intrinsics</span></a>.</p>
+</section>
 <section id="fix-intrinsics">
 <span id="faq-fix-intrinsics"></span><h2>Fix intrinsics<a class="headerlink" href="#fix-intrinsics" title="Link to this heading">#</a></h2>
 <p>By default, COLMAP tries to refine the intrinsic camera parameters (except
@@ -1453,6 +1486,7 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-between-incremental-global-and-hierarchical-sfm">Choosing between incremental, global, and hierarchical SfM</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstruction-with-pose-priors-gps">Reconstruction with pose priors (GPS)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#share-intrinsics">Share intrinsics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-known-camera-intrinsics">Set known camera intrinsics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-intrinsics">Fix intrinsics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-point-refinement">Principal point refinement</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#increase-number-of-matches-sparse-3d-points">Increase number of matches / sparse 3D points</a></li>
@@ -1524,7 +1558,7 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | 71e762b (2026-07-20)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 4cc7c15 (2026-07-20)</p></div>
       
     </div>
   
