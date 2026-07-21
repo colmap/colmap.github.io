@@ -50,10 +50,11 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=030b95c2"></script>
+    <script src="_static/documentation_options.js?v=72e9b2fb"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'cameras';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="_static/install_selector.js?v=94a4b0a5"></script>
@@ -66,7 +67,7 @@
     <link rel="prev" title="Database Format" href="database.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | dd7b269 (2026-07-21)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 109ebdb (2026-07-21)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -709,6 +710,43 @@ parameters in addition to the standard pinhole parameters.</p></li>
 <p>You can inspect the estimated intrinsic parameters by double-clicking specific
 images in the model viewer or by exporting the model and opening the
 <code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code> file.</p>
+<section id="projection">
+<h2>Projection<a class="headerlink" href="#projection" title="Link to this heading">#</a></h2>
+<p>All perspective camera models map a 3D point in the camera coordinate system to
+a 2D pixel coordinate in three steps: perspective division, distortion, and the
+intrinsic transform (focal length and principal point). COLMAP uses a
+corner-based pixel convention, in which the center of the top-left pixel is at
+<code class="docutils literal notranslate"><span class="pre">(0.5,</span> <span class="pre">0.5)</span></code> (see <a class="reference internal" href="database.html"><span class="doc">Database Format</span></a>).</p>
+<p>Taking <code class="docutils literal notranslate"><span class="pre">SIMPLE_RADIAL</span></code> (parameter list <code class="docutils literal notranslate"><span class="pre">f,</span> <span class="pre">cx,</span> <span class="pre">cy,</span> <span class="pre">k</span></code>) as a worked example, a
+point <span class="math notranslate nohighlight">\((X, Y, Z)\)</span> in the camera frame, which looks down the positive
+<span class="math notranslate nohighlight">\(Z\)</span> axis, is projected as follows:</p>
+<ol class="arabic">
+<li><p>Perspective division onto the normalized image plane:</p>
+<div class="math notranslate nohighlight">
+\[u = X / Z, \qquad v = Y / Z\]</div>
+</li>
+<li><p>Radial distortion with <span class="math notranslate nohighlight">\(r^2 = u^2 + v^2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[u' = u \, (1 + k \, r^2), \qquad v' = v \, (1 + k \, r^2)\]</div>
+</li>
+<li><p>Focal length and principal point, giving the pixel coordinate:</p>
+<div class="math notranslate nohighlight">
+\[x = f \, u' + c_x, \qquad y = f \, v' + c_y\]</div>
+</li>
+</ol>
+<p>The inverse mapping (pixel to normalized camera ray) subtracts the principal
+point, divides by the focal length, and then removes the distortion iteratively.</p>
+<p>All other perspective models share this three-step structure and differ only in
+the number of focal length parameters (a single shared <code class="docutils literal notranslate"><span class="pre">f</span></code> or separate <code class="docutils literal notranslate"><span class="pre">fx</span></code>,
+<code class="docutils literal notranslate"><span class="pre">fy</span></code>) and in the distortion function, e.g. <code class="docutils literal notranslate"><span class="pre">RADIAL</span></code> adds a second radial term
+<code class="docutils literal notranslate"><span class="pre">k2</span></code> and <code class="docutils literal notranslate"><span class="pre">OPENCV</span></code> adds tangential terms <code class="docutils literal notranslate"><span class="pre">p1,</span> <span class="pre">p2</span></code>. The fisheye models
+instead replace the perspective division with an equidistant projection. The
+exact parameter list of every model is given by its <code class="docutils literal notranslate"><span class="pre">params_info</span></code> string and
+defined in the camera models header:
+<a class="github reference external" href="https://github.com/colmap/colmap/blob/main/src/colmap/sensor/models.h">colmap/colmap</a></p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
 <p>To achieve optimal reconstruction results, you might have to try different
 camera models for your problem. Generally, when the reconstruction fails and the
 estimated focal length values / distortion coefficients are grossly wrong, it is
@@ -720,9 +758,7 @@ images to obtain more reliable results
 (see <a class="reference internal" href="faq.html#faq-share-intrinsics"><span class="std std-ref">Share intrinsic camera parameters</span></a>) or you can
 fix the intrinsic parameters during the reconstruction
 (see <a class="reference internal" href="faq.html#faq-fix-intrinsics"><span class="std std-ref">Fix intrinsic camera parameters</span></a>).</p>
-<p>Please, refer to the camera models header file for information on the parameters
-of the different camera models:
-<a class="github reference external" href="https://github.com/colmap/colmap/blob/main/src/colmap/sensor/models.h">colmap/colmap</a></p>
+</section>
 </section>
 
 
@@ -763,6 +799,19 @@ of the different camera models:
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection">Projection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
@@ -810,7 +859,7 @@ of the different camera models:
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | dd7b269 (2026-07-21)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 109ebdb (2026-07-21)</p></div>
       
     </div>
   
