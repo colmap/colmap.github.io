@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=7dfdcc52"></script>
+    <script src="_static/documentation_options.js?v=030b95c2"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="Cost Functions" href="pycolmap/cost_functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | 4cc7c15 (2026-07-20)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | dd7b269 (2026-07-21)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -742,6 +742,32 @@ Overly complex models with many parameters can lead to degenerate or overfitted
 calibration, especially when few images share intrinsics. If in doubt, start
 with <code class="docutils literal notranslate"><span class="pre">SIMPLE_RADIAL</span></code> and inspect the reprojection errors in the model
 statistics.</p>
+</section>
+<section id="using-calibration-from-opencv-kalibr-or-other-tools">
+<h2>Using calibration from OpenCV, Kalibr, or other tools<a class="headerlink" href="#using-calibration-from-opencv-kalibr-or-other-tools" title="Link to this heading">#</a></h2>
+<p>If you already calibrated your camera with an external tool such as OpenCV or
+Kalibr, you can reuse those intrinsics in COLMAP (see <a class="reference internal" href="#faq-fix-intrinsics"><span class="std std-ref">Fix intrinsics</span></a> to keep them constant during reconstruction). Two
+conventions have to be matched first.</p>
+<p><strong>Pixel coordinate convention.</strong> COLMAP places the origin at the top-left
+<em>corner</em> of the image, so the center of the top-left pixel is at <code class="docutils literal notranslate"><span class="pre">(0.5,</span> <span class="pre">0.5)</span></code>
+and a centered principal point is <code class="docutils literal notranslate"><span class="pre">(width</span> <span class="pre">/</span> <span class="pre">2,</span> <span class="pre">height</span> <span class="pre">/</span> <span class="pre">2)</span></code>. OpenCV and Kalibr
+place integer coordinates at pixel <em>centers</em>, so their centered principal point
+is <code class="docutils literal notranslate"><span class="pre">((width</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">/</span> <span class="pre">2,</span> <span class="pre">(height</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">/</span> <span class="pre">2)</span></code>. To convert a principal point from
+OpenCV/Kalibr to COLMAP, add <code class="docutils literal notranslate"><span class="pre">0.5</span></code> to both <code class="docutils literal notranslate"><span class="pre">cx</span></code> and <code class="docutils literal notranslate"><span class="pre">cy</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cx_colmap</span> <span class="o">=</span> <span class="n">cx_opencv</span> <span class="o">+</span> <span class="mf">0.5</span>
+<span class="n">cy_colmap</span> <span class="o">=</span> <span class="n">cy_opencv</span> <span class="o">+</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+<p>For example, an OpenCV calibration of an 800×600 image with a centered principal
+point <code class="docutils literal notranslate"><span class="pre">(399.5,</span> <span class="pre">299.5)</span></code> becomes <code class="docutils literal notranslate"><span class="pre">(400.0,</span> <span class="pre">300.0)</span></code> in COLMAP. The focal lengths
+<code class="docutils literal notranslate"><span class="pre">fx</span></code>, <code class="docutils literal notranslate"><span class="pre">fy</span></code> and the distortion coefficients are unaffected by this shift.</p>
+<p><strong>Distortion parameter order.</strong> COLMAP’s <code class="docutils literal notranslate"><span class="pre">OPENCV</span></code> model uses the same
+<code class="docutils literal notranslate"><span class="pre">k1,</span> <span class="pre">k2,</span> <span class="pre">p1,</span> <span class="pre">p2</span></code> distortion parameters as OpenCV, and <code class="docutils literal notranslate"><span class="pre">FULL_OPENCV</span></code>
+additionally uses <code class="docutils literal notranslate"><span class="pre">k3,</span> <span class="pre">k4,</span> <span class="pre">k5,</span> <span class="pre">k6</span></code>, in that order (see <a class="reference internal" href="cameras.html"><span class="doc">Camera Models</span></a>). A
+camera line in <code class="docutils literal notranslate"><span class="pre">cameras.txt</span></code> for the example above is therefore:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="n">OPENCV</span> <span class="mi">800</span> <span class="mi">600</span> <span class="n">fx</span> <span class="n">fy</span> <span class="mf">400.0</span> <span class="mf">300.0</span> <span class="n">k1</span> <span class="n">k2</span> <span class="n">p1</span> <span class="n">p2</span>
+</pre></div>
+</div>
 </section>
 <section id="choosing-between-incremental-global-and-hierarchical-sfm">
 <h2>Choosing between incremental, global, and hierarchical SfM<a class="headerlink" href="#choosing-between-incremental-global-and-hierarchical-sfm" title="Link to this heading">#</a></h2>
@@ -1483,6 +1509,7 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-colmap">Extending COLMAP</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-between-sift-and-aliked-features">Choosing between SIFT and ALIKED features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-right-camera-model">Choosing the right camera model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-calibration-from-opencv-kalibr-or-other-tools">Using calibration from OpenCV, Kalibr, or other tools</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-between-incremental-global-and-hierarchical-sfm">Choosing between incremental, global, and hierarchical SfM</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstruction-with-pose-priors-gps">Reconstruction with pose priors (GPS)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#share-intrinsics">Share intrinsics</a></li>
@@ -1558,7 +1585,7 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | 4cc7c15 (2026-07-20)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | dd7b269 (2026-07-21)</p></div>
       
     </div>
   

@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=7dfdcc52"></script>
+    <script src="../_static/documentation_options.js?v=030b95c2"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -64,7 +64,7 @@
     <link rel="prev" title="PyCOLMAP" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | 4cc7c15 (2026-07-20)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | dd7b269 (2026-07-21)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -4981,10 +4981,19 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pycolmap.Database">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">Database</span></span><a class="headerlink" href="#pycolmap.Database" title="Link to this definition">#</a></dt>
-<dd><dl class="py method">
+<dd><p>Database storing all extracted and matched information (cameras, images, keypoints, descriptors, matches, rigs, and pose priors).</p>
+<p>A Database cannot be constructed directly; instead open an existing or new database file with <code class="docutils literal notranslate"><span class="pre">Database.open(path)</span></code> and release it with <code class="docutils literal notranslate"><span class="pre">close()</span></code>. It can also be used with a context manager, which closes the database on exit automatically:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>with pycolmap.Database.open(path) as db:</dt><dd><p>…</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
 <dt class="sig sig-object py" id="pycolmap.Database.open">
 <span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">os.PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pycolmap.Database" title="pycolmap.Database"><span class="pre">pycolmap.Database</span></a></span></span><a class="headerlink" href="#pycolmap.Database.open" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Open (creating it if necessary) the database file at the given path and return it.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycolmap.Database.close">
@@ -16055,7 +16064,7 @@ are part of a 3D point track. (int, default: 0)</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | 4cc7c15 (2026-07-20)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | dd7b269 (2026-07-21)</p></div>
       
     </div>
   
