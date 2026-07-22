@@ -7,17 +7,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Key Concepts" />
+<meta content="Inspect binary COLMAP sparse reconstructions directly in your browser with an interactive, private, local-only Three.js viewer." name="description" />
+<meta property="og:title" content="3D Viewer" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://colmap.github.io/concepts.html" />
+<meta property="og:url" content="https://colmap.github.io/viewer.html" />
 <meta property="og:site_name" content="COLMAP" />
-<meta property="og:description" content="Starting from COLMAP 3.12, the concepts of rigs and frames have been introduced to enable a principled modeling of multi-sensor platforms as well as 360° panorama images. These concepts provide a s..." />
+<meta property="og:description" content="Inspect COLMAP sparse reconstructions directly in your browser with an interactive, private, local-only 3D viewer." />
 <meta property="og:image" content="https://colmap.github.io/_static/og-image.png" />
 <meta property="og:image:alt" content="COLMAP — Structure-from-Motion & Multi-View Stereo" />
-<meta name="description" content="Starting from COLMAP 3.12, the concepts of rigs and frames have been introduced to enable a principled modeling of multi-sensor platforms as well as 360° panorama images. These concepts provide a s..." />
 <meta name="twitter:card" content="summary_large_image" />
 
-    <title>Key Concepts &#8212; COLMAP</title>
+    <title>3D Viewer &#8212; COLMAP</title>
   
   
   
@@ -54,16 +54,16 @@
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'concepts';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'viewer';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="_static/install_selector.js?v=94a4b0a5"></script>
     <script src="_static/external_links.js?v=cd4e6f29"></script>
-    <link rel="canonical" href="https://colmap.github.io/concepts.html" />
+    <link rel="canonical" href="https://colmap.github.io/viewer.html" />
     <link rel="icon" href="_static/favicon.svg"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3D Viewer" href="viewer.html" />
-    <link rel="prev" title="Tutorial" href="tutorial.html" />
+    <link rel="next" title="Feature Extraction and Matching" href="features.html" />
+    <link rel="prev" title="Key Concepts" href="concepts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="4.2.0.dev0 | 7f66f79 (2026-07-22)" />
@@ -170,15 +170,15 @@
 </li>
 
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="concepts.html">
     Key Concepts
   </a>
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="viewer.html">
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
     3D Viewer
   </a>
 </li>
@@ -385,10 +385,6 @@
   
 
   
-    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
-      <span class="fa-solid fa-outdent"></span>
-    </button>
-  
 </div>
 
     </header>
@@ -400,7 +396,7 @@
       
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -429,15 +425,15 @@
 </li>
 
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="concepts.html">
     Key Concepts
   </a>
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="viewer.html">
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
     3D Viewer
   </a>
 </li>
@@ -613,23 +609,6 @@
     
   </div>
   
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
-  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
-  </svg>
-  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
-  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
-</button></div>
-        <div class="sidebar-primary-item">
-
-<nav class="bd-docs-nav bd-links"
-     aria-label="Section Navigation">
-  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"></div>
-</nav></div>
-    </div>
-  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
       <div class="sidebar-primary-item">
@@ -665,7 +644,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Key Concepts</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">3D Viewer</span></li>
   </ul>
 </nav>
 </div>
@@ -682,50 +661,82 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="key-concepts">
-<span id="concepts"></span><h1>Key Concepts<a class="headerlink" href="#key-concepts" title="Link to this heading">#</a></h1>
-<p>Starting from COLMAP 3.12, the concepts of rigs and frames have been introduced
-to enable a principled modeling of multi-sensor platforms as well as 360° panorama
-images. These concepts provide a structured framework to organize sensors and
-their measurements, enabling more flexible calibration and fusion of diverse
-data types (e.g., see <a class="reference internal" href="rigs.html#rig-support"><span class="std std-ref">Rig Support</span></a>).</p>
-<p>These additions are backward-compatible and do not affect the traditional, default usage
-of COLMAP for single-camera capture setups.</p>
-<section id="sensors-and-measurements">
-<span id="sensors"></span><h2>Sensors and Measurements<a class="headerlink" href="#sensors-and-measurements" title="Link to this heading">#</a></h2>
-<p>A <strong>sensor</strong> is a device that captures data about the environment, producing
-measurements at specific timestamps. The most common sensor type is the camera,
-which captures images as its measurements. Other examples include IMUs
-(Inertial Measurement Units), which record acceleration and angular velocity,
-and GNSS receivers, which provide absolute position data.</p>
-<p>Currently, COLMAP supports only cameras and their image measurements, though the
-sensor concept is designed to extend to other types such as IMUs and GNSS for
-future support of multi-modal data fusion.</p>
+  <section id="d-viewer">
+<h1>3D Viewer<a class="headerlink" href="#d-viewer" title="Link to this heading">#</a></h1>
+<p>Open a binary COLMAP sparse reconstruction directly in your browser. Processing
+happens locally: reconstruction files and images are never uploaded.</p>
+<p>The 3D Viewer follows the visual conventions and model-view controls of the
+native <a class="reference internal" href="gui.html#gui"><span class="std std-ref">Graphical User Interface</span></a>, including navigation, point and
+image selection, observation inspection, and point/camera scaling. It is a
+read-only inspection tool with intentionally less functionality than the native
+GUI: it does not run reconstruction pipelines, edit models, or visualize dense
+point clouds and meshes.</p>
+<link rel="stylesheet" href="_static/viewer/viewer.css">
+<div id="colmap-viewer-root">
+  <p>The interactive viewer is unavailable in this documentation build.</p>
+  <noscript>This viewer requires JavaScript.</noscript>
+</div>
+<script type="module" src="_static/viewer/viewer.js"></script><section id="supported-inputs">
+<h2>Supported Inputs<a class="headerlink" href="#supported-inputs" title="Link to this heading">#</a></h2>
+<p>Drop a sparse model folder containing <code class="docutils literal notranslate"><span class="pre">cameras.bin</span></code>, <code class="docutils literal notranslate"><span class="pre">images.bin</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">points3D.bin</span></code>, or drop a workspace containing one or more sparse models.
+Current reconstructions with <code class="docutils literal notranslate"><span class="pre">rigs.bin</span></code> and <code class="docutils literal notranslate"><span class="pre">frames.bin</span></code> and legacy binary
+reconstructions are supported. If several models are found, choose one from the
+toolbar.</p>
+<p>To inspect image observations and reprojections, drop a workspace that also
+contains the source image tree. You can also drop the images folder after the
+model has loaded. Image paths are matched against the relative names recorded
+in <code class="docutils literal notranslate"><span class="pre">images.bin</span></code>.</p>
 </section>
-<section id="rigs">
-<span id="id1"></span><h2>Rigs<a class="headerlink" href="#rigs" title="Link to this heading">#</a></h2>
-<p>A <strong>rig</strong> models a platform composed of multiple sensors with fixed relative poses,
-enabling synchronized and consistent multi-sensor data collection. Examples
-include stereo camera setups, headworn AR/VR devices, and autonomous driving
-sensor suites. It can also be virtual — for example, a rig modeling multiple
-virtual cameras arranged to capture overlapping views used to create seamless
-360° panoramic images.</p>
-<p>In COLMAP, each sensor must be uniquely associated with exactly one rig. Each rig
-has a single reference sensor that defines its origin. For example, in a stereo
-camera rig, one camera is designated as the reference sensor with an identity
-<code class="docutils literal notranslate"><span class="pre">sensor_from_rig</span></code> pose, while the second camera’s pose is defined relative to
-this reference. In a single-camera setup, the camera itself serves as the sole
-reference sensor for its rig.</p>
+<section id="controls">
+<h2>Controls<a class="headerlink" href="#controls" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Rotate:</strong> left-click and drag.</p></li>
+<li><p><strong>Pan:</strong> right-click and drag.</p></li>
+<li><p><strong>Zoom:</strong> scroll.</p></li>
+<li><p><strong>Point size:</strong> &lt;CTRL&gt;-scroll (&lt;CMD&gt;-scroll) or use the toolbar.</p></li>
+<li><p><strong>Camera size:</strong> &lt;ALT&gt;-scroll or use the toolbar.</p></li>
+<li><p><strong>Select:</strong> double-click a point or camera.</p></li>
+<li><p><strong>Clear selection:</strong> double-click the background or use the toolbar.</p></li>
+</ul>
+<p>The viewer requires a current desktop browser with WebGL2. Folder selection is
+available as a fallback when directory drag-and-drop is not supported by the
+browser.</p>
 </section>
-<section id="frames">
-<span id="id2"></span><h2>Frames<a class="headerlink" href="#frames" title="Link to this heading">#</a></h2>
-<p>A <strong>frame</strong> represents a rig captured at a single timestamp, containing measurements
-from one or more sensors within that rig. For example, if a rig consists of
-three sensors, a frame may include measurements from all three sensors, or only
-a subset, depending on availability. This concept allows association of multi-sensor
-data at specific points in time.</p>
-<p>For instance, in a stereo camera rig recording video, each frame corresponds to a
-set of two images—one from each camera—captured at the same moment.</p>
+<section id="reusing-the-viewer">
+<h2>Reusing the Viewer<a class="headerlink" href="#reusing-the-viewer" title="Link to this heading">#</a></h2>
+<p>The viewer is also an ES module component. Build it with <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">run</span> <span class="pre">build</span></code> in
+the <code class="docutils literal notranslate"><span class="pre">doc</span></code> directory, copy the complete <code class="docutils literal notranslate"><span class="pre">_static/viewer</span></code> directory so that
+the parser worker remains beside the module, and include both generated assets:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/viewer/viewer.css&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;my-viewer&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;model-folder&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;file&quot;</span> <span class="na">webkitdirectory</span> <span class="na">multiple</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">mountColmapViewer</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;/viewer/component.js&quot;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">viewer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mountColmapViewer</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#my-viewer&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#model-folder&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">event</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">entries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[...</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">files</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">file</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">      </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="nx">file</span><span class="p">.</span><span class="nx">webkitRelativePath</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">file</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">file</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}));</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">viewer</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">entries</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// viewer.load() also accepts an already parsed Reconstruction object.</span>
+<span class="w">  </span><span class="c1">// Call viewer.clear() or viewer.dispose() when appropriate.</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Each <code class="docutils literal notranslate"><span class="pre">LocalFile</span></code> entry has the shape <code class="docutils literal notranslate"><span class="pre">{path,</span> <span class="pre">file}</span></code>, where <code class="docutils literal notranslate"><span class="pre">path</span></code> is the
+file’s relative path and <code class="docutils literal notranslate"><span class="pre">file</span></code> is a browser <code class="docutils literal notranslate"><span class="pre">File</span></code> object. Multiple
+component instances can coexist on one page. The TypeScript source also exports
+the mount settings and lifecycle types.</p>
+<p>When embedding the component on another website, please include visible
+attribution to the <a class="reference external" href="https://colmap.github.io/">COLMAP project</a> and reproduce
+the full <a class="reference internal" href="license.html"><span class="doc">COLMAP new BSD license notice</span></a> in the website’s legal
+or third-party notices. Also retain the bundled
+<a class="reference external" href="_static/viewer-licenses.txt">Three.js license notice</a> for that dependency.</p>
 </section>
 </section>
 
@@ -740,20 +751,20 @@ set of two images—one from each camera—captured at the same moment.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="tutorial.html"
+       href="concepts.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Tutorial</p>
+        <p class="prev-next-title">Key Concepts</p>
       </div>
     </a>
     <a class="right-next"
-       href="viewer.html"
+       href="features.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">3D Viewer</p>
+        <p class="prev-next-title">Feature Extraction and Matching</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -763,35 +774,6 @@ set of two images—one from each camera—captured at the same moment.</p>
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensors-and-measurements">Sensors and Measurements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rigs">Rigs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frames">Frames</a></li>
-</ul>
-  </nav></div>
-
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="_sources/concepts.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
-</div></div>
               
             
           </div>
