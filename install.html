@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=bd3a62b7"></script>
+    <script src="_static/documentation_options.js?v=b2c2ab5f"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="COLMAP" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | 0b9ce70 (2026-07-28)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | db6f909 (2026-08-12)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -689,8 +689,8 @@ manually. Pre-built binaries and other resources can be downloaded from
 <a class="reference external" href="https://demuc.de/colmap/">https://demuc.de/colmap/</a>.</p>
 <p>An overview of system packages for Linux/Unix/BSD distributions are available at
 <a class="reference external" href="https://repology.org/metapackage/colmap/versions">https://repology.org/metapackage/colmap/versions</a>. Note that the COLMAP packages
-in the default repositories for Linux/Unix/BSD do not come with CUDA support,
-which requires a manual build from source, as explained further below.</p>
+in the default repositories for Linux/Unix/BSD do not come with CUDA or HIP/ROCm
+support, which requires a manual build from source, as explained further below.</p>
 <p>For Mac users, <a class="reference external" href="https://brew.sh">Homebrew</a> provides a formula for COLMAP with
 pre-compiled binaries or the option to build from source. After installing
 homebrew, installing COLMAP is as easy as running <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">colmap</span></code>.</p>
@@ -786,6 +786,34 @@ Windows, compute clusters, or if you do not have root access under Linux or Mac.
 configuration, specify <code class="docutils literal notranslate"><span class="pre">-DCMAKE_CUDA_ARCHITECTURES=native</span></code>, if you want to run
 COLMAP only on your current machine (default), “all”/”all-major” to be able to
 distribute to other machines, or a specific CUDA architecture like “75”, etc.</p>
+<p>To compile with <strong>HIP / ROCm support</strong> instead of CUDA (for AMD GPUs), install
+ROCm following the <a class="reference external" href="https://rocm.docs.amd.com/projects/install-on-linux/en/latest/">AMD ROCm installation guide</a> and ensure
+the <code class="docutils literal notranslate"><span class="pre">hip</span></code>, <code class="docutils literal notranslate"><span class="pre">hiprand</span></code>, and <code class="docutils literal notranslate"><span class="pre">rocrand</span></code> packages are present (default
+location <code class="docutils literal notranslate"><span class="pre">/opt/rocm</span></code>). Then pass the following flags at configure time:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">GNinja</span> \
+    <span class="o">-</span><span class="n">DCUDA_ENABLED</span><span class="o">=</span><span class="n">OFF</span> \
+    <span class="o">-</span><span class="n">DHIP_ENABLED</span><span class="o">=</span><span class="n">ON</span> \
+    <span class="o">-</span><span class="n">DCMAKE_HIP_ARCHITECTURES</span><span class="o">=</span><span class="n">gfx90a</span> \
+    <span class="o">-</span><span class="n">DCMAKE_HIP_COMPILER</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">rocm</span><span class="o">/</span><span class="n">llvm</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">clang</span><span class="o">++</span>
+</pre></div>
+</div>
+<p>Set <code class="docutils literal notranslate"><span class="pre">CMAKE_HIP_ARCHITECTURES</span></code> to match the target AMD GPU
+(<code class="docutils literal notranslate"><span class="pre">gfx90a</span></code> for MI200/MI250, <code class="docutils literal notranslate"><span class="pre">gfx942</span></code> for MI300, <code class="docutils literal notranslate"><span class="pre">gfx1030</span></code> for RDNA2,
+<code class="docutils literal notranslate"><span class="pre">gfx1100</span></code> for RDNA3, etc.; multiple values can be passed as a
+semicolon-separated list). <code class="docutils literal notranslate"><span class="pre">CUDA_ENABLED</span></code> and <code class="docutils literal notranslate"><span class="pre">HIP_ENABLED</span></code> are mutually
+exclusive. CMake 3.21 or newer is required for the HIP backend. On RDNA3
+consumer parts where ROCm only officially supports a subset of architectures,
+you may also need <code class="docutils literal notranslate"><span class="pre">HSA_OVERRIDE_GFX_VERSION=11.0.0</span></code> in the runtime
+environment. The HIP backend currently accelerates dense reconstruction
+(<code class="docutils literal notranslate"><span class="pre">patch_match_stereo</span></code>); see the changelog for ongoing coverage.</p>
+<p>If ROCm is installed through a Python wheel / virtualenv (for example AMD’s
+TheRock packaging, which puts a <code class="docutils literal notranslate"><span class="pre">rocm-sdk</span></code> command on the <code class="docutils literal notranslate"><span class="pre">PATH</span></code>), the
+install root and target architectures are detected automatically from
+<code class="docutils literal notranslate"><span class="pre">rocm-sdk</span> <span class="pre">path</span> <span class="pre">--root</span></code> and <code class="docutils literal notranslate"><span class="pre">rocm-sdk</span> <span class="pre">targets</span></code>, so <code class="docutils literal notranslate"><span class="pre">ROCM_PATH</span></code> and
+<code class="docutils literal notranslate"><span class="pre">CMAKE_HIP_ARCHITECTURES</span></code> need not be set by hand. An explicit
+<code class="docutils literal notranslate"><span class="pre">-DROCM_PATH</span></code> or a <code class="docutils literal notranslate"><span class="pre">ROCM_PATH</span></code> environment variable still takes
+precedence, and CMake’s own architecture autodetection sets
+<code class="docutils literal notranslate"><span class="pre">CMAKE_HIP_ARCHITECTURES</span></code> when a target GPU is visible at configure time.</p>
 <p>Configure and compile COLMAP:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">colmap</span><span class="o">/</span><span class="n">colmap</span><span class="o">.</span><span class="n">git</span>
 <span class="n">cd</span> <span class="n">colmap</span>
@@ -1266,7 +1294,7 @@ The automated deploy preserves the existing <code class="docutils literal notran
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | 0b9ce70 (2026-07-28)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | db6f909 (2026-08-12)</p></div>
       
     </div>
   

@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=bd3a62b7"></script>
+    <script src="../_static/documentation_options.js?v=b2c2ab5f"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -64,7 +64,7 @@
     <link rel="prev" title="PyCOLMAP" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | 0b9ce70 (2026-07-28)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | db6f909 (2026-08-12)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -3297,13 +3297,13 @@
 <span class="sig-name descname"><span class="pre">img_from_cam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.Camera.img_from_cam" title="Link to this definition">#</a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">img_from_cam(self:</span> <span class="pre">pycolmap.Camera,</span> <span class="pre">cam_point:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;])</span> <span class="pre">→</span> <span class="pre">typing.Annotated[numpy.typing.NDArray[numpy.float64],</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;]</span> <span class="pre">|</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_from_cam(self:</span> <span class="pre">pycolmap.Camera,</span> <span class="pre">cam_point:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;],</span> <span class="pre">check_cheirality:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True)</span> <span class="pre">→</span> <span class="pre">typing.Annotated[numpy.typing.NDArray[numpy.float64],</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;]</span> <span class="pre">|</span> <span class="pre">None</span></code></p></li>
 </ol>
-<p>Project point from camera frame to image plane.</p>
+<p>Project point from camera frame to image plane. Without cheirality check, points behind the camera are projected as well.</p>
 <ol class="arabic simple" start="2">
-<li><p><code class="docutils literal notranslate"><span class="pre">img_from_cam(self:</span> <span class="pre">pycolmap.Camera,</span> <span class="pre">cam_points:</span> <span class="pre">typing.Annotated[numpy.typing.NDArray[numpy.float64],</span> <span class="pre">&quot;[m,</span> <span class="pre">3]&quot;])</span> <span class="pre">→</span> <span class="pre">typing.Annotated[numpy.typing.NDArray[numpy.float64],</span> <span class="pre">&quot;[m,</span> <span class="pre">2]&quot;]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_from_cam(self:</span> <span class="pre">pycolmap.Camera,</span> <span class="pre">cam_points:</span> <span class="pre">typing.Annotated[numpy.typing.NDArray[numpy.float64],</span> <span class="pre">&quot;[m,</span> <span class="pre">3]&quot;],</span> <span class="pre">check_cheirality:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True)</span> <span class="pre">→</span> <span class="pre">typing.Annotated[numpy.typing.NDArray[numpy.float64],</span> <span class="pre">&quot;[m,</span> <span class="pre">2]&quot;]</span></code></p></li>
 </ol>
-<p>Project list of points from camera frame to image plane.</p>
+<p>Project list of points from camera frame to image plane. Without cheirality check, points behind the camera are projected as well.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -7059,6 +7059,77 @@ are part of a 3D point track. (int, default: 0)</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.WarpImageOptions">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">WarpImageOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.WarpImageOptions" title="Link to this definition">#</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.WarpImageOptions)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.WarpImageOptions,</span> <span class="pre">arg0:</span> <span class="pre">dict)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.WarpImageOptions,</span> <span class="pre">**kwargs)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.WarpImageOptions.Interpolation">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Interpolation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.WarpImageOptions.Interpolation" title="Link to this definition">#</a></dt>
+<dd><p>Members:</p>
+<p>NEAREST_NEIGHBOR</p>
+<p>BILINEAR</p>
+<p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.WarpImageOptions.Interpolation,</span> <span class="pre">value:</span> <span class="pre">typing.SupportsInt</span> <span class="pre">|</span> <span class="pre">typing.SupportsIndex)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.WarpImageOptions.Interpolation,</span> <span class="pre">name:</span> <span class="pre">str)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycolmap.WarpImageOptions.Interpolation.BILINEAR">
+<span class="sig-name descname"><span class="pre">BILINEAR</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Interpolation.BILINEAR</span></span><a class="headerlink" href="#pycolmap.WarpImageOptions.Interpolation.BILINEAR" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycolmap.WarpImageOptions.Interpolation.NEAREST_NEIGHBOR">
+<span class="sig-name descname"><span class="pre">NEAREST_NEIGHBOR</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Interpolation.NEAREST_NEIGHBOR</span></span><a class="headerlink" href="#pycolmap.WarpImageOptions.Interpolation.NEAREST_NEIGHBOR" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.WarpImageOptions.Interpolation.name">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#pycolmap.WarpImageOptions.Interpolation.name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.WarpImageOptions.Interpolation.value">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#pycolmap.WarpImageOptions.Interpolation.value" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.WarpImageOptions.interpolation">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">interpolation</span></span><a class="headerlink" href="#pycolmap.WarpImageOptions.interpolation" title="Link to this definition">#</a></dt>
+<dd><p>(Interpolation, default: Interpolation.BILINEAR)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.WarpImageOptions.direct_warp_min_scale">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">direct_warp_min_scale</span></span><a class="headerlink" href="#pycolmap.WarpImageOptions.direct_warp_min_scale" title="Link to this definition">#</a></dt>
+<dd><p>(float, default: 0.5)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.WarpImageOptions.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.WarpImageOptions" title="pycolmap.WarpImageOptions"><span class="pre">pycolmap.WarpImageOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pycolmap.WarpImageOptions.summary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.WarpImageOptions.mergedict">
+<span class="sig-name descname"><span class="pre">mergedict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.WarpImageOptions.mergedict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.WarpImageOptions.todict">
+<span class="sig-name descname"><span class="pre">todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.WarpImageOptions" title="pycolmap.WarpImageOptions"><span class="pre">pycolmap.WarpImageOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pycolmap.WarpImageOptions.todict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="pycolmap.UndistortCameraOptions">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">UndistortCameraOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.UndistortCameraOptions" title="Link to this definition">#</a></dt>
 <dd><p>Overloaded function.</p>
@@ -7119,6 +7190,12 @@ are part of a 3D point track. (int, default: 0)</p>
 <dt class="sig sig-object py" id="pycolmap.UndistortCameraOptions.max_cam_point_norm">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">max_cam_point_norm</span></span><a class="headerlink" href="#pycolmap.UndistortCameraOptions.max_cam_point_norm" title="Link to this definition">#</a></dt>
 <dd><p>(float, default: -1.0)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.UndistortCameraOptions.warp_options">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">warp_options</span></span><a class="headerlink" href="#pycolmap.UndistortCameraOptions.warp_options" title="Link to this definition">#</a></dt>
+<dd><p>(WarpImageOptions, default: WarpImageOptions(interpolation=Interpolation.BILINEAR, direct_warp_min_scale=0.5))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -7333,13 +7410,15 @@ are part of a 3D point track. (int, default: 0)</p>
 <span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">estimate_relative_pose</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">cam_rays1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.float64</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">3]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">cam_rays2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.float64</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">3]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">camera1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Camera" title="pycolmap.Camera"><span class="pre">pycolmap.Camera</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">points2D1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.float64</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">2]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">camera2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Camera" title="pycolmap.Camera"><span class="pre">pycolmap.Camera</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">points2D2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.float64</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">2]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.RANSACOptions" title="pycolmap.RANSACOptions"><span class="pre">pycolmap.RANSACOptions</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">RANSACOptions()</span></span></em>,</dd>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.estimate_relative_pose" title="Link to this definition">#</a></dt>
-<dd><p>Robustly estimate relative pose using LO-RANSAC without non-linear refinement.</p>
+<dd><p>Robustly estimate relative pose from 2D-2D correspondences (given as camera + image points) using LO-RANSAC with the tangent Sampson error. Local optimization non-linearly refines that error over the current inlier set, but the returned pose receives no final refinement over its own inliers; use refine_relative_pose for that.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -7348,14 +7427,16 @@ are part of a 3D point track. (int, default: 0)</p>
 
 <dl>
 <dd><em class="sig-param"><span class="n"><span class="pre">cam2_from_cam1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Rigid3d" title="pycolmap.Rigid3d"><span class="pre">pycolmap.Rigid3d</span></a></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">cam_rays1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.float64</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">3]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">cam_rays2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.float64</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">3]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">camera1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Camera" title="pycolmap.Camera"><span class="pre">pycolmap.Camera</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">points2D1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.float64</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">2]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">camera2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Camera" title="pycolmap.Camera"><span class="pre">pycolmap.Camera</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">points2D2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.float64</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">2]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">inlier_mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">1]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pycolmap.pyceres.SolverOptions</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">SolverOptions(minimizer_type=MinimizerType.TRUST_REGION,</span> <span class="pre">line_search_direction_type=LineSearchDirectionType.LBFGS,</span> <span class="pre">line_search_type=LineSearchType.WOLFE,</span> <span class="pre">nonlinear_conjugate_gradient_type=NonlinearConjugateGradientType.FLETCHER_REEVES,</span> <span class="pre">max_lbfgs_rank=20,</span> <span class="pre">use_approximate_eigenvalue_bfgs_scaling=False,</span> <span class="pre">line_search_interpolation_type=LineSearchInterpolationType.CUBIC,</span> <span class="pre">min_line_search_step_size=1e-09,</span> <span class="pre">line_search_sufficient_function_decrease=0.0001,</span> <span class="pre">max_line_search_step_contraction=0.001,</span> <span class="pre">min_line_search_step_contraction=0.6,</span> <span class="pre">max_num_line_search_step_size_iterations=20,</span> <span class="pre">max_num_line_search_direction_restarts=5,</span> <span class="pre">line_search_sufficient_curvature_decrease=0.9,</span> <span class="pre">max_line_search_step_expansion=10.0,</span> <span class="pre">trust_region_strategy_type=TrustRegionStrategyType.LEVENBERG_MARQUARDT,</span> <span class="pre">dogleg_type=DoglegType.TRADITIONAL_DOGLEG,</span> <span class="pre">use_nonmonotonic_steps=False,</span> <span class="pre">max_consecutive_nonmonotonic_steps=5,</span> <span class="pre">max_num_iterations=50,</span> <span class="pre">max_solver_time_in_seconds=1000000000.0,</span> <span class="pre">num_threads=1,</span> <span class="pre">initial_trust_region_radius=10000.0,</span> <span class="pre">max_trust_region_radius=1e+16,</span> <span class="pre">min_trust_region_radius=1e-32,</span> <span class="pre">min_relative_decrease=0.001,</span> <span class="pre">min_lm_diagonal=1e-06,</span> <span class="pre">max_lm_diagonal=1e+32,</span> <span class="pre">max_num_consecutive_invalid_steps=5,</span> <span class="pre">function_tolerance=1e-06,</span> <span class="pre">gradient_tolerance=1e-10,</span> <span class="pre">parameter_tolerance=1e-08,</span> <span class="pre">linear_solver_type=LinearSolverType.SPARSE_NORMAL_CHOLESKY,</span> <span class="pre">preconditioner_type=PreconditionerType.JACOBI,</span> <span class="pre">visibility_clustering_type=VisibilityClusteringType.CANONICAL_VIEWS,</span> <span class="pre">dense_linear_algebra_library_type=DenseLinearAlgebraLibraryType.EIGEN,</span> <span class="pre">sparse_linear_algebra_library_type=SparseLinearAlgebraLibraryType.SUITE_SPARSE,</span> <span class="pre">use_explicit_schur_complement=False,</span> <span class="pre">dynamic_sparsity=False,</span> <span class="pre">use_inner_iterations=False,</span> <span class="pre">inner_iteration_tolerance=0.001,</span> <span class="pre">min_linear_solver_iterations=0,</span> <span class="pre">max_linear_solver_iterations=500,</span> <span class="pre">eta=0.1,</span> <span class="pre">jacobi_scaling=True,</span> <span class="pre">logging_type=LoggingType.PER_MINIMIZER_ITERATION,</span> <span class="pre">minimizer_progress_to_stdout=False,</span> <span class="pre">trust_region_problem_dump_directory='/tmp',</span> <span class="pre">trust_region_problem_dump_format_type=DumpFormatType.TEXTFILE,</span> <span class="pre">check_gradients=False,</span> <span class="pre">gradient_check_relative_precision=1e-08,</span> <span class="pre">gradient_check_numeric_derivative_relative_step_size=1e-06,</span> <span class="pre">update_state_every_iteration=False)</span></span></em>,</dd>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.refine_relative_pose" title="Link to this definition">#</a></dt>
-<dd><p>Non-linear refinement of relative pose.</p>
+<dd><p>Non-linear refinement of relative pose from 2D-2D correspondences (camera + image points) with the tangent Sampson error.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -9187,7 +9268,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.TwoViewGeometryOptions.use_degensac">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">use_degensac</span></span><a class="headerlink" href="#pycolmap.TwoViewGeometryOptions.use_degensac" title="Link to this definition">#</a></dt>
-<dd><p>(bool, default: True)</p>
+<dd><p>(bool, default: False)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -11831,6 +11912,491 @@ are part of a 3D point track. (int, default: 0)</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.SceneClusteringOptions">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">SceneClusteringOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.SceneClusteringOptions" title="Link to this definition">#</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.SceneClusteringOptions)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.SceneClusteringOptions,</span> <span class="pre">arg0:</span> <span class="pre">dict)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.SceneClusteringOptions,</span> <span class="pre">**kwargs)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.SceneClusteringOptions.is_hierarchical">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">is_hierarchical</span></span><a class="headerlink" href="#pycolmap.SceneClusteringOptions.is_hierarchical" title="Link to this definition">#</a></dt>
+<dd><p>Flag for hierarchical vs. flat clustering. (bool, default: True)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.SceneClusteringOptions.branching">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">branching</span></span><a class="headerlink" href="#pycolmap.SceneClusteringOptions.branching" title="Link to this definition">#</a></dt>
+<dd><p>The branching factor of the hierarchical clustering. (int, default: 2)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.SceneClusteringOptions.image_overlap">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">image_overlap</span></span><a class="headerlink" href="#pycolmap.SceneClusteringOptions.image_overlap" title="Link to this definition">#</a></dt>
+<dd><p>The number of overlapping images between child clusters. (int, default: 50)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.SceneClusteringOptions.num_image_matches">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">num_image_matches</span></span><a class="headerlink" href="#pycolmap.SceneClusteringOptions.num_image_matches" title="Link to this definition">#</a></dt>
+<dd><p>The max related images matches to look for in a flat cluster. (int, default: 20)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.SceneClusteringOptions.leaf_max_num_images">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">leaf_max_num_images</span></span><a class="headerlink" href="#pycolmap.SceneClusteringOptions.leaf_max_num_images" title="Link to this definition">#</a></dt>
+<dd><p>The maximum number of images in a leaf node cluster, otherwise the cluster is further partitioned using the given branching factor. Note that a cluster leaf node will have at most <cite>leaf_max_num_images + image_overlap</cite> images to satisfy the overlap constraint. (int, default: 500)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.SceneClusteringOptions.check">
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.SceneClusteringOptions" title="pycolmap.SceneClusteringOptions"><span class="pre">pycolmap.SceneClusteringOptions</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pycolmap.SceneClusteringOptions.check" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.SceneClusteringOptions.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.SceneClusteringOptions" title="pycolmap.SceneClusteringOptions"><span class="pre">pycolmap.SceneClusteringOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pycolmap.SceneClusteringOptions.summary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.SceneClusteringOptions.mergedict">
+<span class="sig-name descname"><span class="pre">mergedict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.SceneClusteringOptions.mergedict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.SceneClusteringOptions.todict">
+<span class="sig-name descname"><span class="pre">todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.SceneClusteringOptions" title="pycolmap.SceneClusteringOptions"><span class="pre">pycolmap.SceneClusteringOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pycolmap.SceneClusteringOptions.todict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.HierarchicalPipelineOptions">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">HierarchicalPipelineOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.HierarchicalPipelineOptions" title="Link to this definition">#</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.HierarchicalPipelineOptions)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.HierarchicalPipelineOptions,</span> <span class="pre">arg0:</span> <span class="pre">dict)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.HierarchicalPipelineOptions,</span> <span class="pre">**kwargs)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.HierarchicalPipelineOptions.image_path">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">image_path</span></span><a class="headerlink" href="#pycolmap.HierarchicalPipelineOptions.image_path" title="Link to this definition">#</a></dt>
+<dd><p>The image path at which to find the images to extract point colors. If not specified, all point colors will be black. (PosixPath, default: .)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.HierarchicalPipelineOptions.init_num_trials">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">init_num_trials</span></span><a class="headerlink" href="#pycolmap.HierarchicalPipelineOptions.init_num_trials" title="Link to this definition">#</a></dt>
+<dd><p>The maximum number of trials to initialize a cluster. (int, default: 10)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.HierarchicalPipelineOptions.num_threads">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">num_threads</span></span><a class="headerlink" href="#pycolmap.HierarchicalPipelineOptions.num_threads" title="Link to this definition">#</a></dt>
+<dd><p>The total number of threads for the hierarchical pipeline. This budget is divided across workers to avoid thread oversubscription. Note that incremental_options.num_threads is ignored in favor of this option. (int, default: -1)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.HierarchicalPipelineOptions.num_workers">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">num_workers</span></span><a class="headerlink" href="#pycolmap.HierarchicalPipelineOptions.num_workers" title="Link to this definition">#</a></dt>
+<dd><p>The number of workers used to reconstruct clusters in parallel. (int, default: -1)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.HierarchicalPipelineOptions.clustering_options">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">clustering_options</span></span><a class="headerlink" href="#pycolmap.HierarchicalPipelineOptions.clustering_options" title="Link to this definition">#</a></dt>
+<dd><p>Options for clustering the scene graph. (SceneClusteringOptions, default: SceneClusteringOptions(is_hierarchical=True, branching=2, image_overlap=50, num_image_matches=20, leaf_max_num_images=500))</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.HierarchicalPipelineOptions.incremental_options">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">incremental_options</span></span><a class="headerlink" href="#pycolmap.HierarchicalPipelineOptions.incremental_options" title="Link to this definition">#</a></dt>
+<dd><p>Options used to reconstruct each cluster individually. (IncrementalPipelineOptions, default: IncrementalPipelineOptions(min_num_matches=15, ignore_watermarks=False, multiple_models=True, max_num_models=50, max_model_overlap=20, min_model_size=10, init_image_id1=-1, init_image_id2=-1, init_num_trials=200, structure_less_registration_fallback=True, structure_less_registration_only=False, extract_colors=True, num_threads=-1, random_seed=-1, min_focal_length_ratio=0.1, max_focal_length_ratio=10.0, max_extra_param=1.0, ba_refine_focal_length=True, ba_refine_principal_point=False, ba_refine_extra_params=True, ba_refine_sensor_from_rig=True, ba_min_num_residuals_for_cpu_multi_threading=50000, ba_local_function_tolerance=0.0, ba_local_max_num_iterations=-1, ba_global_frames_ratio=1.1, ba_global_points_ratio=1.1, ba_global_frames_freq=500, ba_global_points_freq=250000, ba_global_function_tolerance=0.0, ba_global_max_num_iterations=-1, ba_local_max_refinements=2, ba_local_max_refinement_change=0.001, ba_global_max_refinements=5, ba_global_max_refinement_change=0.0005, ba_use_gpu=False, ba_gpu_index=’-1’, ba_local_backend=BundleAdjustmentBackend.CERES, ba_global_backend=BundleAdjustmentBackend.CERES, use_prior_position=False, use_robust_loss_on_prior_position=False, prior_position_loss_scale=7.815, snapshot_path=., snapshot_frames_freq=0, image_path=., image_names=[], load_all_images=False, fix_existing_frames=False, constant_rigs=set(), constant_cameras=set(), max_runtime_seconds=-1, mapper=IncrementalMapperOptions(init_min_num_inliers=100, init_max_error=4.0, init_max_forward_motion=0.95, init_min_tri_angle=16.0, init_max_reg_trials=2, abs_pose_max_error=12.0, abs_pose_min_num_inliers=30, abs_pose_min_inlier_ratio=0.25, abs_pose_refine_focal_length=True, abs_pose_refine_extra_params=True, ba_local_num_images=6, ba_local_min_tri_angle=6.0, ba_global_ignore_redundant_points3D=False, ba_global_prune_points_min_coverage_gain=0.05, min_focal_length_ratio=0.1, max_focal_length_ratio=10.0, max_extra_param=1.0, filter_max_reproj_error=4.0, filter_min_tri_angle=1.5, max_reg_trials=3, fix_existing_frames=False, constant_rigs=set(), constant_cameras=set(), num_threads=-1, random_seed=-1, image_selection_method=ImageSelectionMethod.MIN_UNCERTAINTY), triangulation=IncrementalTriangulatorOptions(max_transitivity=1, create_max_angle_error=2.0, continue_max_angle_error=2.0, merge_max_reproj_error=4.0, complete_max_reproj_error=4.0, complete_max_transitivity=5, re_max_angle_error=5.0, re_min_ratio=0.2, re_max_trials=1, min_angle=1.5, ignore_two_view_tracks=True, min_focal_length_ratio=0.1, max_focal_length_ratio=10.0, max_extra_param=1.0, random_seed=-1)))</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.HierarchicalPipelineOptions.check">
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.HierarchicalPipelineOptions" title="pycolmap.HierarchicalPipelineOptions"><span class="pre">pycolmap.HierarchicalPipelineOptions</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pycolmap.HierarchicalPipelineOptions.check" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.HierarchicalPipelineOptions.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.HierarchicalPipelineOptions" title="pycolmap.HierarchicalPipelineOptions"><span class="pre">pycolmap.HierarchicalPipelineOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pycolmap.HierarchicalPipelineOptions.summary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.HierarchicalPipelineOptions.mergedict">
+<span class="sig-name descname"><span class="pre">mergedict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.HierarchicalPipelineOptions.mergedict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.HierarchicalPipelineOptions.todict">
+<span class="sig-name descname"><span class="pre">todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.HierarchicalPipelineOptions" title="pycolmap.HierarchicalPipelineOptions"><span class="pre">pycolmap.HierarchicalPipelineOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pycolmap.HierarchicalPipelineOptions.todict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.HierarchicalPipeline">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">HierarchicalPipeline</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.HierarchicalPipeline" title="pycolmap.HierarchicalPipeline"><span class="pre">pycolmap.HierarchicalPipeline</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.HierarchicalPipelineOptions" title="pycolmap.HierarchicalPipelineOptions"><span class="pre">pycolmap.HierarchicalPipelineOptions</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Database" title="pycolmap.Database"><span class="pre">pycolmap.Database</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">reconstruction_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.ReconstructionManager" title="pycolmap.ReconstructionManager"><span class="pre">pycolmap.ReconstructionManager</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.HierarchicalPipeline" title="Link to this definition">#</a></dt>
+<dd><p>Class that controls the hierarchical mapping procedure by first partitioning the scene into multiple overlapping clusters, then reconstructing them separately using incremental mapping, and finally merging them all into a globally consistent reconstruction. This is especially useful for larger-scale scenes, since incremental mapping becomes slow with an increasing number of images.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.HierarchicalPipeline.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.HierarchicalPipeline" title="pycolmap.HierarchicalPipeline"><span class="pre">pycolmap.HierarchicalPipeline</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.HierarchicalPipeline.run" title="Link to this definition">#</a></dt>
+<dd><p>Run the full hierarchical mapping pipeline.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">GlobalMapperOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.GlobalMapperOptions" title="Link to this definition">#</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.GlobalMapperOptions)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.GlobalMapperOptions,</span> <span class="pre">arg0:</span> <span class="pre">dict)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.GlobalMapperOptions,</span> <span class="pre">**kwargs)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.num_threads">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">num_threads</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.num_threads" title="Link to this definition">#</a></dt>
+<dd><p>(int, default: -1)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.random_seed">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">random_seed</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.random_seed" title="Link to this definition">#</a></dt>
+<dd><p>(int, default: -1)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.image_path">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">image_path</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.image_path" title="Link to this definition">#</a></dt>
+<dd><p>The image path at which to find the images to extract point colors. (PosixPath, default: .)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.refine_sensor_from_rig">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">refine_sensor_from_rig</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.refine_sensor_from_rig" title="Link to this definition">#</a></dt>
+<dd><p>When False, treat each non-ref sensor’s cam_from_rig as a pre-calibrated constant across rotation averaging, global positioning and bundle adjustment. (bool, default: True)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.rotation_averaging">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rotation_averaging</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.rotation_averaging" title="Link to this definition">#</a></dt>
+<dd><p>(RotationEstimatorOptions, default: RotationEstimatorOptions(random_seed=-1, max_num_l1_iterations=5, l1_step_convergence_threshold=0.001, max_num_irls_iterations=100, irls_step_convergence_threshold=0.001, gravity_dir=[0. 1. 0.], irls_loss_parameter_sigma=5.0, ridge_regularization=1e-09, weight_type=RotationWeightType.GEMAN_MCCLURE, skip_initialization=False, use_gravity=False, use_stratified=True, filter_unregistered=False, max_rotation_error_deg=10.0, refine_sensor_from_rig=True, reweighting=RotationAveragingReweighting.UNIFORM))</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.global_positioning">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">global_positioning</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.global_positioning" title="Link to this definition">#</a></dt>
+<dd><p>(GlobalPositionerOptions, default: GlobalPositionerOptions(generate_random_positions=True, generate_random_points=True, generate_scales=True, optimize_positions=True, optimize_points=True, optimize_scales=True, refine_sensor_from_rig=True, use_gpu=True, gpu_index=’-1’, min_num_images_gpu_solver=50, min_num_view_per_track=3, random_seed=-1, loss_function_scale=0.1, use_parameter_block_ordering=True))</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.bundle_adjustment">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">bundle_adjustment</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.bundle_adjustment" title="Link to this definition">#</a></dt>
+<dd><p>(BundleAdjustmentOptions, default: BundleAdjustmentOptions(refine_focal_length=True, refine_principal_point=False, refine_extra_params=True, refine_rig_from_world=True, refine_sensor_from_rig=True, constant_rig_from_world_rotation=False, refine_points3D=True, min_track_length=3, print_summary=False, backend=BundleAdjustmentBackend.CERES, ceres=CeresBundleAdjustmentOptions(loss_function_type=LossFunctionType.HUBER, loss_function_scale=1.0, use_gpu=True, gpu_index=’-1’, solver_options=SolverOptions(minimizer_type=MinimizerType.TRUST_REGION, line_search_direction_type=LineSearchDirectionType.LBFGS, line_search_type=LineSearchType.WOLFE, nonlinear_conjugate_gradient_type=NonlinearConjugateGradientType.FLETCHER_REEVES, max_lbfgs_rank=20, use_approximate_eigenvalue_bfgs_scaling=False, line_search_interpolation_type=LineSearchInterpolationType.CUBIC, min_line_search_step_size=1e-09, line_search_sufficient_function_decrease=0.0001, max_line_search_step_contraction=0.001, min_line_search_step_contraction=0.6, max_num_line_search_step_size_iterations=20, max_num_line_search_direction_restarts=5, line_search_sufficient_curvature_decrease=0.9, max_line_search_step_expansion=10.0, trust_region_strategy_type=TrustRegionStrategyType.LEVENBERG_MARQUARDT, dogleg_type=DoglegType.TRADITIONAL_DOGLEG, use_nonmonotonic_steps=False, max_consecutive_nonmonotonic_steps=10, max_num_iterations=200, max_solver_time_in_seconds=1000000000.0, num_threads=-1, initial_trust_region_radius=10000.0, max_trust_region_radius=1e+16, min_trust_region_radius=1e-32, min_relative_decrease=0.001, min_lm_diagonal=1e-06, max_lm_diagonal=1e+32, max_num_consecutive_invalid_steps=10, function_tolerance=1e-05, gradient_tolerance=0.0001, parameter_tolerance=0.0, linear_solver_type=LinearSolverType.SPARSE_SCHUR, preconditioner_type=PreconditionerType.JACOBI, visibility_clustering_type=VisibilityClusteringType.CANONICAL_VIEWS, dense_linear_algebra_library_type=DenseLinearAlgebraLibraryType.EIGEN, sparse_linear_algebra_library_type=SparseLinearAlgebraLibraryType.SUITE_SPARSE, use_explicit_schur_complement=False, dynamic_sparsity=False, use_inner_iterations=False, inner_iteration_tolerance=0.001, min_linear_solver_iterations=0, max_linear_solver_iterations=200, eta=0.1, jacobi_scaling=True, logging_type=LoggingType.SILENT, minimizer_progress_to_stdout=False, trust_region_problem_dump_directory=’/tmp’, trust_region_problem_dump_format_type=DumpFormatType.TEXTFILE, check_gradients=False, gradient_check_relative_precision=1e-08, gradient_check_numeric_derivative_relative_step_size=1e-06, update_state_every_iteration=False), min_num_images_gpu_solver=50, min_num_residuals_for_cpu_multi_threading=50000, max_num_images_direct_dense_cpu_solver=50, max_num_images_direct_sparse_cpu_solver=1000, max_num_images_direct_dense_gpu_solver=200, max_num_images_direct_sparse_gpu_solver=4000, auto_select_solver_type=False), caspar=CasparBundleAdjustmentOptions(solver_iter_max=200, pcg_iter_max=20, diag_init=1.0, diag_min=1e-12, diag_scaling_up=2.0, diag_scaling_down=0.333333, diag_exit_value=1000.0, score_exit_value=0.0, pcg_rel_error_exit=0.0001, pcg_rel_score_exit=-1.0, pcg_rel_decrease_min=-1.0, solver_rel_decrease_min=1.0, gpu_index=’-1’)))</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.retriangulation">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">retriangulation</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.retriangulation" title="Link to this definition">#</a></dt>
+<dd><p>(IncrementalTriangulatorOptions, default: IncrementalTriangulatorOptions(max_transitivity=1, create_max_angle_error=2.0, continue_max_angle_error=2.0, merge_max_reproj_error=15.0, complete_max_reproj_error=15.0, complete_max_transitivity=5, re_max_angle_error=5.0, re_min_ratio=0.2, re_max_trials=1, min_angle=1.0, ignore_two_view_tracks=True, min_focal_length_ratio=0.1, max_focal_length_ratio=10.0, max_extra_param=1.0, random_seed=-1))</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.track_intra_image_consistency_threshold">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">track_intra_image_consistency_threshold</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.track_intra_image_consistency_threshold" title="Link to this definition">#</a></dt>
+<dd><p>(float, default: 10.0)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.track_required_tracks_per_view">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">track_required_tracks_per_view</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.track_required_tracks_per_view" title="Link to this definition">#</a></dt>
+<dd><p>(int, default: 2147483647)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.track_min_num_views_per_track">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">track_min_num_views_per_track</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.track_min_num_views_per_track" title="Link to this definition">#</a></dt>
+<dd><p>(int, default: 3)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.keep_max_num_tracks">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">keep_max_num_tracks</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.keep_max_num_tracks" title="Link to this definition">#</a></dt>
+<dd><p>(int, default: 2147483647)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.max_angular_reproj_error_deg">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">max_angular_reproj_error_deg</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.max_angular_reproj_error_deg" title="Link to this definition">#</a></dt>
+<dd><p>(float, default: 1.0)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.max_normalized_reproj_error">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">max_normalized_reproj_error</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.max_normalized_reproj_error" title="Link to this definition">#</a></dt>
+<dd><p>(float, default: 0.01)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.min_tri_angle_deg">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">min_tri_angle_deg</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.min_tri_angle_deg" title="Link to this definition">#</a></dt>
+<dd><p>(float, default: 1.0)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.ba_gpu_index">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ba_gpu_index</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.ba_gpu_index" title="Link to this definition">#</a></dt>
+<dd><p>(str, default: -1)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.ba_num_iterations">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ba_num_iterations</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.ba_num_iterations" title="Link to this definition">#</a></dt>
+<dd><p>(int, default: 3)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.ba_skip_fixed_rotation_stage">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ba_skip_fixed_rotation_stage</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.ba_skip_fixed_rotation_stage" title="Link to this definition">#</a></dt>
+<dd><p>(bool, default: False)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.ba_skip_joint_optimization_stage">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ba_skip_joint_optimization_stage</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.ba_skip_joint_optimization_stage" title="Link to this definition">#</a></dt>
+<dd><p>(bool, default: False)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.skip_rotation_averaging">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">skip_rotation_averaging</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.skip_rotation_averaging" title="Link to this definition">#</a></dt>
+<dd><p>(bool, default: False)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.skip_track_establishment">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">skip_track_establishment</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.skip_track_establishment" title="Link to this definition">#</a></dt>
+<dd><p>(bool, default: False)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.skip_global_positioning">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">skip_global_positioning</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.skip_global_positioning" title="Link to this definition">#</a></dt>
+<dd><p>(bool, default: False)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.skip_bundle_adjustment">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">skip_bundle_adjustment</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.skip_bundle_adjustment" title="Link to this definition">#</a></dt>
+<dd><p>(bool, default: False)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.skip_retriangulation">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">skip_retriangulation</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.skip_retriangulation" title="Link to this definition">#</a></dt>
+<dd><p>(bool, default: False)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.get_rotation_averaging">
+<span class="sig-name descname"><span class="pre">get_rotation_averaging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalMapperOptions" title="pycolmap.GlobalMapperOptions"><span class="pre">pycolmap.GlobalMapperOptions</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pycolmap.RotationEstimatorOptions" title="pycolmap.RotationEstimatorOptions"><span class="pre">pycolmap.RotationEstimatorOptions</span></a></span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.get_rotation_averaging" title="Link to this definition">#</a></dt>
+<dd><p>Get rotation averaging options with shared settings applied.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.get_global_positioning">
+<span class="sig-name descname"><span class="pre">get_global_positioning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalMapperOptions" title="pycolmap.GlobalMapperOptions"><span class="pre">pycolmap.GlobalMapperOptions</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pycolmap.GlobalPositionerOptions" title="pycolmap.GlobalPositionerOptions"><span class="pre">pycolmap.GlobalPositionerOptions</span></a></span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.get_global_positioning" title="Link to this definition">#</a></dt>
+<dd><p>Get global positioning options with shared settings applied.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.get_bundle_adjustment">
+<span class="sig-name descname"><span class="pre">get_bundle_adjustment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalMapperOptions" title="pycolmap.GlobalMapperOptions"><span class="pre">pycolmap.GlobalMapperOptions</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pycolmap.BundleAdjustmentOptions" title="pycolmap.BundleAdjustmentOptions"><span class="pre">pycolmap.BundleAdjustmentOptions</span></a></span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.get_bundle_adjustment" title="Link to this definition">#</a></dt>
+<dd><p>Get bundle adjustment options with shared settings applied.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.get_retriangulation">
+<span class="sig-name descname"><span class="pre">get_retriangulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalMapperOptions" title="pycolmap.GlobalMapperOptions"><span class="pre">pycolmap.GlobalMapperOptions</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pycolmap.IncrementalTriangulatorOptions" title="pycolmap.IncrementalTriangulatorOptions"><span class="pre">pycolmap.IncrementalTriangulatorOptions</span></a></span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.get_retriangulation" title="Link to this definition">#</a></dt>
+<dd><p>Get retriangulation options with shared settings applied.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalMapperOptions" title="pycolmap.GlobalMapperOptions"><span class="pre">pycolmap.GlobalMapperOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.summary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.mergedict">
+<span class="sig-name descname"><span class="pre">mergedict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.mergedict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.todict">
+<span class="sig-name descname"><span class="pre">todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalMapperOptions" title="pycolmap.GlobalMapperOptions"><span class="pre">pycolmap.GlobalMapperOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.todict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">GlobalPipelineOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions" title="Link to this definition">#</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.GlobalPipelineOptions)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.GlobalPipelineOptions,</span> <span class="pre">arg0:</span> <span class="pre">dict)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.GlobalPipelineOptions,</span> <span class="pre">**kwargs)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.min_num_matches">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">min_num_matches</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.min_num_matches" title="Link to this definition">#</a></dt>
+<dd><p>(int, default: 15)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.ignore_watermarks">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ignore_watermarks</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.ignore_watermarks" title="Link to this definition">#</a></dt>
+<dd><p>(bool, default: False)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.image_names">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">image_names</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.image_names" title="Link to this definition">#</a></dt>
+<dd><p>(list, default: [])</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.image_path">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">image_path</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.image_path" title="Link to this definition">#</a></dt>
+<dd><p>The image path at which to find the images to extract point colors. (PosixPath, default: .)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.num_threads">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">num_threads</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.num_threads" title="Link to this definition">#</a></dt>
+<dd><p>(int, default: -1)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.random_seed">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">random_seed</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.random_seed" title="Link to this definition">#</a></dt>
+<dd><p>(int, default: -1)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.decompose_relative_pose">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">decompose_relative_pose</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.decompose_relative_pose" title="Link to this definition">#</a></dt>
+<dd><p>(bool, default: True)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.mapper">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">mapper</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.mapper" title="Link to this definition">#</a></dt>
+<dd><p>(GlobalMapperOptions, default: GlobalMapperOptions(num_threads=-1, random_seed=-1, image_path=., refine_sensor_from_rig=True, rotation_averaging=RotationEstimatorOptions(random_seed=-1, max_num_l1_iterations=5, l1_step_convergence_threshold=0.001, max_num_irls_iterations=100, irls_step_convergence_threshold=0.001, gravity_dir=[0. 1. 0.], irls_loss_parameter_sigma=5.0, ridge_regularization=1e-09, weight_type=RotationWeightType.GEMAN_MCCLURE, skip_initialization=False, use_gravity=False, use_stratified=True, filter_unregistered=False, max_rotation_error_deg=10.0, refine_sensor_from_rig=True, reweighting=RotationAveragingReweighting.UNIFORM), global_positioning=GlobalPositionerOptions(generate_random_positions=True, generate_random_points=True, generate_scales=True, optimize_positions=True, optimize_points=True, optimize_scales=True, refine_sensor_from_rig=True, use_gpu=True, gpu_index=’-1’, min_num_images_gpu_solver=50, min_num_view_per_track=3, random_seed=-1, loss_function_scale=0.1, use_parameter_block_ordering=True), bundle_adjustment=BundleAdjustmentOptions(refine_focal_length=True, refine_principal_point=False, refine_extra_params=True, refine_rig_from_world=True, refine_sensor_from_rig=True, constant_rig_from_world_rotation=False, refine_points3D=True, min_track_length=3, print_summary=False, backend=BundleAdjustmentBackend.CERES, ceres=CeresBundleAdjustmentOptions(loss_function_type=LossFunctionType.HUBER, loss_function_scale=1.0, use_gpu=True, gpu_index=’-1’, solver_options=SolverOptions(minimizer_type=MinimizerType.TRUST_REGION, line_search_direction_type=LineSearchDirectionType.LBFGS, line_search_type=LineSearchType.WOLFE, nonlinear_conjugate_gradient_type=NonlinearConjugateGradientType.FLETCHER_REEVES, max_lbfgs_rank=20, use_approximate_eigenvalue_bfgs_scaling=False, line_search_interpolation_type=LineSearchInterpolationType.CUBIC, min_line_search_step_size=1e-09, line_search_sufficient_function_decrease=0.0001, max_line_search_step_contraction=0.001, min_line_search_step_contraction=0.6, max_num_line_search_step_size_iterations=20, max_num_line_search_direction_restarts=5, line_search_sufficient_curvature_decrease=0.9, max_line_search_step_expansion=10.0, trust_region_strategy_type=TrustRegionStrategyType.LEVENBERG_MARQUARDT, dogleg_type=DoglegType.TRADITIONAL_DOGLEG, use_nonmonotonic_steps=False, max_consecutive_nonmonotonic_steps=10, max_num_iterations=200, max_solver_time_in_seconds=1000000000.0, num_threads=-1, initial_trust_region_radius=10000.0, max_trust_region_radius=1e+16, min_trust_region_radius=1e-32, min_relative_decrease=0.001, min_lm_diagonal=1e-06, max_lm_diagonal=1e+32, max_num_consecutive_invalid_steps=10, function_tolerance=1e-05, gradient_tolerance=0.0001, parameter_tolerance=0.0, linear_solver_type=LinearSolverType.SPARSE_SCHUR, preconditioner_type=PreconditionerType.JACOBI, visibility_clustering_type=VisibilityClusteringType.CANONICAL_VIEWS, dense_linear_algebra_library_type=DenseLinearAlgebraLibraryType.EIGEN, sparse_linear_algebra_library_type=SparseLinearAlgebraLibraryType.SUITE_SPARSE, use_explicit_schur_complement=False, dynamic_sparsity=False, use_inner_iterations=False, inner_iteration_tolerance=0.001, min_linear_solver_iterations=0, max_linear_solver_iterations=200, eta=0.1, jacobi_scaling=True, logging_type=LoggingType.SILENT, minimizer_progress_to_stdout=False, trust_region_problem_dump_directory=’/tmp’, trust_region_problem_dump_format_type=DumpFormatType.TEXTFILE, check_gradients=False, gradient_check_relative_precision=1e-08, gradient_check_numeric_derivative_relative_step_size=1e-06, update_state_every_iteration=False), min_num_images_gpu_solver=50, min_num_residuals_for_cpu_multi_threading=50000, max_num_images_direct_dense_cpu_solver=50, max_num_images_direct_sparse_cpu_solver=1000, max_num_images_direct_dense_gpu_solver=200, max_num_images_direct_sparse_gpu_solver=4000, auto_select_solver_type=False), caspar=CasparBundleAdjustmentOptions(solver_iter_max=200, pcg_iter_max=20, diag_init=1.0, diag_min=1e-12, diag_scaling_up=2.0, diag_scaling_down=0.333333, diag_exit_value=1000.0, score_exit_value=0.0, pcg_rel_error_exit=0.0001, pcg_rel_score_exit=-1.0, pcg_rel_decrease_min=-1.0, solver_rel_decrease_min=1.0, gpu_index=’-1’)), retriangulation=IncrementalTriangulatorOptions(max_transitivity=1, create_max_angle_error=2.0, continue_max_angle_error=2.0, merge_max_reproj_error=15.0, complete_max_reproj_error=15.0, complete_max_transitivity=5, re_max_angle_error=5.0, re_min_ratio=0.2, re_max_trials=1, min_angle=1.0, ignore_two_view_tracks=True, min_focal_length_ratio=0.1, max_focal_length_ratio=10.0, max_extra_param=1.0, random_seed=-1), track_intra_image_consistency_threshold=10.0, track_required_tracks_per_view=2147483647, track_min_num_views_per_track=3, keep_max_num_tracks=2147483647, max_angular_reproj_error_deg=1.0, max_normalized_reproj_error=0.01, min_tri_angle_deg=1.0, ba_gpu_index=’-1’, ba_num_iterations=3, ba_skip_fixed_rotation_stage=False, ba_skip_joint_optimization_stage=False, skip_rotation_averaging=False, skip_track_establishment=False, skip_global_positioning=False, skip_bundle_adjustment=False, skip_retriangulation=False))</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalPipelineOptions" title="pycolmap.GlobalPipelineOptions"><span class="pre">pycolmap.GlobalPipelineOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.summary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.mergedict">
+<span class="sig-name descname"><span class="pre">mergedict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.mergedict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.todict">
+<span class="sig-name descname"><span class="pre">todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalPipelineOptions" title="pycolmap.GlobalPipelineOptions"><span class="pre">pycolmap.GlobalPipelineOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.todict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineCallback">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">GlobalPipelineCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.GlobalPipelineCallback" title="Link to this definition">#</a></dt>
+<dd><p>Members:</p>
+<p>MODEL_UPDATE_CALLBACK</p>
+<p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.GlobalPipelineCallback,</span> <span class="pre">value:</span> <span class="pre">typing.SupportsInt</span> <span class="pre">|</span> <span class="pre">typing.SupportsIndex)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.GlobalPipelineCallback,</span> <span class="pre">name:</span> <span class="pre">str)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineCallback.name">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineCallback.name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineCallback.value">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineCallback.value" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipelineCallback.MODEL_UPDATE_CALLBACK">
+<span class="sig-name descname"><span class="pre">MODEL_UPDATE_CALLBACK</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">GlobalPipelineCallback.MODEL_UPDATE_CALLBACK</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineCallback.MODEL_UPDATE_CALLBACK" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipeline">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">GlobalPipeline</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalPipeline" title="pycolmap.GlobalPipeline"><span class="pre">pycolmap.GlobalPipeline</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalPipelineOptions" title="pycolmap.GlobalPipelineOptions"><span class="pre">pycolmap.GlobalPipelineOptions</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Database" title="pycolmap.Database"><span class="pre">pycolmap.Database</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">reconstruction_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.ReconstructionManager" title="pycolmap.ReconstructionManager"><span class="pre">pycolmap.ReconstructionManager</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.GlobalPipeline" title="Link to this definition">#</a></dt>
+<dd><p>Class that controls the global mapping procedure (GLOMAP) by jointly estimating all camera poses from the view graph using rotation averaging and global positioning, followed by bundle adjustment and retriangulation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipeline.add_callback">
+<span class="sig-name descname"><span class="pre">add_callback</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalPipeline" title="pycolmap.GlobalPipeline"><span class="pre">pycolmap.GlobalPipeline</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.abc.Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.GlobalPipeline.add_callback" title="Link to this definition">#</a></dt>
+<dd><p>Add a callback function for the given callback type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipeline.callback">
+<span class="sig-name descname"><span class="pre">callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalPipeline" title="pycolmap.GlobalPipeline"><span class="pre">pycolmap.GlobalPipeline</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.GlobalPipeline.callback" title="Link to this definition">#</a></dt>
+<dd><p>Invoke the callback for the given callback type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.GlobalPipeline.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalPipeline" title="pycolmap.GlobalPipeline"><span class="pre">pycolmap.GlobalPipeline</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.GlobalPipeline.run" title="Link to this definition">#</a></dt>
+<dd><p>Run the full global mapping pipeline.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="pycolmap.DepthMap">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">DepthMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.DepthMap" title="Link to this definition">#</a></dt>
 <dd><p>Overloaded function.</p>
@@ -13025,232 +13591,6 @@ are part of a 3D point track. (int, default: 0)</p>
 
 </dd></dl>
 
-<dl class="py class">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">GlobalMapperOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.GlobalMapperOptions" title="Link to this definition">#</a></dt>
-<dd><p>Overloaded function.</p>
-<ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.GlobalMapperOptions)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.GlobalMapperOptions,</span> <span class="pre">arg0:</span> <span class="pre">dict)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.GlobalMapperOptions,</span> <span class="pre">**kwargs)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
-</ol>
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.num_threads">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">num_threads</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.num_threads" title="Link to this definition">#</a></dt>
-<dd><p>(int, default: -1)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.random_seed">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">random_seed</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.random_seed" title="Link to this definition">#</a></dt>
-<dd><p>(int, default: -1)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.refine_sensor_from_rig">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">refine_sensor_from_rig</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.refine_sensor_from_rig" title="Link to this definition">#</a></dt>
-<dd><p>When False, treat each non-ref sensor’s cam_from_rig as a pre-calibrated constant across rotation averaging, global positioning and bundle adjustment. (bool, default: True)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.rotation_averaging">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rotation_averaging</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.rotation_averaging" title="Link to this definition">#</a></dt>
-<dd><p>(RotationEstimatorOptions, default: RotationEstimatorOptions(random_seed=-1, max_num_l1_iterations=5, l1_step_convergence_threshold=0.001, max_num_irls_iterations=100, irls_step_convergence_threshold=0.001, gravity_dir=[0. 1. 0.], irls_loss_parameter_sigma=5.0, ridge_regularization=1e-09, weight_type=RotationWeightType.GEMAN_MCCLURE, skip_initialization=False, use_gravity=False, use_stratified=True, filter_unregistered=False, max_rotation_error_deg=10.0, refine_sensor_from_rig=True, reweighting=RotationAveragingReweighting.UNIFORM))</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.global_positioning">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">global_positioning</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.global_positioning" title="Link to this definition">#</a></dt>
-<dd><p>(GlobalPositionerOptions, default: GlobalPositionerOptions(generate_random_positions=True, generate_random_points=True, generate_scales=True, optimize_positions=True, optimize_points=True, optimize_scales=True, refine_sensor_from_rig=True, use_gpu=True, gpu_index=’-1’, min_num_images_gpu_solver=50, min_num_view_per_track=3, random_seed=-1, loss_function_scale=0.1, use_parameter_block_ordering=True))</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.bundle_adjustment">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">bundle_adjustment</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.bundle_adjustment" title="Link to this definition">#</a></dt>
-<dd><p>(BundleAdjustmentOptions, default: BundleAdjustmentOptions(refine_focal_length=True, refine_principal_point=False, refine_extra_params=True, refine_rig_from_world=True, refine_sensor_from_rig=True, constant_rig_from_world_rotation=False, refine_points3D=True, min_track_length=3, print_summary=False, backend=BundleAdjustmentBackend.CERES, ceres=CeresBundleAdjustmentOptions(loss_function_type=LossFunctionType.HUBER, loss_function_scale=1.0, use_gpu=True, gpu_index=’-1’, solver_options=SolverOptions(minimizer_type=MinimizerType.TRUST_REGION, line_search_direction_type=LineSearchDirectionType.LBFGS, line_search_type=LineSearchType.WOLFE, nonlinear_conjugate_gradient_type=NonlinearConjugateGradientType.FLETCHER_REEVES, max_lbfgs_rank=20, use_approximate_eigenvalue_bfgs_scaling=False, line_search_interpolation_type=LineSearchInterpolationType.CUBIC, min_line_search_step_size=1e-09, line_search_sufficient_function_decrease=0.0001, max_line_search_step_contraction=0.001, min_line_search_step_contraction=0.6, max_num_line_search_step_size_iterations=20, max_num_line_search_direction_restarts=5, line_search_sufficient_curvature_decrease=0.9, max_line_search_step_expansion=10.0, trust_region_strategy_type=TrustRegionStrategyType.LEVENBERG_MARQUARDT, dogleg_type=DoglegType.TRADITIONAL_DOGLEG, use_nonmonotonic_steps=False, max_consecutive_nonmonotonic_steps=10, max_num_iterations=200, max_solver_time_in_seconds=1000000000.0, num_threads=-1, initial_trust_region_radius=10000.0, max_trust_region_radius=1e+16, min_trust_region_radius=1e-32, min_relative_decrease=0.001, min_lm_diagonal=1e-06, max_lm_diagonal=1e+32, max_num_consecutive_invalid_steps=10, function_tolerance=1e-05, gradient_tolerance=0.0001, parameter_tolerance=0.0, linear_solver_type=LinearSolverType.SPARSE_SCHUR, preconditioner_type=PreconditionerType.JACOBI, visibility_clustering_type=VisibilityClusteringType.CANONICAL_VIEWS, dense_linear_algebra_library_type=DenseLinearAlgebraLibraryType.EIGEN, sparse_linear_algebra_library_type=SparseLinearAlgebraLibraryType.SUITE_SPARSE, use_explicit_schur_complement=False, dynamic_sparsity=False, use_inner_iterations=False, inner_iteration_tolerance=0.001, min_linear_solver_iterations=0, max_linear_solver_iterations=200, eta=0.1, jacobi_scaling=True, logging_type=LoggingType.SILENT, minimizer_progress_to_stdout=False, trust_region_problem_dump_directory=’/tmp’, trust_region_problem_dump_format_type=DumpFormatType.TEXTFILE, check_gradients=False, gradient_check_relative_precision=1e-08, gradient_check_numeric_derivative_relative_step_size=1e-06, update_state_every_iteration=False), min_num_images_gpu_solver=50, min_num_residuals_for_cpu_multi_threading=50000, max_num_images_direct_dense_cpu_solver=50, max_num_images_direct_sparse_cpu_solver=1000, max_num_images_direct_dense_gpu_solver=200, max_num_images_direct_sparse_gpu_solver=4000, auto_select_solver_type=False), caspar=CasparBundleAdjustmentOptions(solver_iter_max=200, pcg_iter_max=20, diag_init=1.0, diag_min=1e-12, diag_scaling_up=2.0, diag_scaling_down=0.333333, diag_exit_value=1000.0, score_exit_value=0.0, pcg_rel_error_exit=0.0001, pcg_rel_score_exit=-1.0, pcg_rel_decrease_min=-1.0, solver_rel_decrease_min=1.0, gpu_index=’-1’)))</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.retriangulation">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">retriangulation</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.retriangulation" title="Link to this definition">#</a></dt>
-<dd><p>(IncrementalTriangulatorOptions, default: IncrementalTriangulatorOptions(max_transitivity=1, create_max_angle_error=2.0, continue_max_angle_error=2.0, merge_max_reproj_error=15.0, complete_max_reproj_error=15.0, complete_max_transitivity=5, re_max_angle_error=5.0, re_min_ratio=0.2, re_max_trials=1, min_angle=1.0, ignore_two_view_tracks=True, min_focal_length_ratio=0.1, max_focal_length_ratio=10.0, max_extra_param=1.0, random_seed=-1))</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.track_intra_image_consistency_threshold">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">track_intra_image_consistency_threshold</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.track_intra_image_consistency_threshold" title="Link to this definition">#</a></dt>
-<dd><p>(float, default: 10.0)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.track_required_tracks_per_view">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">track_required_tracks_per_view</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.track_required_tracks_per_view" title="Link to this definition">#</a></dt>
-<dd><p>(int, default: 2147483647)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.track_min_num_views_per_track">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">track_min_num_views_per_track</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.track_min_num_views_per_track" title="Link to this definition">#</a></dt>
-<dd><p>(int, default: 3)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.keep_max_num_tracks">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">keep_max_num_tracks</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.keep_max_num_tracks" title="Link to this definition">#</a></dt>
-<dd><p>(int, default: 2147483647)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.max_angular_reproj_error_deg">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">max_angular_reproj_error_deg</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.max_angular_reproj_error_deg" title="Link to this definition">#</a></dt>
-<dd><p>(float, default: 1.0)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.max_normalized_reproj_error">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">max_normalized_reproj_error</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.max_normalized_reproj_error" title="Link to this definition">#</a></dt>
-<dd><p>(float, default: 0.01)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.min_tri_angle_deg">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">min_tri_angle_deg</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.min_tri_angle_deg" title="Link to this definition">#</a></dt>
-<dd><p>(float, default: 1.0)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.ba_num_iterations">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ba_num_iterations</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.ba_num_iterations" title="Link to this definition">#</a></dt>
-<dd><p>(int, default: 3)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.ba_skip_fixed_rotation_stage">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ba_skip_fixed_rotation_stage</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.ba_skip_fixed_rotation_stage" title="Link to this definition">#</a></dt>
-<dd><p>(bool, default: False)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.ba_skip_joint_optimization_stage">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ba_skip_joint_optimization_stage</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.ba_skip_joint_optimization_stage" title="Link to this definition">#</a></dt>
-<dd><p>(bool, default: False)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.skip_rotation_averaging">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">skip_rotation_averaging</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.skip_rotation_averaging" title="Link to this definition">#</a></dt>
-<dd><p>(bool, default: False)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.skip_track_establishment">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">skip_track_establishment</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.skip_track_establishment" title="Link to this definition">#</a></dt>
-<dd><p>(bool, default: False)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.skip_global_positioning">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">skip_global_positioning</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.skip_global_positioning" title="Link to this definition">#</a></dt>
-<dd><p>(bool, default: False)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.skip_bundle_adjustment">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">skip_bundle_adjustment</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.skip_bundle_adjustment" title="Link to this definition">#</a></dt>
-<dd><p>(bool, default: False)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.skip_retriangulation">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">skip_retriangulation</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.skip_retriangulation" title="Link to this definition">#</a></dt>
-<dd><p>(bool, default: False)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.summary">
-<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalMapperOptions" title="pycolmap.GlobalMapperOptions"><span class="pre">pycolmap.GlobalMapperOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.summary" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.mergedict">
-<span class="sig-name descname"><span class="pre">mergedict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.mergedict" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.todict">
-<span class="sig-name descname"><span class="pre">todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalMapperOptions" title="pycolmap.GlobalMapperOptions"><span class="pre">pycolmap.GlobalMapperOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.todict" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">GlobalPipelineOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions" title="Link to this definition">#</a></dt>
-<dd><p>Overloaded function.</p>
-<ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.GlobalPipelineOptions)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.GlobalPipelineOptions,</span> <span class="pre">arg0:</span> <span class="pre">dict)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.GlobalPipelineOptions,</span> <span class="pre">**kwargs)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
-</ol>
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.min_num_matches">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">min_num_matches</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.min_num_matches" title="Link to this definition">#</a></dt>
-<dd><p>(int, default: 15)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.ignore_watermarks">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ignore_watermarks</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.ignore_watermarks" title="Link to this definition">#</a></dt>
-<dd><p>(bool, default: False)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.image_names">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">image_names</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.image_names" title="Link to this definition">#</a></dt>
-<dd><p>(list, default: [])</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.num_threads">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">num_threads</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.num_threads" title="Link to this definition">#</a></dt>
-<dd><p>(int, default: -1)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.random_seed">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">random_seed</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.random_seed" title="Link to this definition">#</a></dt>
-<dd><p>(int, default: -1)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.decompose_relative_pose">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">decompose_relative_pose</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.decompose_relative_pose" title="Link to this definition">#</a></dt>
-<dd><p>(bool, default: True)</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.mapper">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">mapper</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.mapper" title="Link to this definition">#</a></dt>
-<dd><p>(GlobalMapperOptions, default: GlobalMapperOptions(num_threads=-1, random_seed=-1, refine_sensor_from_rig=True, rotation_averaging=RotationEstimatorOptions(random_seed=-1, max_num_l1_iterations=5, l1_step_convergence_threshold=0.001, max_num_irls_iterations=100, irls_step_convergence_threshold=0.001, gravity_dir=[0. 1. 0.], irls_loss_parameter_sigma=5.0, ridge_regularization=1e-09, weight_type=RotationWeightType.GEMAN_MCCLURE, skip_initialization=False, use_gravity=False, use_stratified=True, filter_unregistered=False, max_rotation_error_deg=10.0, refine_sensor_from_rig=True, reweighting=RotationAveragingReweighting.UNIFORM), global_positioning=GlobalPositionerOptions(generate_random_positions=True, generate_random_points=True, generate_scales=True, optimize_positions=True, optimize_points=True, optimize_scales=True, refine_sensor_from_rig=True, use_gpu=True, gpu_index=’-1’, min_num_images_gpu_solver=50, min_num_view_per_track=3, random_seed=-1, loss_function_scale=0.1, use_parameter_block_ordering=True), bundle_adjustment=BundleAdjustmentOptions(refine_focal_length=True, refine_principal_point=False, refine_extra_params=True, refine_rig_from_world=True, refine_sensor_from_rig=True, constant_rig_from_world_rotation=False, refine_points3D=True, min_track_length=3, print_summary=False, backend=BundleAdjustmentBackend.CERES, ceres=CeresBundleAdjustmentOptions(loss_function_type=LossFunctionType.HUBER, loss_function_scale=1.0, use_gpu=True, gpu_index=’-1’, solver_options=SolverOptions(minimizer_type=MinimizerType.TRUST_REGION, line_search_direction_type=LineSearchDirectionType.LBFGS, line_search_type=LineSearchType.WOLFE, nonlinear_conjugate_gradient_type=NonlinearConjugateGradientType.FLETCHER_REEVES, max_lbfgs_rank=20, use_approximate_eigenvalue_bfgs_scaling=False, line_search_interpolation_type=LineSearchInterpolationType.CUBIC, min_line_search_step_size=1e-09, line_search_sufficient_function_decrease=0.0001, max_line_search_step_contraction=0.001, min_line_search_step_contraction=0.6, max_num_line_search_step_size_iterations=20, max_num_line_search_direction_restarts=5, line_search_sufficient_curvature_decrease=0.9, max_line_search_step_expansion=10.0, trust_region_strategy_type=TrustRegionStrategyType.LEVENBERG_MARQUARDT, dogleg_type=DoglegType.TRADITIONAL_DOGLEG, use_nonmonotonic_steps=False, max_consecutive_nonmonotonic_steps=10, max_num_iterations=200, max_solver_time_in_seconds=1000000000.0, num_threads=-1, initial_trust_region_radius=10000.0, max_trust_region_radius=1e+16, min_trust_region_radius=1e-32, min_relative_decrease=0.001, min_lm_diagonal=1e-06, max_lm_diagonal=1e+32, max_num_consecutive_invalid_steps=10, function_tolerance=1e-05, gradient_tolerance=0.0001, parameter_tolerance=0.0, linear_solver_type=LinearSolverType.SPARSE_SCHUR, preconditioner_type=PreconditionerType.JACOBI, visibility_clustering_type=VisibilityClusteringType.CANONICAL_VIEWS, dense_linear_algebra_library_type=DenseLinearAlgebraLibraryType.EIGEN, sparse_linear_algebra_library_type=SparseLinearAlgebraLibraryType.SUITE_SPARSE, use_explicit_schur_complement=False, dynamic_sparsity=False, use_inner_iterations=False, inner_iteration_tolerance=0.001, min_linear_solver_iterations=0, max_linear_solver_iterations=200, eta=0.1, jacobi_scaling=True, logging_type=LoggingType.SILENT, minimizer_progress_to_stdout=False, trust_region_problem_dump_directory=’/tmp’, trust_region_problem_dump_format_type=DumpFormatType.TEXTFILE, check_gradients=False, gradient_check_relative_precision=1e-08, gradient_check_numeric_derivative_relative_step_size=1e-06, update_state_every_iteration=False), min_num_images_gpu_solver=50, min_num_residuals_for_cpu_multi_threading=50000, max_num_images_direct_dense_cpu_solver=50, max_num_images_direct_sparse_cpu_solver=1000, max_num_images_direct_dense_gpu_solver=200, max_num_images_direct_sparse_gpu_solver=4000, auto_select_solver_type=False), caspar=CasparBundleAdjustmentOptions(solver_iter_max=200, pcg_iter_max=20, diag_init=1.0, diag_min=1e-12, diag_scaling_up=2.0, diag_scaling_down=0.333333, diag_exit_value=1000.0, score_exit_value=0.0, pcg_rel_error_exit=0.0001, pcg_rel_score_exit=-1.0, pcg_rel_decrease_min=-1.0, solver_rel_decrease_min=1.0, gpu_index=’-1’)), retriangulation=IncrementalTriangulatorOptions(max_transitivity=1, create_max_angle_error=2.0, continue_max_angle_error=2.0, merge_max_reproj_error=15.0, complete_max_reproj_error=15.0, complete_max_transitivity=5, re_max_angle_error=5.0, re_min_ratio=0.2, re_max_trials=1, min_angle=1.0, ignore_two_view_tracks=True, min_focal_length_ratio=0.1, max_focal_length_ratio=10.0, max_extra_param=1.0, random_seed=-1), track_intra_image_consistency_threshold=10.0, track_required_tracks_per_view=2147483647, track_min_num_views_per_track=3, keep_max_num_tracks=2147483647, max_angular_reproj_error_deg=1.0, max_normalized_reproj_error=0.01, min_tri_angle_deg=1.0, ba_num_iterations=3, ba_skip_fixed_rotation_stage=False, ba_skip_joint_optimization_stage=False, skip_rotation_averaging=False, skip_track_establishment=False, skip_global_positioning=False, skip_bundle_adjustment=False, skip_retriangulation=False))</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.summary">
-<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalPipelineOptions" title="pycolmap.GlobalPipelineOptions"><span class="pre">pycolmap.GlobalPipelineOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.summary" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.mergedict">
-<span class="sig-name descname"><span class="pre">mergedict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.mergedict" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.todict">
-<span class="sig-name descname"><span class="pre">todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.GlobalPipelineOptions" title="pycolmap.GlobalPipelineOptions"><span class="pre">pycolmap.GlobalPipelineOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.todict" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="pycolmap.triangulate_points">
 <span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">triangulate_points</span></span><span class="sig-paren">(</span>
@@ -13300,6 +13640,21 @@ are part of a 3D point track. (int, default: 0)</p>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pycolmap.Reconstruction" title="pycolmap.Reconstruction"><span class="pre">pycolmap.Reconstruction</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pycolmap.global_mapping" title="Link to this definition">#</a></dt>
 <dd><p>Recover 3D points and camera poses using global SfM (GLOMAP)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycolmap.hierarchical_mapping">
+<span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">hierarchical_mapping</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">database_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">os.PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">image_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">os.PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">os.PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.HierarchicalPipelineOptions" title="pycolmap.HierarchicalPipelineOptions"><span class="pre">pycolmap.HierarchicalPipelineOptions</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">HierarchicalPipelineOptions()</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pycolmap.Reconstruction" title="pycolmap.Reconstruction"><span class="pre">pycolmap.Reconstruction</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pycolmap.hierarchical_mapping" title="Link to this definition">#</a></dt>
+<dd><p>Recover 3D points and unknown camera poses by partitioning the scene into overlapping clusters, reconstructing them separately using incremental mapping, and merging them into a globally consistent reconstruction</p>
 </dd></dl>
 
 <dl class="py function">
@@ -14982,6 +15337,21 @@ are part of a 3D point track. (int, default: 0)</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.PoseGraph.mark_connected_components"><code class="docutils literal notranslate"><span class="pre">PoseGraph.mark_connected_components()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.WarpImageOptions"><code class="docutils literal notranslate"><span class="pre">WarpImageOptions</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.WarpImageOptions.Interpolation"><code class="docutils literal notranslate"><span class="pre">WarpImageOptions.Interpolation</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.WarpImageOptions.Interpolation.BILINEAR"><code class="docutils literal notranslate"><span class="pre">WarpImageOptions.Interpolation.BILINEAR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.WarpImageOptions.Interpolation.NEAREST_NEIGHBOR"><code class="docutils literal notranslate"><span class="pre">WarpImageOptions.Interpolation.NEAREST_NEIGHBOR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.WarpImageOptions.Interpolation.name"><code class="docutils literal notranslate"><span class="pre">WarpImageOptions.Interpolation.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.WarpImageOptions.Interpolation.value"><code class="docutils literal notranslate"><span class="pre">WarpImageOptions.Interpolation.value</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.WarpImageOptions.interpolation"><code class="docutils literal notranslate"><span class="pre">WarpImageOptions.interpolation</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.WarpImageOptions.direct_warp_min_scale"><code class="docutils literal notranslate"><span class="pre">WarpImageOptions.direct_warp_min_scale</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.WarpImageOptions.summary"><code class="docutils literal notranslate"><span class="pre">WarpImageOptions.summary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.WarpImageOptions.mergedict"><code class="docutils literal notranslate"><span class="pre">WarpImageOptions.mergedict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.WarpImageOptions.todict"><code class="docutils literal notranslate"><span class="pre">WarpImageOptions.todict()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.UndistortCameraOptions"><code class="docutils literal notranslate"><span class="pre">UndistortCameraOptions</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.UndistortCameraOptions.blank_pixels"><code class="docutils literal notranslate"><span class="pre">UndistortCameraOptions.blank_pixels</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.UndistortCameraOptions.min_scale"><code class="docutils literal notranslate"><span class="pre">UndistortCameraOptions.min_scale</span></code></a></li>
@@ -14992,6 +15362,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.UndistortCameraOptions.roi_max_x"><code class="docutils literal notranslate"><span class="pre">UndistortCameraOptions.roi_max_x</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.UndistortCameraOptions.roi_max_y"><code class="docutils literal notranslate"><span class="pre">UndistortCameraOptions.roi_max_y</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.UndistortCameraOptions.max_cam_point_norm"><code class="docutils literal notranslate"><span class="pre">UndistortCameraOptions.max_cam_point_norm</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.UndistortCameraOptions.warp_options"><code class="docutils literal notranslate"><span class="pre">UndistortCameraOptions.warp_options</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.UndistortCameraOptions.summary"><code class="docutils literal notranslate"><span class="pre">UndistortCameraOptions.summary()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.UndistortCameraOptions.mergedict"><code class="docutils literal notranslate"><span class="pre">UndistortCameraOptions.mergedict()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.UndistortCameraOptions.todict"><code class="docutils literal notranslate"><span class="pre">UndistortCameraOptions.todict()</span></code></a></li>
@@ -15695,6 +16066,95 @@ are part of a 3D point track. (int, default: 0)</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.IncrementalPipeline.check_reached_max_runtime"><code class="docutils literal notranslate"><span class="pre">IncrementalPipeline.check_reached_max_runtime()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SceneClusteringOptions"><code class="docutils literal notranslate"><span class="pre">SceneClusteringOptions</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SceneClusteringOptions.is_hierarchical"><code class="docutils literal notranslate"><span class="pre">SceneClusteringOptions.is_hierarchical</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SceneClusteringOptions.branching"><code class="docutils literal notranslate"><span class="pre">SceneClusteringOptions.branching</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SceneClusteringOptions.image_overlap"><code class="docutils literal notranslate"><span class="pre">SceneClusteringOptions.image_overlap</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SceneClusteringOptions.num_image_matches"><code class="docutils literal notranslate"><span class="pre">SceneClusteringOptions.num_image_matches</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SceneClusteringOptions.leaf_max_num_images"><code class="docutils literal notranslate"><span class="pre">SceneClusteringOptions.leaf_max_num_images</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SceneClusteringOptions.check"><code class="docutils literal notranslate"><span class="pre">SceneClusteringOptions.check()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SceneClusteringOptions.summary"><code class="docutils literal notranslate"><span class="pre">SceneClusteringOptions.summary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SceneClusteringOptions.mergedict"><code class="docutils literal notranslate"><span class="pre">SceneClusteringOptions.mergedict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SceneClusteringOptions.todict"><code class="docutils literal notranslate"><span class="pre">SceneClusteringOptions.todict()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.HierarchicalPipelineOptions"><code class="docutils literal notranslate"><span class="pre">HierarchicalPipelineOptions</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.HierarchicalPipelineOptions.image_path"><code class="docutils literal notranslate"><span class="pre">HierarchicalPipelineOptions.image_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.HierarchicalPipelineOptions.init_num_trials"><code class="docutils literal notranslate"><span class="pre">HierarchicalPipelineOptions.init_num_trials</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.HierarchicalPipelineOptions.num_threads"><code class="docutils literal notranslate"><span class="pre">HierarchicalPipelineOptions.num_threads</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.HierarchicalPipelineOptions.num_workers"><code class="docutils literal notranslate"><span class="pre">HierarchicalPipelineOptions.num_workers</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.HierarchicalPipelineOptions.clustering_options"><code class="docutils literal notranslate"><span class="pre">HierarchicalPipelineOptions.clustering_options</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.HierarchicalPipelineOptions.incremental_options"><code class="docutils literal notranslate"><span class="pre">HierarchicalPipelineOptions.incremental_options</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.HierarchicalPipelineOptions.check"><code class="docutils literal notranslate"><span class="pre">HierarchicalPipelineOptions.check()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.HierarchicalPipelineOptions.summary"><code class="docutils literal notranslate"><span class="pre">HierarchicalPipelineOptions.summary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.HierarchicalPipelineOptions.mergedict"><code class="docutils literal notranslate"><span class="pre">HierarchicalPipelineOptions.mergedict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.HierarchicalPipelineOptions.todict"><code class="docutils literal notranslate"><span class="pre">HierarchicalPipelineOptions.todict()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.HierarchicalPipeline"><code class="docutils literal notranslate"><span class="pre">HierarchicalPipeline</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.HierarchicalPipeline.run"><code class="docutils literal notranslate"><span class="pre">HierarchicalPipeline.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.num_threads"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.num_threads</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.random_seed"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.random_seed</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.image_path"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.image_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.refine_sensor_from_rig"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.refine_sensor_from_rig</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.rotation_averaging"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.rotation_averaging</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.global_positioning"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.global_positioning</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.bundle_adjustment"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.bundle_adjustment</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.retriangulation"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.retriangulation</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.track_intra_image_consistency_threshold"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.track_intra_image_consistency_threshold</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.track_required_tracks_per_view"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.track_required_tracks_per_view</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.track_min_num_views_per_track"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.track_min_num_views_per_track</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.keep_max_num_tracks"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.keep_max_num_tracks</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.max_angular_reproj_error_deg"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.max_angular_reproj_error_deg</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.max_normalized_reproj_error"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.max_normalized_reproj_error</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.min_tri_angle_deg"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.min_tri_angle_deg</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.ba_gpu_index"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.ba_gpu_index</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.ba_num_iterations"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.ba_num_iterations</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.ba_skip_fixed_rotation_stage"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.ba_skip_fixed_rotation_stage</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.ba_skip_joint_optimization_stage"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.ba_skip_joint_optimization_stage</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.skip_rotation_averaging"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.skip_rotation_averaging</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.skip_track_establishment"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.skip_track_establishment</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.skip_global_positioning"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.skip_global_positioning</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.skip_bundle_adjustment"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.skip_bundle_adjustment</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.skip_retriangulation"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.skip_retriangulation</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.get_rotation_averaging"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.get_rotation_averaging()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.get_global_positioning"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.get_global_positioning()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.get_bundle_adjustment"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.get_bundle_adjustment()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.get_retriangulation"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.get_retriangulation()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.summary"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.summary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.mergedict"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.mergedict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.todict"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.todict()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.min_num_matches"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.min_num_matches</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.ignore_watermarks"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.ignore_watermarks</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.image_names"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.image_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.image_path"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.image_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.num_threads"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.num_threads</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.random_seed"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.random_seed</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.decompose_relative_pose"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.decompose_relative_pose</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.mapper"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.mapper</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.summary"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.summary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.mergedict"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.mergedict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.todict"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.todict()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineCallback"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineCallback</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineCallback.name"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineCallback.name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineCallback.value"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineCallback.value</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineCallback.MODEL_UPDATE_CALLBACK"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineCallback.MODEL_UPDATE_CALLBACK</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipeline"><code class="docutils literal notranslate"><span class="pre">GlobalPipeline</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipeline.add_callback"><code class="docutils literal notranslate"><span class="pre">GlobalPipeline.add_callback()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipeline.callback"><code class="docutils literal notranslate"><span class="pre">GlobalPipeline.callback()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipeline.run"><code class="docutils literal notranslate"><span class="pre">GlobalPipeline.run()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.DepthMap"><code class="docutils literal notranslate"><span class="pre">DepthMap</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.DepthMap.to_array"><code class="docutils literal notranslate"><span class="pre">DepthMap.to_array()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.DepthMap.from_array"><code class="docutils literal notranslate"><span class="pre">DepthMap.from_array()</span></code></a></li>
@@ -15886,50 +16346,10 @@ are part of a 3D point track. (int, default: 0)</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ViewGraphCalibrationOptions.todict"><code class="docutils literal notranslate"><span class="pre">ViewGraphCalibrationOptions.todict()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.num_threads"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.num_threads</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.random_seed"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.random_seed</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.refine_sensor_from_rig"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.refine_sensor_from_rig</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.rotation_averaging"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.rotation_averaging</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.global_positioning"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.global_positioning</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.bundle_adjustment"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.bundle_adjustment</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.retriangulation"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.retriangulation</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.track_intra_image_consistency_threshold"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.track_intra_image_consistency_threshold</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.track_required_tracks_per_view"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.track_required_tracks_per_view</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.track_min_num_views_per_track"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.track_min_num_views_per_track</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.keep_max_num_tracks"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.keep_max_num_tracks</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.max_angular_reproj_error_deg"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.max_angular_reproj_error_deg</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.max_normalized_reproj_error"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.max_normalized_reproj_error</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.min_tri_angle_deg"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.min_tri_angle_deg</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.ba_num_iterations"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.ba_num_iterations</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.ba_skip_fixed_rotation_stage"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.ba_skip_fixed_rotation_stage</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.ba_skip_joint_optimization_stage"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.ba_skip_joint_optimization_stage</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.skip_rotation_averaging"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.skip_rotation_averaging</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.skip_track_establishment"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.skip_track_establishment</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.skip_global_positioning"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.skip_global_positioning</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.skip_bundle_adjustment"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.skip_bundle_adjustment</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.skip_retriangulation"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.skip_retriangulation</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.summary"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.summary()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.mergedict"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.mergedict()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalMapperOptions.todict"><code class="docutils literal notranslate"><span class="pre">GlobalMapperOptions.todict()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.min_num_matches"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.min_num_matches</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.ignore_watermarks"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.ignore_watermarks</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.image_names"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.image_names</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.num_threads"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.num_threads</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.random_seed"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.random_seed</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.decompose_relative_pose"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.decompose_relative_pose</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.mapper"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.mapper</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.summary"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.summary()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.mergedict"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.mergedict()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.GlobalPipelineOptions.todict"><code class="docutils literal notranslate"><span class="pre">GlobalPipelineOptions.todict()</span></code></a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.triangulate_points"><code class="docutils literal notranslate"><span class="pre">triangulate_points()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.incremental_mapping"><code class="docutils literal notranslate"><span class="pre">incremental_mapping()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.global_mapping"><code class="docutils literal notranslate"><span class="pre">global_mapping()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.hierarchical_mapping"><code class="docutils literal notranslate"><span class="pre">hierarchical_mapping()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.calibrate_view_graph"><code class="docutils literal notranslate"><span class="pre">calibrate_view_graph()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.bundle_adjustment"><code class="docutils literal notranslate"><span class="pre">bundle_adjustment()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.PatchMatchOptions"><code class="docutils literal notranslate"><span class="pre">PatchMatchOptions</span></code></a><ul class="nav section-nav flex-column">
@@ -16078,7 +16498,7 @@ are part of a 3D point track. (int, default: 0)</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | 0b9ce70 (2026-07-28)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | db6f909 (2026-08-12)</p></div>
       
     </div>
   
