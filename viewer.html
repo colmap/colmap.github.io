@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=b2c2ab5f"></script>
+    <script src="_static/documentation_options.js?v=4f802725"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="Key Concepts" href="concepts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | db6f909 (2026-08-12)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 77da2b8 (2026-08-18)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -708,14 +708,14 @@ browser.</p>
 <p>The viewer is also an ES module component. Build it with <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">run</span> <span class="pre">build</span></code> in
 the <code class="docutils literal notranslate"><span class="pre">doc</span></code> directory, copy the complete <code class="docutils literal notranslate"><span class="pre">_static/viewer</span></code> directory so that
 the parser worker remains beside the module, and include both generated assets:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/viewer/viewer.css&quot;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;my-viewer&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;model-folder&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;file&quot;</span> <span class="na">webkitdirectory</span> <span class="na">multiple</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">mountColmapViewer</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;/viewer/component.js&quot;</span><span class="p">;</span>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/viewer/viewer.css"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"my-viewer"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">"model-folder"</span> <span class="na">type</span><span class="o">=</span><span class="s">"file"</span> <span class="na">webkitdirectory</span> <span class="na">multiple</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"module"</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">mountColmapViewer</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"/viewer/component.js"</span><span class="p">;</span>
 
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">viewer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mountColmapViewer</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#my-viewer&quot;</span><span class="p">));</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#model-folder&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">event</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">viewer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mountColmapViewer</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"#my-viewer"</span><span class="p">));</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"#model-folder"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"change"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">event</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">entries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[...</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">files</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">file</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
 <span class="w">      </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="nx">file</span><span class="p">.</span><span class="nx">webkitRelativePath</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">file</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">file</span><span class="p">,</span>
@@ -810,7 +810,7 @@ or third-party notices. Also retain the bundled
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | db6f909 (2026-08-12)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 77da2b8 (2026-08-18)</p></div>
       
     </div>
   

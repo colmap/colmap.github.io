@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=b2c2ab5f"></script>
+    <script src="_static/documentation_options.js?v=4f802725"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="3D Viewer" href="viewer.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | db6f909 (2026-08-12)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 77da2b8 (2026-08-18)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -696,6 +696,12 @@ widely tested feature extractor. Produces 128-dimensional uint8 descriptors.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">ALIKED</span></code>: A Lighter Keypoint and Descriptor Extractor. A learned feature
 extractor that produces floating-point descriptors. Requires ONNX support to
 be enabled at build time (<code class="docutils literal notranslate"><span class="pre">-DONNX_ENABLED=ON</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOMA</span></code>: A learned feature extractor, introduced in LoMa: Local Feature
+Matching Revisited, ECCV26, that uses the DeDoDe architecture. Two descriptor
+variants are available: <code class="docutils literal notranslate"><span class="pre">LOMA_B</span></code> (256-dim, frozen DINOv2 features combined
+with trained convolutional features) and <code class="docutils literal notranslate"><span class="pre">LOMA_B128</span></code> (128-dim, more
+lightweight). Requires ONNX support to be enabled at build time
+(<code class="docutils literal notranslate"><span class="pre">-DONNX_ENABLED=ON</span></code>).</p></li>
 </ul>
 <p>To select a feature extractor type via the command-line:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ colmap feature_extractor \
@@ -714,7 +720,7 @@ be enabled at build time (<code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 <p>In the GUI, open <code class="docutils literal notranslate"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Feature</span> <span class="pre">extraction</span></code> and select the desired
-tab (SIFT, ALIKED, etc.) before clicking Extract.</p>
+tab (SIFT, ALIKED, LoMa, etc.) before clicking Extract.</p>
 </section>
 <section id="feature-matcher-types">
 <h2>Feature Matcher Types<a class="headerlink" href="#feature-matcher-types" title="Link to this heading">#</a></h2>
@@ -731,6 +737,19 @@ large viewpoint or illumination changes. Requires ONNX support to be enabled
 at build time.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ALIKED_LIGHTGLUE</span></code>: Neural network-based matching using the LightGlue model
 for ALIKED descriptors. Requires ONNX support to be enabled at build time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOMA_BRUTEFORCE</span></code>: Brute-force matching for either of the LoMa descriptors.
+Uses cosine similarity. Requires ONNX support to be enabled at build time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOMA_B</span></code>: Dedicated neural network matcher for the 256-dim <code class="docutils literal notranslate"><span class="pre">LOMA_B</span></code>
+descriptor, comparable in size to LightGlue. Requires ONNX support to be
+enabled at build time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOMA_R</span></code>: Same size as <code class="docutils literal notranslate"><span class="pre">LOMA_B</span></code>, but trained with rotation augmentation
+for better robustness to rotated image pairs. Also matches the 256-dim
+<code class="docutils literal notranslate"><span class="pre">LOMA_B</span></code> descriptor. Requires ONNX support to be enabled at build time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOMA_L</span></code>, <code class="docutils literal notranslate"><span class="pre">LOMA_G</span></code>: Larger dedicated matchers for the 256-dim
+<code class="docutils literal notranslate"><span class="pre">LOMA_B</span></code> descriptor, in increasing order of model size and matching
+quality. Requires ONNX support to be enabled at build time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOMA_B128</span></code>: Dedicated matcher for the lightweight 128-dim <code class="docutils literal notranslate"><span class="pre">LOMA_B128</span></code>
+descriptor. Requires ONNX support to be enabled at build time.</p></li>
 </ul>
 <p>To select a feature matcher type via the command-line:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ colmap exhaustive_matcher \
@@ -756,10 +775,15 @@ dropdown in the shared options section.</p>
 <ul class="simple">
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">SIFT</span></code> extraction with <code class="docutils literal notranslate"><span class="pre">SIFT_BRUTEFORCE</span></code> or <code class="docutils literal notranslate"><span class="pre">SIFT_LIGHTGLUE</span></code> matching.</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">ALIKED_*</span></code> extraction with <code class="docutils literal notranslate"><span class="pre">ALIKED_BRUTEFORCE</span></code> or <code class="docutils literal notranslate"><span class="pre">ALIKED_LIGHTGLUE</span></code> matching.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">LOMA_B</span></code> extraction with <code class="docutils literal notranslate"><span class="pre">LOMA_BRUTEFORCE</span></code>, <code class="docutils literal notranslate"><span class="pre">LOMA_B</span></code>, <code class="docutils literal notranslate"><span class="pre">LOMA_R</span></code>,
+<code class="docutils literal notranslate"><span class="pre">LOMA_L</span></code>, or <code class="docutils literal notranslate"><span class="pre">LOMA_G</span></code> matching.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">LOMA_B128</span></code> extraction with <code class="docutils literal notranslate"><span class="pre">LOMA_BRUTEFORCE</span></code> or <code class="docutils literal notranslate"><span class="pre">LOMA_B128</span></code>
+matching.</p></li>
 </ul>
-<p>Mixing incompatible types (e.g., SIFT features with ALIKED matcher) will
-result in a runtime error. Do not mix different feature extractor types
-(e.g., SIFT and ALIKED) in the same database.</p>
+<p>Mixing incompatible types (e.g., SIFT features with ALIKED matcher, or
+<code class="docutils literal notranslate"><span class="pre">LOMA_B128</span></code> features with the <code class="docutils literal notranslate"><span class="pre">LOMA_B</span></code> matcher) will result in a runtime
+error. Do not mix different feature extractor types (e.g., SIFT and ALIKED)
+in the same database.</p>
 </section>
 <section id="aliked-model-variants">
 <h2>ALIKED Model Variants<a class="headerlink" href="#aliked-model-variants" title="Link to this heading">#</a></h2>
@@ -772,6 +796,36 @@ different trade-offs between speed and accuracy:</p>
 <p>Specify the model path using <code class="docutils literal notranslate"><span class="pre">--AlikedExtraction.*_model_path</span></code>. If the path is
 a URL, COLMAP will automatically download and cache the model. You can download
 different ALIKED models from the release page at <a class="github reference external" href="https://github.com/colmap/colmap/releases/">colmap/colmap</a></p>
+</section>
+<section id="loma-model-variants">
+<h2>LoMa Model Variants<a class="headerlink" href="#loma-model-variants" title="Link to this heading">#</a></h2>
+<p>LoMa, similar to ALIKED, uses a detect+describe+match framework. The descriptor
+comes in two variants:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LOMA_B</span></code>: 256-dim descriptor combining frozen DINOv2 features with trained
+convolutional features.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOMA_B128</span></code>: A more lightweight 128-dim descriptor.</p></li>
+</ul>
+<p>Each descriptor variant has its own dedicated matcher(s) with
+different trade-offs between speed and accuracy:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LOMA_B</span></code> descriptors can be matched with <code class="docutils literal notranslate"><span class="pre">LOMA_B</span></code> (smallest, same size as
+LightGlue), <code class="docutils literal notranslate"><span class="pre">LOMA_R</span></code> (same size as <code class="docutils literal notranslate"><span class="pre">LOMA_B</span></code> but trained with rotation
+augmentation), <code class="docutils literal notranslate"><span class="pre">LOMA_L</span></code>, or <code class="docutils literal notranslate"><span class="pre">LOMA_G</span></code> (progressively larger, slower, and
+more accurate), as well as <code class="docutils literal notranslate"><span class="pre">LOMA_BRUTEFORCE</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOMA_B128</span></code> descriptors can only be matched with <code class="docutils literal notranslate"><span class="pre">LOMA_B128</span></code> or
+<code class="docutils literal notranslate"><span class="pre">LOMA_BRUTEFORCE</span></code>. Fastest option but least accurate out of the LoMa
+matchers.</p></li>
+</ul>
+<p>By default, all LoMa model weights are downloaded automatically and cached
+locally the first time they are used, so no manual setup is required to get
+started. To use a different model, specify its path using
+<code class="docutils literal notranslate"><span class="pre">--LomaExtraction.*_model_path</span></code> for extraction and
+<code class="docutils literal notranslate"><span class="pre">--LomaMatching.*_model_path</span></code> for matching. As with ALIKED, if the path is a
+URL, COLMAP will automatically download and cache it. Extraction and
+matching also support an opt-in <code class="docutils literal notranslate"><span class="pre">use_bf16</span></code> mode
+(<code class="docutils literal notranslate"><span class="pre">--LomaExtraction.use_bf16</span></code> / <code class="docutils literal notranslate"><span class="pre">--LomaMatching.use_bf16</span></code>) for faster
+inference.</p>
 </section>
 <section id="iterative-runs">
 <h2>Iterative Runs<a class="headerlink" href="#iterative-runs" title="Link to this heading">#</a></h2>
@@ -841,6 +895,7 @@ clear the existing results with <code class="docutils literal notranslate"><span
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-matcher-types">Feature Matcher Types</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compatible-extractor-and-matcher-types">Compatible Extractor and Matcher Types</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aliked-model-variants">ALIKED Model Variants</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loma-model-variants">LoMa Model Variants</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-runs">Iterative Runs</a></li>
 </ul>
   </nav></div>
@@ -891,7 +946,7 @@ clear the existing results with <code class="docutils literal notranslate"><span
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | db6f909 (2026-08-12)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 77da2b8 (2026-08-18)</p></div>
       
     </div>
   

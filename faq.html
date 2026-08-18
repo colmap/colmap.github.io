@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=b2c2ab5f"></script>
+    <script src="_static/documentation_options.js?v=4f802725"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="Cost Functions" href="pycolmap/cost_functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | db6f909 (2026-08-12)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 77da2b8 (2026-08-18)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -709,10 +709,11 @@ library is described <a class="reference internal" href="install.html#installati
 start from the <code class="docutils literal notranslate"><span class="pre">src/colmap/tools/example.cc</span></code> code template and implement the desired
 functionality directly as a new binary within COLMAP.</p>
 </section>
-<section id="choosing-between-sift-and-aliked-features">
-<h2>Choosing between SIFT and ALIKED features<a class="headerlink" href="#choosing-between-sift-and-aliked-features" title="Link to this heading">#</a></h2>
-<p>COLMAP supports two feature extraction algorithms: SIFT (default) and ALIKED
-(requires ONNX support). Here are some guidelines for choosing between them:</p>
+<section id="choosing-between-sift-aliked-and-loma-features">
+<h2>Choosing between SIFT, ALIKED, and LoMa features<a class="headerlink" href="#choosing-between-sift-aliked-and-loma-features" title="Link to this heading">#</a></h2>
+<p>COLMAP supports three feature extraction algorithms: SIFT (default), ALIKED,
+and LoMa (the latter two require ONNX support). Here are some guidelines for
+choosing between them:</p>
 <ul class="simple">
 <li><p><strong>SIFT</strong> is the most widely tested and robust choice. It works well for
 scenarios with moderate to high view overlap, sufficient scene texture,
@@ -722,12 +723,17 @@ and CPU extraction.</p></li>
 features in some cases, particularly for scenes with limited view overlap,
 little scene texture, and drastic illumination changes. It requires ONNX
 Runtime at build time (<code class="docutils literal notranslate"><span class="pre">-DONNX_ENABLED=ON</span></code>).</p></li>
+<li><p><strong>LoMa</strong> is a learned feature extractor targeting the same difficult
+scenarios as ALIKED, paired with dedicated matchers that trade inference
+cost for matching quality. It also requires ONNX Runtime at build time.</p></li>
 </ul>
-<p>Both feature types support brute-force matching as well as LightGlue neural
+<p>SIFT and ALIKED support brute-force matching as well as LightGlue neural
 network-based matching. LightGlue typically produces higher inlier ratios,
 especially for image pairs with large viewpoint or illumination changes, but
-requires ONNX support. See <a class="reference internal" href="features.html#features"><span class="std std-ref">Feature Extraction and Matching</span></a>
-for details on available options.</p>
+requires ONNX support. LoMa descriptors are matched either brute-force or with
+one of the dedicated LoMa matchers. See
+<a class="reference internal" href="features.html#features"><span class="std std-ref">Feature Extraction and Matching</span></a> for details on available
+options.</p>
 <p>Do not mix different feature types (e.g., SIFT and ALIKED) in the same
 database, as the descriptors are incompatible.</p>
 </section>
@@ -854,7 +860,7 @@ is during feature extraction using the <code class="docutils literal notranslate
     --image_path $PROJECT_PATH/images \
     --ImageReader.single_camera 1 \
     --ImageReader.camera_model OPENCV \
-    --ImageReader.camera_params &quot;fx,fy,cx,cy,k1,k2,p1,p2&quot;
+    --ImageReader.camera_params "fx,fy,cx,cy,k1,k2,p1,p2"
 </pre></div>
 </div>
 <p>The parameters must be provided as a comma-separated list in the order defined
@@ -867,7 +873,7 @@ camera in the database (see <a class="reference internal" href="#share-intrinsic
 by hand (the parameters are stored as binary blobs of doubles), but use
 pycolmap’s database API instead:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pycolmap</span>
-<span class="k">with</span> <span class="n">pycolmap</span><span class="o">.</span><span class="n">Database</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;path/to/database.db&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">pycolmap</span><span class="o">.</span><span class="n">Database</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"path/to/database.db"</span><span class="p">)</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
     <span class="n">camera</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">read_camera</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">camera</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">]</span>
     <span class="n">camera</span><span class="o">.</span><span class="n">has_prior_focal_length</span> <span class="o">=</span> <span class="kc">True</span>
@@ -1097,7 +1103,7 @@ extraction. The orientation is converted to a gravity direction vector in sensor
 coordinates, which is stored as part of the pose prior in the database. This
 gravity information is used during feature extraction and matching to improve
 robustness against image rotation. This is crucial for feature extractors/matchers
-with limited orientation invariance, such as ALIKED and LightGlue.</p>
+with limited orientation invariance, such as ALIKED, LightGlue, and LoMa.</p>
 </section>
 <section id="register-localize-new-images-into-an-existing-reconstruction">
 <h2>Register/localize new images into an existing reconstruction<a class="headerlink" href="#register-localize-new-images-into-an-existing-reconstruction" title="Link to this heading">#</a></h2>
@@ -1441,8 +1447,8 @@ documentation</a>
 on how to increase the delay time under Windows. You can increase the delay
 using the following Windows Registry entries:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">HKEY_LOCAL_MACHINE</span>\<span class="n">SYSTEM</span>\<span class="n">CurrentControlSet</span>\<span class="n">Control</span>\<span class="n">GraphicsDrivers</span><span class="p">]</span>
-<span class="s2">&quot;TdrLevel&quot;</span><span class="o">=</span><span class="n">dword</span><span class="p">:</span><span class="mi">00000001</span>
-<span class="s2">&quot;TdrDelay&quot;</span><span class="o">=</span><span class="n">dword</span><span class="p">:</span><span class="mi">00000120</span>
+<span class="s2">"TdrLevel"</span><span class="o">=</span><span class="n">dword</span><span class="p">:</span><span class="mi">00000001</span>
+<span class="s2">"TdrDelay"</span><span class="o">=</span><span class="n">dword</span><span class="p">:</span><span class="mi">00000120</span>
 </pre></div>
 </div>
 <p>To set the registry entries, execute the following commands using administrator
@@ -1521,7 +1527,7 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-the-options-for-different-reconstruction-scenarios-and-output-quality">Adjusting the options for different reconstruction scenarios and output quality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-colmap">Extending COLMAP</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-between-sift-and-aliked-features">Choosing between SIFT and ALIKED features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-between-sift-aliked-and-loma-features">Choosing between SIFT, ALIKED, and LoMa features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-right-camera-model">Choosing the right camera model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-calibration-from-opencv-kalibr-or-other-tools">Using calibration from OpenCV, Kalibr, or other tools</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-between-incremental-global-and-hierarchical-sfm">Choosing between incremental, global, and hierarchical SfM</a></li>
@@ -1599,7 +1605,7 @@ probably insufficient GPU memory, as discussed in a separate item in this list.<
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | db6f909 (2026-08-12)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 77da2b8 (2026-08-18)</p></div>
       
     </div>
   

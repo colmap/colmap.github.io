@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=b2c2ab5f"></script>
+    <script src="_static/documentation_options.js?v=4f802725"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="Camera Models" href="cameras.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | db6f909 (2026-08-12)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 77da2b8 (2026-08-18)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -736,20 +736,20 @@ in the database with the desired rig configuration. This is done using:</p>
 in the rig are known a priori:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
   <span class="p">{</span>
-    <span class="s2">&quot;cameras&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"cameras"</span><span class="p">:</span> <span class="p">[</span>
       <span class="p">{</span>
-        <span class="s2">&quot;image_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;rig1/camera1/&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ref_sensor&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="s2">"image_prefix"</span><span class="p">:</span> <span class="s2">"rig1/camera1/"</span><span class="p">,</span>
+        <span class="s2">"ref_sensor"</span><span class="p">:</span> <span class="n">true</span>
       <span class="p">},</span>
       <span class="p">{</span>
-        <span class="s2">&quot;image_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;rig1/camera2/&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;cam_from_rig_rotation&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"image_prefix"</span><span class="p">:</span> <span class="s2">"rig1/camera2/"</span><span class="p">,</span>
+        <span class="s2">"cam_from_rig_rotation"</span><span class="p">:</span> <span class="p">[</span>
             <span class="mf">0.7071067811865475</span><span class="p">,</span>
             <span class="mf">0.0</span><span class="p">,</span>
             <span class="mf">0.7071067811865476</span><span class="p">,</span>
             <span class="mf">0.0</span>
         <span class="p">],</span>
-        <span class="s2">&quot;cam_from_rig_translation&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"cam_from_rig_translation"</span><span class="p">:</span> <span class="p">[</span>
             <span class="mi">0</span><span class="p">,</span>
             <span class="mi">0</span><span class="p">,</span>
             <span class="mi">0</span>
@@ -758,10 +758,10 @@ in the rig are known a priori:</p>
     <span class="p">]</span>
   <span class="p">},</span>
   <span class="p">{</span>
-    <span class="s2">&quot;cameras&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"cameras"</span><span class="p">:</span> <span class="p">[</span>
       <span class="p">{</span>
-        <span class="s2">&quot;image_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;rig2/camera1/&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ref_sensor&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="s2">"image_prefix"</span><span class="p">:</span> <span class="s2">"rig2/camera1/"</span><span class="p">,</span>
+        <span class="s2">"ref_sensor"</span><span class="p">:</span> <span class="n">true</span>
       <span class="p">},</span>
       <span class="o">...</span>
     <span class="p">]</span>
@@ -852,19 +852,19 @@ that we use to configure the sensor rig poses as well as camera models using:</p
 <p>with the <code class="docutils literal notranslate"><span class="pre">rig_config.json</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
-        <span class="s2">&quot;cameras&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"cameras"</span><span class="p">:</span> <span class="p">[</span>
             <span class="p">{</span>
-                <span class="s2">&quot;image_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;images_rig_cam4_undistorted/&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;ref_sensor&quot;</span><span class="p">:</span> <span class="n">true</span>
+                <span class="s2">"image_prefix"</span><span class="p">:</span> <span class="s2">"images_rig_cam4_undistorted/"</span><span class="p">,</span>
+                <span class="s2">"ref_sensor"</span><span class="p">:</span> <span class="n">true</span>
             <span class="p">},</span>
             <span class="p">{</span>
-                <span class="s2">&quot;image_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;images_rig_cam5_undistorted/&quot;</span>
+                <span class="s2">"image_prefix"</span><span class="p">:</span> <span class="s2">"images_rig_cam5_undistorted/"</span>
             <span class="p">},</span>
             <span class="p">{</span>
-                <span class="s2">&quot;image_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;images_rig_cam6_undistorted/&quot;</span>
+                <span class="s2">"image_prefix"</span><span class="p">:</span> <span class="s2">"images_rig_cam6_undistorted/"</span>
             <span class="p">},</span>
             <span class="p">{</span>
-                <span class="s2">&quot;image_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;images_rig_cam7_undistorted/&quot;</span>
+                <span class="s2">"image_prefix"</span><span class="p">:</span> <span class="s2">"images_rig_cam7_undistorted/"</span>
             <span class="p">}</span>
         <span class="p">]</span>
     <span class="p">}</span>
@@ -1016,7 +1016,7 @@ can be installed with <code class="docutils literal notranslate"><span class="pr
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | db6f909 (2026-08-12)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 77da2b8 (2026-08-18)</p></div>
       
     </div>
   

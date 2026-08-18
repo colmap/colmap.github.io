@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=b2c2ab5f"></script>
+    <script src="_static/documentation_options.js?v=4f802725"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="COLMAP" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | db6f909 (2026-08-12)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 77da2b8 (2026-08-18)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -766,8 +766,8 @@ Windows, compute clusters, or if you do not have root access under Linux or Mac.
     <span class="n">libcurl4</span><span class="o">-</span><span class="n">openssl</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libssl</span><span class="o">-</span><span class="n">dev</span> \
     <span class="n">libmkl</span><span class="o">-</span><span class="n">full</span><span class="o">-</span><span class="n">dev</span>
-<span class="c1"># Fix issue in Ubuntu&#39;s openimageio CMake config.</span>
-<span class="c1"># We don&#39;t depend on any of openimageio&#39;s OpenCV functionality,</span>
+<span class="c1"># Fix issue in Ubuntu's openimageio CMake config.</span>
+<span class="c1"># We don't depend on any of openimageio's OpenCV functionality,</span>
 <span class="c1"># but it still requires the OpenCV include directory to exist.</span>
 <span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">opencv4</span>
 </pre></div>
@@ -848,7 +848,7 @@ CUDA package and GCC, and you must compile against GCC 10:</p>
 <span class="n">export</span> <span class="n">CC</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="mi">10</span>
 <span class="n">export</span> <span class="n">CXX</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++-</span><span class="mi">10</span>
 <span class="n">export</span> <span class="n">CUDAHOSTCXX</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++-</span><span class="mi">10</span>
-<span class="c1"># ... and then run CMake against COLMAP&#39;s sources.</span>
+<span class="c1"># ... and then run CMake against COLMAP's sources.</span>
 </pre></div>
 </div>
 <p>Notice that the <code class="docutils literal notranslate"><span class="pre">BLA_VENDOR=Intel10_64lp</span></code> option tells CMake to find Intel’s MKL
@@ -884,7 +884,7 @@ of <a class="reference external" href="https://github.com/facebookresearch/faiss
     <span class="n">libcurl</span><span class="o">-</span><span class="n">devel</span> \
     <span class="n">openssl</span><span class="o">-</span><span class="n">devel</span> \
     <span class="n">openblas</span><span class="o">-</span><span class="n">devel</span>
-<span class="c1"># suitesparse-static is required even for a dynamic build, because Fedora&#39;s</span>
+<span class="c1"># suitesparse-static is required even for a dynamic build, because Fedora's</span>
 <span class="c1"># SuiteSparse CMake config references the static targets file regardless of</span>
 <span class="c1"># link type. This can be dropped once Fedora ships SuiteSparse &gt;= 7.11.0 with</span>
 <span class="c1"># its separated static config.</span>
@@ -1088,12 +1088,12 @@ int main(int argc, char** argv) {
 
     std::string message;
     colmap::OptionManager options;
-    options.AddRequiredOption(&quot;message&quot;, &amp;message);
+    options.AddRequiredOption("message", &amp;message);
     if (!options.Parse(argc, argv)) {
         return EXIT_FAILURE;
     }
 
-    std::cout &lt;&lt; colmap::StringPrintf(&quot;Hello %s!\n&quot;, message.c_str());
+    std::cout &lt;&lt; colmap::StringPrintf("Hello %s!\n", message.c_str());
 
     return EXIT_SUCCESS;
 }
@@ -1105,7 +1105,7 @@ cd build
 export colmap_DIR=${CMAKE_INSTALL_PREFIX}/share/colmap
 cmake .. -GNinja
 ninja
-./hello_world --message &quot;world&quot;
+./hello_world --message "world"
 </pre></div>
 </div>
 <p>The sources of this example are stored under <code class="docutils literal notranslate"><span class="pre">doc/sample-project</span></code>.</p>
@@ -1294,7 +1294,7 @@ The automated deploy preserves the existing <code class="docutils literal notran
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | db6f909 (2026-08-12)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 77da2b8 (2026-08-18)</p></div>
       
     </div>
   

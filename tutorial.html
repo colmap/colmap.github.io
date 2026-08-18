@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=b2c2ab5f"></script>
+    <script src="_static/documentation_options.js?v=4f802725"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="Installation" href="install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | db6f909 (2026-08-12)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 77da2b8 (2026-08-18)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -930,9 +930,10 @@ available) instead requires an attached display, so on such systems the CPU
 version is recommended for use on a server. In general, the GPU version is
 favorable, as it has a customized feature detection mode that often produces
 higher-quality features for high-contrast images.
-COLMAP also supports ALIKED feature extraction, a learned feature extractor
-using ONNX models, which can be selected via the <code class="docutils literal notranslate"><span class="pre">--FeatureExtraction.type</span></code>
-option (see <a class="reference internal" href="features.html#features"><span class="std std-ref">Feature Extraction and Matching</span></a> for details). If
+COLMAP also supports ALIKED and LoMa feature extraction, learned feature
+extractors using ONNX models, which can be selected via the
+<code class="docutils literal notranslate"><span class="pre">--FeatureExtraction.type</span></code> option (see
+<a class="reference internal" href="features.html#features"><span class="std std-ref">Feature Extraction and Matching</span></a> for details). If
 you import existing features, every image must have a text file next to it (e.g.,
 <code class="docutils literal notranslate"><span class="pre">/path/to/image1.jpg</span></code> and <code class="docutils literal notranslate"><span class="pre">/path/to/image1.jpg.txt</span></code>) in the following format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NUM_FEATURES</span> <span class="mi">128</span>
@@ -1321,7 +1322,7 @@ not fully compatible with VisualSfM.</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | db6f909 (2026-08-12)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 77da2b8 (2026-08-18)</p></div>
       
     </div>
   

@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=b2c2ab5f"></script>
+    <script src="../_static/documentation_options.js?v=4f802725"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -64,7 +64,7 @@
     <link rel="prev" title="PyCOLMAP" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | db6f909 (2026-08-12)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 77da2b8 (2026-08-18)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -2276,6 +2276,8 @@
 <p>SIFT</p>
 <p>ALIKED_N16ROT</p>
 <p>ALIKED_N32</p>
+<p>LOMA_B</p>
+<p>LOMA_B128</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.FeatureExtractorType.name">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#pycolmap.FeatureExtractorType.name" title="Link to this definition">#</a></dt>
@@ -2304,6 +2306,16 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pycolmap.FeatureExtractorType.ALIKED_N32">
 <span class="sig-name descname"><span class="pre">ALIKED_N32</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;FeatureExtractorType.ALIKED_N32:</span> <span class="pre">2&gt;</span></span><a class="headerlink" href="#pycolmap.FeatureExtractorType.ALIKED_N32" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycolmap.FeatureExtractorType.LOMA_B">
+<span class="sig-name descname"><span class="pre">LOMA_B</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;FeatureExtractorType.LOMA_B:</span> <span class="pre">3&gt;</span></span><a class="headerlink" href="#pycolmap.FeatureExtractorType.LOMA_B" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycolmap.FeatureExtractorType.LOMA_B128">
+<span class="sig-name descname"><span class="pre">LOMA_B128</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;FeatureExtractorType.LOMA_B128:</span> <span class="pre">4&gt;</span></span><a class="headerlink" href="#pycolmap.FeatureExtractorType.LOMA_B128" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -4263,6 +4275,12 @@ are part of a 3D point track. (int, default: 0)</p>
 <p>SIFT_LIGHTGLUE</p>
 <p>ALIKED_BRUTEFORCE</p>
 <p>ALIKED_LIGHTGLUE</p>
+<p>LOMA_BRUTEFORCE</p>
+<p>LOMA_B</p>
+<p>LOMA_B128</p>
+<p>LOMA_R</p>
+<p>LOMA_L</p>
+<p>LOMA_G</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.FeatureMatcherType.name">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#pycolmap.FeatureMatcherType.name" title="Link to this definition">#</a></dt>
@@ -4296,6 +4314,36 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pycolmap.FeatureMatcherType.ALIKED_LIGHTGLUE">
 <span class="sig-name descname"><span class="pre">ALIKED_LIGHTGLUE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;FeatureMatcherType.ALIKED_LIGHTGLUE:</span> <span class="pre">3&gt;</span></span><a class="headerlink" href="#pycolmap.FeatureMatcherType.ALIKED_LIGHTGLUE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatcherType.LOMA_BRUTEFORCE">
+<span class="sig-name descname"><span class="pre">LOMA_BRUTEFORCE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;FeatureMatcherType.LOMA_BRUTEFORCE:</span> <span class="pre">4&gt;</span></span><a class="headerlink" href="#pycolmap.FeatureMatcherType.LOMA_BRUTEFORCE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatcherType.LOMA_B">
+<span class="sig-name descname"><span class="pre">LOMA_B</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;FeatureMatcherType.LOMA_B:</span> <span class="pre">5&gt;</span></span><a class="headerlink" href="#pycolmap.FeatureMatcherType.LOMA_B" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatcherType.LOMA_B128">
+<span class="sig-name descname"><span class="pre">LOMA_B128</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;FeatureMatcherType.LOMA_B128:</span> <span class="pre">6&gt;</span></span><a class="headerlink" href="#pycolmap.FeatureMatcherType.LOMA_B128" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatcherType.LOMA_R">
+<span class="sig-name descname"><span class="pre">LOMA_R</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;FeatureMatcherType.LOMA_R:</span> <span class="pre">7&gt;</span></span><a class="headerlink" href="#pycolmap.FeatureMatcherType.LOMA_R" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatcherType.LOMA_L">
+<span class="sig-name descname"><span class="pre">LOMA_L</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;FeatureMatcherType.LOMA_L:</span> <span class="pre">8&gt;</span></span><a class="headerlink" href="#pycolmap.FeatureMatcherType.LOMA_L" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatcherType.LOMA_G">
+<span class="sig-name descname"><span class="pre">LOMA_G</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;FeatureMatcherType.LOMA_G:</span> <span class="pre">9&gt;</span></span><a class="headerlink" href="#pycolmap.FeatureMatcherType.LOMA_G" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -14573,6 +14621,8 @@ are part of a 3D point track. (int, default: 0)</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureExtractorType.SIFT"><code class="docutils literal notranslate"><span class="pre">FeatureExtractorType.SIFT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureExtractorType.ALIKED_N16ROT"><code class="docutils literal notranslate"><span class="pre">FeatureExtractorType.ALIKED_N16ROT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureExtractorType.ALIKED_N32"><code class="docutils literal notranslate"><span class="pre">FeatureExtractorType.ALIKED_N32</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureExtractorType.LOMA_B"><code class="docutils literal notranslate"><span class="pre">FeatureExtractorType.LOMA_B</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureExtractorType.LOMA_B128"><code class="docutils literal notranslate"><span class="pre">FeatureExtractorType.LOMA_B128</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureDescriptors"><code class="docutils literal notranslate"><span class="pre">FeatureDescriptors</span></code></a><ul class="nav section-nav flex-column">
@@ -14908,6 +14958,12 @@ are part of a 3D point track. (int, default: 0)</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureMatcherType.SIFT_LIGHTGLUE"><code class="docutils literal notranslate"><span class="pre">FeatureMatcherType.SIFT_LIGHTGLUE</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureMatcherType.ALIKED_BRUTEFORCE"><code class="docutils literal notranslate"><span class="pre">FeatureMatcherType.ALIKED_BRUTEFORCE</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureMatcherType.ALIKED_LIGHTGLUE"><code class="docutils literal notranslate"><span class="pre">FeatureMatcherType.ALIKED_LIGHTGLUE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureMatcherType.LOMA_BRUTEFORCE"><code class="docutils literal notranslate"><span class="pre">FeatureMatcherType.LOMA_BRUTEFORCE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureMatcherType.LOMA_B"><code class="docutils literal notranslate"><span class="pre">FeatureMatcherType.LOMA_B</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureMatcherType.LOMA_B128"><code class="docutils literal notranslate"><span class="pre">FeatureMatcherType.LOMA_B128</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureMatcherType.LOMA_R"><code class="docutils literal notranslate"><span class="pre">FeatureMatcherType.LOMA_R</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureMatcherType.LOMA_L"><code class="docutils literal notranslate"><span class="pre">FeatureMatcherType.LOMA_L</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureMatcherType.LOMA_G"><code class="docutils literal notranslate"><span class="pre">FeatureMatcherType.LOMA_G</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SiftMatchingOptions"><code class="docutils literal notranslate"><span class="pre">SiftMatchingOptions</span></code></a><ul class="nav section-nav flex-column">
@@ -16498,7 +16554,7 @@ are part of a 3D point track. (int, default: 0)</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | db6f909 (2026-08-12)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 77da2b8 (2026-08-18)</p></div>
       
     </div>
   

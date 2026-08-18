@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=b2c2ab5f"></script>
+    <script src="_static/documentation_options.js?v=4f802725"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="Graphical User Interface" href="gui.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | db6f909 (2026-08-12)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 77da2b8 (2026-08-18)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -702,7 +702,7 @@ graphical user interface, run <code class="docutils literal notranslate"><span c
 </pre></div>
 </div>
 <p>The command for the automatic reconstruction tool would be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># The project folder must contain a folder &quot;images&quot; with all the images.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># The project folder must contain a folder "images" with all the images.
 $ DATASET_PATH=/path/to/project
 
 $ colmap automatic_reconstructor \
@@ -714,7 +714,7 @@ $ colmap automatic_reconstructor \
 command-line argument. In case you need more control over the individual
 parameters of the reconstruction process, you can execute the following sequence
 of commands as an alternative to the automatic reconstruction command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># The project folder must contain a folder &quot;images&quot; with all the images.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># The project folder must contain a folder "images" with all the images.
 $ DATASET_PATH=/path/to/dataset
 
 $ colmap feature_extractor \
@@ -910,7 +910,7 @@ the available options, e.g.:</p>
         --camera_mode arg (=-1)
         --image_list_path arg
         --descriptor_normalization arg (=l1_root)
-                                              {&#39;l1_root&#39;, &#39;l2&#39;}
+                                              {'l1_root', 'l2'}
         --ImageReader.mask_path arg
         --ImageReader.camera_model arg (=SIMPLE_RADIAL)
         --ImageReader.single_camera arg (=0)
@@ -953,10 +953,10 @@ available as <code class="docutils literal notranslate"><span class="pre">colmap
 <li><p><code class="docutils literal notranslate"><span class="pre">automatic_reconstructor</span></code>: Automatically reconstruct sparse and dense model
 for a set of input images. Key options include <code class="docutils literal notranslate"><span class="pre">--quality</span></code> (LOW, MEDIUM,
 HIGH, EXTREME), <code class="docutils literal notranslate"><span class="pre">--data_type</span></code> (INDIVIDUAL, VIDEO, INTERNET) to tune settings
-for different capture scenarios, <code class="docutils literal notranslate"><span class="pre">--feature</span></code> (SIFT, ALIKED) to select the
-feature extraction algorithm, <code class="docutils literal notranslate"><span class="pre">--mapper</span></code> (INCREMENTAL, HIERARCHICAL, GLOBAL)
-to choose the SfM pipeline, and <code class="docutils literal notranslate"><span class="pre">--mesher</span></code> (POISSON, DELAUNAY,
-ADVANCING_FRONT) to select the surface reconstruction method.</p></li>
+for different capture scenarios, <code class="docutils literal notranslate"><span class="pre">--feature</span></code> (SIFT, ALIKED, LOMA, LOMA128)
+to select the feature extraction algorithm, <code class="docutils literal notranslate"><span class="pre">--mapper</span></code> (INCREMENTAL,
+HIERARCHICAL, GLOBAL) to choose the SfM pipeline, and <code class="docutils literal notranslate"><span class="pre">--mesher</span></code> (POISSON,
+DELAUNAY, ADVANCING_FRONT) to select the surface reconstruction method.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">project_generator</span></code>: Generate project files at different quality settings.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">feature_extractor</span></code>, <code class="docutils literal notranslate"><span class="pre">feature_importer</span></code>: Perform feature extraction or
 import features for a set of images.</p></li>
@@ -1195,7 +1195,7 @@ with a texture atlas that can be visualized in Meshlab or other 3D viewers.</p><
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | db6f909 (2026-08-12)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 77da2b8 (2026-08-18)</p></div>
       
     </div>
   
