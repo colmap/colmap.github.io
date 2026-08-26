@@ -40,7 +40,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=4f802725"></script>
+    <script src="_static/documentation_options.js?v=b45af06b"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -54,7 +54,7 @@
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | 77da2b8 (2026-08-18)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 6e6f8f2 (2026-08-26)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -1249,8 +1249,6 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.Reconstruction.compute_centroid">compute_centroid() (pycolmap.Reconstruction method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.MVSModel.compute_depth_ranges">compute_depth_ranges() (pycolmap.MVSModel method)</a>
-</li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.PoseGraph.compute_largest_connected_frame_component">compute_largest_connected_frame_component() (pycolmap.PoseGraph method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Reconstruction.compute_mean_observations_per_reg_image">compute_mean_observations_per_reg_image() (pycolmap.Reconstruction method)</a>
 </li>
@@ -2486,6 +2484,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Normalization.L2">L2 (pycolmap.Normalization attribute)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.PoseGraph.largest_connected_frame_component">largest_connected_frame_component() (pycolmap.PoseGraph method)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineCallback.LAST_IMAGE_REG_CALLBACK">LAST_IMAGE_REG_CALLBACK (pycolmap.IncrementalPipelineCallback attribute)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.SceneClusteringOptions.leaf_max_num_images">leaf_max_num_images (pycolmap.SceneClusteringOptions property)</a>
@@ -2580,8 +2580,6 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.mapper">(pycolmap.IncrementalPipelineOptions property)</a>
 </li>
       </ul></li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.PoseGraph.mark_connected_components">mark_connected_components() (pycolmap.PoseGraph method)</a>
-</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.ImageReaderOptions.mask_path">mask_path (pycolmap.ImageReaderOptions property)</a>
 
       <ul>
@@ -2956,8 +2954,12 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometryOptions.min_inlier_ratio">(pycolmap.TwoViewGeometryOptions property)</a>
 </li>
       </ul></li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.min_model_size">min_model_size (pycolmap.IncrementalPipelineOptions property)</a>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPipelineOptions.min_model_size">min_model_size (pycolmap.GlobalPipelineOptions property)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.min_model_size">(pycolmap.IncrementalPipelineOptions property)</a>
 </li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CeresBundleAdjustmentOptions.min_num_images_gpu_solver">min_num_images_gpu_solver (pycolmap.CeresBundleAdjustmentOptions property)</a>
 
       <ul>
@@ -3021,9 +3023,11 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometryOptions.multiple_ignore_watermark">multiple_ignore_watermark (pycolmap.TwoViewGeometryOptions property)</a>
 </li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.multiple_models">multiple_models (pycolmap.IncrementalPipelineOptions property)</a>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPipelineOptions.multiple_models">multiple_models (pycolmap.GlobalPipelineOptions property)</a>
 
       <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.multiple_models">(pycolmap.IncrementalPipelineOptions property)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometryOptions.multiple_models">(pycolmap.TwoViewGeometryOptions property)</a>
 </li>
       </ul></li>
@@ -4983,7 +4987,7 @@
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | 77da2b8 (2026-08-18)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 6e6f8f2 (2026-08-26)</p></div>
       
     </div>
   
