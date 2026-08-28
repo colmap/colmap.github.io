@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=05f9bcaf"></script>
+    <script src="../_static/documentation_options.js?v=9b362cf1"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -64,7 +64,7 @@
     <link rel="prev" title="PyCOLMAP" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | 8f38b5a (2026-08-26)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 6c5b1dd (2026-08-28)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -13137,6 +13137,12 @@ are part of a 3D point track. (int, default: 0)</p>
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.SequentialPairingOptions.loop_detection_min_index_distance">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">loop_detection_min_index_distance</span></span><a class="headerlink" href="#pycolmap.SequentialPairingOptions.loop_detection_min_index_distance" title="Link to this definition">#</a></dt>
+<dd><p>The minimum image index distance between a loop detection query and a retrieved image. The index is determined by the sequential image order. Set to 0 to disable this restriction. (int, default: 0)</p>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.SequentialPairingOptions.loop_detection_num_nearest_neighbors">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">loop_detection_num_nearest_neighbors</span></span><a class="headerlink" href="#pycolmap.SequentialPairingOptions.loop_detection_num_nearest_neighbors" title="Link to this definition">#</a></dt>
 <dd><p>Number of nearest neighbors to retrieve per query feature. (int, default: 1)</p>
@@ -16319,6 +16325,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SequentialPairingOptions.loop_detection"><code class="docutils literal notranslate"><span class="pre">SequentialPairingOptions.loop_detection</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SequentialPairingOptions.loop_detection_period"><code class="docutils literal notranslate"><span class="pre">SequentialPairingOptions.loop_detection_period</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SequentialPairingOptions.loop_detection_num_images"><code class="docutils literal notranslate"><span class="pre">SequentialPairingOptions.loop_detection_num_images</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SequentialPairingOptions.loop_detection_min_index_distance"><code class="docutils literal notranslate"><span class="pre">SequentialPairingOptions.loop_detection_min_index_distance</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SequentialPairingOptions.loop_detection_num_nearest_neighbors"><code class="docutils literal notranslate"><span class="pre">SequentialPairingOptions.loop_detection_num_nearest_neighbors</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SequentialPairingOptions.loop_detection_num_checks"><code class="docutils literal notranslate"><span class="pre">SequentialPairingOptions.loop_detection_num_checks</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SequentialPairingOptions.loop_detection_num_images_after_verification"><code class="docutils literal notranslate"><span class="pre">SequentialPairingOptions.loop_detection_num_images_after_verification</span></code></a></li>
@@ -16547,7 +16554,7 @@ are part of a 3D point track. (int, default: 0)</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | 8f38b5a (2026-08-26)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 6c5b1dd (2026-08-28)</p></div>
       
     </div>
   

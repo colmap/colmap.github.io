@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=05f9bcaf"></script>
+    <script src="_static/documentation_options.js?v=9b362cf1"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="Installation" href="install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | 8f38b5a (2026-08-26)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 6c5b1dd (2026-08-28)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -988,8 +988,12 @@ exhaustively. Instead, consecutively captured images are matched against each
 other. This matching mode has built-in loop detection based on a vocabulary
 tree, where every N-th image (<code class="docutils literal notranslate"><span class="pre">--SequentialMatching.loop_detection_period</span></code>)
 is matched against its visually most similar images
-(<code class="docutils literal notranslate"><span class="pre">--SequentialMatching.loop_detection_num_images</span></code>). Note that image
-file names must be ordered sequentially (e.g., <code class="docutils literal notranslate"><span class="pre">image0001.jpg</span></code>,
+(<code class="docutils literal notranslate"><span class="pre">--SequentialMatching.loop_detection_num_images</span></code>). Retrieved images can
+be restricted to those that are sufficiently far from the query in the
+sequence (<code class="docutils literal notranslate"><span class="pre">--SequentialMatching.loop_detection_min_index_distance</span></code>), so
+that nearby images do not consume the loop detection budget. A value of zero
+disables this restriction. Note that image file names must be ordered
+sequentially (e.g., <code class="docutils literal notranslate"><span class="pre">image0001.jpg</span></code>,
 <code class="docutils literal notranslate"><span class="pre">image0002.jpg</span></code>, etc.). The order in the database is not relevant, since the
 images are explicitly ordered according to their file names. Note that loop
 detection requires a pre-trained vocabulary tree. A default tree will be
@@ -1322,7 +1326,7 @@ not fully compatible with VisualSfM.</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | 8f38b5a (2026-08-26)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 6c5b1dd (2026-08-28)</p></div>
       
     </div>
   
