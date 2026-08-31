@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=9b362cf1"></script>
+    <script src="_static/documentation_options.js?v=31d1a6ea"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="Graphical User Interface" href="gui.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | 6c5b1dd (2026-08-28)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 365e162 (2026-08-31)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -776,6 +776,59 @@ $ colmap mesh_texturer \
     --output_path $DATASET_PATH/dense/textured
 </pre></div>
 </div>
+</section>
+<section id="graceful-shutdown-and-resuming">
+<h2>Graceful shutdown and resuming<a class="headerlink" href="#graceful-shutdown-and-resuming" title="Link to this heading">#</a></h2>
+<p>The feature extraction and matching commands, <code class="docutils literal notranslate"><span class="pre">mapper</span></code>,
+<code class="docutils literal notranslate"><span class="pre">pose_prior_mapper</span></code>, <code class="docutils literal notranslate"><span class="pre">bundle_adjuster</span></code>, <code class="docutils literal notranslate"><span class="pre">point_triangulator</span></code>,
+<code class="docutils literal notranslate"><span class="pre">image_registrator</span></code>, the image undistortion commands,
+<code class="docutils literal notranslate"><span class="pre">patch_match_stereo</span></code>, and <code class="docutils literal notranslate"><span class="pre">stereo_fusion</span></code> handle <code class="docutils literal notranslate"><span class="pre">SIGINT</span></code> and <code class="docutils literal notranslate"><span class="pre">SIGTERM</span></code>
+cooperatively. <code class="docutils literal notranslate"><span class="pre">automatic_reconstructor</span></code> supports graceful shutdown when
+using the incremental mapper. The first signal stops work at a safe point and
+writes any usable in-progress results. The process then exits with status 130
+for <code class="docutils literal notranslate"><span class="pre">SIGINT</span></code> or 143 for <code class="docutils literal notranslate"><span class="pre">SIGTERM</span></code>. A second signal terminates immediately
+and may interrupt an output write.</p>
+<p>Feature extraction and matching can be resumed by rerunning the same command
+against the same database. PatchMatch can likewise be rerun against the same
+workspace; complete depth and normal maps are skipped. An interrupted
+incremental reconstruction is written to its normal numbered model directory
+and can be continued with <code class="docutils literal notranslate"><span class="pre">--input_path</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ colmap mapper \
+    --database_path $DATASET_PATH/database.db \
+    --image_path $DATASET_PATH/images \
+    --input_path $DATASET_PATH/sparse/0 \
+    --output_path $DATASET_PATH/sparse/0
+</pre></div>
+</div>
+<p>Point triangulation, image registration, and bundle adjustment write their
+usable partial results before exiting. Stereo fusion writes non-empty partial
+results to a sibling path containing <code class="docutils literal notranslate"><span class="pre">.partial</span></code> so that an existing completed
+result is not overwritten. Interrupted image undistortion can be restarted by
+rerunning the same command. Ceres optimizations stop between iterations. The
+Caspar bundle-adjustment backend can only stop after its current solver
+invocation. The global mapper does not support graceful shutdown because its
+intermediate reconstructions cannot currently be resumed.</p>
+<p>The equivalent pycolmap functions automatically handle <code class="docutils literal notranslate"><span class="pre">SIGINT</span></code> (Ctrl-C) by
+performing a graceful shutdown and raising <code class="docutils literal notranslate"><span class="pre">KeyboardInterrupt</span></code>. For other
+termination events, they accept an optional <code class="docutils literal notranslate"><span class="pre">cancellation_token</span></code>. Explicit
+cancellation finishes cleanup and then raises <code class="docutils literal notranslate"><span class="pre">InterruptedError</span></code>. This allows
+applications to connect cloud-preemption signals (like <code class="docutils literal notranslate"><span class="pre">SIGTERM</span></code>) to the token
+without pycolmap replacing the host application’s signal handlers. Automatic
+<code class="docutils literal notranslate"><span class="pre">SIGINT</span></code> handling requires calling the pycolmap function from Python’s main
+thread; use a cancellation token when calling it from another thread:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">signal</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pycolmap</span>
+
+<span class="n">token</span> <span class="o">=</span> <span class="n">pycolmap</span><span class="o">.</span><span class="n">CancellationToken</span><span class="p">()</span>
+<span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGTERM</span><span class="p">,</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">_</span><span class="p">:</span> <span class="n">token</span><span class="o">.</span><span class="n">cancel</span><span class="p">())</span>
+<span class="n">pycolmap</span><span class="o">.</span><span class="n">incremental_mapping</span><span class="p">(</span>
+    <span class="n">database_path</span><span class="p">,</span>
+    <span class="n">image_path</span><span class="p">,</span>
+    <span class="n">output_path</span><span class="p">,</span>
+    <span class="n">cancellation_token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
 <p>To use the global SfM pipeline instead of the incremental mapper, replace the
 <code class="docutils literal notranslate"><span class="pre">mapper</span></code> step with <code class="docutils literal notranslate"><span class="pre">global_mapper</span></code>. The global mapper depends on good focal
 length priors, so if reliable intrinsics are not available (e.g., from EXIF or
@@ -1143,6 +1196,7 @@ with a texture atlas that can be visualized in Meshlab or other 3D viewers.</p><
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graceful-shutdown-and-resuming">Graceful shutdown and resuming</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#help">Help</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">Commands</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
@@ -1195,7 +1249,7 @@ with a texture atlas that can be visualized in Meshlab or other 3D viewers.</p><
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | 6c5b1dd (2026-08-28)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 365e162 (2026-08-31)</p></div>
       
     </div>
   

@@ -40,7 +40,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=9b362cf1"></script>
+    <script src="_static/documentation_options.js?v=31d1a6ea"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -54,7 +54,7 @@
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.2.0.dev0 | 6c5b1dd (2026-08-28)" />
+  <meta name="docsearch:version" content="4.2.0.dev0 | 365e162 (2026-08-31)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -1070,6 +1070,10 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.RigConfig.cameras">(pycolmap.RigConfig property)</a>
 </li>
       </ul></li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.CancellationToken.cancel">cancel() (pycolmap.CancellationToken method)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.CancellationToken">CancellationToken (class in pycolmap)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.PosePriorCoordinateSystem.CARTESIAN">CARTESIAN (pycolmap.PosePriorCoordinateSystem attribute)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentBackend.CASPAR">CASPAR (pycolmap.BundleAdjustmentBackend attribute)</a>
@@ -1180,10 +1184,10 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Frame.clear_data_ids">clear_data_ids() (pycolmap.Frame method)</a>
 </li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.Database.clear_descriptors">clear_descriptors() (pycolmap.Database method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.Database.clear_descriptors">clear_descriptors() (pycolmap.Database method)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Database.clear_frames">clear_frames() (pycolmap.Database method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Database.clear_images">clear_images() (pycolmap.Database method)</a>
@@ -2304,10 +2308,10 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.logging.Level.INFO">(pycolmap.logging.Level attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.logging.info">info() (pycolmap.logging static method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.init_image_id1">init_image_id1 (pycolmap.IncrementalPipelineOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.init_image_id2">init_image_id2 (pycolmap.IncrementalPipelineOptions property)</a>
@@ -2381,6 +2385,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.RotationEstimatorOptions.irls_loss_parameter_sigma">irls_loss_parameter_sigma (pycolmap.RotationEstimatorOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.RotationEstimatorOptions.irls_step_convergence_threshold">irls_step_convergence_threshold (pycolmap.RotationEstimatorOptions property)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.CancellationToken.is_cancelled">is_cancelled (pycolmap.CancellationToken property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.PosePrior.is_covariance_valid">is_covariance_valid() (pycolmap.PosePrior method)</a>
 </li>
@@ -4687,6 +4693,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.use_robust_loss_on_prior_position">use_robust_loss_on_prior_position (pycolmap.IncrementalPipelineOptions property)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometryOptions.use_sampson_refinement">use_sampson_refinement (pycolmap.TwoViewGeometryOptions property)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.RotationEstimatorOptions.use_stratified">use_stratified (pycolmap.RotationEstimatorOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentTerminationType.USER_FAILURE">USER_FAILURE (pycolmap.BundleAdjustmentTerminationType attribute)</a>
@@ -4989,7 +4997,7 @@
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.2.0.dev0 | 6c5b1dd (2026-08-28)</p></div>
+<p class="footer-version">COLMAP 4.2.0.dev0 | 365e162 (2026-08-31)</p></div>
       
     </div>
   
