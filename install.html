@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=aaf293ec"></script>
+    <script src="_static/documentation_options.js?v=f4681141"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="COLMAP" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | dbb4168 (2026-09-04)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | b3f4c10 (2026-09-05)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -826,23 +826,20 @@ precedence, and CMake’s own architecture autodetection sets
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>COLMAP can use <code class="docutils literal notranslate"><span class="pre">boost::unordered</span></code> flat/node hash maps for the
-performance-critical scene and SfM containers, selected via
-<code class="docutils literal notranslate"><span class="pre">-DCOLMAP_HASH_MAP_BACKEND=STD|BOOST</span></code> (default: <code class="docutils literal notranslate"><span class="pre">STD</span></code>). <code class="docutils literal notranslate"><span class="pre">BOOST</span></code> is
-faster but requires <strong>Boost &gt;= 1.84</strong> for <code class="docutils literal notranslate"><span class="pre">boost::unordered_node_map</span></code>;
-requesting it with an older Boost, such as the apt Boost on Ubuntu 24.04
-(1.83) and earlier, is a configuration error. vcpkg installs a new enough
-<code class="docutils literal notranslate"><span class="pre">boost-unordered</span></code>.</p>
-<p><strong>The backend is part of COLMAP’s ABI.</strong> These containers are data members of
-classes in public headers, so <code class="docutils literal notranslate"><span class="pre">sizeof(Reconstruction)</span></code> is 320 bytes with
-<code class="docutils literal notranslate"><span class="pre">STD</span></code> and 280 with <code class="docutils literal notranslate"><span class="pre">BOOST</span></code> on x86-64 Linux, and a mismatch produces no
-link error, only memory corruption. Every binary sharing COLMAP types in one
-process must agree, including the prebuilt <code class="docutils literal notranslate"><span class="pre">pycolmap</span></code> wheels, which use the
-default. Query a build with <code class="docutils literal notranslate"><span class="pre">colmap</span> <span class="pre">-h</span></code>, <code class="docutils literal notranslate"><span class="pre">pycolmap.__hash_map_backend__</span></code>
-or <code class="docutils literal notranslate"><span class="pre">colmap::kHashMapBackend</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">AUTO</span></code> picks the backend from the available Boost version, as older COLMAP
-releases did. Avoid it: two machines then build different ABIs from the same
-source and arguments.</p>
+<p>COLMAP uses <code class="docutils literal notranslate"><span class="pre">boost::unordered</span></code> flat/node hash maps for the
+performance-critical scene and SfM containers. These are data members of
+classes in public headers, so their layout is part of COLMAP’s ABI, and a
+mismatch between two COLMAP builds loaded into one process produces no link
+error, only memory corruption. There is therefore no build option to swap
+them for <code class="docutils literal notranslate"><span class="pre">std::unordered_*</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">boost::unordered_node_map</span></code> requires <strong>Boost &gt;= 1.84</strong>, which is newer than
+the apt Boost on Ubuntu 24.04 (1.83) and earlier. Where the available Boost
+is new enough it is used as it is and nothing is downloaded. Only where it
+is too old does the build download a pinned Boost release (about 100 MB) and
+build the libraries COLMAP uses from source, installing them alongside
+COLMAP. Only Boost is taken from that copy, so its headers and compiled
+libraries always match. Pass <code class="docutils literal notranslate"><span class="pre">-DFETCH_BOOST=OFF</span></code> to require a new enough
+system Boost instead and fail at configure time if there is none.</p>
 </div>
 <p>Run COLMAP:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colmap</span> <span class="o">-</span><span class="n">h</span>
@@ -1301,7 +1298,7 @@ The automated deploy preserves the existing <code class="docutils literal notran
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | dbb4168 (2026-09-04)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | b3f4c10 (2026-09-05)</p></div>
       
     </div>
   
