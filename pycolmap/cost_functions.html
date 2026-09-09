@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=cd1d77d7"></script>
+    <script src="../_static/documentation_options.js?v=d79052e9"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -64,7 +64,7 @@
     <link rel="prev" title="pycolmap" href="pycolmap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 4bbab7a (2026-09-08)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | c66f99d (2026-09-09)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -702,21 +702,45 @@
 </ol>
 <p>Reprojection error with 2D detection noise.</p>
 <ol class="arabic simple" start="3">
+<li><p><code class="docutils literal notranslate"><span class="pre">ReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_stddev:</span> <span class="pre">typing.SupportsFloat</span> <span class="pre">|</span> <span class="pre">typing.SupportsIndex,</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;])</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Reprojection error with isotropic 2D detection noise.</p>
+<ol class="arabic simple" start="4">
+<li><p><code class="docutils literal notranslate"><span class="pre">ReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_stddev:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;])</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Reprojection error with per-axis 2D detection noise.</p>
+<ol class="arabic simple" start="5">
 <li><p><code class="docutils literal notranslate"><span class="pre">ReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">cam_from_world:</span> <span class="pre">pycolmap.Rigid3d)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
 </ol>
 <p>Reprojection error with constant camera pose.</p>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple" start="6">
 <li><p><code class="docutils literal notranslate"><span class="pre">ReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_cov:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">2]&quot;],</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">cam_from_world:</span> <span class="pre">pycolmap.Rigid3d)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
 </ol>
 <p>Reprojection error with constant camera pose and 2D detection noise.</p>
-<ol class="arabic simple" start="5">
+<ol class="arabic simple" start="7">
+<li><p><code class="docutils literal notranslate"><span class="pre">ReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_stddev:</span> <span class="pre">typing.SupportsFloat</span> <span class="pre">|</span> <span class="pre">typing.SupportsIndex,</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">cam_from_world:</span> <span class="pre">pycolmap.Rigid3d)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Reprojection error with constant camera pose and isotropic 2D detection noise.</p>
+<ol class="arabic simple" start="8">
+<li><p><code class="docutils literal notranslate"><span class="pre">ReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_stddev:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">cam_from_world:</span> <span class="pre">pycolmap.Rigid3d)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Reprojection error with constant camera pose and per-axis 2D detection noise.</p>
+<ol class="arabic simple" start="9">
 <li><p><code class="docutils literal notranslate"><span class="pre">ReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">point3D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;])</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
 </ol>
 <p>Reprojection error with constant 3D point.</p>
-<ol class="arabic simple" start="6">
+<ol class="arabic simple" start="10">
 <li><p><code class="docutils literal notranslate"><span class="pre">ReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_cov:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">2]&quot;],</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">point3D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;])</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
 </ol>
 <p>Reprojection error with constant 3D point and 2D detection noise.</p>
+<ol class="arabic simple" start="11">
+<li><p><code class="docutils literal notranslate"><span class="pre">ReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_stddev:</span> <span class="pre">typing.SupportsFloat</span> <span class="pre">|</span> <span class="pre">typing.SupportsIndex,</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">point3D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;])</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Reprojection error with constant 3D point and isotropic 2D detection noise.</p>
+<ol class="arabic simple" start="12">
+<li><p><code class="docutils literal notranslate"><span class="pre">ReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_stddev:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">point3D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;])</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Reprojection error with constant 3D point and per-axis 2D detection noise.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -732,13 +756,29 @@
 </ol>
 <p>Reprojection error for camera rig with 2D detection noise.</p>
 <ol class="arabic simple" start="3">
+<li><p><code class="docutils literal notranslate"><span class="pre">RigReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_stddev:</span> <span class="pre">typing.SupportsFloat</span> <span class="pre">|</span> <span class="pre">typing.SupportsIndex,</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;])</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Reprojection error for camera rig with isotropic 2D detection noise.</p>
+<ol class="arabic simple" start="4">
+<li><p><code class="docutils literal notranslate"><span class="pre">RigReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_stddev:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;])</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Reprojection error for camera rig with per-axis 2D detection noise.</p>
+<ol class="arabic simple" start="5">
 <li><p><code class="docutils literal notranslate"><span class="pre">RigReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">cam_from_rig:</span> <span class="pre">pycolmap.Rigid3d)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
 </ol>
 <p>Reprojection error for camera rig with constant cam-from-rig pose.</p>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple" start="6">
 <li><p><code class="docutils literal notranslate"><span class="pre">RigReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_cov:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">2]&quot;],</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">cam_from_rig:</span> <span class="pre">pycolmap.Rigid3d)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
 </ol>
 <p>Reprojection error for camera rig with constant cam-from-rig pose and 2D detection noise.</p>
+<ol class="arabic simple" start="7">
+<li><p><code class="docutils literal notranslate"><span class="pre">RigReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_stddev:</span> <span class="pre">typing.SupportsFloat</span> <span class="pre">|</span> <span class="pre">typing.SupportsIndex,</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">cam_from_rig:</span> <span class="pre">pycolmap.Rigid3d)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Reprojection error for camera rig with constant cam-from-rig pose and isotropic 2D detection noise.</p>
+<ol class="arabic simple" start="8">
+<li><p><code class="docutils literal notranslate"><span class="pre">RigReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_stddev:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">cam_from_rig:</span> <span class="pre">pycolmap.Rigid3d)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Reprojection error for camera rig with constant cam-from-rig pose and per-axis 2D detection noise.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -766,6 +806,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">AbsolutePosePriorCost(cam_cov_from_world_prior:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[6,</span> <span class="pre">6]&quot;],</span> <span class="pre">cam_from_world_prior:</span> <span class="pre">pycolmap.Rigid3d)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
 </ol>
 <p>6-DoF error on the absolute camera pose with prior covariance.</p>
+<ol class="arabic simple" start="3">
+<li><p><code class="docutils literal notranslate"><span class="pre">AbsolutePosePriorCost(cam_stddev_from_world_prior:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[6,</span> <span class="pre">1]&quot;],</span> <span class="pre">cam_from_world_prior:</span> <span class="pre">pycolmap.Rigid3d)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>6-DoF error on the absolute camera pose with per-DoF prior standard deviations. The first three are on the rotation and the last three on the translation, so they do not share a unit.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -780,6 +824,14 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">AbsolutePosePositionPriorCost(position_cov_in_world_prior:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">3]&quot;],</span> <span class="pre">position_in_world_prior:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;])</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
 </ol>
 <p>3-DoF error on the absolute camera pose’s position with prior covariance.</p>
+<ol class="arabic simple" start="3">
+<li><p><code class="docutils literal notranslate"><span class="pre">AbsolutePosePositionPriorCost(position_stddev_in_world_prior:</span> <span class="pre">typing.SupportsFloat</span> <span class="pre">|</span> <span class="pre">typing.SupportsIndex,</span> <span class="pre">position_in_world_prior:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;])</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>3-DoF error on the absolute camera pose’s position with isotropic prior standard deviation.</p>
+<ol class="arabic simple" start="4">
+<li><p><code class="docutils literal notranslate"><span class="pre">AbsolutePosePositionPriorCost(position_stddev_in_world_prior:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;],</span> <span class="pre">position_in_world_prior:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;])</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>3-DoF error on the absolute camera pose’s position with per-axis prior standard deviations.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -794,6 +846,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">RelativePosePriorCost(i_cov_from_j_prior:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[6,</span> <span class="pre">6]&quot;],</span> <span class="pre">i_from_j_prior:</span> <span class="pre">pycolmap.Rigid3d)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
 </ol>
 <p>6-DoF error between two absolute camera poses based on a prior relative pose with prior covariance.</p>
+<ol class="arabic simple" start="3">
+<li><p><code class="docutils literal notranslate"><span class="pre">RelativePosePriorCost(i_stddev_from_j_prior:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[6,</span> <span class="pre">1]&quot;],</span> <span class="pre">i_from_j_prior:</span> <span class="pre">pycolmap.Rigid3d)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>6-DoF error between two absolute camera poses based on a prior relative pose with per-DoF prior standard deviations. The first three are on the rotation and the last three on the translation, so they do not share a unit.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -808,6 +864,14 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">Point3DAlignmentCost(point_cov_in_b_prior:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">3]&quot;],</span> <span class="pre">point_in_b_prior:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;],</span> <span class="pre">use_log_scale:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
 </ol>
 <p>Error between 3D points transformed by a 3D similarity transform. with prior covariance</p>
+<ol class="arabic simple" start="3">
+<li><p><code class="docutils literal notranslate"><span class="pre">Point3DAlignmentCost(point_stddev_in_b_prior:</span> <span class="pre">typing.SupportsFloat</span> <span class="pre">|</span> <span class="pre">typing.SupportsIndex,</span> <span class="pre">point_in_b_prior:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;],</span> <span class="pre">use_log_scale:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Error between 3D points transformed by a 3D similarity transform, with an isotropic prior standard deviation.</p>
+<ol class="arabic simple" start="4">
+<li><p><code class="docutils literal notranslate"><span class="pre">Point3DAlignmentCost(point_stddev_in_b_prior:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;],</span> <span class="pre">point_in_b_prior:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;],</span> <span class="pre">use_log_scale:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Error between 3D points transformed by a 3D similarity transform, with per-axis prior standard deviations.</p>
 </dd></dl>
 
 </section>
@@ -915,7 +979,7 @@
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 4bbab7a (2026-09-08)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | c66f99d (2026-09-09)</p></div>
       
     </div>
   
