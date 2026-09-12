@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=acb0f5e7"></script>
+    <script src="../_static/documentation_options.js?v=8647cd87"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -64,7 +64,7 @@
     <link rel="prev" title="PyCOLMAP" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 55b1939 (2026-09-10)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | d3ccaf3 (2026-09-12)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -8974,7 +8974,7 @@ are part of a 3D point track. (int, default: 0)</p>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.refine_generalized_absolute_pose" title="Link to this definition">#</a></dt>
-<dd><p>Robustly estimate generalized absolute pose using LO-RANSACfollowed by non-linear refinement.</p>
+<dd><p>Refine generalized absolute pose with non-linear refinement. Returns the refined rig_from_world and cameras (and optionally the 6x6 covariance), or None on failure.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -8993,7 +8993,63 @@ are part of a 3D point track. (int, default: 0)</p>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.estimate_and_refine_generalized_absolute_pose" title="Link to this definition">#</a></dt>
-<dd><p>Robustly estimate generalized absolute pose using LO-RANSACfollowed by non-linear refinement.</p>
+<dd><p>Robustly estimate generalized absolute pose using LO-RANSAC followed by non-linear refinement. Returns the refined rig_from_world, inliers, and cameras (and optionally the 6x6 covariance), or None on failure.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycolmap.estimate_scaled_generalized_absolute_pose">
+<span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">estimate_scaled_generalized_absolute_pose</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">points2D</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.float64</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">2]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">points3D</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.float64</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">3]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">camera_idxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.abc.Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">SupportsInt</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">cams_from_rig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.abc.Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycolmap.Rigid3d" title="pycolmap.Rigid3d"><span class="pre">pycolmap.Rigid3d</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">cameras</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.abc.Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycolmap.Camera" title="pycolmap.Camera"><span class="pre">pycolmap.Camera</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">estimation_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.RANSACOptions" title="pycolmap.RANSACOptions"><span class="pre">pycolmap.RANSACOptions</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">RANSACOptions()</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.estimate_scaled_generalized_absolute_pose" title="Link to this definition">#</a></dt>
+<dd><p>Robustly estimate generalized absolute pose and the scale of the rig geometry using LO-RANSAC.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycolmap.refine_scaled_generalized_absolute_pose">
+<span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">refine_scaled_generalized_absolute_pose</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">rig_from_world</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Sim3d" title="pycolmap.Sim3d"><span class="pre">pycolmap.Sim3d</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">points2D</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.float64</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">2]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">points3D</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.float64</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">3]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">inlier_mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">1]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">camera_idxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.abc.Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">SupportsInt</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">cams_from_rig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.abc.Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycolmap.Rigid3d" title="pycolmap.Rigid3d"><span class="pre">pycolmap.Rigid3d</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">cameras</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.abc.Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycolmap.Camera" title="pycolmap.Camera"><span class="pre">pycolmap.Camera</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">refinement_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.AbsolutePoseRefinementOptions" title="pycolmap.AbsolutePoseRefinementOptions"><span class="pre">pycolmap.AbsolutePoseRefinementOptions</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">AbsolutePoseRefinementOptions()</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">return_covariance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.refine_scaled_generalized_absolute_pose" title="Link to this definition">#</a></dt>
+<dd><p>Refine generalized absolute pose and scale with non-linear refinement. Returns the refined rig_from_world and cameras (and optionally the 7x7 covariance), or None on failure.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycolmap.estimate_and_refine_scaled_generalized_absolute_pose">
+<span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">estimate_and_refine_scaled_generalized_absolute_pose</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">points2D</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.float64</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">2]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">points3D</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.float64</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">3]'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">camera_idxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.abc.Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">SupportsInt</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">cams_from_rig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.abc.Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycolmap.Rigid3d" title="pycolmap.Rigid3d"><span class="pre">pycolmap.Rigid3d</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">cameras</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.abc.Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycolmap.Camera" title="pycolmap.Camera"><span class="pre">pycolmap.Camera</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">estimation_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.RANSACOptions" title="pycolmap.RANSACOptions"><span class="pre">pycolmap.RANSACOptions</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">RANSACOptions()</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">refinement_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.AbsolutePoseRefinementOptions" title="pycolmap.AbsolutePoseRefinementOptions"><span class="pre">pycolmap.AbsolutePoseRefinementOptions</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">AbsolutePoseRefinementOptions()</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">return_covariance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.estimate_and_refine_scaled_generalized_absolute_pose" title="Link to this definition">#</a></dt>
+<dd><p>Robustly estimate generalized absolute pose and scale using LO-RANSAC followed by non-linear refinement. Returns the refined rig_from_world, inliers, and cameras (and optionally the 7x7 covariance), or None on failure.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -15678,6 +15734,9 @@ are part of a 3D point track. (int, default: 0)</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.estimate_generalized_absolute_pose"><code class="docutils literal notranslate"><span class="pre">estimate_generalized_absolute_pose()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.refine_generalized_absolute_pose"><code class="docutils literal notranslate"><span class="pre">refine_generalized_absolute_pose()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.estimate_and_refine_generalized_absolute_pose"><code class="docutils literal notranslate"><span class="pre">estimate_and_refine_generalized_absolute_pose()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.estimate_scaled_generalized_absolute_pose"><code class="docutils literal notranslate"><span class="pre">estimate_scaled_generalized_absolute_pose()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.refine_scaled_generalized_absolute_pose"><code class="docutils literal notranslate"><span class="pre">refine_scaled_generalized_absolute_pose()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.estimate_and_refine_scaled_generalized_absolute_pose"><code class="docutils literal notranslate"><span class="pre">estimate_and_refine_scaled_generalized_absolute_pose()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.estimate_generalized_relative_pose"><code class="docutils literal notranslate"><span class="pre">estimate_generalized_relative_pose()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.estimate_homography_matrix"><code class="docutils literal notranslate"><span class="pre">estimate_homography_matrix()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.estimate_rigid3d"><code class="docutils literal notranslate"><span class="pre">estimate_rigid3d()</span></code></a></li>
@@ -16546,7 +16605,7 @@ are part of a 3D point track. (int, default: 0)</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 55b1939 (2026-09-10)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | d3ccaf3 (2026-09-12)</p></div>
       
     </div>
   

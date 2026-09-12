@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=acb0f5e7"></script>
+    <script src="../_static/documentation_options.js?v=8647cd87"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -64,7 +64,7 @@
     <link rel="prev" title="pycolmap" href="pycolmap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 55b1939 (2026-09-10)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | d3ccaf3 (2026-09-12)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -782,6 +782,28 @@
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="pycolmap.cost_functions.ScaledRigReprojErrorCost">
+<span class="sig-prename descclassname"><span class="pre">pycolmap.cost_functions.</span></span><span class="sig-name descname"><span class="pre">ScaledRigReprojErrorCost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.cost_functions.ScaledRigReprojErrorCost" title="Link to this definition">#</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ScaledRigReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">use_log_scale:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Reprojection error for camera rig with a scaled rig-from-world transform.</p>
+<ol class="arabic simple" start="2">
+<li><p><code class="docutils literal notranslate"><span class="pre">ScaledRigReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_cov:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">2]&quot;],</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">use_log_scale:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Reprojection error for camera rig with a scaled rig-from-world transform and 2D detection noise.</p>
+<ol class="arabic simple" start="3">
+<li><p><code class="docutils literal notranslate"><span class="pre">ScaledRigReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_stddev:</span> <span class="pre">typing.SupportsFloat</span> <span class="pre">|</span> <span class="pre">typing.SupportsIndex,</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">use_log_scale:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Reprojection error for camera rig with a scaled rig-from-world transform and isotropic 2D detection noise.</p>
+<ol class="arabic simple" start="4">
+<li><p><code class="docutils literal notranslate"><span class="pre">ScaledRigReprojErrorCost(camera_model_id:</span> <span class="pre">pycolmap.CameraModelId,</span> <span class="pre">point2D_stddev:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">point2D:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[2,</span> <span class="pre">1]&quot;],</span> <span class="pre">use_log_scale:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True)</span> <span class="pre">→</span> <span class="pre">ceres::CostFunction</span></code></p></li>
+</ol>
+<p>Reprojection error for camera rig with a scaled rig-from-world transform and per-axis 2D detection noise.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pycolmap.cost_functions.SampsonErrorCost">
 <span class="sig-prename descclassname"><span class="pre">pycolmap.cost_functions.</span></span><span class="sig-name descname"><span class="pre">SampsonErrorCost</span></span><span class="sig-paren">(</span>
 
@@ -925,6 +947,7 @@
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.cost_functions.ReprojErrorCost"><code class="docutils literal notranslate"><span class="pre">ReprojErrorCost()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.cost_functions.RigReprojErrorCost"><code class="docutils literal notranslate"><span class="pre">RigReprojErrorCost()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.cost_functions.ScaledRigReprojErrorCost"><code class="docutils literal notranslate"><span class="pre">ScaledRigReprojErrorCost()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.cost_functions.SampsonErrorCost"><code class="docutils literal notranslate"><span class="pre">SampsonErrorCost()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.cost_functions.AbsolutePosePriorCost"><code class="docutils literal notranslate"><span class="pre">AbsolutePosePriorCost()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.cost_functions.AbsolutePosePositionPriorCost"><code class="docutils literal notranslate"><span class="pre">AbsolutePosePositionPriorCost()</span></code></a></li>
@@ -979,7 +1002,7 @@
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 55b1939 (2026-09-10)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | d3ccaf3 (2026-09-12)</p></div>
       
     </div>
   

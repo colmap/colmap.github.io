@@ -40,7 +40,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=acb0f5e7"></script>
+    <script src="_static/documentation_options.js?v=8647cd87"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -54,7 +54,7 @@
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 55b1939 (2026-09-10)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | d3ccaf3 (2026-09-12)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -1600,6 +1600,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_and_refine_generalized_absolute_pose">estimate_and_refine_generalized_absolute_pose() (in module pycolmap)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_and_refine_scaled_generalized_absolute_pose">estimate_and_refine_scaled_generalized_absolute_pose() (in module pycolmap)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_ba_covariance">estimate_ba_covariance() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_ba_covariance_from_problem">estimate_ba_covariance_from_problem() (in module pycolmap)</a>
@@ -1626,6 +1628,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_rigid3d_robust">estimate_rigid3d_robust() (in module pycolmap)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_scaled_generalized_absolute_pose">estimate_scaled_generalized_absolute_pose() (in module pycolmap)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_sim3d">estimate_sim3d() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_sim3d_robust">estimate_sim3d_robust() (in module pycolmap)</a>
@@ -1634,10 +1638,10 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_two_view_geometry">estimate_two_view_geometry() (in module pycolmap)</a>
 </li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_two_view_geometry_pose">estimate_two_view_geometry_pose() (in module pycolmap)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_two_view_geometry_pose">estimate_two_view_geometry_pose() (in module pycolmap)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.EstimateTriangulationOptions">EstimateTriangulationOptions (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CameraModelId.EUCM">EUCM (pycolmap.CameraModelId attribute)</a>
@@ -3773,6 +3777,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentOptions.refine_rig_from_world">refine_rig_from_world (pycolmap.BundleAdjustmentOptions property)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.refine_scaled_generalized_absolute_pose">refine_scaled_generalized_absolute_pose() (in module pycolmap)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentOptions.refine_sensor_from_rig">refine_sensor_from_rig (pycolmap.BundleAdjustmentOptions property)</a>
 
       <ul>
@@ -3980,6 +3986,8 @@
       <li><a href="pycolmap/cost_functions.html#pycolmap.cost_functions.SampsonErrorCost">SampsonErrorCost() (in module pycolmap.cost_functions)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Sim3d.scale">scale (pycolmap.Sim3d property)</a>
+</li>
+      <li><a href="pycolmap/cost_functions.html#pycolmap.cost_functions.ScaledRigReprojErrorCost">ScaledRigReprojErrorCost() (in module pycolmap.cost_functions)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.SceneClusteringOptions">SceneClusteringOptions (class in pycolmap)</a>
 </li>
@@ -4979,7 +4987,7 @@
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 55b1939 (2026-09-10)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | d3ccaf3 (2026-09-12)</p></div>
       
     </div>
   
