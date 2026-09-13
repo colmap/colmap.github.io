@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=4d8f9113"></script>
+    <script src="../_static/documentation_options.js?v=501aec1c"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -64,7 +64,7 @@
     <link rel="prev" title="PyCOLMAP" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 5a12809 (2026-09-13)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | 6aa4d73 (2026-09-13)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -1146,7 +1146,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.Rotation3d.quat">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">quat</span></span><a class="headerlink" href="#pycolmap.Rotation3d.quat" title="Link to this definition">#</a></dt>
-<dd><p>Quaternion in [x,y,z,w] format. (ndarray, default: [0. 0. 0. 1.])</p>
+<dd><p>Quaternion in [x,y,z,w] format. (ndarray, default: array([0., 0., 0., 1.]))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1209,13 +1209,13 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.AlignedBox3d.min">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">min</span></span><a class="headerlink" href="#pycolmap.AlignedBox3d.min" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [1.79769313e+308 1.79769313e+308 1.79769313e+308])</p>
+<dd><p>(ndarray, default: array([1.79769313e+308, 1.79769313e+308, 1.79769313e+308]))</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.AlignedBox3d.max">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">max</span></span><a class="headerlink" href="#pycolmap.AlignedBox3d.max" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [-1.79769313e+308 -1.79769313e+308 -1.79769313e+308])</p>
+<dd><p>(ndarray, default: array([-1.79769313e+308, -1.79769313e+308, -1.79769313e+308]))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1274,7 +1274,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.Rigid3d.params">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">params</span></span><a class="headerlink" href="#pycolmap.Rigid3d.params" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [0. 0. 0. 1. 0. 0. 0.])</p>
+<dd><p>(ndarray, default: array([0., 0., 0., 1., 0., 0., 0.]))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -1286,7 +1286,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.Rigid3d.translation">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">translation</span></span><a class="headerlink" href="#pycolmap.Rigid3d.translation" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [0. 0. 0.])</p>
+<dd><p>(ndarray, default: array([0., 0., 0.]))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1423,13 +1423,13 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.Sim3d.params">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">params</span></span><a class="headerlink" href="#pycolmap.Sim3d.params" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [0. 0. 0. 1. 0. 0. 0. 1.])</p>
+<dd><p>(ndarray, default: array([0., 0., 0., 1., 0., 0., 0., 1.]))</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.Sim3d.scale">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#pycolmap.Sim3d.scale" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: 1.0)</p>
+<dd><p>(ndarray, default: array(1.))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -1441,7 +1441,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.Sim3d.translation">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">translation</span></span><a class="headerlink" href="#pycolmap.Sim3d.translation" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [0. 0. 0.])</p>
+<dd><p>(ndarray, default: array([0., 0., 0.]))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1539,15 +1539,15 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.PosePrior.position">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">position</span></span><a class="headerlink" href="#pycolmap.PosePrior.position" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [nan nan nan])</p>
+<dd><p>(ndarray, default: array([nan, nan, nan]))</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.PosePrior.position_covariance">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">position_covariance</span></span><a class="headerlink" href="#pycolmap.PosePrior.position_covariance" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [[nan nan nan]
-[nan nan nan]
-[nan nan nan]])</p>
+<dd><p>(ndarray, default: array([[nan, nan, nan],
+[nan, nan, nan],
+[nan, nan, nan]]))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -1559,7 +1559,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.PosePrior.gravity">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gravity</span></span><a class="headerlink" href="#pycolmap.PosePrior.gravity" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [nan nan nan])</p>
+<dd><p>(ndarray, default: array([nan, nan, nan]))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2336,13 +2336,13 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.FeatureDescriptors.type">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#pycolmap.FeatureDescriptors.type" title="Link to this definition">#</a></dt>
-<dd><p>(FeatureExtractorType, default: FeatureExtractorType.UNDEFINED)</p>
+<dd><p>(FeatureExtractorType, default: &lt;FeatureExtractorType.UNDEFINED: -1&gt;)</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.FeatureDescriptors.data">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#pycolmap.FeatureDescriptors.data" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [])</p>
+<dd><p>(ndarray, default: array([], shape=(0, 0), dtype=uint8))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2387,13 +2387,13 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.FeatureDescriptorsFloat.type">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#pycolmap.FeatureDescriptorsFloat.type" title="Link to this definition">#</a></dt>
-<dd><p>(FeatureExtractorType, default: FeatureExtractorType.UNDEFINED)</p>
+<dd><p>(FeatureExtractorType, default: &lt;FeatureExtractorType.UNDEFINED: -1&gt;)</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.FeatureDescriptorsFloat.data">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#pycolmap.FeatureDescriptorsFloat.data" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [])</p>
+<dd><p>(ndarray, default: array([], shape=(0, 0), dtype=float32))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2792,7 +2792,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.Point2D.xy">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">xy</span></span><a class="headerlink" href="#pycolmap.Point2D.xy" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [0. 0.])</p>
+<dd><p>(ndarray, default: array([0., 0.]))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -3109,7 +3109,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.Camera.model_name">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">model_name</span></span><a class="headerlink" href="#pycolmap.Camera.model_name" title="Link to this definition">#</a></dt>
-<dd><p>Camera model name as string. (str, default: )</p>
+<dd><p>Camera model name as string. (str, default: ‘’)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -3199,7 +3199,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.Camera.params">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">params</span></span><a class="headerlink" href="#pycolmap.Camera.params" title="Link to this definition">#</a></dt>
-<dd><p>Camera parameters. (ndarray, default: [])</p>
+<dd><p>Camera parameters. (ndarray, default: array([], dtype=float64))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -3590,7 +3590,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.Image.name">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#pycolmap.Image.name" title="Link to this definition">#</a></dt>
-<dd><p>Name of the image. (str, default: )</p>
+<dd><p>Name of the image. (str, default: ‘’)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -3907,7 +3907,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.TwoViewGeometry.inlier_matches">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">inlier_matches</span></span><a class="headerlink" href="#pycolmap.TwoViewGeometry.inlier_matches" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [])</p>
+<dd><p>(ndarray, default: array([], shape=(0, 2), dtype=uint32))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -4104,7 +4104,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.FeatureExtractionOptions.type">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#pycolmap.FeatureExtractionOptions.type" title="Link to this definition">#</a></dt>
-<dd><p>(FeatureExtractorType, default: FeatureExtractorType.SIFT)</p>
+<dd><p>(FeatureExtractorType, default: &lt;FeatureExtractorType.SIFT: 0&gt;)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -4128,7 +4128,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.FeatureExtractionOptions.gpu_index">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gpu_index</span></span><a class="headerlink" href="#pycolmap.FeatureExtractionOptions.gpu_index" title="Link to this definition">#</a></dt>
-<dd><p>Index of the GPU used for feature matching. For multi-GPU matching, you should separate multiple GPU indices by comma, e.g., ‘0,1,2,3’. (str, default: -1)</p>
+<dd><p>Index of the GPU used for feature matching. For multi-GPU matching, you should separate multiple GPU indices by comma, e.g., ‘0,1,2,3’. (str, default: ‘-1’)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -4379,7 +4379,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.FeatureMatchingOptions.type">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#pycolmap.FeatureMatchingOptions.type" title="Link to this definition">#</a></dt>
-<dd><p>(FeatureMatcherType, default: FeatureMatcherType.SIFT_BRUTEFORCE)</p>
+<dd><p>(FeatureMatcherType, default: &lt;FeatureMatcherType.SIFT_BRUTEFORCE: 0&gt;)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -4397,7 +4397,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.FeatureMatchingOptions.gpu_index">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gpu_index</span></span><a class="headerlink" href="#pycolmap.FeatureMatchingOptions.gpu_index" title="Link to this definition">#</a></dt>
-<dd><p>Index of the GPU used for feature matching. For multi-GPU matching, you should separate multiple GPU indices by comma, e.g., “0,1,2,3”. (str, default: -1)</p>
+<dd><p>Index of the GPU used for feature matching. For multi-GPU matching, you should separate multiple GPU indices by comma, e.g., “0,1,2,3”. (str, default: ‘-1’)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -4666,13 +4666,13 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.Point3D.xyz">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">xyz</span></span><a class="headerlink" href="#pycolmap.Point3D.xyz" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [0. 0. 0.])</p>
+<dd><p>(ndarray, default: array([0., 0., 0.]))</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.Point3D.color">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#pycolmap.Point3D.color" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [0 0 0])</p>
+<dd><p>(ndarray, default: array([0, 0, 0], dtype=uint8))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -6390,7 +6390,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.RigConfigCamera.image_prefix">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">image_prefix</span></span><a class="headerlink" href="#pycolmap.RigConfigCamera.image_prefix" title="Link to this definition">#</a></dt>
-<dd><p>(str, default: )</p>
+<dd><p>(str, default: ‘’)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -6525,7 +6525,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.SyntheticDatasetOptions.feature_type">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">feature_type</span></span><a class="headerlink" href="#pycolmap.SyntheticDatasetOptions.feature_type" title="Link to this definition">#</a></dt>
-<dd><p>The type of feature descriptors to synthesize. (FeatureExtractorType, default: FeatureExtractorType.SIFT)</p>
+<dd><p>The type of feature descriptors to synthesize. (FeatureExtractorType, default: &lt;FeatureExtractorType.SIFT: 0&gt;)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -6651,7 +6651,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.SyntheticDatasetOptions.prior_gravity_in_world">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">prior_gravity_in_world</span></span><a class="headerlink" href="#pycolmap.SyntheticDatasetOptions.prior_gravity_in_world" title="Link to this definition">#</a></dt>
-<dd><p>Prior gravity direction in world coordinates. (ndarray, default: [0. 1. 0.])</p>
+<dd><p>Prior gravity direction in world coordinates. (ndarray, default: array([0., 1., 0.]))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -7307,15 +7307,15 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.AbsolutePoseRefinementOptions.position_prior_in_world">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">position_prior_in_world</span></span><a class="headerlink" href="#pycolmap.AbsolutePoseRefinementOptions.position_prior_in_world" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [0. 0. 0.])</p>
+<dd><p>(ndarray, default: array([0., 0., 0.]))</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.AbsolutePoseRefinementOptions.position_prior_covariance">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">position_prior_covariance</span></span><a class="headerlink" href="#pycolmap.AbsolutePoseRefinementOptions.position_prior_covariance" title="Link to this definition">#</a></dt>
-<dd><p>(ndarray, default: [[1. 0. 0.]
-[0. 1. 0.]
-[0. 0. 1.]])</p>
+<dd><p>(ndarray, default: array([[1., 0., 0.],
+[0., 1., 0.],
+[0., 0., 1.]]))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -8186,7 +8186,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.CeresBundleAdjustmentOptions.gpu_index">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gpu_index</span></span><a class="headerlink" href="#pycolmap.CeresBundleAdjustmentOptions.gpu_index" title="Link to this definition">#</a></dt>
-<dd><p>Which GPU to use for solving the problem. (str, default: -1)</p>
+<dd><p>Which GPU to use for solving the problem. (str, default: ‘-1’)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -8343,7 +8343,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.CasparBundleAdjustmentOptions.gpu_index">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gpu_index</span></span><a class="headerlink" href="#pycolmap.CasparBundleAdjustmentOptions.gpu_index" title="Link to this definition">#</a></dt>
-<dd><p>Which GPU to use for solving the problem. (str, default: -1)</p>
+<dd><p>Which GPU to use for solving the problem. (str, default: ‘-1’)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -9585,7 +9585,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.RotationEstimatorOptions.gravity_dir">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gravity_dir</span></span><a class="headerlink" href="#pycolmap.RotationEstimatorOptions.gravity_dir" title="Link to this definition">#</a></dt>
-<dd><p>Gravity direction vector. (ndarray, default: [0. 1. 0.])</p>
+<dd><p>Gravity direction vector. (ndarray, default: array([0., 1., 0.]))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -9740,7 +9740,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.GlobalPositionerOptions.gpu_index">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gpu_index</span></span><a class="headerlink" href="#pycolmap.GlobalPositionerOptions.gpu_index" title="Link to this definition">#</a></dt>
-<dd><p>GPU device index (-1 for auto). (str, default: -1)</p>
+<dd><p>GPU device index (-1 for auto). (str, default: ‘-1’)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -11587,7 +11587,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.IncrementalPipelineOptions.ba_gpu_index">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ba_gpu_index</span></span><a class="headerlink" href="#pycolmap.IncrementalPipelineOptions.ba_gpu_index" title="Link to this definition">#</a></dt>
-<dd><p>Index of CUDA GPU to use for BA, if available. (str, default: -1)</p>
+<dd><p>Index of CUDA GPU to use for BA, if available. (str, default: ‘-1’)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -11623,7 +11623,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.IncrementalPipelineOptions.snapshot_path">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">snapshot_path</span></span><a class="headerlink" href="#pycolmap.IncrementalPipelineOptions.snapshot_path" title="Link to this definition">#</a></dt>
-<dd><p>Path to a folder in which reconstruction snapshots will be saved during incremental reconstruction. (PosixPath, default: .)</p>
+<dd><p>Path to a folder in which reconstruction snapshots will be saved during incremental reconstruction. (PosixPath, default: PosixPath(‘.’))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -11635,7 +11635,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.IncrementalPipelineOptions.image_path">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">image_path</span></span><a class="headerlink" href="#pycolmap.IncrementalPipelineOptions.image_path" title="Link to this definition">#</a></dt>
-<dd><p>The image path at which to find the images to extract point colors. (PosixPath, default: .)</p>
+<dd><p>The image path at which to find the images to extract point colors. (PosixPath, default: PosixPath(‘.’))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -12049,7 +12049,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.HierarchicalPipelineOptions.image_path">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">image_path</span></span><a class="headerlink" href="#pycolmap.HierarchicalPipelineOptions.image_path" title="Link to this definition">#</a></dt>
-<dd><p>The image path at which to find the images to extract point colors. If not specified, all point colors will be black. (PosixPath, default: .)</p>
+<dd><p>The image path at which to find the images to extract point colors. If not specified, all point colors will be black. (PosixPath, default: PosixPath(‘.’))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -12079,7 +12079,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.HierarchicalPipelineOptions.incremental_options">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">incremental_options</span></span><a class="headerlink" href="#pycolmap.HierarchicalPipelineOptions.incremental_options" title="Link to this definition">#</a></dt>
-<dd><p>Options used to reconstruct each cluster individually. (IncrementalPipelineOptions, default: IncrementalPipelineOptions(min_num_matches=15, ignore_watermarks=False, multiple_models=True, max_num_models=50, max_model_overlap=20, min_model_size=10, init_image_id1=-1, init_image_id2=-1, init_num_trials=200, structure_less_registration_fallback=True, structure_less_registration_only=False, extract_colors=True, num_threads=-1, random_seed=-1, min_focal_length_ratio=0.1, max_focal_length_ratio=10.0, max_extra_param=1.0, ba_refine_focal_length=True, ba_refine_principal_point=False, ba_refine_extra_params=True, ba_refine_sensor_from_rig=True, ba_min_num_residuals_for_cpu_multi_threading=50000, ba_local_function_tolerance=0.0, ba_local_max_num_iterations=-1, ba_global_frames_ratio=1.1, ba_global_points_ratio=1.1, ba_global_frames_freq=500, ba_global_points_freq=250000, ba_global_function_tolerance=0.0, ba_global_max_num_iterations=-1, ba_local_max_refinements=2, ba_local_max_refinement_change=0.001, ba_global_max_refinements=5, ba_global_max_refinement_change=0.0005, ba_use_gpu=False, ba_gpu_index=’-1’, ba_local_backend=BundleAdjustmentBackend.CERES, ba_global_backend=BundleAdjustmentBackend.CERES, use_prior_position=False, use_robust_loss_on_prior_position=False, prior_position_loss_scale=7.815, snapshot_path=., snapshot_frames_freq=0, image_path=., image_names=[], load_all_images=False, fix_existing_frames=False, constant_rigs=set(), constant_cameras=set(), max_runtime_seconds=-1, mapper=IncrementalMapperOptions(init_min_num_inliers=100, init_max_error=4.0, init_max_forward_motion=0.95, init_min_tri_angle=16.0, init_max_reg_trials=2, abs_pose_max_error=12.0, abs_pose_min_num_inliers=30, abs_pose_min_inlier_ratio=0.25, abs_pose_refine_focal_length=True, abs_pose_refine_extra_params=True, ba_local_num_images=6, ba_local_min_tri_angle=6.0, ba_global_ignore_redundant_points3D=False, ba_global_prune_points_min_coverage_gain=0.05, min_focal_length_ratio=0.1, max_focal_length_ratio=10.0, max_extra_param=1.0, filter_max_reproj_error=4.0, filter_min_tri_angle=1.5, max_reg_trials=3, fix_existing_frames=False, constant_rigs=set(), constant_cameras=set(), num_threads=-1, random_seed=-1, image_selection_method=ImageSelectionMethod.MIN_UNCERTAINTY), triangulation=IncrementalTriangulatorOptions(max_transitivity=1, create_max_angle_error=2.0, continue_max_angle_error=2.0, merge_max_reproj_error=4.0, complete_max_reproj_error=4.0, complete_max_transitivity=5, re_max_angle_error=5.0, re_min_ratio=0.2, re_max_trials=1, min_angle=1.5, ignore_two_view_tracks=True, min_focal_length_ratio=0.1, max_focal_length_ratio=10.0, max_extra_param=1.0, random_seed=-1)))</p>
+<dd><p>Options used to reconstruct each cluster individually. (IncrementalPipelineOptions, default: IncrementalPipelineOptions(min_num_matches=15, ignore_watermarks=False, multiple_models=True, max_num_models=50, max_model_overlap=20, min_model_size=10, init_image_id1=-1, init_image_id2=-1, init_num_trials=200, structure_less_registration_fallback=True, structure_less_registration_only=False, extract_colors=True, num_threads=-1, random_seed=-1, min_focal_length_ratio=0.1, max_focal_length_ratio=10.0, max_extra_param=1.0, ba_refine_focal_length=True, ba_refine_principal_point=False, ba_refine_extra_params=True, ba_refine_sensor_from_rig=True, ba_min_num_residuals_for_cpu_multi_threading=50000, ba_local_function_tolerance=0.0, ba_local_max_num_iterations=-1, ba_global_frames_ratio=1.1, ba_global_points_ratio=1.1, ba_global_frames_freq=500, ba_global_points_freq=250000, ba_global_function_tolerance=0.0, ba_global_max_num_iterations=-1, ba_local_max_refinements=2, ba_local_max_refinement_change=0.001, ba_global_max_refinements=5, ba_global_max_refinement_change=0.0005, ba_use_gpu=False, ba_gpu_index=’-1’, ba_local_backend=BundleAdjustmentBackend.CERES, ba_global_backend=BundleAdjustmentBackend.CERES, use_prior_position=False, use_robust_loss_on_prior_position=False, prior_position_loss_scale=7.815, snapshot_path=PosixPath(‘.’), snapshot_frames_freq=0, image_path=PosixPath(‘.’), image_names=[], load_all_images=False, fix_existing_frames=False, constant_rigs=set(), constant_cameras=set(), max_runtime_seconds=-1, mapper=IncrementalMapperOptions(init_min_num_inliers=100, init_max_error=4.0, init_max_forward_motion=0.95, init_min_tri_angle=16.0, init_max_reg_trials=2, abs_pose_max_error=12.0, abs_pose_min_num_inliers=30, abs_pose_min_inlier_ratio=0.25, abs_pose_refine_focal_length=True, abs_pose_refine_extra_params=True, ba_local_num_images=6, ba_local_min_tri_angle=6.0, ba_global_ignore_redundant_points3D=False, ba_global_prune_points_min_coverage_gain=0.05, min_focal_length_ratio=0.1, max_focal_length_ratio=10.0, max_extra_param=1.0, filter_max_reproj_error=4.0, filter_min_tri_angle=1.5, max_reg_trials=3, fix_existing_frames=False, constant_rigs=set(), constant_cameras=set(), num_threads=-1, random_seed=-1, image_selection_method=ImageSelectionMethod.MIN_UNCERTAINTY), triangulation=IncrementalTriangulatorOptions(max_transitivity=1, create_max_angle_error=2.0, continue_max_angle_error=2.0, merge_max_reproj_error=4.0, complete_max_reproj_error=4.0, complete_max_transitivity=5, re_max_angle_error=5.0, re_min_ratio=0.2, re_max_trials=1, min_angle=1.5, ignore_two_view_tracks=True, min_focal_length_ratio=0.1, max_focal_length_ratio=10.0, max_extra_param=1.0, random_seed=-1)))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -12149,7 +12149,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.image_path">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">image_path</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.image_path" title="Link to this definition">#</a></dt>
-<dd><p>The image path at which to find the images to extract point colors. (PosixPath, default: .)</p>
+<dd><p>The image path at which to find the images to extract point colors. (PosixPath, default: PosixPath(‘.’))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -12161,7 +12161,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.rotation_averaging">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rotation_averaging</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.rotation_averaging" title="Link to this definition">#</a></dt>
-<dd><p>(RotationEstimatorOptions, default: RotationEstimatorOptions(random_seed=-1, max_num_l1_iterations=5, l1_step_convergence_threshold=0.001, max_num_irls_iterations=100, irls_step_convergence_threshold=0.001, gravity_dir=[0. 1. 0.], irls_loss_parameter_sigma=5.0, ridge_regularization=1e-09, weight_type=RotationWeightType.GEMAN_MCCLURE, skip_initialization=False, use_gravity=False, use_stratified=True, filter_unregistered=False, max_rotation_error_deg=10.0, refine_sensor_from_rig=True, reweighting=RotationAveragingReweighting.UNIFORM))</p>
+<dd><p>(RotationEstimatorOptions, default: RotationEstimatorOptions(random_seed=-1, max_num_l1_iterations=5, l1_step_convergence_threshold=0.001, max_num_irls_iterations=100, irls_step_convergence_threshold=0.001, gravity_dir=array([0., 1., 0.]), irls_loss_parameter_sigma=5.0, ridge_regularization=1e-09, weight_type=RotationWeightType.GEMAN_MCCLURE, skip_initialization=False, use_gravity=False, use_stratified=True, filter_unregistered=False, max_rotation_error_deg=10.0, refine_sensor_from_rig=True, reweighting=RotationAveragingReweighting.UNIFORM))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -12227,7 +12227,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.GlobalMapperOptions.ba_gpu_index">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ba_gpu_index</span></span><a class="headerlink" href="#pycolmap.GlobalMapperOptions.ba_gpu_index" title="Link to this definition">#</a></dt>
-<dd><p>(str, default: -1)</p>
+<dd><p>(str, default: ‘-1’)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -12349,7 +12349,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.image_path">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">image_path</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.image_path" title="Link to this definition">#</a></dt>
-<dd><p>The image path at which to find the images to extract point colors. (PosixPath, default: .)</p>
+<dd><p>The image path at which to find the images to extract point colors. (PosixPath, default: PosixPath(‘.’))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -12385,7 +12385,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.GlobalPipelineOptions.mapper">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">mapper</span></span><a class="headerlink" href="#pycolmap.GlobalPipelineOptions.mapper" title="Link to this definition">#</a></dt>
-<dd><p>(GlobalMapperOptions, default: GlobalMapperOptions(num_threads=-1, random_seed=-1, image_path=., refine_sensor_from_rig=True, rotation_averaging=RotationEstimatorOptions(random_seed=-1, max_num_l1_iterations=5, l1_step_convergence_threshold=0.001, max_num_irls_iterations=100, irls_step_convergence_threshold=0.001, gravity_dir=[0. 1. 0.], irls_loss_parameter_sigma=5.0, ridge_regularization=1e-09, weight_type=RotationWeightType.GEMAN_MCCLURE, skip_initialization=False, use_gravity=False, use_stratified=True, filter_unregistered=False, max_rotation_error_deg=10.0, refine_sensor_from_rig=True, reweighting=RotationAveragingReweighting.UNIFORM), global_positioning=GlobalPositionerOptions(generate_random_positions=True, generate_random_points=True, generate_scales=True, optimize_positions=True, optimize_points=True, optimize_scales=True, refine_sensor_from_rig=True, use_gpu=True, gpu_index=’-1’, min_num_images_gpu_solver=50, min_num_view_per_track=3, random_seed=-1, loss_function_scale=0.1, use_parameter_block_ordering=True), bundle_adjustment=BundleAdjustmentOptions(refine_focal_length=True, refine_principal_point=False, refine_extra_params=True, refine_rig_from_world=True, refine_sensor_from_rig=True, constant_rig_from_world_rotation=False, refine_points3D=True, min_track_length=3, print_summary=False, backend=BundleAdjustmentBackend.CERES, ceres=CeresBundleAdjustmentOptions(loss_function_type=LossFunctionType.HUBER, loss_function_scale=1.0, loss_function_weight=1.0, use_gpu=True, gpu_index=’-1’, solver_options=SolverOptions(minimizer_type=MinimizerType.TRUST_REGION, line_search_direction_type=LineSearchDirectionType.LBFGS, line_search_type=LineSearchType.WOLFE, nonlinear_conjugate_gradient_type=NonlinearConjugateGradientType.FLETCHER_REEVES, max_lbfgs_rank=20, use_approximate_eigenvalue_bfgs_scaling=False, line_search_interpolation_type=LineSearchInterpolationType.CUBIC, min_line_search_step_size=1e-09, line_search_sufficient_function_decrease=0.0001, max_line_search_step_contraction=0.001, min_line_search_step_contraction=0.6, max_num_line_search_step_size_iterations=20, max_num_line_search_direction_restarts=5, line_search_sufficient_curvature_decrease=0.9, max_line_search_step_expansion=10.0, trust_region_strategy_type=TrustRegionStrategyType.LEVENBERG_MARQUARDT, dogleg_type=DoglegType.TRADITIONAL_DOGLEG, use_nonmonotonic_steps=False, max_consecutive_nonmonotonic_steps=10, max_num_iterations=200, max_solver_time_in_seconds=1000000000.0, num_threads=-1, initial_trust_region_radius=10000.0, max_trust_region_radius=1e+16, min_trust_region_radius=1e-32, min_relative_decrease=0.001, min_lm_diagonal=1e-06, max_lm_diagonal=1e+32, max_num_consecutive_invalid_steps=10, function_tolerance=1e-05, gradient_tolerance=0.0001, parameter_tolerance=0.0, linear_solver_type=LinearSolverType.SPARSE_SCHUR, preconditioner_type=PreconditionerType.JACOBI, visibility_clustering_type=VisibilityClusteringType.CANONICAL_VIEWS, dense_linear_algebra_library_type=DenseLinearAlgebraLibraryType.EIGEN, sparse_linear_algebra_library_type=SparseLinearAlgebraLibraryType.SUITE_SPARSE, use_explicit_schur_complement=False, dynamic_sparsity=False, use_inner_iterations=False, inner_iteration_tolerance=0.001, min_linear_solver_iterations=0, max_linear_solver_iterations=200, eta=0.1, jacobi_scaling=True, logging_type=LoggingType.SILENT, minimizer_progress_to_stdout=False, trust_region_problem_dump_directory=’/tmp’, trust_region_problem_dump_format_type=DumpFormatType.TEXTFILE, check_gradients=False, gradient_check_relative_precision=1e-08, gradient_check_numeric_derivative_relative_step_size=1e-06, update_state_every_iteration=False), min_num_images_gpu_solver=50, min_num_residuals_for_cpu_multi_threading=50000, max_num_images_direct_dense_cpu_solver=50, max_num_images_direct_sparse_cpu_solver=1000, max_num_images_direct_dense_gpu_solver=200, max_num_images_direct_sparse_gpu_solver=4000, auto_select_solver_type=False), caspar=CasparBundleAdjustmentOptions(solver_iter_max=200, pcg_iter_max=20, diag_init=1.0, diag_min=1e-12, diag_scaling_up=2.0, diag_scaling_down=0.333333, diag_exit_value=1000.0, score_exit_value=0.0, pcg_rel_error_exit=0.0001, pcg_rel_score_exit=-1.0, pcg_rel_decrease_min=-1.0, solver_rel_decrease_min=1.0, gpu_index=’-1’)), retriangulation=IncrementalTriangulatorOptions(max_transitivity=1, create_max_angle_error=2.0, continue_max_angle_error=2.0, merge_max_reproj_error=15.0, complete_max_reproj_error=15.0, complete_max_transitivity=5, re_max_angle_error=5.0, re_min_ratio=0.2, re_max_trials=1, min_angle=1.0, ignore_two_view_tracks=True, min_focal_length_ratio=0.1, max_focal_length_ratio=10.0, max_extra_param=1.0, random_seed=-1), track_intra_image_consistency_threshold=10.0, track_required_tracks_per_view=2147483647, track_min_num_views_per_track=3, keep_max_num_tracks=2147483647, max_angular_reproj_error_deg=1.0, max_normalized_reproj_error=0.01, min_tri_angle_deg=1.0, ba_gpu_index=’-1’, ba_num_iterations=3, ba_skip_fixed_rotation_stage=False, ba_skip_joint_optimization_stage=False, skip_rotation_averaging=False, skip_track_establishment=False, skip_global_positioning=False, skip_bundle_adjustment=False, skip_retriangulation=False))</p>
+<dd><p>(GlobalMapperOptions, default: GlobalMapperOptions(num_threads=-1, random_seed=-1, image_path=PosixPath(‘.’), refine_sensor_from_rig=True, rotation_averaging=RotationEstimatorOptions(random_seed=-1, max_num_l1_iterations=5, l1_step_convergence_threshold=0.001, max_num_irls_iterations=100, irls_step_convergence_threshold=0.001, gravity_dir=array([0., 1., 0.]), irls_loss_parameter_sigma=5.0, ridge_regularization=1e-09, weight_type=RotationWeightType.GEMAN_MCCLURE, skip_initialization=False, use_gravity=False, use_stratified=True, filter_unregistered=False, max_rotation_error_deg=10.0, refine_sensor_from_rig=True, reweighting=RotationAveragingReweighting.UNIFORM), global_positioning=GlobalPositionerOptions(generate_random_positions=True, generate_random_points=True, generate_scales=True, optimize_positions=True, optimize_points=True, optimize_scales=True, refine_sensor_from_rig=True, use_gpu=True, gpu_index=’-1’, min_num_images_gpu_solver=50, min_num_view_per_track=3, random_seed=-1, loss_function_scale=0.1, use_parameter_block_ordering=True), bundle_adjustment=BundleAdjustmentOptions(refine_focal_length=True, refine_principal_point=False, refine_extra_params=True, refine_rig_from_world=True, refine_sensor_from_rig=True, constant_rig_from_world_rotation=False, refine_points3D=True, min_track_length=3, print_summary=False, backend=BundleAdjustmentBackend.CERES, ceres=CeresBundleAdjustmentOptions(loss_function_type=LossFunctionType.HUBER, loss_function_scale=1.0, loss_function_weight=1.0, use_gpu=True, gpu_index=’-1’, solver_options=SolverOptions(minimizer_type=MinimizerType.TRUST_REGION, line_search_direction_type=LineSearchDirectionType.LBFGS, line_search_type=LineSearchType.WOLFE, nonlinear_conjugate_gradient_type=NonlinearConjugateGradientType.FLETCHER_REEVES, max_lbfgs_rank=20, use_approximate_eigenvalue_bfgs_scaling=False, line_search_interpolation_type=LineSearchInterpolationType.CUBIC, min_line_search_step_size=1e-09, line_search_sufficient_function_decrease=0.0001, max_line_search_step_contraction=0.001, min_line_search_step_contraction=0.6, max_num_line_search_step_size_iterations=20, max_num_line_search_direction_restarts=5, line_search_sufficient_curvature_decrease=0.9, max_line_search_step_expansion=10.0, trust_region_strategy_type=TrustRegionStrategyType.LEVENBERG_MARQUARDT, dogleg_type=DoglegType.TRADITIONAL_DOGLEG, use_nonmonotonic_steps=False, max_consecutive_nonmonotonic_steps=10, max_num_iterations=200, max_solver_time_in_seconds=1000000000.0, num_threads=-1, initial_trust_region_radius=10000.0, max_trust_region_radius=1e+16, min_trust_region_radius=1e-32, min_relative_decrease=0.001, min_lm_diagonal=1e-06, max_lm_diagonal=1e+32, max_num_consecutive_invalid_steps=10, function_tolerance=1e-05, gradient_tolerance=0.0001, parameter_tolerance=0.0, linear_solver_type=LinearSolverType.SPARSE_SCHUR, preconditioner_type=PreconditionerType.JACOBI, visibility_clustering_type=VisibilityClusteringType.CANONICAL_VIEWS, dense_linear_algebra_library_type=DenseLinearAlgebraLibraryType.EIGEN, sparse_linear_algebra_library_type=SparseLinearAlgebraLibraryType.SUITE_SPARSE, use_explicit_schur_complement=False, dynamic_sparsity=False, use_inner_iterations=False, inner_iteration_tolerance=0.001, min_linear_solver_iterations=0, max_linear_solver_iterations=200, eta=0.1, jacobi_scaling=True, logging_type=LoggingType.SILENT, minimizer_progress_to_stdout=False, trust_region_problem_dump_directory=’/tmp’, trust_region_problem_dump_format_type=DumpFormatType.TEXTFILE, check_gradients=False, gradient_check_relative_precision=1e-08, gradient_check_numeric_derivative_relative_step_size=1e-06, update_state_every_iteration=False), min_num_images_gpu_solver=50, min_num_residuals_for_cpu_multi_threading=50000, max_num_images_direct_dense_cpu_solver=50, max_num_images_direct_sparse_cpu_solver=1000, max_num_images_direct_dense_gpu_solver=200, max_num_images_direct_sparse_gpu_solver=4000, auto_select_solver_type=False), caspar=CasparBundleAdjustmentOptions(solver_iter_max=200, pcg_iter_max=20, diag_init=1.0, diag_min=1e-12, diag_scaling_up=2.0, diag_scaling_down=0.333333, diag_exit_value=1000.0, score_exit_value=0.0, pcg_rel_error_exit=0.0001, pcg_rel_score_exit=-1.0, pcg_rel_decrease_min=-1.0, solver_rel_decrease_min=1.0, gpu_index=’-1’)), retriangulation=IncrementalTriangulatorOptions(max_transitivity=1, create_max_angle_error=2.0, continue_max_angle_error=2.0, merge_max_reproj_error=15.0, complete_max_reproj_error=15.0, complete_max_transitivity=5, re_max_angle_error=5.0, re_min_ratio=0.2, re_max_trials=1, min_angle=1.0, ignore_two_view_tracks=True, min_focal_length_ratio=0.1, max_focal_length_ratio=10.0, max_extra_param=1.0, random_seed=-1), track_intra_image_consistency_threshold=10.0, track_required_tracks_per_view=2147483647, track_min_num_views_per_track=3, keep_max_num_tracks=2147483647, max_angular_reproj_error_deg=1.0, max_normalized_reproj_error=0.01, min_tri_angle_deg=1.0, ba_gpu_index=’-1’, ba_num_iterations=3, ba_skip_fixed_rotation_stage=False, ba_skip_joint_optimization_stage=False, skip_rotation_averaging=False, skip_track_establishment=False, skip_global_positioning=False, skip_bundle_adjustment=False, skip_retriangulation=False))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -12789,13 +12789,13 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.ImageReaderOptions.camera_model">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">camera_model</span></span><a class="headerlink" href="#pycolmap.ImageReaderOptions.camera_model" title="Link to this definition">#</a></dt>
-<dd><p>Name of the camera model. (str, default: SIMPLE_RADIAL)</p>
+<dd><p>Name of the camera model. (str, default: ‘SIMPLE_RADIAL’)</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.ImageReaderOptions.mask_path">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">mask_path</span></span><a class="headerlink" href="#pycolmap.ImageReaderOptions.mask_path" title="Link to this definition">#</a></dt>
-<dd><p>Optional root path to folder which contains imagemasks. For a given image, the corresponding maskmust have the same sub-path below this root as theimage has below image_path. The filename must beequal, aside from the added extension .png. For example, for an image image_path/abc/012.jpg,the mask would be mask_path/abc/012.jpg.png. Nofeatures will be extracted in regions where themask image is black (pixel intensity value 0 ingrayscale). (PosixPath, default: .)</p>
+<dd><p>Optional root path to folder which contains imagemasks. For a given image, the corresponding maskmust have the same sub-path below this root as theimage has below image_path. The filename must beequal, aside from the added extension .png. For example, for an image image_path/abc/012.jpg,the mask would be mask_path/abc/012.jpg.png. Nofeatures will be extracted in regions where themask image is black (pixel intensity value 0 ingrayscale). (PosixPath, default: PosixPath(‘.’))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -12807,7 +12807,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.ImageReaderOptions.camera_params">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">camera_params</span></span><a class="headerlink" href="#pycolmap.ImageReaderOptions.camera_params" title="Link to this definition">#</a></dt>
-<dd><p>Manual specification of camera parameters. If empty, camera parameters will be extracted from EXIF, i.e. principal point and focal length. (str, default: )</p>
+<dd><p>Manual specification of camera parameters. If empty, camera parameters will be extracted from EXIF, i.e. principal point and focal length. (str, default: ‘’)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -12819,7 +12819,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.ImageReaderOptions.camera_mask_path">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">camera_mask_path</span></span><a class="headerlink" href="#pycolmap.ImageReaderOptions.camera_mask_path" title="Link to this definition">#</a></dt>
-<dd><p>Optional path to an image file specifying a mask for all images. No features will be extracted in regions where the mask is black (pixel intensity value 0 in grayscale) (PosixPath, default: .)</p>
+<dd><p>Optional path to an image file specifying a mask for all images. No features will be extracted in regions where the mask is black (pixel intensity value 0 in grayscale) (PosixPath, default: PosixPath(‘.’))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -13093,13 +13093,13 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.VocabTreePairingOptions.vocab_tree_path">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">vocab_tree_path</span></span><a class="headerlink" href="#pycolmap.VocabTreePairingOptions.vocab_tree_path" title="Link to this definition">#</a></dt>
-<dd><p>Path to the vocabulary tree. (PosixPath, default: .)</p>
+<dd><p>Path to the vocabulary tree. (PosixPath, default: PosixPath(‘.’))</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.VocabTreePairingOptions.match_list_path">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">match_list_path</span></span><a class="headerlink" href="#pycolmap.VocabTreePairingOptions.match_list_path" title="Link to this definition">#</a></dt>
-<dd><p>Optional path to file with specific image names to match. (PosixPath, default: .)</p>
+<dd><p>Optional path to file with specific image names to match. (PosixPath, default: PosixPath(‘.’))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -13208,7 +13208,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.SequentialPairingOptions.vocab_tree_path">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">vocab_tree_path</span></span><a class="headerlink" href="#pycolmap.SequentialPairingOptions.vocab_tree_path" title="Link to this definition">#</a></dt>
-<dd><p>Path to the vocabulary tree. (PosixPath, default: .)</p>
+<dd><p>Path to the vocabulary tree. (PosixPath, default: PosixPath(‘.’))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -13262,7 +13262,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.ImportedPairingOptions.match_list_path">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">match_list_path</span></span><a class="headerlink" href="#pycolmap.ImportedPairingOptions.match_list_path" title="Link to this definition">#</a></dt>
-<dd><p>Path to the file with the matches. (PosixPath, default: .)</p>
+<dd><p>Path to the file with the matches. (PosixPath, default: PosixPath(‘.’))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -13797,7 +13797,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.PatchMatchOptions.gpu_index">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gpu_index</span></span><a class="headerlink" href="#pycolmap.PatchMatchOptions.gpu_index" title="Link to this definition">#</a></dt>
-<dd><p>Index of the GPU used for patch match. For multi-GPU usage, you should separate multiple GPU indices by comma, e.g., “0,1,2,3”. (str, default: -1)</p>
+<dd><p>Index of the GPU used for patch match. For multi-GPU usage, you should separate multiple GPU indices by comma, e.g., “0,1,2,3”. (str, default: ‘-1’)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -13989,7 +13989,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.StereoFusionOptions.mask_path">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">mask_path</span></span><a class="headerlink" href="#pycolmap.StereoFusionOptions.mask_path" title="Link to this definition">#</a></dt>
-<dd><p>Path for PNG masks. Same format expected as ImageReaderOptions. (PosixPath, default: .)</p>
+<dd><p>Path for PNG masks. Same format expected as ImageReaderOptions. (PosixPath, default: PosixPath(‘.’))</p>
 </dd></dl>
 
 <dl class="py property">
@@ -16605,7 +16605,7 @@ are part of a 3D point track. (int, default: 0)</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 5a12809 (2026-09-13)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | 6aa4d73 (2026-09-13)</p></div>
       
     </div>
   
