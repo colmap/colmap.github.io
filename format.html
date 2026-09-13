@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=8647cd87"></script>
+    <script src="_static/documentation_options.js?v=f039bf8e"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="Rig Support" href="rigs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | d3ccaf3 (2026-09-12)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | 64bee7f (2026-09-13)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -734,8 +734,7 @@ format using <code class="docutils literal notranslate"><span class="pre">File</
 VisualSfM’s NVM, Bundler files, PLY, VRML, etc., using <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Export</span> <span class="pre">as...</span></code>.
 To convert between various formats from the CLI, use the <code class="docutils literal notranslate"><span class="pre">model_converter</span></code>
 executable.</p>
-<p>There are two source files to conveniently read the sparse reconstructions using
-Python (pycolmap) and Matlab (<code class="docutils literal notranslate"><span class="pre">scripts/matlab/read_model.m</span></code> supporting text).</p>
+<p>The sparse reconstructions can be conveniently read using pycolmap in Python.</p>
 <section id="text-format">
 <h3>Text Format<a class="headerlink" href="#text-format" title="Link to this heading">#</a></h3>
 <p>COLMAP exports the following text files for every reconstructed model:
@@ -891,9 +890,7 @@ dense reconstruction.</p>
 defines the dimensions of the image in the format <code class="docutils literal notranslate"><span class="pre">width&amp;height&amp;channels&amp;</span></code>
 followed by row-major <code class="docutils literal notranslate"><span class="pre">float32</span></code> binary data. For depth maps <code class="docutils literal notranslate"><span class="pre">channels=1</span></code> and
 for normal maps <code class="docutils literal notranslate"><span class="pre">channels=3</span></code>. The depth and normal maps can be conveniently
-read with Python using pycolmap and
-with Matlab using the functions in <code class="docutils literal notranslate"><span class="pre">scripts/matlab/read_depth_map.m</span></code> and
-<code class="docutils literal notranslate"><span class="pre">scripts/matlab/read_normal_map.m</span></code>.</p>
+read with Python using pycolmap.</p>
 </section>
 <section id="consistency-graphs">
 <h3>Consistency Graphs<a class="headerlink" href="#consistency-graphs" title="Link to this heading">#</a></h3>
@@ -1022,7 +1019,7 @@ The indices are specified w.r.t. the ordering in the <code class="docutils liter
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | d3ccaf3 (2026-09-12)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | 64bee7f (2026-09-13)</p></div>
       
     </div>
   
