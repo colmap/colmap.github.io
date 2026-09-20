@@ -40,7 +40,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=501aec1c"></script>
+    <script src="_static/documentation_options.js?v=4766053d"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -54,7 +54,7 @@
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 6aa4d73 (2026-09-13)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | 7019dcc (2026-09-20)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -1182,10 +1182,10 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Database.clear_cameras">clear_cameras() (pycolmap.Database method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Frame.clear_data_ids">clear_data_ids() (pycolmap.Frame method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Database.clear_descriptors">clear_descriptors() (pycolmap.Database method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Database.clear_frames">clear_frames() (pycolmap.Database method)</a>
@@ -1365,6 +1365,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.create_default_bundle_adjuster">create_default_bundle_adjuster() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.create_default_ceres_bundle_adjuster">create_default_ceres_bundle_adjuster() (in module pycolmap)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.create_default_global_positioner">create_default_global_positioner() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.DatabaseCache.create_from_cache">create_from_cache() (pycolmap.DatabaseCache static method)</a>
 </li>
@@ -1638,10 +1640,10 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_two_view_geometry">estimate_two_view_geometry() (in module pycolmap)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_two_view_geometry_pose">estimate_two_view_geometry_pose() (in module pycolmap)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.EstimateTriangulationOptions">EstimateTriangulationOptions (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CameraModelId.EUCM">EUCM (pycolmap.CameraModelId attribute)</a>
@@ -1732,6 +1734,8 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.Point2DList.extend">(pycolmap.Point2DList method)</a>
 </li>
       </ul></li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPositioner.extend_parameter_block_ordering">extend_parameter_block_ordering() (pycolmap.GlobalPositioner method)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Camera.extra_params_idxs">extra_params_idxs() (pycolmap.Camera method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractor.extract">extract() (pycolmap.FeatureExtractor method)</a>
@@ -1848,14 +1852,18 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometryOptions.filter_stationary_matches">filter_stationary_matches (pycolmap.TwoViewGeometryOptions property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.RotationEstimatorOptions.filter_unregistered">filter_unregistered (pycolmap.RotationEstimatorOptions property)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalMapper.filtered_frames">filtered_frames (pycolmap.IncrementalMapper property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CorrespondenceGraph.finalize">finalize() (pycolmap.CorrespondenceGraph method)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPositioner.finalize">(pycolmap.GlobalPositioner method)</a>
 </li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Frame.finalize_data_ids">finalize_data_ids() (pycolmap.Frame method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Reconstruction.find_common_reg_image_ids">find_common_reg_image_ids() (pycolmap.Reconstruction method)</a>
@@ -1912,6 +1920,8 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.Reconstruction.frame">(pycolmap.Reconstruction method)</a>
 </li>
       </ul></li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPositioner.frame_center_parameter_block">frame_center_parameter_block() (pycolmap.GlobalPositioner method)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Frame.frame_id">frame_id (pycolmap.Frame property)</a>
 
       <ul>
@@ -2008,10 +2018,10 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalTriangulator.get_modified_points3D">(pycolmap.IncrementalTriangulator method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Image.get_observation_point2D_idxs">get_observation_point2D_idxs() (pycolmap.Image method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Image.get_observation_points2D">get_observation_points2D() (pycolmap.Image method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BACovariance.get_other_params_cov">get_other_params_cov() (pycolmap.BACovariance method)</a>
@@ -2035,6 +2045,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPipelineCallback">GlobalPipelineCallback (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPipelineOptions">GlobalPipelineOptions (class in pycolmap)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPositioner">GlobalPositioner (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPositionerOptions">GlobalPositionerOptions (class in pycolmap)</a>
 </li>
@@ -3499,10 +3511,10 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.poisson_meshing">poisson_meshing() (in module pycolmap)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.PoissonMeshingOptions">PoissonMeshingOptions (class in pycolmap)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureKeypoints.pop">pop() (pycolmap.FeatureKeypoints method)</a>
 
       <ul>
@@ -3584,7 +3596,11 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.SyntheticNoiseOptions.prior_position_stddev">prior_position_stddev (pycolmap.SyntheticNoiseOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CeresBundleAdjuster.problem">problem (pycolmap.CeresBundleAdjuster property)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPositioner.problem">(pycolmap.GlobalPositioner property)</a>
 </li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.ImageAlignmentError.proj_center_error">proj_center_error (pycolmap.ImageAlignmentError property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Image.project_point">project_point() (pycolmap.Image method)</a>
@@ -4118,11 +4134,19 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.FileCopyType.softlink">softlink (pycolmap.FileCopyType attribute)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjuster.solve">solve() (pycolmap.BundleAdjuster method)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPositioner.solve">(pycolmap.GlobalPositioner method)</a>
 </li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CasparBundleAdjustmentOptions.solver_iter_max">solver_iter_max (pycolmap.CasparBundleAdjustmentOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CeresBundleAdjustmentOptions.solver_options">solver_options (pycolmap.CeresBundleAdjustmentOptions property)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPositioner.solver_options">(pycolmap.GlobalPositioner property)</a>
 </li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CasparBundleAdjustmentOptions.solver_rel_decrease_min">solver_rel_decrease_min (pycolmap.CasparBundleAdjustmentOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.SyntheticDatasetMatchConfig.SPARSE">SPARSE (pycolmap.SyntheticDatasetMatchConfig attribute)</a>
@@ -4149,6 +4173,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineStatus.SUCCESS">SUCCESS (pycolmap.IncrementalPipelineStatus attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.AbsolutePoseEstimationOptions.summary">summary() (pycolmap.AbsolutePoseEstimationOptions method)</a>
 
       <ul>
@@ -4307,8 +4333,6 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.WarpImageOptions.summary">(pycolmap.WarpImageOptions method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.synthesize_dataset">synthesize_dataset() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.synthesize_images">synthesize_images() (in module pycolmap)</a>
@@ -4536,6 +4560,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalMapperOptions.track_intra_image_consistency_threshold">track_intra_image_consistency_threshold (pycolmap.GlobalMapperOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.SyntheticDatasetOptions.track_length">track_length (pycolmap.SyntheticDatasetOptions property)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalMapperOptions.track_max_num_views_per_track">track_max_num_views_per_track (pycolmap.GlobalMapperOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalMapperOptions.track_min_num_views_per_track">track_min_num_views_per_track (pycolmap.GlobalMapperOptions property)</a>
 </li>
@@ -4987,7 +5013,7 @@
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 6aa4d73 (2026-09-13)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | 7019dcc (2026-09-20)</p></div>
       
     </div>
   
