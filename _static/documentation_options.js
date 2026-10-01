@@ -1,5 +1,5 @@
 const DOCUMENTATION_OPTIONS = {
-    VERSION: '4.3.0.dev0 | f264be8 (2026-09-29)',
+    VERSION: '4.3.0.dev0 | 998ff4d (2026-10-01)',
     LANGUAGE: 'en',
     COLLAPSE_INDEX: false,
     BUILDER: 'html',

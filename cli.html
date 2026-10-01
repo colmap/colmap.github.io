@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=b04a4e90"></script>
+    <script src="_static/documentation_options.js?v=062709e3"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="Graphical User Interface" href="gui.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | f264be8 (2026-09-29)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | 998ff4d (2026-10-01)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -721,6 +721,12 @@ $ colmap feature_extractor \
    --database_path $DATASET_PATH/database.db \
    --image_path $DATASET_PATH/images
 
+# Optionally replace intrinsics with learned single-view
+# calibration (AnyCalib) before matching and geometric verification.
+$ colmap single_view_calibrator \
+   --database_path $DATASET_PATH/database.db \
+   --image_path $DATASET_PATH/images
+
 $ colmap exhaustive_matcher \
    --database_path $DATASET_PATH/database.db
 
@@ -781,7 +787,7 @@ $ colmap mesh_texturer \
 <h2>Graceful shutdown and resuming<a class="headerlink" href="#graceful-shutdown-and-resuming" title="Link to this heading">#</a></h2>
 <p>The feature extraction and matching commands, <code class="docutils literal notranslate"><span class="pre">mapper</span></code>,
 <code class="docutils literal notranslate"><span class="pre">pose_prior_mapper</span></code>, <code class="docutils literal notranslate"><span class="pre">bundle_adjuster</span></code>, <code class="docutils literal notranslate"><span class="pre">point_triangulator</span></code>,
-<code class="docutils literal notranslate"><span class="pre">image_registrator</span></code>, the image undistortion commands,
+<code class="docutils literal notranslate"><span class="pre">image_registrator</span></code>, <code class="docutils literal notranslate"><span class="pre">single_view_calibrator</span></code>, the image undistortion commands,
 <code class="docutils literal notranslate"><span class="pre">patch_match_stereo</span></code>, and <code class="docutils literal notranslate"><span class="pre">stereo_fusion</span></code> handle <code class="docutils literal notranslate"><span class="pre">SIGINT</span></code> and <code class="docutils literal notranslate"><span class="pre">SIGTERM</span></code>
 cooperatively. <code class="docutils literal notranslate"><span class="pre">automatic_reconstructor</span></code> supports graceful shutdown when
 using the incremental mapper. The first signal stops work at a safe point and
@@ -834,10 +840,11 @@ thread; use a cancellation token when calling it from another thread:</p>
 length priors, so if reliable intrinsics are not available (e.g., from EXIF or
 lab calibration), you should run <code class="docutils literal notranslate"><span class="pre">view_graph_calibrator</span></code> first. This step is
 optional but recommended to improve the quality of global SfM, as was always
-the default in <a class="reference external" href="https://github.com/colmap/glomap">GLOMAP</a>. Note that
-<code class="docutils literal notranslate"><span class="pre">view_graph_calibrator</span></code> modifies camera intrinsics and two-view geometries
-in the database in-place, so it is recommended to work on a copy of the
-database:</p>
+the default in <a class="reference external" href="https://github.com/colmap/glomap">GLOMAP</a>. Alternatively,
+<code class="docutils literal notranslate"><span class="pre">single_view_calibrator</span></code> can provide learned intrinsics from the images alone
+before matching. Note that <code class="docutils literal notranslate"><span class="pre">view_graph_calibrator</span></code> modifies camera
+intrinsics and two-view geometries in the database in-place, so it is
+recommended to work on a copy of the database:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ colmap feature_extractor \
    --database_path $DATASET_PATH/database.db \
    --image_path $DATASET_PATH/images
@@ -892,6 +899,7 @@ manually select to use CPU-based feature extraction and matching by setting the
       gui
       automatic_reconstructor
       bundle_adjuster
+      single_view_calibrator
       color_extractor
       database_cleaner
       database_creator
@@ -1012,7 +1020,10 @@ HIGH, EXTREME), <code class="docutils literal notranslate"><span class="pre">--d
 for different capture scenarios, <code class="docutils literal notranslate"><span class="pre">--feature</span></code> (SIFT, ALIKED, LOMA, LOMA128)
 to select the feature extraction algorithm, <code class="docutils literal notranslate"><span class="pre">--mapper</span></code> (INCREMENTAL,
 HIERARCHICAL, GLOBAL) to choose the SfM pipeline, and <code class="docutils literal notranslate"><span class="pre">--mesher</span></code> (POISSON,
-DELAUNAY, ADVANCING_FRONT) to select the surface reconstruction method.</p></li>
+DELAUNAY, ADVANCING_FRONT) to select the surface reconstruction method.
+<code class="docutils literal notranslate"><span class="pre">--single_view_calibration</span></code> enables learned single-view calibration
+after feature extraction (ignored if explicit <code class="docutils literal notranslate"><span class="pre">--camera_params</span></code> are given);
+<code class="docutils literal notranslate"><span class="pre">--SingleViewCalibration.*</span></code> tunes the calibration backend.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">project_generator</span></code>: Generate project files at different quality settings.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">feature_extractor</span></code>, <code class="docutils literal notranslate"><span class="pre">feature_importer</span></code>: Perform feature extraction or
 import features for a set of images.</p></li>
@@ -1127,6 +1138,13 @@ Estimates focal lengths and other intrinsic parameters from pairwise
 geometric relations. Should be run before <code class="docutils literal notranslate"><span class="pre">global_mapper</span></code>, if no good
 prior camera intrinsics are known, since the global mapper
 depends on reasonably good focal length priors to perform well.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">single_view_calibrator</span></code>: Calibrate camera intrinsics from single images with a
+learned model (AnyCalib), replacing e.g. EXIF-based initialization. Run
+after <code class="docutils literal notranslate"><span class="pre">feature_extractor</span></code> and before matching and mapping, or enable
+<code class="docutils literal notranslate"><span class="pre">--single_view_calibration</span></code> in <code class="docutils literal notranslate"><span class="pre">automatic_reconstructor</span></code>. Supports
+<code class="docutils literal notranslate"><span class="pre">--image_list_path</span></code> to calibrate a subset of the database images. Each
+camera keeps its existing model unless <code class="docutils literal notranslate"><span class="pre">--SingleViewCalibration.camera_model</span></code>
+explicitly converts all cameras to the given model.</p></li>
 </ul>
 </section>
 <section id="visualization">
@@ -1252,7 +1270,7 @@ with a texture atlas that can be visualized in Meshlab or other 3D viewers.</p><
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | f264be8 (2026-09-29)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | 998ff4d (2026-10-01)</p></div>
       
     </div>
   
