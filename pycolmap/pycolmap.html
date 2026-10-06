@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=062709e3"></script>
+    <script src="../_static/documentation_options.js?v=58ea0400"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -64,7 +64,7 @@
     <link rel="prev" title="PyCOLMAP" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 998ff4d (2026-10-01)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | 72f30b1 (2026-10-06)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -7035,6 +7035,226 @@ are part of a 3D point track. (int, default: 0)</p>
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.PoseGraph.invalidate_pairs_outside_active_image_ids" title="Link to this definition">#</a></dt>
 <dd><p>Mark image pairs as invalid if either image is not in the active set.</p>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.ImuCalibration">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">ImuCalibration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.ImuCalibration" title="Link to this definition">#</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.ImuCalibration)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.ImuCalibration,</span> <span class="pre">arg0:</span> <span class="pre">dict)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.ImuCalibration,</span> <span class="pre">**kwargs)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.ImuCalibration.accel_noise_density">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">accel_noise_density</span></span><a class="headerlink" href="#pycolmap.ImuCalibration.accel_noise_density" title="Link to this definition">#</a></dt>
+<dd><p>(float, default: 0.01883649)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.ImuCalibration.gyro_noise_density">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gyro_noise_density</span></span><a class="headerlink" href="#pycolmap.ImuCalibration.gyro_noise_density" title="Link to this definition">#</a></dt>
+<dd><p>(float, default: 0.00073088444)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.ImuCalibration.bias_accel_random_walk_sigma">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">bias_accel_random_walk_sigma</span></span><a class="headerlink" href="#pycolmap.ImuCalibration.bias_accel_random_walk_sigma" title="Link to this definition">#</a></dt>
+<dd><p>(float, default: 0.012589254)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.ImuCalibration.bias_gyro_random_walk_sigma">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">bias_gyro_random_walk_sigma</span></span><a class="headerlink" href="#pycolmap.ImuCalibration.bias_gyro_random_walk_sigma" title="Link to this definition">#</a></dt>
+<dd><p>(float, default: 0.00038765)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.ImuCalibration.accel_saturation_max">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">accel_saturation_max</span></span><a class="headerlink" href="#pycolmap.ImuCalibration.accel_saturation_max" title="Link to this definition">#</a></dt>
+<dd><p>(float, default: 150.0)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.ImuCalibration.gyro_saturation_max">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gyro_saturation_max</span></span><a class="headerlink" href="#pycolmap.ImuCalibration.gyro_saturation_max" title="Link to this definition">#</a></dt>
+<dd><p>(float, default: 7.8)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.ImuCalibration.gravity_magnitude">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gravity_magnitude</span></span><a class="headerlink" href="#pycolmap.ImuCalibration.gravity_magnitude" title="Link to this definition">#</a></dt>
+<dd><p>(float, default: 9.81007)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.ImuCalibration.imu_rate">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">imu_rate</span></span><a class="headerlink" href="#pycolmap.ImuCalibration.imu_rate" title="Link to this definition">#</a></dt>
+<dd><p>(float, default: 20.0)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.ImuCalibration.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.ImuCalibration" title="pycolmap.ImuCalibration"><span class="pre">pycolmap.ImuCalibration</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pycolmap.ImuCalibration.summary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.ImuCalibration.mergedict">
+<span class="sig-name descname"><span class="pre">mergedict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.ImuCalibration.mergedict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.ImuCalibration.todict">
+<span class="sig-name descname"><span class="pre">todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.ImuCalibration" title="pycolmap.ImuCalibration"><span class="pre">pycolmap.ImuCalibration</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pycolmap.ImuCalibration.todict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.ImuMeasurement">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">ImuMeasurement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.ImuMeasurement" title="Link to this definition">#</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.ImuMeasurement)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.ImuMeasurement,</span> <span class="pre">timestamp:</span> <span class="pre">typing.SupportsInt</span> <span class="pre">|</span> <span class="pre">typing.SupportsIndex,</span> <span class="pre">gyro:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;],</span> <span class="pre">accel:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;])</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.ImuMeasurement,</span> <span class="pre">arg0:</span> <span class="pre">dict)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.ImuMeasurement,</span> <span class="pre">**kwargs)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.ImuMeasurement.timestamp">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">timestamp</span></span><a class="headerlink" href="#pycolmap.ImuMeasurement.timestamp" title="Link to this definition">#</a></dt>
+<dd><p>(int, default: -9223372036854775808)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.ImuMeasurement.gyro">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gyro</span></span><a class="headerlink" href="#pycolmap.ImuMeasurement.gyro" title="Link to this definition">#</a></dt>
+<dd><p>(ndarray, default: array([0., 0., 0.]))</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.ImuMeasurement.accel">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">accel</span></span><a class="headerlink" href="#pycolmap.ImuMeasurement.accel" title="Link to this definition">#</a></dt>
+<dd><p>(ndarray, default: array([0., 0., 0.]))</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.ImuMeasurement.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.ImuMeasurement" title="pycolmap.ImuMeasurement"><span class="pre">pycolmap.ImuMeasurement</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pycolmap.ImuMeasurement.summary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.ImuMeasurement.mergedict">
+<span class="sig-name descname"><span class="pre">mergedict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.ImuMeasurement.mergedict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.ImuMeasurement.todict">
+<span class="sig-name descname"><span class="pre">todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.ImuMeasurement" title="pycolmap.ImuMeasurement"><span class="pre">pycolmap.ImuMeasurement</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pycolmap.ImuMeasurement.todict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.ImuMeasurements">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">ImuMeasurements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.ImuMeasurements" title="pycolmap.ImuMeasurements"><span class="pre">pycolmap.ImuMeasurements</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.ImuMeasurements" title="Link to this definition">#</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.ImuMeasurements.insert">
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.ImuMeasurements.insert" title="Link to this definition">#</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">insert(self:</span> <span class="pre">pycolmap.ImuMeasurements,</span> <span class="pre">measurement:</span> <span class="pre">pycolmap.ImuMeasurement)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insert(self:</span> <span class="pre">pycolmap.ImuMeasurements,</span> <span class="pre">measurements:</span> <span class="pre">collections.abc.Sequence[pycolmap.ImuMeasurement])</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insert(self:</span> <span class="pre">pycolmap.ImuMeasurements,</span> <span class="pre">measurements:</span> <span class="pre">pycolmap.ImuMeasurements)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.ImuMeasurements.insert_sorted">
+<span class="sig-name descname"><span class="pre">insert_sorted</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.ImuMeasurements" title="pycolmap.ImuMeasurements"><span class="pre">pycolmap.ImuMeasurements</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">sorted_measurements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.abc.Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycolmap.ImuMeasurement" title="pycolmap.ImuMeasurement"><span class="pre">pycolmap.ImuMeasurement</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.ImuMeasurements.insert_sorted" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.ImuMeasurements.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.ImuMeasurements" title="pycolmap.ImuMeasurements"><span class="pre">pycolmap.ImuMeasurements</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.ImuMeasurements.clear" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.ImuMeasurements.empty">
+<span class="sig-name descname"><span class="pre">empty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.ImuMeasurements" title="pycolmap.ImuMeasurements"><span class="pre">pycolmap.ImuMeasurements</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pycolmap.ImuMeasurements.empty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.ImuMeasurements.extract_measurements_in_range">
+<span class="sig-name descname"><span class="pre">extract_measurements_in_range</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.ImuMeasurements" title="pycolmap.ImuMeasurements"><span class="pre">pycolmap.ImuMeasurements</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">t1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">t2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pycolmap.ImuMeasurements" title="pycolmap.ImuMeasurements"><span class="pre">pycolmap.ImuMeasurements</span></a></span></span><a class="headerlink" href="#pycolmap.ImuMeasurements.extract_measurements_in_range" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.Imu">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">Imu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Imu" title="pycolmap.Imu"><span class="pre">pycolmap.Imu</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.Imu" title="Link to this definition">#</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.Imu.imu_id">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">imu_id</span></span><a class="headerlink" href="#pycolmap.Imu.imu_id" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.Imu.camera_id">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">camera_id</span></span><a class="headerlink" href="#pycolmap.Imu.camera_id" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.Imu.imu_from_cam">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">imu_from_cam</span></span><a class="headerlink" href="#pycolmap.Imu.imu_from_cam" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.ImuState">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">ImuState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.ImuState" title="Link to this definition">#</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.ImuState)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.ImuState,</span> <span class="pre">velocity:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;],</span> <span class="pre">bias_gyro:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;],</span> <span class="pre">bias_accel:</span> <span class="pre">typing.Annotated[numpy.typing.ArrayLike,</span> <span class="pre">numpy.float64,</span> <span class="pre">&quot;[3,</span> <span class="pre">1]&quot;])</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.ImuState.params">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">params</span></span><a class="headerlink" href="#pycolmap.ImuState.params" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.ImuState.velocity">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">velocity</span></span><a class="headerlink" href="#pycolmap.ImuState.velocity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.ImuState.bias_gyro">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">bias_gyro</span></span><a class="headerlink" href="#pycolmap.ImuState.bias_gyro" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.ImuState.bias_accel">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">bias_accel</span></span><a class="headerlink" href="#pycolmap.ImuState.bias_accel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -14065,7 +14285,7 @@ are part of a 3D point track. (int, default: 0)</p>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.patch_match_stereo" title="Link to this definition">#</a></dt>
-<dd><p>Runs Patch-Match-Stereo (requires CUDA)</p>
+<dd><p>Runs Patch-Match-Stereo (requires CUDA or HIP)</p>
 </dd></dl>
 
 <dl class="py class">
@@ -15526,6 +15746,50 @@ are part of a 3D point track. (int, default: 0)</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.PoseGraph.invalidate_pairs_outside_active_image_ids"><code class="docutils literal notranslate"><span class="pre">PoseGraph.invalidate_pairs_outside_active_image_ids()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuCalibration"><code class="docutils literal notranslate"><span class="pre">ImuCalibration</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuCalibration.accel_noise_density"><code class="docutils literal notranslate"><span class="pre">ImuCalibration.accel_noise_density</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuCalibration.gyro_noise_density"><code class="docutils literal notranslate"><span class="pre">ImuCalibration.gyro_noise_density</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuCalibration.bias_accel_random_walk_sigma"><code class="docutils literal notranslate"><span class="pre">ImuCalibration.bias_accel_random_walk_sigma</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuCalibration.bias_gyro_random_walk_sigma"><code class="docutils literal notranslate"><span class="pre">ImuCalibration.bias_gyro_random_walk_sigma</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuCalibration.accel_saturation_max"><code class="docutils literal notranslate"><span class="pre">ImuCalibration.accel_saturation_max</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuCalibration.gyro_saturation_max"><code class="docutils literal notranslate"><span class="pre">ImuCalibration.gyro_saturation_max</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuCalibration.gravity_magnitude"><code class="docutils literal notranslate"><span class="pre">ImuCalibration.gravity_magnitude</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuCalibration.imu_rate"><code class="docutils literal notranslate"><span class="pre">ImuCalibration.imu_rate</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuCalibration.summary"><code class="docutils literal notranslate"><span class="pre">ImuCalibration.summary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuCalibration.mergedict"><code class="docutils literal notranslate"><span class="pre">ImuCalibration.mergedict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuCalibration.todict"><code class="docutils literal notranslate"><span class="pre">ImuCalibration.todict()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuMeasurement"><code class="docutils literal notranslate"><span class="pre">ImuMeasurement</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuMeasurement.timestamp"><code class="docutils literal notranslate"><span class="pre">ImuMeasurement.timestamp</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuMeasurement.gyro"><code class="docutils literal notranslate"><span class="pre">ImuMeasurement.gyro</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuMeasurement.accel"><code class="docutils literal notranslate"><span class="pre">ImuMeasurement.accel</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuMeasurement.summary"><code class="docutils literal notranslate"><span class="pre">ImuMeasurement.summary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuMeasurement.mergedict"><code class="docutils literal notranslate"><span class="pre">ImuMeasurement.mergedict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuMeasurement.todict"><code class="docutils literal notranslate"><span class="pre">ImuMeasurement.todict()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuMeasurements"><code class="docutils literal notranslate"><span class="pre">ImuMeasurements</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuMeasurements.insert"><code class="docutils literal notranslate"><span class="pre">ImuMeasurements.insert()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuMeasurements.insert_sorted"><code class="docutils literal notranslate"><span class="pre">ImuMeasurements.insert_sorted()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuMeasurements.clear"><code class="docutils literal notranslate"><span class="pre">ImuMeasurements.clear()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuMeasurements.empty"><code class="docutils literal notranslate"><span class="pre">ImuMeasurements.empty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuMeasurements.extract_measurements_in_range"><code class="docutils literal notranslate"><span class="pre">ImuMeasurements.extract_measurements_in_range()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.Imu"><code class="docutils literal notranslate"><span class="pre">Imu</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.Imu.imu_id"><code class="docutils literal notranslate"><span class="pre">Imu.imu_id</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.Imu.camera_id"><code class="docutils literal notranslate"><span class="pre">Imu.camera_id</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.Imu.imu_from_cam"><code class="docutils literal notranslate"><span class="pre">Imu.imu_from_cam</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuState"><code class="docutils literal notranslate"><span class="pre">ImuState</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuState.params"><code class="docutils literal notranslate"><span class="pre">ImuState.params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuState.velocity"><code class="docutils literal notranslate"><span class="pre">ImuState.velocity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuState.bias_gyro"><code class="docutils literal notranslate"><span class="pre">ImuState.bias_gyro</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImuState.bias_accel"><code class="docutils literal notranslate"><span class="pre">ImuState.bias_accel</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.WarpImageOptions"><code class="docutils literal notranslate"><span class="pre">WarpImageOptions</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.WarpImageOptions.Interpolation"><code class="docutils literal notranslate"><span class="pre">WarpImageOptions.Interpolation</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.WarpImageOptions.Interpolation.BILINEAR"><code class="docutils literal notranslate"><span class="pre">WarpImageOptions.Interpolation.BILINEAR</span></code></a></li>
@@ -16710,7 +16974,7 @@ are part of a 3D point track. (int, default: 0)</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 998ff4d (2026-10-01)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | 72f30b1 (2026-10-06)</p></div>
       
     </div>
   

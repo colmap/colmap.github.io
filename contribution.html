@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=062709e3"></script>
+    <script src="_static/documentation_options.js?v=58ea0400"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="Changelog" href="changelog.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 998ff4d (2026-10-01)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | 72f30b1 (2026-10-06)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -706,6 +706,25 @@ describing the API, using the following format:</p>
 <p>Add unit tests for all newly added code and make sure that algorithmic
 “improvements” generalize and actually improve the results of the pipeline on a
 variety of datasets.</p>
+<section id="running-tests">
+<h2>Running Tests<a class="headerlink" href="#running-tests" title="Link to this heading">#</a></h2>
+<p>Build with <code class="docutils literal notranslate"><span class="pre">-DTESTS_ENABLED=ON</span></code> and run the test suite from the build
+directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">build</span>
+<span class="n">ctest</span> <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">failure</span>
+</pre></div>
+</div>
+<p>Tests that run expensive neural-network inference (e.g. the full-size LoMa
+smoke test) are skipped by default and only run when the
+<code class="docutils literal notranslate"><span class="pre">COLMAP_TEST_HEAVY</span></code> environment variable is set:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">COLMAP_TEST_HEAVY</span><span class="o">=</span><span class="mi">1</span> <span class="n">ctest</span> <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">failure</span>
+</pre></div>
+</div>
+<p>Continuous integration always runs the test suite with <code class="docutils literal notranslate"><span class="pre">COLMAP_TEST_HEAVY</span></code>
+set, so heavy tests are covered there. When adding a test whose runtime is
+dominated by model loading or inference, prefer a fast default path and gate
+the expensive variant behind this variable.</p>
+</section>
 </section>
 
 
@@ -746,6 +765,18 @@ variety of datasets.</p>
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-tests">Running Tests</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
@@ -793,7 +824,7 @@ variety of datasets.</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 998ff4d (2026-10-01)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | 72f30b1 (2026-10-06)</p></div>
       
     </div>
   
