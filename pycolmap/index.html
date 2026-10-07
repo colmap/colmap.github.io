@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=58ea0400"></script>
+    <script src="../_static/documentation_options.js?v=27592afb"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
     <link rel="prev" title="Command-line Interface" href="../cli.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 72f30b1 (2026-10-06)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | a938058 (2026-10-07)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -906,6 +906,9 @@ so either from PyPI or from source.</p>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.GlobalPositioner"><code class="docutils literal notranslate"><span class="pre">GlobalPositioner</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.create_default_global_positioner"><code class="docutils literal notranslate"><span class="pre">create_default_global_positioner()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.run_global_positioning"><code class="docutils literal notranslate"><span class="pre">run_global_positioning()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.CeresRotationAveragerOptions"><code class="docutils literal notranslate"><span class="pre">CeresRotationAveragerOptions</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.CeresRotationAverager"><code class="docutils literal notranslate"><span class="pre">CeresRotationAverager</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.create_default_ceres_rotation_averager"><code class="docutils literal notranslate"><span class="pre">create_default_ceres_rotation_averager()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.ImageScore"><code class="docutils literal notranslate"><span class="pre">ImageScore</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.VisualIndex"><code class="docutils literal notranslate"><span class="pre">VisualIndex</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.ImagePairStat"><code class="docutils literal notranslate"><span class="pre">ImagePairStat</span></code></a></li>
@@ -986,6 +989,7 @@ so either from PyPI or from source.</p>
 <li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.SampsonErrorCost"><code class="docutils literal notranslate"><span class="pre">SampsonErrorCost()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.AbsolutePosePriorCost"><code class="docutils literal notranslate"><span class="pre">AbsolutePosePriorCost()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.AbsolutePosePositionPriorCost"><code class="docutils literal notranslate"><span class="pre">AbsolutePosePositionPriorCost()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.RelativeRotationCost"><code class="docutils literal notranslate"><span class="pre">RelativeRotationCost()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.RelativePosePriorCost"><code class="docutils literal notranslate"><span class="pre">RelativePosePriorCost()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="cost_functions.html#pycolmap.cost_functions.Point3DAlignmentCost"><code class="docutils literal notranslate"><span class="pre">Point3DAlignmentCost()</span></code></a></li>
 </ul>
@@ -1093,7 +1097,7 @@ so either from PyPI or from source.</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 72f30b1 (2026-10-06)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | a938058 (2026-10-07)</p></div>
       
     </div>
   

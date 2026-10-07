@@ -40,7 +40,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=58ea0400"></script>
+    <script src="_static/documentation_options.js?v=27592afb"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -54,7 +54,7 @@
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 72f30b1 (2026-10-06)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | a938058 (2026-10-07)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -764,6 +764,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Rig.add_ref_sensor">add_ref_sensor() (pycolmap.Rig method)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAverager.add_relative_rotation_residual">add_relative_rotation_residual() (pycolmap.CeresRotationAverager method)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.DatabaseCache.add_rig">add_rig() (pycolmap.DatabaseCache method)</a>
 
       <ul>
@@ -1118,6 +1120,10 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CeresPosePriorBundleAdjustmentOptions">CeresPosePriorBundleAdjustmentOptions (class in pycolmap)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAverager">CeresRotationAverager (class in pycolmap)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAveragerOptions">CeresRotationAveragerOptions (class in pycolmap)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.SyntheticDatasetMatchConfig.CHAINED">CHAINED (pycolmap.SyntheticDatasetMatchConfig attribute)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Bitmap.channels">channels (pycolmap.Bitmap property)</a>
@@ -1198,10 +1204,10 @@
       </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Database.clear_all_tables">clear_all_tables() (pycolmap.Database method)</a>
 </li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.Database.clear_cameras">clear_cameras() (pycolmap.Database method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.Database.clear_cameras">clear_cameras() (pycolmap.Database method)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Frame.clear_data_ids">clear_data_ids() (pycolmap.Frame method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Database.clear_descriptors">clear_descriptors() (pycolmap.Database method)</a>
@@ -1383,6 +1389,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.create_default_bundle_adjuster">create_default_bundle_adjuster() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.create_default_ceres_bundle_adjuster">create_default_ceres_bundle_adjuster() (in module pycolmap)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.create_default_ceres_rotation_averager">create_default_ceres_rotation_averager() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.create_default_global_positioner">create_default_global_positioner() (in module pycolmap)</a>
 </li>
@@ -2588,14 +2596,14 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcherType.LOMA_B">(pycolmap.FeatureMatcherType attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureExtractorType.LOMA_B128">LOMA_B128 (pycolmap.FeatureExtractorType attribute)</a>
 
       <ul>
         <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcherType.LOMA_B128">(pycolmap.FeatureMatcherType attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcherType.LOMA_BRUTEFORCE">LOMA_BRUTEFORCE (pycolmap.FeatureMatcherType attribute)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatcherType.LOMA_G">LOMA_G (pycolmap.FeatureMatcherType attribute)</a>
@@ -2625,13 +2633,19 @@
       <ul>
         <li><a href="pycolmap/pycolmap.html#pycolmap.CeresBundleAdjustmentOptions.loss_function_scale">(pycolmap.CeresBundleAdjustmentOptions property)</a>
 </li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAveragerOptions.loss_function_scale">(pycolmap.CeresRotationAveragerOptions property)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPositionerOptions.loss_function_scale">(pycolmap.GlobalPositionerOptions property)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.ViewGraphCalibrationOptions.loss_function_scale">(pycolmap.ViewGraphCalibrationOptions property)</a>
 </li>
       </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CeresBundleAdjustmentOptions.loss_function_type">loss_function_type (pycolmap.CeresBundleAdjustmentOptions property)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAveragerOptions.loss_function_type">(pycolmap.CeresRotationAveragerOptions property)</a>
 </li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CeresBundleAdjustmentOptions.loss_function_weight">loss_function_weight (pycolmap.CeresBundleAdjustmentOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.LossFunctionType">LossFunctionType (class in pycolmap)</a>
@@ -2858,6 +2872,8 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.CeresBundleAdjustmentSummary.mergedict">(pycolmap.CeresBundleAdjustmentSummary method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.CeresPosePriorBundleAdjustmentOptions.mergedict">(pycolmap.CeresPosePriorBundleAdjustmentOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAveragerOptions.mergedict">(pycolmap.CeresRotationAveragerOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.Correspondence.mergedict">(pycolmap.Correspondence method)</a>
 </li>
@@ -3571,10 +3587,10 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.poisson_meshing">poisson_meshing() (in module pycolmap)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.PoissonMeshingOptions">PoissonMeshingOptions (class in pycolmap)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureKeypoints.pop">pop() (pycolmap.FeatureKeypoints method)</a>
 
       <ul>
@@ -3658,6 +3674,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.CeresBundleAdjuster.problem">problem (pycolmap.CeresBundleAdjuster property)</a>
 
       <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAverager.problem">(pycolmap.CeresRotationAverager property)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPositioner.problem">(pycolmap.GlobalPositioner property)</a>
 </li>
       </ul></li>
@@ -3858,6 +3876,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjustmentOptions.refine_sensor_from_rig">refine_sensor_from_rig (pycolmap.BundleAdjustmentOptions property)</a>
 
       <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAveragerOptions.refine_sensor_from_rig">(pycolmap.CeresRotationAveragerOptions property)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalMapperOptions.refine_sensor_from_rig">(pycolmap.GlobalMapperOptions property)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPositionerOptions.refine_sensor_from_rig">(pycolmap.GlobalPositionerOptions property)</a>
@@ -3884,6 +3904,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalMapper.register_next_structure_less_image">register_next_structure_less_image() (pycolmap.IncrementalMapper method)</a>
 </li>
       <li><a href="pycolmap/cost_functions.html#pycolmap.cost_functions.RelativePosePriorCost">RelativePosePriorCost() (in module pycolmap.cost_functions)</a>
+</li>
+      <li><a href="pycolmap/cost_functions.html#pycolmap.cost_functions.RelativeRotationCost">RelativeRotationCost() (in module pycolmap.cost_functions)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.ViewGraphCalibrationOptions.relpose_max_error">relpose_max_error (pycolmap.ViewGraphCalibrationOptions property)</a>
 </li>
@@ -3963,8 +3985,12 @@
       </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalMapperOptions.retriangulation">retriangulation (pycolmap.GlobalMapperOptions property)</a>
 </li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.RotationEstimatorOptions.reweighting">reweighting (pycolmap.RotationEstimatorOptions property)</a>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAveragerOptions.reweighting">reweighting (pycolmap.CeresRotationAveragerOptions property)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.RotationEstimatorOptions.reweighting">(pycolmap.RotationEstimatorOptions property)</a>
 </li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.RotationEstimatorOptions.ridge_regularization">ridge_regularization (pycolmap.RotationEstimatorOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Rig">Rig (class in pycolmap)</a>
@@ -4169,6 +4195,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.ReconstructionManager.size">size() (pycolmap.ReconstructionManager method)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.CameraModelId.SKEWED_PINHOLE">SKEWED_PINHOLE (pycolmap.CameraModelId attribute)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalMapperOptions.skip_bundle_adjustment">skip_bundle_adjustment (pycolmap.GlobalMapperOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatchingOptions.skip_geometric_verification">skip_geometric_verification (pycolmap.FeatureMatchingOptions property)</a>
@@ -4177,8 +4205,12 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatchingOptions.skip_image_pairs_in_same_frame">skip_image_pairs_in_same_frame (pycolmap.FeatureMatchingOptions property)</a>
 </li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.RotationEstimatorOptions.skip_initialization">skip_initialization (pycolmap.RotationEstimatorOptions property)</a>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAveragerOptions.skip_initialization">skip_initialization (pycolmap.CeresRotationAveragerOptions property)</a>
+
+      <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.RotationEstimatorOptions.skip_initialization">(pycolmap.RotationEstimatorOptions property)</a>
 </li>
+      </ul></li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalMapperOptions.skip_retriangulation">skip_retriangulation (pycolmap.GlobalMapperOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalMapperOptions.skip_rotation_averaging">skip_rotation_averaging (pycolmap.GlobalMapperOptions property)</a>
@@ -4196,6 +4228,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.BundleAdjuster.solve">solve() (pycolmap.BundleAdjuster method)</a>
 
       <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAverager.solve">(pycolmap.CeresRotationAverager method)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPositioner.solve">(pycolmap.GlobalPositioner method)</a>
 </li>
       </ul></li>
@@ -4204,6 +4238,10 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.CeresBundleAdjustmentOptions.solver_options">solver_options (pycolmap.CeresBundleAdjustmentOptions property)</a>
 
       <ul>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAverager.solver_options">(pycolmap.CeresRotationAverager property)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAveragerOptions.solver_options">(pycolmap.CeresRotationAveragerOptions property)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.GlobalPositioner.solver_options">(pycolmap.GlobalPositioner property)</a>
 </li>
       </ul></li>
@@ -4231,6 +4269,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.structure_less_registration_only">structure_less_registration_only (pycolmap.IncrementalPipelineOptions property)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineStatus.SUCCESS">SUCCESS (pycolmap.IncrementalPipelineStatus attribute)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.AbsolutePoseEstimationOptions.summary">summary() (pycolmap.AbsolutePoseEstimationOptions method)</a>
@@ -4255,6 +4295,8 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.CeresBundleAdjustmentOptions.summary">(pycolmap.CeresBundleAdjustmentOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.CeresPosePriorBundleAdjustmentOptions.summary">(pycolmap.CeresPosePriorBundleAdjustmentOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAveragerOptions.summary">(pycolmap.CeresRotationAveragerOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.Correspondence.summary">(pycolmap.Correspondence method)</a>
 </li>
@@ -4395,8 +4437,6 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.WarpImageOptions.summary">(pycolmap.WarpImageOptions method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.synthesize_dataset">synthesize_dataset() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.synthesize_images">synthesize_images() (in module pycolmap)</a>
@@ -4483,6 +4523,8 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.CeresBundleAdjustmentSummary.todict">(pycolmap.CeresBundleAdjustmentSummary method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.CeresPosePriorBundleAdjustmentOptions.todict">(pycolmap.CeresPosePriorBundleAdjustmentOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAveragerOptions.todict">(pycolmap.CeresRotationAveragerOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.Correspondence.todict">(pycolmap.Correspondence method)</a>
 </li>
@@ -5087,7 +5129,7 @@
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 72f30b1 (2026-10-06)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | a938058 (2026-10-07)</p></div>
       
     </div>
   

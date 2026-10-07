@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=58ea0400"></script>
+    <script src="../_static/documentation_options.js?v=27592afb"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -64,7 +64,7 @@
     <link rel="prev" title="PyCOLMAP" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 72f30b1 (2026-10-06)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | a938058 (2026-10-07)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -2935,6 +2935,7 @@
 <p>SIMPLE_FISHEYE</p>
 <p>FISHEYE</p>
 <p>EUCM</p>
+<p>SKEWED_PINHOLE</p>
 <p>EQUIRECTANGULAR</p>
 <p>Overloaded function.</p>
 <ol class="arabic simple">
@@ -3039,6 +3040,11 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pycolmap.CameraModelId.EUCM">
 <span class="sig-name descname"><span class="pre">EUCM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">CameraModelId.EUCM</span></span><a class="headerlink" href="#pycolmap.CameraModelId.EUCM" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycolmap.CameraModelId.SKEWED_PINHOLE">
+<span class="sig-name descname"><span class="pre">SKEWED_PINHOLE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">CameraModelId.SKEWED_PINHOLE</span></span><a class="headerlink" href="#pycolmap.CameraModelId.SKEWED_PINHOLE" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -10110,6 +10116,121 @@ are part of a 3D point track. (int, default: 0)</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.CeresRotationAveragerOptions">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">CeresRotationAveragerOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.CeresRotationAveragerOptions" title="Link to this definition">#</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.CeresRotationAveragerOptions)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.CeresRotationAveragerOptions,</span> <span class="pre">arg0:</span> <span class="pre">dict)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self:</span> <span class="pre">pycolmap.CeresRotationAveragerOptions,</span> <span class="pre">**kwargs)</span> <span class="pre">→</span> <span class="pre">None</span></code></p></li>
+</ol>
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.CeresRotationAveragerOptions.loss_function_type">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">loss_function_type</span></span><a class="headerlink" href="#pycolmap.CeresRotationAveragerOptions.loss_function_type" title="Link to this definition">#</a></dt>
+<dd><p>Loss function for relative-rotation residuals. (LossFunctionType, default: LossFunctionType.HUBER)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.CeresRotationAveragerOptions.loss_function_scale">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">loss_function_scale</span></span><a class="headerlink" href="#pycolmap.CeresRotationAveragerOptions.loss_function_scale" title="Link to this definition">#</a></dt>
+<dd><p>Loss function scale in radians. (float, default: 0.08726646259971647)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.CeresRotationAveragerOptions.reweighting">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">reweighting</span></span><a class="headerlink" href="#pycolmap.CeresRotationAveragerOptions.reweighting" title="Link to this definition">#</a></dt>
+<dd><p>Reweighting scheme for relative-rotation constraints: UNIFORM or INLIER_MATCH_COUNT. (RotationAveragingReweighting, default: RotationAveragingReweighting.UNIFORM)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.CeresRotationAveragerOptions.solver_options">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">solver_options</span></span><a class="headerlink" href="#pycolmap.CeresRotationAveragerOptions.solver_options" title="Link to this definition">#</a></dt>
+<dd><p>Options for the Ceres solver. Using this member requires having PyCeres installed. (SolverOptions, default: SolverOptions(minimizer_type=MinimizerType.TRUST_REGION, line_search_direction_type=LineSearchDirectionType.LBFGS, line_search_type=LineSearchType.WOLFE, nonlinear_conjugate_gradient_type=NonlinearConjugateGradientType.FLETCHER_REEVES, max_lbfgs_rank=20, use_approximate_eigenvalue_bfgs_scaling=False, line_search_interpolation_type=LineSearchInterpolationType.CUBIC, min_line_search_step_size=1e-09, line_search_sufficient_function_decrease=0.0001, max_line_search_step_contraction=0.001, min_line_search_step_contraction=0.6, max_num_line_search_step_size_iterations=20, max_num_line_search_direction_restarts=5, line_search_sufficient_curvature_decrease=0.9, max_line_search_step_expansion=10.0, trust_region_strategy_type=TrustRegionStrategyType.LEVENBERG_MARQUARDT, dogleg_type=DoglegType.TRADITIONAL_DOGLEG, use_nonmonotonic_steps=False, max_consecutive_nonmonotonic_steps=5, max_num_iterations=50, max_solver_time_in_seconds=1000000000.0, num_threads=1, initial_trust_region_radius=10000.0, max_trust_region_radius=1e+16, min_trust_region_radius=1e-32, min_relative_decrease=0.001, min_lm_diagonal=1e-06, max_lm_diagonal=1e+32, max_num_consecutive_invalid_steps=5, function_tolerance=1e-06, gradient_tolerance=1e-10, parameter_tolerance=1e-08, linear_solver_type=LinearSolverType.SPARSE_NORMAL_CHOLESKY, preconditioner_type=PreconditionerType.JACOBI, visibility_clustering_type=VisibilityClusteringType.CANONICAL_VIEWS, dense_linear_algebra_library_type=DenseLinearAlgebraLibraryType.EIGEN, sparse_linear_algebra_library_type=SparseLinearAlgebraLibraryType.SUITE_SPARSE, use_explicit_schur_complement=False, dynamic_sparsity=False, use_inner_iterations=False, inner_iteration_tolerance=0.001, min_linear_solver_iterations=0, max_linear_solver_iterations=500, eta=0.1, jacobi_scaling=True, logging_type=LoggingType.PER_MINIMIZER_ITERATION, minimizer_progress_to_stdout=False, trust_region_problem_dump_directory=’/tmp’, trust_region_problem_dump_format_type=DumpFormatType.TEXTFILE, check_gradients=False, gradient_check_relative_precision=1e-08, gradient_check_numeric_derivative_relative_step_size=1e-06, update_state_every_iteration=False))</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.CeresRotationAveragerOptions.skip_initialization">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">skip_initialization</span></span><a class="headerlink" href="#pycolmap.CeresRotationAveragerOptions.skip_initialization" title="Link to this definition">#</a></dt>
+<dd><p>Skip maximum spanning tree initialization. (bool, default: False)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.CeresRotationAveragerOptions.refine_sensor_from_rig">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">refine_sensor_from_rig</span></span><a class="headerlink" href="#pycolmap.CeresRotationAveragerOptions.refine_sensor_from_rig" title="Link to this definition">#</a></dt>
+<dd><p>Refine uncalibrated sensor rotations (missing pose or NaN translation). Fully calibrated sensor rotations stay constant unless the user flips them via the problem. (bool, default: True)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.CeresRotationAveragerOptions.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.CeresRotationAveragerOptions" title="pycolmap.CeresRotationAveragerOptions"><span class="pre">pycolmap.CeresRotationAveragerOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pycolmap.CeresRotationAveragerOptions.summary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.CeresRotationAveragerOptions.mergedict">
+<span class="sig-name descname"><span class="pre">mergedict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.CeresRotationAveragerOptions.mergedict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.CeresRotationAveragerOptions.todict">
+<span class="sig-name descname"><span class="pre">todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.CeresRotationAveragerOptions" title="pycolmap.CeresRotationAveragerOptions"><span class="pre">pycolmap.CeresRotationAveragerOptions</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pycolmap.CeresRotationAveragerOptions.todict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycolmap.CeresRotationAverager">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">CeresRotationAverager</span></span><a class="headerlink" href="#pycolmap.CeresRotationAverager" title="Link to this definition">#</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.CeresRotationAverager.solve">
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.CeresRotationAverager" title="pycolmap.CeresRotationAverager"><span class="pre">pycolmap.CeresRotationAverager</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pycolmap.pyceres.SolverSummary</span></span></span><a class="headerlink" href="#pycolmap.CeresRotationAverager.solve" title="Link to this definition">#</a></dt>
+<dd><p>Optimize rotations in the reconstruction and return the solver summary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycolmap.CeresRotationAverager.add_relative_rotation_residual">
+<span class="sig-name descname"><span class="pre">add_relative_rotation_residual</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.CeresRotationAverager" title="pycolmap.CeresRotationAverager"><span class="pre">pycolmap.CeresRotationAverager</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">image_id1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">image_id2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">cam2_from_cam1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Rotation3d" title="pycolmap.Rotation3d"><span class="pre">Rotation3d</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">loss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ceres::LossFunction</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pycolmap.CeresRotationAverager.add_relative_rotation_residual" title="Link to this definition">#</a></dt>
+<dd><p>Add a relative-rotation residual between images whose frame and sensor rotations are configured in the problem.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.CeresRotationAverager.problem">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">problem</span></span><a class="headerlink" href="#pycolmap.CeresRotationAverager.problem" title="Link to this definition">#</a></dt>
+<dd><p>Ceres problem for inspecting and modifying the optimization.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pycolmap.CeresRotationAverager.solver_options">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">solver_options</span></span><a class="headerlink" href="#pycolmap.CeresRotationAverager.solver_options" title="Link to this definition">#</a></dt>
+<dd><p>Ceres solver options.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycolmap.create_default_ceres_rotation_averager">
+<span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">create_default_ceres_rotation_averager</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.CeresRotationAveragerOptions" title="pycolmap.CeresRotationAveragerOptions"><span class="pre">pycolmap.CeresRotationAveragerOptions</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">pose_graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.PoseGraph" title="pycolmap.PoseGraph"><span class="pre">pycolmap.PoseGraph</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">reconstruction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.Reconstruction" title="pycolmap.Reconstruction"><span class="pre">pycolmap.Reconstruction</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pycolmap.CeresRotationAverager" title="pycolmap.CeresRotationAverager"><span class="pre">pycolmap.CeresRotationAverager</span></a></span></span><a class="headerlink" href="#pycolmap.create_default_ceres_rotation_averager" title="Link to this definition">#</a></dt>
+<dd><p>Create a Ceres rotation averaging problem that optimizes rotations directly in the reconstruction.</p>
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="pycolmap.ImageScore">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pycolmap.</span></span><span class="sig-name descname"><span class="pre">ImageScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.ImageScore" title="Link to this definition">#</a></dt>
 <dd><p>Overloaded function.</p>
@@ -15102,6 +15223,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CameraModelId.SIMPLE_FISHEYE"><code class="docutils literal notranslate"><span class="pre">CameraModelId.SIMPLE_FISHEYE</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CameraModelId.FISHEYE"><code class="docutils literal notranslate"><span class="pre">CameraModelId.FISHEYE</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CameraModelId.EUCM"><code class="docutils literal notranslate"><span class="pre">CameraModelId.EUCM</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CameraModelId.SKEWED_PINHOLE"><code class="docutils literal notranslate"><span class="pre">CameraModelId.SKEWED_PINHOLE</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CameraModelId.EQUIRECTANGULAR"><code class="docutils literal notranslate"><span class="pre">CameraModelId.EQUIRECTANGULAR</span></code></a></li>
 </ul>
 </li>
@@ -16223,6 +16345,26 @@ are part of a 3D point track. (int, default: 0)</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.create_default_global_positioner"><code class="docutils literal notranslate"><span class="pre">create_default_global_positioner()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.run_global_positioning"><code class="docutils literal notranslate"><span class="pre">run_global_positioning()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CeresRotationAveragerOptions"><code class="docutils literal notranslate"><span class="pre">CeresRotationAveragerOptions</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CeresRotationAveragerOptions.loss_function_type"><code class="docutils literal notranslate"><span class="pre">CeresRotationAveragerOptions.loss_function_type</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CeresRotationAveragerOptions.loss_function_scale"><code class="docutils literal notranslate"><span class="pre">CeresRotationAveragerOptions.loss_function_scale</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CeresRotationAveragerOptions.reweighting"><code class="docutils literal notranslate"><span class="pre">CeresRotationAveragerOptions.reweighting</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CeresRotationAveragerOptions.solver_options"><code class="docutils literal notranslate"><span class="pre">CeresRotationAveragerOptions.solver_options</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CeresRotationAveragerOptions.skip_initialization"><code class="docutils literal notranslate"><span class="pre">CeresRotationAveragerOptions.skip_initialization</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CeresRotationAveragerOptions.refine_sensor_from_rig"><code class="docutils literal notranslate"><span class="pre">CeresRotationAveragerOptions.refine_sensor_from_rig</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CeresRotationAveragerOptions.summary"><code class="docutils literal notranslate"><span class="pre">CeresRotationAveragerOptions.summary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CeresRotationAveragerOptions.mergedict"><code class="docutils literal notranslate"><span class="pre">CeresRotationAveragerOptions.mergedict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CeresRotationAveragerOptions.todict"><code class="docutils literal notranslate"><span class="pre">CeresRotationAveragerOptions.todict()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CeresRotationAverager"><code class="docutils literal notranslate"><span class="pre">CeresRotationAverager</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CeresRotationAverager.solve"><code class="docutils literal notranslate"><span class="pre">CeresRotationAverager.solve()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CeresRotationAverager.add_relative_rotation_residual"><code class="docutils literal notranslate"><span class="pre">CeresRotationAverager.add_relative_rotation_residual()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CeresRotationAverager.problem"><code class="docutils literal notranslate"><span class="pre">CeresRotationAverager.problem</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.CeresRotationAverager.solver_options"><code class="docutils literal notranslate"><span class="pre">CeresRotationAverager.solver_options</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.create_default_ceres_rotation_averager"><code class="docutils literal notranslate"><span class="pre">create_default_ceres_rotation_averager()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImageScore"><code class="docutils literal notranslate"><span class="pre">ImageScore</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImageScore.image_id"><code class="docutils literal notranslate"><span class="pre">ImageScore.image_id</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.ImageScore.score"><code class="docutils literal notranslate"><span class="pre">ImageScore.score</span></code></a></li>
@@ -16974,7 +17116,7 @@ are part of a 3D point track. (int, default: 0)</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 72f30b1 (2026-10-06)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | a938058 (2026-10-07)</p></div>
       
     </div>
   

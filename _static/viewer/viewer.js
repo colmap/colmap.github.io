@@ -1,4 +1,4 @@
-import { i as e, n as t, r as n, t as r } from "./main-IbwkrrC0.js";
+import { i as e, n as t, r as n, t as r } from "./main-CnqcBMAB.js";
 //#region viewer_src/auto_mount.ts
 var i = document.querySelector("#colmap-viewer-root");
 if (i) try {

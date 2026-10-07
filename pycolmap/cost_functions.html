@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=58ea0400"></script>
+    <script src="../_static/documentation_options.js?v=27592afb"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -64,7 +64,7 @@
     <link rel="prev" title="pycolmap" href="pycolmap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 72f30b1 (2026-10-06)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | a938058 (2026-10-07)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -857,6 +857,12 @@
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="pycolmap.cost_functions.RelativeRotationCost">
+<span class="sig-prename descclassname"><span class="pre">pycolmap.cost_functions.</span></span><span class="sig-name descname"><span class="pre">RelativeRotationCost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cam2_from_cam1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycolmap.html#pycolmap.Rotation3d" title="pycolmap.Rotation3d"><span class="pre">Rotation3d</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ceres::CostFunction</span></span></span><a class="headerlink" href="#pycolmap.cost_functions.RelativeRotationCost" title="Link to this definition">#</a></dt>
+<dd><p>Angular error in radians between camera-from-world quaternions (x, y, z, w) and a relative rotation.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pycolmap.cost_functions.RelativePosePriorCost">
 <span class="sig-prename descclassname"><span class="pre">pycolmap.cost_functions.</span></span><span class="sig-name descname"><span class="pre">RelativePosePriorCost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycolmap.cost_functions.RelativePosePriorCost" title="Link to this definition">#</a></dt>
 <dd><p>Overloaded function.</p>
@@ -951,6 +957,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.cost_functions.SampsonErrorCost"><code class="docutils literal notranslate"><span class="pre">SampsonErrorCost()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.cost_functions.AbsolutePosePriorCost"><code class="docutils literal notranslate"><span class="pre">AbsolutePosePriorCost()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.cost_functions.AbsolutePosePositionPriorCost"><code class="docutils literal notranslate"><span class="pre">AbsolutePosePositionPriorCost()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.cost_functions.RelativeRotationCost"><code class="docutils literal notranslate"><span class="pre">RelativeRotationCost()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.cost_functions.RelativePosePriorCost"><code class="docutils literal notranslate"><span class="pre">RelativePosePriorCost()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.cost_functions.Point3DAlignmentCost"><code class="docutils literal notranslate"><span class="pre">Point3DAlignmentCost()</span></code></a></li>
 </ul>
@@ -1002,7 +1009,7 @@
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 72f30b1 (2026-10-06)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | a938058 (2026-10-07)</p></div>
       
     </div>
   

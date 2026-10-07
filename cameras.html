@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=58ea0400"></script>
+    <script src="_static/documentation_options.js?v=27592afb"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -67,7 +67,7 @@
     <link rel="prev" title="Database Format" href="database.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 72f30b1 (2026-10-06)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | a938058 (2026-10-07)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -720,6 +720,12 @@ have first-order local equivalence for small distortions.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">EUCM</span></code>: Use this camera model for wide-angle fisheye cameras and catadioptric
 systems. It represents radial distortion using two
 parameters in addition to the standard pinhole parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SKEWED_PINHOLE</span></code>: Use this camera model, if your images are undistorted a
+priori but the pixel axes are not orthogonal. It extends the <code class="docutils literal notranslate"><span class="pre">PINHOLE</span></code>
+model by a skew parameter <code class="docutils literal notranslate"><span class="pre">s</span></code> (in pixels), giving the most general linear
+calibration matrix. Typical sources are cameras synthesized from other
+sensor models, e.g. perspective approximations of pushbroom satellite
+imagery.</p></li>
 </ul>
 <p>You can inspect the estimated intrinsic parameters by double-clicking specific
 images in the model viewer or by exporting the model and opening the
@@ -755,8 +761,10 @@ the number of focal length parameters (a single shared <code class="docutils lit
 <code class="docutils literal notranslate"><span class="pre">fy</span></code>) and in the distortion function, e.g. <code class="docutils literal notranslate"><span class="pre">RADIAL</span></code> adds a second radial term
 <code class="docutils literal notranslate"><span class="pre">k2</span></code> and <code class="docutils literal notranslate"><span class="pre">OPENCV</span></code> adds tangential terms <code class="docutils literal notranslate"><span class="pre">p1,</span> <span class="pre">p2</span></code>. The fisheye models
 instead replace the perspective division with an equidistant projection. The
-exact parameter list of every model is given by its <code class="docutils literal notranslate"><span class="pre">params_info</span></code> string and
-defined in the camera models header:
+<code class="docutils literal notranslate"><span class="pre">SKEWED_PINHOLE</span></code> model has no distortion step but adds a skew term to the
+intrinsic transform, <span class="math notranslate nohighlight">\(x = f_x \, u + s \, v + c_x\)</span>. The exact parameter
+list of every model is given by its <code class="docutils literal notranslate"><span class="pre">params_info</span></code> string and defined in the
+camera models header:
 <a class="github reference external" href="https://github.com/colmap/colmap/blob/main/src/colmap/sensor/models.h">colmap/colmap</a></p>
 </section>
 <section id="configuration">
@@ -873,7 +881,7 @@ fix the intrinsic parameters during the reconstruction
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 72f30b1 (2026-10-06)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | a938058 (2026-10-07)</p></div>
       
     </div>
   
