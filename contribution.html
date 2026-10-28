@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="_static/documentation_options.js?v=32b81a32"></script>
+    <script src="_static/documentation_options.js?v=50ae4e83"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 3dd1289 (2026-10-27)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | ea470c0 (2026-10-28)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -725,6 +725,15 @@ set, so heavy tests are covered there. When adding a test whose runtime is
 dominated by model loading or inference, prefer a fast default path and gate
 the expensive variant behind this variable.</p>
 </section>
+<section id="continuous-integration">
+<h2>Continuous Integration<a class="headerlink" href="#continuous-integration" title="Link to this heading">#</a></h2>
+<p>Pull requests automatically run the Ubuntu, macOS, and Docker builds, the
+Linux pycolmap wheel, and the documentation build. The slower Windows builds
+and the remaining pycolmap wheels (macOS, Windows, and CUDA) only run once a
+maintainer adds the <code class="docutils literal notranslate"><span class="pre">full-ci</span></code> label. The label stays on the pull request, so
+later pushes run these jobs again. They are required for merging and show as
+pending until the label is added.</p>
+</section>
 </section>
 
 
@@ -775,6 +784,7 @@ the expensive variant behind this variable.</p>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-tests">Running Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration">Continuous Integration</a></li>
 </ul>
   </nav></div>
 
@@ -824,7 +834,7 @@ the expensive variant behind this variable.</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 3dd1289 (2026-10-27)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | ea470c0 (2026-10-28)</p></div>
       
     </div>
   
