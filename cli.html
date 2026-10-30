@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="_static/documentation_options.js?v=31cda9c2"></script>
+    <script src="_static/documentation_options.js?v=39a499a4"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 404b83d (2026-10-30)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | f956ce6 (2026-10-30)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -1005,7 +1005,9 @@ the available options, e.g.:</p>
 </pre></div>
 </div>
 <p>The available options can either be provided directly from the command-line or
-through a <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file provided to <code class="docutils literal notranslate"><span class="pre">--project_path</span></code>.</p>
+through a <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file provided to <code class="docutils literal notranslate"><span class="pre">--project_path</span></code>. When an option is
+specified in both places, the command-line value takes precedence, and options
+may be split across the two sources.</p>
 </section>
 <section id="commands">
 <h2>Commands<a class="headerlink" href="#commands" title="Link to this heading">#</a></h2>
@@ -1018,7 +1020,8 @@ available as <code class="docutils literal notranslate"><span class="pre">colmap
 for a set of input images. Key options include <code class="docutils literal notranslate"><span class="pre">--quality</span></code> (LOW, MEDIUM,
 HIGH, EXTREME), <code class="docutils literal notranslate"><span class="pre">--data_type</span></code> (INDIVIDUAL, VIDEO, INTERNET) to tune settings
 for different capture scenarios, <code class="docutils literal notranslate"><span class="pre">--feature</span></code> (SIFT, ALIKED, LOMA, LOMA128)
-to select the feature extraction algorithm, <code class="docutils literal notranslate"><span class="pre">--mapper</span></code> (INCREMENTAL,
+to select the feature extraction algorithm, <code class="docutils literal notranslate"><span class="pre">--max_num_features</span></code> to override
+the maximum number of features per image, <code class="docutils literal notranslate"><span class="pre">--mapper</span></code> (INCREMENTAL,
 HIERARCHICAL, GLOBAL) to choose the SfM pipeline, and <code class="docutils literal notranslate"><span class="pre">--mesher</span></code> (POISSON,
 DELAUNAY, ADVANCING_FRONT) to select the surface reconstruction method.
 <code class="docutils literal notranslate"><span class="pre">--single_view_calibration</span></code> enables learned single-view calibration
@@ -1270,7 +1273,7 @@ with a texture atlas that can be visualized in Meshlab or other 3D viewers.</p><
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 404b83d (2026-10-30)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | f956ce6 (2026-10-30)</p></div>
       
     </div>
   
