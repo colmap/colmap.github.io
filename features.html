@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="_static/documentation_options.js?v=39a499a4"></script>
+    <script src="_static/documentation_options.js?v=03915aad"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | f956ce6 (2026-10-30)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | d0a411f (2026-11-01)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -750,6 +750,18 @@ for better robustness to rotated image pairs. Also matches the 256-dim
 quality. Requires ONNX support to be enabled at build time.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">LOMA_B128</span></code>: Dedicated matcher for the lightweight 128-dim <code class="docutils literal notranslate"><span class="pre">LOMA_B128</span></code>
 descriptor. Requires ONNX support to be enabled at build time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FLEXGLUE</span></code>: Neural network matcher operating on dense image features
+(FlexGlue). It works with the keypoints of any feature extractor and ignores
+the descriptors, which are not required. Since FlexGlue computes dense
+features from the image pixels, the images are read during matching from
+<code class="docutils literal notranslate"><span class="pre">--FlexGlueMatching.image_path</span></code> (required). The matcher commands have no
+global <code class="docutils literal notranslate"><span class="pre">--image_path</span></code>, so <code class="docutils literal notranslate"><span class="pre">FlexGlueMatching.image_path</span></code> must also be set
+in project files. FlexGlue also predicts whether two images are covisible at
+all, and <code class="docutils literal notranslate"><span class="pre">--FlexGlueMatching.min_covisibility</span></code> (default 0.5, 0 disables it)
+rejects all matches of pairs with a lower covisibility score, which suppresses
+look-alike pairs of repeated structures. Guided matching is not supported.
+Requires ONNX support to be enabled at build time; a GPU is strongly
+recommended.</p></li>
 </ul>
 <p>To select a feature matcher type via the command-line:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ colmap exhaustive_matcher \
@@ -779,6 +791,8 @@ dropdown in the shared options section.</p>
 <code class="docutils literal notranslate"><span class="pre">LOMA_L</span></code>, or <code class="docutils literal notranslate"><span class="pre">LOMA_G</span></code> matching.</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">LOMA_B128</span></code> extraction with <code class="docutils literal notranslate"><span class="pre">LOMA_BRUTEFORCE</span></code> or <code class="docutils literal notranslate"><span class="pre">LOMA_B128</span></code>
 matching.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FLEXGLUE</span></code> matching works with any extraction type, as it only uses the
+keypoint locations.</p></li>
 </ul>
 <p>Mixing incompatible types (e.g., SIFT features with ALIKED matcher, or
 <code class="docutils literal notranslate"><span class="pre">LOMA_B128</span></code> features with the <code class="docutils literal notranslate"><span class="pre">LOMA_B</span></code> matcher) will result in a runtime
@@ -827,6 +841,49 @@ matching also support an opt-in <code class="docutils literal notranslate"><span
 (<code class="docutils literal notranslate"><span class="pre">--LomaExtraction.use_bf16</span></code> / <code class="docutils literal notranslate"><span class="pre">--LomaMatching.use_bf16</span></code>) for faster
 inference on CUDA GPUs with compute capability 8.0 (Ampere) or newer. On other
 devices, the fp32 models are used.</p>
+</section>
+<section id="flexglue">
+<h2>FlexGlue<a class="headerlink" href="#flexglue" title="Link to this heading">#</a></h2>
+<p>FlexGlue encodes each image into a dense stride-8 feature map with a
+DINOv3-ConvNeXt backbone (at a fixed 512x512 resolution), refines the feature
+maps of both images jointly with a transformer, and predicts the
+correspondence of every keypoint in the other image. Keypoints are then matched
+by mutual nearest neighbors between the keypoints and the predicted
+correspondences. Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ colmap exhaustive_matcher \
+    --database_path $DATASET_PATH/database.db \
+    --FeatureMatching.type FLEXGLUE \
+    --FlexGlueMatching.image_path $DATASET_PATH/images
+</pre></div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">min_covisibility</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, the default models also stop early on pairs that
+are confidently not covisible: after layers 2, 4, 6, and 8 of the 9 transformer
+layers, a pair is rejected without running the remaining layers if its
+covisibility score is below <code class="docutils literal notranslate"><span class="pre">min_covisibility</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">early_stop_decay)^(9</span> <span class="pre">-</span>
+<span class="pre">layer)</span></code>. Lower values of <code class="docutils literal notranslate"><span class="pre">--FlexGlueMatching.early_stop_decay</span></code> stop earlier,
+and 1 disables early stopping. On the 22569 exhaustive pairs of ETH3D DSLR, the
+default models with the default <code class="docutils literal notranslate"><span class="pre">early_stop_decay</span> <span class="pre">0.5</span></code> and
+<code class="docutils literal notranslate"><span class="pre">min_covisibility</span> <span class="pre">0.5</span></code> stop early on 35% of the pairs, and only 6 of the
+10288 pairs that are covisible according to the ground truth are rejected early
+although they would pass <code class="docutils literal notranslate"><span class="pre">min_covisibility</span></code> after the last layer.</p>
+<p>The dense features of the most recently used images are cached in memory
+(<code class="docutils literal notranslate"><span class="pre">--FlexGlueMatching.feature_cache_size</span></code>, ~4MB per image), on the GPU if the
+models run on a CUDA GPU. On CUDA GPUs with compute capability 7.0 or newer, a
+variant of the matcher whose transformer layers run in float16 is used by
+default (<code class="docutils literal notranslate"><span class="pre">--FlexGlueMatching.use_fp16</span></code>), which is faster than the float32
+matcher with practically identical matches; the float32 matcher is used on the CPU, on
+older GPUs, or if the float16 variant fails to initialize. On the CPU, a
+single matching thread runs the models with <code class="docutils literal notranslate"><span class="pre">--FeatureMatching.num_threads</span></code>
+threads, rather than one copy of the models per thread. The
+<code class="docutils literal notranslate"><span class="pre">automatic_reconstructor</span></code> provides the <code class="docutils literal notranslate"><span class="pre">--feature</span> <span class="pre">flexglue</span></code> preset, which
+extracts the same DaD keypoints as the LoMa presets and matches them with
+FlexGlue. The models are downloaded automatically, and custom models can
+be specified with <code class="docutils literal notranslate"><span class="pre">--FlexGlueMatching.descriptor_model_path</span></code>,
+<code class="docutils literal notranslate"><span class="pre">--FlexGlueMatching.matcher_model_path</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">--FlexGlueMatching.matcher_model_path_fp16</span></code>. The models are exported with
+<code class="docutils literal notranslate"><span class="pre">onnx/export.py</span></code> from <a class="github reference external" href="https://github.com/cvg/FlexGlue">cvg/FlexGlue</a>. Custom matchers must
+be exported with early stopping, e.g., <code class="docutils literal notranslate"><span class="pre">--early_stop_layers</span> <span class="pre">2,4,6,8</span></code>, since
+the matcher requires the <code class="docutils literal notranslate"><span class="pre">early_stop_decay</span></code> input.</p>
 </section>
 <section id="iterative-runs">
 <h2>Iterative Runs<a class="headerlink" href="#iterative-runs" title="Link to this heading">#</a></h2>
@@ -897,6 +954,7 @@ clear the existing results with <code class="docutils literal notranslate"><span
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compatible-extractor-and-matcher-types">Compatible Extractor and Matcher Types</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aliked-model-variants">ALIKED Model Variants</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loma-model-variants">LoMa Model Variants</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flexglue">FlexGlue</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-runs">Iterative Runs</a></li>
 </ul>
   </nav></div>
@@ -947,7 +1005,7 @@ clear the existing results with <code class="docutils literal notranslate"><span
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | f956ce6 (2026-10-30)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | d0a411f (2026-11-01)</p></div>
       
     </div>
   

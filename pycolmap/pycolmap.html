@@ -47,7 +47,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="../_static/documentation_options.js?v=39a499a4"></script>
+    <script src="../_static/documentation_options.js?v=03915aad"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | f956ce6 (2026-10-30)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | d0a411f (2026-11-01)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -4322,6 +4322,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <p>LOMA_R</p>
 <p>LOMA_L</p>
 <p>LOMA_G</p>
+<p>FLEXGLUE</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pycolmap.FeatureMatcherType.name">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#pycolmap.FeatureMatcherType.name" title="Link to this definition">#</a></dt>
@@ -4385,6 +4386,11 @@ are part of a 3D point track. (int, default: 0)</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pycolmap.FeatureMatcherType.LOMA_G">
 <span class="sig-name descname"><span class="pre">LOMA_G</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;FeatureMatcherType.LOMA_G:</span> <span class="pre">9&gt;</span></span><a class="headerlink" href="#pycolmap.FeatureMatcherType.LOMA_G" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycolmap.FeatureMatcherType.FLEXGLUE">
+<span class="sig-name descname"><span class="pre">FLEXGLUE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;FeatureMatcherType.FLEXGLUE:</span> <span class="pre">10&gt;</span></span><a class="headerlink" href="#pycolmap.FeatureMatcherType.FLEXGLUE" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -4560,10 +4566,12 @@ are part of a 3D point track. (int, default: 0)</p>
 <dd><em class="sig-param"><span class="n"><span class="pre">descriptors1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.FeatureDescriptors" title="pycolmap.FeatureDescriptors"><span class="pre">pycolmap.FeatureDescriptors</span></a></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">keypoints2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.FeatureKeypoints" title="pycolmap.FeatureKeypoints"><span class="pre">pycolmap.FeatureKeypoints</span></a></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">descriptors2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycolmap.FeatureDescriptors" title="pycolmap.FeatureDescriptors"><span class="pre">pycolmap.FeatureDescriptors</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">name1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">name2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>,</dd>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.uint32</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'[m,</span> <span class="pre">2]'</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pycolmap.FeatureMatcher.match" title="Link to this definition">#</a></dt>
-<dd><p>Match features between two images. Keypoints are optional. Returns an Nx2 matrix of point2D indices.</p>
+<dd><p>Match features between two images. Keypoints are optional. Image names (relative to the image path of the matcher options) are only required by matchers that read the image pixels, such as FlexGlue. Returns an Nx2 matrix of point2D indices.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -15726,6 +15734,7 @@ are part of a 3D point track. (int, default: 0)</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureMatcherType.LOMA_R"><code class="docutils literal notranslate"><span class="pre">FeatureMatcherType.LOMA_R</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureMatcherType.LOMA_L"><code class="docutils literal notranslate"><span class="pre">FeatureMatcherType.LOMA_L</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureMatcherType.LOMA_G"><code class="docutils literal notranslate"><span class="pre">FeatureMatcherType.LOMA_G</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.FeatureMatcherType.FLEXGLUE"><code class="docutils literal notranslate"><span class="pre">FeatureMatcherType.FLEXGLUE</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycolmap.SiftMatchingOptions"><code class="docutils literal notranslate"><span class="pre">SiftMatchingOptions</span></code></a><ul class="nav section-nav flex-column">
@@ -17425,7 +17434,7 @@ are part of a 3D point track. (int, default: 0)</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | f956ce6 (2026-10-30)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | d0a411f (2026-11-01)</p></div>
       
     </div>
   
