@@ -39,7 +39,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="_static/documentation_options.js?v=03915aad"></script>
+    <script src="_static/documentation_options.js?v=0296efa4"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -54,7 +54,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | d0a411f (2026-11-01)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | 97b5d74 (2026-11-08)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -1034,6 +1034,8 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometry.cam2_from_cam1">(pycolmap.TwoViewGeometry property)</a>
 </li>
       </ul></li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.PoseGraphEdge.cam2_from_cam1_rotation_cov">cam2_from_cam1_rotation_cov (pycolmap.PoseGraphEdge property)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Camera.cam_from_img">cam_from_img() (pycolmap.Camera method)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Camera.cam_from_img_threshold">cam_from_img_threshold() (pycolmap.Camera method)</a>
@@ -1202,6 +1204,8 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.SpatialPairingOptions.check">(pycolmap.SpatialPairingOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.StereoFusionOptions.check">(pycolmap.StereoFusionOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewRotationCovarianceOptions.check">(pycolmap.TwoViewRotationCovarianceOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.VocabTreePairingOptions.check">(pycolmap.VocabTreePairingOptions method)</a>
 </li>
@@ -1394,6 +1398,12 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.Point2DList.count">(pycolmap.Point2DList method)</a>
 </li>
       </ul></li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.RotationAveragingReweighting.COVARIANCE">COVARIANCE (pycolmap.RotationAveragingReweighting attribute)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAveragerOptions.covariance_loss_scale">covariance_loss_scale (pycolmap.CeresRotationAveragerOptions property)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.CeresRotationAveragerOptions.covariance_sigma_floor_deg">covariance_sigma_floor_deg (pycolmap.CeresRotationAveragerOptions property)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Device.cpu">cpu (pycolmap.Device attribute)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.SiftMatchingOptions.cpu_brute_force_matcher">cpu_brute_force_matcher (pycolmap.SiftMatchingOptions property)</a>
@@ -1678,6 +1688,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalMapper.estimate_initial_two_view_geometry">estimate_initial_two_view_geometry() (pycolmap.IncrementalMapper method)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_pose_graph_rotation_covariances">estimate_pose_graph_rotation_covariances() (in module pycolmap)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_relative_pose">estimate_relative_pose() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_rigid3d">estimate_rigid3d() (in module pycolmap)</a>
@@ -1696,10 +1708,12 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_two_view_geometry_pose">estimate_two_view_geometry_pose() (in module pycolmap)</a>
 </li>
-      <li><a href="pycolmap/pycolmap.html#pycolmap.EstimateTriangulationOptions">EstimateTriangulationOptions (class in pycolmap)</a>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.estimate_two_view_rotation_covariance">estimate_two_view_rotation_covariance() (in module pycolmap)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.EstimateTriangulationOptions">EstimateTriangulationOptions (class in pycolmap)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.CameraModelId.EUCM">EUCM (pycolmap.CameraModelId attribute)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.SyntheticDatasetMatchConfig.EXHAUSTIVE">EXHAUSTIVE (pycolmap.SyntheticDatasetMatchConfig attribute)</a>
@@ -2854,6 +2868,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.RotationEstimatorOptions.max_rotation_error_deg">max_rotation_error_deg (pycolmap.RotationEstimatorOptions property)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewRotationCovarianceOptions.max_rotation_sigma_deg">max_rotation_sigma_deg (pycolmap.TwoViewRotationCovarianceOptions property)</a>
+</li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.max_runtime_seconds">max_runtime_seconds (pycolmap.IncrementalPipelineOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.UndistortCameraOptions.max_scale">max_scale (pycolmap.UndistortCameraOptions property)</a>
@@ -2869,6 +2885,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.ImageSelectionMethod.MAX_VISIBLE_POINTS_NUM">MAX_VISIBLE_POINTS_NUM (pycolmap.ImageSelectionMethod attribute)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.ImageSelectionMethod.MAX_VISIBLE_POINTS_RATIO">MAX_VISIBLE_POINTS_RATIO (pycolmap.ImageSelectionMethod attribute)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.maybe_estimate_pose_graph_rotation_covariances">maybe_estimate_pose_graph_rotation_covariances() (in module pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Camera.mean_focal_length">mean_focal_length() (pycolmap.Camera method)</a>
 </li>
@@ -3040,6 +3058,8 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometry.mergedict">(pycolmap.TwoViewGeometry method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometryOptions.mergedict">(pycolmap.TwoViewGeometryOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewRotationCovarianceOptions.mergedict">(pycolmap.TwoViewRotationCovarianceOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.UndistortCameraOptions.mergedict">(pycolmap.UndistortCameraOptions method)</a>
 </li>
@@ -3606,6 +3626,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureMatch.point2D_idx2">point2D_idx2 (pycolmap.FeatureMatch property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.SyntheticNoiseOptions.point2D_stddev">point2D_stddev (pycolmap.SyntheticNoiseOptions property)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewRotationCovarianceOptions.point2D_stddev_px">point2D_stddev_px (pycolmap.TwoViewRotationCovarianceOptions property)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.Point2DList">Point2DList (class in pycolmap)</a>
 </li>
@@ -4321,6 +4343,8 @@
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineOptions.structure_less_registration_only">structure_less_registration_only (pycolmap.IncrementalPipelineOptions property)</a>
 </li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.PoseGraph.subgraph">subgraph() (pycolmap.PoseGraph method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycolmap/pycolmap.html#pycolmap.IncrementalPipelineStatus.SUCCESS">SUCCESS (pycolmap.IncrementalPipelineStatus attribute)</a>
@@ -4475,6 +4499,8 @@
         <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometry.summary">(pycolmap.TwoViewGeometry method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometryOptions.summary">(pycolmap.TwoViewGeometryOptions method)</a>
+</li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewRotationCovarianceOptions.summary">(pycolmap.TwoViewRotationCovarianceOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.UndistortCameraOptions.summary">(pycolmap.UndistortCameraOptions method)</a>
 </li>
@@ -4704,6 +4730,8 @@
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometryOptions.todict">(pycolmap.TwoViewGeometryOptions method)</a>
 </li>
+        <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewRotationCovarianceOptions.todict">(pycolmap.TwoViewRotationCovarianceOptions method)</a>
+</li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.UndistortCameraOptions.todict">(pycolmap.UndistortCameraOptions method)</a>
 </li>
         <li><a href="pycolmap/pycolmap.html#pycolmap.ViewGraphCalibrationOptions.todict">(pycolmap.ViewGraphCalibrationOptions method)</a>
@@ -4784,6 +4812,8 @@
       <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometryConfiguration">TwoViewGeometryConfiguration (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewGeometryOptions">TwoViewGeometryOptions (class in pycolmap)</a>
+</li>
+      <li><a href="pycolmap/pycolmap.html#pycolmap.TwoViewRotationCovarianceOptions">TwoViewRotationCovarianceOptions (class in pycolmap)</a>
 </li>
       <li><a href="pycolmap/pycolmap.html#pycolmap.FeatureDescriptors.type">type (pycolmap.FeatureDescriptors property)</a>
 
@@ -5195,7 +5225,7 @@
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | d0a411f (2026-11-01)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | 97b5d74 (2026-11-08)</p></div>
       
     </div>
   

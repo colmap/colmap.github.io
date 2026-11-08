@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="../_static/documentation_options.js?v=03915aad"></script>
+    <script src="../_static/documentation_options.js?v=0296efa4"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | d0a411f (2026-11-01)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | 97b5d74 (2026-11-08)" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -897,6 +897,9 @@ so either from PyPI or from source.</p>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_two_view_geometry"><code class="docutils literal notranslate"><span class="pre">estimate_two_view_geometry()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_two_view_geometry_pose"><code class="docutils literal notranslate"><span class="pre">estimate_two_view_geometry_pose()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.compute_squared_sampson_error"><code class="docutils literal notranslate"><span class="pre">compute_squared_sampson_error()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.TwoViewRotationCovarianceOptions"><code class="docutils literal notranslate"><span class="pre">TwoViewRotationCovarianceOptions</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_two_view_rotation_covariance"><code class="docutils literal notranslate"><span class="pre">estimate_two_view_rotation_covariance()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.estimate_pose_graph_rotation_covariances"><code class="docutils literal notranslate"><span class="pre">estimate_pose_graph_rotation_covariances()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.CeresRotationAveragerOptions"><code class="docutils literal notranslate"><span class="pre">CeresRotationAveragerOptions</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.GravityRefinerOptions"><code class="docutils literal notranslate"><span class="pre">GravityRefinerOptions</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.run_gravity_refinement"><code class="docutils literal notranslate"><span class="pre">run_gravity_refinement()</span></code></a></li>
@@ -905,6 +908,7 @@ so either from PyPI or from source.</p>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.RotationAveragingBackend"><code class="docutils literal notranslate"><span class="pre">RotationAveragingBackend</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.L1IrlsRotationAveragerOptions"><code class="docutils literal notranslate"><span class="pre">L1IrlsRotationAveragerOptions</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.RotationEstimatorOptions"><code class="docutils literal notranslate"><span class="pre">RotationEstimatorOptions</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.maybe_estimate_pose_graph_rotation_covariances"><code class="docutils literal notranslate"><span class="pre">maybe_estimate_pose_graph_rotation_covariances()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.run_rotation_averaging"><code class="docutils literal notranslate"><span class="pre">run_rotation_averaging()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.GlobalPositionerOptions"><code class="docutils literal notranslate"><span class="pre">GlobalPositionerOptions</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycolmap.html#pycolmap.GlobalPositioner"><code class="docutils literal notranslate"><span class="pre">GlobalPositioner</span></code></a></li>
@@ -1100,7 +1104,7 @@ so either from PyPI or from source.</p>
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | d0a411f (2026-11-01)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | 97b5d74 (2026-11-08)</p></div>
       
     </div>
   
