@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="_static/documentation_options.js?v=3d0eb30a"></script>
+    <script src="_static/documentation_options.js?v=6be77408"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -66,7 +66,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="4.3.0.dev0 | 9f0736e (2026-11-08)" />
+  <meta name="docsearch:version" content="4.3.0.dev0 | 3c1a1b9 (2026-11-08)" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -872,7 +872,13 @@ models run on a CUDA GPU. On CUDA GPUs with compute capability 7.0 or newer, a
 variant of the matcher whose transformer layers run in float16 is used by
 default (<code class="docutils literal notranslate"><span class="pre">--FlexGlueMatching.use_fp16</span></code>), which is faster than the float32
 matcher with practically identical matches; the float32 matcher is used on the CPU, on
-older GPUs, or if the float16 variant fails to initialize. On the CPU, a
+older GPUs, or if the float16 variant fails to initialize. On CUDA GPUs,
+<code class="docutils literal notranslate"><span class="pre">--FlexGlueMatching.num_workers_per_gpu</span></code> (default 4) matching threads share a
+single matcher instance and GPU feature cache per GPU so CPU image decoding
+overlaps with GPU inference, while <code class="docutils literal notranslate"><span class="pre">--FlexGlueMatching.num_inferences_per_gpu</span></code>
+(default 2) bounds the number of concurrent model inferences on the GPU (lower
+it, e.g. to 1, to reduce GPU memory usage while keeping parallel CPU image
+decoding). On the CPU, a
 single matching thread runs the models with <code class="docutils literal notranslate"><span class="pre">--FeatureMatching.num_threads</span></code>
 threads, rather than one copy of the models per thread. The
 <code class="docutils literal notranslate"><span class="pre">automatic_reconstructor</span></code> provides the <code class="docutils literal notranslate"><span class="pre">--feature</span> <span class="pre">flexglue</span></code> preset, which
@@ -1005,7 +1011,7 @@ clear the existing results with <code class="docutils literal notranslate"><span
     <div class="footer-items__center">
       
         <div class="footer-item">
-<p class="footer-version">COLMAP 4.3.0.dev0 | 9f0736e (2026-11-08)</p></div>
+<p class="footer-version">COLMAP 4.3.0.dev0 | 3c1a1b9 (2026-11-08)</p></div>
       
     </div>
   
